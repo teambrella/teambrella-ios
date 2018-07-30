@@ -27,9 +27,12 @@ final class InitialVC: UIViewController {
         case login
         case demoExpired
     }
-    
+
+    let loginWorker: LoginWorker = LoginWorker()
     var mode: InitialVCMode = .login
     weak var sod: SODVC?
+    weak var loginBlueVC: LoginBlueVC?
+
     var isFirstLoad: Bool = true
 
     // MARK: Lifecycle
@@ -47,8 +50,8 @@ final class InitialVC: UIViewController {
          it runs viewDidAppear in background.
          if we start loading teams in that mode our server won't distinguish background fetch from UI activity
          that's why we use the following hack
-                                            ||
-                                            \/
+         ||
+         \/
          */
         let state = UIApplication.shared.applicationState
         print("Application state is: \(state.rawValue)")
@@ -64,6 +67,23 @@ final class InitialVC: UIViewController {
         performTransitions()
     }
 
+    func login(teamID: Int?) {
+        loginBlueVC?.dismiss(animated: false, completion: nil)
+
+        guard !service.keyStorage.hasRealPrivateKey else {
+            service.keyStorage.setToRealUser()
+            self.getTeams()
+            return
+        }
+
+        loginWorker.loginAndRegister(in: self, completion: { [weak self] facebookUser in
+            service.keyStorage.setToRealUser()
+            self?.getTeams()
+        }) { [weak self] error in
+            self?.failure(error: error)
+        }
+    }
+
     @objc
     func performTransitionsAfterWakeUp() {
         NotificationCenter.default.removeObserver(self,
@@ -75,7 +95,7 @@ final class InitialVC: UIViewController {
     func performTransitions() {
         if isFirstLoad, service.keyStorage.isUserSelected {
             mode = .idle
-            startLoadingTeams()
+            getTeams()
         } else {
             switch mode {
             case .login:
@@ -100,7 +120,7 @@ final class InitialVC: UIViewController {
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
         mode = .idle
-        startLoadingTeams()
+        getTeams()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -108,12 +128,17 @@ final class InitialVC: UIViewController {
         if segue.type == .teambrella {
 
         }
+        if let nc = segue.destination as? UINavigationController,
+            let vc = nc.viewControllers.first as? LoginBlueVC {
+            vc.loginWorker = loginWorker
+            loginBlueVC = vc
+        }
     }
     
     @objc
     private func tapDemo() {
         service.keyStorage.setToDemoUser()
-        self.startLoadingTeams()
+        getTeams()
         sod?.dismiss(animated: true) {
             
         }
@@ -129,17 +154,11 @@ final class InitialVC: UIViewController {
     // MARK: Private
     
     private func getTeams() {
-        let isDemo = service.keyStorage.isDemoUser
-        service.dao.requestTeams(demo: isDemo).observe { [weak self] result in
-            switch result {
-            case let .value(teamsEntity):
-                self?.startSession(teamsEntity: teamsEntity, isDemo: isDemo)
-            case let .error(error):
-                if isDemo {
-                    service.keyStorage.createNewDemoKey()
-                }
-                self?.failure(error: error)
-            }
+        HUD.show(.progress)
+        loginWorker.getTeams(completion: { [weak self] teamsModel, isDemo in
+            self?.startSession(teamsEntity: teamsModel, isDemo: isDemo)
+        }) { [weak self] error in
+            self?.failure(error: error)
         }
     }
     
@@ -167,11 +186,6 @@ final class InitialVC: UIViewController {
         service.router.logout()
         SimpleStorage().store(bool: false, forKey: .didLogWithKey)
         performSegue(type: .login)
-    }
-
-    private func startLoadingTeams() {
-        HUD.show(.progress)
-        getTeams()
     }
     
     private func presentMasterTab() {

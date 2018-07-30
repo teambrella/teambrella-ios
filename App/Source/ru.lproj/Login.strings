@@ -22,7 +22,7 @@
 "Login.LoginNoInviteVC.almostReady.details"        = "Мы работаем не покладая рук, чтобы запустить команду. Скоро она будет готова!";
 
 "Login.LoginNoInviteVC.accessDenied.title"         = "Сожалеем";
-"Login.LoginNoInviteVC.accessDenied.details"       = "В данный момент ты не можешь войти в Тимбреллу. Пожалуйста, свяжись с нашей поддержкой";
+"Login.LoginNoInviteVC.accessDenied.details"       = "В данный момент ты не можешь войти в Тимбреллу. Пожалуйста, свяжись с нашей службой поддержки.";
 
 "Login.LoginNoInviteVC.pendingApplication.title"   = "Твоя заявка не завершена";
 "Login.LoginNoInviteVC.pendingApplication.details" = "Пожалуйста, заполни все необходимые поля. Мы ждем тебя! Если у тебя есть вопросы, свяжись с нашей службой поддержки.";

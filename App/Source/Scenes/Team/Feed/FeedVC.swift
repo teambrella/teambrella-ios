@@ -145,6 +145,9 @@ extension FeedVC: UICollectionViewDelegate {
             view.button.setTitle("Team.FeedVC.startDiscussionButton.title".localized, for: .normal)
             view.button.removeTarget(self, action: nil, for: .allEvents)
             view.button.addTarget(self, action: #selector(tapStartDiscussion), for: .touchUpInside)
+            if let accessLevel = service.session?.currentTeam?.teamAccessLevel {
+                view.button.isEnabled = accessLevel == .full
+            }
         }
     }
     

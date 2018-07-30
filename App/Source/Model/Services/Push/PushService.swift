@@ -158,7 +158,7 @@ final class PushService: NSObject {
                 })
             }
         }
-        guard command == nil else { return }
+        //guard command == nil else { return }
 
         prepareCommand(userInfo: userInfo)
         executeCommand()
@@ -197,10 +197,30 @@ final class PushService: NSObject {
         case .newClaim:
             showTopic(details: command.topicDetails)
         //showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
+        case .approvedTeammate:
+            logAsApprovedMember(payload: command)
         default:
             break
         }
         self.command = nil
+    }
+
+    private func logAsApprovedMember(payload: RemotePayload) {
+        log("Trying to log in as a new member of: \(payload.teamNameValue) team", type: .push)
+        if let session = service.session {
+            if let currentTeamID = session.currentTeam?.teamID, currentTeamID == payload.teamIDValue {
+                log("Already logged into the team \(payload.teamNameValue). No action needed", type: .push)
+            } else {
+                log("Active session found. Trying to switch to the new team", type: .push)
+                let router = service.router
+                router.logout(mode: .idle) {
+                    router.login(teamID: payload.teamID)
+                }
+            }
+        } else {
+            log("First login initiated", type: .push)
+            service.router.login(teamID: payload.teamID)
+        }
     }
 
     private func clearNotificationsThread(id: String?) {

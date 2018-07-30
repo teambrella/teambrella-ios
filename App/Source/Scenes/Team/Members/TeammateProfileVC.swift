@@ -456,7 +456,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 let dateString = Formatter.teambrellaShort.string(from: date)
                 footer.label.text = "Team.Teammate.Footer.MemberSince".localized(dateString)
             } else {
-                footer.label.text = "..."
+                footer.isHidden = true
             }
         }
     }
@@ -517,8 +517,13 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        return /*dataSource.isNewTeammate ? CGSize(width: collectionView.bounds.width, height: 20) :*/
-            CGSize(width: collectionView.bounds.width, height: 81)
+        guard let teammate = dataSource.teammateLarge else { return CGSize(width: 0, height: 0) }
+        
+        if teammate.basic.dateJoined != nil {
+            return CGSize(width: collectionView.bounds.width, height: 80)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: 20)
+        }
     }
 }
 
@@ -557,9 +562,8 @@ extension TeammateProfileVC: UITableViewDelegate {
             let item = dataSource.socialItems[indexPath.row]
             cell.avatarView.image = item.icon
             cell.topLabel.text = item.name.uppercased()
-            if item.type == .facebook,
-                let cutString = item.address.split(separator: "/").last {
-                cell.bottomLabel.text = String(cutString)
+            if item.type == .facebook {
+                cell.bottomLabel.text = "https://m.facebook.com"
             } else {
                 cell.bottomLabel.text = item.address
             }

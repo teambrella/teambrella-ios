@@ -22,7 +22,7 @@
 "Login.LoginNoInviteVC.almostReady.details"        = "We are working round the clock to set up your team. It will be ready soon!";
 
 "Login.LoginNoInviteVC.accessDenied.title"         = "We are sorry";
-"Login.LoginNoInviteVC.accessDenied.details"       = "Currently you are unable to connect to Teambrella. Please, contact our support";
+"Login.LoginNoInviteVC.accessDenied.details"       = "Currently you are unable to connect to Teambrella. Please, contact our support.";
 
 "Login.LoginNoInviteVC.pendingApplication.title"   = "Your application is not complete";
 "Login.LoginNoInviteVC.pendingApplication.details" = "Please, check missing points and finalise it. We are waiting for you! Feel free to contact us if you have any questions.";

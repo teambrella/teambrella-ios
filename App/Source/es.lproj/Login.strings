@@ -21,7 +21,7 @@
 "Login.LoginNoInviteVC.almostReady.details"        = "Estamos trabajando como burros para iniciar tu equipo. Muy pronto estará lista para funcionar.";
 
 "Login.LoginNoInviteVC.accessDenied.title"         = "Lo sentimos";
-"Login.LoginNoInviteVC.accessDenied.details"       = "De momento no puedes connectar con Teambrella. Por favor, contacta con nuestro soporte";
+"Login.LoginNoInviteVC.accessDenied.details"       = "De momento no puedes connectar con Teambrella. Por favor, contacta con nuestro soporte.";
 
 "Login.LoginNoInviteVC.pendingApplication.title"   = "Tu solicitud todavía no está completa";
 "Login.LoginNoInviteVC.pendingApplication.details" = "Por favor, verifica las puntas que faltan y finalízala. Te esperamos! Contáctanos si tienes alguna pregunta.";

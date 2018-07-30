@@ -209,15 +209,28 @@ final class UniversalChatDatasource {
     
     var isInputAllowed: Bool {
         if isPrivateChat { return true }
-        /*
-        guard let access = chatModel?.team?.accessLevel else { return false }
-
-        return access == .full
- */
         guard let teamID = chatModel?.team?.teamID,
             let myTeamID = service.session?.currentTeam?.teamID else { return false }
 
-        return teamID == myTeamID
+        var isAllowed: Bool = teamID == myTeamID
+
+        if let accessLevel = chatModel?.team?.accessLevel {
+            switch accessLevel {
+            case .hiddenDetailsAndEditMine,
+                 .readAllAndEditMine:
+                if chatType == .application,
+                    let chatUserID = chatModel?.basic?.userID,
+                    let myID = service.session?.currentUserID {
+                    isAllowed = chatUserID == myID
+                }
+            case .noAccess,
+                 .readOnly:
+                isAllowed = false
+            default:
+                break
+            }
+        }
+        return isAllowed
     }
     
     func mute(type: TopicMuteType, completion: @escaping (Bool) -> Void) {
@@ -465,7 +478,7 @@ extension UniversalChatDatasource {
         hasNewMessagesSeparator = true
     }
     
-   func removeNewMessagesSeparator() -> Bool {
+    func removeNewMessagesSeparator() -> Bool {
         guard hasNewMessagesSeparator else { return false }
         
         for (idx, model) in self.models.enumerated().reversed() where model is ChatNewMessagesSeparatorModel {
