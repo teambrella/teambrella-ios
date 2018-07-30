@@ -634,7 +634,7 @@
                         <constraints>
                             <constraint firstItem="xCf-uZ-c4V" firstAttribute="leading" secondItem="5iT-i1-57k" secondAttribute="leading" id="7Js-mQ-ccn"/>
                             <constraint firstAttribute="trailing" secondItem="xCf-uZ-c4V" secondAttribute="trailing" id="DoP-Oc-3Pm"/>
-                            <constraint firstItem="le2-JB-c9j" firstAttribute="top" secondItem="xCf-uZ-c4V" secondAttribute="bottom" id="fgO-Yk-9b7"/>
+                            <constraint firstAttribute="bottom" secondItem="xCf-uZ-c4V" secondAttribute="bottom" id="fgO-Yk-9b7"/>
                             <constraint firstItem="xCf-uZ-c4V" firstAttribute="top" secondItem="7Ze-Io-gXN" secondAttribute="bottom" id="plq-gg-r1e"/>
                         </constraints>
                     </view>
@@ -660,12 +660,12 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dVG-eD-Yna">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gMg-zL-mm9">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="50"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ClaimTransactionCell" id="oDE-Z2-tnd" customClass="ClaimTransactionCell" customModule="Surilla" customModuleProvider="target">
@@ -683,10 +683,11 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="dVG-eD-Yna" secondAttribute="bottom" id="Q1j-s9-qhF"/>
                             <constraint firstAttribute="trailing" secondItem="dVG-eD-Yna" secondAttribute="trailing" id="SRz-uh-qjl"/>
                             <constraint firstItem="dVG-eD-Yna" firstAttribute="top" secondItem="wbl-xw-5gf" secondAttribute="bottom" id="UDv-61-6lR"/>
-                            <constraint firstItem="2zY-uh-Wxc" firstAttribute="top" secondItem="dVG-eD-Yna" secondAttribute="bottom" id="YNr-bD-tSX"/>
                             <constraint firstItem="dVG-eD-Yna" firstAttribute="leading" secondItem="tVR-CS-BGp" secondAttribute="leading" id="wmJ-Ee-efm"/>
                         </constraints>
                     </view>
