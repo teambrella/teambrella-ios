@@ -19,8 +19,6 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import FBSDKCoreKit
-import FBSDKLoginKit
 import PKHUD
 import SpriteKit
 import UIKit
@@ -34,6 +32,8 @@ final class LoginBlueVC: UIViewController {
 
     var isEmitterAdded: Bool = false
     var didTapDemo: Bool = false
+
+    var loginWorker: LoginWorker!
     
     lazy var secretRecognizer: UILongPressGestureRecognizer = {
         let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(secretTap))
@@ -91,18 +91,11 @@ final class LoginBlueVC: UIViewController {
             return
         }
 
-        let manager = FBSDKLoginManager()
-        manager.logOut()
-        // remove user_friends permission to comply with FBSDK 3.0
-        let permissions =  ["public_profile", "email"]
         HUD.show(.progress)
-        manager.logIn(withReadPermissions: permissions, from: self) { [weak self] result, error in
-            guard let me = self else { return }
-            guard error == nil, let result = result, let token = result.token else {
-                me.handleFailure(error: error)
-                return
-            }
-            me.register(token: token.tokenString, userID: token.userID)
+        loginWorker.loginAndRegister(in: self, completion: { [weak self] facebookUser in
+            self?.logAsFacebookUser(user: facebookUser)
+        }) { [weak self] error in
+            self?.handleFailure(error: error)
         }
     }
     
@@ -204,44 +197,6 @@ Are you sure you want to completely remove your private key from this device?
                         self?.centerLabel.transform = .identity
             },
                        completion: nil)
-    }
-    
-    private func register(token: String, userID: String) {
-        service.keyStorage.setToRealUser()
-        let processor = service.teambrella.processor
-        guard let signature = processor.publicKeySignature else {
-            HUD.hide()
-            service.router.logout()
-            return
-        }
-        
-        log("Eth address: \(processor.ethAddressString ?? "none")", type: .info)
-        service.dao.registerKey(facebookToken: token, signature: signature).observe { [weak self] result in
-            guard let `self` = self else { return }
-
-            switch result {
-            case .value:
-                self.getMe()
-            case let .error(error):
-                self.handleFailure(error: error)
-            }
-        }
-    }
-    
-    private func getMe() {
-        let fields = "email, birthday, age_range, name, first_name, last_name, gender, picture.type(large)"
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields": fields]).start { connection, object, error in
-            guard let reply = object as? [String: Any], error == nil else {
-                self.handleFailure(error: error)
-                return
-            }
-            log("Facebook reply: \(reply)", type: .social)
-            self.handleSuccess(facebookUser: FacebookUser(dict: reply))
-        }
-    }
-    
-    private func handleSuccess(facebookUser: FacebookUser) {
-        logAsFacebookUser(user: facebookUser)
     }
     
     private func handleFailure(error: Error?) {

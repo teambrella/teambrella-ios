@@ -27,7 +27,8 @@ final class InitialVC: UIViewController {
         case login
         case demoExpired
     }
-    
+
+    let loginWorker: LoginWorker = LoginWorker()
     var mode: InitialVCMode = .login
     weak var sod: SODVC?
     var isFirstLoad: Bool = true
@@ -108,6 +109,9 @@ final class InitialVC: UIViewController {
         if segue.type == .teambrella {
 
         }
+        if let vc = segue.destination as? LoginBlueVC {
+            vc.loginWorker = loginWorker
+        }
     }
     
     @objc
@@ -129,17 +133,10 @@ final class InitialVC: UIViewController {
     // MARK: Private
     
     private func getTeams() {
-        let isDemo = service.keyStorage.isDemoUser
-        service.dao.requestTeams(demo: isDemo).observe { [weak self] result in
-            switch result {
-            case let .value(teamsEntity):
-                self?.startSession(teamsEntity: teamsEntity, isDemo: isDemo)
-            case let .error(error):
-                if isDemo {
-                    service.keyStorage.createNewDemoKey()
-                }
-                self?.failure(error: error)
-            }
+        loginWorker.getTeams(completion: { [weak self] teamsModel, isDemo in
+            self?.startSession(teamsEntity: teamsModel, isDemo: isDemo)
+        }) { [weak self] error in
+            self?.failure(error: error)
         }
     }
     
