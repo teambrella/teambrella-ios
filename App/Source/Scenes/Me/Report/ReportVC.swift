@@ -239,7 +239,18 @@ final class ReportVC: UIViewController, Routable {
             dateReportCellModel.date = sender.date
             dataSource.items[idx] = dateReportCellModel
             if let cell = collectionView.cellForItem(at: indexPath) as? NewClaimCell {
-                cell.dateTextField.text = DateProcessor().stringIntervalOrDate(from: dateReportCellModel.date)
+                let days = Date().interval(of: .day, since: dateReportCellModel.date)
+                var incidentDateText = ""
+                if days <= 1 {
+                    incidentDateText = "General.today".localized.capitalized
+                } else if days > 1 && days <= 2 {
+                    incidentDateText = "General.yesterday".localized.capitalized
+                } else if days - 1 >= 7 {
+                    incidentDateText = DateProcessor().stringIntervalOrDate(from: dateReportCellModel.date)
+                } else {
+                    incidentDateText = "Team.Ago.days_format".localized(days - 1).lowercased()
+                }
+                cell.dateTextField.text = incidentDateText
             }
             
             lastDate = Date()

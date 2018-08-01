@@ -18,10 +18,10 @@
 "General.claimState.processed"   = "procesado";
 
 "General.today"                  = "hoy";
-
 "General.you"                    = "Tú";
 
 //
+"General.yesterday"                                = "ayer";
 "General.TransactionKind.payout"                   = "payout";
 "General.TransactionKind.withdraw"                 = "withdraw";
 "General.TransactionKind.moveToNextWallet"         = "move to next wallet";
