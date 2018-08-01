@@ -18,6 +18,7 @@
 "General.claimState.processed"                     = "processed";
 
 "General.today"                                    = "сегодня";
+"General.yesterday"                                = "вчера";
 
 "General.you"                                      = "Ты";
 
@@ -25,7 +26,7 @@
 "General.TransactionKind.withdraw"                 = "снятие";
 "General.TransactionKind.moveToNextWallet"         = "перевод на другой кошелек";
 "General.TransactionKind.saveFromPreviousWallet"   = "перевод с другого кошелька";
-"General.TransactionKind.votingPayout"             = "выплата по голосования";
+"General.TransactionKind.votingPayout"             = "выплата по голосованию";
 
 "General.TransactionState.created"                 = "создана";
 "General.TransactionState.approvedMaster"          = "approved by master";
