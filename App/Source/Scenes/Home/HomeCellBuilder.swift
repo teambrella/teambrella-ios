@@ -23,8 +23,8 @@ import Foundation
 
 struct HomeCellBuilder {
     static func registerCells(in collectionView: UICollectionView) {
-        collectionView.register(HomeFundCell.nib,
-                                forCellWithReuseIdentifier: HomeFundCell.cellID)
+//        collectionView.register(HomeFundCell.nib,
+//                                forCellWithReuseIdentifier: HomeFundCell.cellID)
 //        collectionView.register(HomeSupportCell.nib,
 //                                forCellWithReuseIdentifier: HomeSupportCell.cellID)
         collectionView.register(HomeApplicationAcceptedCell.nib,
@@ -37,7 +37,7 @@ struct HomeCellBuilder {
     
     static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeCardModel?) {
         guard let model = model else {
-            populateFundWallet(cell: cell, dataSource: dataSource)
+//            populateFundWallet(cell: cell, dataSource: dataSource)
 //            populateSupport(cell: cell, dataSource: dataSource)
             return
         }

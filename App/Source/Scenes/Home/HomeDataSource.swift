@@ -26,7 +26,7 @@ class HomeDataSource {
     var cardsCount: Int {
         guard let count = model?.cards.count else { return 0 }
         
-        return count + 1
+        return count //+ 1
     }
     
     var isSilentUpdate = false
@@ -60,7 +60,7 @@ class HomeDataSource {
     }
     
     func cellID(for indexPath: IndexPath) -> String {
-        guard let model = self[indexPath] else { return HomeFundCell.cellID } //HomeSupportCell.cellID }
+        guard let model = self[indexPath] else { return " " } //HomeFundCell.cellID } //HomeSupportCell.cellID }
         
         return cellID(with: model)
     }
