@@ -23,8 +23,10 @@ import Foundation
 
 struct HomeCellBuilder {
     static func registerCells(in collectionView: UICollectionView) {
-        collectionView.register(HomeSupportCell.nib,
-                                forCellWithReuseIdentifier: HomeSupportCell.cellID)
+        collectionView.register(HomeFundCell.nib,
+                                forCellWithReuseIdentifier: HomeFundCell.cellID)
+//        collectionView.register(HomeSupportCell.nib,
+//                                forCellWithReuseIdentifier: HomeSupportCell.cellID)
         collectionView.register(HomeApplicationAcceptedCell.nib,
                                 forCellWithReuseIdentifier: HomeApplicationAcceptedCell.cellID)
         collectionView.register(HomeApplicationDeniedCell.nib,
@@ -35,7 +37,8 @@ struct HomeCellBuilder {
     
     static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeCardModel?) {
         guard let model = model else {
-            populateSupport(cell: cell, dataSource: dataSource)
+            populateFundWallet(cell: cell, dataSource: dataSource)
+//            populateSupport(cell: cell, dataSource: dataSource)
             return
         }
         
@@ -52,10 +55,10 @@ struct HomeCellBuilder {
             break
         }
     }
-
+    
     static func populateHome(cell: HomeCollectionCell, model: HomeCardModel) {
         let session = service.session
-
+        
         switch model.itemType {
         case .claim:
             setupClaimCell(cell: cell, model: model)
@@ -82,11 +85,20 @@ struct HomeCellBuilder {
     static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
         guard let cell = cell as? HomeSupportCell else { return }
         
-        cell.headerLabel.text = "Home.SupportCell.headerLabel".localized
-        cell.centerLabel.text = "Home.SupportCell.onlineLabel".localized
-        cell.bottomLabel.text = "Home.SupportCell.textLabel".localized(dataSource.name.first)
-        cell.button.setTitle("Home.SupportCell.chatButton".localized, for: .normal)
-        cell.onlineIndicator.layer.cornerRadius = 3
+            cell.headerLabel.text = "Home.SupportCell.headerLabel".localized
+            cell.centerLabel.text = "Home.SupportCell.onlineLabel".localized
+            cell.bottomLabel.text = "Home.SupportCell.textLabel".localized(dataSource.name.first)
+            cell.button.setTitle("Home.SupportCell.chatButton".localized, for: .normal)
+            cell.onlineIndicator.layer.cornerRadius = 3
+    }
+    
+    static func populateFundWallet(cell: UICollectionViewCell, dataSource: HomeDataSource) {
+        guard let cell = cell as? HomeFundCell else { return }
+        
+        cell.headerLabel.text = "Home.FundCell.headerLabel".localized
+        cell.centerLabel.textAlignment = .center
+        cell.centerLabel.text = "Home.FundCell.textLabel".localized(dataSource.name.first)
+        cell.button.setTitle("Home.FundCell.fundTitle".localized, for: .normal)
     }
     
     static func populate(cell: HomeApplicationDeniedCell, with model: HomeCardModel) {
@@ -112,7 +124,7 @@ struct HomeCellBuilder {
         cell.bottomLabel.text = "I think it’s a great idea to let Frank in, he seems trustworthy and his application …"
         cell.messageCountLabel.text = "4" //
     }
-
+    
     static private func setupClaimCell(cell: HomeCollectionCell, model: HomeCardModel) {
         let session = service.session
         cell.titleLabel.text = model.itemName
@@ -130,7 +142,7 @@ struct HomeCellBuilder {
         cell.rightNumberView.isBadgeVisible = model.isVoting
         cell.rightNumberView.isPercentVisible = model.teamVote != nil
     }
-
+    
     static private func setupTeammateCell(cell: HomeCollectionCell, model: HomeCardModel) {
         cell.titleLabel.text = model.userName.entire
         cell.subtitleLabel.text = model.itemName.uppercased()

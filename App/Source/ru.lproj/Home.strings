@@ -38,3 +38,6 @@
 "Home.Empty.Title.noPrivateMessages"                    = "У тебя нет сообщений";
 "Home.Empty.SubTitle.noPrivateMessages"                 = "Напиши твоё первое приватное сообщение кому-нибудь из участников.";
 
+"Home.FundCell.headerLabel" = "Недостаточно средств";
+"Home.FundCell.textLabel" = "Пожалуйста, пополните кошелёк, чтобы стать частью команды";
+"Home.FundCell.fundTitle" = "Пополнить кошелёк";

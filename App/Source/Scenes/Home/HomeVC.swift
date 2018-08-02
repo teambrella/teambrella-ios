@@ -275,6 +275,11 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     @objc
+    func tapFundWallet(_ sender: UIButton) {
+        service.router.switchToWallet()
+    }
+    
+    @objc
     func closeCard(_ sender: UIButton) {
         dataSource.deleteCard(at: sender.tag)
         collectionView.reloadData()
@@ -299,9 +304,13 @@ extension HomeVC: UICollectionViewDataSource {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         HomeCellBuilder.populate(cell: cell, dataSource: dataSource, model: dataSource[indexPath])
-        if let cell = cell as? HomeSupportCell {
+//        if let cell = cell as? HomeSupportCell {
+//            cell.button.removeTarget(nil, action: nil, for: .allEvents)
+//            cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
+//        }
+        if let cell = cell as? HomeFundCell {
             cell.button.removeTarget(nil, action: nil, for: .allEvents)
-            cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
+            cell.button.addTarget(self, action: #selector(tapFundWallet), for: .touchUpInside)
         }
 //        if let cell = cell as? ClosableCell {
 //            cell.closeButton.removeTarget(self, action: nil, for: .allEvents)

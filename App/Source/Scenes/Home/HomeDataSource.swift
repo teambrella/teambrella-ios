@@ -60,7 +60,7 @@ class HomeDataSource {
     }
     
     func cellID(for indexPath: IndexPath) -> String {
-        guard let model = self[indexPath] else { return HomeSupportCell.cellID }
+        guard let model = self[indexPath] else { return HomeFundCell.cellID } //HomeSupportCell.cellID }
         
         return cellID(with: model)
     }
