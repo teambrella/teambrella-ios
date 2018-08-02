@@ -16,6 +16,10 @@
 		17AD149D20F90237007C7613 /* AmountUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD149B20F90237007C7613 /* AmountUpdatable.swift */; };
 		17AD149F20FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */; };
 		17AD14A020FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */; };
+		17AD14A3211356B5007C7613 /* HomeFundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD14A1211356B5007C7613 /* HomeFundCell.swift */; };
+		17AD14A4211356B5007C7613 /* HomeFundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD14A1211356B5007C7613 /* HomeFundCell.swift */; };
+		17AD14A5211356B5007C7613 /* HomeFundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD14A2211356B5007C7613 /* HomeFundCell.xib */; };
+		17AD14A6211356B5007C7613 /* HomeFundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD14A2211356B5007C7613 /* HomeFundCell.xib */; };
 		17BE300820D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */; };
 		17BE300920D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */; };
 		6D02945920DD3EFA00936664 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02945820DD3EF900936664 /* Connectivity.swift */; };
@@ -1224,6 +1228,8 @@
 		1790BB3920750A3F00FD1303 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = Model/Entities/Year.swift; sourceTree = "<group>"; };
 		17AD149B20F90237007C7613 /* AmountUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AmountUpdatable.swift; path = Scenes/Team/Members/AmountUpdatable.swift; sourceTree = "<group>"; };
 		17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CompactUserInfoHeader.xib; path = View/CompactUserInfoHeader.xib; sourceTree = "<group>"; };
+		17AD14A1211356B5007C7613 /* HomeFundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeFundCell.swift; path = View/Cells/HomeFundCell.swift; sourceTree = "<group>"; };
+		17AD14A2211356B5007C7613 /* HomeFundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeFundCell.xib; path = View/Cells/HomeFundCell.xib; sourceTree = "<group>"; };
 		17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletQRCodeVC.swift; path = Scenes/Me/Wallet/WalletQRCodeVC.swift; sourceTree = "<group>"; };
 		1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
 		205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2347,6 +2353,8 @@
 		6D56F0A11F61AE0C00C758C9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				17AD14A1211356B5007C7613 /* HomeFundCell.swift */,
+				17AD14A2211356B5007C7613 /* HomeFundCell.xib */,
 				94E80E4A1F0FABFF00DE1A0A /* HomeSupportCell.swift */,
 				94E80E4B1F0FABFF00DE1A0A /* HomeSupportCell.xib */,
 				94E80E4E1F0FD30400DE1A0A /* HomeApplicationDeniedCell.swift */,
@@ -3533,6 +3541,7 @@
 				6D05250A20A5D838000B3247 /* InfoHeader.xib in Resources */,
 				6D05250B20A5D838000B3247 /* Fill.sks in Resources */,
 				6D05250C20A5D838000B3247 /* General.strings in Resources */,
+				17AD14A6211356B5007C7613 /* HomeFundCell.xib in Resources */,
 				6D05250D20A5D838000B3247 /* AmountWithCurrency.xib in Resources */,
 				6D05250E20A5D838000B3247 /* Info.storyboard in Resources */,
 				6D05250F20A5D838000B3247 /* WalletCosignerCell.xib in Resources */,
@@ -3634,6 +3643,7 @@
 				6D4E5DAC1F7AB6870020DEE2 /* InfoHeader.xib in Resources */,
 				6D4E5DAD1F7AB6870020DEE2 /* Fill.sks in Resources */,
 				6D4E5DAE1F7AB6870020DEE2 /* General.strings in Resources */,
+				17AD14A5211356B5007C7613 /* HomeFundCell.xib in Resources */,
 				6D4E5DAF1F7AB6870020DEE2 /* AmountWithCurrency.xib in Resources */,
 				6D2A7C601FCC663E0094ABB7 /* Info.storyboard in Resources */,
 				6D4E5DB11F7AB6870020DEE2 /* WalletCosignerCell.xib in Resources */,
@@ -4160,6 +4170,7 @@
 				6D8A624B20C002E5003CD95B /* PushKitWorker.swift in Sources */,
 				6D05239E20A5D838000B3247 /* SaneText.swift in Sources */,
 				6D05239F20A5D838000B3247 /* DAO.swift in Sources */,
+				17AD14A4211356B5007C7613 /* HomeFundCell.swift in Sources */,
 				6D0523A020A5D838000B3247 /* LoginDetailsRouter.swift in Sources */,
 				6D0523A120A5D838000B3247 /* UIViewController.swift in Sources */,
 				6D0523A220A5D838000B3247 /* TeammateVotingResult.swift in Sources */,
@@ -4581,6 +4592,7 @@
 				6D1EC3ED202B0F3A00F0541C /* TeamServerImpl.swift in Sources */,
 				6D8A624C20C00323003CD95B /* PushKitWorker.swift in Sources */,
 				6D716BC02021E747001E2614 /* SaneText.swift in Sources */,
+				17AD14A3211356B5007C7613 /* HomeFundCell.swift in Sources */,
 				6D4E5C681F7AB6870020DEE2 /* DAO.swift in Sources */,
 				6D4E5C691F7AB6870020DEE2 /* LoginDetailsRouter.swift in Sources */,
 				6D4E5C6A1F7AB6870020DEE2 /* UIViewController.swift in Sources */,
