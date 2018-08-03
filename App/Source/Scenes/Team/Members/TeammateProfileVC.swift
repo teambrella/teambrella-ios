@@ -564,6 +564,8 @@ extension TeammateProfileVC: UITableViewDelegate {
             cell.topLabel.text = item.name.uppercased()
             if item.type == .facebook {
                 cell.bottomLabel.text = "https://m.facebook.com"
+            } else if dataSource.isMyProxy && item.type == .call {
+                cell.bottomLabel.text = "my proxy"
             } else {
                 cell.bottomLabel.text = item.address
             }
@@ -572,8 +574,12 @@ extension TeammateProfileVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = dataSource.socialItems[indexPath.row]
-        if let url = URL(string: item.address) {
+        if item.type == .facebook, let url = URL(string: item.address) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        if dataSource.isMyProxy && item.type == .call {
+            DeveloperTools.notSupportedAlert(in: self)
+            //call my proxy
         }
     }
     
