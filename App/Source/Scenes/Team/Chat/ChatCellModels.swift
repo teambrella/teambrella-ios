@@ -89,3 +89,9 @@ struct ChatClaimPaidCellModel: ChatCellModel {
     let isTemporary: Bool = false
 
 }
+
+struct ChatPayToJoinCellModel: ChatCellModel {
+    var id: String { return String(describing: date.timeIntervalSince1970) }
+    let date: Date
+    let isTemporary: Bool = false
+}

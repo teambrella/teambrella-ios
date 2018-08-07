@@ -94,6 +94,7 @@ final class UniversalChatDatasource {
     private var isChunkAdded                        = false
     private var hasNewMessagesSeparator: Bool       = false
     private var isClaimPaidModelAdded               = false
+    private var isPayToJoinModelAdded               = false
     
     private var topCellDate: Date?
     
@@ -527,6 +528,7 @@ extension UniversalChatDatasource {
         teamAccessLevel = model.team?.accessLevel ?? .noAccess
 
         addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
+        addPayToJoinIfNeeded(date: model.basic?.datePayToJoin) // via this
     }
 
     private func addClaimPaidIfNeeded(date: Date?) {
@@ -535,6 +537,14 @@ extension UniversalChatDatasource {
         let model = ChatClaimPaidCellModel(date: date)
         addCellModels(models: [model])
         isClaimPaidModelAdded = true
+    }
+    
+    private func addPayToJoinIfNeeded(date: Date?) {
+        guard !isPayToJoinModelAdded, let date = date else { return }
+        
+        let model = ChatPayToJoinCellModel(date: date)
+        addCellModels(models: [model])
+        isPayToJoinModelAdded = true
     }
 
     private func createCellModels(from entities: [ChatEntity], isTemporary: Bool) -> [ChatCellModel] {

@@ -29,7 +29,7 @@ final class UniversalChatVC: UIViewController, Routable {
         static let textCellID = "com.chat.text.cell"
         static let singleImageCellID = "com.chat.image.cell"
     }
-
+    
     static var storyboardName = "Chat"
     
     @IBOutlet var collectionView: UICollectionView!
@@ -41,9 +41,9 @@ final class UniversalChatVC: UIViewController, Routable {
     override var canBecomeFirstResponder: Bool { return true }
     
     lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
-
+    
     var conversationID: String { return dataSource.topicID ?? dataSource.chatModel?.basic?.userID ?? "" }
-
+    
     private let input: InputAccessoryView = InputAccessoryView()
     private let dataSource = UniversalChatDatasource()
     private var socketToken = "UniversalChat"
@@ -83,7 +83,7 @@ final class UniversalChatVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionView.accessibilityIdentifier = "UniversalChatCollectionView"
         addGradientNavBar()
         addMuteButton()
@@ -127,13 +127,13 @@ final class UniversalChatVC: UIViewController, Routable {
         }
         
         dataSource.isLoadNextNeeded = true
-
+        
         title = ""
         let session = self.session
         slidingView.setupViews(with: self, session: session)
         slidingView.delegate = self
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startListeningSockets()
@@ -141,7 +141,7 @@ final class UniversalChatVC: UIViewController, Routable {
         listenForKeyboard()
         setupTitle()
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -151,12 +151,12 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.cloudWidth = cloudWidth
         collectionView.contentInset.bottom = keyboardHeight + input.frame.height
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.reloadData()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopListeningSockets()
@@ -164,37 +164,37 @@ final class UniversalChatVC: UIViewController, Routable {
         stopListeningKeyboard()
         title = nil
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
-
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: view)
         }
     }
-
+    
     deinit {
         socket.remove(listener: socketToken)
     }
-
+    
     // MARK: Public
-
+    
     public func setContext(context: ChatContext, itemType: ItemType) {
         dataSource.addContext(context: context, itemType: itemType)
     }
-
+    
     public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
         // Cancel current scrolling
         self.collectionView.setContentOffset(self.collectionView.contentOffset, animated: false)
-
+        
         let offsetY = max(-collectionView.contentInset.top,
                           collectionView.collectionViewLayout.collectionViewContentSize.height
                             - collectionView.bounds.height
                             + collectionView.contentInset.bottom)
-
+        
         if animated {
             UIView.animate(withDuration: 0.33, animations: { () -> Void in
                 self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
@@ -206,28 +206,28 @@ final class UniversalChatVC: UIViewController, Routable {
             completion?()
         }
     }
-
+    
     // MARK: Callbacks
-
+    
     @objc
     func tapLeftButton(sender: UIButton) {
         picker.showOptions()
     }
-
+    
     @objc
     func tapRightButton(sender: UIButton) {
         guard let text = input.textView.text else { return }
-
+        
         send(text: text, imageFragments: [])
     }
-
+    
     @objc
     open func userDidTapOnCollectionView() {
         if self.endsEditingWhenTappingOnChatBackground {
             self.view.endEditing(true)
         }
     }
-
+    
     @objc
     func refreshNeeded(sender: UIRefreshControl) {
         if dataSource.hasPrevious {
@@ -238,14 +238,14 @@ final class UniversalChatVC: UIViewController, Routable {
             collectionView.refreshControl = nil
         }
     }
-
+    
     @objc
     func keyboardWillChangeFrame(notification: Notification) {
         if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let initialFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             var offset =  collectionView.contentOffset
             guard finalFrame.minY < collectionView.contentSize.height else { return }
-
+            
             keyboardTopY = finalFrame.minY
             let diff = initialFrame.minY - finalFrame.minY
             offset.y += diff
@@ -253,24 +253,24 @@ final class UniversalChatVC: UIViewController, Routable {
             collectionView.contentInset.bottom = keyboardHeight
         }
     }
-
+    
     @objc
     func tapAvatar(sender: UITapGestureRecognizer) {
         guard let view = sender.view else { return }
-
+        
         let indexPath = IndexPath(row: view.tag, section: 0)
         if let model = dataSource[indexPath] as? ChatCellUserDataLike {
             let userID = model.entity.userID
             router.presentMemberProfile(teammateID: userID, teamID: nil)
         }
     }
-
+    
     @objc
     private func tapMuteButton(sender: UIButton) {
         router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
-
+        
     }
-
+    
 }
 
 // MARK: Private
@@ -279,20 +279,20 @@ private extension UniversalChatVC {
         scrollViewHandler.onScrollingUp = {
             self.slidingView.hideAll()
         }
-
+        
         scrollViewHandler.onScrollingDown = {
             if self.dataSource.chatModel != nil {
                 self.showObject()
             }
         }
     }
-
+    
     private func showObject() {
         guard dataSource.isObjectViewNeeded == true else { return }
-
+        
         slidingView.showObjectView()
     }
-
+    
     private func showMuteInfo(muteType: TopicMuteType) {
         let cloudView = CloudView()
         self.view.addSubview(cloudView)
@@ -320,11 +320,11 @@ private extension UniversalChatVC {
             }
         }
     }
-
+    
     private func setupTitle() {
         title = dataSource.title
     }
-
+    
     private func setupCollectionView() {
         registerCells()
         collectionView.keyboardDismissMode = .interactive
@@ -338,14 +338,14 @@ private extension UniversalChatVC {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-
+        
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(refreshNeeded), for: .valueChanged)
         collectionView.refreshControl = refresh
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
     }
-
+    
     private func addMuteButton() {
         let button = UIButton()
         let barItem = UIBarButtonItem(customView: button)
@@ -353,14 +353,14 @@ private extension UniversalChatVC {
         self.muteButton = button
         navigationItem.setRightBarButton(barItem, animated: true)
     }
-
+    
     private func setMuteButtonImage(type: TopicMuteType) {
         guard dataSource.chatType != .privateChat else {
             muteButton.isEnabled = false
             muteButton.isHidden = true
             return
         }
-
+        
         let image: UIImage
         if  type == .muted {
             image = #imageLiteral(resourceName: "iconBellMuted1")
@@ -369,7 +369,7 @@ private extension UniversalChatVC {
         }
         muteButton.setImage(image, for: .normal)
     }
-
+    
     private func registerCells() {
         collectionView.register(ChatVariousContentCell.self,
                                 forCellWithReuseIdentifier: Constant.textWithImagesCellID)
@@ -387,23 +387,23 @@ private extension UniversalChatVC {
         collectionView.register(ChatClaimPaidCell.nib,
                                 forCellWithReuseIdentifier: ChatClaimPaidCell.cellID)
     }
-
+    
     private func listenForKeyboard() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillChangeFrame),
                                                name: Notification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
     }
-
+    
     private func stopListeningKeyboard() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
     }
-
+    
     private func setupTapGestureRecognizer() {
         collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                                    action: #selector(userDidTapOnCollectionView)))
     }
-
+    
     /**
      * Refresh controller after new data comes from the server
      *
@@ -420,7 +420,7 @@ private extension UniversalChatVC {
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
         }
     }
-
+    
     private func cloudSize(for indexPath: IndexPath) -> CGSize {
         if let model = dataSource[indexPath] as? ChatTextCellModel {
             let textInset = ChatVariousContentCell.Constant.textInset
@@ -434,10 +434,10 @@ private extension UniversalChatVC {
             let leftLabelWidth = calculator.size(for: model.userName.entire,
                                                  font: ChatVariousContentCell.Constant.leftLabelFont,
                                                  maxWidth: cloudWidth - rightLabelWidth).width
-
+            
             let width = max(fragmentWidth + textInset * 2,
                             rightLabelWidth + leftLabelWidth + textInset * 3)
-
+            
             let verticalInset = verticalInsetForCloud(with: model)
             return CGSize(width: width,
                           height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
@@ -448,7 +448,7 @@ private extension UniversalChatVC {
             return .zero
         }
     }
-
+    
     private func verticalInsetForCloud(with model: ChatTextCellModel) -> CGFloat {
         if model.isSingleText {
             if dataSource.isPrivateChat {
@@ -464,22 +464,22 @@ private extension UniversalChatVC {
                 + ChatVariousContentCell.Constant.timeInset
         }
     }
-
+    
     private func processIsTyping(action: SocketAction) {
         guard case let .theyTyping(_, _, _, name) = action.data else { return }
-
+        
         showIsTyping = true
         typingUsers[name] = Date()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             guard let `self` = self else { return }
-
+            
             if Date().timeIntervalSince(self.lastTypingDate) > 3.0 {
                 self.showIsTyping = false
                 self.typingUsers.removeAll()
             }
         }
     }
-
+    
     private func setupInput() {
         ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.231372549, green: 0.2588235294, blue: 0.4901960784, alpha: 1), opacity: 0.05, radius: 8, offset: CGSize(width: 0, height: -9))
         if dataSource.isPrivateChat {
@@ -491,17 +491,17 @@ private extension UniversalChatVC {
         input.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
         input.onBeginEdit = { [weak self] in
             guard let `self` = self else { return }
-
+            
             if self.dataSource.removeNewMessagesSeparator() {
                 self.collectionView.reloadData()
             }
         }
-
+        
         if let socket = socket,
             let teamID = session.currentTeam?.teamID {
             input.onTextChange = { [weak socket, weak self] in
                 guard let me = self else { return }
-
+                
                 let interval = me.lastTypingDate.timeIntervalSinceNow
                 if interval < -2.0, let topicID = me.dataSource.topicID,
                     let name = self?.session.currentUserName {
@@ -512,7 +512,7 @@ private extension UniversalChatVC {
         }
         input.allowInput(dataSource.isInputAllowed)
     }
-
+    
     private func startListeningSockets() {
         socket.add(listener: socketToken, action: { [weak self] action in
             log("add command \(action.command)", type: .socket)
@@ -528,22 +528,22 @@ private extension UniversalChatVC {
             }
         })
     }
-
+    
     private func loadNewMessages() {
         showIsTyping = false
         dataSource.hasNext = true
         shouldScrollToBottom = true
         dataSource.loadNext()
     }
-
+    
     private func stopListeningSockets() {
         socket.remove(listener: self)
     }
-
+    
     private func startListeningPushes() {
         push.addListener(self) { [weak self] type, payload -> Bool in
             guard let `self` = self else { return true }
-
+            
             switch type {
             case .topicMessage,
                  .privateMessage:
@@ -560,19 +560,19 @@ private extension UniversalChatVC {
             return true
         }
     }
-
+    
     private func stopListeningPushes() {
         push.removeListener(self)
     }
-
+    
     private func send(text: String, imageFragments: [ChatFragment]) {
         guard dataSource.isLoading == false else { return }
-
+        
         self.shouldScrollToBottom = true
         dataSource.send(text: text, imageFragments: imageFragments)
         input.textView.text = nil
         input.adjustHeight()
-
+        
         if dataSource.notificationsType == .unknown && dataSource.chatType != .privateChat {
             let type: TopicMuteType = .unmuted
             dataSource.mute(type: type, completion: { [weak self] muted in
@@ -581,7 +581,7 @@ private extension UniversalChatVC {
             })
         }
     }
-
+    
     private func setupActualObjectViewIfNeeded() {
         if dataSource.isObjectViewNeeded {
             slidingView.showObjectView()
@@ -592,7 +592,7 @@ private extension UniversalChatVC {
             slidingView.updateChatModel(model: model)
         }
     }
-
+    
     private func linkImage(image: UIImage, name: String) {
         let fragment = ChatFragment.imageFragment(image: image, urlString: name, urlStringSmall: "")
         send(text: input.textView.text ?? "", imageFragments: [fragment])
@@ -604,11 +604,11 @@ extension UniversalChatVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier: String
@@ -627,13 +627,15 @@ extension UniversalChatVC: UICollectionViewDataSource {
             identifier = Constant.newMessagesSeparatorCellID
         case _ as ChatClaimPaidCellModel:
             identifier = ChatClaimPaidCell.cellID
+        case _ as ChatPayToJoinCellModel:
+            identifier = ChatClaimPaidCell.cellID
         default:
             fatalError("Unknown cell")
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
@@ -642,7 +644,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
                                                                    for: indexPath)
         return view
     }
-
+    
 }
 
 // MARK: UICollectionViewDelegate
@@ -653,7 +655,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         if indexPath.row == dataSource.count - 1 {
             dataSource.isLoadNextNeeded = true
         }
-
+        
         let model = dataSource[indexPath]
         switch model {
         case let model as ChatCellUserDataLike:
@@ -662,7 +664,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             populateService(cell: cell, model: model)
         }
     }
-
+    
     private func populateUserData(cell: UICollectionViewCell, indexPath: IndexPath, model: ChatCellUserDataLike) {
         if let cell = cell as? ChatVariousContentCell {
             cell.prepare(with: model,
@@ -674,7 +676,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
             cell.onTapImage = { [weak self] cell, galleryView in
                 guard let `self` = self else { return }
-
+                
                 galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
             }
         } else if let cell = cell as? ChatTextCell {
@@ -687,7 +689,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
             cell.onTapImage = { [weak self] cell, galleryView in
                 guard let `self` = self else { return }
-
+                
                 galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
             }
         } else if let cell = cell as? ChatImageCell {
@@ -697,12 +699,12 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
             cell.onTapImage = { [weak self] cell, galleryView in
                 guard let `self` = self else { return }
-
+                
                 galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
             }
         }
     }
-
+    
     func populateService(cell: UICollectionViewCell, model: ChatCellModel) {
         if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = DateProcessor().yearFilter(from: model.date)
@@ -713,22 +715,33 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.setNeedsDisplay()
             cell.label.text = model.text
         } else if let cell = cell as? ChatClaimPaidCell {
-            cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
-            cell.button.setTitle("Team.Chat.ClaimPaidCell.buttonTitle".localized, for: .normal)
-            cell.onButtonTap = { [weak self] in
-                guard let model = self?.dataSource.chatModel,
-                    let claimID = model.basic?.claimID,
-                    let team = model.team else { return }
+            let model = model as? ChatModel
+            if model?.basic?.datePayToJoin != nil {
+                cell.messageLabel.text = "Team.Chat.PayToJoin.text".localized
+                cell.button.setTitle("Team.Chat.PayToJoin.buttonTitle".localized, for: .normal)
+                cell.confettiView.isHidden = true
+                cell.onButtonTap = { [weak self] in
+                    log("tap fund wallet (from chat)", type: .userInteraction)
+                    self?.router.switchToWallet() // check this
+                }
+            } else {
+                cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
+                cell.button.setTitle("Team.Chat.ClaimPaidCell.buttonTitle".localized, for: .normal)
+                cell.onButtonTap = { [weak self] in
+                    guard let model = self?.dataSource.chatModel,
+                        let claimID = model.basic?.claimID,
+                        let team = model.team else { return }
 
-                let urlText = URLBuilder().urlString(claimID: claimID, teamID: team.teamID)
-                let messageText = CoverageLocalizer(type: team.coverageType).paidClaimText()
-                let combinedText = "\(messageText)\n\(urlText)"
-                let vc = UIActivityViewController(activityItems: [combinedText], applicationActivities: [])
-                self?.present(vc, animated: true)
+                    let urlText = URLBuilder().urlString(claimID: claimID, teamID: team.teamID)
+                    let messageText = CoverageLocalizer(type: team.coverageType).paidClaimText()
+                    let combinedText = "\(messageText)\n\(urlText)"
+                    let vc = UIActivityViewController(activityItems: [combinedText], applicationActivities: [])
+                    self?.present(vc, animated: true)
+                }
             }
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         willDisplaySupplementaryView view: UICollectionReusableView,
                         forElementKind elementKind: String,
@@ -737,7 +750,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             var text = ""
             for user in typingUsers.keys {
                 guard let date = typingUsers[user] else { continue }
-
+                
                 if Date().timeIntervalSince(date) < 3.0 {
                     if text != "" { text += ", " }
                     text += user.uppercased()
@@ -751,11 +764,11 @@ extension UniversalChatVC: UICollectionViewDelegate {
             view.hide(!showIsTyping)
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
     }
-
+    
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -776,17 +789,19 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: 30)
         case _ as ChatClaimPaidCellModel:
             return CGSize(width: collectionView.bounds.width, height: 135)
+        case _ as ChatPayToJoinCellModel:
+            return CGSize(width: collectionView.bounds.width, height: 135)
         default:
             return CGSize(width: collectionView.bounds.width - 32, height: 100)
         }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 0)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
@@ -799,14 +814,14 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
     func imagePicker(controller: ImagePickerController, didSendImage image: UIImage, urlString: String) {
         linkImage(image: image, name: urlString)
     }
-
+    
     func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
         controller.send(image: image)
-
+        
     }
-
+    
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
-
+        
     }
 }
 
@@ -816,20 +831,20 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
                            commit viewControllerToCommit: UIViewController) {
         router.push(vc: viewControllerToCommit, animated: true)
     }
-
+    
     func previewingContext(_ previewingContext: UIViewControllerPreviewing,
                            viewControllerForLocation location: CGPoint) -> UIViewController? {
         let updatedLocation = view.convert(location, to: collectionView)
         guard let indexPath = collectionView?.indexPathForItem(at: updatedLocation) else { return nil }
         guard let cell = collectionView?.cellForItem(at: indexPath) as? ChatVariousContentCell else { return nil }
-
+        
         let cellLocation = collectionView.convert(updatedLocation, to: cell.avatarView)
         guard cell.avatarView.point(inside: cellLocation, with: nil) else { return nil }
         guard let model = dataSource[indexPath] as? ChatTextCellModel else { return nil }
         guard let vc = router.getControllerMemberProfile(teammateID: model.entity.userID, teamID: nil) else {
             return nil
         }
-
+        
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.9, height: view.bounds.height * 0.9)
         previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
         vc.isPeeking = true
@@ -844,9 +859,9 @@ extension UniversalChatVC: MuteControllerDelegate {
             self?.setMuteButtonImage(type: type)
         }
     }
-
+    
     func didCloseMuteController(controller: MuteVC) {
-
+        
     }
 }
 
@@ -855,15 +870,15 @@ extension UniversalChatVC: ClaimVotingDelegate {
     func claimVoting(view: ClaimVotingView, finishedSliding slider: UISlider) {
         dataSource.updateVoteOnServer(vote: slider.value)
     }
-
+    
     func claimVotingDidResetVote(view: ClaimVotingView) {
         dataSource.updateVoteOnServer(vote: nil)
     }
-
+    
     func claimVotingDidTapTeam(view: ClaimVotingView) {
         guard let model = dataSource.chatModel else { return }
         guard let teamID = model.team?.teamID, let claimID = model.basic?.claimID else { return }
-
+        
         router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
     }
 }
@@ -885,7 +900,7 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
             break
         }
     }
-
+    
     func chatObjectWasTapped(view: ChatObjectView) {
         if let model = dataSource.chatModel, model.isClaimChat, let id = model.id {
             router.presentClaim(claimID: id)
@@ -902,11 +917,11 @@ extension UniversalChatVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewHandler.scrollViewDidScroll(scrollView)
     }
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollViewHandler.scrollViewWillBeginDragging(scrollView)
     }
-
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         scrollViewHandler.scrollViewDidEndDragging(scrollView, willDecelerate: decelerate)
     }
