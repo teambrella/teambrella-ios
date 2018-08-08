@@ -29,7 +29,7 @@ final class UniversalChatVC: UIViewController, Routable {
         static let textCellID = "com.chat.text.cell"
         static let singleImageCellID = "com.chat.image.cell"
     }
-    
+
     static var storyboardName = "Chat"
     
     @IBOutlet var collectionView: UICollectionView!
@@ -905,9 +905,15 @@ extension  UniversalChatVC: ChatObjectViewDelegate {
         if let model = dataSource.chatModel, model.isClaimChat, let id = model.id {
             router.presentClaim(claimID: id)
         } else if let userID = dataSource.chatModel?.basic?.userID {
-            router.presentMemberProfile(teammateID: userID,
-                                        teamID: dataSource.chatModel?.team?.teamID,
-                                        scrollToVote: true)
+            if let canVote = dataSource.chatModel?.voting?.canVote, canVote == true {
+                router.presentMemberProfile(teammateID: userID,
+                                            teamID: dataSource.chatModel?.team?.teamID,
+                                            scrollToVote: true)
+            } else {
+                router.presentMemberProfile(teammateID: userID,
+                                            teamID: dataSource.chatModel?.team?.teamID,
+                                            scrollToVote: false)
+            }
         }
     }
 }

@@ -216,3 +216,4 @@
 "Team.VotingRiskVC.avg"                          = "СРЕДН.";
 "Team.Chat.PayToJoin.text" = "Положи от 3000 руб в свой кошелёк и получи бонус +3000 руб в подарок.";
 "Team.Chat.PayToJoin.buttonTitle" = "Пополнить кошелёк";
+"Team.Chat.ObjectView.TitleLabel.teamVote" = "ГОЛОС ГРУППЫ";

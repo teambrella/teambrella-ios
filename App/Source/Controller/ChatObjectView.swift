@@ -113,13 +113,13 @@ class ChatObjectView: UIView, XIBInitable {
                                     team: teamPart)
         }
     }
-
+    
     func showChevron() {
         rightButton.isHidden = true
         chevronImageView.alpha = 1
         voteContainer.alpha = 0
     }
-
+    
     func showVoteContainer() {
         voteContainer.alpha = 1
         rightButton.isHidden = false
@@ -135,6 +135,7 @@ class ChatObjectView: UIView, XIBInitable {
             Constant.normalImageViewOffset
     }
     
+    // swiftlint:disable:next function_body_length
     private func setupClaimObjectView(basic: ChatModel.BasicPart,
                                       voting: ChatModel.VotingPart?,
                                       team: TeamPart) {
@@ -144,25 +145,37 @@ class ChatObjectView: UIView, XIBInitable {
         }
         currencyLabel.text = team.currency
         rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
-        
         imageView.image = #imageLiteral(resourceName: "imagePlaceholder")
         rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
         basic.smallPhoto.map { self.imageView.showImage(string: $0) }
         voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
         if let voting = voting {
-            if let vote = voting.myVote {
-                if voting.proxyName != nil {
-                    voteValueLabel.text = String(format: "%.f", vote * 100)
-                    rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+            if voting.canVote {
+                if let vote = voting.myVote {
+                    if voting.proxyName != nil {
+                        voteValueLabel.text = String(format: "%.f", vote * 100)
+                        rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+                    } else {
+                        voteValueLabel.text = String(format: "%.f", vote * 100)
+                        rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+                    }
+                    percentLabel.text = "%"
                 } else {
-                    voteValueLabel.text = String(format: "%.f", vote * 100)
-                    rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+                    rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+                    voteValueLabel.text = "..."
+                    percentLabel.text = ""
                 }
-                percentLabel.text = "%"
             } else {
-                rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
-                voteValueLabel.text = "..."
-                percentLabel.text = ""
+                voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.teamVote".localized
+                if let teamVote = voting.ratioVoted {
+                    voteValueLabel.text = String.truncatedNumber(teamVote.value * 100)
+                } else {
+                    voteValueLabel.text = "..."
+                }
+                rightButton.isHidden = true
+                rightLabel.isHidden = true
+                voteButtonContainer.isHidden = true
+                percentLabel.text = "%"
             }
         } else if let reimbursement = basic.reimbursement {
             voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.team".localized
@@ -170,12 +183,15 @@ class ChatObjectView: UIView, XIBInitable {
             rightButton.isHidden = true
             rightLabel.isHidden = true
             voteButtonContainer.isHidden = true
+            percentLabel.text = "%"
         }
+        percentLabel.font = isSmallIPhone ? UIFont.teambrellaBold(size: 16) : UIFont.teambrellaBold(size: 20)
         proxyAvatarView.image = nil
         resizeImageView()
         imageView.layer.cornerRadius = Constant.claimObjectViewCornerRadius
     }
     
+    // swiftlint:disable:next function_body_length
     private func setupTeammateObjectView(basic: ChatModel.BasicPart,
                                          voting: ChatModel.VotingPart?,
                                          team: TeamPart) {
@@ -188,22 +204,33 @@ class ChatObjectView: UIView, XIBInitable {
         percentLabel.isHidden = true
         currencyLabel.isHidden = true
         rightLabel.textColor = #colorLiteral(red: 0.2549019608, green: 0.3058823529, blue: 0.8, alpha: 1)
-        
         voteValueLabel.font = isSmallIPhone ? UIFont.teambrellaBold(size: 14) : UIFont.teambrellaBold(size: 18)
         if let voting = voting {
-            currencyLabel.text = nil
-            voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
-            if let vote = voting.myVote {
-                if voting.proxyName != nil {
-                    voteValueLabel.text = String(format: "%.2f", vote)
-                    rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+            if voting.canVote {
+                currencyLabel.text = nil
+                voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
+                if let vote = voting.myVote {
+                    if voting.proxyName != nil {
+                        voteValueLabel.text = String(format: "%.2f", vote)
+                        rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+                    } else {
+                        voteValueLabel.text = String(format: "%.2f", vote)
+                        rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+                    }
                 } else {
-                    voteValueLabel.text = String(format: "%.2f", vote)
-                    rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
+                    rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
+                    voteValueLabel.text = "..."
                 }
             } else {
-                rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
-                voteValueLabel.text = "..."
+                voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.teamVote".localized
+                if let teamVote = voting.riskVoted {
+                    voteValueLabel.text = String.truncatedNumber(teamVote)
+                } else {
+                    voteValueLabel.text = "..."
+                }
+                rightButton.isHidden = true
+                rightLabel.isHidden = true
+                voteButtonContainer.isHidden = true
             }
         } else if let risk = basic.risk {
             voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.risk".localized
@@ -214,7 +241,7 @@ class ChatObjectView: UIView, XIBInitable {
         }
         resizeImageView()
         imageView.layer.cornerRadius = isSmallIPhone ? Constant.smallImageViewSize / 2
-                                                     : Constant.normalImageViewSize / 2
+            : Constant.normalImageViewSize / 2
     }
     
     @IBAction func tapChevron(_ sender: UIButton) {
