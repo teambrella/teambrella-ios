@@ -117,7 +117,7 @@ struct ClaimCellBuilder {
         
         cell.pieChart.setupWith(remainingMinutes: voting.minutesRemaining)
         
-        if let myVote = voting.myVote {
+        if let myVote = voting.myVote, voting.canVote {
             cell.yourVotePercentValue.text = String.truncatedNumber(myVote.percentage)
             cell.yourVoteAmount.text = String.truncatedNumber(myVote.fiat(from: claim.basic.claimAmount).value)
             cell.slider.setValue(Float(myVote.value), animated: true)
@@ -139,6 +139,10 @@ struct ClaimCellBuilder {
                 cell.slider.setValue(cell.slider.minimumValue, animated: true)
             }
             cell.resetButton.isHidden = true
+            if voting.canVote == false {
+                cell.slider.isHidden = true
+                cell.isProxyHidden = true
+            }
         }
         cell.proxyAvatar.isHidden = voting.proxyAvatar == nil || voting.myVote == nil
         cell.byProxyLabel.isHidden = voting.proxyName == nil || voting.myVote == nil

@@ -279,7 +279,10 @@ extension ClaimVC: UICollectionViewDelegateFlowLayout {
         let offset: CGFloat = 16
         switch dataSource.cellID(for: indexPath) {
         case ImageGalleryCell.cellID: return CGSize(width: collectionView.bounds.width, height: 120 + 184)
-        case ClaimVoteCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 250)
+        case ClaimVoteCell.cellID:
+            let canVote = dataSource.claim?.voting?.canVote
+            return canVote == true ? CGSize(width: collectionView.bounds.width - offset * 2, height: 250)
+                                   : CGSize(width: collectionView.bounds.width - offset * 2, height: 200)
         case ClaimDetailsCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 283)
         case ClaimOptionsCell.cellID: return CGSize(width: collectionView.bounds.width, height: 112)
         default: break
