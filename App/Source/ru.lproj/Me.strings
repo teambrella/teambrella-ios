@@ -34,7 +34,7 @@
 "Me.CoverageVC.subtitle"                           = "Используй бегунок, чтобы увидеть, как расходы влияют на максимальное возмещение.";
 "Me.CoverageVC.maxExpenses"                        = "Максимальное возмещение";
 "Me.CoverageVC.yourExpenses"                       = "В случае, когда твои расходы составляют";
-"Me.CoverageVC.teamPay"                            = "Команда выплатит тебе";
+"Me.CoverageVC.teamPay"                            = "Максимальная выплата будет";
 
 "Me.Report.ItemCell.title"                         = "СООБЩИТЬ";
 "Me.Report.DateCell.title"                         = "ДАТА СОБЫТИЯ";
