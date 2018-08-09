@@ -13,7 +13,7 @@
 "Home.leftBrick.title"                                  = "ЗАЩИТА";
 "Home.rightBrick.title"                                 = "КОШЕЛЁК";
 "Home.itemCard.status"                                  = "ЗАЩИЩЕНО";
-"Home.itemCard.coverageType"                            = "Франшиза";
+"Home.itemCard.coverageType"                            = "Ущерб"; //"Франшиза";
 
 "Home.SupportCell.headerLabel"                          = "Техподдержка";
 "Home.SupportCell.onlineLabel"                          = "ОНЛАЙН";

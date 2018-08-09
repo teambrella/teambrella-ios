@@ -36,7 +36,9 @@ struct TeammateCellBuilder {
         case let cell as TeammateStatsCell:
             populateStats(cell: cell, with: teammate, controller: controller)
         case let cell as VotingRiskCell:
-            populateVote(cell: cell, with: teammate, controller: controller)
+            populateVoting(cell: cell, with: teammate, controller: controller)
+        case let cell as VotedRiskCell:
+            populateVoted(cell: cell, with: teammate, controller: controller)
         case let cell as DiscussionCompactCell:
             populateCompactDiscussion(cell: cell, with: teammate.topic, avatar: teammate.basic.avatar)
         case let cell as MeCell:
@@ -105,7 +107,8 @@ struct TeammateCellBuilder {
             votingCell.teamVoteValueLabel.text = "..."
             votingCell.showTeamNoVote(risk: nil)
         }
-        if let myVote = voting.myVote {
+        let canVote = false
+        if let myVote = voting.myVote, canVote == true {
             setMyVote(votingCell: votingCell,
                       myVote: myVote,
                       proxyName: voting.proxyName,
@@ -155,9 +158,20 @@ struct TeammateCellBuilder {
         }
     }
     
-    private static func populateVote(cell: VotingRiskCell,
-                                     with teammate: TeammateLarge,
-                                     controller: TeammateProfileVC) {
+    private static func populateVoted(cell: VotedRiskCell,
+                                      with teammate: TeammateLarge,
+                                      controller: TeammateProfileVC) {
+        cell.delegate = controller
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        if let voting = teammate.voting {
+            //            setVote(votingCell: cell, voting: voting, controller: controller)
+        }
+    }
+    
+    private static func populateVoting(cell: VotingRiskCell,
+                                       with teammate: TeammateLarge,
+                                       controller: TeammateProfileVC) {
         cell.delegate = controller
         if let riskScale = teammate.riskScale, controller.isRiskScaleUpdateNeeded == true {
             cell.updateWithRiskScale(riskScale: riskScale)
@@ -231,7 +245,7 @@ struct TeammateCellBuilder {
             right.titleLabel.text = "Team.TeammateCell.risk".localized
             right.amountLabel.text = String(format: "%.1f", teammate.basic.risk)
             let avg = String.truncatedNumber(abs(teammate.basic.risk - teammate.basic.averageRisk) * 100)
-
+            
             if teammate.basic.risk - teammate.basic.averageRisk == 0 {
                 right.badgeLabel.text = "Team.VotingRiskVC.avg".localized
                 right.badgeLabel.leftInset = CGFloat(4)

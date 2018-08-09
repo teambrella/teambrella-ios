@@ -22,7 +22,7 @@
 import UIKit
 
 enum TeammateProfileCellType: String {
-    case me, summary, object, stats, contact, dialog, dialogCompact, voting
+    case me, summary, object, stats, contact, dialog, dialogCompact, voting, voted
 }
 
 enum SocialItemType: String {

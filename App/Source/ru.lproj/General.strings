@@ -52,7 +52,7 @@
 "General.CoverageObject.bicycle"                   = "ВЕЛОСИПЕД";
 
 "General.CoverageType.other"                       = "Объект";
-"General.CoverageType.carCollisionDeductible"      = "Франшиза";
+"General.CoverageType.carCollisionDeductible"      = "Ущерб"; //"Франшиза";
 "General.CoverageType.petDog"                      = "Здоровье питомца";
 "General.CoverageType.petCat"                      = "Здоровье питомца";
 "General.CoverageType.bicycle"                     = "Кража";

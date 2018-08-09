@@ -172,13 +172,17 @@ final class TeammateProfileVC: UIViewController, Routable {
         if let vote = vote,
             let proxyAvatar = proxyAvatar,
             let proxyName = proxyName {
-            cell.scrollTo(risk: vote, silently: true, animated: false)
+            if !cell.isHistogramHidden {
+                cell.scrollTo(risk: vote, silently: true, animated: false)
+            }
             cell.isProxyHidden = false
             cell.resetVoteButton.isHidden = true
             cell.proxyAvatarView.show(proxyAvatar)
             cell.proxyNameLabel.text = proxyName.uppercased()
         } else {
-            cell.scrollToAverage(silently: true, animated: false)
+            if !cell.isHistogramHidden {
+                cell.scrollToAverage(silently: true, animated: false)
+            }
             cell.isProxyHidden = true
             cell.resetVoteButton.isHidden = true
             cell.yourVoteValueLabel.text = "..."
@@ -259,7 +263,14 @@ final class TeammateProfileVC: UIViewController, Routable {
     private func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
-        collectionView.register(VotingRiskCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
+        let canVote = false
+        if /*let voting = dataSource.teammateLarge?.voting, voting.*/canVote == true {
+            collectionView.register(VotingRiskCell.nib,
+                                    forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
+        } else {
+            collectionView.register(VotedRiskCell.nib,
+                                    forCellWithReuseIdentifier: TeammateProfileCellType.voted.rawValue)
+        }
         collectionView.register(TeammateSummaryView.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: TeammateSummaryView.cellID)
@@ -501,6 +512,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: 215)
         case .voting:
             return CGSize(width: wdt, height: 360)
+        case .voted:
+            return CGSize(width: wdt, height: 150)
         case .dialogCompact:
             return  CGSize(width: collectionView.bounds.width, height: 98)
         }
@@ -614,8 +627,11 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         if let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? TeammateSummaryView {
             updateAmounts(in: view, with: changedRisk)
         }
-        if let header = compactUserInfoHeader {
-            updateAmounts(in: header, with: changedRisk)
+        let canVote = false
+        if /*let canVote = dataSource.teammateLarge?.voting?.canVote,*/ canVote == true {
+            if let header = compactUserInfoHeader {
+                updateAmounts(in: header, with: changedRisk)
+            }
         }
     }
     
@@ -691,6 +707,8 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     }
     
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView) {
+        let canVote = false
+        if /*let canVote = dataSource.teammateLarge?.voting?.canVote,*/ canVote == true {
         showHeader(offset: summaryViewNumberBarOffset)
         lastScrollMoment = Date()
         DispatchQueue.main.asyncAfter(deadline: .now() + Constant.votingHeaderShowTime) {
@@ -700,6 +718,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
                 self.hideHeader(animated: true)
                 self.lastScrollMoment = Date()
             }
+        }
         }
     }
     

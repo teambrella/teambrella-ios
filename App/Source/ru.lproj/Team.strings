@@ -40,7 +40,7 @@
 
 "Team.TeammateCell.youAreProxy_format_s"              = "Ты прокси для %@";
 "Team.TeammateCell.covered"                           = "ЗАЩИТА";
-"Team.TeammateCell.collisionDeductible"               = "Франшиза";
+"Team.TeammateCell.collisionDeductible"               = "Ущерб"; //"Франшиза";
 "Team.TeammateCell.limit"                             = "ЛИМИТ";
 "Team.TeammateCell.risk"                              = "РИСК";
 

@@ -16,6 +16,10 @@
 		17AD149D20F90237007C7613 /* AmountUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD149B20F90237007C7613 /* AmountUpdatable.swift */; };
 		17AD149F20FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */; };
 		17AD14A020FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */; };
+		17AD14A9211C8B4E007C7613 /* VotedRiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD14A7211C8B4E007C7613 /* VotedRiskCell.swift */; };
+		17AD14AA211C8B4E007C7613 /* VotedRiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AD14A7211C8B4E007C7613 /* VotedRiskCell.swift */; };
+		17AD14AB211C8B4E007C7613 /* VotedRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD14A8211C8B4E007C7613 /* VotedRiskCell.xib */; };
+		17AD14AC211C8B4E007C7613 /* VotedRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD14A8211C8B4E007C7613 /* VotedRiskCell.xib */; };
 		17BE300820D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */; };
 		17BE300920D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */; };
 		6D02945920DD3EFA00936664 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02945820DD3EF900936664 /* Connectivity.swift */; };
@@ -1224,6 +1228,8 @@
 		1790BB3920750A3F00FD1303 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Year.swift; path = Model/Entities/Year.swift; sourceTree = "<group>"; };
 		17AD149B20F90237007C7613 /* AmountUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AmountUpdatable.swift; path = Scenes/Team/Members/AmountUpdatable.swift; sourceTree = "<group>"; };
 		17AD149E20FE0BDA007C7613 /* CompactUserInfoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CompactUserInfoHeader.xib; path = View/CompactUserInfoHeader.xib; sourceTree = "<group>"; };
+		17AD14A7211C8B4E007C7613 /* VotedRiskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotedRiskCell.swift; path = View/Cells/VotedRiskCell.swift; sourceTree = "<group>"; };
+		17AD14A8211C8B4E007C7613 /* VotedRiskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VotedRiskCell.xib; path = View/Cells/VotedRiskCell.xib; sourceTree = "<group>"; };
 		17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletQRCodeVC.swift; path = Scenes/Me/Wallet/WalletQRCodeVC.swift; sourceTree = "<group>"; };
 		1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
 		205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2913,6 +2919,8 @@
 				94C2D3991F191FA600D203C2 /* TeamCell.xib */,
 				6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */,
 				6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */,
+				17AD14A7211C8B4E007C7613 /* VotedRiskCell.swift */,
+				17AD14A8211C8B4E007C7613 /* VotedRiskCell.xib */,
 				6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */,
 				6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */,
 				6D1425E41F73DD9A00DCBF91 /* VotingChartCell.swift */,
@@ -3515,6 +3523,7 @@
 				6D0524F820A5D838000B3247 /* ChatFooter.xib in Resources */,
 				6D0524F920A5D838000B3247 /* Proxies.storyboard in Resources */,
 				6D0524FA20A5D838000B3247 /* NumberView.xib in Resources */,
+				17AD14AC211C8B4E007C7613 /* VotedRiskCell.xib in Resources */,
 				6D0524FB20A5D838000B3247 /* DiscussionCell.xib in Resources */,
 				6D0524FC20A5D838000B3247 /* Home.storyboard in Resources */,
 				6D0524FD20A5D838000B3247 /* ChatObjectView.xib in Resources */,
@@ -3616,6 +3625,7 @@
 				6D4E5D9B1F7AB6870020DEE2 /* ChatFooter.xib in Resources */,
 				6D4E5D9C1F7AB6870020DEE2 /* Proxies.storyboard in Resources */,
 				6D4E5D9D1F7AB6870020DEE2 /* NumberView.xib in Resources */,
+				17AD14AB211C8B4E007C7613 /* VotedRiskCell.xib in Resources */,
 				6D4E5D9E1F7AB6870020DEE2 /* DiscussionCell.xib in Resources */,
 				6D4E5D9F1F7AB6870020DEE2 /* Home.storyboard in Resources */,
 				6D251C412034B118005081E4 /* ChatObjectView.xib in Resources */,
@@ -4440,6 +4450,7 @@
 				6D0524AE20A5D838000B3247 /* WalletEntity.swift in Sources */,
 				6D0524AF20A5D838000B3247 /* LabeledButton.swift in Sources */,
 				6D0524B020A5D838000B3247 /* HomeCollectionCell.swift in Sources */,
+				17AD14AA211C8B4E007C7613 /* VotedRiskCell.swift in Sources */,
 				6D0524B120A5D838000B3247 /* ClaimVotingView.swift in Sources */,
 				6D0524B220A5D838000B3247 /* Dumper.swift in Sources */,
 				6D0524B320A5D838000B3247 /* CosignerEntity.swift in Sources */,
@@ -4861,6 +4872,7 @@
 				6D4E5D4D1F7AB6870020DEE2 /* WalletEntity.swift in Sources */,
 				6D4E5D4E1F7AB6870020DEE2 /* LabeledButton.swift in Sources */,
 				6D4E5D4F1F7AB6870020DEE2 /* HomeCollectionCell.swift in Sources */,
+				17AD14A9211C8B4E007C7613 /* VotedRiskCell.swift in Sources */,
 				6D251C3B20348646005081E4 /* ClaimVotingView.swift in Sources */,
 				6D9F6ADC2014EB3000B3287D /* Dumper.swift in Sources */,
 				6D4E5D501F7AB6870020DEE2 /* CosignerEntity.swift in Sources */,
