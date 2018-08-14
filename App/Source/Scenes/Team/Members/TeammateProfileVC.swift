@@ -145,7 +145,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         }
     }
     
-    func updateAverages(cell: VotingRiskCell, risk: Double) {
+    func updateAverages(cell: VotingOrVotedRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
             
             guard let averageRisk = dataSource.teammateLarge?.voting?.averageRisk else { return }
@@ -172,17 +172,13 @@ final class TeammateProfileVC: UIViewController, Routable {
         if let vote = vote,
             let proxyAvatar = proxyAvatar,
             let proxyName = proxyName {
-            if !cell.isHistogramHidden {
-                cell.scrollTo(risk: vote, silently: true, animated: false)
-            }
+            cell.scrollTo(risk: vote, silently: true, animated: false)
             cell.isProxyHidden = false
             cell.resetVoteButton.isHidden = true
             cell.proxyAvatarView.show(proxyAvatar)
             cell.proxyNameLabel.text = proxyName.uppercased()
         } else {
-            if !cell.isHistogramHidden {
-                cell.scrollToAverage(silently: true, animated: false)
-            }
+            cell.scrollToAverage(silently: true, animated: false)
             cell.isProxyHidden = true
             cell.resetVoteButton.isHidden = true
             cell.yourVoteValueLabel.text = "..."
@@ -513,7 +509,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
         case .voting:
             return CGSize(width: wdt, height: 360)
         case .voted:
-            return CGSize(width: wdt, height: 150)
+            return CGSize(width: wdt, height: 180)
         case .dialogCompact:
             return  CGSize(width: collectionView.bounds.width, height: 98)
         }
@@ -620,7 +616,6 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         cell.yourVoteValueLabel.text = String(format: "%.2f", changedRisk)
         cell.middleAvatarLabel.text = String(format: "%.2f", changedRisk)
         updateAverages(cell: cell, risk: changedRisk)
-        cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
         cell.showYourNoVote(risk: changedRisk)
         cell.colorizeCenterCell()
         let kind = UICollectionElementKindSectionHeader

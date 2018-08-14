@@ -122,6 +122,7 @@
 "Team.VotingRiskVC.headerLabel"                       = "VOTING: RISK";
 "Team.VotingRiskVC.numberBar.left"                    = "TEAM VOTE";
 "Team.VotingRiskVC.numberBar.right"                   = "YOUR VOTE";
+"Team.VotingRiskVC.numberBar.right.proxy"             = "PROXY VOTE";
 "Team.VotingRiskVC.avgLabel"                          = "AVG\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Reset Vote";
 "Team.VotingRiskVC.othersButton"                      = "Compare";

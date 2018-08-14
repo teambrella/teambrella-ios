@@ -16,7 +16,33 @@
 
 import UIKit
 
-class VotedRiskCell: UICollectionViewCell, XIBInitableCell {
+protocol VotingOrVotedRiskCell: XIBInitableCell {
+    var titleLabel: BlockHeaderLabel! { get set }
+    var timeLabel: ThinStatusSubtitleLabel! { get set }
+    var pieChart: PieChartView! { get set }
+    
+    var slashView: SlashView! { get set }
+    var teamVoteHeaderLabel: InfoLabel! { get set }
+    var teamVoteValueLabel: AmountLabel! { get set }
+    var teamVoteBadgeLabel: BadgeLabel! { get set }
+    var teamVoteNotAccept: AmountLabel! { get set }
+    var teammatesAvatarStack: RoundImagesStack! { get set }
+    
+    var yourVoteHeaderLabel: InfoLabel! { get set }
+    var yourVoteValueLabel: AmountLabel! { get set }
+    var yourVoteBadgeLabel: BadgeLabel! { get set }
+    var yourVoteNotAccept: AmountLabel! { get set }
+    
+    var proxyAvatarView: RoundImageView! { get set }
+    var proxyNameLabel: InfoLabel! { get set }
+    var isProxyHidden: Bool { get set }
+    var currentRisk: Double { get }
+    
+    func showTeamNoVote(risk: Double?)
+    func showYourNoVote(risk: Double?)
+}
+
+class VotedRiskCell: UICollectionViewCell, VotingOrVotedRiskCell {
     @IBOutlet var titleLabel: BlockHeaderLabel!
     @IBOutlet var timeLabel: ThinStatusSubtitleLabel!
     @IBOutlet var pieChart: PieChartView!
@@ -36,9 +62,6 @@ class VotedRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var proxyAvatarView: RoundImageView!
     @IBOutlet var proxyNameLabel: InfoLabel!
     
-    @IBOutlet var teamVoteAVGLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet var yourVoteAVGLeadingConstraint: NSLayoutConstraint!
-    
     @IBOutlet var yourVoteHeaderLabelLeadingConstraint: NSLayoutConstraint!
     
     private var dataSource: VotingScrollerDataSource = VotingScrollerDataSource()
@@ -52,11 +75,17 @@ class VotedRiskCell: UICollectionViewCell, XIBInitableCell {
         }
     }
     
+    var currentRisk: Double = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupLabels()
         setupButtons()
+        
+        slashView.layer.cornerRadius = 4
+        slashView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1).cgColor
+        slashView.layer.borderWidth = 1
         
         self.clipsToBounds = true
         ViewDecorator.roundedEdges(for: self)
@@ -64,8 +93,6 @@ class VotedRiskCell: UICollectionViewCell, XIBInitableCell {
     }
     
     private func setupButtons() {
-//        othersButton.titleLabel?.minimumScaleFactor = 0.7
-//        othersButton.titleLabel?.adjustsFontSizeToFitWidth = true
 //        othersButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
 //        othersVotesButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
     }
@@ -81,9 +108,6 @@ class VotedRiskCell: UICollectionViewCell, XIBInitableCell {
         yourVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
         
         yourVoteHeaderLabelLeadingConstraint.constant = isSmallIPhone ? 10 : 16
-//        othersLabelTrailingConstraint.constant = isSmallIPhone ? 4 : 8
-        yourVoteAVGLeadingConstraint.constant = isSmallIPhone ? 2 : 8
-        teamVoteAVGLeadingConstraint.constant = isSmallIPhone ? 2 : 8
         
         if isSmallIPhone {
             yourVoteValueLabel.font = UIFont.teambrellaBold(size: 29)
@@ -92,8 +116,6 @@ class VotedRiskCell: UICollectionViewCell, XIBInitableCell {
             yourVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
             teamVoteValueLabel.font = UIFont.teambrellaBold(size: 34)
         }
-        
-//        othersLabel.text = "Team.VotingRiskVC.othersButton".localized
     }
     
     @objc
@@ -117,5 +139,11 @@ class VotedRiskCell: UICollectionViewCell, XIBInitableCell {
         yourVoteBadgeLabel.isHidden = risk != nil ? show : true
         yourVoteNotAccept.isHidden = !show
         yourVoteNotAccept.text = "Team.Vote.doNotAccept".localized
+    }
+    
+    func setCurrentRisk(risk: Double?) {
+        if let risk = risk {
+            currentRisk = risk
+        }
     }
 }

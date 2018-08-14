@@ -31,7 +31,7 @@ protocol VotingRiskCellDelegate: class {
     func averageVotingRisk(cell: VotingRiskCell) -> Double
 }
 
-class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
+class VotingRiskCell: UICollectionViewCell, VotingOrVotedRiskCell {
     @IBOutlet var titleLabel: BlockHeaderLabel!
     @IBOutlet var timeLabel: ThinStatusSubtitleLabel!
     @IBOutlet var pieChart: PieChartView!
@@ -118,25 +118,6 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         didSet {
             proxyAvatarView.isHidden = isProxyHidden
             proxyNameLabel.isHidden = isProxyHidden
-        }
-    }
-    
-    var isHistogramHidden: Bool = false {
-        didSet {
-            pearImageView.isHidden = isHistogramHidden
-            leftAvatar.isHidden = isHistogramHidden
-            leftAvatarLabel.isHidden = isHistogramHidden
-            middleAvatar.isHidden = isHistogramHidden
-            middleAvatarLabel.isHidden = isHistogramHidden
-            rightAvatar.isHidden = isHistogramHidden
-            rightAvatarLabel.isHidden = isHistogramHidden
-            forward.isHidden = isHistogramHidden
-            othersLabel.isHidden = isHistogramHidden
-            othersButton.isHidden = isHistogramHidden
-            resetVoteButton.isHidden = isHistogramHidden
-            
-            collectionView.isHidden = isHistogramHidden
-            swipeToVoteView.isHidden = isHistogramHidden
         }
     }
     

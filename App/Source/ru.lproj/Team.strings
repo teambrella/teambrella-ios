@@ -122,6 +122,7 @@
 "Team.VotingRiskVC.headerLabel"                       = "ГОЛОСОВАНИЕ: РИСК";
 "Team.VotingRiskVC.numberBar.left"                    = "ГОЛОС КОМАНДЫ";
 "Team.VotingRiskVC.numberBar.right"                   = "ТВОЙ ГОЛОС";
+"Team.VotingRiskVC.numberBar.right.proxy"             = "ГОЛОС ПРОКСИ";
 "Team.VotingRiskVC.avgLabel"                          = "СРЕДН.\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Сбросить";
 "Team.VotingRiskVC.othersButton"                      = "Сравнить";
