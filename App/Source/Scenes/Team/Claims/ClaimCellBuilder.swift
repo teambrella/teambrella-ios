@@ -125,11 +125,12 @@ struct ClaimCellBuilder {
             } else {
                 cell.slider.isHidden = true
             }
-            if voting.proxyName != nil {
+            if let proxyName = voting.proxyName {
                 cell.resetButton.isHidden = true
                 if let proxyAvatar = voting.proxyAvatar {
                     cell.proxyAvatar.show(proxyAvatar)
-                    cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+                    cell.byProxyLabel.text = voting.canVote ? "Team.ClaimCell.byProxy".localized.uppercased()
+                                                            : proxyName.entire.uppercased()
                 }
             } else {
                 cell.resetButton.isHidden = false
@@ -147,10 +148,19 @@ struct ClaimCellBuilder {
                 cell.slider.isHidden = true
             }
         }
+        
+        if voting.myVote != nil {
+            if voting.proxyName != nil {
+                cell.yourVoteLabel.text = voting.canVote ? "Team.ClaimCell.yourVote".localized.uppercased()
+                    : "Team.ClaimCell.proxyVote".localized.uppercased()
+            }
+        } else {
+            cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
+        }
+        
         cell.proxyAvatar.isHidden = voting.proxyAvatar == nil || voting.myVote == nil
         cell.byProxyLabel.isHidden = voting.proxyName == nil || voting.myVote == nil
         
-        cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         cell.yourVotePercentValue.alpha = 1
         cell.yourVoteAmount.alpha = 1
         cell.yourVoteCurrency.text = session?.currentTeam?.currency ?? ""

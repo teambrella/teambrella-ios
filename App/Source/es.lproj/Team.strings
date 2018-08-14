@@ -219,3 +219,4 @@
 "Team.Chat.ObjectView.TitleLabel.teamVote" = "VOTO DEL EQUIPO";
 
 "Team.VotingRiskVC.numberBar.right.proxy"             = "ГОЛОС ПРОКСИ";
+"Team.ClaimCell.proxyVote" = "proxy vote";

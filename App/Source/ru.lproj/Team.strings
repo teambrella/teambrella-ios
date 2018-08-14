@@ -18,6 +18,7 @@
 
 "Team.ClaimCell.voting"                               = "Голосование";
 "Team.ClaimCell.yourVote"                             = "твой голос";
+"Team.ClaimCell.proxyVote"                            = "голос прокси";
 "Team.ClaimCell.byProxy"                              = "прокси";
 "Team.ClaimCell.teamVote"                             = "голос команды";
 "Team.ClaimCell.voteSubmitted"                        = "Голос отправлен";
