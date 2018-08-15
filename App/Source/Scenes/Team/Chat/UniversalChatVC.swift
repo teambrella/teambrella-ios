@@ -717,12 +717,13 @@ extension UniversalChatVC: UICollectionViewDelegate {
         } else if let cell = cell as? ChatClaimPaidCell {
             let model = model as? ChatModel
             if model?.basic?.datePayToJoin != nil {
-                cell.messageLabel.text = "Team.Chat.PayToJoin.text".localized
+                cell.messageLabel.text = "Team.Chat.PayToJoin.text".localized // from server (?)
                 cell.button.setTitle("Team.Chat.PayToJoin.buttonTitle".localized, for: .normal)
                 cell.confettiView.isHidden = true
                 cell.onButtonTap = { [weak self] in
                     log("tap fund wallet (from chat)", type: .userInteraction)
-                    self?.router.switchToWallet() // check this
+                    self?.router.switchToWallet()
+                    self?.navigationController?.popViewController(animated: false)
                 }
             } else {
                 cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
