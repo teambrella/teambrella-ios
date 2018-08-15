@@ -22,8 +22,6 @@
 import Foundation
 
 struct HomeCellBuilder {
-    static var isInSupportMode: Bool = true
-    
     static func registerCells(in collectionView: UICollectionView) {
         collectionView.register(HomeSupportCell.nib,
                                 forCellWithReuseIdentifier: HomeSupportCell.cellID)
@@ -37,13 +35,12 @@ struct HomeCellBuilder {
     
     static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeCardModel?) {
         guard let model = model else {
-//            populateSupportOrFund(cell: cell, dataSource: dataSource, isInSupportMode: true)
+//            populateSupport(cell: cell, dataSource: dataSource)
             return
         }
         
         if model.itemType == .fundWallet {
-            isInSupportMode = false
-            populateSupportOrFund(cell: cell, dataSource: dataSource, isInSupportMode: false)
+            populateFund(cell: cell, model: model)
         }
         switch cell {
         case let cell as HomeCollectionCell:
@@ -85,22 +82,25 @@ struct HomeCellBuilder {
         cell.rightNumberView.isBadgeVisible = model.isVoting
     }
     
-    static func populateSupportOrFund(cell: UICollectionViewCell, dataSource: HomeDataSource, isInSupportMode: Bool) {
+    static func populateFund(cell: UICollectionViewCell, model: HomeCardModel) {
         guard let cell = cell as? HomeSupportCell else { return }
         
-        if isInSupportMode {
-            cell.headerLabel.text = "Home.SupportCell.headerLabel".localized
-            cell.centerLabel.text = "Home.SupportCell.onlineLabel".localized
-            cell.bottomLabel.text = "Home.SupportCell.textLabel".localized(dataSource.name.first)
-            cell.button.setTitle("Home.SupportCell.chatButton".localized, for: .normal)
-            cell.onlineIndicator.layer.cornerRadius = 3
-        } else {
-            cell.headerLabel.text = "Home.FundCell.headerLabel".localized
-            cell.centerLabel.text = "Home.FundCell.subtitleLabel".localized
-            cell.bottomLabel.text = "Home.FundCell.textLabel".localized(dataSource.name.first)
-            cell.button.setTitle("Home.FundCell.fundTitle".localized, for: .normal)
-            cell.onlineIndicator.isHidden = true
-        }
+        cell.imageView.show(model.smallPhoto)
+        cell.headerLabel.text = model.chatTitle
+        cell.centerLabel.text = model.subtitle
+        cell.bottomLabel.text = model.text.sane
+        cell.button.setTitle(model.actionText.sane, for: .normal)
+        cell.onlineIndicator.isHidden = true
+    }
+    
+    static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
+        guard let cell = cell as? HomeSupportCell else { return }
+        
+        cell.headerLabel.text = "Home.SupportCell.headerLabel".localized
+        cell.centerLabel.text = "Home.SupportCell.onlineLabel".localized
+        cell.bottomLabel.text = "Home.SupportCell.textLabel".localized(dataSource.name.first)
+        cell.button.setTitle("Home.SupportCell.chatButton".localized, for: .normal)
+        cell.onlineIndicator.layer.cornerRadius = 3
     }
     
     static func populate(cell: HomeApplicationDeniedCell, with model: HomeCardModel) {
@@ -139,10 +139,11 @@ struct HomeCellBuilder {
         cell.leftNumberView.currencyLabel.text = session?.currentTeam?.currencySymbol ?? ""
         cell.leftNumberView.isCurrencyVisible = true
         cell.leftNumberView.isPercentVisible = false
-        let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
-        cell.rightNumberView.amountLabel.text = amountText
+        cell.rightNumberView.amountLabel.text = model.teamVote * 100 == 0
+            ? String(format: "%.0f", model.teamVote * 100)
+            : "..."
         cell.rightNumberView.isBadgeVisible = model.isVoting
-        cell.rightNumberView.isPercentVisible = model.teamVote != nil
+        cell.rightNumberView.isPercentVisible = model.teamVote != 0
     }
     
     static private func setupTeammateCell(cell: HomeCollectionCell, model: HomeCardModel) {
@@ -154,8 +155,9 @@ struct HomeCellBuilder {
         cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
         cell.leftNumberView.isCurrencyVisible = true
         cell.leftNumberView.isPercentVisible = false
-        let amountText: String = model.teamVote.map { String(format: "%.1f", $0) } ?? "..."
-        cell.rightNumberView.amountLabel.text = amountText
+        cell.rightNumberView.amountLabel.text = model.teamVote * 100 == 0
+            ? String(format: "%.0f", model.teamVote * 100)
+            : "..."
         cell.rightNumberView.isBadgeVisible = model.isVoting
         cell.rightNumberView.isCurrencyVisible = false
         cell.rightNumberView.isPercentVisible = false

@@ -305,12 +305,14 @@ extension HomeVC: UICollectionViewDataSource {
                         forItemAt indexPath: IndexPath) {
         HomeCellBuilder.populate(cell: cell, dataSource: dataSource, model: dataSource[indexPath])
         if let cell = cell as? HomeSupportCell {
-            if HomeCellBuilder.isInSupportMode {
-                cell.button.removeTarget(nil, action: nil, for: .allEvents)
-                cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
-            } else {
+            let model = dataSource[indexPath]
+            
+            if model?.itemType == ItemType.fundWallet {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapFundWallet), for: .touchUpInside)
+            } else {
+                cell.button.removeTarget(nil, action: nil, for: .allEvents)
+                cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
             }
         }
 //        if let cell = cell as? ClosableCell {
