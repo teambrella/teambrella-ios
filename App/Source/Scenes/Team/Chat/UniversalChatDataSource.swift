@@ -528,7 +528,7 @@ extension UniversalChatDatasource {
         teamAccessLevel = model.team?.accessLevel ?? .noAccess
 
         addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
-        addPayToJoinIfNeeded(date: model.basic?.datePayToJoin) // via this
+        addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
     }
 
     private func addClaimPaidIfNeeded(date: Date?) {
