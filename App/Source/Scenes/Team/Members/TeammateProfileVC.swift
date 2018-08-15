@@ -259,14 +259,10 @@ final class TeammateProfileVC: UIViewController, Routable {
     private func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
-        let canVote = false
-        if /*let voting = dataSource.teammateLarge?.voting, voting.*/canVote == true {
-            collectionView.register(VotingRiskCell.nib,
+        collectionView.register(VotingRiskCell.nib,
                                     forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
-        } else {
-            collectionView.register(VotedRiskCell.nib,
+        collectionView.register(VotedRiskCell.nib,
                                     forCellWithReuseIdentifier: TeammateProfileCellType.voted.rawValue)
-        }
         collectionView.register(TeammateSummaryView.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: TeammateSummaryView.cellID)
@@ -622,8 +618,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         if let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? TeammateSummaryView {
             updateAmounts(in: view, with: changedRisk)
         }
-        let canVote = false
-        if /*let canVote = dataSource.teammateLarge?.voting?.canVote,*/ canVote == true {
+        if let canVote = dataSource.teammateLarge?.voting?.canVote, canVote == true {
             if let header = compactUserInfoHeader {
                 updateAmounts(in: header, with: changedRisk)
             }
@@ -702,8 +697,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     }
     
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView) {
-        let canVote = false
-        if /*let canVote = dataSource.teammateLarge?.voting?.canVote,*/ canVote == true {
+        if let canVote = dataSource.teammateLarge?.voting?.canVote, canVote == true {
         showHeader(offset: summaryViewNumberBarOffset)
         lastScrollMoment = Date()
         DispatchQueue.main.asyncAfter(deadline: .now() + Constant.votingHeaderShowTime) {

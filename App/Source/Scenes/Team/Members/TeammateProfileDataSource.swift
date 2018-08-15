@@ -130,15 +130,13 @@ class TeammateProfileDataSource {
         
         source.removeAll()
         isMyProxy = teammate.basic.isMyProxy
-        let isVoting = teammate.voting != nil
         let isVoted = teammate.voted != nil
         
         //if isMe { source.append(.me) } else { source.append(.summary) }
         source.append(.dialog)
-        let canVote = false //isVoting.canVote
-        if isVoting {
+        if let voting = teammate.voting {
             isNewTeammate = true
-            if canVote || isMe {
+            if voting.canVote || isMe {
                 source.append(.voting)
             } else {
                 source.append(.voted)
