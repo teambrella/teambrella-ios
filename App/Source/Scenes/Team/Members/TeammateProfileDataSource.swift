@@ -138,15 +138,13 @@ class TeammateProfileDataSource {
         let canVote = false //isVoting.canVote
         if isVoting {
             isNewTeammate = true
-            if canVote {
+            if canVote || isMe {
                 source.append(.voting)
             } else {
                 source.append(.voted)
             }
             //source.append(.dialogCompact)
-        } else if isVoted {
-            source.append(.voted)
-        }
+        } //else if isVoted { source.append(.voted) }
         source.append(.object)
         source.append(.stats)
         if !socialItems.isEmpty && !isMe {
