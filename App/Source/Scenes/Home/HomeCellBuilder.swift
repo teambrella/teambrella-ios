@@ -22,11 +22,11 @@
 import Foundation
 
 struct HomeCellBuilder {
+    static var isInSupportMode: Bool = true
+    
     static func registerCells(in collectionView: UICollectionView) {
-//        collectionView.register(HomeFundCell.nib,
-//                                forCellWithReuseIdentifier: HomeFundCell.cellID)
-//        collectionView.register(HomeSupportCell.nib,
-//                                forCellWithReuseIdentifier: HomeSupportCell.cellID)
+        collectionView.register(HomeSupportCell.nib,
+                                forCellWithReuseIdentifier: HomeSupportCell.cellID)
         collectionView.register(HomeApplicationAcceptedCell.nib,
                                 forCellWithReuseIdentifier: HomeApplicationAcceptedCell.cellID)
         collectionView.register(HomeApplicationDeniedCell.nib,
@@ -37,11 +37,14 @@ struct HomeCellBuilder {
     
     static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeCardModel?) {
         guard let model = model else {
-//            populateFundWallet(cell: cell, dataSource: dataSource)
-//            populateSupport(cell: cell, dataSource: dataSource)
+//            populateSupportOrFund(cell: cell, dataSource: dataSource, isInSupportMode: true)
             return
         }
         
+        if model.itemType == .fundWallet {
+            isInSupportMode = false
+            populateSupportOrFund(cell: cell, dataSource: dataSource, isInSupportMode: false)
+        }
         switch cell {
         case let cell as HomeCollectionCell:
             populateHome(cell: cell, model: model)
@@ -82,23 +85,22 @@ struct HomeCellBuilder {
         cell.rightNumberView.isBadgeVisible = model.isVoting
     }
     
-    static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
+    static func populateSupportOrFund(cell: UICollectionViewCell, dataSource: HomeDataSource, isInSupportMode: Bool) {
         guard let cell = cell as? HomeSupportCell else { return }
         
+        if isInSupportMode {
             cell.headerLabel.text = "Home.SupportCell.headerLabel".localized
             cell.centerLabel.text = "Home.SupportCell.onlineLabel".localized
             cell.bottomLabel.text = "Home.SupportCell.textLabel".localized(dataSource.name.first)
             cell.button.setTitle("Home.SupportCell.chatButton".localized, for: .normal)
             cell.onlineIndicator.layer.cornerRadius = 3
-    }
-    
-    static func populateFundWallet(cell: UICollectionViewCell, dataSource: HomeDataSource) {
-        guard let cell = cell as? HomeFundCell else { return }
-        
-        cell.headerLabel.text = "Home.FundCell.headerLabel".localized
-        cell.centerLabel.textAlignment = .center
-        cell.centerLabel.text = "Home.FundCell.textLabel".localized(dataSource.name.first)
-        cell.button.setTitle("Home.FundCell.fundTitle".localized, for: .normal)
+        } else {
+            cell.headerLabel.text = "Home.FundCell.headerLabel".localized
+            cell.centerLabel.text = "Home.FundCell.subtitleLabel".localized
+            cell.bottomLabel.text = "Home.FundCell.textLabel".localized(dataSource.name.first)
+            cell.button.setTitle("Home.FundCell.fundTitle".localized, for: .normal)
+            cell.onlineIndicator.isHidden = true
+        }
     }
     
     static func populate(cell: HomeApplicationDeniedCell, with model: HomeCardModel) {

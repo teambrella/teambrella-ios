@@ -22,7 +22,7 @@
 import UIKit
 
 enum TeammateProfileCellType: String {
-    case me, summary, object, stats, contact, dialog, dialogCompact, voting
+    case me, summary, object, stats, contact, dialog, dialogCompact, voting, voted
 }
 
 enum SocialItemType: String {
@@ -130,15 +130,19 @@ class TeammateProfileDataSource {
         
         source.removeAll()
         isMyProxy = teammate.basic.isMyProxy
-        let isVoting = teammate.voting != nil
+        let isVoted = teammate.voted != nil
         
         //if isMe { source.append(.me) } else { source.append(.summary) }
         source.append(.dialog)
-        if isVoting {
+        if let voting = teammate.voting {
             isNewTeammate = true
+            if voting.canVote || isMe {
+                source.append(.voting)
+            } else {
+                source.append(.voted)
+            }
             //source.append(.dialogCompact)
-            source.append(.voting)
-        }
+        } //else if isVoted { source.append(.voted) }
         source.append(.object)
         source.append(.stats)
         if !socialItems.isEmpty && !isMe {

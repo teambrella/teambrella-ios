@@ -27,4 +27,6 @@ enum TeamAccessLevel: Int, Codable {
     case readOnly                 = 2
     case readAllAndEditMine       = 3
     case full                     = 4
+    case hiddenDetailsAndStealth  = -10
+    case readOnlyAllAndStealth    = -20
 }

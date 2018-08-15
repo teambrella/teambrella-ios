@@ -18,6 +18,7 @@
 
 "Team.ClaimCell.voting"                               = "Voting";
 "Team.ClaimCell.yourVote"                             = "your vote";
+"Team.ClaimCell.proxyVote"                            = "proxy vote";
 "Team.ClaimCell.byProxy"                              = "by proxy";
 "Team.ClaimCell.teamVote"                             = "team vote";
 "Team.ClaimCell.voteSubmitted"                        = "Vote Submitted";
@@ -122,6 +123,7 @@
 "Team.VotingRiskVC.headerLabel"                       = "VOTING: RISK";
 "Team.VotingRiskVC.numberBar.left"                    = "TEAM VOTE";
 "Team.VotingRiskVC.numberBar.right"                   = "YOUR VOTE";
+"Team.VotingRiskVC.numberBar.right.proxy"             = "PROXY VOTE";
 "Team.VotingRiskVC.avgLabel"                          = "AVG\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Reset Vote";
 "Team.VotingRiskVC.othersButton"                      = "Compare";
@@ -214,3 +216,9 @@
 "Team.Chat.ClaimPaidCell.buttonTitle" = "Share with friends";
 
 "Team.VotingRiskVC.avg"                          = "AVG";
+
+//waiting
+"Team.Chat.PayToJoin.text" = "Положи от 3000 руб в свой кошелёк и получи бонус +3000 руб в подарок.";
+"Team.Chat.PayToJoin.buttonTitle" = "Fund Wallet";
+
+"Team.Chat.ObjectView.TitleLabel.teamVote" = "TEAM VOTE";

@@ -145,7 +145,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         }
     }
     
-    func updateAverages(cell: VotingRiskCell, risk: Double) {
+    func updateAverages(cell: VotingOrVotedRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
             
             guard let averageRisk = dataSource.teammateLarge?.voting?.averageRisk else { return }
@@ -259,7 +259,10 @@ final class TeammateProfileVC: UIViewController, Routable {
     private func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
-        collectionView.register(VotingRiskCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
+        collectionView.register(VotingRiskCell.nib,
+                                    forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
+        collectionView.register(VotedRiskCell.nib,
+                                    forCellWithReuseIdentifier: TeammateProfileCellType.voted.rawValue)
         collectionView.register(TeammateSummaryView.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: TeammateSummaryView.cellID)
@@ -501,6 +504,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: 215)
         case .voting:
             return CGSize(width: wdt, height: 360)
+        case .voted:
+            return CGSize(width: wdt, height: 180)
         case .dialogCompact:
             return  CGSize(width: collectionView.bounds.width, height: 98)
         }
@@ -607,15 +612,16 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         cell.yourVoteValueLabel.text = String(format: "%.2f", changedRisk)
         cell.middleAvatarLabel.text = String(format: "%.2f", changedRisk)
         updateAverages(cell: cell, risk: changedRisk)
-        cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
         cell.showYourNoVote(risk: changedRisk)
         cell.colorizeCenterCell()
         let kind = UICollectionElementKindSectionHeader
         if let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? TeammateSummaryView {
             updateAmounts(in: view, with: changedRisk)
         }
-        if let header = compactUserInfoHeader {
-            updateAmounts(in: header, with: changedRisk)
+        if let canVote = dataSource.teammateLarge?.voting?.canVote, canVote == true {
+            if let header = compactUserInfoHeader {
+                updateAmounts(in: header, with: changedRisk)
+            }
         }
     }
     
@@ -691,6 +697,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     }
     
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView) {
+        if let canVote = dataSource.teammateLarge?.voting?.canVote, canVote == true {
         showHeader(offset: summaryViewNumberBarOffset)
         lastScrollMoment = Date()
         DispatchQueue.main.asyncAfter(deadline: .now() + Constant.votingHeaderShowTime) {
@@ -700,6 +707,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
                 self.hideHeader(animated: true)
                 self.lastScrollMoment = Date()
             }
+        }
         }
     }
     

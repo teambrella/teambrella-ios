@@ -36,7 +36,9 @@ struct TeammateCellBuilder {
         case let cell as TeammateStatsCell:
             populateStats(cell: cell, with: teammate, controller: controller)
         case let cell as VotingRiskCell:
-            populateVote(cell: cell, with: teammate, controller: controller)
+            populateVoting(cell: cell, with: teammate, controller: controller)
+        case let cell as VotedRiskCell:
+            populateVoted(cell: cell, with: teammate, controller: controller)
         case let cell as DiscussionCompactCell:
             populateCompactDiscussion(cell: cell, with: teammate.topic, avatar: teammate.basic.avatar)
         case let cell as MeCell:
@@ -90,7 +92,7 @@ struct TeammateCellBuilder {
          */
     }
     
-    private static func setVote(votingCell: VotingRiskCell,
+    private static func setVote(votingCell: VotingOrVotedRiskCell,
                                 voting: TeammateLarge.VotingInfo,
                                 controller: TeammateProfileVC) {
         let maxAvatarsStackCount = 4
@@ -111,11 +113,18 @@ struct TeammateCellBuilder {
                       proxyName: voting.proxyName,
                       proxyAvatar: voting.proxyAvatar)
         } else {
-            votingCell.resetVoteButton.isHidden = true
-            controller.resetVote(cell: votingCell)
+            if let cell = votingCell as? VotingRiskCell {
+                cell.resetVoteButton.isHidden = true
+                controller.resetVote(cell: cell)
+            }
             votingCell.showYourNoVote(risk: nil)
         }
-        controller.updateAverages(cell: votingCell, risk: votingCell.currentRisk)
+        if let cell = votingCell as? VotingRiskCell {
+            controller.updateAverages(cell: cell, risk: cell.currentRisk)
+        } else if let cell = votingCell as? VotedRiskCell, let risk = voting.riskVoted {
+            cell.setCurrentRisk(risk: risk)
+            controller.updateAverages(cell: cell, risk: cell.currentRisk)
+        }
         var prefix = ""
         if voting.remainingMinutes < 60 {
             prefix = "Team.Claim.minutes_format".localized(voting.remainingMinutes)
@@ -126,38 +135,60 @@ struct TeammateCellBuilder {
         }
         votingCell.timeLabel.text = prefix.uppercased() + " " +
             DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
+        votingCell.pieChart.setupWith(remainingMinutes: voting.remainingMinutes)
     }
     
-    private static func setMyVote(votingCell: VotingRiskCell,
+    private static func setMyVote(votingCell: VotingOrVotedRiskCell,
                                   myVote: Double,
                                   proxyName: String?,
                                   proxyAvatar: Avatar?) {
+        var votingCell = votingCell
         if proxyName != nil {
             votingCell.isProxyHidden = false
-            votingCell.resetVoteButton.isHidden = true
-            votingCell.layoutIfNeeded()
-            votingCell.yourVoteValueLabel.alpha = 1
-            votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-            votingCell.scrollTo(risk: myVote, silently: true, animated: false)
-            votingCell.showYourNoVote(risk: myVote)
+            if let cell = votingCell as? VotingRiskCell {
+                cell.resetVoteButton.isHidden = true
+                cell.layoutIfNeeded()
+                cell.scrollTo(risk: myVote, silently: true, animated: false)
+                cell.proxyNameLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+            } else {
+                votingCell.yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right.proxy".localized
+                if let proxy = proxyName {
+                    votingCell.proxyNameLabel.text = proxy.uppercased()
+                }
+            }
             if let avatar = proxyAvatar {
                 votingCell.proxyAvatarView.show(avatar)
             }
-            votingCell.proxyNameLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
-        } else {
-            votingCell.layoutIfNeeded()
             votingCell.yourVoteValueLabel.alpha = 1
             votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
-            votingCell.scrollTo(risk: myVote, silently: true, animated: false)
             votingCell.showYourNoVote(risk: myVote)
+        } else {
+            if let cell = votingCell as? VotingRiskCell {
+                cell.layoutIfNeeded()
+                cell.resetVoteButton.isHidden = false
+                cell.scrollTo(risk: myVote, silently: true, animated: false)
+            }
             votingCell.isProxyHidden = true
-            votingCell.resetVoteButton.isHidden = false
+            votingCell.yourVoteValueLabel.alpha = 1
+            votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
+            votingCell.showYourNoVote(risk: myVote)
         }
     }
     
-    private static func populateVote(cell: VotingRiskCell,
-                                     with teammate: TeammateLarge,
-                                     controller: TeammateProfileVC) {
+    private static func populateVoted(cell: VotedRiskCell,
+                                      with teammate: TeammateLarge,
+                                      controller: TeammateProfileVC) {
+        cell.delegate = controller
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        if let voting = teammate.voting {
+            setVote(votingCell: cell, voting: voting, controller: controller)
+        }
+    }
+    
+    private static func populateVoting(cell: VotingRiskCell,
+                                       with teammate: TeammateLarge,
+                                       controller: TeammateProfileVC) {
         cell.delegate = controller
         if let riskScale = teammate.riskScale, controller.isRiskScaleUpdateNeeded == true {
             cell.updateWithRiskScale(riskScale: riskScale)
@@ -231,7 +262,7 @@ struct TeammateCellBuilder {
             right.titleLabel.text = "Team.TeammateCell.risk".localized
             right.amountLabel.text = String(format: "%.1f", teammate.basic.risk)
             let avg = String.truncatedNumber(abs(teammate.basic.risk - teammate.basic.averageRisk) * 100)
-
+            
             if teammate.basic.risk - teammate.basic.averageRisk == 0 {
                 right.badgeLabel.text = "Team.VotingRiskVC.avg".localized
                 right.badgeLabel.leftInset = CGFloat(4)

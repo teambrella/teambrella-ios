@@ -233,13 +233,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" text="6 DAYS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="4uw-BF-uDk" customClass="ThinStatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="136" y="44" width="42" height="14.5"/>
+                                <rect key="frame" x="128" y="44" width="42" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.70588235290000001" green="0.74901960779999999" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="1fO-Rr-g6b" customClass="PieChartView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="186" y="41" width="20" height="20"/>
+                                <rect key="frame" x="178" y="41" width="20" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2Px-Qd-632"/>
@@ -435,7 +435,7 @@
                             <constraint firstItem="4uw-BF-uDk" firstAttribute="centerY" secondItem="73P-Jh-cgD" secondAttribute="centerY" id="w0A-rF-Cdn"/>
                             <constraint firstItem="4uw-BF-uDk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="73P-Jh-cgD" secondAttribute="trailing" constant="5" id="wAq-8l-5c7"/>
                             <constraint firstItem="VDN-tt-rep" firstAttribute="centerY" secondItem="XY2-Tj-qf7" secondAttribute="centerY" constant="1" id="xBS-Dp-cqZ"/>
-                            <constraint firstItem="4uw-BF-uDk" firstAttribute="leading" secondItem="73P-Jh-cgD" secondAttribute="trailing" priority="250" constant="16" id="xd6-6P-LKm"/>
+                            <constraint firstItem="4uw-BF-uDk" firstAttribute="leading" secondItem="73P-Jh-cgD" secondAttribute="trailing" priority="250" constant="8" id="xd6-6P-LKm"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -450,6 +450,7 @@
             <size key="customSize" width="595" height="393"/>
             <connections>
                 <outlet property="collectionView" destination="aiG-hq-p1u" id="OAh-Dx-F2F"/>
+                <outlet property="forward" destination="VDN-tt-rep" id="50X-LU-lsA"/>
                 <outlet property="leftAvatar" destination="FcP-VF-oBu" id="j9s-IB-U8n"/>
                 <outlet property="leftAvatarLabel" destination="XSt-gb-Ihh" id="kgP-mh-pnW"/>
                 <outlet property="middleAvatar" destination="zPb-mX-NaQ" id="6fv-C6-F26"/>
@@ -458,6 +459,7 @@
                 <outlet property="othersLabel" destination="TAs-Dm-HYL" id="CpL-PY-yY4"/>
                 <outlet property="othersLabelTrailingConstraint" destination="RIP-47-Dyz" id="1Pc-ow-oKz"/>
                 <outlet property="othersVotesButton" destination="6qt-e2-WfN" id="KOs-EM-6LC"/>
+                <outlet property="pearImageView" destination="aVs-ZO-f7v" id="Ary-Js-Lqz"/>
                 <outlet property="pieChart" destination="1fO-Rr-g6b" id="Uxn-fZ-G4B"/>
                 <outlet property="proxyAvatarView" destination="94E-S6-lnc" id="6EN-md-DQm"/>
                 <outlet property="proxyNameLabel" destination="p7M-Nv-AVa" id="jkb-eC-gk1"/>

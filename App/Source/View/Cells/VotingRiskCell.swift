@@ -31,7 +31,7 @@ protocol VotingRiskCellDelegate: class {
     func averageVotingRisk(cell: VotingRiskCell) -> Double
 }
 
-class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
+class VotingRiskCell: UICollectionViewCell, VotingOrVotedRiskCell {
     @IBOutlet var titleLabel: BlockHeaderLabel!
     @IBOutlet var timeLabel: ThinStatusSubtitleLabel!
     @IBOutlet var pieChart: PieChartView!
@@ -56,6 +56,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var swipeToVoteView: SwipeToVote!
     
+    @IBOutlet var pearImageView: UIImageView!
     @IBOutlet var leftAvatar: RoundImageView!
     @IBOutlet var leftAvatarLabel: UILabel!
     
@@ -65,6 +66,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var rightAvatar: RoundImageView!
     @IBOutlet var rightAvatarLabel: UILabel!
     
+    @IBOutlet var forward: UIImageView!
     @IBOutlet var othersButton: UIButton!
     @IBOutlet weak var othersLabel: MessageTitleLabel!
     

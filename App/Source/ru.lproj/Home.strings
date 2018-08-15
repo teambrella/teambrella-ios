@@ -13,7 +13,7 @@
 "Home.leftBrick.title"                                  = "ЗАЩИТА";
 "Home.rightBrick.title"                                 = "КОШЕЛЁК";
 "Home.itemCard.status"                                  = "ЗАЩИЩЕНО";
-"Home.itemCard.coverageType"                            = "Франшиза";
+"Home.itemCard.coverageType"                            = "Ущерб"; //"Франшиза";
 
 "Home.SupportCell.headerLabel"                          = "Техподдержка";
 "Home.SupportCell.onlineLabel"                          = "ОНЛАЙН";
@@ -38,6 +38,7 @@
 "Home.Empty.Title.noPrivateMessages"                    = "У тебя нет сообщений";
 "Home.Empty.SubTitle.noPrivateMessages"                 = "Напиши твоё первое приватное сообщение кому-нибудь из участников.";
 
-"Home.FundCell.headerLabel" = "Недостаточно средств";
-"Home.FundCell.textLabel" = "Пожалуйста, пополните кошелёк, чтобы стать частью команды";
+"Home.FundCell.headerLabel" = "ПРОМО АКЦИЯ";
+"Home.FundCell.subtitleLabel" = "Необходимо пополнение";
+"Home.FundCell.textLabel" = "Чтобы начать, нужна сумма на твоём кошельке. Сумма обеспечит ответное покрытие от 128 участников. Положи от 3000 р. и получи 3000 бонусных р. на свой кошелёк.";
 "Home.FundCell.fundTitle" = "Пополнить кошелёк";
