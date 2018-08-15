@@ -43,7 +43,16 @@ struct ClaimsCellBuilder {
         
         if let cell = cell as? ClaimsOpenCell {
             cell.avatarView.show(claim.smallPhoto)
-            cell.button.setTitle("Team.ClaimsCell.viewToVote".localized, for: .normal)
+            
+            if let accessLevel = service.session?.currentTeam?.teamAccessLevel {
+                let title = accessLevel == .full
+                    ? "Team.ClaimsCell.viewToVote".localized
+                    : "Team.ClaimsCell.view".localized
+                cell.button.setTitle(title, for: .normal)
+            } else {
+                cell.button.setTitle("Team.ClaimsCell.viewToVote".localized, for: .normal)
+            }
+            
             cell.claimedAmountLabel.text = currencySymbol + claim.claimAmount.formatted
             cell.claimedAmountLabel.font = isSmallIPhone ?
                 UIFont.teambrellaBold(size: 16) : UIFont.teambrellaBold(size: 20)
