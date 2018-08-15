@@ -148,6 +148,10 @@ extension FeedVC: UICollectionViewDelegate {
             if let accessLevel = service.session?.currentTeam?.teamAccessLevel {
                 view.button.isEnabled = accessLevel == .full
             }
+            view.button.setTitleColor(#colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1), for: .disabled)
+            view.button.borderColor = view.button.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
+            view.button.shadowColor = view.button.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 0.2) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 0.2)
+            view.button.alpha = view.button.isEnabled ? 1 : 0.5
         }
     }
     

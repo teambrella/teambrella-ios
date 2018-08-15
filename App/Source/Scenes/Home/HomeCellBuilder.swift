@@ -139,7 +139,7 @@ struct HomeCellBuilder {
         cell.leftNumberView.currencyLabel.text = session?.currentTeam?.currencySymbol ?? ""
         cell.leftNumberView.isCurrencyVisible = true
         cell.leftNumberView.isPercentVisible = false
-        cell.rightNumberView.amountLabel.text = model.teamVote * 100 == 0
+        cell.rightNumberView.amountLabel.text = model.teamVote * 100 != 0
             ? String(format: "%.0f", model.teamVote * 100)
             : "..."
         cell.rightNumberView.isBadgeVisible = model.isVoting
@@ -155,8 +155,8 @@ struct HomeCellBuilder {
         cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
         cell.leftNumberView.isCurrencyVisible = true
         cell.leftNumberView.isPercentVisible = false
-        cell.rightNumberView.amountLabel.text = model.teamVote * 100 == 0
-            ? String(format: "%.0f", model.teamVote * 100)
+        cell.rightNumberView.amountLabel.text = model.teamVote != 0
+            ? String(format: "%.1f", model.teamVote)
             : "..."
         cell.rightNumberView.isBadgeVisible = model.isVoting
         cell.rightNumberView.isCurrencyVisible = false

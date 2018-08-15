@@ -237,6 +237,10 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         if let accessLevel = service.session?.currentTeam?.teamAccessLevel {
             submitClaimButton.isEnabled = accessLevel == .full
         }
+        submitClaimButton.setTitleColor(#colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1), for: .disabled)
+        submitClaimButton.borderColor = submitClaimButton.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
+        submitClaimButton.shadowColor = submitClaimButton.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 0.2) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 0.2)
+        submitClaimButton.alpha = submitClaimButton.isEnabled ? 1 : 0.5
         HUD.hide()
     }
     
@@ -323,9 +327,9 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard indexPath.row < dataSource.cardsCount - 1 else {
+        guard indexPath.row < dataSource.cardsCount /*- 1*/ else {
             // handle Chat with support tap
-            DeveloperTools.notSupportedAlert(in: self)
+//            DeveloperTools.notSupportedAlert(in: self)
             return
         }
         
