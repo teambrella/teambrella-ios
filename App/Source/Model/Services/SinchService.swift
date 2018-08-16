@@ -16,6 +16,12 @@
 
 import Foundation
 
+protocol SinchServiceDelegate: class {
+    func sinch(service: SinchService, didStartCall: Any)
+    func sinch(service: SinchService, didEndCall: Any)
+    func sinch(service: SinchService, didFail: Error)
+}
+
 final class SinchService: NSObject {
     #if SURILLA
     let host = "sandbox.sinch.com"
@@ -32,6 +38,8 @@ final class SinchService: NSObject {
 
     var push: SINManagedPush?
     var currentUserID: String?
+
+    weak var delegate: SinchServiceDelegate?
 
     func setupPush() {
         push = Sinch.managedPush(with: environment)
@@ -95,6 +103,12 @@ final class SinchService: NSObject {
         call.delegate = self
     }
 
+    func stopCalling() {
+  guard let client = client else { return }
+
+     
+    }
+
 }
 
 extension SinchService: SINClientDelegate {
@@ -116,6 +130,7 @@ extension SinchService: SINClientDelegate {
 extension SinchService: SINCallDelegate {
     func callDidEstablish(_ call: SINCall!) {
         print("\(#file); \(#function), \(call)")
+        delegate?.sinch(service: self, didStartCall: call)
     }
 
     func callDidProgress(_ call: SINCall!) {
@@ -138,6 +153,7 @@ extension SinchService: SINCallDelegate {
         default:
             print("other cause")
         }
+        delegate?.sinch(service: self, didEndCall: call)
     }
 
     func call(_ call: SINCall!, shouldSendPushNotifications pushPairs: [Any]!) {

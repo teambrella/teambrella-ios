@@ -354,6 +354,18 @@ final class MainRouter {
         vc.privateKey = service.keyStorage.privateKey
         viewController.present(vc, animated: true, completion: nil)
     }
+
+    @discardableResult
+    func showCall(in viewController: UIViewController, to name: String, avatar: String, id: String) -> CallVC {
+        guard let vc = CallVC.instantiate() as? CallVC else { fatalError("Error instantiating") }
+
+        vc.name = name
+        vc.avatar = avatar
+        vc.id = id
+        viewController.present(vc, animated: true, completion: nil)
+        return vc
+    }
+
     /*
      func pushOrReuse(vc: UIViewController,
      animated: Bool = true,

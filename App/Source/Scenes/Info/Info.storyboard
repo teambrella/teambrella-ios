@@ -40,7 +40,7 @@
                                 <rect key="frame" x="56.5" y="50" width="262.5" height="203"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qnd-rT-Nij">
-                                <rect key="frame" x="10" y="306.5" width="355" height="55.5"/>
+                                <rect key="frame" x="10" y="306" width="355" height="55.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9r-qh-PtF">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="30.5"/>
@@ -230,6 +230,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ykv-OY-Nfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-177" y="786"/>
+        </scene>
+        <!--CallVC-->
+        <scene sceneID="lH9-0c-iBm">
+            <objects>
+                <viewController storyboardIdentifier="CallVC" id="2cc-t7-WOG" customClass="CallVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YvE-1h-VJr"/>
+                        <viewControllerLayoutGuide type="bottom" id="1UD-lS-g9e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xNb-z1-brx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSe-wK-UEz">
+                                <rect key="frame" x="152" y="36" width="71" height="27"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="22"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IRm-1g-C16" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="112" y="79" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IRm-1g-C16" secondAttribute="height" multiplier="1:1" id="Bey-V2-gyG"/>
+                                    <constraint firstAttribute="width" constant="150" id="vQO-FF-zKy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocy-xG-gtj">
+                                <rect key="frame" x="16" y="245" width="343" height="27"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="22"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvT-4U-Y9V" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="16" y="592" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="LpX-Fd-S6B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasGradientBackground" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.84705882349999995" green="0.89411764709999997" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapCancel:" destination="2cc-t7-WOG" eventType="touchUpInside" id="fVL-dh-qaV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AvT-4U-Y9V" firstAttribute="width" secondItem="xNb-z1-brx" secondAttribute="width" constant="-32" id="1kf-li-1Vm"/>
+                            <constraint firstItem="AvT-4U-Y9V" firstAttribute="centerX" secondItem="xNb-z1-brx" secondAttribute="centerX" id="4oB-ID-zdV"/>
+                            <constraint firstItem="1UD-lS-g9e" firstAttribute="top" secondItem="AvT-4U-Y9V" secondAttribute="bottom" constant="30" id="B9x-KY-rJR"/>
+                            <constraint firstItem="ocy-xG-gtj" firstAttribute="leading" secondItem="xNb-z1-brx" secondAttribute="leading" constant="16" id="QFF-9N-gU9"/>
+                            <constraint firstItem="mSe-wK-UEz" firstAttribute="centerX" secondItem="xNb-z1-brx" secondAttribute="centerX" id="QxT-IK-el6"/>
+                            <constraint firstItem="IRm-1g-C16" firstAttribute="top" secondItem="mSe-wK-UEz" secondAttribute="bottom" constant="16" id="X06-bb-RGP"/>
+                            <constraint firstItem="mSe-wK-UEz" firstAttribute="top" secondItem="YvE-1h-VJr" secondAttribute="bottom" constant="16" id="XHh-nc-XEg"/>
+                            <constraint firstAttribute="trailing" secondItem="ocy-xG-gtj" secondAttribute="trailing" constant="16" id="m88-nx-h96"/>
+                            <constraint firstItem="ocy-xG-gtj" firstAttribute="top" secondItem="IRm-1g-C16" secondAttribute="bottom" constant="16" id="oIS-91-XoR"/>
+                            <constraint firstItem="IRm-1g-C16" firstAttribute="centerX" secondItem="xNb-z1-brx" secondAttribute="centerX" id="v06-YN-7Ga"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="avatarView" destination="IRm-1g-C16" id="PJI-8S-kl1"/>
+                        <outlet property="cancelButton" destination="AvT-4U-Y9V" id="Eqd-1G-aTN"/>
+                        <outlet property="headerLabel" destination="mSe-wK-UEz" id="kEK-Gv-Z71"/>
+                        <outlet property="nameLabel" destination="ocy-xG-gtj" id="i39-OC-L3A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ga2-DA-XY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="836" y="779"/>
         </scene>
         <!--Code CaptureVC-->
         <scene sceneID="f7e-DT-Vwf">
