@@ -34,7 +34,7 @@ final class SinchService: NSObject {
     var client: SINClient?
     var callClient: SINCallClient?
 
-    var outgoingCall: SINCall?
+    var call: SINCall?
 
     var push: SINManagedPush?
     var currentUserID: String?
@@ -93,8 +93,6 @@ final class SinchService: NSObject {
         guard let client = client else { return }
 
         print("Calling \(userID)")
-        let callClient = client.call()
-        callClient?.delegate = self
         guard let call = callClient?.callUser(withId: userID) else {
             print("Couldn't establish call")
             return
@@ -104,8 +102,8 @@ final class SinchService: NSObject {
     }
 
     func stopCalling() {
-        guard let client = client else { return }
-
+        self.call?.hangup()
+        self.call = nil
     }
 
 }
@@ -113,6 +111,9 @@ final class SinchService: NSObject {
 extension SinchService: SINClientDelegate {
     func clientDidStart(_ client: SINClient!) {
         print("\(#file); \(#function)")
+        let callClient = client.call()
+        callClient?.delegate = self
+        self.callClient = callClient
     }
 
     func clientDidStop(_ client: SINClient!) {
@@ -134,6 +135,7 @@ extension SinchService: SINCallDelegate {
 
     func callDidProgress(_ call: SINCall!) {
         print("\(#file); \(#function), \(call)")
+        self.call = call
     }
 
     func callDidEnd(_ call: SINCall!) {
@@ -153,6 +155,7 @@ extension SinchService: SINCallDelegate {
             print("other cause")
         }
         delegate?.sinch(service: self, didEndCall: call)
+        self.call = nil
     }
 
     func call(_ call: SINCall!, shouldSendPushNotifications pushPairs: [Any]!) {
@@ -163,8 +166,9 @@ extension SinchService: SINCallDelegate {
 // Manage incoming calls
 extension SinchService: SINCallClientDelegate {
     func client(_ client: SINCallClient!, didReceiveIncomingCall call: SINCall!) {
-
         call.delegate = self
+        self.call = call
+        call.answer()
     }
 
     func client(_ client: SINCallClient!,

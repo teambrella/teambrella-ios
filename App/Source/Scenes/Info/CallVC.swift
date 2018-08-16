@@ -32,16 +32,22 @@ class CallVC: UIViewController, Routable {
     var sinch: SinchService { return service.sinch }
 
     var periodicEvent: PeriodicEvent?
+    var isConnected: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         nameLabel.text = name
         avatarView.showAvatar(string: avatar)
+
         sinch.delegate = self
 
         headerLabel.text = "Info.CallVC.calling".localized
         cancelButton.setTitle("Info.CallVC.CancelButton.Title".localized, for: .normal)
+        createPeriodicEvent()
+    }
+
+    private func createPeriodicEvent() {
         periodicEvent = PeriodicEvent(step: 1, event: { [weak self] in
             self?.updateTimeLabel()
         })
@@ -51,7 +57,12 @@ class CallVC: UIViewController, Routable {
         guard let event = periodicEvent else { return }
 
         let interval = Interval(start: event.startDate, end: Date())
-        timeLabel.text = interval.formattedString
+        if isConnected {
+            timeLabel.text = interval.formattedString
+        } else {
+            timeLabel.text = String(repeating: ".", count: interval.seconds % 3 + 1)
+        }
+
     }
 
     @IBAction func tapCancel(_ sender: BorderedButton) {
@@ -74,10 +85,12 @@ extension CallVC: SinchServiceDelegate {
     }
 
     func sinch(service: SinchService, didEndCall: Any) {
-close()
+        close()
     }
 
     func sinch(service: SinchService, didStartCall: Any) {
-
+        periodicEvent?.invalidate()
+        isConnected = true
+        createPeriodicEvent()
     }
 }
