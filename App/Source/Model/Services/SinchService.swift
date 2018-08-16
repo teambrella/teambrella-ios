@@ -25,7 +25,7 @@ protocol SinchServiceDelegate: class {
 final class SinchService: NSObject {
     #if SURILLA
     let host = "sandbox.sinch.com"
-   let environment: SINAPSEnvironment = .development
+    let environment: SINAPSEnvironment = .development
     #else
     let host = "clientapi.sinch.com"
     let environment: SINAPSEnvironment = .production
@@ -104,9 +104,8 @@ final class SinchService: NSObject {
     }
 
     func stopCalling() {
-  guard let client = client else { return }
+        guard let client = client else { return }
 
-     
     }
 
 }
@@ -134,7 +133,7 @@ extension SinchService: SINCallDelegate {
     }
 
     func callDidProgress(_ call: SINCall!) {
-       print("\(#file); \(#function), \(call)")
+        print("\(#file); \(#function), \(call)")
     }
 
     func callDidEnd(_ call: SINCall!) {

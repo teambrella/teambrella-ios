@@ -284,6 +284,12 @@
                                     <action selector="tapCancel:" destination="2cc-t7-WOG" eventType="touchUpInside" id="fVL-dh-qaV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZF-IF-SyZ">
+                                <rect key="frame" x="188" y="292" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="35"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -294,9 +300,11 @@
                             <constraint firstItem="mSe-wK-UEz" firstAttribute="centerX" secondItem="xNb-z1-brx" secondAttribute="centerX" id="QxT-IK-el6"/>
                             <constraint firstItem="IRm-1g-C16" firstAttribute="top" secondItem="mSe-wK-UEz" secondAttribute="bottom" constant="16" id="X06-bb-RGP"/>
                             <constraint firstItem="mSe-wK-UEz" firstAttribute="top" secondItem="YvE-1h-VJr" secondAttribute="bottom" constant="16" id="XHh-nc-XEg"/>
+                            <constraint firstItem="4ZF-IF-SyZ" firstAttribute="top" secondItem="ocy-xG-gtj" secondAttribute="bottom" constant="20" id="afr-G0-s4k"/>
                             <constraint firstAttribute="trailing" secondItem="ocy-xG-gtj" secondAttribute="trailing" constant="16" id="m88-nx-h96"/>
                             <constraint firstItem="ocy-xG-gtj" firstAttribute="top" secondItem="IRm-1g-C16" secondAttribute="bottom" constant="16" id="oIS-91-XoR"/>
                             <constraint firstItem="IRm-1g-C16" firstAttribute="centerX" secondItem="xNb-z1-brx" secondAttribute="centerX" id="v06-YN-7Ga"/>
+                            <constraint firstItem="4ZF-IF-SyZ" firstAttribute="centerX" secondItem="xNb-z1-brx" secondAttribute="centerX" id="zNu-jE-Zs3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -304,6 +312,7 @@
                         <outlet property="cancelButton" destination="AvT-4U-Y9V" id="Eqd-1G-aTN"/>
                         <outlet property="headerLabel" destination="mSe-wK-UEz" id="kEK-Gv-Z71"/>
                         <outlet property="nameLabel" destination="ocy-xG-gtj" id="i39-OC-L3A"/>
+                        <outlet property="timeLabel" destination="4ZF-IF-SyZ" id="xP8-MR-dwu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ga2-DA-XY3" userLabel="First Responder" sceneMemberID="firstResponder"/>

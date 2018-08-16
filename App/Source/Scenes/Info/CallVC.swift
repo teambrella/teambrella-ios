@@ -23,6 +23,7 @@ class CallVC: UIViewController, Routable {
     @IBOutlet var avatarView: RoundImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var cancelButton: BorderedButton!
+    @IBOutlet var timeLabel: UILabel!
 
     var name: String!
     var avatar: String!
@@ -30,12 +31,27 @@ class CallVC: UIViewController, Routable {
 
     var sinch: SinchService { return service.sinch }
 
+    var periodicEvent: PeriodicEvent?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         nameLabel.text = name
         avatarView.showAvatar(string: avatar)
         sinch.delegate = self
+
+        headerLabel.text = "Info.CallVC.calling".localized
+        cancelButton.setTitle("Info.CallVC.CancelButton.Title".localized, for: .normal)
+        periodicEvent = PeriodicEvent(step: 1, event: { [weak self] in
+            self?.updateTimeLabel()
+        })
+    }
+
+    private func updateTimeLabel() {
+        guard let event = periodicEvent else { return }
+
+        let interval = Interval(start: event.startDate, end: Date())
+        timeLabel.text = interval.formattedString
     }
 
     @IBAction func tapCancel(_ sender: BorderedButton) {
