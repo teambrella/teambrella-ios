@@ -378,6 +378,12 @@ final class MainRouter {
         service.socket = socket
         service.teambrella.signToSockets(service: socket)
         service.watch = WatchService()
+
+        if !isDemo {
+            let userID = teamsModel.userID
+            SimpleStorage().store(string: userID, forKey: .userID)
+            service.sinch.startWith(userID: userID)
+        }
     }
     
     @discardableResult
@@ -387,6 +393,8 @@ final class MainRouter {
         PlistStorage().removeCache()
         service.session = nil
         service.keyStorage.clearLastUserType()
+        SimpleStorage().cleanValue(forKey: .userID)
+        service.sinch.terminate()
         navigator.clear()
         do {
             try
@@ -440,7 +448,7 @@ final class MainRouter {
                          delegate: CodeCaptureDelegate,
                          type: CodeCaptureVC.LayoutType = .ethereum) -> CodeCaptureVC? {
         guard let vc = CodeCaptureVC.instantiate() as? CodeCaptureVC else { return nil }
-
+        
         vc.type = type
         vc.delegate = delegate
         controller.present(vc, animated: true)

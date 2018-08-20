@@ -61,5 +61,7 @@ final class ServicesHandler {
     
     /// service to store current user state. Teams, names unread counts etc
     var session: Session?
+
+    var sinch: SinchService = SinchService()
     
 }
