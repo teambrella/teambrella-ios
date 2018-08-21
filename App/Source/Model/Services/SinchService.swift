@@ -49,6 +49,7 @@ final class SinchService: NSObject {
                 return
             }
 
+            print("Terminating previous session (userID: \(currentUserID)")
             terminate()
         }
         
@@ -56,15 +57,20 @@ final class SinchService: NSObject {
                                              applicationSecret: "N6x/aZ3ZkEOaIUdNK4/T6w==",
                                              environmentHost: host,
                                              userId: userID)
-        client.setSupportCalling(true)
+        print("Sinch client created for userID: \(userID)")
         client.enableManagedPushNotifications()
-
+        client.setSupportCalling(true)
+        client.setSupportPushNotifications(true)
         client.delegate = self
         client.start()
         client.startListeningOnActiveConnection()
+        print("Sinch start client: \(client.description)")
 
         self.client = client
         self.currentUserID = userID
+
+        setupPush()
+        askPushCredentialsIfNeeded()
     }
 
     func terminate() {
@@ -78,17 +84,16 @@ final class SinchService: NSObject {
     func call(userID: String) {
         guard let client = client else { return }
 
+        print("Calling \(userID)")
         let callClient = client.call()
-        self.callClient = callClient
+        callClient?.delegate = self
         guard let call = callClient?.callUser(withId: userID) else {
             print("Couldn't establish call")
             return
         }
 
         call.delegate = self
-        self.outgoingCall = call
     }
-
 
 }
 
@@ -110,15 +115,29 @@ extension SinchService: SINClientDelegate {
 // Manage outgoing calls
 extension SinchService: SINCallDelegate {
     func callDidEstablish(_ call: SINCall!) {
-        print("\(#file); \(#function)")
+        print("\(#file); \(#function), \(call)")
     }
 
     func callDidProgress(_ call: SINCall!) {
-        print("\(#file); \(#function)")
+       print("\(#file); \(#function), \(call)")
     }
 
     func callDidEnd(_ call: SINCall!) {
-        print("\(#file); \(#function)")
+        print("\(#file); \(#function), \(call.details)")
+        switch call.details.endCause {
+        case .canceled:
+            print("cancelled")
+        case .denied:
+            print("denied")
+        case .error:
+            print("error")
+        case .noAnswer:
+            print("no answer")
+        case .timeout:
+            print("timeout")
+        default:
+            print("other cause")
+        }
     }
 
     func call(_ call: SINCall!, shouldSendPushNotifications pushPairs: [Any]!) {
@@ -144,10 +163,8 @@ extension SinchService: SINCallClientDelegate {
 
 extension SinchService: SINManagedPushDelegate {
     func managedPush(_ managedPush: SINManagedPush!,
-                     didReceiveIncomingPushWithPayload payload: [AnyHashable : Any]!,
+                     didReceiveIncomingPushWithPayload payload: [AnyHashable: Any]!,
                      forType pushType: String!) {
         print("Sinch Service Received push with payload: \(payload)")
     }
 }
-
-

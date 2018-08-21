@@ -345,6 +345,10 @@ final class TeammateProfileVC: UIViewController, Routable {
             animator.startAnimation()
         }
     }
+
+    private func makeACall() {
+        service.sinch.call(userID: teammateID)
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -583,8 +587,7 @@ extension TeammateProfileVC: UITableViewDelegate {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
         if dataSource.isMyProxy && item.type == .call {
-            DeveloperTools.notSupportedAlert(in: self)
-            //call my proxy
+            makeACall()
         }
     }
     
