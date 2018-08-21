@@ -15,6 +15,7 @@
  */
 
 import Foundation
+import CallKit
 
 protocol SinchServiceDelegate: class {
     func sinch(service: SinchService, didStartCall: Any)
@@ -38,6 +39,12 @@ final class SinchService: NSObject {
 
     var push: SINManagedPush?
     var currentUserID: String?
+
+   lazy var callService: CallKitService = {
+    let service = CallKitService()
+    service.setDelegate(self)
+    return service
+   }()
 
     weak var delegate: SinchServiceDelegate?
 
@@ -168,7 +175,12 @@ extension SinchService: SINCallClientDelegate {
     func client(_ client: SINCallClient!, didReceiveIncomingCall call: SINCall!) {
         call.delegate = self
         self.call = call
-        call.answer()
+
+        guard let id = UUID(uuidString: call.remoteUserId) else { return }
+        callService.incomingCall(from: call.remoteUserId, id: id) { error in
+
+        }
+        //call.answer()
     }
 
     func client(_ client: SINCallClient!,
@@ -186,4 +198,25 @@ extension SinchService: SINManagedPushDelegate {
                      forType pushType: String!) {
         print("Sinch Service Received push with payload: \(payload)")
     }
+}
+
+extension SinchService: CXProviderDelegate {
+    func providerDidReset(_ provider: CXProvider) {
+    }
+
+    func provider(_ provider: CXProvider, perform action: CXStartCallAction) {
+        callService.outgoingCallStartedConnecting(id: action.callUUID)
+    }
+
+    func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
+        self.call?.answer()
+        action.fulfill()
+        callService.
+    }
+
+    func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
+        self.stopCalling()
+        action.fulfill()
+    }
+
 }
