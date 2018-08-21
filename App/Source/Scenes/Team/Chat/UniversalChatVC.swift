@@ -348,6 +348,7 @@ private extension UniversalChatVC {
     
     private func addMuteButton() {
         let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         let barItem = UIBarButtonItem(customView: button)
         button.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
         self.muteButton = button

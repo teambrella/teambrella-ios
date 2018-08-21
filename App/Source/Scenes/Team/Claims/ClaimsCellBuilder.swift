@@ -30,7 +30,7 @@ protocol ClaimsCell {
 }
 
 struct ClaimsCellBuilder {
-    // swiftlint:disable:next function_body_length
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     static func populate(cell: UICollectionViewCell, with claim: ClaimEntity) {
         guard let cell = cell as? ClaimsCell else { return }
 

@@ -40,6 +40,8 @@ final class ClaimVC: UIViewController, Routable {
     var session: Session!
     var router: MainRouter!
     
+    var teammateAvatarButton = UIButton()
+    
     @IBOutlet var collectionView: UICollectionView!
     
     // MARK: Lifecycle
@@ -81,6 +83,7 @@ final class ClaimVC: UIViewController, Routable {
             isPeeking = false
         }
         addGradientNavBarIfNeeded()
+        addTeammateAvatarButton()
     }
     
     override func didReceiveMemoryWarning() {
@@ -132,6 +135,16 @@ final class ClaimVC: UIViewController, Routable {
         guard let claimID = dataSource.claim?.id else { return }
         
         router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
+    }
+    
+    @objc
+    func tapTeammateAvatarButton(sender: UIButton) {
+        guard let teammateID = dataSource.claim?.basic.userID else {
+            log("Tap teammateAvatar. No teammate found!", type: .userInteraction)
+            return
+        }
+        
+        router.presentMemberProfile(teammateID: teammateID)
     }
     
     // MARK: Private
@@ -215,6 +228,41 @@ final class ClaimVC: UIViewController, Routable {
             
             navigationBar.addSubview(secondLabel)
         }
+    }
+    
+    private func addTeammateAvatarButton() {
+        let teammateAvatarButton = UIButton()
+        teammateAvatarButton.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
+        let barItem = UIBarButtonItem(customView: teammateAvatarButton)
+        teammateAvatarButton.addTarget(self, action: #selector(tapTeammateAvatarButton), for: .touchUpInside)
+        self.teammateAvatarButton = teammateAvatarButton
+        guard let avatar = dataSource.claim?.basic.avatar else {
+            log("No teammateAvatar found!", type: .error)
+            return
+        }
+        
+        UIImage.fetchAvatar(string: avatar,
+                            width: 35,
+                            cornerRadius: 15) { image, error  in
+                                guard error == nil else { return }
+                                guard let image = image, let cgImage = image.cgImage else { return }
+
+                                let scaled = UIImage(cgImage: cgImage,
+                                                     scale: UIScreen.main.nativeScale,
+                                                     orientation: image.imageOrientation)
+                                self.teammateAvatarButton.setImage(scaled, for: .normal)
+                                self.teammateAvatarButton.imageView?.contentMode = .scaleAspectFill
+                                self.teammateAvatarButton.imageView?.clipsToBounds = true
+                                self.navigationItem.setRightBarButton(barItem, animated: true)
+        }
+//        UIImage.fetchAvatar(string: avatar) { avatar, error in
+//            guard error == nil else { return }
+//
+//            self.teammateAvatarButton.setImage(avatar, for: .normal)
+//            self.teammateAvatarButton.imageView?.contentMode = .scaleAspectFill
+//            self.teammateAvatarButton.imageView?.clipsToBounds = true
+//            self.navigationItem.setRightBarButton(barItem, animated: true)
+//        }
     }
     
 }

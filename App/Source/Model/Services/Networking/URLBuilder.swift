@@ -15,6 +15,7 @@
  */
 
 import Foundation
+import CoreGraphics
 
 class URLBuilder {
     #if SURILLA
@@ -61,8 +62,6 @@ class URLBuilder {
     }
     
 }
-
-import CoreGraphics
 
 extension URLBuilder {
     func avatarURLstring(for string: String,

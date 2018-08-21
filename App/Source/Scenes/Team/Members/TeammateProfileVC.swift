@@ -249,7 +249,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         if !isPeeking && shouldAddGradientNavBar {
             addGradientNavBar()
             isGradientNavBarAdded = true
-            if !dataSource.isMe {
+            if !dataSource.isMe, let accessLevel = service.session?.currentTeam?.teamAccessLevel, accessLevel == .full {
                 addPrivateMessageButton()
             }
             setTitle()
