@@ -96,11 +96,12 @@ final class SinchService: NSObject {
         self.client = nil
     }
 
-    func call(userID: String) {
+    func call(userID: String, name: String) {
         guard let client = client else { return }
 
         print("Calling \(userID)")
-        guard let call = callClient?.callUser(withId: userID) else {
+        let headers: [String: String] = ["name": name]
+        guard let call = callClient?.callUser(withId: userID, headers: headers) else {
             print("Couldn't establish call")
             return
         }
@@ -177,7 +178,10 @@ extension SinchService: SINCallClientDelegate {
         self.call = call
 
         guard let id = UUID(uuidString: call.remoteUserId) else { return }
-        callService.incomingCall(from: call.remoteUserId, id: id) { error in
+
+        let name = call.headers["name"] as? String ?? "unknown"
+
+        callService.incomingCall(from: name, id: id) { error in
 
         }
         //call.answer()
@@ -211,7 +215,6 @@ extension SinchService: CXProviderDelegate {
     func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
         self.call?.answer()
         action.fulfill()
-        callService.
     }
 
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
