@@ -14,8 +14,8 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
-import Foundation
 import CallKit
+import Foundation
 
 protocol SinchServiceDelegate: class {
     func sinch(service: SinchService, didStartCall: Any)
@@ -68,8 +68,8 @@ final class SinchService: NSObject {
             terminate()
         }
         
-        let client: SINClient = Sinch.client(withApplicationKey: "723c3702-29a7-4bb3-a802-5e7b03b5a46f",
-                                             applicationSecret: "N6x/aZ3ZkEOaIUdNK4/T6w==",
+        let client: SINClient = Sinch.client(withApplicationKey: Resources.Sinch.sinApplicationKey,
+                                             applicationSecret: Resources.Sinch.sinSecret,
                                              environmentHost: host,
                                              userId: userID)
         print("Sinch client created for userID: \(userID)")

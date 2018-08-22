@@ -527,6 +527,8 @@
 		6D251C4A2035E9B3005081E4 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C482035E9B3005081E4 /* SlidingView.swift */; };
 		6D26F58D212C69840016CC02 /* CallKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26F58C212C69840016CC02 /* CallKitService.swift */; };
 		6D26F58E212C69840016CC02 /* CallKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26F58C212C69840016CC02 /* CallKitService.swift */; };
+		6D26F590212DB1ED0016CC02 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26F58F212DB1ED0016CC02 /* Resources.swift */; };
+		6D26F591212DB1ED0016CC02 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26F58F212DB1ED0016CC02 /* Resources.swift */; };
 		6D2A7C601FCC663E0094ABB7 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */; };
 		6D2A7C641FCC66960094ABB7 /* SODVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C621FCC66960094ABB7 /* SODVC.swift */; };
 		6D30A4AB1FD1648E003149DB /* PagingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30A4A91FD1648E003149DB /* PagingInfo.swift */; };
@@ -1336,6 +1338,7 @@
 		6D251C452035E8E0005081E4 /* SlidingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SlidingView.xib; path = View/Complex/SlidingView.xib; sourceTree = "<group>"; };
 		6D251C482035E9B3005081E4 /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SlidingView.swift; path = View/Complex/SlidingView.swift; sourceTree = "<group>"; };
 		6D26F58C212C69840016CC02 /* CallKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CallKitService.swift; path = Model/Services/CallKitService.swift; sourceTree = "<group>"; };
+		6D26F58F212DB1ED0016CC02 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Resources.swift; path = Resources/Resources.swift; sourceTree = SOURCE_ROOT; };
 		6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompactUserInfoHeader.swift; path = View/ReusableViews/CompactUserInfoHeader.swift; sourceTree = "<group>"; };
 		6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCompactCell.swift; path = Scenes/Team/Members/DiscussionCompactCell.swift; sourceTree = "<group>"; };
 		6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersCellBuilder.swift; path = Scenes/Team/Members/MembersCellBuilder.swift; sourceTree = "<group>"; };
@@ -2075,6 +2078,7 @@
 				6DA475A21E8ABEE600B56D9B /* Source */,
 				6D1616AD20D296C400C8FBBE /* Teambrella */,
 				6D4E5C131F7AB64C0020DEE2 /* Surilla */,
+				6D26F58F212DB1ED0016CC02 /* Resources.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -4225,6 +4229,7 @@
 				6D0523BC20A5D838000B3247 /* ProxyCellModel.swift in Sources */,
 				6D0523BD20A5D838000B3247 /* HomeCardModel.swift in Sources */,
 				6D0523BE20A5D838000B3247 /* Tx.swift in Sources */,
+				6D26F591212DB1ED0016CC02 /* Resources.swift in Sources */,
 				6D0523BF20A5D838000B3247 /* UIImageView.swift in Sources */,
 				6D0523C020A5D838000B3247 /* ReportContext.swift in Sources */,
 				6D0523C120A5D838000B3247 /* MyProxiesCellBuilder.swift in Sources */,
@@ -4713,6 +4718,7 @@
 				6D4E5CBE1F7AB6870020DEE2 /* UserIndexDataSource.swift in Sources */,
 				6D4E5CBF1F7AB6870020DEE2 /* UniversalChatVC.swift in Sources */,
 				6D4E5CC01F7AB6870020DEE2 /* WalletTransactionCell.swift in Sources */,
+				6D26F590212DB1ED0016CC02 /* Resources.swift in Sources */,
 				6D4E5CC11F7AB6870020DEE2 /* HomeDataSource.swift in Sources */,
 				6D4E5CC21F7AB6870020DEE2 /* Nameable.swift in Sources */,
 				6D49FDDF2020BB2B00A908D2 /* Coverage.swift in Sources */,
