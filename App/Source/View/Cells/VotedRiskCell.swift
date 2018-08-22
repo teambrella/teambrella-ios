@@ -61,6 +61,7 @@ class VotedRiskCell: UICollectionViewCell, VotingOrVotedRiskCell {
     
     @IBOutlet var proxyAvatarView: RoundImageView!
     @IBOutlet var proxyNameLabel: InfoLabel!
+    @IBOutlet var othersVotesButton: UIButton!
     
     @IBOutlet var yourVoteHeaderLabelLeadingConstraint: NSLayoutConstraint!
     
@@ -93,8 +94,7 @@ class VotedRiskCell: UICollectionViewCell, VotingOrVotedRiskCell {
     }
     
     private func setupButtons() {
-//        othersButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-//        othersVotesButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        othersVotesButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
     }
     
     private func setupLabels() {
@@ -120,7 +120,7 @@ class VotedRiskCell: UICollectionViewCell, VotingOrVotedRiskCell {
     
     @objc
     private func tap(_ button: UIButton) {
-//        delegate?.votingRisk(cell: self, didTapButton: button)
+        delegate?.votingRisk(cell: self, didTapButton: button)
     }
     
     func showTeamNoVote(risk: Double?) {

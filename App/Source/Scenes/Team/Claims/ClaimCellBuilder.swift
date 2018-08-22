@@ -64,7 +64,7 @@ struct ClaimCellBuilder {
             }
             cell.setupGallery(with: imageURLStrings, options: [.requestModifier(modifier)])
         }
-        cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: claim.basic.avatar)))
+        cell.objectView.showImage(string: claim.discussion.smallPhoto)
         cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)
         cell.textLabel.text = claim.discussion.originalPostText.sane
         cell.unreadCountLabel.text = "\(claim.discussion.unreadCount)"
@@ -94,7 +94,7 @@ struct ClaimCellBuilder {
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
-    // swiftlint:disable:next function_body_length
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         let session = service.session
 

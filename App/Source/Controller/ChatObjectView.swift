@@ -211,10 +211,10 @@ class ChatObjectView: UIView, XIBInitable {
                 voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel".localized
                 if let vote = voting.myVote {
                     if voting.proxyName != nil {
-                        voteValueLabel.text = String(format: "%.2f", vote)
+                        voteValueLabel.text = String(format: "%.1f", vote)
                         rightLabel.text = "Team.Chat.ObjectView.VoteLabel".localized
                     } else {
-                        voteValueLabel.text = String(format: "%.2f", vote)
+                        voteValueLabel.text = String(format: "%.1f", vote)
                         rightLabel.text = "Team.Chat.ObjectView.RevoteLabel".localized
                     }
                 } else {
@@ -234,7 +234,7 @@ class ChatObjectView: UIView, XIBInitable {
             }
         } else if let risk = basic.risk {
             voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.risk".localized
-            voteValueLabel.text = String.truncatedNumber(risk)
+            voteValueLabel.text = String(format: "%.1f", risk)
             rightButton.isHidden = true
             rightLabel.isHidden = true
             voteButtonContainer.isHidden = true

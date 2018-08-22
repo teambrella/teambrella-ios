@@ -26,7 +26,7 @@ protocol VotingRiskCellDelegate: class {
     func votingRisk(cell: VotingRiskCell, changedRisk: Double)
     func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double)
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int)
-    func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton)
+    func votingRisk(cell: VotingOrVotedRiskCell, didTapButton button: UIButton)
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView)
     func averageVotingRisk(cell: VotingRiskCell) -> Double
 }

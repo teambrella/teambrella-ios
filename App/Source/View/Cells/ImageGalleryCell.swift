@@ -25,7 +25,7 @@ import UIKit
 
 class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var slideshow: ImageSlideshow!
-    @IBOutlet var avatarView: RoundImageView!
+    @IBOutlet var objectView: UIImageView!
     @IBOutlet var titleLabel: MessageTitleLabel!
     @IBOutlet var textLabel: MessageTextLabel!
     @IBOutlet var timeLabel: ThinStatusSubtitleLabel!
@@ -36,7 +36,7 @@ class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        objectView.roundCorners(.allCorners, radius: 4)
     }
     
     func setupGallery(with imageURLs: [String], options: KingfisherOptionsInfo? = nil) {

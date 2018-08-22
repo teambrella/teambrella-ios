@@ -95,6 +95,7 @@ struct TeammateCellBuilder {
     private static func setVote(votingCell: VotingOrVotedRiskCell,
                                 voting: TeammateLarge.VotingInfo,
                                 controller: TeammateProfileVC) {
+        var votingCell = votingCell
         let maxAvatarsStackCount = 4
         let otherVotersCount = voting.votersCount - maxAvatarsStackCount + 1
         let label: String? = otherVotersCount > 0 ? "+" + String(otherVotersCount) : nil
@@ -104,7 +105,7 @@ struct TeammateCellBuilder {
             votingCell.teamVoteValueLabel.text = String(format: "%.2f", risk)
             votingCell.showTeamNoVote(risk: risk)
         } else {
-            votingCell.teamVoteValueLabel.text = "..."
+            votingCell.teamVoteValueLabel.text = ". . ."
             votingCell.showTeamNoVote(risk: nil)
         }
         if let myVote = voting.myVote {
@@ -117,6 +118,9 @@ struct TeammateCellBuilder {
                 cell.resetVoteButton.isHidden = true
                 controller.resetVote(cell: cell)
             }
+            votingCell.isProxyHidden = true
+            votingCell.yourVoteValueLabel.alpha = 1
+            votingCell.yourVoteValueLabel.text = ". . ."
             votingCell.showYourNoVote(risk: nil)
         }
         if let cell = votingCell as? VotingRiskCell {

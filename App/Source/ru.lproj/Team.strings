@@ -11,6 +11,7 @@
 "Team.ClaimsVC.indicatorTitle"                        = "Заявки";
 "Team.ClaimsCell.claimed"                             = "заявлено";
 "Team.ClaimsCell.viewToVote"                          = "Голосовать";
+"Team.ClaimsCell.view"                                = "Посмотреть";
 "Team.ClaimsCell.reimbursed"                          = "Выплачено";
 
 "Team.ClaimCell.claimID_format"                       = "Заявка %d";

@@ -11,6 +11,7 @@
 "Team.ClaimsVC.indicatorTitle"                        = "Claims";
 "Team.ClaimsCell.claimed"                             = "claimed";
 "Team.ClaimsCell.viewToVote"                          = "View to vote";
+"Team.ClaimsCell.view"                                = "View";
 "Team.ClaimsCell.reimbursed"                          = "Reimbursed";
 
 "Team.ClaimCell.claimID_format"                       = "Claim %d";
