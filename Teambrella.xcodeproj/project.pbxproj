@@ -527,6 +527,9 @@
 		6D251C4A2035E9B3005081E4 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C482035E9B3005081E4 /* SlidingView.swift */; };
 		6D26F58D212C69840016CC02 /* CallKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26F58C212C69840016CC02 /* CallKitService.swift */; };
 		6D26F58E212C69840016CC02 /* CallKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26F58C212C69840016CC02 /* CallKitService.swift */; };
+		6D26F595212DC63E0016CC02 /* CallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCFB4F9212C5823000817F6 /* CallVC.swift */; };
+		6D26F597212DD15B0016CC02 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26F596212DD15B0016CC02 /* Resources.swift */; };
+		6D26F598212DD15B0016CC02 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D26F596212DD15B0016CC02 /* Resources.swift */; };
 		6D2A7C601FCC663E0094ABB7 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */; };
 		6D2A7C641FCC66960094ABB7 /* SODVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C621FCC66960094ABB7 /* SODVC.swift */; };
 		6D30A4AB1FD1648E003149DB /* PagingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30A4A91FD1648E003149DB /* PagingInfo.swift */; };
@@ -1336,6 +1339,7 @@
 		6D251C452035E8E0005081E4 /* SlidingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SlidingView.xib; path = View/Complex/SlidingView.xib; sourceTree = "<group>"; };
 		6D251C482035E9B3005081E4 /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SlidingView.swift; path = View/Complex/SlidingView.swift; sourceTree = "<group>"; };
 		6D26F58C212C69840016CC02 /* CallKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CallKitService.swift; path = Model/Services/CallKitService.swift; sourceTree = "<group>"; };
+		6D26F596212DD15B0016CC02 /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resources.swift; path = Resources/Resources.swift; sourceTree = SOURCE_ROOT; };
 		6D2808C31F1A450C00EBBE3D /* CompactUserInfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompactUserInfoHeader.swift; path = View/ReusableViews/CompactUserInfoHeader.swift; sourceTree = "<group>"; };
 		6D2808C71F1A563A00EBBE3D /* DiscussionCompactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCompactCell.swift; path = Scenes/Team/Members/DiscussionCompactCell.swift; sourceTree = "<group>"; };
 		6D2A49791EDEF78C00A1111C /* MembersCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MembersCellBuilder.swift; path = Scenes/Team/Members/MembersCellBuilder.swift; sourceTree = "<group>"; };
@@ -2687,6 +2691,7 @@
 		6DA475A21E8ABEE600B56D9B /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				6D26F596212DD15B0016CC02 /* Resources.swift */,
 				6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */,
 				6DA714F21EE00EC100F39EBE /* Fonts */,
 				6D1C23851E8EA45A009B05A3 /* Helpers */,
@@ -4210,6 +4215,7 @@
 				6D0523AF20A5D838000B3247 /* CoreDataStorage.swift in Sources */,
 				6D0523B020A5D838000B3247 /* GradientView.swift in Sources */,
 				6D0523B120A5D838000B3247 /* MembersDataSource.swift in Sources */,
+				6D26F595212DC63E0016CC02 /* CallVC.swift in Sources */,
 				6D0523B220A5D838000B3247 /* JoinTeamPersonalCell.swift in Sources */,
 				6D7A019520B5BC44006A30FA /* WalletTransactionsCellBuilder.swift in Sources */,
 				6D0523B320A5D838000B3247 /* WalletCellBulider.swift in Sources */,
@@ -4286,6 +4292,7 @@
 				6D0523F820A5D838000B3247 /* TextAdapter.swift in Sources */,
 				6D0523F920A5D838000B3247 /* Hex.swift in Sources */,
 				6D0523FA20A5D838000B3247 /* ClaimsPaidCell.swift in Sources */,
+				6D26F598212DD15B0016CC02 /* Resources.swift in Sources */,
 				6D0523FB20A5D838000B3247 /* UserIndexDataSource.swift in Sources */,
 				6D0523FC20A5D838000B3247 /* UniversalChatVC.swift in Sources */,
 				6D0523FD20A5D838000B3247 /* WalletTransactionCell.swift in Sources */,
@@ -4713,6 +4720,7 @@
 				6D4E5CBE1F7AB6870020DEE2 /* UserIndexDataSource.swift in Sources */,
 				6D4E5CBF1F7AB6870020DEE2 /* UniversalChatVC.swift in Sources */,
 				6D4E5CC01F7AB6870020DEE2 /* WalletTransactionCell.swift in Sources */,
+				6D26F597212DD15B0016CC02 /* Resources.swift in Sources */,
 				6D4E5CC11F7AB6870020DEE2 /* HomeDataSource.swift in Sources */,
 				6D4E5CC21F7AB6870020DEE2 /* Nameable.swift in Sources */,
 				6D49FDDF2020BB2B00A908D2 /* Coverage.swift in Sources */,

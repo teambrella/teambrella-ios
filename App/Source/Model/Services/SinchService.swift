@@ -68,8 +68,8 @@ final class SinchService: NSObject {
             terminate()
         }
         
-        let client: SINClient = Sinch.client(withApplicationKey: Resources.Sinch.sinApplicationKey,
-                                             applicationSecret: Resources.Sinch.sinSecret,
+        let client: SINClient = Sinch.client(withApplicationKey: Resources.Sinch.applicationKey,
+                                             applicationSecret: Resources.Sinch.applicationSecret,
                                              environmentHost: host,
                                              userId: userID)
         print("Sinch client created for userID: \(userID)")
