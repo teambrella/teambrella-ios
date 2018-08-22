@@ -69,7 +69,7 @@ class HomeDataSource {
         switch cardModel.itemType {
         case .teammate, .claim:
             return "HomeCollectionCell"
-        case .fundWallet:
+        case .fundWallet, .attachPhotos:
             return HomeSupportCell.cellID
         default:
             return "HomeCollectionCell"

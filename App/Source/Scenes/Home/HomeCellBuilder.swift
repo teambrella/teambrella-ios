@@ -39,7 +39,9 @@ struct HomeCellBuilder {
             return
         }
         
-        if model.itemType == .fundWallet {
+        if model.itemType == .attachPhotos {
+            populateAttachPhotos(cell: cell, model: model)
+        } else if model.itemType == .fundWallet {
             populateFund(cell: cell, model: model)
         }
         switch cell {
@@ -85,6 +87,19 @@ struct HomeCellBuilder {
     static func populateFund(cell: UICollectionViewCell, model: HomeCardModel) {
         guard let cell = cell as? HomeSupportCell else { return }
         
+        cell.button.setTitle("", for: .normal)
+        cell.imageView.show(model.smallPhoto)
+        cell.headerLabel.text = model.chatTitle
+        cell.centerLabel.text = model.subtitle
+        cell.bottomLabel.text = model.text.sane
+        cell.button.setTitle(model.actionText.sane, for: .normal)
+        cell.onlineIndicator.isHidden = true
+    }
+    
+    static func populateAttachPhotos(cell: UICollectionViewCell, model: HomeCardModel) {
+        guard let cell = cell as? HomeSupportCell else { return }
+        
+        cell.button.setTitle("", for: .normal)
         cell.imageView.show(model.smallPhoto)
         cell.headerLabel.text = model.chatTitle
         cell.centerLabel.text = model.subtitle
