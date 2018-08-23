@@ -68,6 +68,7 @@ class ServerDAO: DAO {
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
             let request = TeambrellaRequest(type: .home, body: body, success: { response in
                 if case let .home(model) = response {
+                    service.session?.currentUserName = model.name
                     promise.resolve(with: model)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
