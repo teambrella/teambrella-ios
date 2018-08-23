@@ -724,8 +724,17 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 cell.confettiView.isHidden = true
                 cell.onButtonTap = { [weak self] in
                     log("tap fund wallet (from chat)", type: .userInteraction)
+
                     self?.router.switchToWallet()
-                    self?.navigationController?.popViewController(animated: false)
+                    if let nc = self?.navigationController {
+                        for vc in nc.viewControllers {
+                            if vc is MasterTabBarController {
+                                nc.popToViewController(vc, animated: false)
+                                break
+                            }
+                        }
+                    }
+//                    self?.navigationController?.popViewController(animated: false)
                 }
             } else if model is ChatClaimPaidCellModel {
                 cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
