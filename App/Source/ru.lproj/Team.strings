@@ -8,7 +8,7 @@
 
 // Claims
 
-"Team.ClaimsVC.indicatorTitle"                        = "Заявки";
+"Team.ClaimsVC.indicatorTitle"                        = "Выплаты";
 "Team.ClaimsCell.claimed"                             = "заявлено";
 "Team.ClaimsCell.viewToVote"                          = "Голосовать";
 "Team.ClaimsCell.view"                                = "Посмотреть";
@@ -25,7 +25,7 @@
 "Team.ClaimCell.voteSubmitted"                        = "Голос отправлен";
 "Team.ClaimCell.resetVote"                            = "Сбросить";
 "Team.ClaimCell.claimDetails"                         = "ДЕТАЛИ ЗАЯВКИ";
-"Team.ClaimCell.claimAmount"                          = "Сумма заявки";
+"Team.ClaimCell.claimAmount"                          = "Сумма выплаты";
 "Team.ClaimCell.estimatedExpences"                    = "Предполагаемые расходы";
 "Team.ClaimCell.deductible"                           = "Подлежит вычету";
 "Team.ClaimCell.coverage"                             = "Защита";
@@ -56,7 +56,7 @@
 
 "Team.TeammateCell.timeLabel.justNow"                 = "ТОЛЬКО ЧТО";
 "Team.TeammateCell.contact"                           = "КОНТАКТЫ";
-"Team.TeammateCell.buttonTitle_format_i"              = "Смотреть заявки (%d)";
+"Team.TeammateCell.buttonTitle_format_i"              = "Смотреть заявки на выплату (%d)";
 
 "Team.Decisions.generous"                             = "щедрый";
 "Team.Decisions.mild"                                 = "мягкий";
@@ -153,7 +153,7 @@
 "Team.Chat.TextCell.Application.voted_format"         = "Голос: %@";
 "Team.Chat.TextCell.notVoted"                         = "Не голосовал";
 
-"Team.Chat.TypeLabel.claim"                           = "ЗАЯВКА";
+"Team.Chat.TypeLabel.claim"                           = "ЗАЯВКА НА ВЫПЛАТУ";
 "Team.Chat.TypeLabel.application"                     = "ВСТУПЛЕНИЕ";
 "Team.Chat.TypeLabel.other"                           = "ОБСУЖДЕНИЕ";
 "Team.Chat.Separator.newMessages"                     = "НОВЫЕ СООБЩЕНИЯ";
@@ -167,7 +167,7 @@
 "Team.ChooseTeam.switchUser"                          = "Сменить пользователя";
 
 //---waiting---
-"Team.Claims.Empty.title"                             = "В группе ещё нет ни одной заявки";
+"Team.Claims.Empty.title"                             = "В группе ещё нет ни одной заявки на выплату";
 "Team.Claims.Empty.details"                           = "Мы сообщим, когда первая заявка будет создана";
 "Team.Chat.NotificationSettings.title"                = "НАСТРОЙКИ НОТИФИКАЦИЙ";
 "Team.Chat.NotificationSettings.subscribed"           = "Подписан";
