@@ -6,28 +6,31 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Info.DemoExpired.Title"              = "New demo session";
-"Info.DemoExpired.Details"            = "We created a fresh demo team for you. It is compatible with all new features and updates.";
-"Info.DemoExpired.UpperButton.Title"  = "Try the Demo";
-"Info.DemoExpired.LowerButton.Title"  = "Back";
+"Info.DemoExpired.Title"                 = "New demo session";
+"Info.DemoExpired.Details"               = "We created a fresh demo team for you. It is compatible with all new features and updates.";
+"Info.DemoExpired.UpperButton.Title"     = "Try the Demo";
+"Info.DemoExpired.LowerButton.Title"     = "Back";
 
-"Info.OutdatedVersion.Title"              = "Update Required";
-"Info.OutdatedVersion.Details"            = "A newer and improved version of Teambrella is available at AppStore.";
-"Info.OutdatedVersion.UpperButton.Title"  = "Update the App";
-"Info.OutdatedVersion.LowerButton.Title"  = "Remind me later";
+"Info.OutdatedVersion.Title"             = "Update Required";
+"Info.OutdatedVersion.Details"           = "A newer and improved version of Teambrella is available at AppStore.";
+"Info.OutdatedVersion.UpperButton.Title" = "Update the App";
+"Info.OutdatedVersion.LowerButton.Title" = "Remind me later";
 
-"Info.codeCapture.title"              = "Scan Ethereum Address";
-"Info.codeCapture.button.title"       = "Use";
-"Info.codeCapture.cancelButton.title" = "Cancel";
-"Info.codeCapture.infoLabel"          = "Let camera focus on QR code of your private key. App will log in automatically";
-"Info.codeCapture.title.privateKey"   = "Scan Private Key";
+"Info.codeCapture.title"                 = "Scan Ethereum Address";
+"Info.codeCapture.button.title"          = "Use";
+"Info.codeCapture.cancelButton.title"    = "Cancel";
+"Info.codeCapture.infoLabel"             = "Let camera focus on QR code of your private key. App will log in automatically";
+"Info.codeCapture.title.privateKey"      = "Scan Private Key";
 
-"Info.OthersVoted.title"              = "All votes";
-"Info.OthersVoted.Cell.Weight"        = "Weight:";
-"Info.OthersVoted.Header.allVotes"    = "ALL VOTES";
-"Info.OthersVoted.Header.votes"       = "VOTE";
+"Info.OthersVoted.title"                 = "All votes";
+"Info.OthersVoted.Cell.Weight"           = "Weight:";
+"Info.OthersVoted.Header.allVotes"       = "ALL VOTES";
+"Info.OthersVoted.Header.votes"          = "VOTE";
 
-"Info.NoSilentPush.Title"             = "Background App Refresh is required for uninterrupted coverage";
-"Info.NoSilentPush.UpperButton.Title" = "Open Settings";
-"Info.NoSilentPush.LowerButton.Title" = "Remind me later";
+"Info.NoSilentPush.Title"                = "Background App Refresh is required for uninterrupted coverage";
+"Info.NoSilentPush.UpperButton.Title"    = "Open Settings";
+"Info.NoSilentPush.LowerButton.Title"    = "Remind me later";
 
+"Info.CallVC.calling"                    = "Calling...";
+"Info.CallVC.talking"                    = "Talking";
+"Info.CallVC.CancelButton.Title"         = "Cancel";

@@ -217,16 +217,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     @objc
     func tapAddToProxy(sender: UIButton) {
         dataSource.addToProxy { [weak self] in
-            guard let me = self else { return }
-            
-            let cells = me.collectionView.visibleCells
-            let statCells = cells.compactMap { $0 as? TeammateStatsCell }
-            if let cell = statCells.first {
-                let title = me.dataSource.isMyProxy
-                    ? "Team.TeammateCell.removeFromMyProxyVoters".localized
-                    : "Team.TeammateCell.addToMyProxyVoters".localized
-                cell.addButton.setTitle(title, for: .normal)
-            }
+            self?.collectionView.reloadData()
         }
     }
     
@@ -344,6 +335,14 @@ final class TeammateProfileVC: UIViewController, Routable {
             }
             animator.startAnimation()
         }
+    }
+
+    private func makeACall() {
+        guard let basic = dataSource.teammateLarge?.basic,
+            let myName = service.session?.currentUserName else { return }
+
+        service.sinch.call(userID: teammateID, name: myName.entire)
+        service.router.showCall(in: self, to: basic.name.entire, avatar: basic.avatar, id: teammateID)
     }
 }
 
@@ -583,8 +582,7 @@ extension TeammateProfileVC: UITableViewDelegate {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
         if dataSource.isMyProxy && item.type == .call {
-            DeveloperTools.notSupportedAlert(in: self)
-            //call my proxy
+            makeACall()
         }
     }
     

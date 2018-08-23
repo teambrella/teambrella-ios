@@ -31,3 +31,7 @@
 "Info.NoSilentPush.Title"             = "Se requiere Actualizacíon en segundo plano  para la cubertura ininterrumpida";
 "Info.NoSilentPush.UpperButton.Title" = "Abrir Ajustes";
 "Info.NoSilentPush.LowerButton.Title" = "Recordarme más tarde";
+
+"Info.CallVC.calling"                    = "Calling...";
+"Info.CallVC.talking"                    = "Talking";
+"Info.CallVC.CancelButton.Title"         = "Cancel";

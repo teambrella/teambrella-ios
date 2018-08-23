@@ -104,7 +104,10 @@ final class MainRouter {
     
     func switchToWallet() {
         if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
-            vc.moveToViewController(at: 2, animated: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                vc.moveToViewController(at: 2, animated: false)
+                vc.reloadPagerTabStripView()
+            }
         }
     }
     
@@ -354,6 +357,18 @@ final class MainRouter {
         vc.privateKey = service.keyStorage.privateKey
         viewController.present(vc, animated: true, completion: nil)
     }
+
+    @discardableResult
+    func showCall(in viewController: UIViewController, to name: String, avatar: String, id: String) -> CallVC {
+        guard let vc = CallVC.instantiate() as? CallVC else { fatalError("Error instantiating") }
+
+        vc.name = name
+        vc.avatar = avatar
+        vc.id = id
+        viewController.present(vc, animated: true, completion: nil)
+        return vc
+    }
+
     /*
      func pushOrReuse(vc: UIViewController,
      animated: Bool = true,
@@ -378,6 +393,12 @@ final class MainRouter {
         service.socket = socket
         service.teambrella.signToSockets(service: socket)
         service.watch = WatchService()
+
+        if !isDemo {
+            let userID = teamsModel.userID
+            SimpleStorage().store(string: userID, forKey: .userID)
+            service.sinch.startWith(userID: userID)
+        }
     }
     
     @discardableResult
@@ -387,6 +408,8 @@ final class MainRouter {
         PlistStorage().removeCache()
         service.session = nil
         service.keyStorage.clearLastUserType()
+        SimpleStorage().cleanValue(forKey: .userID)
+        service.sinch.terminate()
         navigator.clear()
         do {
             try
@@ -440,7 +463,7 @@ final class MainRouter {
                          delegate: CodeCaptureDelegate,
                          type: CodeCaptureVC.LayoutType = .ethereum) -> CodeCaptureVC? {
         guard let vc = CodeCaptureVC.instantiate() as? CodeCaptureVC else { return nil }
-
+        
         vc.type = type
         vc.delegate = delegate
         controller.present(vc, animated: true)

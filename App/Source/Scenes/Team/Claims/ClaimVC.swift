@@ -83,7 +83,7 @@ final class ClaimVC: UIViewController, Routable {
             isPeeking = false
         }
         addGradientNavBarIfNeeded()
-        addTeammateAvatarButton()
+        addTeammateAvatarButtonIfNeeded()
     }
     
     override func didReceiveMemoryWarning() {
@@ -230,9 +230,11 @@ final class ClaimVC: UIViewController, Routable {
         }
     }
     
-    private func addTeammateAvatarButton() {
+    private func addTeammateAvatarButtonIfNeeded() {
+        guard self.navigationItem.rightBarButtonItem == nil else { return }
+
         let teammateAvatarButton = UIButton()
-        teammateAvatarButton.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
+        teammateAvatarButton.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
         let barItem = UIBarButtonItem(customView: teammateAvatarButton)
         teammateAvatarButton.addTarget(self, action: #selector(tapTeammateAvatarButton), for: .touchUpInside)
         self.teammateAvatarButton = teammateAvatarButton
@@ -240,10 +242,10 @@ final class ClaimVC: UIViewController, Routable {
             log("No teammateAvatar found!", type: .error)
             return
         }
-        
+
         UIImage.fetchAvatar(string: avatar,
-                            width: 35,
-                            cornerRadius: 15) { image, error  in
+                            width: 36,
+                            cornerRadius: 36 / 2) { image, error  in
                                 guard error == nil else { return }
                                 guard let image = image, let cgImage = image.cgImage else { return }
 
@@ -255,14 +257,6 @@ final class ClaimVC: UIViewController, Routable {
                                 self.teammateAvatarButton.imageView?.clipsToBounds = true
                                 self.navigationItem.setRightBarButton(barItem, animated: true)
         }
-//        UIImage.fetchAvatar(string: avatar) { avatar, error in
-//            guard error == nil else { return }
-//
-//            self.teammateAvatarButton.setImage(avatar, for: .normal)
-//            self.teammateAvatarButton.imageView?.contentMode = .scaleAspectFill
-//            self.teammateAvatarButton.imageView?.clipsToBounds = true
-//            self.navigationItem.setRightBarButton(barItem, animated: true)
-//        }
     }
     
 }

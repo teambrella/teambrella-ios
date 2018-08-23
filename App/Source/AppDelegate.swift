@@ -38,10 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         service.push.register(application: application)
         service.push.startPushKit()
 
+        if let userID = SimpleStorage().string(forKey: .userID) {
+            service.sinch.startWith(userID: userID)
+        }
+
         TeambrellaStyle.apply()
-//        if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
-//            service.push.remoteNotificationOnStart(in: application, userInfo: notification)
-//        }
+        //        if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
+        //            service.push.remoteNotificationOnStart(in: application, userInfo: notification)
+        //        }
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
 
         // Pull in case of emergency :)
@@ -105,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         // Add Crashlytics in debug mode
         #if SURILLA
-         Fabric.sharedSDK().debug = true
+        Fabric.sharedSDK().debug = true
 
         // Check how screen rendering is working
         let link = CADisplayLink(target: self, selector: #selector(AppDelegate.update(link:)))
