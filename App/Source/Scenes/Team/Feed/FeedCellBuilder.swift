@@ -55,12 +55,14 @@ struct FeedCellBuilder {
             
             switch model.itemType {
             case .claim:
+                cell.iconView.isHidden = false
                 cell.iconView.image = #imageLiteral(resourceName: "claim")
                 cell.typeLabel.text = "Team.Chat.TypeLabel.claim".localized
             case .teammate:
                 cell.iconView.isHidden = true //= #imageLiteral(resourceName: "application")
                 cell.typeLabel.text = ""//"Team.Chat.TypeLabel.application".localized
             default:
+                cell.iconView.isHidden = false
                 cell.iconView.image = #imageLiteral(resourceName: "discussion")
                 cell.typeLabel.text = "Team.Chat.TypeLabel.other".localized
             }
