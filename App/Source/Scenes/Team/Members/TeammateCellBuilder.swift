@@ -355,8 +355,8 @@ struct TeammateCellBuilder {
             cell.addButton.isHidden = false
         }
         
-        cell.addButton.removeTarget(controller, action: nil, for: .allEvents)
-        cell.addButton.addTarget(self, action: #selector(TeammateProfileVC.tapAddToProxy), for: .touchUpInside)
+        cell.addButton.removeTarget(nil, action: nil, for: .allEvents)
+        cell.addButton.addTarget(controller, action: #selector(TeammateProfileVC.tapAddToProxy), for: .touchUpInside)
     }
     
     private static func populateDiscussion(cell: DiscussionCell, with stats: TopicEntity, avatar: String) {
