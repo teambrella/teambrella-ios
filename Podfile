@@ -23,7 +23,7 @@ end
 
 def swift_frameworks_pods
   pod 'SwiftSoup'
-  pod 'XLPagerTabStrip', :git => 'https://github.com/xmartlabs/XLPagerTabStrip.git', :commit => '4fe566f187b7e2c7c883a438bc6ab701a81ebbb3'
+  pod 'XLPagerTabStrip', :git => 'https://github.com/xmartlabs/XLPagerTabStrip.git'#, :commit => '4fe566f187b7e2c7c883a438bc6ab701a81ebbb3'
   pod 'ImageSlideshow'
   pod 'KeychainAccess'
   pod 'Kingfisher'
