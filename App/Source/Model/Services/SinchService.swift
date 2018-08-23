@@ -99,8 +99,6 @@ final class SinchService: NSObject {
     }
 
     func call(userID: String, name: String) {
-        guard let client = client else { return }
-
         print("Calling \(userID)")
         let headers: [String: String] = ["name": name]
         guard let call = callClient?.callUser(withId: userID, headers: headers) else {
