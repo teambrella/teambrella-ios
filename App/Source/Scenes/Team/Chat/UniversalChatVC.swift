@@ -348,6 +348,7 @@ private extension UniversalChatVC {
     
     private func addMuteButton() {
         let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         let barItem = UIBarButtonItem(customView: button)
         button.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
         self.muteButton = button
@@ -715,8 +716,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.setNeedsDisplay()
             cell.label.text = model.text
         } else if let cell = cell as? ChatClaimPaidCell {
-            let model = model as? ChatModel
-            if model?.basic?.datePayToJoin != nil {
+            if model is ChatPayToJoinCellModel {
                 cell.messageLabel.text = "Team.Chat.PayToJoin.text".localized // from server (?)
                 cell.button.setTitle("Team.Chat.PayToJoin.buttonTitle".localized, for: .normal)
                 cell.confettiView.isHidden = true
@@ -725,7 +725,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     self?.router.switchToWallet()
                     self?.navigationController?.popViewController(animated: false)
                 }
-            } else {
+            } else if model is ChatClaimPaidCellModel {
                 cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
                 cell.button.setTitle("Team.Chat.ClaimPaidCell.buttonTitle".localized, for: .normal)
                 cell.onButtonTap = { [weak self] in

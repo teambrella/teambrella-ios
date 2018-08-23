@@ -60,15 +60,17 @@ class HomeDataSource {
     }
     
     func cellID(for indexPath: IndexPath) -> String {
-        guard let model = self[indexPath] else { return " " } // HomeSupportCell.cellID }
+        guard let model = self[indexPath] else { return " " } //HomeSupportCell.cellID }
         
         return cellID(with: model)
     }
     
     func cellID(with cardModel: HomeCardModel) -> String {
         switch cardModel.itemType {
-        case .teammate, .claim, .fundWallet:
+        case .teammate, .claim:
             return "HomeCollectionCell"
+        case .fundWallet, .attachPhotos:
+            return HomeSupportCell.cellID
         default:
             return "HomeCollectionCell"
         }
@@ -93,6 +95,12 @@ class HomeDataSource {
         guard let model = model, indexPath.row < model.cards.count else { return nil }
         
         return model.cards[indexPath.row]
+    }
+    
+    subscript(row: Int) -> HomeCardModel? {
+        guard let model = model, row < model.cards.count else { return nil }
+        
+        return model.cards[row]
     }
     
 }

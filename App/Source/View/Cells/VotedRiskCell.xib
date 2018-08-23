@@ -245,6 +245,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="438" height="264"/>
             <connections>
+                <outlet property="othersVotesButton" destination="EIz-p9-obL" id="KsI-cn-UU4"/>
                 <outlet property="pieChart" destination="Am7-zR-z8V" id="Q6r-pk-vYk"/>
                 <outlet property="proxyAvatarView" destination="rRR-2I-7G9" id="4jm-vA-cAn"/>
                 <outlet property="proxyNameLabel" destination="GVV-uD-4Wh" id="3cl-Eb-ezA"/>

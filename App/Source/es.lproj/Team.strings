@@ -220,3 +220,6 @@
 
 "Team.VotingRiskVC.numberBar.right.proxy"             = "ГОЛОС ПРОКСИ";
 "Team.ClaimCell.proxyVote" = "proxy vote";
+
+
+"Team.ClaimsCell.view"                                = "Посмотреть";

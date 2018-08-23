@@ -24,6 +24,7 @@ enum ChatContext {
     case chat(ChatModel)
     case privateChat(PrivateChatUser)
     case remote(RemoteTopicDetails)
+    case myApplication(MyApplicationDetails)
     case none
 
     var claimID: Int? {

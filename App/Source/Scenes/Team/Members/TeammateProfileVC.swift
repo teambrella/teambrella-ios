@@ -240,16 +240,16 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     // MARK: Private
-
+    
     private var isGradientNavBarAdded = false
-
+    
     private func addGradientNavBarIfNeeded() {
         guard !isGradientNavBarAdded else { return }
-
+        
         if !isPeeking && shouldAddGradientNavBar {
             addGradientNavBar()
             isGradientNavBarAdded = true
-            if !dataSource.isMe {
+            if !dataSource.isMe, let accessLevel = service.session?.currentTeam?.teamAccessLevel, accessLevel == .full {
                 addPrivateMessageButton()
             }
             setTitle()
@@ -260,9 +260,9 @@ final class TeammateProfileVC: UIViewController, Routable {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
         collectionView.register(VotingRiskCell.nib,
-                                    forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
+                                forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
         collectionView.register(VotedRiskCell.nib,
-                                    forCellWithReuseIdentifier: TeammateProfileCellType.voted.rawValue)
+                                forCellWithReuseIdentifier: TeammateProfileCellType.voted.rawValue)
         collectionView.register(TeammateSummaryView.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: TeammateSummaryView.cellID)
@@ -323,7 +323,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             }
         }
     }
-
+    
     private func showHeader(offset: CGFloat) {
         if offset < Constant.votingHeaderTopOffset {
             view.layoutIfNeeded()
@@ -667,47 +667,54 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         setAvatar(avatarView: cell.leftAvatar, label: cell.leftAvatarLabel, with: range.teammates.first)
     }
     
-    func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton) {
-        switch button {
-        case cell.resetVoteButton:
-            guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
-            
-            cell.yourVoteValueLabel.alpha = 0.5
-            dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self] json in
-                self?.collectionView.reloadData()
-                guard let header = self?.compactUserInfoHeader, let risk = self?.currentRiskVote else { return }
+    func votingRisk(cell: VotingOrVotedRiskCell, didTapButton button: UIButton) {
+        if let cell = cell as? VotingRiskCell {
+            switch button {
+            case cell.resetVoteButton:
+                guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
                 
-                self?.updateAmounts(in: header, with: risk)
+                cell.yourVoteValueLabel.alpha = 0.5
+                dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self] json in
+                    self?.collectionView.reloadData()
+                    guard let header = self?.compactUserInfoHeader, let risk = self?.currentRiskVote else { return }
+                    
+                    self?.updateAmounts(in: header, with: risk)
+                }
+            case cell.othersButton:
+                guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
+                    log("Can't present CompareTeamRisk controller. No ranges in extendedTeammate.", type: .error)
+                    return
+                }
+                
+                service.router.presentCompareTeamRisk(ranges: ranges)
+            case cell.othersVotesButton:
+                guard let teamID = service.session?.currentTeam?.teamID else { return }
+                guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
+                
+                service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
+            default:
+                log("VotingRiskCell unknown button pressed", type: [.error])
             }
-        case cell.othersButton:
-            guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
-                log("Can't present CompareTeamRisk controller. No ranges in extendedTeammate.", type: .error)
-                return
-            }
-            
-            service.router.presentCompareTeamRisk(ranges: ranges)
-        case cell.othersVotesButton:
+        } /*else if cell is VotedRiskCell {
             guard let teamID = service.session?.currentTeam?.teamID else { return }
             guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
             
             service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
-        default:
-            log("VotingRiskCell unknown button pressed", type: [.error])
-        }
+        }*/
     }
     
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView) {
         if let canVote = dataSource.teammateLarge?.voting?.canVote, canVote == true {
-        showHeader(offset: summaryViewNumberBarOffset)
-        lastScrollMoment = Date()
-        DispatchQueue.main.asyncAfter(deadline: .now() + Constant.votingHeaderShowTime) {
-            let now = Date()
-            if now.timeIntervalSince1970 - self.lastScrollMoment.timeIntervalSince1970 >
-                Constant.votingHeaderShowTime - 1 {
-                self.hideHeader(animated: true)
-                self.lastScrollMoment = Date()
+            showHeader(offset: summaryViewNumberBarOffset)
+            lastScrollMoment = Date()
+            DispatchQueue.main.asyncAfter(deadline: .now() + Constant.votingHeaderShowTime) {
+                let now = Date()
+                if now.timeIntervalSince1970 - self.lastScrollMoment.timeIntervalSince1970 >
+                    Constant.votingHeaderShowTime - 1 {
+                    self.hideHeader(animated: true)
+                    self.lastScrollMoment = Date()
+                }
             }
-        }
         }
     }
     

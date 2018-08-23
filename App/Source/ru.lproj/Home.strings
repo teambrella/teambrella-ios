@@ -7,9 +7,9 @@
 */
 
 "Home.salutation"                                       = "Привет, %@!";
-"Home.subtitle"                                         = "Свежие новости для тебя";
-"Home.submitButton.anotherClaim"                        = "Подать ещё заявку";
-"Home.submitButton.claim"                               = "Подать заявку";
+"Home.subtitle"                                         = "Вот новости для тебя:";
+"Home.submitButton.anotherClaim"                        = "Подать ещё заявку на выплату";
+"Home.submitButton.claim"                               = "Подать заявку на выплату";
 "Home.leftBrick.title"                                  = "ЗАЩИТА";
 "Home.rightBrick.title"                                 = "КОШЕЛЁК";
 "Home.itemCard.status"                                  = "ЗАЩИЩЕНО";
@@ -38,7 +38,3 @@
 "Home.Empty.Title.noPrivateMessages"                    = "У тебя нет сообщений";
 "Home.Empty.SubTitle.noPrivateMessages"                 = "Напиши твоё первое приватное сообщение кому-нибудь из участников.";
 
-"Home.FundCell.headerLabel" = "ПРОМО АКЦИЯ";
-"Home.FundCell.subtitleLabel" = "Необходимо пополнение";
-"Home.FundCell.textLabel" = "Чтобы начать, нужна сумма на твоём кошельке. Сумма обеспечит ответное покрытие от 128 участников. Положи от 3000 р. и получи 3000 бонусных р. на свой кошелёк.";
-"Home.FundCell.fundTitle" = "Пополнить кошелёк";

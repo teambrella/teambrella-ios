@@ -237,6 +237,10 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         if let accessLevel = service.session?.currentTeam?.teamAccessLevel {
             submitClaimButton.isEnabled = accessLevel == .full
         }
+        submitClaimButton.setTitleColor(#colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1), for: .disabled)
+        submitClaimButton.borderColor = submitClaimButton.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
+        submitClaimButton.shadowColor = submitClaimButton.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 0.2) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 0.2)
+        submitClaimButton.alpha = submitClaimButton.isEnabled ? 1 : 0.5
         HUD.hide()
     }
     
@@ -280,6 +284,17 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     @objc
+    func tapAttachPhotos(_ sender: UIButton) {
+        guard sender.tag < dataSource.cardsCount else { return }
+
+        dataSource[sender.tag].map {
+            let details = MyApplicationDetails(topicID: $0.topicID, userID: $0.userID)
+            service.router.presentChat(context: ChatContext.myApplication(details),
+                                       itemType: $0.itemType)
+        }
+    }
+    
+    @objc
     func closeCard(_ sender: UIButton) {
         dataSource.deleteCard(at: sender.tag)
         collectionView.reloadData()
@@ -305,13 +320,20 @@ extension HomeVC: UICollectionViewDataSource {
                         forItemAt indexPath: IndexPath) {
         HomeCellBuilder.populate(cell: cell, dataSource: dataSource, model: dataSource[indexPath])
         if let cell = cell as? HomeSupportCell {
-            if HomeCellBuilder.isInSupportMode {
-                cell.button.removeTarget(nil, action: nil, for: .allEvents)
-                cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
-            } else {
+            let model = dataSource[indexPath]
+            
+            if model?.itemType == ItemType.fundWallet {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapFundWallet), for: .touchUpInside)
+            } else if model?.itemType == ItemType.attachPhotos {
+                cell.button.removeTarget(nil, action: nil, for: .allEvents)
+                cell.button.addTarget(self, action: #selector(tapAttachPhotos), for: .touchUpInside)
+                cell.button.tag = indexPath.row
+            } else {
+                cell.button.removeTarget(nil, action: nil, for: .allEvents)
+                cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
             }
+            
         }
 //        if let cell = cell as? ClosableCell {
 //            cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
@@ -321,13 +343,20 @@ extension HomeVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard indexPath.row < dataSource.cardsCount - 1 else {
+        guard indexPath.row < dataSource.cardsCount /*- 1*/ else {
             // handle Chat with support tap
-            DeveloperTools.notSupportedAlert(in: self)
+            // DeveloperTools.notSupportedAlert(in: self)
             return
         }
         
-        dataSource[indexPath].map { service.router.presentChat(context: ChatContext.home($0), itemType: $0.itemType) }
+        let model = dataSource[indexPath]
+        if let model = model, model.itemType == .attachPhotos {
+            let details = MyApplicationDetails(topicID: model.topicID, userID: model.userID)
+            service.router.presentChat(context: .myApplication(details), itemType: model.itemType)
+        } else if model?.itemType != .fundWallet && model?.itemType != .attachPhotos {
+            dataSource[indexPath].map { service.router.presentChat(context: ChatContext.home($0),
+                                                                   itemType: $0.itemType) }
+        }
     }
 }
 

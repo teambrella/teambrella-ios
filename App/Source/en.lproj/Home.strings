@@ -37,8 +37,3 @@
 //---waiting--
 "Home.Empty.Title.noPrivateMessages"                    = "You have no messages";
 "Home.Empty.SubTitle.noPrivateMessages"                 = "Tap on the compose button to keep in touch with your teammates.";
-
-"Home.FundCell.headerLabel" = "PROMO";
-"Home.FundCell.subtitleLabel" = "Not Enough Funds";
-"Home.FundCell.textLabel" = "Please fund your wallet to be able to apply to the team";
-"Home.FundCell.fundTitle" = "Fund Wallet";
