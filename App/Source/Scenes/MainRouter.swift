@@ -104,7 +104,7 @@ final class MainRouter {
     
     func switchToWallet() {
         if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1рще) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 vc.moveToViewController(at: 2, animated: false)
                 vc.reloadPagerTabStripView()
             }
