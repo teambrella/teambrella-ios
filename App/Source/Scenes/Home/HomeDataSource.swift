@@ -97,4 +97,10 @@ class HomeDataSource {
         return model.cards[indexPath.row]
     }
     
+    subscript(row: Int) -> HomeCardModel? {
+        guard let model = model, row < model.cards.count else { return nil }
+        
+        return model.cards[row]
+    }
+    
 }
