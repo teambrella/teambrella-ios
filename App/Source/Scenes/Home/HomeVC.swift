@@ -284,10 +284,10 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     @objc
-    func tapAttachPhotos(_ sender: UIButton, indexPath: IndexPath) {
-        guard indexPath.row < dataSource.cardsCount else { return }
+    func tapAttachPhotos(_ sender: UIButton) {
+        guard sender.tag < dataSource.cardsCount else { return }
 
-        dataSource[indexPath].map {
+        dataSource[sender.tag].map {
             let details = MyApplicationDetails(topicID: $0.topicID, userID: $0.userID)
             service.router.presentChat(context: ChatContext.myApplication(details),
                                        itemType: $0.itemType)
@@ -328,6 +328,7 @@ extension HomeVC: UICollectionViewDataSource {
             } else if model?.itemType == ItemType.attachPhotos {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapAttachPhotos), for: .touchUpInside)
+                cell.button.tag = indexPath.row
             } else {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)

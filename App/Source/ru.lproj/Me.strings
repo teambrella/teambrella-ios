@@ -12,11 +12,11 @@
 
 "Me.WalletVC.leftBrick.title"                      = "РЕЗЕРВ";
 "Me.WalletVC.rightBrick.title"                     = "ДОСТУПНО";
-"Me.WalletVC.withdrawButton"                       = "Снять";
+"Me.WalletVC.withdrawButton"                       = "Вывести";
 "Me.WalletVC.fundingCell.title"                    = "РЕКОМЕНДОВАНО ВНЕСТИ";
 "Me.WalletVC.fundButton"                           = "Пополнить кошелёк";
 
-"Me.WalletVC.actionsCell.cosigners"                = "Сопоручители";
+"Me.WalletVC.actionsCell.cosigners"                = "Соподписчики";
 "Me.WalletVC.actionsCell.transactions"             = "Транзакции";
 "Me.WalletVC.actionsCell.backupWallet"             = "Бэкап кошелька";
 
@@ -48,13 +48,13 @@
 "Me.Report.TitleCell.title"                        = "ЗАГОЛОВОК";
 "Me.Report.HeaderTitleCell.title"                  = "НОВОЕ ОБСУЖДЕНИЕ";
 
-"Me.Report.ExpensesCell.deductibleTitle"           = "ФРАНШИЗА";
+"Me.Report.ExpensesCell.deductibleTitle"           = "ЛИМИТ"; //"ФРАНШИЗА";
 "Me.Report.ExpensesCell.coverageTitle"             = "ЗАЩИТА";
 "Me.Report.ExpensesCell.amountTitle"               = "СУММА";
 
 "Me.Report.PhotosCell.buttonTitle"                 = "Добавить фото";
 
-"Me.Report.ReportClaim.title"                      = "Заявка";
+"Me.Report.ReportClaim.title"                      = "Заявка на выплату";
 "Me.Report.NewDiscussion.title"                    = "Обсуждение";
 
 "Me.WalletVC.WalletTransactionsVC.title"           = "Транзакции";
@@ -67,26 +67,26 @@
 "Me.Report.ImageSource.camera"                     = "Камеры";
 
 "Me.WalletVC.fundingCell.additionalTitle"          = "РЕКОМЕНДУЕМ ПОПОЛНИТЬ ДО";
-"Me.WalletVC.WalletCosignersVC.title"              = "Сопоручители";
+"Me.WalletVC.WalletCosignersVC.title"              = "Соподписчики";
 
 "Me.Report.submitButtonTitle-submit"               = "Отправить";
 "Me.Report.submitButtonTitle-create"               = "Создать";
 "Me.Report.cancelButtonTitle"                      = "Отменить";
 
-"Me.Wallet.Withdraw"                               = "Снять";
-"Me.Wallet.Withdraw.Details.title"                 = "ДЕТАЛИ СНЯТИЯ";
+"Me.Wallet.Withdraw"                               = "Вывести";
+"Me.Wallet.Withdraw.Details.title"                 = "ДЕТАЛИ ВЫВОДА";
 "Me.Wallet.Withdraw.Details.to.title"              = "КУДА";
 "Me.Wallet.Withdraw.Details.to.placeholder"        = "На адрес этериум";
 "Me.Wallet.Withdraw.Details.amount.title"          = "СУММА";
 "Me.Wallet.Withdraw.Details.amount.placeholder"    = "Значение";
 "Me.Wallet.Withdraw.Details.submitButton.title"    = "Подтвердить";
-"Me.Wallet.Withdraw.header.queued"                 = "В ОЧЕРЕДИ НА СНЯТИЕ";
-"Me.Wallet.Withdraw.header.inProgress"             = "СНЯТИЕ В ПРОЦЕССЕ";
-"Me.Wallet.Withdraw.header.history"                = "ИСТОРИЯ СНЯТИЙ";
-"Me.Wallet.Withdraw.WithdrawInfo.title"            = "ИНФОРМАЦИЯ О СНЯТИЯХ";
+"Me.Wallet.Withdraw.header.queued"                 = "В ОЧЕРЕДИ НА ВЫВОД";
+"Me.Wallet.Withdraw.header.inProgress"             = "ВЫВОД В ПРОЦЕССЕ";
+"Me.Wallet.Withdraw.header.history"                = "ИСТОРИЯ ВЫВОДОВ";
+"Me.Wallet.Withdraw.WithdrawInfo.title"            = "ИНФОРМАЦИЯ О ВЫВОДАХ";
 "Me.Wallet.Withdraw.WithdrawInfo.balance"          = "Баланс";
-"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest"    = "Ты можешь запросить до %@ mETH на снятие";
-"Me.Wallet.Withdraw.WithdrawInfo.youHave"          = "У тебя зарезервировано %@ mETH, если часть зарезервированных средств станет доступна, они будут автоматически поставлены на снятие.";
+"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest"    = "Ты можешь запросить до %@ mETH на вывод";
+"Me.Wallet.Withdraw.WithdrawInfo.youHave"          = "У тебя зарезервировано %@ mETH, если часть зарезервированных средств станет доступна, они будут автоматически поставлены на вывод.";
 
 "Me.Wallet.Withdraw.noCameraAccess.title"          = "Для сканирования QR-кода требуется доступ к камере";
 "Me.Wallet.Withdraw.noCameraAccess.details"        = "Please grant access to device camera for Teambrella app to be able to scan QR codes";
@@ -95,7 +95,7 @@
 
 "Me.WalletVC.lowerBrick.title"                     = "РЕКОМЕНДОВАНО";
 "Me.Wallet.Transactions.to"                        = "КУДА";
-"Me.Wallet.Transactions.withdrawal"                = "СНЯТИЕ";
+"Me.Wallet.Transactions.withdrawal"                = "ВЫВОД";
 "Me.Wallet.Transactions.claimNumber"               = "ЗАЯВКА %d";
 "Me.Wallet.Transactions.kind.pending"              = "В ОЖИДАНИИ";
 "Me.Wallet.Transactions.kind.cancelled"            = "ОТМЕНА";

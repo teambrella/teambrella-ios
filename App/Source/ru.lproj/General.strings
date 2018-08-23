@@ -23,7 +23,7 @@
 "General.you"                                      = "Ты";
 
 "General.TransactionKind.payout"                   = "выплата";
-"General.TransactionKind.withdraw"                 = "снятие";
+"General.TransactionKind.withdraw"                 = "вывод";
 "General.TransactionKind.moveToNextWallet"         = "перевод на другой кошелек";
 "General.TransactionKind.saveFromPreviousWallet"   = "перевод с другого кошелька";
 "General.TransactionKind.votingPayout"             = "выплата по голосованию";
