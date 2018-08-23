@@ -89,6 +89,7 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
         let otherAvatars: [Avatar]
         let otherCount: Int
         let minutesRemaining: Int
+        let canVote: Bool
 
         enum CodingKeys: String, CodingKey {
             case ratioVoted = "RatioVoted"
@@ -98,6 +99,7 @@ struct ClaimEntityLarge: Decodable, CustomStringConvertible {
             case otherAvatars = "OtherAvatars"
             case otherCount = "OtherCount"
             case minutesRemaining = "RemainedMinutes"
+            case canVote = "CanVote"
         }
         
     }

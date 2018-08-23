@@ -104,7 +104,7 @@ class PieChartView: UIView {
     }
     
     func setupWith(remainingMinutes: Int) {
-    endAngle = 360 - 360 / daysInCircle * CGFloat(remainingMinutes) / 60 / 24
+        endAngle = 360 - 360 / daysInCircle * CGFloat(remainingMinutes) / 60 / 24
     }
     
 }

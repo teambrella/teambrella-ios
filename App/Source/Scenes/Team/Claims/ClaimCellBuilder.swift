@@ -64,7 +64,7 @@ struct ClaimCellBuilder {
             }
             cell.setupGallery(with: imageURLStrings, options: [.requestModifier(modifier)])
         }
-        cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: claim.basic.avatar)))
+        cell.objectView.showImage(string: claim.discussion.smallPhoto)
         cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)
         cell.textLabel.text = claim.discussion.originalPostText.sane
         cell.unreadCountLabel.text = "\(claim.discussion.unreadCount)"
@@ -94,7 +94,7 @@ struct ClaimCellBuilder {
         ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
     }
     
-    // swiftlint:disable:next function_body_length
+    // swiftlint:disable:next function_body_length cyclomatic_complexity
     static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         let session = service.session
 
@@ -120,12 +120,17 @@ struct ClaimCellBuilder {
         if let myVote = voting.myVote {
             cell.yourVotePercentValue.text = String.truncatedNumber(myVote.percentage)
             cell.yourVoteAmount.text = String.truncatedNumber(myVote.fiat(from: claim.basic.claimAmount).value)
-            cell.slider.setValue(Float(myVote.value), animated: true)
-            if voting.proxyName != nil {
+            if voting.canVote {
+                cell.slider.setValue(Float(myVote.value), animated: true)
+            } else {
+                cell.slider.isHidden = true
+            }
+            if let proxyName = voting.proxyName {
                 cell.resetButton.isHidden = true
                 if let proxyAvatar = voting.proxyAvatar {
                     cell.proxyAvatar.show(proxyAvatar)
-                    cell.byProxyLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+                    cell.byProxyLabel.text = voting.canVote ? "Team.ClaimCell.byProxy".localized.uppercased()
+                                                            : proxyName.entire.uppercased()
                 }
             } else {
                 cell.resetButton.isHidden = false
@@ -139,11 +144,23 @@ struct ClaimCellBuilder {
                 cell.slider.setValue(cell.slider.minimumValue, animated: true)
             }
             cell.resetButton.isHidden = true
+            if voting.canVote == false {
+                cell.slider.isHidden = true
+            }
         }
+        
+        if voting.myVote != nil {
+            if voting.proxyName != nil {
+                cell.yourVoteLabel.text = voting.canVote ? "Team.ClaimCell.yourVote".localized.uppercased()
+                    : "Team.ClaimCell.proxyVote".localized.uppercased()
+            }
+        } else {
+            cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
+        }
+        
         cell.proxyAvatar.isHidden = voting.proxyAvatar == nil || voting.myVote == nil
         cell.byProxyLabel.isHidden = voting.proxyName == nil || voting.myVote == nil
         
-        cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         cell.yourVotePercentValue.alpha = 1
         cell.yourVoteAmount.alpha = 1
         cell.yourVoteCurrency.text = session?.currentTeam?.currency ?? ""

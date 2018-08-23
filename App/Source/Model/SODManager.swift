@@ -31,7 +31,7 @@ struct SODManager {
     func checkSilentPush(infoMaker: InfoMaker) {
         if infoMaker.isSilentPushAvailable == false
             && UIDevice.current.isInLowPowerMode == false {
-            presentSilentPushNotificationIfNeeded()
+            //presentSilentPushNotificationIfNeeded()
         }
     }
 

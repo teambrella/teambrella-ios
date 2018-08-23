@@ -145,7 +145,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         }
     }
     
-    func updateAverages(cell: VotingRiskCell, risk: Double) {
+    func updateAverages(cell: VotingOrVotedRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
             
             guard let averageRisk = dataSource.teammateLarge?.voting?.averageRisk else { return }
@@ -217,16 +217,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     @objc
     func tapAddToProxy(sender: UIButton) {
         dataSource.addToProxy { [weak self] in
-            guard let me = self else { return }
-            
-            let cells = me.collectionView.visibleCells
-            let statCells = cells.compactMap { $0 as? TeammateStatsCell }
-            if let cell = statCells.first {
-                let title = me.dataSource.isMyProxy
-                    ? "Team.TeammateCell.removeFromMyProxyVoters".localized
-                    : "Team.TeammateCell.addToMyProxyVoters".localized
-                cell.addButton.setTitle(title, for: .normal)
-            }
+            self?.collectionView.reloadData()
         }
     }
     
@@ -240,16 +231,16 @@ final class TeammateProfileVC: UIViewController, Routable {
     }
     
     // MARK: Private
-
+    
     private var isGradientNavBarAdded = false
-
+    
     private func addGradientNavBarIfNeeded() {
         guard !isGradientNavBarAdded else { return }
-
+        
         if !isPeeking && shouldAddGradientNavBar {
             addGradientNavBar()
             isGradientNavBarAdded = true
-            if !dataSource.isMe {
+            if !dataSource.isMe, let accessLevel = service.session?.currentTeam?.teamAccessLevel, accessLevel == .full {
                 addPrivateMessageButton()
             }
             setTitle()
@@ -259,7 +250,10 @@ final class TeammateProfileVC: UIViewController, Routable {
     private func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
-        collectionView.register(VotingRiskCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
+        collectionView.register(VotingRiskCell.nib,
+                                forCellWithReuseIdentifier: TeammateProfileCellType.voting.rawValue)
+        collectionView.register(VotedRiskCell.nib,
+                                forCellWithReuseIdentifier: TeammateProfileCellType.voted.rawValue)
         collectionView.register(TeammateSummaryView.nib,
                                 forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                 withReuseIdentifier: TeammateSummaryView.cellID)
@@ -320,7 +314,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             }
         }
     }
-
+    
     private func showHeader(offset: CGFloat) {
         if offset < Constant.votingHeaderTopOffset {
             view.layoutIfNeeded()
@@ -341,6 +335,14 @@ final class TeammateProfileVC: UIViewController, Routable {
             }
             animator.startAnimation()
         }
+    }
+
+    private func makeACall() {
+        guard let basic = dataSource.teammateLarge?.basic,
+            let myName = service.session?.currentUserName else { return }
+
+        service.sinch.call(userID: teammateID, name: myName.entire)
+        service.router.showCall(in: self, to: basic.name.entire, avatar: basic.avatar, id: teammateID)
     }
 }
 
@@ -501,6 +503,8 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: 215)
         case .voting:
             return CGSize(width: wdt, height: 360)
+        case .voted:
+            return CGSize(width: wdt, height: 180)
         case .dialogCompact:
             return  CGSize(width: collectionView.bounds.width, height: 98)
         }
@@ -564,6 +568,8 @@ extension TeammateProfileVC: UITableViewDelegate {
             cell.topLabel.text = item.name.uppercased()
             if item.type == .facebook {
                 cell.bottomLabel.text = "https://m.facebook.com"
+            } else if dataSource.isMyProxy && item.type == .call {
+                cell.bottomLabel.text = "my proxy"
             } else {
                 cell.bottomLabel.text = item.address
             }
@@ -572,8 +578,11 @@ extension TeammateProfileVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = dataSource.socialItems[indexPath.row]
-        if let url = URL(string: item.address) {
+        if item.type == .facebook, let url = URL(string: item.address) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        if dataSource.isMyProxy && item.type == .call {
+            makeACall()
         }
     }
     
@@ -601,15 +610,16 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         cell.yourVoteValueLabel.text = String(format: "%.2f", changedRisk)
         cell.middleAvatarLabel.text = String(format: "%.2f", changedRisk)
         updateAverages(cell: cell, risk: changedRisk)
-        cell.pieChart.setupWith(remainingMinutes: dataSource.teammateLarge?.voting?.remainingMinutes ?? 0)
         cell.showYourNoVote(risk: changedRisk)
         cell.colorizeCenterCell()
         let kind = UICollectionElementKindSectionHeader
         if let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? TeammateSummaryView {
             updateAmounts(in: view, with: changedRisk)
         }
-        if let header = compactUserInfoHeader {
-            updateAmounts(in: header, with: changedRisk)
+        if let canVote = dataSource.teammateLarge?.voting?.canVote, canVote == true {
+            if let header = compactUserInfoHeader {
+                updateAmounts(in: header, with: changedRisk)
+            }
         }
     }
     
@@ -655,44 +665,53 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         setAvatar(avatarView: cell.leftAvatar, label: cell.leftAvatarLabel, with: range.teammates.first)
     }
     
-    func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton) {
-        switch button {
-        case cell.resetVoteButton:
-            guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
-            
-            cell.yourVoteValueLabel.alpha = 0.5
-            dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self] json in
-                self?.collectionView.reloadData()
-                guard let header = self?.compactUserInfoHeader, let risk = self?.currentRiskVote else { return }
+    func votingRisk(cell: VotingOrVotedRiskCell, didTapButton button: UIButton) {
+        if let cell = cell as? VotingRiskCell {
+            switch button {
+            case cell.resetVoteButton:
+                guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
                 
-                self?.updateAmounts(in: header, with: risk)
+                cell.yourVoteValueLabel.alpha = 0.5
+                dataSource.sendRisk(userID: teammateID, risk: nil) { [weak self] json in
+                    self?.collectionView.reloadData()
+                    guard let header = self?.compactUserInfoHeader, let risk = self?.currentRiskVote else { return }
+                    
+                    self?.updateAmounts(in: header, with: risk)
+                }
+            case cell.othersButton:
+                guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
+                    log("Can't present CompareTeamRisk controller. No ranges in extendedTeammate.", type: .error)
+                    return
+                }
+                
+                service.router.presentCompareTeamRisk(ranges: ranges)
+            case cell.othersVotesButton:
+                guard let teamID = service.session?.currentTeam?.teamID else { return }
+                guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
+                
+                service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
+            default:
+                log("VotingRiskCell unknown button pressed", type: [.error])
             }
-        case cell.othersButton:
-            guard let ranges = dataSource.teammateLarge?.riskScale?.ranges else {
-                log("Can't present CompareTeamRisk controller. No ranges in extendedTeammate.", type: .error)
-                return
-            }
-            
-            service.router.presentCompareTeamRisk(ranges: ranges)
-        case cell.othersVotesButton:
+        } /*else if cell is VotedRiskCell {
             guard let teamID = service.session?.currentTeam?.teamID else { return }
             guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
             
             service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
-        default:
-            log("VotingRiskCell unknown button pressed", type: [.error])
-        }
+        }*/
     }
     
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView) {
-        showHeader(offset: summaryViewNumberBarOffset)
-        lastScrollMoment = Date()
-        DispatchQueue.main.asyncAfter(deadline: .now() + Constant.votingHeaderShowTime) {
-            let now = Date()
-            if now.timeIntervalSince1970 - self.lastScrollMoment.timeIntervalSince1970 >
-                Constant.votingHeaderShowTime - 1 {
-                self.hideHeader(animated: true)
-                self.lastScrollMoment = Date()
+        if let canVote = dataSource.teammateLarge?.voting?.canVote, canVote == true {
+            showHeader(offset: summaryViewNumberBarOffset)
+            lastScrollMoment = Date()
+            DispatchQueue.main.asyncAfter(deadline: .now() + Constant.votingHeaderShowTime) {
+                let now = Date()
+                if now.timeIntervalSince1970 - self.lastScrollMoment.timeIntervalSince1970 >
+                    Constant.votingHeaderShowTime - 1 {
+                    self.hideHeader(animated: true)
+                    self.lastScrollMoment = Date()
+                }
             }
         }
     }

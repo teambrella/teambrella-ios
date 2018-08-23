@@ -7,13 +7,13 @@
 */
 
 "Home.salutation"                                       = "Привет, %@!";
-"Home.subtitle"                                         = "Свежие новости для тебя";
-"Home.submitButton.anotherClaim"                        = "Подать ещё заявку";
-"Home.submitButton.claim"                               = "Подать заявку";
+"Home.subtitle"                                         = "Вот новости для тебя:";
+"Home.submitButton.anotherClaim"                        = "Подать ещё заявку на выплату";
+"Home.submitButton.claim"                               = "Подать заявку на выплату";
 "Home.leftBrick.title"                                  = "ЗАЩИТА";
 "Home.rightBrick.title"                                 = "КОШЕЛЁК";
 "Home.itemCard.status"                                  = "ЗАЩИЩЕНО";
-"Home.itemCard.coverageType"                            = "Франшиза";
+"Home.itemCard.coverageType"                            = "Ущерб"; //"Франшиза";
 
 "Home.SupportCell.headerLabel"                          = "Техподдержка";
 "Home.SupportCell.onlineLabel"                          = "ОНЛАЙН";

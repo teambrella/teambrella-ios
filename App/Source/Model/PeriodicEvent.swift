@@ -16,25 +16,27 @@
 
 import Foundation
 
-enum ChatContext {
-    case claim(ClaimEntityLarge)
-    case teammate(TeammateLarge)
-    case feed(FeedEntity)
-    case home(HomeCardModel)
-    case chat(ChatModel)
-    case privateChat(PrivateChatUser)
-    case remote(RemoteTopicDetails)
-    case myApplication(MyApplicationDetails)
-    case none
+class PeriodicEvent {
+    weak var timer: Timer?
 
-    var claimID: Int? {
-        switch self {
-        case let .claim(entity):
-            return entity.id
-        case let .feed(feed):
-            return feed.itemType == .claim ? feed.itemID : nil
-        default:
-            return nil
+    private(set) var startDate: Date
+
+    init(step: TimeInterval, event: @escaping () -> Void) {
+        timer = Timer.scheduledTimer(withTimeInterval: step, repeats: true) { timer in
+            event()
         }
+        timer?.fire()
+        startDate = Date()
     }
+
+    func invalidate() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    deinit {
+        invalidate()
+        print("\(#file) deinitialized")
+    }
+
 }

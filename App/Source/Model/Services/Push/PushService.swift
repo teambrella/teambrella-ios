@@ -298,6 +298,7 @@ extension PushService: UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler:
         @escaping (UNNotificationPresentationOptions) -> Void) {
+        
         let dict = notification.request.content.userInfo
         print("userNotificationCenter dict: \(dict)")
         if let payload = dict["Payload"] as? [AnyHashable: Any],

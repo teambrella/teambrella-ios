@@ -6,8 +6,8 @@
   Copyright © 2017 Yaroslav Pasternak. All rights reserved.
 */
 
-"Proxy.MyProxiesVC.indicatorTitle"      = "Мои прокси";
-"Proxy.ProxyForVC.indicatorTitle"       = "Я прокси для";
+"Proxy.MyProxiesVC.indicatorTitle"      = "Мои Прокси";
+"Proxy.ProxyForVC.indicatorTitle"       = "Я Прокси Для";
 "Proxy.UserIndexVC.indicatorTitle"      = "Рейтинг";
 "Proxy.SortVC.SortByHeader"             = "Сортировать по";
 "Proxy.SortVC.Cell.Rating"              = "Рейтингу";
@@ -23,7 +23,7 @@
 "Proxy.MyProxiesVC.infoButton"          = "Нужна помощь?";
 "Proxy.MyProxiesVC.decisions"           = "РЕШЕНИЯ";
 "Proxy.MyProxiesVC.discussions"         = "ОБСУЖДЕНИЯ";
-"Proxy.MyProxiesVC.votingFreq"          = "ЧАСТОТА ГОЛОСОВ.";
+"Proxy.MyProxiesVC.votingFreq"          = "ЧАСТ. ГОЛОСОВ.";
 "Proxy.MyProxiesVC.proxyRank"           = "РАНГ";
 "Proxy.UserIndexVC.allTeamsRating"      = "ОБЩИЙ РЕЙТИНГ";
 "Proxy.UserIndexVC.proxyRank"           = "РЕЙТИНГ";
@@ -33,8 +33,8 @@
 "Proxy.Empty.You.title"                 = "Ты не являешься прокси\nни для кого в команде";
 "Proxy.Empty.You.details"               = "Ты можешь стать прокси\nзарабатывая доверие других участников. Публикуй свои идеи, мнения и голоса.";
 
-"Proxy.UserIndexVC.optButton.title.in"  = "Opt Into Rating";
-"Proxy.UserIndexVC.optButton.title.out" = "Opt Out Of Rating";
+"Proxy.UserIndexVC.optButton.title.in"  = "Вступить в рейтинг";
+"Proxy.UserIndexVC.optButton.title.out" = "Выйти из рейтинга";
 
 "Proxy.ProxyForCellBuilder.neverVoted"  = "НЕ ГОЛОСОВАЛ";
 

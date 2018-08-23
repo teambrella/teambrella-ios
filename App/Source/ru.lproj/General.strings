@@ -18,14 +18,15 @@
 "General.claimState.processed"                     = "processed";
 
 "General.today"                                    = "сегодня";
+"General.yesterday"                                = "вчера";
 
 "General.you"                                      = "Ты";
 
 "General.TransactionKind.payout"                   = "выплата";
-"General.TransactionKind.withdraw"                 = "снятие";
+"General.TransactionKind.withdraw"                 = "вывод";
 "General.TransactionKind.moveToNextWallet"         = "перевод на другой кошелек";
 "General.TransactionKind.saveFromPreviousWallet"   = "перевод с другого кошелька";
-"General.TransactionKind.votingPayout"             = "выплата по голосования";
+"General.TransactionKind.votingPayout"             = "выплата по голосованию";
 
 "General.TransactionState.created"                 = "создана";
 "General.TransactionState.approvedMaster"          = "approved by master";
@@ -51,7 +52,7 @@
 "General.CoverageObject.bicycle"                   = "ВЕЛОСИПЕД";
 
 "General.CoverageType.other"                       = "Объект";
-"General.CoverageType.carCollisionDeductible"      = "Франшиза";
+"General.CoverageType.carCollisionDeductible"      = "Ущерб"; //"Франшиза";
 "General.CoverageType.petDog"                      = "Здоровье питомца";
 "General.CoverageType.petCat"                      = "Здоровье питомца";
 "General.CoverageType.bicycle"                     = "Кража";

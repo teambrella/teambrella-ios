@@ -27,7 +27,7 @@
                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wH6-UR-PyD">
                         <rect key="frame" x="0.0" y="175" width="456" height="120"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxe-aJ-RJr" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jxe-aJ-RJr">
                                 <rect key="frame" x="16" y="16" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Aed-Kx-hDD"/>
@@ -126,8 +126,8 @@
             </constraints>
             <size key="customSize" width="456" height="286"/>
             <connections>
-                <outlet property="avatarView" destination="Jxe-aJ-RJr" id="aXE-7R-7gg"/>
                 <outlet property="imagesStack" destination="89J-hJ-MxL" id="gcL-KD-Khl"/>
+                <outlet property="objectView" destination="Jxe-aJ-RJr" id="oEP-4W-SIB"/>
                 <outlet property="slideshow" destination="mhz-q3-hzE" id="Dgm-KX-0wB"/>
                 <outlet property="textLabel" destination="eeg-zL-8ga" id="YlN-t5-2gi"/>
                 <outlet property="timeLabel" destination="Fug-nW-qVc" id="hat-i7-Sgg"/>

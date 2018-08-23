@@ -40,6 +40,8 @@ final class ClaimVC: UIViewController, Routable {
     var session: Session!
     var router: MainRouter!
     
+    var teammateAvatarButton = UIButton()
+    
     @IBOutlet var collectionView: UICollectionView!
     
     // MARK: Lifecycle
@@ -81,6 +83,7 @@ final class ClaimVC: UIViewController, Routable {
             isPeeking = false
         }
         addGradientNavBarIfNeeded()
+        addTeammateAvatarButtonIfNeeded()
     }
     
     override func didReceiveMemoryWarning() {
@@ -132,6 +135,16 @@ final class ClaimVC: UIViewController, Routable {
         guard let claimID = dataSource.claim?.id else { return }
         
         router.presentOthersVoted(teamID: teamID, teammateID: nil, claimID: claimID)
+    }
+    
+    @objc
+    func tapTeammateAvatarButton(sender: UIButton) {
+        guard let teammateID = dataSource.claim?.basic.userID else {
+            log("Tap teammateAvatar. No teammate found!", type: .userInteraction)
+            return
+        }
+        
+        router.presentMemberProfile(teammateID: teammateID)
     }
     
     // MARK: Private
@@ -217,6 +230,35 @@ final class ClaimVC: UIViewController, Routable {
         }
     }
     
+    private func addTeammateAvatarButtonIfNeeded() {
+        guard self.navigationItem.rightBarButtonItem == nil else { return }
+
+        let teammateAvatarButton = UIButton()
+        teammateAvatarButton.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+        let barItem = UIBarButtonItem(customView: teammateAvatarButton)
+        teammateAvatarButton.addTarget(self, action: #selector(tapTeammateAvatarButton), for: .touchUpInside)
+        self.teammateAvatarButton = teammateAvatarButton
+        guard let avatar = dataSource.claim?.basic.avatar else {
+            log("No teammateAvatar found!", type: .error)
+            return
+        }
+
+        UIImage.fetchAvatar(string: avatar,
+                            width: 36,
+                            cornerRadius: 36 / 2) { image, error  in
+                                guard error == nil else { return }
+                                guard let image = image, let cgImage = image.cgImage else { return }
+
+                                let scaled = UIImage(cgImage: cgImage,
+                                                     scale: UIScreen.main.nativeScale,
+                                                     orientation: image.imageOrientation)
+                                self.teammateAvatarButton.setImage(scaled, for: .normal)
+                                self.teammateAvatarButton.imageView?.contentMode = .scaleAspectFill
+                                self.teammateAvatarButton.imageView?.clipsToBounds = true
+                                self.navigationItem.setRightBarButton(barItem, animated: true)
+        }
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource
@@ -279,7 +321,10 @@ extension ClaimVC: UICollectionViewDelegateFlowLayout {
         let offset: CGFloat = 16
         switch dataSource.cellID(for: indexPath) {
         case ImageGalleryCell.cellID: return CGSize(width: collectionView.bounds.width, height: 120 + 184)
-        case ClaimVoteCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 250)
+        case ClaimVoteCell.cellID:
+            let canVote = dataSource.claim?.voting?.canVote
+            return canVote == true ? CGSize(width: collectionView.bounds.width - offset * 2, height: 250)
+                                   : CGSize(width: collectionView.bounds.width - offset * 2, height: 200)
         case ClaimDetailsCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 283)
         case ClaimOptionsCell.cellID: return CGSize(width: collectionView.bounds.width, height: 112)
         default: break

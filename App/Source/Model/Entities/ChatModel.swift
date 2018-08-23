@@ -80,6 +80,8 @@ struct ChatModel: Decodable, CustomStringConvertible {
 
         var otherCount: Int?
         var otherAvatars: [Avatar]?
+        
+        var canVote: Bool
 
         mutating func update(with claim: ClaimEntityLarge.VotingPart) {
             remainingMinutes = claim.minutesRemaining
@@ -89,6 +91,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
             ratioVoted = claim.ratioVoted
             otherCount = claim.otherCount
             otherAvatars = claim.otherAvatars
+            canVote = claim.canVote
         }
 
         enum CodingKeys: String, CodingKey {
@@ -102,6 +105,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
             case ratioVoted = "RatioVoted"
             case otherCount = "OtherCount"
             case otherAvatars = "OtherAvatars"
+            case canVote = "CanVote"
         }
 
     }
@@ -129,6 +133,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
         let state: ClaimState?
         let reimbursement: Double?
         let paymentFinishedDate: Date?
+        let datePayToJoin: Date?
 
         let claimID: Int?
 
@@ -155,6 +160,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
             case state = "State"
             case reimbursement = "Reimbursement"
             case paymentFinishedDate = "DatePaymentFinished"
+            case datePayToJoin = "DatePayToJoin"
             case claimID = "ClaimId"
         }
 

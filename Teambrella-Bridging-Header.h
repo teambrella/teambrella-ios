@@ -3,6 +3,7 @@
 //
 
 #import <CoreBitcoin/CoreBitcoin.h>
+#import <Sinch/Sinch.h>
 //#import <FBSDKCoreKit/FBSDKCoreKit.h>
 //#import <FBSDKLoginKit/FBSDKLoginKit.h>
 //#import <Geth/Geth.h>

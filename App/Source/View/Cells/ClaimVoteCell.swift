@@ -68,6 +68,13 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
         }
     }
     
+    var isProxyHidden: Bool = false {
+        didSet {
+            proxyAvatar.isHidden = isProxyHidden
+            byProxyLabel.isHidden = isProxyHidden
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         slashView.layer.cornerRadius = 5

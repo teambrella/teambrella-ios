@@ -26,7 +26,7 @@ class HomeDataSource {
     var cardsCount: Int {
         guard let count = model?.cards.count else { return 0 }
         
-        return count + 1
+        return count // + 1
     }
     
     var isSilentUpdate = false
@@ -60,7 +60,7 @@ class HomeDataSource {
     }
     
     func cellID(for indexPath: IndexPath) -> String {
-        guard let model = self[indexPath] else { return HomeSupportCell.cellID }
+        guard let model = self[indexPath] else { return " " } //HomeSupportCell.cellID }
         
         return cellID(with: model)
     }
@@ -69,6 +69,8 @@ class HomeDataSource {
         switch cardModel.itemType {
         case .teammate, .claim:
             return "HomeCollectionCell"
+        case .fundWallet, .attachPhotos:
+            return HomeSupportCell.cellID
         default:
             return "HomeCollectionCell"
         }
@@ -93,6 +95,12 @@ class HomeDataSource {
         guard let model = model, indexPath.row < model.cards.count else { return nil }
         
         return model.cards[indexPath.row]
+    }
+    
+    subscript(row: Int) -> HomeCardModel? {
+        guard let model = model, row < model.cards.count else { return nil }
+        
+        return model.cards[row]
     }
     
 }

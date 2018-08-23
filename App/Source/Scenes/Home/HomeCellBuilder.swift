@@ -35,10 +35,15 @@ struct HomeCellBuilder {
     
     static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeCardModel?) {
         guard let model = model else {
-            populateSupport(cell: cell, dataSource: dataSource)
+//            populateSupport(cell: cell, dataSource: dataSource)
             return
         }
         
+        if model.itemType == .attachPhotos {
+            populateAttachPhotos(cell: cell, model: model)
+        } else if model.itemType == .fundWallet {
+            populateFund(cell: cell, model: model)
+        }
         switch cell {
         case let cell as HomeCollectionCell:
             populateHome(cell: cell, model: model)
@@ -52,10 +57,10 @@ struct HomeCellBuilder {
             break
         }
     }
-
+    
     static func populateHome(cell: HomeCollectionCell, model: HomeCardModel) {
         let session = service.session
-
+        
         switch model.itemType {
         case .claim:
             setupClaimCell(cell: cell, model: model)
@@ -77,6 +82,30 @@ struct HomeCellBuilder {
             cell.unreadCountView.isHidden = true
         }
         cell.rightNumberView.isBadgeVisible = model.isVoting
+    }
+    
+    static func populateFund(cell: UICollectionViewCell, model: HomeCardModel) {
+        guard let cell = cell as? HomeSupportCell else { return }
+        
+        cell.button.setTitle("", for: .normal)
+        cell.imageView.show(model.smallPhoto)
+        cell.headerLabel.text = model.chatTitle
+        cell.centerLabel.text = model.subtitle
+        cell.bottomLabel.text = model.text.sane
+        cell.button.setTitle(model.actionText.sane, for: .normal)
+        cell.onlineIndicator.isHidden = true
+    }
+    
+    static func populateAttachPhotos(cell: UICollectionViewCell, model: HomeCardModel) {
+        guard let cell = cell as? HomeSupportCell else { return }
+        
+        cell.button.setTitle("", for: .normal)
+        cell.imageView.show(model.smallPhoto)
+        cell.headerLabel.text = model.chatTitle
+        cell.centerLabel.text = model.subtitle
+        cell.bottomLabel.text = model.text.sane
+        cell.button.setTitle(model.actionText.sane, for: .normal)
+        cell.onlineIndicator.isHidden = true
     }
     
     static func populateSupport(cell: UICollectionViewCell, dataSource: HomeDataSource) {
@@ -112,7 +141,7 @@ struct HomeCellBuilder {
         cell.bottomLabel.text = "I think it’s a great idea to let Frank in, he seems trustworthy and his application …"
         cell.messageCountLabel.text = "4" //
     }
-
+    
     static private func setupClaimCell(cell: HomeCollectionCell, model: HomeCardModel) {
         let session = service.session
         cell.titleLabel.text = model.itemName
@@ -125,12 +154,13 @@ struct HomeCellBuilder {
         cell.leftNumberView.currencyLabel.text = session?.currentTeam?.currencySymbol ?? ""
         cell.leftNumberView.isCurrencyVisible = true
         cell.leftNumberView.isPercentVisible = false
-        let amountText: String = model.teamVote.map { String(format: "%.0f", $0 * 100) } ?? "..."
-        cell.rightNumberView.amountLabel.text = amountText
+        cell.rightNumberView.amountLabel.text = model.teamVote * 100 != 0
+            ? String(format: "%.0f", model.teamVote * 100)
+            : "..."
         cell.rightNumberView.isBadgeVisible = model.isVoting
-        cell.rightNumberView.isPercentVisible = model.teamVote != nil
+        cell.rightNumberView.isPercentVisible = model.teamVote != 0
     }
-
+    
     static private func setupTeammateCell(cell: HomeCollectionCell, model: HomeCardModel) {
         cell.titleLabel.text = model.userName.entire
         cell.subtitleLabel.text = model.itemName.uppercased()
@@ -140,8 +170,9 @@ struct HomeCellBuilder {
         cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
         cell.leftNumberView.isCurrencyVisible = true
         cell.leftNumberView.isPercentVisible = false
-        let amountText: String = model.teamVote.map { String(format: "%.1f", $0) } ?? "..."
-        cell.rightNumberView.amountLabel.text = amountText
+        cell.rightNumberView.amountLabel.text = model.teamVote != 0
+            ? String(format: "%.1f", model.teamVote)
+            : "..."
         cell.rightNumberView.isBadgeVisible = model.isVoting
         cell.rightNumberView.isCurrencyVisible = false
         cell.rightNumberView.isPercentVisible = false

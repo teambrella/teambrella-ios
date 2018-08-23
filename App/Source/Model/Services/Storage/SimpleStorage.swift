@@ -27,6 +27,7 @@ final class SimpleStorage {
         case didLogWithKey               = "com.teambrella.didLogWithKey"
         case lastUserType                = "com.teambrella.lastUserType"
         case privateDemoKey              = "com.teambrella.privateDemoKey"
+        case userID                      = "com.teambrella.userID"
 
         case didMoveToRealGroup          = "com.teambrella.didMoveToRealGroup"
     }

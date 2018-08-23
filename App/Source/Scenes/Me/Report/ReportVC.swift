@@ -61,6 +61,7 @@ final class ReportVC: UIViewController, Routable {
     
     var coverage: Double = 0.0
     var limit: Double = 0.0
+    var expenses: Double = 0.0
     var lastDate: Date = Date()
     var claimCell: NewClaimCell? {
         let visibleCells = collectionView.visibleCells
@@ -106,7 +107,7 @@ final class ReportVC: UIViewController, Routable {
             self.isCoverageActual = true
             self.coverage = self.dataSource.coverage.value
             self.limit = self.dataSource.limit
-            self.claimCell?.updateExpenses(limit: self.limit, coverage: self.coverage, expenses: nil)
+            self.claimCell?.updateExpenses(limit: self.limit, coverage: self.coverage, expenses: self.expenses)
         }
         ReportCellBuilder.registerCells(in: collectionView)
         dataSource.getCoverageForDate(date: datePicker.date)
@@ -238,7 +239,18 @@ final class ReportVC: UIViewController, Routable {
             dateReportCellModel.date = sender.date
             dataSource.items[idx] = dateReportCellModel
             if let cell = collectionView.cellForItem(at: indexPath) as? NewClaimCell {
-                cell.dateTextField.text = DateProcessor().stringIntervalOrDate(from: dateReportCellModel.date)
+                let days = Date().interval(of: .day, since: dateReportCellModel.date)
+                var incidentDateText = ""
+                if days <= 1 {
+                    incidentDateText = "General.today".localized.capitalized
+                } else if days > 1 && days <= 2 {
+                    incidentDateText = "General.yesterday".localized.capitalized
+                } else if days - 1 >= 7 {
+                    incidentDateText = DateProcessor().stringIntervalOrDate(from: dateReportCellModel.date)
+                } else {
+                    incidentDateText = "Team.Ago.days_format".localized(days - 1).lowercased()
+                }
+                cell.dateTextField.text = incidentDateText
             }
             
             lastDate = Date()
@@ -488,6 +500,7 @@ extension ReportVC: UITextFieldDelegate {
         (textField as? TextField)?.isInEditMode = false
         enableSendButton()
         if let cell = claimCell, textField == cell.expensesTextField, let text = textField.text {
+            expenses = Double(text) ?? 0
             cell.updateExpenses(limit: limit, coverage: coverage, expenses: Double(text))
         }
     }

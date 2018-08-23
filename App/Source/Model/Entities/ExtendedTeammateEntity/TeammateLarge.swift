@@ -118,6 +118,7 @@ class TeammateLarge: Decodable {
         let votersCount: Int
         let votersAvatars: [String]
         let averageRisk: Double?
+        let canVote: Bool
 
         enum CodingKeys: String, CodingKey {
             case riskVoted = "RiskVoted"
@@ -128,6 +129,7 @@ class TeammateLarge: Decodable {
             case votersCount = "OtherCount"
             case votersAvatars = "OtherAvatars"
             case averageRisk = "AverageRisk"
+            case canVote = "CanVote"
         }
 
     }

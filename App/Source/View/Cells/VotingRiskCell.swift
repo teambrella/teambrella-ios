@@ -26,12 +26,12 @@ protocol VotingRiskCellDelegate: class {
     func votingRisk(cell: VotingRiskCell, changedRisk: Double)
     func votingRisk(cell: VotingRiskCell, stoppedOnRisk: Double)
     func votingRisk(cell: VotingRiskCell, changedMiddleRowIndex: Int)
-    func votingRisk(cell: VotingRiskCell, didTapButton button: UIButton)
+    func votingRisk(cell: VotingOrVotedRiskCell, didTapButton button: UIButton)
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView)
     func averageVotingRisk(cell: VotingRiskCell) -> Double
 }
 
-class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
+class VotingRiskCell: UICollectionViewCell, VotingOrVotedRiskCell {
     @IBOutlet var titleLabel: BlockHeaderLabel!
     @IBOutlet var timeLabel: ThinStatusSubtitleLabel!
     @IBOutlet var pieChart: PieChartView!
@@ -56,6 +56,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var swipeToVoteView: SwipeToVote!
     
+    @IBOutlet var pearImageView: UIImageView!
     @IBOutlet var leftAvatar: RoundImageView!
     @IBOutlet var leftAvatarLabel: UILabel!
     
@@ -65,6 +66,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var rightAvatar: RoundImageView!
     @IBOutlet var rightAvatarLabel: UILabel!
     
+    @IBOutlet var forward: UIImageView!
     @IBOutlet var othersButton: UIButton!
     @IBOutlet weak var othersLabel: MessageTitleLabel!
     
@@ -186,7 +188,7 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
         yourVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
         yourVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
         
-        yourVoteHeaderLabelLeadingConstraint.constant = isSmallIPhone ? 12 : 30
+        yourVoteHeaderLabelLeadingConstraint.constant = isSmallIPhone ? 10 : 16
         othersLabelTrailingConstraint.constant = isSmallIPhone ? 4 : 8
         yourVoteAVGLeadingConstraint.constant = isSmallIPhone ? 2 : 8
         teamVoteAVGLeadingConstraint.constant = isSmallIPhone ? 2 : 8
@@ -257,6 +259,8 @@ class VotingRiskCell: UICollectionViewCell, XIBInitableCell {
                 if let cell = cell as? VotingChartCell {
                     if cell.centerLabel.text == "" || cell.centerLabel.text == nil {
                         cell.topLabel.alpha = 0
+                    } else {
+                        cell.topLabel.alpha = 1
                     }
                     if cell.isCentered {
                         cell.column.setup(colors: [.lightPeriwinkleTwo, .lavender], locations: [0, 0.8])
@@ -343,6 +347,7 @@ extension VotingRiskCell: UICollectionViewDelegate {
             cell.columnHeightConstraint.constant = bottomInset + columnHeight + cell.topLabel.frame.height / 2
             cell.topLabel.text = String(format: "%.2f", model.riskCoefficient)
             cell.centerLabel.text = model.isTeamAverage ? "Team.VotingRiskCell.teamAvg".localized : ""
+            cell.topLabel.isHidden = !model.isTeamAverage
             cell.topLabel.clipsToBounds = true
             cell.topLabel.layer.cornerRadius = 3
             cell.topLabel.layer.borderWidth = 1

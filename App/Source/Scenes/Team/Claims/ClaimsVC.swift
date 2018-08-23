@@ -127,6 +127,7 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         if let accessLevel = service.session?.currentTeam?.teamAccessLevel {
             reportButton.isEnabled = accessLevel == .full
         }
+        reportButton.alpha = reportButton.isEnabled ? 1 : 0.5
     }
     
     func registerCells() {

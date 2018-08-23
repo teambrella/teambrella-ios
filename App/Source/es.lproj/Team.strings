@@ -211,3 +211,15 @@
 "Team.Chat.ClaimPaidCell.buttonTitle" = "Share with friends";
 
 "Team.VotingRiskVC.avg"                          = "PROM";
+
+//waiting
+"Team.Chat.PayToJoin.text" = "Положи от 3000 руб в свой кошелёк и получи бонус +3000 руб в подарок.";
+"Team.Chat.PayToJoin.buttonTitle" = "Fund Wallet";
+
+"Team.Chat.ObjectView.TitleLabel.teamVote" = "VOTO DEL EQUIPO";
+
+"Team.VotingRiskVC.numberBar.right.proxy"             = "ГОЛОС ПРОКСИ";
+"Team.ClaimCell.proxyVote" = "proxy vote";
+
+
+"Team.ClaimsCell.view"                                = "Посмотреть";
