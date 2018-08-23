@@ -53,4 +53,9 @@ class CallKitService: NSObject {
         provider.reportCall(with: id, endedAt: Date(), reason: reason)
     }
 
+    func endRemoteCall(id: UUID) {
+        let reason = CXCallEndedReason.remoteEnded
+        provider.reportCall(with: id, endedAt: Date(), reason: reason)
+    }
+
 }

@@ -40,6 +40,8 @@ final class SinchService: NSObject {
     var push: SINManagedPush?
     var currentUserID: String?
 
+    var isReceivingCall: Bool = false
+
    lazy var callService: CallKitService = {
     let service = CallKitService()
     service.setDelegate(self)
@@ -159,9 +161,16 @@ extension SinchService: SINCallDelegate {
             print("no answer")
         case .timeout:
             print("timeout")
+        case .hungUp:
+            print("hung up")
         default:
-            print("other cause")
+            print("other cause \(call.details.endCause.rawValue)")
         }
+        if isReceivingCall, let id = UUID(uuidString: call.remoteUserId) {
+            isReceivingCall = false
+            callService.endRemoteCall(id: id)
+        }
+
         delegate?.sinch(service: self, didEndCall: call)
         self.call = nil
     }
@@ -184,6 +193,7 @@ extension SinchService: SINCallClientDelegate {
         callService.incomingCall(from: name, id: id) { error in
 
         }
+        isReceivingCall = true
         //call.answer()
     }
 
