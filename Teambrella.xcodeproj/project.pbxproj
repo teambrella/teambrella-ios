@@ -1021,6 +1021,8 @@
 		6DBD695F2093864000D1524F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DBD695D2093864000D1524F /* GoogleService-Info.plist */; };
 		6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */; };
 		6DBF492D1F80F22300B236E2 /* AnimationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBF492A1F80F10B00B236E2 /* AnimationTools.swift */; };
+		6DC41AF9212EC3BE005D4CC2 /* MyApplicationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC41AF8212EC3BE005D4CC2 /* MyApplicationDetails.swift */; };
+		6DC41AFA212EC3BE005D4CC2 /* MyApplicationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC41AF8212EC3BE005D4CC2 /* MyApplicationDetails.swift */; };
 		6DCA41BF20D29E1900B741BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA41BE20D29E1900B741BA /* Assets.xcassets */; };
 		6DCA41C620D29E1900B741BA /* TeambrellaWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DCA41C520D29E1900B741BA /* TeambrellaWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6DCA41D320D29E1A00B741BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DCA41D220D29E1A00B741BA /* Assets.xcassets */; };
@@ -1634,6 +1636,7 @@
 		6DC2487D1F5D951600D9396D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Team.stringsdict; sourceTree = "<group>"; };
 		6DC2487E1F5EAAF300D9396D /* EmptyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmptyVC.swift; path = Controller/Empty/EmptyVC.swift; sourceTree = "<group>"; };
 		6DC2487F1F5EAAF300D9396D /* EmptyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmptyVC.xib; path = Controller/Empty/EmptyVC.xib; sourceTree = "<group>"; };
+		6DC41AF8212EC3BE005D4CC2 /* MyApplicationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyApplicationDetails.swift; path = Model/Entities/MyApplicationDetails.swift; sourceTree = "<group>"; };
 		6DCA41B920D29E1800B741BA /* TeambrellaWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeambrellaWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DCA41BE20D29E1900B741BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DCA41C020D29E1900B741BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -3028,6 +3031,7 @@
 				6D8720CF2029E23D000C5C3F /* RiskScaleTeammate.swift */,
 				6D8720D22029E268000C5C3F /* RiskScaleRange.swift */,
 				6DDB5D911FF681FC0066A07F /* ServerModels */,
+				6DC41AF8212EC3BE005D4CC2 /* MyApplicationDetails.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -4235,6 +4239,7 @@
 				6D0523C020A5D838000B3247 /* ReportContext.swift in Sources */,
 				6D0523C120A5D838000B3247 /* MyProxiesCellBuilder.swift in Sources */,
 				6D0523C220A5D838000B3247 /* JoinTeamValidator.swift in Sources */,
+				6DC41AFA212EC3BE005D4CC2 /* MyApplicationDetails.swift in Sources */,
 				6D0523C320A5D838000B3247 /* TopBarVC.swift in Sources */,
 				6D0523C420A5D838000B3247 /* NumberView.swift in Sources */,
 				6D0523C520A5D838000B3247 /* UserIndexCellModel.swift in Sources */,
@@ -4663,6 +4668,7 @@
 				6D4E5C8A1F7AB6870020DEE2 /* JoinTeamValidator.swift in Sources */,
 				6DDC65601FBAE42100DE4E36 /* TopBarVC.swift in Sources */,
 				6D4E5C8B1F7AB6870020DEE2 /* NumberView.swift in Sources */,
+				6DC41AF9212EC3BE005D4CC2 /* MyApplicationDetails.swift in Sources */,
 				6D4E5C8D1F7AB6870020DEE2 /* UserIndexCellModel.swift in Sources */,
 				6D4E5C8E1F7AB6870020DEE2 /* SocketData.swift in Sources */,
 				6D4E5C8F1F7AB6870020DEE2 /* TeammateListEntity.swift in Sources */,

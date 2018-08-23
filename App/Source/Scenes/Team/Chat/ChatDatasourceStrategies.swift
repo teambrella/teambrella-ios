@@ -50,6 +50,8 @@ struct ChatStrategyFactory {
             return PrivateChatStrategy(context: user)
         case let .remote(details):
             return RemoteChatStrategy(context: details)
+        case let .myApplication(details):
+            return TeammateJoiningChatStrategy(context: details)
         case .none:
             return EmptyChatStrategy()
         }
@@ -124,6 +126,37 @@ class TeammateChatStrategy: ChatDatasourceStrategy {
         return body
     }
     
+}
+
+class TeammateJoiningChatStrategy: ChatDatasourceStrategy {
+    var title: String { return "" }
+    var requestType: TeambrellaRequestType = .teammateChat
+    var postType: TeambrellaRequestType = .newPost
+    var canLoadBackward: Bool = true
+    // var isRateVisible: Bool = true
+
+    var details: MyApplicationDetails
+
+    init(context: MyApplicationDetails) {
+        details = context
+    }
+
+    func updatedChatBody(body: RequestBody) -> RequestBody {
+        var body = body
+        //body.payload?["TopicId"] = details.topicID
+        body.payload?["userid"] = details.userID
+        if let teamID = service.session?.currentTeam?.teamID {
+        body.payload?["teamid"] = teamID
+        }
+        return body
+    }
+
+    func updatedMessageBody(body: RequestBody) -> RequestBody {
+        var body = body
+        body.payload?["TopicId"] = details.topicID
+        return body
+    }
+
 }
 
 class FeedChatStrategy: ChatDatasourceStrategy {
