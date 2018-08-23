@@ -286,8 +286,12 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @objc
     func tapAttachPhotos(_ sender: UIButton, indexPath: IndexPath) {
         guard indexPath.row < dataSource.cardsCount else { return }
-        
-//        dataSource[indexPath].map { service.router.presentChat(context: ChatContext.home($0), itemType: $0.itemType) }
+
+        dataSource[indexPath].map {
+            let details = MyApplicationDetails(topicID: $0.topicID, userID: $0.userID)
+            service.router.presentChat(context: ChatContext.myApplication(details),
+                                       itemType: $0.itemType)
+        }
     }
     
     @objc
@@ -322,8 +326,8 @@ extension HomeVC: UICollectionViewDataSource {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapFundWallet), for: .touchUpInside)
             } else if model?.itemType == ItemType.attachPhotos {
-//                cell.button.removeTarget(nil, action: nil, for: .allEvents)
-//                cell.button.addTarget(self, action: #selector(tapAttachPhotos), for: .touchUpInside)
+                cell.button.removeTarget(nil, action: nil, for: .allEvents)
+                cell.button.addTarget(self, action: #selector(tapAttachPhotos), for: .touchUpInside)
             } else {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
@@ -345,7 +349,10 @@ extension HomeVC: UICollectionViewDataSource {
         }
         
         let model = dataSource[indexPath]
-        if model?.itemType != .fundWallet && model?.itemType != .attachPhotos {
+        if let model = model, model.itemType == .attachPhotos {
+            let details = MyApplicationDetails(topicID: model.topicID, userID: model.userID)
+            service.router.presentChat(context: .myApplication(details), itemType: model.itemType)
+        } else if model?.itemType != .fundWallet && model?.itemType != .attachPhotos {
             dataSource[indexPath].map { service.router.presentChat(context: ChatContext.home($0),
                                                                    itemType: $0.itemType) }
         }
