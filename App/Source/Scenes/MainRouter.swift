@@ -139,10 +139,6 @@ final class MainRouter {
         }
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
-        vc.session = service.session
-        vc.router = self
-        vc.push = service.push
-        vc.socket = service.socket
         vc.setContext(context: context, itemType: itemType)
         push(vc: vc, animated: animated)
     }
