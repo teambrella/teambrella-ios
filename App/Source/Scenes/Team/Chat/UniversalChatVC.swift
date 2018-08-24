@@ -74,10 +74,10 @@ final class UniversalChatVC: UIViewController, Routable {
     
     private var leftButton: UIButton?
     
-    var router: MainRouter!
-    var session: Session!
-    var push: PushService!
-    var socket: SocketService!
+    var router: MainRouter { return service.router }
+    var session: Session? { return service.session }
+    var push: PushService { return service.push }
+    var socket: SocketService? { return service.socket }
     
     // MARK: Lifecycle
     
@@ -178,7 +178,7 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     deinit {
-        socket.remove(listener: socketToken)
+        socket?.remove(listener: socketToken)
     }
     
     // MARK: Public
@@ -501,13 +501,13 @@ private extension UniversalChatVC {
         }
         
         if let socket = socket,
-            let teamID = session.currentTeam?.teamID {
+            let teamID = session?.currentTeam?.teamID {
             input.onTextChange = { [weak socket, weak self] in
                 guard let me = self else { return }
                 
                 let interval = me.lastTypingDate.timeIntervalSinceNow
                 if interval < -2.0, let topicID = me.dataSource.topicID,
-                    let name = self?.session.currentUserName {
+                    let name = self?.session?.currentUserName {
                     socket?.meTyping(teamID: teamID, topicID: topicID, name: name.first)
                     self?.lastTypingDate = Date()
                 }
@@ -517,7 +517,7 @@ private extension UniversalChatVC {
     }
     
     private func startListeningSockets() {
-        socket.add(listener: socketToken, action: { [weak self] action in
+        socket?.add(listener: socketToken, action: { [weak self] action in
             log("add command \(action.command)", type: .socket)
             switch action.command {
             case .theyTyping, .meTyping:
@@ -540,7 +540,7 @@ private extension UniversalChatVC {
     }
     
     private func stopListeningSockets() {
-        socket.remove(listener: self)
+        socket?.remove(listener: self)
     }
     
     private func startListeningPushes() {
@@ -727,14 +727,12 @@ extension UniversalChatVC: UICollectionViewDelegate {
 
                     self?.router.switchToWallet()
                     if let nc = self?.navigationController {
-                        for vc in nc.viewControllers {
-                            if vc is MasterTabBarController {
-                                nc.popToViewController(vc, animated: false)
-                                break
-                            }
+                        for vc in nc.viewControllers where vc is MasterTabBarController {
+                            nc.popToViewController(vc, animated: false)
+                            break
                         }
                     }
-//                    self?.navigationController?.popViewController(animated: false)
+                    //                    self?.navigationController?.popViewController(animated: false)
                 }
             } else if model is ChatClaimPaidCellModel {
                 cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
