@@ -87,8 +87,6 @@ struct ChatClaimPaidCellModel: ChatCellModel {
     var id: String { return String(describing: date.timeIntervalSince1970) }
     let date: Date
     let isTemporary: Bool = false
-    let text: String
-    let buttonTitle: String
     
 }
 
@@ -96,7 +94,5 @@ struct ChatPayToJoinCellModel: ChatCellModel {
     var id: String { return String(describing: date.timeIntervalSince1970) }
     let date: Date
     let isTemporary: Bool = false
-    let text: String
-    let buttonTitle: String
     
 }
