@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>137</string>
+	<string>141</string>
 	<key>FacebookAppID</key>
 	<string>416598765047865</string>
 	<key>FacebookDisplayName</key>
@@ -57,6 +57,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>To be able to take photos please provide an access to your photo camera</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>In order to make and receive calls please grant access to the microphone</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>To be able to save photos please provide an access to your photo library</string>
 	<key>NSPhotoLibraryUsageDescription</key>

@@ -67,6 +67,14 @@ final class UniversalChatDatasource {
     }
     
     var name: String?
+
+    var isChatAllowed: Bool {
+        if let myID = service.session?.currentUserID, let theirID = chatModel?.basic?.userID, myID == theirID {
+            return true
+        } else {
+            return chatModel?.team?.accessLevel == .full ? true : false
+        }
+    }
     
     var chatModel: ChatModel? {
         didSet {

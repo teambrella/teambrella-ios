@@ -95,7 +95,8 @@ final class UniversalChatVC: UIViewController, Routable {
         setupScrollHandler()
         dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
             guard let `self` = self else { return }
-            
+
+            self.input.isUserInteractionEnabled = self.dataSource.isChatAllowed
             self.collectionView.refreshControl?.endRefreshing()
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
@@ -482,6 +483,7 @@ private extension UniversalChatVC {
     }
     
     private func setupInput() {
+        input.isUserInteractionEnabled = false
         ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.231372549, green: 0.2588235294, blue: 0.4901960784, alpha: 1), opacity: 0.05, radius: 8, offset: CGSize(width: 0, height: -9))
         if dataSource.isPrivateChat {
             input.leftButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
@@ -722,8 +724,17 @@ extension UniversalChatVC: UICollectionViewDelegate {
                 cell.confettiView.isHidden = true
                 cell.onButtonTap = { [weak self] in
                     log("tap fund wallet (from chat)", type: .userInteraction)
+
                     self?.router.switchToWallet()
-                    self?.navigationController?.popViewController(animated: false)
+                    if let nc = self?.navigationController {
+                        for vc in nc.viewControllers {
+                            if vc is MasterTabBarController {
+                                nc.popToViewController(vc, animated: false)
+                                break
+                            }
+                        }
+                    }
+//                    self?.navigationController?.popViewController(animated: false)
                 }
             } else if model is ChatClaimPaidCellModel {
                 cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
