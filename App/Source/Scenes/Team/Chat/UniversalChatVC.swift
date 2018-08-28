@@ -600,6 +600,10 @@ private extension UniversalChatVC {
         let fragment = ChatFragment.imageFragment(image: image, urlString: name, urlStringSmall: "")
         send(text: input.textView.text ?? "", imageFragments: [fragment])
     }
+
+    private func sizeForServiceMessage(model: ServiceMessageLike) -> CGSize {
+        return model.size
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -632,6 +636,10 @@ extension UniversalChatVC: UICollectionViewDataSource {
             identifier = ChatClaimPaidCell.cellID
         case _ as ChatPayToJoinCellModel:
             identifier = ChatClaimPaidCell.cellID
+        case _ as ServiceMessageWithButtonCellModel:
+            identifier = ChatClaimPaidCell.cellID
+        case _ as ServiceMessageCellModel:
+            identifier = "!"
         default:
             fatalError("Unknown cell")
         }

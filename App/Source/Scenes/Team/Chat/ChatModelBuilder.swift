@@ -46,13 +46,34 @@ class ChatModelBuilder {
         }
         return nil
     }
-    
+
+    func serviceModel(from model: ChatEntity) -> ChatCellModel? {
+        guard let type = model.systemType else { return nil }
+
+        var size = TextSizeCalculator().size(for: model.text, font: font, maxWidth: width)
+        switch type {
+        case .needsFunding:
+            return ServiceMessageWithButtonCellModel(date: model.created,
+                                                     text: model.text,
+                                                     buttonText: "Team.Chat.PayToJoin.buttonTitle".localized,
+                                                     size: size)
+        case .firstPhotoMissing, .firstPostMissing:
+            return ServiceMessageCellModel(date: model.created, text: model.text, size: size)
+        }
+    }
+
     func cellModels(from chatItems: [ChatEntity],
                     isClaim: Bool,
                     isTemporary: Bool) -> [ChatCellModel] {
         var result: [ChatCellModel] = []
         
         for item in chatItems {
+            // add service messages
+            if let model = serviceModel(from: item) {
+                result.append(model)
+                continue
+            }
+
             let fragments = fragmentParser.parse(item: item)
             var isMy = false
             if let session = service.session {
