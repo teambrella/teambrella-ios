@@ -723,6 +723,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         }
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     func populateService(cell: UICollectionViewCell, model: ChatCellModel) {
         if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = DateProcessor().yearFilter(from: model.date)

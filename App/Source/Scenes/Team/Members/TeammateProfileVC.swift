@@ -669,6 +669,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         setAvatar(avatarView: cell.leftAvatar, label: cell.leftAvatarLabel, with: range.teammates.first)
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     func votingRisk(cell: VotingOrVotedRiskCell, didTapButton button: UIButton) {
         if let cell = cell as? VotingRiskCell {
             switch button {
