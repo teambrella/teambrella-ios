@@ -36,7 +36,7 @@ struct ChatEntity: Decodable {
     let points: Int
     let text: String
     let teammate: TeammatePart?
-    let systemType: SystemType
+    let systemType: SystemType?
 
     private let imagesReceived: [String]?
     private let smallImagesReceived: [String]?
