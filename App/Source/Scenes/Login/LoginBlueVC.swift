@@ -26,6 +26,7 @@ import UIKit
 final class LoginBlueVC: UIViewController {
     @IBOutlet var centerLabel: UILabel!
     @IBOutlet var continueWithFBButton: UIButton!
+    @IBOutlet var continueWithVKButton: UIButton!
     @IBOutlet var tryDemoButton: UIButton!
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var confetti: SKView!
@@ -55,11 +56,14 @@ final class LoginBlueVC: UIViewController {
         super.viewDidLoad()
         centerLabel.text = "Login.LoginBlueVC.centerLabel".localized
         continueWithFBButton.setTitle("Login.LoginBlueVC.continueWithFBButton".localized, for: .normal)
+        continueWithVKButton.setTitle("Login.LoginBlueVC.continueWithVKButton".localized, for: .normal)
         tryDemoButton.setTitle("Login.LoginBlueVC.tryDemoButton".localized, for: .normal)
         continueWithFBButton.layer.cornerRadius = 2
+        continueWithVKButton.layer.cornerRadius = 2
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
         continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
+        continueWithVKButton.addGestureRecognizer(clearAllRecognizer)
         animateCenterLabel()
     }
 
@@ -97,6 +101,20 @@ final class LoginBlueVC: UIViewController {
         }) { [weak self] error in
             self?.handleFailure(error: error)
         }
+    }
+    
+    @IBAction func tapContinueWithVKButton(_ sender: Any) {
+//        guard service.keyStorage.hasRealPrivateKey == false else {
+//            logAsFacebookUser(user: nil)
+//            return
+//        }
+//
+//        HUD.show(.progress)
+//        loginWorker.loginAndRegister(in: self, completion: { [weak self] facebookUser in
+//            self?.logAsFacebookUser(user: facebookUser)
+//        }) { [weak self] error in
+//            self?.handleFailure(error: error)
+//        }
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
