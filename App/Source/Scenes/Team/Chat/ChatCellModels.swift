@@ -90,20 +90,13 @@ struct ChatClaimPaidCellModel: ChatCellModel {
     
 }
 
-struct ChatPayToJoinCellModel: ChatCellModel {
-    var id: String { return String(describing: date.timeIntervalSince1970) }
-    let date: Date
-    let isTemporary: Bool = false
-    
-}
-
 protocol ServiceMessageLike: ChatCellModel {
     var text: String { get }
     var size: CGSize { get }
 }
 
 struct ServiceMessageCellModel: ServiceMessageLike {
-    var id: String { return String(describing: date.timeIntervalSince1970) }
+    var id: String { return "\(type(of: self))|\(date.timeIntervalSince1970)" }
     let date: Date
     let isTemporary: Bool = false
     let text: String
@@ -111,7 +104,7 @@ struct ServiceMessageCellModel: ServiceMessageLike {
 }
 
 struct ServiceMessageWithButtonCellModel: ServiceMessageLike {
-    var id: String { return String(describing: date.timeIntervalSince1970) }
+    var id: String { return "\(type(of: self))|\(date.timeIntervalSince1970)" }
     let date: Date
     let isTemporary: Bool = false
     let text: String

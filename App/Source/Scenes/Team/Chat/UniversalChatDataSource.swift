@@ -84,6 +84,7 @@ final class UniversalChatDatasource {
     }
     
     private var models: [ChatCellModel]             = []
+    
     private var lastInsertionIndex                  = 0
     
     private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
@@ -533,10 +534,14 @@ extension UniversalChatDatasource {
                 forwardOffset = 0
             }
         }
+        if !isPrevious && model.discussion.lastRead == 0 {
+            hasNext = false
+        }
+
         teamAccessLevel = model.team?.accessLevel ?? .noAccess
 
         addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
-        addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
+        //addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
     }
 
     private func addClaimPaidIfNeeded(date: Date?) {
@@ -547,13 +552,13 @@ extension UniversalChatDatasource {
         isClaimPaidModelAdded = true
     }
     
-    private func addPayToJoinIfNeeded(date: Date?) {
-        guard !isPayToJoinModelAdded, let date = date else { return }
-        
-        let model = ChatPayToJoinCellModel(date: date)
-        addCellModels(models: [model])
-        isPayToJoinModelAdded = true
-    }
+//    private func addPayToJoinIfNeeded(date: Date?) {
+//        guard !isPayToJoinModelAdded, let date = date else { return }
+//
+//        let model = ChatPayToJoinCellModel(date: date)
+//        addCellModels(models: [model])
+//        isPayToJoinModelAdded = true
+//    }
 
     private func createCellModels(from entities: [ChatEntity], isTemporary: Bool) -> [ChatCellModel] {
         cellModelBuilder.font = font
