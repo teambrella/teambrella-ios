@@ -81,7 +81,7 @@ struct ClaimCellBuilder {
         if urls.isEmpty {
             cell.imagesStack.isHidden = true
         }
-        cell.timeLabel.text = setupAgoPostfix(passedMinutes: claim.discussion.minutesSinceLastPost)
+        cell.timeLabel.text = DateProcessor().stringAgo(passedMinutes: claim.discussion.minutesSinceLastPost)
     }
     
     // swiftlint:disable:next function_body_length
@@ -94,17 +94,7 @@ struct ClaimCellBuilder {
         }
         
         cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
-        var prefix = ""
-        if voting.minutesRemaining < 60 {
-            prefix = "Team.Claim.minutes_format".localized(voting.minutesRemaining)
-        } else if voting.minutesRemaining < 60 * 24 {
-            prefix = "Team.Claim.hours_format".localized(voting.minutesRemaining / 60)
-        } else {
-            prefix = "Team.Claim.days_format".localized(voting.minutesRemaining / (60 * 24))
-        }
-        cell.remainingDaysLabel.text = prefix.uppercased() + " " +
-            DateProcessor().stringFromNow(minutes: -voting.minutesRemaining).uppercased()
-        
+        cell.remainingDaysLabel.text = DateProcessor().stringFinishesIn(minutesRemaining: voting.minutesRemaining) 
         cell.pieChart.isHidden = false
         cell.pieChart.setupWith(remainingMinutes: voting.minutesRemaining)
         
@@ -176,7 +166,7 @@ struct ClaimCellBuilder {
         cell.resetButton.isHidden = true
         cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
         cell.remainingDaysLabel.text = "Team.ClaimCell.voting.ended".localized.uppercased() +
-            setupAgoPostfix(passedMinutes: -voted.minutesRemaining).uppercased()
+            DateProcessor().stringAgo(passedMinutes: -voted.minutesRemaining).uppercased()
         
         if let myVote = voted.myVote {
             cell.yourVotePercentValue.text = String.truncatedNumber(myVote.percentage)
@@ -207,24 +197,6 @@ struct ClaimCellBuilder {
         cell.othersVotedButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.othersVotedButton.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted), for: .touchUpInside)
         
-    }
-    
-    static func setupAgoPostfix(passedMinutes: Int) -> String {
-        var prefix = ""
-        switch passedMinutes {
-        case 0:
-            prefix = "Team.TeammateCell.timeLabel.justNow".localized
-        case 1..<60:
-            prefix = "Team.Ago.minutes_format".localized(passedMinutes)
-        case 60..<(60 * 24):
-            prefix = "Team.Ago.hours_format".localized(passedMinutes / 60)
-        case (60 * 24)...(60*24*7):
-            prefix = "Team.Ago.days_format".localized(passedMinutes / (60 * 24))
-        default:
-            let date = Date().addingTimeInterval(TimeInterval(-passedMinutes * 60))
-            prefix = DateProcessor().yearFilter(from: date)
-        }
-        return prefix
     }
     
     static func setupTeamVote(cell: ClaimVoteCell, teamVote: ClaimVote?, amount: Fiat) {

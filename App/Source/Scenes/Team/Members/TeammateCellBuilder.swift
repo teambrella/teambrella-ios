@@ -112,7 +112,8 @@ struct TeammateCellBuilder {
             setMyVote(votingCell: votingCell,
                       myVote: myVote,
                       proxyName: voting.proxyName,
-                      proxyAvatar: voting.proxyAvatar)
+                      proxyAvatar: voting.proxyAvatar,
+                      canVote: voting.canVote)
         } else {
             if let cell = votingCell as? VotingRiskCell {
                 cell.resetVoteButton.isHidden = true
@@ -129,37 +130,39 @@ struct TeammateCellBuilder {
             cell.setCurrentRisk(risk: risk)
             controller.updateAverages(cell: cell, risk: cell.currentRisk)
         }
-        var prefix = ""
-        if voting.remainingMinutes < 60 {
-            prefix = "Team.Claim.minutes_format".localized(voting.remainingMinutes)
-        } else if voting.remainingMinutes < 60 * 24 {
-            prefix = "Team.Claim.hours_format".localized(voting.remainingMinutes / 60)
+        if voting.remainingMinutes > 0 {
+            votingCell.timeLabel.text = DateProcessor().stringFinishesIn(minutesRemaining: voting.remainingMinutes)
+            votingCell.pieChart.isHidden = false
+            votingCell.pieChart.setupWith(remainingMinutes: voting.remainingMinutes)
         } else {
-            prefix = "Team.Claim.days_format".localized(voting.remainingMinutes / (60 * 24))
+            votingCell.timeLabel.text = "Team.ClaimCell.voting.ended".localized.uppercased() +
+                DateProcessor().stringAgo(passedMinutes: -voting.remainingMinutes).uppercased()
+            votingCell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
+            if let cell = votingCell as? VotedRiskCell {
+                cell.pieChartLeadingConstraint.isActive = false
+            }
+            votingCell.pieChart.isHidden = true
         }
-        votingCell.timeLabel.text = prefix.uppercased() + " " +
-            DateProcessor().stringFromNow(minutes: -voting.remainingMinutes).uppercased()
-        votingCell.pieChart.setupWith(remainingMinutes: voting.remainingMinutes)
     }
     
     private static func setMyVote(votingCell: VotingOrVotedRiskCell,
                                   myVote: Double,
                                   proxyName: String?,
-                                  proxyAvatar: Avatar?) {
+                                  proxyAvatar: Avatar?,
+                                  canVote: Bool) {
         var votingCell = votingCell
         if proxyName != nil {
             votingCell.isProxyHidden = false
             if let cell = votingCell as? VotingRiskCell {
+//                cell.proxyNameLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
                 cell.resetVoteButton.isHidden = true
                 cell.layoutIfNeeded()
                 cell.scrollTo(risk: myVote, silently: true, animated: false)
-                cell.proxyNameLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
             } else {
-                votingCell.yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right.proxy".localized
-                if let proxy = proxyName {
-                    votingCell.proxyNameLabel.text = proxy.uppercased()
-                }
+//                votingCell.yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right.proxy".localized
+                
             }
+            
             if let avatar = proxyAvatar {
                 votingCell.proxyAvatarView.show(avatar)
             }
@@ -172,10 +175,34 @@ struct TeammateCellBuilder {
                 cell.resetVoteButton.isHidden = false
                 cell.scrollTo(risk: myVote, silently: true, animated: false)
             }
-            votingCell.isProxyHidden = true
+//            votingCell.isProxyHidden = true
             votingCell.yourVoteValueLabel.alpha = 1
             votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
             votingCell.showYourNoVote(risk: myVote)
+        }
+        
+        if let cell = votingCell as? VotingRiskCell {
+            if proxyName != nil {
+                cell.yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right".localized
+                cell.proxyNameLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+            } else {
+                cell.yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right".localized
+                cell.isProxyHidden = true
+            }
+        } else if let cell = votingCell as? VotedRiskCell {
+            if proxyName != nil {
+                votingCell.yourVoteHeaderLabel.text = canVote ? "Team.VotingRiskVC.numberBar.right".localized
+                : "Team.VotingRiskVC.numberBar.right.proxy".localized
+//                votingCell.yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right.proxy".localized
+                if let proxy = proxyName {
+                    votingCell.proxyNameLabel.text = proxy.uppercased()
+                } else {
+                    cell.proxyNameLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
+                }
+            } else {
+                cell.yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right".localized
+                cell.isProxyHidden = true
+            }
         }
     }
     
@@ -185,8 +212,12 @@ struct TeammateCellBuilder {
         cell.delegate = controller
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
+        cell.pieChart.isHidden = teammate.voted == nil ? false : true
+        
         if let voting = teammate.voting {
             setVote(votingCell: cell, voting: voting, controller: controller)
+        } else if let voted = teammate.voted {
+            setVote(votingCell: cell, voting: voted, controller: controller)
         }
     }
     

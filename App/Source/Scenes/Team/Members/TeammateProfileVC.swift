@@ -148,7 +148,8 @@ final class TeammateProfileVC: UIViewController, Routable {
     func updateAverages(cell: VotingOrVotedRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
             
-            guard let averageRisk = dataSource.teammateLarge?.voting?.averageRisk else { return }
+            if let averageRisk = dataSource.teammateLarge?.voting?.averageRisk
+                ?? dataSource.teammateLarge?.voted?.averageRisk {
             guard averageRisk != 0 else { return }
             
             let delta = risk - averageRisk
@@ -157,10 +158,13 @@ final class TeammateProfileVC: UIViewController, Routable {
             let percent = 100 * delta / averageRisk
             let amount = String(format: "%.0f", percent)
             label.text = text + amount + "%"
+            }
         }
         
         text(for: cell.yourVoteBadgeLabel, risk: risk)
         if let teamRisk = dataSource.teammateLarge?.voting?.riskVoted {
+            text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
+        } else if let teamRisk = dataSource.teammateLarge?.voted?.riskVoted {
             text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
         }
     }

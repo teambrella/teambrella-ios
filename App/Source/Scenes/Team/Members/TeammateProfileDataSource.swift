@@ -130,7 +130,7 @@ class TeammateProfileDataSource {
         
         source.removeAll()
         isMyProxy = teammate.basic.isMyProxy
-        //let isVoted = teammate.voted != nil
+        let isVoted = teammate.voted != nil
         
         //if isMe { source.append(.me) } else { source.append(.summary) }
         source.append(.dialog)
@@ -142,7 +142,9 @@ class TeammateProfileDataSource {
                 source.append(.voted)
             }
             //source.append(.dialogCompact)
-        } //else if isVoted { source.append(.voted) }
+        } else if isVoted {
+            source.append(.voted)
+        }
         source.append(.object)
         source.append(.stats)
         if !socialItems.isEmpty && !isMe {
