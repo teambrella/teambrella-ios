@@ -17,5 +17,5 @@
 import Foundation
 
 protocol VKAuthenticating {
-    func authWithVK(completion: (_ token: String?, _ error: Error?) -> Void)
+    func authWithVK(completion: @escaping (_ token: String?, _ error: Error?) -> Void)
 }
