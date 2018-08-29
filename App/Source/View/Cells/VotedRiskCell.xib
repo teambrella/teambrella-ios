@@ -48,13 +48,13 @@
                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cFq-j2-pDg" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cFq-j2-pDg" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="8" y="37" width="63.5" height="30.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mWQ-wy-173" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mWQ-wy-173" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="285.5" y="37" width="64.5" height="30.5"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
@@ -145,7 +145,6 @@
                                     <constraint firstItem="mWQ-wy-173" firstAttribute="leading" secondItem="oWo-9r-IFi" secondAttribute="leading" id="EMy-vs-U2a"/>
                                     <constraint firstItem="oKF-mY-nA5" firstAttribute="centerY" secondItem="oWo-9r-IFi" secondAttribute="centerY" id="G9N-Of-yJQ"/>
                                     <constraint firstItem="cFq-j2-pDg" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="QeV-Y2-SCA" secondAttribute="centerX" constant="-16" id="Hhi-qs-K0K"/>
-                                    <constraint firstItem="36J-s8-5AU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3uS-WH-6ap" secondAttribute="trailing" constant="1" id="HnP-gv-5m4"/>
                                     <constraint firstItem="oWo-9r-IFi" firstAttribute="top" secondItem="Xxs-Qa-KGq" secondAttribute="bottom" constant="6" id="Huw-rL-KhN"/>
                                     <constraint firstItem="prC-iH-Vf0" firstAttribute="leading" secondItem="3uS-WH-6ap" secondAttribute="leading" id="IhS-dM-a2O"/>
                                     <constraint firstAttribute="centerX" secondItem="EIz-p9-obL" secondAttribute="trailing" id="JhB-Gb-PyN"/>
@@ -159,7 +158,6 @@
                                     <constraint firstItem="mWQ-wy-173" firstAttribute="centerY" secondItem="oKF-mY-nA5" secondAttribute="centerY" id="aRL-jI-poP"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oKF-mY-nA5" secondAttribute="trailing" constant="3" id="bXk-gj-WyF"/>
                                     <constraint firstItem="0E2-m1-g7O" firstAttribute="leading" secondItem="Xxs-Qa-KGq" secondAttribute="leading" id="ciS-l9-adh"/>
-                                    <constraint firstItem="oKF-mY-nA5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oWo-9r-IFi" secondAttribute="trailing" constant="1" id="dPh-Aj-i34"/>
                                     <constraint firstItem="oWo-9r-IFi" firstAttribute="leading" secondItem="Xxs-Qa-KGq" secondAttribute="leading" id="dei-gT-1ue"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0E2-m1-g7O" secondAttribute="trailing" constant="8" id="dgu-XH-MIc"/>
                                     <constraint firstItem="EIz-p9-obL" firstAttribute="top" secondItem="QeV-Y2-SCA" secondAttribute="top" id="f3I-02-GJD"/>
