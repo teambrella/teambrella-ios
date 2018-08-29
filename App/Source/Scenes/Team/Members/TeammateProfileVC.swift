@@ -697,12 +697,16 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             default:
                 log("VotingRiskCell unknown button pressed", type: [.error])
             }
-        } /*else if cell is VotedRiskCell {
-            guard let teamID = service.session?.currentTeam?.teamID else { return }
-            guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
+        } else if cell is VotedRiskCell {
+            guard let teamID = service.session?.currentTeam?.teamID,
+                let teammateID = dataSource.teammateLarge?.teammateID,
+                let voters = dataSource.teammateLarge?.voting?.votersCount
+                ?? dataSource.teammateLarge?.voted?.votersCount else { return }
             
-            service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
-        }*/
+            if voters > 0 {
+                service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
+            }
+        }
     }
     
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView) {
