@@ -62,6 +62,7 @@ class VotedRiskCell: UICollectionViewCell, VotingOrVotedRiskCell {
     @IBOutlet var proxyAvatarView: RoundImageView!
     @IBOutlet var proxyNameLabel: InfoLabel!
     @IBOutlet var othersVotesButton: UIButton!
+    @IBOutlet var pieChartLeadingConstraint: NSLayoutConstraint!
     
     @IBOutlet var yourVoteHeaderLabelLeadingConstraint: NSLayoutConstraint!
     
@@ -98,7 +99,6 @@ class VotedRiskCell: UICollectionViewCell, VotingOrVotedRiskCell {
     }
     
     private func setupLabels() {
-        titleLabel.text = "Team.VotingRiskVC.headerLabel".localized
         teamVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.left".localized
         teamVoteBadgeLabel.text = "Team.VotingRiskVC.avgLabel".localized(0)
         teamVoteBadgeLabel.backgroundColor = #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)

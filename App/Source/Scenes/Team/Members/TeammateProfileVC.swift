@@ -148,7 +148,8 @@ final class TeammateProfileVC: UIViewController, Routable {
     func updateAverages(cell: VotingOrVotedRiskCell, risk: Double) {
         func text(for label: UILabel, risk: Double) {
             
-            guard let averageRisk = dataSource.teammateLarge?.voting?.averageRisk else { return }
+            if let averageRisk = dataSource.teammateLarge?.voting?.averageRisk
+                ?? dataSource.teammateLarge?.voted?.averageRisk {
             guard averageRisk != 0 else { return }
             
             let delta = risk - averageRisk
@@ -157,10 +158,13 @@ final class TeammateProfileVC: UIViewController, Routable {
             let percent = 100 * delta / averageRisk
             let amount = String(format: "%.0f", percent)
             label.text = text + amount + "%"
+            }
         }
         
         text(for: cell.yourVoteBadgeLabel, risk: risk)
         if let teamRisk = dataSource.teammateLarge?.voting?.riskVoted {
+            text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
+        } else if let teamRisk = dataSource.teammateLarge?.voted?.riskVoted {
             text(for: cell.teamVoteBadgeLabel, risk: teamRisk)
         }
     }
@@ -665,6 +669,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         setAvatar(avatarView: cell.leftAvatar, label: cell.leftAvatarLabel, with: range.teammates.first)
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     func votingRisk(cell: VotingOrVotedRiskCell, didTapButton button: UIButton) {
         if let cell = cell as? VotingRiskCell {
             switch button {
@@ -693,12 +698,16 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             default:
                 log("VotingRiskCell unknown button pressed", type: [.error])
             }
-        } /*else if cell is VotedRiskCell {
-            guard let teamID = service.session?.currentTeam?.teamID else { return }
-            guard let teammateID = dataSource.teammateLarge?.teammateID else { return }
+        } else if cell is VotedRiskCell {
+            guard let teamID = service.session?.currentTeam?.teamID,
+                let teammateID = dataSource.teammateLarge?.teammateID,
+                let voters = dataSource.teammateLarge?.voting?.votersCount
+                ?? dataSource.teammateLarge?.voted?.votersCount else { return }
             
-            service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
-        }*/
+            if voters > 0 {
+                service.router.presentOthersVoted(teamID: teamID, teammateID: teammateID, claimID: nil)
+            }
+        }
     }
     
     func votingRisk(cell: VotingRiskCell, didScroll: UIScrollView) {

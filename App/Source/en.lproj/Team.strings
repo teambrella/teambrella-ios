@@ -223,3 +223,4 @@
 "Team.Chat.PayToJoin.buttonTitle" = "Fund Wallet";
 
 "Team.Chat.ObjectView.TitleLabel.teamVote" = "TEAM VOTE";
+"Team.ClaimCell.voting.ended" = "Ended ";

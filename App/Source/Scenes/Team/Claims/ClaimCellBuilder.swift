@@ -28,8 +28,12 @@ struct ClaimCellBuilder {
             populateImageGallery(cell: cell, with: claim)
             addObserversToImageGallery(cell: cell, delegate: delegate)
         } else if let cell = cell as? ClaimVoteCell {
-            populateClaimVote(cell: cell, with: claim, delegate: delegate)
-            addObserversToClaimVote(cell: cell, delegate: delegate)
+            if claim.voting != nil {
+                populateClaimVote(cell: cell, with: claim, delegate: delegate)
+                addObserversToClaimVote(cell: cell, delegate: delegate)
+            } else if claim.voted != nil {
+                populateClaimVoted(cell: cell, with: claim, delegate: delegate)
+            }
         } else if let cell = cell as? ClaimDetailsCell {
             populateClaimDetails(cell: cell, with: claim)
         } else if let cell = cell as? ClaimOptionsCell {
@@ -77,24 +81,10 @@ struct ClaimCellBuilder {
         if urls.isEmpty {
             cell.imagesStack.isHidden = true
         }
-        let minutesSinceLastPost = claim.discussion.minutesSinceLastPost
-        switch minutesSinceLastPost {
-        case 0:
-            cell.timeLabel.text = "Team.TeammateCell.timeLabel.justNow".localized
-        case 1..<60:
-            cell.timeLabel.text = "Team.Ago.minutes_format".localized(minutesSinceLastPost)
-        case 60..<(60 * 24):
-            cell.timeLabel.text = "Team.Ago.hours_format".localized(minutesSinceLastPost / 60)
-        case (60 * 24)...(60*24*7):
-            cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
-        default:
-            let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
-            cell.timeLabel.text = DateProcessor().yearFilter(from: date)
-        }
-        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
+        cell.timeLabel.text = DateProcessor().stringAgo(passedMinutes: claim.discussion.minutesSinceLastPost)
     }
     
-    // swiftlint:disable:next function_body_length cyclomatic_complexity
+    // swiftlint:disable:next function_body_length
     static func populateClaimVote(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         let session = service.session
 
@@ -104,17 +94,8 @@ struct ClaimCellBuilder {
         }
         
         cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
-        var prefix = ""
-        if voting.minutesRemaining < 60 {
-            prefix = "Team.Claim.minutes_format".localized(voting.minutesRemaining)
-        } else if voting.minutesRemaining < 60 * 24 {
-            prefix = "Team.Claim.hours_format".localized(voting.minutesRemaining / 60)
-        } else {
-            prefix = "Team.Claim.days_format".localized(voting.minutesRemaining / (60 * 24))
-        }
-        cell.remainingDaysLabel.text = prefix.uppercased() + " " +
-            DateProcessor().stringFromNow(minutes: -voting.minutesRemaining).uppercased()
-        
+        cell.remainingDaysLabel.text = DateProcessor().stringFinishesIn(minutesRemaining: voting.minutesRemaining)
+        cell.pieChart.isHidden = false
         cell.pieChart.setupWith(remainingMinutes: voting.minutesRemaining)
         
         if let myVote = voting.myVote {
@@ -149,45 +130,93 @@ struct ClaimCellBuilder {
             }
         }
         
-        if voting.myVote != nil {
-            if voting.proxyName != nil {
-                cell.yourVoteLabel.text = voting.canVote ? "Team.ClaimCell.yourVote".localized.uppercased()
+        if voting.myVote != nil || voting.proxyName != nil {
+            cell.yourVoteLabel.text = voting.canVote ? "Team.ClaimCell.yourVote".localized.uppercased()
                     : "Team.ClaimCell.proxyVote".localized.uppercased()
-            }
         } else {
             cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
         }
         
         cell.proxyAvatar.isHidden = voting.proxyAvatar == nil || voting.myVote == nil
         cell.byProxyLabel.isHidden = voting.proxyName == nil || voting.myVote == nil
-        
-        cell.yourVotePercentValue.alpha = 1
-        cell.yourVoteAmount.alpha = 1
         cell.yourVoteCurrency.text = session?.currentTeam?.currency ?? ""
-        
-        cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
-        if let teamVote = voting.ratioVoted {
-            cell.teamVotePercentValue.text = String.truncatedNumber(teamVote.percentage)
-            cell.teamVoteAmount.text = String.truncatedNumber(teamVote.fiat(from: claim.basic.claimAmount).value)
-            cell.teamVoteCurrency.text = session?.currentTeam?.currency
-        } else {
-            cell.teamVotePercentValue.text = ". . ."
-            cell.isTeamVoteHidden = true
-        }
         
         cell.resetButton.setTitle("Team.ClaimCell.resetVote".localized, for: .normal)
         cell.resetButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.resetButton.addTarget(delegate, action: #selector(ClaimVC.tapResetVote), for: .touchUpInside)
         
-        let avatars = voting.otherAvatars.compactMap { $0.url }
-        let maxAvatarsStackCount = 4
-        let otherVotersCount = voting.otherCount - maxAvatarsStackCount + 1
-        let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
-        cell.avatarsStack.set(images: avatars, label: label, max: maxAvatarsStackCount)
-        
+        self.setupTeamVote(cell: cell, teamVote: voting.ratioVoted, amount: claim.basic.claimAmount)
+        self.setupAvatarStack(cell: cell, votePart: voting)
         cell.othersVotedButton.removeTarget(delegate, action: nil, for: .allEvents)
         cell.othersVotedButton.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted), for: .touchUpInside)
-        ViewDecorator.shadow(for: cell, opacity: 0.1, radius: 8)
+    }
+
+    static func populateClaimVoted(cell: ClaimVoteCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
+        let session = service.session
+        
+        guard let voted = claim.voted else {
+            log("ClaimEntityLarge has no voted part. Can't populate ClaimVoteCell", type: .error)
+            return
+        }
+        
+        cell.pieChart.isHidden = true
+        cell.pieChartLeadingConstraint.isActive = false
+        cell.remainingDaysLeadingLabelConstraint.constant = isSmallIPhone ? 5 : 8
+        cell.slider.isHidden = true
+        cell.resetButton.isHidden = true
+        cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
+        cell.remainingDaysLabel.text = "Team.ClaimCell.voting.ended".localized.uppercased() +
+            DateProcessor().stringAgo(passedMinutes: -voted.minutesRemaining).uppercased()
+        
+        if let myVote = voted.myVote {
+            cell.yourVotePercentValue.text = String.truncatedNumber(myVote.percentage)
+            cell.yourVoteAmount.text = String.truncatedNumber(myVote.fiat(from: claim.basic.claimAmount).value)
+            if let proxyName = voted.proxyName {
+                if let proxyAvatar = voted.proxyAvatar {
+                    cell.proxyAvatar.show(proxyAvatar)
+                    cell.byProxyLabel.text = voted.canVote
+                        ? "Team.ClaimCell.byProxy".localized.uppercased()
+                        : proxyName.entire.uppercased()
+                }
+                cell.yourVoteLabel.text = voted.canVote ? "Team.ClaimCell.yourVote".localized.uppercased()
+                    : "Team.ClaimCell.proxyVote".localized.uppercased()
+            }
+            cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
+        } else {
+            cell.yourVotePercentValue.text = ". . ."
+            cell.isYourVoteHidden = true
+            cell.yourVoteLabel.text = "Team.ClaimCell.yourVote".localized.uppercased()
+        }
+        
+        cell.proxyAvatar.isHidden = voted.proxyAvatar == nil || voted.myVote == nil
+        cell.byProxyLabel.isHidden = voted.proxyName == nil || voted.myVote == nil
+        cell.yourVoteCurrency.text = session?.currentTeam?.currency ?? ""
+        
+        self.setupTeamVote(cell: cell, teamVote: voted.ratioVoted, amount: claim.basic.claimAmount)
+        self.setupAvatarStack(cell: cell, votePart: voted)
+        cell.othersVotedButton.removeTarget(delegate, action: nil, for: .allEvents)
+        cell.othersVotedButton.addTarget(delegate, action: #selector(ClaimVC.tapOthersVoted), for: .touchUpInside)
+        
+    }
+    
+    static func setupTeamVote(cell: ClaimVoteCell, teamVote: ClaimVote?, amount: Fiat) {
+        cell.teamVoteLabel.text = "Team.ClaimCell.teamVote".localized.uppercased()
+        if let teamVote = teamVote {
+            cell.teamVotePercentValue.text = String.truncatedNumber(teamVote.percentage)
+            cell.teamVoteAmount.text = String.truncatedNumber(teamVote.fiat(from: amount).value)
+            cell.teamVoteCurrency.text = service.session?.currentTeam?.currency
+        } else {
+            cell.teamVotePercentValue.text = ". . ."
+            cell.isTeamVoteHidden = true
+        }
+    }
+    
+    static func setupAvatarStack(cell: ClaimVoteCell, votePart: ClaimEntityLarge.VotingPart) {
+        let avatars = votePart.otherAvatars.compactMap { $0.url }
+        let maxAvatarsStackCount = 4
+        let otherVotersCount = votePart.otherCount - maxAvatarsStackCount + 1
+        let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
+        cell.avatarsStack.set(images: avatars, label: label, max: maxAvatarsStackCount)
     }
     
     static func populateClaimDetails(cell: ClaimDetailsCell, with claim: ClaimEntityLarge) {

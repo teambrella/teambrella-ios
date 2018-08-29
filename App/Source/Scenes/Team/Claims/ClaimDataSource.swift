@@ -48,7 +48,7 @@ class ClaimDataSource {
     private func setupClaim(claim: ClaimEntityLarge) {
         self.claim = claim
         cellIDs.append(ImageGalleryCell.cellID)
-        if claim.voting != nil {
+        if claim.voting != nil || claim.voted != nil {
             cellIDs.append(ClaimVoteCell.cellID)
         }
         cellIDs.append(ClaimDetailsCell.cellID)

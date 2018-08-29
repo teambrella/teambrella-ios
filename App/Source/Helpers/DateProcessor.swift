@@ -86,4 +86,34 @@ struct DateProcessor {
                                                             locale: NSLocale.current)
         return dateFormatter.string(from: date)
     }
+    
+    func stringAgo(passedMinutes: Int) -> String {
+        var agoText = ""
+        switch passedMinutes {
+        case 0:
+            agoText = "Team.TeammateCell.timeLabel.justNow".localized
+        case 1..<60:
+            agoText = "Team.Ago.minutes_format".localized(passedMinutes)
+        case 60..<(60 * 24):
+            agoText = "Team.Ago.hours_format".localized(passedMinutes / 60)
+        case (60 * 24)...(60 * 24 * 7):
+            agoText = "Team.Ago.days_format".localized(passedMinutes / (60 * 24))
+        default:
+            let date = Date().addingTimeInterval(TimeInterval(-passedMinutes * 60))
+            agoText = DateProcessor().yearFilter(from: date)
+        }
+        return agoText
+    }
+    
+    func stringFinishesIn(minutesRemaining: Int) -> String {
+        var prefix = ""
+        if minutesRemaining < 60 {
+            prefix = "Team.Claim.minutes_format".localized(minutesRemaining)
+        } else if minutesRemaining < 60 * 24 {
+            prefix = "Team.Claim.hours_format".localized(minutesRemaining / 60)
+        } else {
+            prefix = "Team.Claim.days_format".localized(minutesRemaining / (60 * 24))
+        }
+        return prefix.uppercased() + " " + DateProcessor().stringFromNow(minutes: -minutesRemaining).uppercased()
+    }
 }

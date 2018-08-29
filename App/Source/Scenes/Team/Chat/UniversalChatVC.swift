@@ -388,6 +388,7 @@ private extension UniversalChatVC {
                                 withReuseIdentifier: ChatFooter.cellID)
         collectionView.register(ChatClaimPaidCell.nib,
                                 forCellWithReuseIdentifier: ChatClaimPaidCell.cellID)
+        collectionView.register(ServiceChatCell.nib, forCellWithReuseIdentifier: ServiceChatCell.cellID)
     }
     
     private func listenForKeyboard() {
@@ -600,6 +601,18 @@ private extension UniversalChatVC {
         let fragment = ChatFragment.imageFragment(image: image, urlString: name, urlStringSmall: "")
         send(text: input.textView.text ?? "", imageFragments: [fragment])
     }
+
+    private func sizeForServiceMessage(model: ServiceMessageCellModel) -> CGSize {
+        var size = model.size
+        size.height += 32
+        return model.size
+    }
+
+    private func sizeForServiceMessageWithButton(model: ServiceMessageWithButtonCellModel) -> CGSize {
+        var size = model.size
+        size.height += (50 + 32)
+        return size
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -630,7 +643,9 @@ extension UniversalChatVC: UICollectionViewDataSource {
             identifier = Constant.newMessagesSeparatorCellID
         case _ as ChatClaimPaidCellModel:
             identifier = ChatClaimPaidCell.cellID
-        case _ as ChatPayToJoinCellModel:
+        case _ as ServiceMessageCellModel:
+            identifier = ServiceChatCell.cellID
+        case _ as ServiceMessageWithButtonCellModel:
             identifier = ChatClaimPaidCell.cellID
         default:
             fatalError("Unknown cell")
@@ -658,7 +673,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         if indexPath.row == dataSource.count - 1 {
             dataSource.isLoadNextNeeded = true
         }
-        
+
         let model = dataSource[indexPath]
         switch model {
         case let model as ChatCellUserDataLike:
@@ -708,6 +723,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         }
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     func populateService(cell: UICollectionViewCell, model: ChatCellModel) {
         if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = DateProcessor().yearFilter(from: model.date)
@@ -718,9 +734,9 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.setNeedsDisplay()
             cell.label.text = model.text
         } else if let cell = cell as? ChatClaimPaidCell {
-            if model is ChatPayToJoinCellModel {
-                cell.messageLabel.text = "Team.Chat.PayToJoin.text".localized // from server (?)
-                cell.button.setTitle("Team.Chat.PayToJoin.buttonTitle".localized, for: .normal)
+            if let model = model as? ServiceMessageWithButtonCellModel {
+                cell.messageLabel.text = model.text
+                cell.button.setTitle(model.buttonText, for: .normal)
                 cell.confettiView.isHidden = true
                 cell.onButtonTap = { [weak self] in
                     log("tap fund wallet (from chat)", type: .userInteraction)
@@ -748,6 +764,10 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     let vc = UIActivityViewController(activityItems: [combinedText], applicationActivities: [])
                     self?.present(vc, animated: true)
                 }
+            }
+        } else if let cell = cell as? ServiceChatCell {
+            if let model = model as? ServiceMessageCellModel {
+                cell.label.text = model.text
             }
         }
     }
@@ -790,6 +810,10 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
         case _ as ChatTextCellModel:
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
+        case let model as ServiceMessageWithButtonCellModel:
+            return sizeForServiceMessageWithButton(model: model)
+        case let model as ServiceMessageCellModel:
+            return sizeForServiceMessage(model: model)
         case _ as ChatImageCellModel:
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
@@ -798,8 +822,6 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
         case _ as ChatNewMessagesSeparatorModel:
             return CGSize(width: collectionView.bounds.width, height: 30)
         case _ as ChatClaimPaidCellModel:
-            return CGSize(width: collectionView.bounds.width, height: 135)
-        case _ as ChatPayToJoinCellModel:
             return CGSize(width: collectionView.bounds.width, height: 135)
         default:
             return CGSize(width: collectionView.bounds.width - 32, height: 100)
