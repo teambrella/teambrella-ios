@@ -92,6 +92,7 @@ struct TeammateCellBuilder {
          */
     }
     
+    // swiftlint:disable:next function_body_length
     private static func setVote(votingCell: VotingOrVotedRiskCell,
                                 voting: TeammateLarge.VotingInfo,
                                 controller: TeammateProfileVC) {
@@ -154,13 +155,9 @@ struct TeammateCellBuilder {
         if proxyName != nil {
             votingCell.isProxyHidden = false
             if let cell = votingCell as? VotingRiskCell {
-//                cell.proxyNameLabel.text = "Team.ClaimCell.byProxy".localized.uppercased()
                 cell.resetVoteButton.isHidden = true
                 cell.layoutIfNeeded()
                 cell.scrollTo(risk: myVote, silently: true, animated: false)
-            } else {
-//                votingCell.yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right.proxy".localized
-                
             }
             
             if let avatar = proxyAvatar {
@@ -175,7 +172,6 @@ struct TeammateCellBuilder {
                 cell.resetVoteButton.isHidden = false
                 cell.scrollTo(risk: myVote, silently: true, animated: false)
             }
-//            votingCell.isProxyHidden = true
             votingCell.yourVoteValueLabel.alpha = 1
             votingCell.yourVoteValueLabel.text = String(format: "%.2f", myVote)
             votingCell.showYourNoVote(risk: myVote)
@@ -193,7 +189,6 @@ struct TeammateCellBuilder {
             if proxyName != nil {
                 votingCell.yourVoteHeaderLabel.text = canVote ? "Team.VotingRiskVC.numberBar.right".localized
                 : "Team.VotingRiskVC.numberBar.right.proxy".localized
-//                votingCell.yourVoteHeaderLabel.text = "Team.VotingRiskVC.numberBar.right.proxy".localized
                 if let proxy = proxyName {
                     votingCell.proxyNameLabel.text = proxy.uppercased()
                 } else {

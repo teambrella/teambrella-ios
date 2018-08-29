@@ -94,7 +94,7 @@ struct ClaimCellBuilder {
         }
         
         cell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
-        cell.remainingDaysLabel.text = DateProcessor().stringFinishesIn(minutesRemaining: voting.minutesRemaining) 
+        cell.remainingDaysLabel.text = DateProcessor().stringFinishesIn(minutesRemaining: voting.minutesRemaining)
         cell.pieChart.isHidden = false
         cell.pieChart.setupWith(remainingMinutes: voting.minutesRemaining)
         
