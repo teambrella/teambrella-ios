@@ -40,14 +40,16 @@ extension Auth0Authenticator: VKAuthenticating {
             .scope("openid profile")
             .audience(audience)
             .start { [weak self] result in
-                switch result {
-                case .failure(let error):
-                    print("Error: \(error)")
-                    completion(nil, error)
-                case let .success(credentials):
-                    print("Credentials: \(credentials)")
-                    self?.credentials = credentials
-                    completion(credentials.accessToken, nil)
+                DispatchQueue.main.async {
+                    switch result {
+                    case .failure(let error):
+                        print("Error: \(error)")
+                        completion(nil, error)
+                    case let .success(credentials):
+                        print("Credentials: \(credentials)")
+                        self?.credentials = credentials
+                        completion(credentials.accessToken, nil)
+                    }
                 }
         }
     }
