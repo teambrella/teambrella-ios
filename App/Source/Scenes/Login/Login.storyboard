@@ -200,6 +200,20 @@
                                     <action selector="tapContinueWithFBButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="i4x-5F-Upl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eP3-7Q-JtA">
+                                <rect key="frame" x="28" y="620" width="319" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="akE-lx-cEN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.25490196079999999" green="0.30588235289999999" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapContinueWithVKButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="wXa-J7-Vf1"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-0s-mhl">
                                 <rect key="frame" x="168" y="733" width="39" height="27"/>
                                 <accessibility key="accessibilityConfiguration" identifier="tryDemo"/>
@@ -216,12 +230,14 @@
                         <constraints>
                             <constraint firstItem="TKO-fV-G5k" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" constant="28" id="017-G7-ZZt"/>
                             <constraint firstItem="O3C-eL-D90" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" constant="16" id="6NY-MS-fpM"/>
+                            <constraint firstItem="TKO-fV-G5k" firstAttribute="top" secondItem="eP3-7Q-JtA" secondAttribute="bottom" constant="16" id="6cB-ch-YIU"/>
                             <constraint firstItem="n5y-0s-mhl" firstAttribute="centerX" secondItem="TKO-fV-G5k" secondAttribute="centerX" id="6zV-1a-u5i"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="width" secondItem="7DX-bd-hFW" secondAttribute="width" multiplier="0.7" id="ASg-K4-N3W"/>
                             <constraint firstItem="O7m-EB-YXq" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" id="FW5-kO-FIn"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="centerX" secondItem="ZSJ-w0-Tqs" secondAttribute="centerX" id="HLL-nS-ZYf"/>
                             <constraint firstAttribute="trailing" secondItem="TKO-fV-G5k" secondAttribute="trailing" constant="28" id="Npf-Vr-QUO"/>
                             <constraint firstAttribute="trailing" secondItem="O7m-EB-YXq" secondAttribute="trailing" id="PEP-n2-pjr"/>
+                            <constraint firstItem="eP3-7Q-JtA" firstAttribute="leading" secondItem="TKO-fV-G5k" secondAttribute="leading" id="RPQ-Ev-yoe"/>
                             <constraint firstItem="ZSJ-w0-Tqs" firstAttribute="top" secondItem="7DX-bd-hFW" secondAttribute="top" id="SSJ-wp-jNg"/>
                             <constraint firstItem="JJj-TS-F5o" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" id="bxK-vK-XUz"/>
                             <constraint firstItem="n5y-0s-mhl" firstAttribute="top" secondItem="TKO-fV-G5k" secondAttribute="bottom" constant="17" id="duw-6D-IME"/>
@@ -229,6 +245,7 @@
                             <constraint firstItem="JJj-TS-F5o" firstAttribute="top" secondItem="7DX-bd-hFW" secondAttribute="top" id="hJR-dJ-G5Q"/>
                             <constraint firstItem="O7m-EB-YXq" firstAttribute="top" secondItem="7DX-bd-hFW" secondAttribute="top" id="ow6-8J-y3e"/>
                             <constraint firstAttribute="bottom" secondItem="ZSJ-w0-Tqs" secondAttribute="bottom" id="pMb-xc-gjV"/>
+                            <constraint firstItem="eP3-7Q-JtA" firstAttribute="trailing" secondItem="TKO-fV-G5k" secondAttribute="trailing" id="pQD-bY-E8Z"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="top" secondItem="7DX-bd-hFW" secondAttribute="top" constant="180" id="pjn-JT-fu1"/>
                             <constraint firstItem="usP-eT-Dn2" firstAttribute="bottom" secondItem="n5y-0s-mhl" secondAttribute="bottom" constant="18" id="sDb-EU-zsB"/>
                             <constraint firstAttribute="trailing" secondItem="JJj-TS-F5o" secondAttribute="trailing" id="uF6-qb-zrv"/>
@@ -253,6 +270,7 @@
                         <outlet property="centerLabel" destination="O3C-eL-D90" id="fUT-tK-k1u"/>
                         <outlet property="confetti" destination="O7m-EB-YXq" id="x2q-5N-tkN"/>
                         <outlet property="continueWithFBButton" destination="TKO-fV-G5k" id="1sv-DM-awS"/>
+                        <outlet property="continueWithVKButton" destination="eP3-7Q-JtA" id="xLb-TC-61C"/>
                         <outlet property="gradientView" destination="JJj-TS-F5o" id="xCU-IY-abS"/>
                         <outlet property="tryDemoButton" destination="n5y-0s-mhl" id="tWI-xH-yix"/>
                         <segue destination="RUg-4M-8iQ" kind="show" identifier="invitationOnly" id="3Hc-wB-HHG"/>

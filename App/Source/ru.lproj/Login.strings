@@ -28,4 +28,4 @@
 "Login.LoginNoInviteVC.pendingApplication.details" = "Пожалуйста, заполни все необходимые поля. Мы ждем тебя! Если у тебя есть вопросы, свяжись с нашей службой поддержки.";
 "Login.QRCodeButton"                               = "Войти с QR кодом";
 
-"Login.LoginBlueVC.continueWithVKButton"           = "Продолжить в ВКонтакте";
+"Login.LoginBlueVC.continueWithVKButton"           = "Продолжить с ВКонтакте";

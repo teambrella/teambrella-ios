@@ -63,7 +63,6 @@ final class LoginBlueVC: UIViewController {
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
         continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
-        continueWithVKButton.addGestureRecognizer(clearAllRecognizer)
         animateCenterLabel()
     }
 
@@ -104,17 +103,16 @@ final class LoginBlueVC: UIViewController {
     }
     
     @IBAction func tapContinueWithVKButton(_ sender: Any) {
-//        guard service.keyStorage.hasRealPrivateKey == false else {
-//            logAsFacebookUser(user: nil)
-//            return
-//        }
-//
-//        HUD.show(.progress)
-//        loginWorker.loginAndRegister(in: self, completion: { [weak self] facebookUser in
-//            self?.logAsFacebookUser(user: facebookUser)
-//        }) { [weak self] error in
-//            self?.handleFailure(error: error)
-//        }
+        let auth0 = Auth0Authenticator()
+        HUD.show(.progress)
+        auth0.authWithVK(completion: { [weak self] vkUser, error in
+            guard error == nil, let userToken = vkUser else {
+                self?.handleFailure(error: error)
+                return
+            }
+            
+            self?.logAsVKUser(userToken: userToken)
+        })
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
@@ -232,6 +230,11 @@ Are you sure you want to completely remove your private key from this device?
     private func logAsFacebookUser(user: FacebookUser?) {
         HUD.hide()
         performSegue(withIdentifier: "unwindToInitial", sender: user)
+    }
+    
+    private func logAsVKUser(userToken: String) {
+        HUD.hide()
+        performSegue(withIdentifier: "unwindToInitial", sender: userToken)
     }
     
 }
