@@ -18,6 +18,18 @@ import Auth0
 import Foundation
 
 class Auth0Authenticator {
+    var credentials: Credentials?
+    var domain: String {
+        #if SURILLA
+        return "surilla.auth0.com"
+        #else
+        return ""
+        #endif
+    }
+
+    var audience: String {
+        return "https://\(domain)/userinfo"
+    }
 
 }
 
@@ -25,15 +37,16 @@ extension Auth0Authenticator: VKAuthenticating {
     func authWithVK(completion: @escaping (String?, Error?) -> Void) {
         Auth0
             .webAuth()
-            .scope("EDpbY1uzCHoBf947lOqq-nPQbnUAdXEl")
-            .audience("https://YOUR_AUTH0_DOMAIN/userinfo")
-            .start {
-                switch $0 {
+            .scope("openid profile")
+            .audience(audience)
+            .start { [weak self] result in
+                switch result {
                 case .failure(let error):
                     print("Error: \(error)")
                     completion(nil, error)
                 case let .success(credentials):
                     print("Credentials: \(credentials)")
+                    self?.credentials = credentials
                     completion(credentials.accessToken, nil)
                 }
         }

@@ -911,6 +911,7 @@
 		6D5535992136ED92000DB0F2 /* Auth0Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5535972136ED92000DB0F2 /* Auth0Authenticator.swift */; };
 		6D55359B2136EFD1000DB0F2 /* VKAuthenticating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D55359A2136EFD1000DB0F2 /* VKAuthenticating.swift */; };
 		6D55359C2136EFD1000DB0F2 /* VKAuthenticating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D55359A2136EFD1000DB0F2 /* VKAuthenticating.swift */; };
+		6D5535A02137FECE000DB0F2 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D55359F2137FECE000DB0F2 /* Auth0.plist */; };
 		6D56F9BD1FA737CC00B9D676 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D56F9BB1FA737CC00B9D676 /* Application.swift */; };
 		6D5852C81F9F83A00079CA89 /* HexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5852C71F9F83A00079CA89 /* HexTests.swift */; };
 		6D59FD151FBC95CB006C0A2B /* TimestampFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */; };
@@ -1412,6 +1413,7 @@
 		6D538525210F5D7400410138 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginWorker.swift; path = Model/Services/LoginWorker.swift; sourceTree = "<group>"; };
 		6D5535972136ED92000DB0F2 /* Auth0Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Auth0Authenticator.swift; path = Model/Services/Auth0Authenticator.swift; sourceTree = "<group>"; };
 		6D55359A2136EFD1000DB0F2 /* VKAuthenticating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VKAuthenticating.swift; path = Model/Protocols/VKAuthenticating.swift; sourceTree = "<group>"; };
+		6D55359F2137FECE000DB0F2 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		6D56F9BB1FA737CC00B9D676 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Application.swift; path = Model/Application.swift; sourceTree = "<group>"; };
 		6D5852C71F9F83A00079CA89 /* HexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexTests.swift; sourceTree = "<group>"; };
 		6D59F0081F56E5D000C422EB /* PrivateChatAdaptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatAdaptor.swift; path = Scenes/Home/PrivateMessages/PrivateChatAdaptor.swift; sourceTree = "<group>"; };
@@ -2338,6 +2340,7 @@
 			children = (
 				6DDFDAF21F8CD24400342696 /* Surilla.xcassets */,
 				6D05254520A5E444000B3247 /* Surilla Info.plist */,
+				6D55359F2137FECE000DB0F2 /* Auth0.plist */,
 			);
 			path = Surilla;
 			sourceTree = "<group>";
@@ -3726,6 +3729,7 @@
 				6D4E5DCC1F7AB6870020DEE2 /* Proxy.strings in Resources */,
 				6D4E5DCD1F7AB6870020DEE2 /* ClaimVoteCell.xib in Resources */,
 				6D4E5DCE1F7AB6870020DEE2 /* Login.strings in Resources */,
+				6D5535A02137FECE000DB0F2 /* Auth0.plist in Resources */,
 				6D4E5DCF1F7AB6870020DEE2 /* ImageGalleryCell.xib in Resources */,
 				6D12C2EB1FCD6C6200A8926D /* Info.strings in Resources */,
 				6DDC655A1FBAE0CA00DE4E36 /* TopBarVC.xib in Resources */,
