@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Cosigner" representedClassName=".Cosigner" syncable="YES" codeGenerationType="category">
         <attribute name="idValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="keyOrderValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -71,6 +71,7 @@
         <attribute name="idValue" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nameValue" attributeType="String" syncable="YES"/>
         <attribute name="publicKeyValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="socialNameValue" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="claimTransactionsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tx" inverseName="claimTeammateValue" inverseEntity="Tx" syncable="YES"/>
         <relationship name="cosignerOfValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cosigner" inverseName="teammateValue" inverseEntity="Cosigner" syncable="YES"/>
         <relationship name="multisigsValue" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Multisig" inverseName="teammateValue" inverseEntity="Multisig" syncable="YES"/>
@@ -194,7 +195,7 @@
         <element name="Multisig" positionX="405" positionY="75" width="128" height="195"/>
         <element name="PayTo" positionX="115" positionY="414" width="128" height="135"/>
         <element name="Team" positionX="376" positionY="387" width="128" height="195"/>
-        <element name="Teammate" positionX="54" positionY="90" width="128" height="225"/>
+        <element name="Teammate" positionX="54" positionY="90" width="128" height="240"/>
         <element name="Tx" positionX="-353" positionY="-30" width="128" height="360"/>
         <element name="TxInput" positionX="-578" positionY="387" width="128" height="150"/>
         <element name="TxOutput" positionX="-38" positionY="414" width="128" height="135"/>
