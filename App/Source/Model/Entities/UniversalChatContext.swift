@@ -22,13 +22,6 @@ class UniversalChatContext {
     var teamID: Int?
     var userID: String?
 
-    // for private chat
-    var avatarSize: CGFloat?
-    var commentAvatarSize: CGFloat?
-    var toUserID: String?
-    var newMessageID: String?
-    var newPostID: String?
-
     var title: String? = nil
     var canLoadBackward: Bool = true
 
@@ -80,15 +73,36 @@ class UniversalChatContext {
     }
 
     init(_ remoteDetails: RemoteTopicDetails) {
+        title = (remoteDetails as? RemotePayload.Discussion)?.topicName
+        switch remoteDetails {
+        case let details as RemotePayload.Claim:
+            requestType = .claimChat
+            claimID = details.claimID
+        case let details as RemotePayload.Teammate:
+            requestType = .teammateChat
+            teamID = service.session?.currentTeam?.teamID
+            userID = details.userID
+        default:
+            requestType = .feedChat
+        }
 
+        topicID = remoteDetails.topicID
     }
 
     init(_ chatModel: ChatModel) {
+        title = chatModel.basic?.title
+        requestType = .feedChat
+
+        topicID = chatModel.discussion.topicID
 
     }
 
     init(_ privateUser: PrivateChatUser) {
+        title = privateUser.name
+        requestType = .privateChat
+        postType = .newPrivatePost
 
+        userID = privateUser.id
     }
 
     func updatedChatBody(body: RequestBody) -> RequestBody {
@@ -97,13 +111,35 @@ class UniversalChatContext {
         teamID.map { body.payload?["teamid"] = $0 }
         userID.map { body.payload?["userid"] = $0 }
 
-        return body
+        return updateIfPrivateChat(body: body)
     }
 
     func updatedMessageBody(body: RequestBody) -> RequestBody {
         var body = body
         topicID.map { body.payload?["topicId"] = $0 }
 
+        return updateIfPrivateMessage(body: body)
+    }
+
+    private func updateIfPrivateChat(body: RequestBody) -> RequestBody {
+        guard requestType == .privateChat else { return body }
+
+        var body = body
+        body.payload?["avatarSize"] = nil
+        body.payload?["commentAvatarSize"] = nil
         return body
     }
+
+    private func updateIfPrivateMessage(body: RequestBody) -> RequestBody {
+        guard requestType == .privateChat else { return body }
+
+        var body = body
+        body.payload?["ToUserId"] = userID
+        if let newPostID = body.payload?["NewPostId"] as? String {
+            body.payload?["NewMessageId"] = newPostID
+        }
+        body.payload?["NewPostId"] = nil
+        return body
+    }
+
 }
