@@ -27,10 +27,9 @@ class Teammate: NSManagedObject {
     var name: String { return nameValue! }
     var publicKey: String? { return publicKeyValue }
     var address: String? { return cryptoAddressValue }
+    var socialName: String? { return socialNameValue }
     
-    var team: Team {
-        return teamValue!
-    }
+    var team: Team { return teamValue! }
     
     var cosignerOf: Set<Cosigner> {
         return cosignerOfValue as? Set<Cosigner> ?? []

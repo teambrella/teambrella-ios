@@ -67,6 +67,7 @@ class TeammateLarge: Decodable {
         let name: Name
         let city: String?
         let facebook: String
+        let vk: String?
 
         let isProxiedByMe: Bool
         var isMyProxy: Bool
@@ -91,6 +92,7 @@ class TeammateLarge: Decodable {
             case name = "Name"
             case city = "City"
             case facebook = "FacebookUrl"
+            case vk = "VkUrl"
             case isProxiedByMe = "AmIProxy"
             case isMyProxy = "IsMyProxy"
             case role = "Role"
