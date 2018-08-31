@@ -87,7 +87,7 @@ final class UniversalChatDatasource {
     
     private var lastInsertionIndex                  = 0
     
-    private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
+    private var strategy: UniversalChatContext      = UniversalChatContext()
     var cellModelBuilder                            = ChatModelBuilder()
     
     private var lastRead: UInt64 { return chatModel?.discussion.lastRead ?? 0 }
@@ -122,7 +122,7 @@ final class UniversalChatDatasource {
     var dao: DAO { return service.dao }
     
     var title: String {
-        guard !(strategy is PrivateChatStrategy) else { return strategy.title }
+        guard !strategy.isPrivate else { return strategy.title ?? "" }
         guard let chatModel = chatModel else { return "" }
         
         if chatModel.isClaimChat {
@@ -142,19 +142,7 @@ final class UniversalChatDatasource {
     }
     
     var chatType: UniversalChatType {
-        switch strategy {
-        case is PrivateChatStrategy:
-            return .privateChat
-        case is ClaimChatStrategy:
-            return .claim
-        case is TeammateChatStrategy:
-            return .application
-        case let strategy as FeedChatStrategy:
-            let type = strategy.feedEntity.itemType
-            return UniversalChatType.with(itemType: type)
-        default:
-            break
-        }
+        if let type = strategy.type { return type }
 
         if chatModel?.basic?.claimAmount != nil { return .claim }
         if chatModel?.basic?.title != nil { return .discussion }
@@ -215,7 +203,7 @@ final class UniversalChatDatasource {
         }
     }
     
-    var isPrivateChat: Bool { return strategy is PrivateChatStrategy }
+    var isPrivateChat: Bool { return strategy.isPrivate }
     
     var isInputAllowed: Bool {
         if isPrivateChat { return true }
@@ -258,11 +246,11 @@ final class UniversalChatDatasource {
         }
     }
     
-    func addContext(context: ChatContext, itemType: ItemType) {
-        strategy = ChatStrategyFactory.strategy(with: context)
+    func addContext(context: UniversalChatContext) {
+        strategy = context
         hasPrevious = strategy.canLoadBackward
-        cellModelBuilder.showRate = chatType == .application || chatType == .claim
-        cellModelBuilder.showTheirAvatar = chatType != .privateChat
+        cellModelBuilder.showRate = context.isRateNeeded
+        cellModelBuilder.showTheirAvatar = !context.isPrivate
     }
     
     func loadNext() {

@@ -28,8 +28,13 @@ class UniversalChatContext {
     var requestType: TeambrellaRequestType = .teammateChat
     var postType: TeambrellaRequestType = .newPost
 
-    init() {
+    var isPrivate: Bool { return requestType == .privateChat }
+    var isRateNeeded: Bool { return type == .application || type == .claim }
 
+    var type: UniversalChatType?
+
+    init() {
+        
     }
 
     init(_ claim: ClaimEntityLarge) {
@@ -37,6 +42,7 @@ class UniversalChatContext {
         requestType = .claimChat
         claimID = claim.id
         topicID =  claim.discussion.id
+        type = .claim
     }
 
     init(_ teammate: TeammateLarge) {
@@ -45,12 +51,14 @@ class UniversalChatContext {
         teamID = teammate.basic.teamID
         userID = teammate.basic.id
         topicID = teammate.topic.id
+        type = .application
     }
 
     init(_ applicationDetails: MyApplicationDetails) {
         userID = applicationDetails.userID
         teamID = service.session?.currentTeam?.teamID
         topicID = applicationDetails.topicID
+        type = .application
     }
 
     init(_ feed: FeedEntity) {
@@ -60,6 +68,7 @@ class UniversalChatContext {
         teamID = service.session?.currentTeam?.teamID
         userID = feed.itemUserID
         topicID = feed.topicID
+        type = UniversalChatType.with(itemType: feed.itemType)
     }
 
     init(_ homeCardModel: HomeCardModel) {

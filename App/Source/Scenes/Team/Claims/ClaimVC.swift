@@ -306,8 +306,7 @@ extension ClaimVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is ImageGalleryCell, let claim = dataSource.claim {
-            let context = ChatContext.claim(claim)
-            router.presentChat(context: context, itemType: .claim)
+            router.presentChat(context: UniversalChatContext(claim))
         }
     }
     

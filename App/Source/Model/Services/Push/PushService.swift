@@ -251,8 +251,7 @@ final class PushService: NSObject {
     private func showPrivateMessage(command: RemotePayload) {
         //        service.router.presentPrivateMessages()
         if let user = PrivateChatUser(remotePayload: command) {
-            let context = ChatContext.privateChat(user)
-            service.router.presentChat(context: context, itemType: .privateChat, animated: false)
+            service.router.presentChat(context: UniversalChatContext(user), animated: false)
         }
     }
     
@@ -278,17 +277,9 @@ final class PushService: NSObject {
     }
     
     private func showTopic(details: RemoteTopicDetails?) {
-        if let details = details as? RemotePayload.Claim {
-            //            service.router.switchToFeed()
-            //            service.router.presentClaims(animated: false)
-            //            service.router.presentClaim(claimID: details.claimID, animated: false)
-            service.router.presentChat(context: ChatContext.remote(details), itemType: .claim, animated: false)
-        } else if let details = details as? RemotePayload.Discussion {
-            service.router.presentChat(context: ChatContext.remote(details), itemType: .teamChat, animated: false)
-        } else if let details = details as? RemotePayload.Teammate {
-            //            service.router.presentMemberProfile(teammateID: details.userID, animated: false)
-            service.router.presentChat(context: ChatContext.remote(details), itemType: .teammate, animated: false)
-        }
+        guard let details = details else { return }
+        
+        service.router.presentChat(context: UniversalChatContext(details), animated: false)
     }
     
 }

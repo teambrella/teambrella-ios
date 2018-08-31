@@ -21,6 +21,7 @@
 
 import Foundation
 
+/*
 protocol ChatDatasourceStrategy {
     var title: String { get }
     var requestType: TeambrellaRequestType { get }
@@ -367,3 +368,4 @@ class PrivateChatStrategy: ChatDatasourceStrategy {
         return body
     }
 }
+ */

@@ -183,8 +183,8 @@ final class UniversalChatVC: UIViewController, Routable {
     
     // MARK: Public
     
-    public func setContext(context: ChatContext, itemType: ItemType) {
-        dataSource.addContext(context: context, itemType: itemType)
+    public func setContext(context: UniversalChatContext) {
+        dataSource.addContext(context: context)
     }
     
     public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
