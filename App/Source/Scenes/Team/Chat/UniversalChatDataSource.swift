@@ -142,11 +142,12 @@ final class UniversalChatDatasource {
     }
     
     var chatType: UniversalChatType {
-        if let type = strategy.type { return type }
-
         if chatModel?.basic?.claimAmount != nil { return .claim }
         if chatModel?.basic?.title != nil { return .discussion }
         if chatModel?.basic?.userID != nil { return .application }
+
+        if let type = strategy.type { return type }
+
         return .discussion
     }
     
