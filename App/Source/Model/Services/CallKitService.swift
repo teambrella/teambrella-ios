@@ -19,6 +19,9 @@ import CallKit
 class CallKitService: NSObject {
     lazy var provider: CXProvider = {
         let config = CXProviderConfiguration(localizedName: "Teambrella")
+        config.maximumCallsPerCallGroup = 1
+//        config.supportedHandleTypes = [CXHandle.HandleType.generic]
+
         let provider = CXProvider(configuration: config)
         return provider
     }()
@@ -41,19 +44,23 @@ class CallKitService: NSObject {
     }
 
     func outgoingCallStartedConnecting(id: UUID) {
+        print("\(#function)")
         provider.reportOutgoingCall(with: id, startedConnectingAt: Date())
     }
 
     func outgoingCallConnected(id: UUID) {
+        print("\(#function)")
         provider.reportOutgoingCall(with: id, connectedAt: Date())
     }
 
     func remoteCallEnded(id: UUID) {
+        print("\(#function)")
         let reason = CXCallEndedReason.remoteEnded
         provider.reportCall(with: id, endedAt: Date(), reason: reason)
     }
 
     func endRemoteCall(id: UUID) {
+        print("\(#function)")
         let reason = CXCallEndedReason.remoteEnded
         provider.reportCall(with: id, endedAt: Date(), reason: reason)
     }

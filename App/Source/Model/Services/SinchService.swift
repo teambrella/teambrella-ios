@@ -42,11 +42,11 @@ final class SinchService: NSObject {
 
     var isReceivingCall: Bool = false
 
-   lazy var callService: CallKitService = {
-    let service = CallKitService()
-    service.setDelegate(self)
-    return service
-   }()
+    lazy var callService: CallKitService = {
+        let service = CallKitService()
+        service.setDelegate(self)
+        return service
+    }()
 
     weak var delegate: SinchServiceDelegate?
 
@@ -69,7 +69,7 @@ final class SinchService: NSObject {
             print("Terminating previous session (userID: \(currentUserID)")
             terminate()
         }
-        
+
         let client: SINClient = Sinch.client(withApplicationKey: Resources.Sinch.applicationKey,
                                              applicationSecret: Resources.Sinch.applicationSecret,
                                              environmentHost: host,
@@ -184,24 +184,32 @@ extension SinchService: SINCallClientDelegate {
         call.delegate = self
         self.call = call
 
-        guard let id = UUID(uuidString: call.remoteUserId) else { return }
+        guard let id = UUID(uuidString: call.remoteUserId) else {
+            return
+        }
 
         let name = call.headers["name"] as? String ?? "unknown"
 
-        callService.incomingCall(from: name, id: id) { error in
-
+        DispatchQueue.main.async {
+            self.callService.incomingCall(from: name, id: id) { error in
+                if let error == error {
+                print("error receiving call: \(error)")
+            } else {
+            print("Receiving call")
         }
-        isReceivingCall = true
-        //call.answer()
+            }
+            self.isReceivingCall = true
+        }
     }
+    //call.answer()
+}
 
-    func client(_ client: SINCallClient!,
-                localNotificationForIncomingCall call: SINCall!) -> SINLocalNotification! {
-        let notification = SINLocalNotification()
-        notification.alertAction = "Answer"
-        notification.alertBody = "Incoming call"
-        return notification
-    }
+func client(_ client: SINCallClient!,
+            localNotificationForIncomingCall call: SINCall!) -> SINLocalNotification! {
+    let notification = SINLocalNotification()
+    notification.alertAction = "Answer"
+    notification.alertBody = "Incoming call"
+    return notification
 }
 
 extension SinchService: SINManagedPushDelegate {
@@ -214,6 +222,7 @@ extension SinchService: SINManagedPushDelegate {
 
 extension SinchService: CXProviderDelegate {
     func providerDidReset(_ provider: CXProvider) {
+        print("Provider did reset call")
     }
 
     func provider(_ provider: CXProvider, perform action: CXStartCallAction) {
@@ -222,7 +231,7 @@ extension SinchService: CXProviderDelegate {
 
     func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
         self.call?.answer()
-        action.fulfill()
+        // action.fulfill()
     }
 
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
