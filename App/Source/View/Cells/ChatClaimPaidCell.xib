@@ -47,7 +47,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-J9-mKM">
-                                <rect key="frame" x="16" y="0.0" width="248" height="110"/>
+                                <rect key="frame" x="8" y="0.0" width="264" height="110"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -78,12 +78,12 @@
                             <constraint firstItem="eDm-Uj-uEh" firstAttribute="top" secondItem="ZPz-ZL-nAU" secondAttribute="bottom" id="07B-wL-0zY"/>
                             <constraint firstItem="eDm-Uj-uEh" firstAttribute="leading" secondItem="bBd-aX-BRg" secondAttribute="leading" id="7OF-5X-ldP"/>
                             <constraint firstItem="4S3-J9-mKM" firstAttribute="bottom" secondItem="Uk7-hS-UL4" secondAttribute="bottom" id="DzF-XN-7eD"/>
-                            <constraint firstItem="4S3-J9-mKM" firstAttribute="trailing" secondItem="Uk7-hS-UL4" secondAttribute="trailing" constant="-16" id="EpT-bu-sIB"/>
+                            <constraint firstItem="4S3-J9-mKM" firstAttribute="trailing" secondItem="Uk7-hS-UL4" secondAttribute="trailing" constant="-8" id="EpT-bu-sIB"/>
                             <constraint firstAttribute="width" constant="280" id="JZP-8I-YSn"/>
                             <constraint firstItem="Uk7-hS-UL4" firstAttribute="top" secondItem="bBd-aX-BRg" secondAttribute="top" id="Nzx-0k-xH5"/>
                             <constraint firstItem="ZPz-ZL-nAU" firstAttribute="width" secondItem="bBd-aX-BRg" secondAttribute="width" id="S1g-v3-3kv"/>
                             <constraint firstItem="Nf7-Sl-mPD" firstAttribute="leading" secondItem="Uk7-hS-UL4" secondAttribute="leading" id="UFU-LJ-7mI"/>
-                            <constraint firstItem="4S3-J9-mKM" firstAttribute="leading" secondItem="Uk7-hS-UL4" secondAttribute="leading" constant="16" id="XCA-v7-zRg"/>
+                            <constraint firstItem="4S3-J9-mKM" firstAttribute="leading" secondItem="Uk7-hS-UL4" secondAttribute="leading" constant="8" id="XCA-v7-zRg"/>
                             <constraint firstItem="Nf7-Sl-mPD" firstAttribute="bottom" secondItem="Uk7-hS-UL4" secondAttribute="bottom" id="cUm-dv-Oa2"/>
                             <constraint firstAttribute="bottom" secondItem="eDm-Uj-uEh" secondAttribute="bottom" id="dAR-aw-qZZ"/>
                             <constraint firstItem="ZPz-ZL-nAU" firstAttribute="centerX" secondItem="bBd-aX-BRg" secondAttribute="centerX" id="fUX-b0-2Yv"/>

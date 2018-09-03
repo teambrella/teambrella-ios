@@ -183,20 +183,19 @@ extension SinchService: SINCallClientDelegate {
     func client(_ client: SINCallClient!, didReceiveIncomingCall call: SINCall!) {
         call.delegate = self
         self.call = call
-
         guard let id = UUID(uuidString: call.remoteUserId) else {
             return
         }
 
         let name = call.headers["name"] as? String ?? "unknown"
 
-        DispatchQueue.main.async {
-            self.callService.incomingCall(from: name, id: id) { error in
-                if let error == error {
-                print("error receiving call: \(error)")
-            } else {
-            print("Receiving call")
-        }
+        self.callService.incomingCall(from: name, id: id) { error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("error receiving call: \(error)")
+                } else {
+                    print("Receiving call")
+                }
             }
             self.isReceivingCall = true
         }
@@ -231,7 +230,7 @@ extension SinchService: CXProviderDelegate {
 
     func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
         self.call?.answer()
-        // action.fulfill()
+         action.fulfill()
     }
 
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {

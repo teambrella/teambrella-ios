@@ -735,6 +735,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.label.text = model.text
         } else if let cell = cell as? ChatClaimPaidCell {
             if let model = model as? ServiceMessageWithButtonCellModel {
+                cell.messageLabel.textAlignment = .left
                 cell.messageLabel.text = model.text
                 cell.button.setTitle(model.buttonText, for: .normal)
                 cell.confettiView.isHidden = true
@@ -751,6 +752,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     //                    self?.navigationController?.popViewController(animated: false)
                 }
             } else if model is ChatClaimPaidCellModel {
+                cell.messageLabel.textAlignment = .center
                 cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
                 cell.button.setTitle("Team.Chat.ClaimPaidCell.buttonTitle".localized, for: .normal)
                 cell.onButtonTap = { [weak self] in

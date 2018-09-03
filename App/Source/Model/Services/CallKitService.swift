@@ -32,8 +32,12 @@ class CallKitService: NSObject {
 
     func incomingCall(from name: String, id: UUID, completion: @escaping (Error?) -> Void) {
         let update = CXCallUpdate()
+        update.localizedCallerName = name
         update.remoteHandle = CXHandle(type: .generic, value: name)
-        provider.reportNewIncomingCall(with: id, update: update, completion: completion)
+        provider.reportNewIncomingCall(with: id, update: update) { error in
+            // add calls
+            completion(error)
+        }
     }
 
     func outgoingCall(to name: String, id: UUID, completion: @escaping (Error?) -> Void) {

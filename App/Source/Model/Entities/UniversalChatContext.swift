@@ -22,7 +22,7 @@ class UniversalChatContext {
     var teamID: Int?
     var userID: String?
 
-    var title: String? = nil
+    var title: String?
     var canLoadBackward: Bool = true
 
     var requestType: TeambrellaRequestType = .teammateChat
@@ -62,7 +62,7 @@ class UniversalChatContext {
     }
 
     init(_ feed: FeedEntity) {
-        title = feed.chatTitle ?? feed.modelOrName ?? nil
+        title = feed.chatTitle ?? feed.modelOrName
         requestType = TeambrellaRequestType.with(itemType: feed.itemType)
         claimID = feed.itemID
         teamID = service.session?.currentTeam?.teamID
