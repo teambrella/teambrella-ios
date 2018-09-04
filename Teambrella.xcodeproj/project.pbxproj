@@ -553,6 +553,7 @@
 		6D42CCA820E1367000C2B146 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D42CCA720E1367000C2B146 /* SnapshotHelper.swift */; };
 		6D43291720D949490015C369 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43291620D949490015C369 /* QRCodeManager.swift */; };
 		6D43291820D94B250015C369 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43291620D949490015C369 /* QRCodeManager.swift */; };
+		6D439507213EEAED006F1CDD /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D439506213EEAED006F1CDD /* Auth0.plist */; };
 		6D49FDDC20209DD900A908D2 /* Ether.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDA20209DD900A908D2 /* Ether.swift */; };
 		6D49FDDF2020BB2B00A908D2 /* Coverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDD2020BB2B00A908D2 /* Coverage.swift */; };
 		6D49FDE22020C12800A908D2 /* Risk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE02020C12800A908D2 /* Risk.swift */; };
@@ -1378,6 +1379,7 @@
 		6D42CC9F20E133B300C2B146 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D42CCA720E1367000C2B146 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		6D43291620D949490015C369 /* QRCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRCodeManager.swift; path = Model/Services/QRCodeManager.swift; sourceTree = "<group>"; };
+		6D439506213EEAED006F1CDD /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		6D465F2D1F46E83B007AC28F /* ReportContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportContext.swift; path = Scenes/Me/Report/ReportContext.swift; sourceTree = "<group>"; };
 		6D465F2F1F46E85C007AC28F /* ReportStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportStrategy.swift; path = Scenes/Me/Report/ReportStrategy.swift; sourceTree = "<group>"; };
 		6D465F311F46E893007AC28F /* ReportCellModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCellModels.swift; path = Scenes/Me/Report/ReportCellModels.swift; sourceTree = "<group>"; };
@@ -2102,6 +2104,7 @@
 			children = (
 				6DDFDAF41F8CD25600342696 /* Teambrella.xcassets */,
 				6DA475AF1E8ABEE600B56D9B /* Info.plist */,
+				6D439506213EEAED006F1CDD /* Auth0.plist */,
 			);
 			path = Teambrella;
 			sourceTree = "<group>";
@@ -3622,6 +3625,7 @@
 				6D05252E20A5D838000B3247 /* Proxy.strings in Resources */,
 				6D05252F20A5D838000B3247 /* ClaimVoteCell.xib in Resources */,
 				6D05253020A5D838000B3247 /* Login.strings in Resources */,
+				6D439507213EEAED006F1CDD /* Auth0.plist in Resources */,
 				6D05253120A5D838000B3247 /* ImageGalleryCell.xib in Resources */,
 				6D05253220A5D838000B3247 /* Info.strings in Resources */,
 				6D05253320A5D838000B3247 /* TopBarVC.xib in Resources */,

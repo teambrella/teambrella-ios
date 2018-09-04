@@ -23,7 +23,7 @@ class Auth0Authenticator {
         #if SURILLA
         return "surilla.auth0.com"
         #else
-        return ""
+        return "teambrella.eu.auth0.com"
         #endif
     }
 
