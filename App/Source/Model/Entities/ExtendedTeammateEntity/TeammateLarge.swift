@@ -66,7 +66,7 @@ class TeammateLarge: Decodable {
         let avatar: String
         let name: Name
         let city: String?
-        let facebook: String
+        let facebook: String?
         let vk: String?
 
         let isProxiedByMe: Bool
