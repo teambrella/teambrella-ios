@@ -69,18 +69,9 @@ final class InitialVC: UIViewController {
 
     func login(teamID: Int?) {
         loginBlueVC?.dismiss(animated: false, completion: nil)
-
-        guard !service.keyStorage.hasRealPrivateKey else {
+        if service.keyStorage.hasRealPrivateKey {
             service.keyStorage.setToRealUser()
-            self.getTeams()
-            return
-        }
-
-        loginWorker.loginAndRegister(in: self, completion: { [weak self] facebookUser in
-            service.keyStorage.setToRealUser()
-            self?.getTeams()
-        }) { [weak self] error in
-            self?.failure(error: error)
+            getTeams()
         }
     }
 

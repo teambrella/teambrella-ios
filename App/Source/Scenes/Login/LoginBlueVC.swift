@@ -89,30 +89,27 @@ final class LoginBlueVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
+        register(type: .facebook)
+    }
+    
+    @IBAction func tapContinueWithVKButton(_ sender: Any) {
+        register(type: .vk)
+    }
+
+    func register(type: LoginWorker.LoginType) {
         guard service.keyStorage.hasRealPrivateKey == false else {
-            logAsFacebookUser(user: nil)
+            logIn()
             return
         }
 
         HUD.show(.progress)
-        loginWorker.loginAndRegister(in: self, completion: { [weak self] facebookUser in
-            self?.logAsFacebookUser(user: facebookUser)
-        }) { [weak self] error in
-            self?.handleFailure(error: error)
-        }
-    }
-    
-    @IBAction func tapContinueWithVKButton(_ sender: Any) {
-        let auth0 = Auth0Authenticator()
-        HUD.show(.progress)
-        auth0.authWithVK(completion: { [weak self] vkUser, error in
-            guard error == nil, let userToken = vkUser else {
+        loginWorker.loginAndRegister(type: type, in: self) { [weak self] token, error in
+            if let token = token, error == nil {
+                self?.logIn()
+            } else {
                 self?.handleFailure(error: error)
-                return
             }
-            
-            self?.logAsVKUser(userToken: userToken)
-        })
+        }
     }
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
@@ -224,9 +221,15 @@ Are you sure you want to completely remove your private key from this device?
     
     private func insertSecretKey(string: String) {
         service.keyStorage.saveNewPrivateKey(string: string)
-        logAsFacebookUser(user: nil)
+        logIn()
     }
-    
+
+    private func logIn() {
+        HUD.hide()
+        performSegue(withIdentifier: "unwindToInitial", sender: nil)
+    }
+
+    /*
     private func logAsFacebookUser(user: FacebookUser?) {
         HUD.hide()
         performSegue(withIdentifier: "unwindToInitial", sender: user)
@@ -236,5 +239,5 @@ Are you sure you want to completely remove your private key from this device?
         HUD.hide()
         performSegue(withIdentifier: "unwindToInitial", sender: userToken)
     }
-    
+    */
 }

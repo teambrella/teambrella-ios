@@ -21,7 +21,14 @@ import Foundation
 class LoginWorker {
     enum LoginWorkerError: Error {
         case unknownError
+        case noTokenProvided
     }
+
+    enum LoginType {
+        case facebook, vk
+    }
+
+    typealias CompletionHandler = (String?, Error?) -> Void
 
     var dao: DAO { return service.dao }
     var keyStorage: KeyStorage { return service.keyStorage }
@@ -43,49 +50,38 @@ class LoginWorker {
         }
     }
 
-    func loginAndRegister(in controller: UIViewController,
-                          completion: @escaping (FacebookUser) -> Void,
-                          failure: @escaping (Error) -> Void) {
-        loginFacebookUser(in: controller, completion: { [weak self] token, userID in
-            self?.register(token: token, userID: userID, completion: {
-                self?.getFacebookMe(completion: completion, failure: failure)
-            }, failure: { error in
-                failure(error)
-            })
-        }) { error in
-            failure(error)
+    func loginAndRegister(type: LoginType,
+                          in controller: UIViewController,
+                          completion: @escaping CompletionHandler) {
+        let handler: CompletionHandler = { [weak self] token, error in
+            self?.register(type: type, token: token, completion: completion)
+        }
+        switch type {
+        case .facebook:
+            loginFacebook(in: controller, completion: handler)
+        case .vk:
+            loginVK(in: controller, completion: handler)
         }
     }
 
-    func getFacebookMe(completion: @escaping (FacebookUser) -> Void, failure: @escaping (Error) -> Void) {
-            let fields = "email, birthday, age_range, name, first_name, last_name, gender, picture.type(large)"
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": fields]).start { connection, object, error in
-                guard let reply = object as? [String: Any], error == nil else {
-                    failure(error ?? LoginWorkerError.unknownError)
-                    return
-                }
-                log("Facebook reply: \(reply)", type: .social)
-                completion(FacebookUser(dict: reply))
-            }
-    }
-
-    func loginFacebookUser(in controller: UIViewController,
-                           completion: @escaping (String, String) -> Void,
-                           failure: @escaping (Error) -> Void) {
+    func loginFacebook(in controller: UIViewController,
+                       completion: @escaping CompletionHandler) {
         let manager = FBSDKLoginManager()
         manager.logOut()
         // remove user_friends permission to comply with FBSDK 3.0
         let permissions =  ["public_profile", "email"]
         manager.logIn(withReadPermissions: permissions, from: controller) { result, error in
-            guard error == nil, let result = result, let token = result.token else {
-                failure(error ?? LoginWorkerError.unknownError)
-                return
-            }
-            completion(token.tokenString, token.userID)
+            completion(result?.token?.tokenString, error)
         }
     }
 
-    func register(token: String, userID: String, completion: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+    func loginVK(in controller: UIViewController,
+                 completion: @escaping CompletionHandler) {
+        let auth0 = Auth0Authenticator()
+        auth0.authWithVK(completion: completion)
+    }
+
+    func register(type: LoginType, token: String?, completion: @escaping CompletionHandler) {
         keyStorage.setToRealUser()
         let processor = teambrella.processor
         guard let signature = processor.publicKeySignature else {
@@ -94,14 +90,27 @@ class LoginWorker {
         }
 
         log("Eth address: \(processor.ethAddressString ?? "none")", type: .info)
-        dao.registerKey(facebookToken: token, signature: signature).observe { result in
+        guard let token = token else {
+            completion(nil, LoginWorkerError.noTokenProvided)
+            return
+        }
+
+        let future: Future<Bool>
+
+        switch type {
+        case .facebook:
+            future = dao.registerKey(facebookToken: token, signature: signature)
+        case .vk:
+            future = dao.registerKey(socialToken: token, signature: signature)
+        }
+        future.observe { result in
             switch result {
             case .value:
-                completion()
+                completion(token, nil)
             case let .error(error):
-                failure(error)
+                completion(token, error)
             }
         }
     }
-    
+
 }

@@ -17,17 +17,17 @@
 		<key>SurillaWatch (Complication).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>48</integer>
+			<integer>46</integer>
 		</dict>
 		<key>SurillaWatch (Notification).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>47</integer>
+			<integer>45</integer>
 		</dict>
 		<key>SurillaWatch.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>46</integer>
+			<integer>44</integer>
 		</dict>
 		<key>Teambrella copy.xcscheme</key>
 		<dict>
@@ -80,47 +80,47 @@
 		<key>6D05234B20A5D838000B3247</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>6D42CC9A20E133B300C2B146</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>6D4E5C241F7AB6870020DEE2</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>6D59FCF51FBC8407006C0A2B</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>6DA4759F1E8ABEE600B56D9B</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>6DA475B31E8ABEE600B56D9B</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>6DA475BE1E8ABEE600B56D9B</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>6DCA41B820D29E1800B741BA</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 		<key>6DEFE3F12006544100615022</key>
 		<dict>
 			<key>primary</key>
-			<true />
+			<true/>
 		</dict>
 	</dict>
 </dict>
