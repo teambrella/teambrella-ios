@@ -554,6 +554,8 @@
 		6D43291720D949490015C369 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43291620D949490015C369 /* QRCodeManager.swift */; };
 		6D43291820D94B250015C369 /* QRCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D43291620D949490015C369 /* QRCodeManager.swift */; };
 		6D439507213EEAED006F1CDD /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D439506213EEAED006F1CDD /* Auth0.plist */; };
+		6D439509213EEFC0006F1CDD /* HomeSceneConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D439508213EEFC0006F1CDD /* HomeSceneConfigurator.swift */; };
+		6D43950A213EEFC0006F1CDD /* HomeSceneConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D439508213EEFC0006F1CDD /* HomeSceneConfigurator.swift */; };
 		6D49FDDC20209DD900A908D2 /* Ether.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDA20209DD900A908D2 /* Ether.swift */; };
 		6D49FDDF2020BB2B00A908D2 /* Coverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDDD2020BB2B00A908D2 /* Coverage.swift */; };
 		6D49FDE22020C12800A908D2 /* Risk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE02020C12800A908D2 /* Risk.swift */; };
@@ -1380,6 +1382,7 @@
 		6D42CCA720E1367000C2B146 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		6D43291620D949490015C369 /* QRCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRCodeManager.swift; path = Model/Services/QRCodeManager.swift; sourceTree = "<group>"; };
 		6D439506213EEAED006F1CDD /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
+		6D439508213EEFC0006F1CDD /* HomeSceneConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeSceneConfigurator.swift; path = Scenes/Home/HomeSceneConfigurator.swift; sourceTree = "<group>"; };
 		6D465F2D1F46E83B007AC28F /* ReportContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportContext.swift; path = Scenes/Me/Report/ReportContext.swift; sourceTree = "<group>"; };
 		6D465F2F1F46E85C007AC28F /* ReportStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportStrategy.swift; path = Scenes/Me/Report/ReportStrategy.swift; sourceTree = "<group>"; };
 		6D465F311F46E893007AC28F /* ReportCellModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportCellModels.swift; path = Scenes/Me/Report/ReportCellModels.swift; sourceTree = "<group>"; };
@@ -2586,6 +2589,7 @@
 				6DA8D5591F0E8B99000A4DB7 /* HomeDataSource.swift */,
 				9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */,
 				6DBF49281F80EF2600B236E2 /* HomePresentationController.swift */,
+				6D439508213EEFC0006F1CDD /* HomeSceneConfigurator.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -4453,6 +4457,7 @@
 				6D05247C20A5D838000B3247 /* PieChartView.swift in Sources */,
 				6D05247D20A5D838000B3247 /* OthersVotedCell.swift in Sources */,
 				6D05247E20A5D838000B3247 /* PrivateMessagesCellBuilder.swift in Sources */,
+				6D43950A213EEFC0006F1CDD /* HomeSceneConfigurator.swift in Sources */,
 				6D05247F20A5D838000B3247 /* PrivateChatUserCell.swift in Sources */,
 				6D05248020A5D838000B3247 /* Multisig.swift in Sources */,
 				6D05248120A5D838000B3247 /* UIFont.swift in Sources */,
@@ -4884,6 +4889,7 @@
 				6D4E5D241F7AB6870020DEE2 /* PieChartView.swift in Sources */,
 				6D1CAC131FF52B7600FA58B6 /* OthersVotedCell.swift in Sources */,
 				6D4E5D251F7AB6870020DEE2 /* PrivateMessagesCellBuilder.swift in Sources */,
+				6D439509213EEFC0006F1CDD /* HomeSceneConfigurator.swift in Sources */,
 				6D4E5D261F7AB6870020DEE2 /* PrivateChatUserCell.swift in Sources */,
 				6DBBF8011F9A561600524B1E /* Multisig.swift in Sources */,
 				6D4E5D271F7AB6870020DEE2 /* UIFont.swift in Sources */,

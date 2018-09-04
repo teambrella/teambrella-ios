@@ -83,3 +83,13 @@ class Session {
         return false
     }
 }
+
+extension Session {
+    func updateMyUser(with model: HomeModel?) {
+        guard let model = model else { return }
+        
+        currentUserID = model.userID
+        currentUserName = model.name
+        currentUserAvatar = model.avatar
+    }
+}
