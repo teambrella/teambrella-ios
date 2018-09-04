@@ -230,12 +230,24 @@ extension SinchService: CXProviderDelegate {
 
     func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
         self.call?.answer()
-         action.fulfill()
+        action.fulfill()
+    }
+
+    func providerDidBegin(_ provider: CXProvider) {
+        print("Provider did begin")
     }
 
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
         self.stopCalling()
         action.fulfill()
+    }
+
+    func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
+        print("\(#function)")
+    }
+
+    func provider(_ provider: CXProvider, didDeactivate audioSession: AVAudioSession) {
+         print("\(#function)")
     }
 
 }
