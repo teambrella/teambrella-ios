@@ -32,6 +32,9 @@ class Session {
     var currentUserTeammateID: Int? { return currentTeam?.teammateID }
     var currentUserName: Name?
     var currentUserAvatar: Avatar = Avatar.none
+    var currentUserEthereumAddress: String? {
+        return service.teambrella.processor.ethAddressString
+    }
     
     var cryptoCurrency: Ether = Ether.empty
     var cryptoCoin: MEth = MEth(0)

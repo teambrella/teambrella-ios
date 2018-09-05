@@ -48,7 +48,7 @@ class ReportDataSource {
                                        expenses: nil, deductible: balance, coverage: coverage,
                                        descriptionText: "",
                                        photos: [],
-                                       reimburseText: "")]
+                                       reimburseText: service.session?.currentUserEthereumAddress ?? "")]
             self.coverage = coverage
         case .newChat:
             items = [NewDiscussionCellModel(postTitleText: "", descriptionText: "")]
