@@ -55,7 +55,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         super.viewWillAppear(animated)
         dataSource.loadFromTop()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         service.push.executeCommand()
