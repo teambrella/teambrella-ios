@@ -62,6 +62,9 @@ class ChatModelBuilder {
         }
     }
 
+    /// set of used service messages types that can only appear once in a chat
+    private var serviceTypesUsed: Set<SystemType> = []
+
     func cellModels(from chatItems: [ChatEntity],
                     isClaim: Bool,
                     isTemporary: Bool) -> [ChatCellModel] {
@@ -70,7 +73,10 @@ class ChatModelBuilder {
         for item in chatItems {
             // add service messages
             if let model = serviceModel(from: item) {
-                result.append(model)
+                if let type = item.systemType, !serviceTypesUsed.contains(type) {
+                    result.append(model)
+                    serviceTypesUsed.insert(type)
+                }
                 continue
             }
 

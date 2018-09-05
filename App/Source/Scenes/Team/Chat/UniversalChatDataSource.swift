@@ -91,6 +91,7 @@ final class UniversalChatDatasource {
     var cellModelBuilder                            = ChatModelBuilder()
     
     private var lastRead: UInt64 { return chatModel?.discussion.lastRead ?? 0 }
+    private var currentLimit: Int                   = 0
     private var forwardOffset: Int                  = 0
     private var backwardOffset: Int                 = 0
     private var postsCount: Int                     = 0
@@ -142,6 +143,7 @@ final class UniversalChatDatasource {
     }
     
     var chatType: UniversalChatType {
+        if isPrivateChat { return .privateChat }
         if chatModel?.basic?.claimAmount != nil { return .claim }
         if chatModel?.basic?.title != nil { return .discussion }
         if chatModel?.basic?.userID != nil { return .application }
@@ -329,6 +331,7 @@ final class UniversalChatDatasource {
         
         return models[indexPath.row]
     }
+
 }
 
 // MARK: Private
@@ -348,17 +351,17 @@ extension UniversalChatDatasource {
         dao.freshKey { [weak self] key in
             guard let `self` = self else { return }
             
-            var limit = Constant.limit
+            self.currentLimit = Constant.limit
 
             var offset = previous
                 ? self.backwardOffset
                 : self.forwardOffset
 
             if self.isFirstLoad {
-                limit += Constant.firstLoadPreviousMessagesCount
+                self.currentLimit += Constant.firstLoadPreviousMessagesCount
                 offset -= Constant.firstLoadPreviousMessagesCount
             }
-            var payload: [String: Any] = ["limit": limit,
+            var payload: [String: Any] = ["limit": self.currentLimit,
                                           "offset": offset,
                                           "avatarSize": self.avatarSize,
                                           "commentAvatarSize": self.commentAvatarSize]
@@ -515,7 +518,7 @@ extension UniversalChatDatasource {
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
         addModels(models: model.discussion.chat, isPrevious: isPrevious, chatModel: model)
         chatModel = model
-        if model.discussion.chat.isEmpty {
+        if model.discussion.chat.count < currentLimit {
             if isPrevious {
                 hasPrevious = false
             } else {
@@ -535,19 +538,19 @@ extension UniversalChatDatasource {
 
     private func addClaimPaidIfNeeded(date: Date?) {
         guard !isClaimPaidModelAdded, let date = date else { return }
-
+        
         let model = ChatClaimPaidCellModel(date: date)
         addCellModels(models: [model])
         isClaimPaidModelAdded = true
     }
     
-//    private func addPayToJoinIfNeeded(date: Date?) {
-//        guard !isPayToJoinModelAdded, let date = date else { return }
-//
-//        let model = ChatPayToJoinCellModel(date: date)
-//        addCellModels(models: [model])
-//        isPayToJoinModelAdded = true
-//    }
+    //    private func addPayToJoinIfNeeded(date: Date?) {
+    //        guard !isPayToJoinModelAdded, let date = date else { return }
+    //
+    //        let model = ChatPayToJoinCellModel(date: date)
+    //        addCellModels(models: [model])
+    //        isPayToJoinModelAdded = true
+    //    }
 
     private func createCellModels(from entities: [ChatEntity], isTemporary: Bool) -> [ChatCellModel] {
         cellModelBuilder.font = font
