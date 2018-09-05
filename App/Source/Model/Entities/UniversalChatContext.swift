@@ -119,6 +119,7 @@ class UniversalChatContext {
         claimID.map { body.payload?["claimId"] = $0 }
         teamID.map { body.payload?["teamid"] = $0 }
         userID.map { body.payload?["userid"] = $0 }
+        topicID.map { body.payload?["topicid"] = $0 }
 
         return updateIfPrivateChat(body: body)
     }

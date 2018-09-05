@@ -195,7 +195,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     private func setup() {
         collectionView.reloadData()
         configurator.model = dataSource.model
-        configurator.configure(controller: self)
+        service.session?.updateMyUser(with: dataSource.model)
         HUD.hide()
     }
     

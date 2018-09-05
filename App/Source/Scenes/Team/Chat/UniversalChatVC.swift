@@ -101,7 +101,7 @@ final class UniversalChatVC: UIViewController, Routable {
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
-            self.slidingView.votingView.setup(with: self.dataSource.chatModel)
+            self.updateSlidingView()
             //            guard hasNew else {
             //                if isFirstLoad {
             //                    self.shouldScrollToBottom = true
@@ -134,7 +134,16 @@ final class UniversalChatVC: UIViewController, Routable {
         slidingView.setupViews(with: self, session: session)
         slidingView.delegate = self
     }
-    
+
+    func updateSlidingView() {
+        if dataSource.isObjectViewNeeded {
+            slidingView.isHidden = false
+            slidingView.votingView.setup(with: dataSource.chatModel)
+        } else {
+            slidingView.isHidden = true
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startListeningSockets()
