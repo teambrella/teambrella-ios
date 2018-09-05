@@ -30,7 +30,8 @@ class FeedDataSource {
     let limit = 100
     
     var isSilentUpdate = false
-    var isLoading = false
+    var canLoadForward = true
+    private(set) var isLoading = false
     
     var onLoad: (() -> Void)?
     var onError: ((Error) -> Void)?
@@ -42,12 +43,14 @@ class FeedDataSource {
     func loadFromTop() {
         startIndex = 0
         isSilentUpdate = true
+        canLoadForward = true
         loadData()
     }
     
     func loadData() {
         guard isLoading == false else { return }
-        
+        guard canLoadForward else { return }
+
         isLoading = true
         let context = FeedRequestContext(teamID: teamID, startIndex: startIndex, limit: limit, search: nil)
         service.dao.requestTeamFeed(context: context,
@@ -56,6 +59,7 @@ class FeedDataSource {
                                         
                                         switch result {
                                         case let .value(feedChunk):
+                                            self.canLoadForward = !feedChunk.feed.isEmpty
                                             if self.isSilentUpdate {
                                                 self.items.removeAll()
                                                 self.isSilentUpdate = false
