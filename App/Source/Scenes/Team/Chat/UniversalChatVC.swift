@@ -101,7 +101,7 @@ final class UniversalChatVC: UIViewController, Routable {
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
-            self.slidingView.votingView.setup(with: self.dataSource.chatModel)
+            self.updateSlidingView()
             //            guard hasNew else {
             //                if isFirstLoad {
             //                    self.shouldScrollToBottom = true
@@ -134,7 +134,16 @@ final class UniversalChatVC: UIViewController, Routable {
         slidingView.setupViews(with: self, session: session)
         slidingView.delegate = self
     }
-    
+
+    func updateSlidingView() {
+        if dataSource.isObjectViewNeeded {
+            slidingView.isHidden = false
+            slidingView.votingView.setup(with: dataSource.chatModel)
+        } else {
+            slidingView.isHidden = true
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startListeningSockets()
@@ -183,8 +192,8 @@ final class UniversalChatVC: UIViewController, Routable {
     
     // MARK: Public
     
-    public func setContext(context: ChatContext, itemType: ItemType) {
-        dataSource.addContext(context: context, itemType: itemType)
+    public func setContext(context: UniversalChatContext) {
+        dataSource.addContext(context: context)
     }
     
     public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
@@ -735,6 +744,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.label.text = model.text
         } else if let cell = cell as? ChatClaimPaidCell {
             if let model = model as? ServiceMessageWithButtonCellModel {
+                cell.messageLabel.textAlignment = .left
                 cell.messageLabel.text = model.text
                 cell.button.setTitle(model.buttonText, for: .normal)
                 cell.confettiView.isHidden = true
@@ -751,6 +761,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     //                    self?.navigationController?.popViewController(animated: false)
                 }
             } else if model is ChatClaimPaidCellModel {
+                cell.messageLabel.textAlignment = .center
                 cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
                 cell.button.setTitle("Team.Chat.ClaimPaidCell.buttonTitle".localized, for: .normal)
                 cell.onButtonTap = { [weak self] in

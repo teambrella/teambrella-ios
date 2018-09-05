@@ -49,5 +49,23 @@ struct HomeModel: Decodable {
     let objectName: Name
     let smallPhoto: Photo
     let haveVotingClaims: Bool
-    
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        cards = try container.decode([HomeCardModel].self, forKey: .cards)
+        teamPart = try container.decode(TeamPart.self, forKey: .teamPart)
+        userID = try container.decode(String.self, forKey: .userID)
+        let facebookIDString = try? container.decodeIfPresent(String.self, forKey: .facebookID)
+        let facebookIDInt = try? container.decodeIfPresent(Int.self, forKey: .facebookID)
+        facebookID = facebookIDString ?? facebookIDInt.map { String(describing: $0) }
+        name = try container.decode(Name.self, forKey: .name)
+        avatar = try container.decode(Avatar.self, forKey: .avatar)
+        unreadCount = try container.decode(Int.self, forKey: .unreadCount)
+        balance = try container.decode(Ether.self, forKey: .balance)
+        coverage = try container.decode(Coverage.self, forKey: .coverage)
+        objectName = try container.decode(Name.self, forKey: .objectName)
+        smallPhoto = try container.decode(Photo.self, forKey: .smallPhoto)
+        haveVotingClaims = try container.decode(Bool.self, forKey: .haveVotingClaims)
+    }
+
 }

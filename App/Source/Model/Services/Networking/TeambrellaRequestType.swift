@@ -64,3 +64,16 @@ enum TeambrellaRequestType: String {
     case claimVotesList = "claim/getAllVotesList"
     case me = "me/getMe"
 }
+
+extension TeambrellaRequestType {
+    static func with(itemType: ItemType) -> TeambrellaRequestType {
+        switch itemType {
+        case .claim:
+            return .claimChat
+        case .teammate:
+            return .teammateChat
+        default:
+            return .feedChat
+        }
+    }
+}

@@ -62,6 +62,8 @@ struct TeambrellaError: Error {
         case teammateNoAccess            = 702001
         case teammateNotExists           = 702011
 
+        case noTopicFound                = 703111
+
         case claimNotExists              = 704011
 
         case withdrawalAddressEmpty      = 710101
@@ -81,6 +83,11 @@ struct TeambrellaError: Error {
     
 }
 
+enum ServerServiceError: Error {
+    case unknownStatus(ServerStatus?)
+    case statusNotReceived
+}
+
 struct TeambrellaErrorFactory {
     static func emptyReplyError() -> TeambrellaError {
         return TeambrellaError(kind: .emptyReply, description: "No content in reply")
@@ -89,7 +96,7 @@ struct TeambrellaErrorFactory {
     static func unknownError() -> TeambrellaError {
         return TeambrellaError(kind: .unknownError, description: "Unknown error occured")
     }
-    
+
     static func wrongReply() -> TeambrellaError {
         return TeambrellaError(kind: .wrongReply, description: "Wrong reply from server")
     }
@@ -105,10 +112,10 @@ struct TeambrellaErrorFactory {
         return TeambrellaError(kind: .malformedDate, description: "Date string is in incorrect format: \(format)")
     }
     
-    static func error(with status: ServerStatus?) -> TeambrellaError {
-        guard let status = status else { return unknownError() }
+    static func error(with status: ServerStatus?) -> Error {
+        guard let status = status else { return ServerServiceError.statusNotReceived }
         guard let errorKind = TeambrellaError.TeambrellaErrorKind(rawValue: status.resultCode) else {
-            return unknownError()
+            return ServerServiceError.unknownStatus(status)
         }
         
         return TeambrellaError(kind: errorKind, description: status.errorMessage ?? "")

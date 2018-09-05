@@ -26,6 +26,7 @@ import UIKit
 final class LoginBlueVC: UIViewController {
     @IBOutlet var centerLabel: UILabel!
     @IBOutlet var continueWithFBButton: UIButton!
+    @IBOutlet var continueWithVKButton: UIButton!
     @IBOutlet var tryDemoButton: UIButton!
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var confetti: SKView!
@@ -55,8 +56,10 @@ final class LoginBlueVC: UIViewController {
         super.viewDidLoad()
         centerLabel.text = "Login.LoginBlueVC.centerLabel".localized
         continueWithFBButton.setTitle("Login.LoginBlueVC.continueWithFBButton".localized, for: .normal)
+        continueWithVKButton.setTitle("Login.LoginBlueVC.continueWithVKButton".localized, for: .normal)
         tryDemoButton.setTitle("Login.LoginBlueVC.tryDemoButton".localized, for: .normal)
         continueWithFBButton.layer.cornerRadius = 2
+        continueWithVKButton.layer.cornerRadius = 2
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
         continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
@@ -86,16 +89,26 @@ final class LoginBlueVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func tapContinueWithFBButton(_ sender: Any) {
+        register(type: .facebook)
+    }
+    
+    @IBAction func tapContinueWithVKButton(_ sender: Any) {
+        register(type: .vk)
+    }
+
+    func register(type: LoginWorker.LoginType) {
         guard service.keyStorage.hasRealPrivateKey == false else {
-            logAsFacebookUser(user: nil)
+            logIn()
             return
         }
 
         HUD.show(.progress)
-        loginWorker.loginAndRegister(in: self, completion: { [weak self] facebookUser in
-            self?.logAsFacebookUser(user: facebookUser)
-        }) { [weak self] error in
-            self?.handleFailure(error: error)
+        loginWorker.loginAndRegister(type: type, in: self) { [weak self] token, error in
+            if let token = token, error == nil {
+                self?.logIn()
+            } else {
+                self?.handleFailure(error: error)
+            }
         }
     }
     
@@ -208,12 +221,23 @@ Are you sure you want to completely remove your private key from this device?
     
     private func insertSecretKey(string: String) {
         service.keyStorage.saveNewPrivateKey(string: string)
-        logAsFacebookUser(user: nil)
+        logIn()
     }
-    
+
+    private func logIn() {
+        HUD.hide()
+        performSegue(withIdentifier: "unwindToInitial", sender: nil)
+    }
+
+    /*
     private func logAsFacebookUser(user: FacebookUser?) {
         HUD.hide()
         performSegue(withIdentifier: "unwindToInitial", sender: user)
     }
     
+    private func logAsVKUser(userToken: String) {
+        HUD.hide()
+        performSegue(withIdentifier: "unwindToInitial", sender: userToken)
+    }
+    */
 }

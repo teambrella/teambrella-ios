@@ -131,7 +131,7 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentChat(context: ChatContext, itemType: ItemType, animated: Bool = true) {
+    func presentChat(context: UniversalChatContext, animated: Bool = true) {
         let last = navigator?.viewControllers.last
         guard last as? UniversalChatVC == nil else {
             log("already opened chat", type: [.error, .info])
@@ -139,7 +139,7 @@ final class MainRouter {
         }
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
-        vc.setContext(context: context, itemType: itemType)
+        vc.setContext(context: context)
         push(vc: vc, animated: animated)
     }
     

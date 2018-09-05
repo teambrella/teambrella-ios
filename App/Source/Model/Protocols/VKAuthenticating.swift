@@ -16,25 +16,6 @@
 
 import Foundation
 
-enum ChatContext {
-    case claim(ClaimEntityLarge)
-    case teammate(TeammateLarge)
-    case feed(FeedEntity)
-    case home(HomeCardModel)
-    case chat(ChatModel)
-    case privateChat(PrivateChatUser)
-    case remote(RemoteTopicDetails)
-    case myApplication(MyApplicationDetails)
-    case none
-
-    var claimID: Int? {
-        switch self {
-        case let .claim(entity):
-            return entity.id
-        case let .feed(feed):
-            return feed.itemType == .claim ? feed.itemID : nil
-        default:
-            return nil
-        }
-    }
+protocol VKAuthenticating {
+    func authWithVK(completion: @escaping (_ token: String?, _ error: Error?) -> Void)
 }

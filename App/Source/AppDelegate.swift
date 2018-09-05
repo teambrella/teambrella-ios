@@ -19,6 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
+import Auth0
 import Fabric
 import FBSDKCoreKit
 import Firebase
@@ -64,10 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
 
-        return FBSDKApplicationDelegate.sharedInstance().application(app,
-                                                                     open: url,
-                                                                     sourceApplication: source,
-                                                                     annotation: options[.annotation])
+        return Auth0.resumeAuth(url, options: options)
+
+//        return FBSDKApplicationDelegate.sharedInstance().application(app,
+//                                                                     open: url,
+//                                                                     sourceApplication: source,
+//                                                                     annotation: options[.annotation])
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
