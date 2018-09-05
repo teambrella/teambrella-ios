@@ -55,7 +55,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         super.viewWillAppear(animated)
         dataSource.loadFromTop()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         service.push.executeCommand()
@@ -157,8 +157,7 @@ extension FeedVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let feedEntity = dataSource[indexPath]
-        let context = ChatContext.feed(feedEntity)
-        service.router.presentChat(context: context, itemType: feedEntity.itemType)
+        service.router.presentChat(context: UniversalChatContext(feedEntity))
     }
     
 }
@@ -182,8 +181,9 @@ extension FeedVC: ReportDelegate {
     func report(controller: ReportVC, didSendReport data: Any) {
         if let data = data as? ChatModel {
             service.router.navigator?.popViewController(animated: false)
-            let context = ChatContext.chat(data)
-            service.router.presentChat(context: context, itemType: .claim)
+            let context = UniversalChatContext(data)
+            context.type = .claim
+            service.router.presentChat(context: context)
         }
     }
 }

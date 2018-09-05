@@ -64,6 +64,7 @@ class EtherAPI {
         case corruptedData
         case noData
         case etherscanError(Int, String)
+        case unknownError
     }
     
     typealias successClosure = (String) -> Void
@@ -223,7 +224,7 @@ parameters[key] = value
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 queue.async {
-                    failure(error ?? TeambrellaErrorFactory.unknownError())
+                    failure(error ?? EtherAPIError.unknownError)
                 }
                 return
             }

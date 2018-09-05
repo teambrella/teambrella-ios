@@ -32,6 +32,9 @@ class Session {
     var currentUserTeammateID: Int? { return currentTeam?.teammateID }
     var currentUserName: Name?
     var currentUserAvatar: Avatar = Avatar.none
+    var currentUserEthereumAddress: String? {
+        return service.teambrella.processor.ethAddressString
+    }
     
     var cryptoCurrency: Ether = Ether.empty
     var cryptoCoin: MEth = MEth(0)
@@ -81,5 +84,15 @@ class Session {
             return true
         }
         return false
+    }
+}
+
+extension Session {
+    func updateMyUser(with model: HomeModel?) {
+        guard let model = model else { return }
+        
+        currentUserID = model.userID
+        currentUserName = model.name
+        currentUserAvatar = model.avatar
     }
 }

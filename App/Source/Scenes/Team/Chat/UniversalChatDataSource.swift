@@ -69,6 +69,7 @@ final class UniversalChatDatasource {
     var name: String?
 
     var isChatAllowed: Bool {
+        if isPrivateChat { return true }
         if let myID = service.session?.currentUserID, let theirID = chatModel?.basic?.userID, myID == theirID {
             return true
         } else {
@@ -84,12 +85,14 @@ final class UniversalChatDatasource {
     }
     
     private var models: [ChatCellModel]             = []
+    
     private var lastInsertionIndex                  = 0
     
-    private var strategy: ChatDatasourceStrategy    = EmptyChatStrategy()
+    private var strategy: UniversalChatContext      = UniversalChatContext()
     var cellModelBuilder                            = ChatModelBuilder()
     
     private var lastRead: UInt64 { return chatModel?.discussion.lastRead ?? 0 }
+    private var currentLimit: Int                   = 0
     private var forwardOffset: Int                  = 0
     private var backwardOffset: Int                 = 0
     private var postsCount: Int                     = 0
@@ -121,7 +124,7 @@ final class UniversalChatDatasource {
     var dao: DAO { return service.dao }
     
     var title: String {
-        guard !(strategy is PrivateChatStrategy) else { return strategy.title }
+        guard !strategy.isPrivate else { return strategy.title ?? "" }
         guard let chatModel = chatModel else { return "" }
         
         if chatModel.isClaimChat {
@@ -141,23 +144,13 @@ final class UniversalChatDatasource {
     }
     
     var chatType: UniversalChatType {
-        switch strategy {
-        case is PrivateChatStrategy:
-            return .privateChat
-        case is ClaimChatStrategy:
-            return .claim
-        case is TeammateChatStrategy:
-            return .application
-        case let strategy as FeedChatStrategy:
-            let type = strategy.feedEntity.itemType
-            return UniversalChatType.with(itemType: type)
-        default:
-            break
-        }
-
+        if isPrivateChat { return .privateChat }
         if chatModel?.basic?.claimAmount != nil { return .claim }
         if chatModel?.basic?.title != nil { return .discussion }
         if chatModel?.basic?.userID != nil { return .application }
+
+        if let type = strategy.type { return type }
+
         return .discussion
     }
     
@@ -214,7 +207,7 @@ final class UniversalChatDatasource {
         }
     }
     
-    var isPrivateChat: Bool { return strategy is PrivateChatStrategy }
+    var isPrivateChat: Bool { return strategy.isPrivate }
     
     var isInputAllowed: Bool {
         if isPrivateChat { return true }
@@ -257,11 +250,11 @@ final class UniversalChatDatasource {
         }
     }
     
-    func addContext(context: ChatContext, itemType: ItemType) {
-        strategy = ChatStrategyFactory.strategy(with: context)
+    func addContext(context: UniversalChatContext) {
+        strategy = context
         hasPrevious = strategy.canLoadBackward
-        cellModelBuilder.showRate = chatType == .application || chatType == .claim
-        cellModelBuilder.showTheirAvatar = chatType != .privateChat
+        cellModelBuilder.showRate = context.isRateNeeded
+        cellModelBuilder.showTheirAvatar = !context.isPrivate
     }
     
     func loadNext() {
@@ -339,6 +332,7 @@ final class UniversalChatDatasource {
         
         return models[indexPath.row]
     }
+
 }
 
 // MARK: Private
@@ -358,17 +352,17 @@ extension UniversalChatDatasource {
         dao.freshKey { [weak self] key in
             guard let `self` = self else { return }
             
-            var limit = Constant.limit
+            self.currentLimit = Constant.limit
 
             var offset = previous
                 ? self.backwardOffset
                 : self.forwardOffset
 
             if self.isFirstLoad {
-                limit += Constant.firstLoadPreviousMessagesCount
+                self.currentLimit += Constant.firstLoadPreviousMessagesCount
                 offset -= Constant.firstLoadPreviousMessagesCount
             }
-            var payload: [String: Any] = ["limit": limit,
+            var payload: [String: Any] = ["limit": self.currentLimit,
                                           "offset": offset,
                                           "avatarSize": self.avatarSize,
                                           "commentAvatarSize": self.commentAvatarSize]
@@ -525,7 +519,7 @@ extension UniversalChatDatasource {
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
         addModels(models: model.discussion.chat, isPrevious: isPrevious, chatModel: model)
         chatModel = model
-        if model.discussion.chat.isEmpty {
+        if model.discussion.chat.count < currentLimit {
             if isPrevious {
                 hasPrevious = false
             } else {
@@ -533,27 +527,31 @@ extension UniversalChatDatasource {
                 forwardOffset = 0
             }
         }
+        if !isPrevious && model.discussion.lastRead == 0 {
+            hasNext = false
+        }
+
         teamAccessLevel = model.team?.accessLevel ?? .noAccess
 
         addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
-        addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
+        //addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
     }
 
     private func addClaimPaidIfNeeded(date: Date?) {
         guard !isClaimPaidModelAdded, let date = date else { return }
-
+        
         let model = ChatClaimPaidCellModel(date: date)
         addCellModels(models: [model])
         isClaimPaidModelAdded = true
     }
     
-    private func addPayToJoinIfNeeded(date: Date?) {
-        guard !isPayToJoinModelAdded, let date = date else { return }
-        
-        let model = ChatPayToJoinCellModel(date: date)
-        addCellModels(models: [model])
-        isPayToJoinModelAdded = true
-    }
+    //    private func addPayToJoinIfNeeded(date: Date?) {
+    //        guard !isPayToJoinModelAdded, let date = date else { return }
+    //
+    //        let model = ChatPayToJoinCellModel(date: date)
+    //        addCellModels(models: [model])
+    //        isPayToJoinModelAdded = true
+    //    }
 
     private func createCellModels(from entities: [ChatEntity], isTemporary: Bool) -> [ChatCellModel] {
         cellModelBuilder.font = font

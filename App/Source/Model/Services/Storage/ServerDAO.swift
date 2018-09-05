@@ -68,7 +68,7 @@ class ServerDAO: DAO {
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
             let request = TeambrellaRequest(type: .home, body: body, success: { response in
                 if case let .home(model) = response {
-                    service.session?.currentUserName = model.name
+                    service.session?.updateMyUser(with: model)
                     promise.resolve(with: model)
                 } else {
                     promise.reject(with: TeambrellaError(kind: .wrongReply,
@@ -622,12 +622,22 @@ class ServerDAO: DAO {
     }
     
     func registerKey(facebookToken: String, signature: String) -> Future<Bool> {
+        let payload: [String: String] = ["facebookToken": facebookToken,
+                                         "sigOfPublicKey": signature]
+        return registerKey(payload: payload)
+    }
+
+    func registerKey(socialToken: String, signature: String) -> Future<Bool> {
+        let payload: [String: String] = ["auth0Token": socialToken,
+                                         "sigOfPublicKey": signature]
+        return registerKey(payload: payload)
+    }
+
+    func registerKey(payload: [String: String]) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in
-            let body = RequestBody(key: key, payload: ["facebookToken": facebookToken,
-                                                       "sigOfPublicKey": signature])
-            let request = TeambrellaRequest(type: .registerKey, parameters: ["facebookToken": facebookToken,
-                                                                             "sigOfPublicKey": signature],
+            let body = RequestBody(key: key, payload: payload)
+            let request = TeambrellaRequest(type: .registerKey,
                                             body: body,
                                             success: { response in
                                                 promise.resolve(with: true)

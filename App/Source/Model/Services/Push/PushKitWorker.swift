@@ -56,13 +56,14 @@ extension PushKitWorker: PKPushRegistryDelegate {
     func pushRegistry(_ registry: PKPushRegistry,
                       didReceiveIncomingPushWith payload: PKPushPayload,
                       for type: PKPushType) {
-        print("Push received")
+        print("Push received 1")
     }
 
     func pushRegistry(_ registry: PKPushRegistry,
                       didReceiveIncomingPushWith payload: PKPushPayload,
                       for type: PKPushType,
                       completion: @escaping () -> Void) {
+        print("Push received 2")
         onPushReceived?(payload.dictionaryPayload, completion)
     }
 

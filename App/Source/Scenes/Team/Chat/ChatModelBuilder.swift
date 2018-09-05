@@ -26,33 +26,60 @@ class ChatModelBuilder {
     
     var showRate = false
     var showTheirAvatar = false
-
+    
     var isPrivateChat: Bool { return !showTheirAvatar }
-
+    
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
     lazy var heightCalculator = ChatFragmentSizeCalculator(width: width, font: font)
-
+    
     func separatorModelIfNeeded(firstModel: ChatCellModel, secondModel: ChatCellModel) -> ChatCellModel? {
         guard !(firstModel is ChatSeparatorCellModel), !(secondModel is ChatSeparatorCellModel) else { return nil }
-
+        
         if firstModel.date.interval(of: .day, since: secondModel.date) != 0 {
             let calendar = Calendar.current
             let components = calendar.dateComponents([Calendar.Component.day,
-                                                                 Calendar.Component.month,
-                                                                 Calendar.Component.year], from: secondModel.date)
+                                                      Calendar.Component.month,
+                                                      Calendar.Component.year], from: secondModel.date)
             let date = calendar.date(from: components)
             return date.flatMap { ChatSeparatorCellModel(date: $0) }
         }
         return nil
     }
-    
+
+    func serviceModel(from model: ChatEntity) -> ChatCellModel? {
+        guard let type = model.systemType else { return nil }
+
+        var size = TextSizeCalculator().size(for: model.text, font: font, maxWidth: width)
+        switch type {
+        case .needsFunding:
+            return ServiceMessageWithButtonCellModel(date: model.created,
+                                                     text: model.text,
+                                                     buttonText: "Team.Chat.PayToJoin.buttonTitle".localized,
+                                                     size: size)
+        case .firstPhotoMissing, .firstPostMissing:
+            return ServiceMessageCellModel(date: model.created, text: model.text, size: size)
+        }
+    }
+
+    /// set of used service messages types that can only appear once in a chat
+    private var serviceTypesUsed: Set<SystemType> = []
+
     func cellModels(from chatItems: [ChatEntity],
                     isClaim: Bool,
                     isTemporary: Bool) -> [ChatCellModel] {
         var result: [ChatCellModel] = []
-
+        
         for item in chatItems {
+            // add service messages
+            if let model = serviceModel(from: item) {
+                if let type = item.systemType, !serviceTypesUsed.contains(type) {
+                    result.append(model)
+                    serviceTypesUsed.insert(type)
+                }
+                continue
+            }
+
             let fragments = fragmentParser.parse(item: item)
             var isMy = false
             if let session = service.session {
@@ -71,18 +98,19 @@ class ChatModelBuilder {
             
             let date = item.created
             let rateString = rateText(rate: item.teammate?.vote, showRate: showRate, isClaim: isClaim)
-
+            
             let model: ChatCellUserDataLike
+
             if fragments.count == 1, let fragment = fragments.first, case .image = fragment {
-                 model = ChatImageCellModel(entity: item,
-                                               fragments: fragments,
-                                               fragmentSizes: heightCalculator.sizes(for: fragments),
-                                               isMy: isMy,
-                                               userAvatar: avatar,
-                                               date: date,
-                                               isTemporary: isTemporary)
+                model = ChatImageCellModel(entity: item,
+                                           fragments: fragments,
+                                           fragmentSizes: heightCalculator.sizes(for: fragments),
+                                           isMy: isMy,
+                                           userAvatar: avatar,
+                                           date: date,
+                                           isTemporary: isTemporary)
             } else {
-            model = ChatTextCellModel(entity: item,
+                model = ChatTextCellModel(entity: item,
                                           fragments: fragments,
                                           fragmentSizes: heightCalculator.sizes(for: fragments),
                                           isMy: isMy,
@@ -96,7 +124,7 @@ class ChatModelBuilder {
         }
         return result
     }
-
+    
     func rateText(rate: Double?, showRate: Bool, isClaim: Bool) -> String? {
         let rateString: String?
         if showRate {

@@ -14,27 +14,21 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
-import Foundation
+import UIKit
 
-enum ChatContext {
-    case claim(ClaimEntityLarge)
-    case teammate(TeammateLarge)
-    case feed(FeedEntity)
-    case home(HomeCardModel)
-    case chat(ChatModel)
-    case privateChat(PrivateChatUser)
-    case remote(RemoteTopicDetails)
-    case myApplication(MyApplicationDetails)
-    case none
+class ServiceChatCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var label: UILabel!
+    @IBOutlet var containerView: UIView!
 
-    var claimID: Int? {
-        switch self {
-        case let .claim(entity):
-            return entity.id
-        case let .feed(feed):
-            return feed.itemType == .claim ? feed.itemID : nil
-        default:
-            return nil
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+         setup()
+    }
+
+    func setup() {
+        containerView.layer.cornerRadius = 6
+        containerView.backgroundColor = .perrywinkle
+        containerView.layer.borderWidth = 1
+        containerView.layer.borderColor = UIColor.cornflowerBlueThree.cgColor
     }
 }

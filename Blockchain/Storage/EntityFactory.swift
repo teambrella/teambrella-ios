@@ -130,6 +130,7 @@ struct EntityFactory {
             let fbName = item.fbName
             let teamID = item.teamID
             let cryptoAddress = item.cryptoAddress
+            let socialName = item.socialName
             
             if let teammate = fetcher.teammate(id: id) {
                 teammate.nameValue = name
@@ -140,6 +141,7 @@ struct EntityFactory {
                 teammate.nameValue = name
                 teammate.publicKeyValue = publicKey
                 teammate.cryptoAddressValue = cryptoAddress
+                teammate.socialNameValue = socialName
 
                 teammate.teamValue = fetcher.team(id: teamID)
             }

@@ -223,3 +223,4 @@
 
 
 "Team.ClaimsCell.view"                                = "Посмотреть";
+"Team.ClaimCell.voting.ended" = "Ended ";

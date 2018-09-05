@@ -27,3 +27,4 @@
 "Login.LoginNoInviteVC.pendingApplication.details" = "Por favor, verifica las puntas que faltan y finalízala. Te esperamos! Contáctanos si tienes alguna pregunta.";
 "Login.QRCodeButton"                               = "Iniciar sesión con código QR";
 
+"Login.LoginBlueVC.continueWithVKButton"           = "Continuar con VK";

@@ -26,7 +26,7 @@ enum TeammateProfileCellType: String {
 }
 
 enum SocialItemType: String {
-    case facebook, twitter, email, call
+    case facebook, vk, twitter, email, call
 }
 
 struct SocialItem {
@@ -130,7 +130,7 @@ class TeammateProfileDataSource {
         
         source.removeAll()
         isMyProxy = teammate.basic.isMyProxy
-        //let isVoted = teammate.voted != nil
+        let isVoted = teammate.voted != nil
         
         //if isMe { source.append(.me) } else { source.append(.summary) }
         source.append(.dialog)
@@ -142,7 +142,9 @@ class TeammateProfileDataSource {
                 source.append(.voted)
             }
             //source.append(.dialogCompact)
-        } //else if isVoted { source.append(.voted) }
+        } else if isVoted {
+            source.append(.voted)
+        }
         source.append(.object)
         source.append(.stats)
         if !socialItems.isEmpty && !isMe {
@@ -154,6 +156,9 @@ class TeammateProfileDataSource {
         var items: [SocialItem] = []
         if let facebook = teammateLarge?.basic.facebook {
             items.append(SocialItem(type: .facebook, icon: #imageLiteral(resourceName: "facebook"), address: facebook))
+        }
+        if let vk = teammateLarge?.basic.vk {
+            items.append(SocialItem(type: .facebook, icon: #imageLiteral(resourceName: "vk"), address: vk))
         }
         if isMyProxy {
             items.append(SocialItem(type: .call, icon: #imageLiteral(resourceName: "call"), address: ""))

@@ -306,8 +306,7 @@ extension ClaimVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is ImageGalleryCell, let claim = dataSource.claim {
-            let context = ChatContext.claim(claim)
-            router.presentChat(context: context, itemType: .claim)
+            router.presentChat(context: UniversalChatContext(claim))
         }
     }
     
@@ -323,8 +322,9 @@ extension ClaimVC: UICollectionViewDelegateFlowLayout {
         case ImageGalleryCell.cellID: return CGSize(width: collectionView.bounds.width, height: 120 + 184)
         case ClaimVoteCell.cellID:
             let canVote = dataSource.claim?.voting?.canVote
-            return canVote == true ? CGSize(width: collectionView.bounds.width - offset * 2, height: 250)
-                                   : CGSize(width: collectionView.bounds.width - offset * 2, height: 200)
+            return canVote == true && dataSource.claim?.voting != nil
+                ? CGSize(width: collectionView.bounds.width - offset * 2, height: 250)
+                : CGSize(width: collectionView.bounds.width - offset * 2, height: 200)
         case ClaimDetailsCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 283)
         case ClaimOptionsCell.cellID: return CGSize(width: collectionView.bounds.width, height: 112)
         default: break

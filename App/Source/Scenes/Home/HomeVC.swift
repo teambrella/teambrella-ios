@@ -64,7 +64,8 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var emitterScene: SKView!
     @IBOutlet var topBarContainer: UIView!
     var topBarVC: TopBarVC!
-    
+
+    var configurator: HomeConfigurator = HomeDefaultConfigurator()
     var dataSource: HomeDataSource = HomeDataSource()
     
     var isEmitterAdded: Bool = false
@@ -169,15 +170,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     }
     
     private func clearScreen() {
-        greetingsTitleLabel.text = nil
-        greetingsSubtitileLabel.text = nil
-        
-        leftBrickAmountLabel.text = "..."
-        rightBrickAmountLabel.text = "..."
-        
-        //itemCard.avatarView.image = #imageLiteral(resourceName: "imagePlaceholder")
-        itemCard.subtitleLabel.text = nil
-        itemCard.titleLabel.text = nil
+        configurator.clearScreen(controller: self)
     }
     
     private func setupWalletContainer() {
@@ -201,46 +194,8 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     private func setup() {
         collectionView.reloadData()
-        
-        guard let model = dataSource.model else { return }
-        
-        service.session?.currentUserID = model.userID
-        service.session?.currentUserName = dataSource.name
-        service.session?.currentUserAvatar = model.avatar
-        
-        leftBrickAmountLabel.text = String(format: "%.0f", model.coverage.percentage)
-        rightBrickAmountLabel.text = String(Int(MEth(model.balance).value))
-        rightBrickCurrencyLabel.text = service.session?.cryptoCoin.code
-        
-        greetingsTitleLabel.text = "Home.salutation".localized(dataSource.name.first)
-        greetingsSubtitileLabel.text = "Home.subtitle".localized
-        
-        leftBrickTitleLabel.text = "Home.leftBrick.title".localized
-        rightBrickTitleLabel.text = "Home.rightBrick.title".localized
-        
-        itemCard.avatarView.present(imageString: model.smallPhoto.string)
-        itemCard.avatarView.onTap = { [weak self] sender in
-            sender.fullscreen(in: self, imageStrings: nil)
-        }
-        itemCard.titleLabel.text = model.objectName.entire
-        itemCard.statusLabel.text = "Home.itemCard.status".localized
-        itemCard.subtitleLabel.text = CoverageLocalizer(type: model.teamPart.coverageType).coverageType
-        
-        let buttonTitle = model.haveVotingClaims
-            ? "Home.submitButton.anotherClaim".localized
-            : "Home.submitButton.claim".localized
-        submitClaimButton.setTitle(buttonTitle, for: .normal)
-        
-        pageControl.numberOfPages = dataSource.cardsCount
-        topBarVC.setPrivateMessages(unreadCount: model.unreadCount)
-
-        if let accessLevel = service.session?.currentTeam?.teamAccessLevel {
-            submitClaimButton.isEnabled = accessLevel == .full
-        }
-        submitClaimButton.setTitleColor(#colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1), for: .disabled)
-        submitClaimButton.borderColor = submitClaimButton.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
-        submitClaimButton.shadowColor = submitClaimButton.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 0.2) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 0.2)
-        submitClaimButton.alpha = submitClaimButton.isEnabled ? 1 : 0.5
+        configurator.model = dataSource.model
+        configurator.configure(controller: self)
         HUD.hide()
     }
     
@@ -289,8 +244,9 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
 
         dataSource[sender.tag].map {
             let details = MyApplicationDetails(topicID: $0.topicID, userID: $0.userID)
-            service.router.presentChat(context: ChatContext.myApplication(details),
-                                       itemType: $0.itemType)
+            let context = UniversalChatContext(details)
+            context.type = UniversalChatType.with(itemType: $0.itemType)
+            service.router.presentChat(context: context)
         }
     }
     
@@ -335,11 +291,11 @@ extension HomeVC: UICollectionViewDataSource {
             }
             
         }
-//        if let cell = cell as? ClosableCell {
-//            cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
-//            cell.closeButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
-//            cell.closeButton.tag = indexPath.row
-//        }
+        //        if let cell = cell as? ClosableCell {
+        //            cell.closeButton.removeTarget(self, action: nil, for: .allEvents)
+        //            cell.closeButton.addTarget(self, action: #selector(closeCard), for: .touchUpInside)
+        //            cell.closeButton.tag = indexPath.row
+        //        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -352,10 +308,15 @@ extension HomeVC: UICollectionViewDataSource {
         let model = dataSource[indexPath]
         if let model = model, model.itemType == .attachPhotos {
             let details = MyApplicationDetails(topicID: model.topicID, userID: model.userID)
-            service.router.presentChat(context: .myApplication(details), itemType: model.itemType)
+            let context = UniversalChatContext(details)
+            context.type = UniversalChatType.with(itemType: model.itemType)
+            service.router.presentChat(context: context)
         } else if model?.itemType != .fundWallet && model?.itemType != .attachPhotos {
-            dataSource[indexPath].map { service.router.presentChat(context: ChatContext.home($0),
-                                                                   itemType: $0.itemType) }
+            dataSource[indexPath].map {
+                let context = UniversalChatContext($0)
+                context.type = UniversalChatType.with(itemType: $0.itemType)
+                service.router.presentChat(context: context)
+            }
         }
     }
 }

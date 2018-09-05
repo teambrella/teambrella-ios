@@ -14,6 +14,9 @@ end
 def social_pods
   pod 'FBSDKCoreKit', :modular_headers => true
   pod 'FBSDKLoginKit', :modular_headers => true
+
+  pod 'Auth0', '~> 1.0', :modular_headers => true
+  pod 'SimpleKeychain', :modular_headers => true # dependency for the Auth0
 end
 
 def firebase_pods

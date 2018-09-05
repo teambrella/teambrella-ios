@@ -23,6 +23,7 @@ struct TeammateServerImpl: Codable {
     let teamID: Int64
     let name: String
     let id: Int64
+    let socialName: String
 
     enum CodingKeys: String, CodingKey {
         case cryptoAddress = "CryptoAddress"
@@ -31,6 +32,7 @@ struct TeammateServerImpl: Codable {
         case teamID = "TeamId"
         case name = "Name"
         case id = "Id"
+        case socialName = "SocialName"
     }
 
 }

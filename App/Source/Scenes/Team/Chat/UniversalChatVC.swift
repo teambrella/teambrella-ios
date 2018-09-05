@@ -74,10 +74,10 @@ final class UniversalChatVC: UIViewController, Routable {
     
     private var leftButton: UIButton?
     
-    var router: MainRouter!
-    var session: Session!
-    var push: PushService!
-    var socket: SocketService!
+    var router: MainRouter { return service.router }
+    var session: Session? { return service.session }
+    var push: PushService { return service.push }
+    var socket: SocketService? { return service.socket }
     
     // MARK: Lifecycle
     
@@ -101,7 +101,7 @@ final class UniversalChatVC: UIViewController, Routable {
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
-            self.slidingView.votingView.setup(with: self.dataSource.chatModel)
+            self.updateSlidingView()
             //            guard hasNew else {
             //                if isFirstLoad {
             //                    self.shouldScrollToBottom = true
@@ -134,7 +134,16 @@ final class UniversalChatVC: UIViewController, Routable {
         slidingView.setupViews(with: self, session: session)
         slidingView.delegate = self
     }
-    
+
+    func updateSlidingView() {
+        if dataSource.isObjectViewNeeded {
+            slidingView.isHidden = false
+            slidingView.votingView.setup(with: dataSource.chatModel)
+        } else {
+            slidingView.isHidden = true
+        }
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startListeningSockets()
@@ -178,13 +187,13 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     deinit {
-        socket.remove(listener: socketToken)
+        socket?.remove(listener: socketToken)
     }
     
     // MARK: Public
     
-    public func setContext(context: ChatContext, itemType: ItemType) {
-        dataSource.addContext(context: context, itemType: itemType)
+    public func setContext(context: UniversalChatContext) {
+        dataSource.addContext(context: context)
     }
     
     public func scrollToBottom(animated: Bool, completion: (() -> Void)? = nil) {
@@ -388,6 +397,7 @@ private extension UniversalChatVC {
                                 withReuseIdentifier: ChatFooter.cellID)
         collectionView.register(ChatClaimPaidCell.nib,
                                 forCellWithReuseIdentifier: ChatClaimPaidCell.cellID)
+        collectionView.register(ServiceChatCell.nib, forCellWithReuseIdentifier: ServiceChatCell.cellID)
     }
     
     private func listenForKeyboard() {
@@ -501,13 +511,13 @@ private extension UniversalChatVC {
         }
         
         if let socket = socket,
-            let teamID = session.currentTeam?.teamID {
+            let teamID = session?.currentTeam?.teamID {
             input.onTextChange = { [weak socket, weak self] in
                 guard let me = self else { return }
                 
                 let interval = me.lastTypingDate.timeIntervalSinceNow
                 if interval < -2.0, let topicID = me.dataSource.topicID,
-                    let name = self?.session.currentUserName {
+                    let name = self?.session?.currentUserName {
                     socket?.meTyping(teamID: teamID, topicID: topicID, name: name.first)
                     self?.lastTypingDate = Date()
                 }
@@ -517,7 +527,7 @@ private extension UniversalChatVC {
     }
     
     private func startListeningSockets() {
-        socket.add(listener: socketToken, action: { [weak self] action in
+        socket?.add(listener: socketToken, action: { [weak self] action in
             log("add command \(action.command)", type: .socket)
             switch action.command {
             case .theyTyping, .meTyping:
@@ -540,7 +550,7 @@ private extension UniversalChatVC {
     }
     
     private func stopListeningSockets() {
-        socket.remove(listener: self)
+        socket?.remove(listener: self)
     }
     
     private func startListeningPushes() {
@@ -600,6 +610,18 @@ private extension UniversalChatVC {
         let fragment = ChatFragment.imageFragment(image: image, urlString: name, urlStringSmall: "")
         send(text: input.textView.text ?? "", imageFragments: [fragment])
     }
+
+    private func sizeForServiceMessage(model: ServiceMessageCellModel) -> CGSize {
+        var size = model.size
+        size.height += 32
+        return model.size
+    }
+
+    private func sizeForServiceMessageWithButton(model: ServiceMessageWithButtonCellModel) -> CGSize {
+        var size = model.size
+        size.height += (50 + 32)
+        return size
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -630,7 +652,9 @@ extension UniversalChatVC: UICollectionViewDataSource {
             identifier = Constant.newMessagesSeparatorCellID
         case _ as ChatClaimPaidCellModel:
             identifier = ChatClaimPaidCell.cellID
-        case _ as ChatPayToJoinCellModel:
+        case _ as ServiceMessageCellModel:
+            identifier = ServiceChatCell.cellID
+        case _ as ServiceMessageWithButtonCellModel:
             identifier = ChatClaimPaidCell.cellID
         default:
             fatalError("Unknown cell")
@@ -658,7 +682,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         if indexPath.row == dataSource.count - 1 {
             dataSource.isLoadNextNeeded = true
         }
-        
+
         let model = dataSource[indexPath]
         switch model {
         case let model as ChatCellUserDataLike:
@@ -708,6 +732,7 @@ extension UniversalChatVC: UICollectionViewDelegate {
         }
     }
     
+    // swiftlint:disable:next cyclomatic_complexity
     func populateService(cell: UICollectionViewCell, model: ChatCellModel) {
         if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = DateProcessor().yearFilter(from: model.date)
@@ -718,25 +743,25 @@ extension UniversalChatVC: UICollectionViewDelegate {
             cell.setNeedsDisplay()
             cell.label.text = model.text
         } else if let cell = cell as? ChatClaimPaidCell {
-            if model is ChatPayToJoinCellModel {
-                cell.messageLabel.text = "Team.Chat.PayToJoin.text".localized // from server (?)
-                cell.button.setTitle("Team.Chat.PayToJoin.buttonTitle".localized, for: .normal)
+            if let model = model as? ServiceMessageWithButtonCellModel {
+                cell.messageLabel.textAlignment = .left
+                cell.messageLabel.text = model.text
+                cell.button.setTitle(model.buttonText, for: .normal)
                 cell.confettiView.isHidden = true
                 cell.onButtonTap = { [weak self] in
                     log("tap fund wallet (from chat)", type: .userInteraction)
 
                     self?.router.switchToWallet()
                     if let nc = self?.navigationController {
-                        for vc in nc.viewControllers {
-                            if vc is MasterTabBarController {
-                                nc.popToViewController(vc, animated: false)
-                                break
-                            }
+                        for vc in nc.viewControllers where vc is MasterTabBarController {
+                            nc.popToViewController(vc, animated: false)
+                            break
                         }
                     }
-//                    self?.navigationController?.popViewController(animated: false)
+                    //                    self?.navigationController?.popViewController(animated: false)
                 }
             } else if model is ChatClaimPaidCellModel {
+                cell.messageLabel.textAlignment = .center
                 cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
                 cell.button.setTitle("Team.Chat.ClaimPaidCell.buttonTitle".localized, for: .normal)
                 cell.onButtonTap = { [weak self] in
@@ -750,6 +775,10 @@ extension UniversalChatVC: UICollectionViewDelegate {
                     let vc = UIActivityViewController(activityItems: [combinedText], applicationActivities: [])
                     self?.present(vc, animated: true)
                 }
+            }
+        } else if let cell = cell as? ServiceChatCell {
+            if let model = model as? ServiceMessageCellModel {
+                cell.label.text = model.text
             }
         }
     }
@@ -792,6 +821,10 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
         case _ as ChatTextCellModel:
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
+        case let model as ServiceMessageWithButtonCellModel:
+            return sizeForServiceMessageWithButton(model: model)
+        case let model as ServiceMessageCellModel:
+            return sizeForServiceMessage(model: model)
         case _ as ChatImageCellModel:
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
@@ -800,8 +833,6 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
         case _ as ChatNewMessagesSeparatorModel:
             return CGSize(width: collectionView.bounds.width, height: 30)
         case _ as ChatClaimPaidCellModel:
-            return CGSize(width: collectionView.bounds.width, height: 135)
-        case _ as ChatPayToJoinCellModel:
             return CGSize(width: collectionView.bounds.width, height: 135)
         default:
             return CGSize(width: collectionView.bounds.width - 32, height: 100)

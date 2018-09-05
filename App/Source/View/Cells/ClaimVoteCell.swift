@@ -52,6 +52,9 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
     
     @IBOutlet var othersVotedButton: UIButton!
     
+    @IBOutlet var pieChartLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var remainingDaysLeadingLabelConstraint: NSLayoutConstraint!
+    
     var isYourVoteHidden: Bool = false {
         didSet {
             yourVoteAmount.isHidden = isYourVoteHidden
@@ -86,6 +89,9 @@ class ClaimVoteCell: UICollectionViewCell, XIBInitableCell {
         slider.maximumValue = 1
 
         pieChart.startAngle = 0
+        yourVotePercentValue.alpha = 1
+        yourVoteAmount.alpha = 1
+        ViewDecorator.shadow(for: self, opacity: 0.1, radius: 8)
     }
 
 }

@@ -37,6 +37,7 @@ class ImageGalleryCell: UICollectionViewCell, XIBInitableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         objectView.roundCorners(.allCorners, radius: 4)
+        ViewDecorator.shadow(for: self, opacity: 0.1, radius: 8)
     }
     
     func setupGallery(with imageURLs: [String], options: KingfisherOptionsInfo? = nil) {

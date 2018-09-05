@@ -22,6 +22,13 @@
 import ExtensionsPack
 import Foundation
 
+enum SystemType: Int, Codable {
+    case firstPhotoMissing = 800
+    case firstPostMissing  = 810
+    case needsFunding      = 900
+    
+}
+
 struct ChatEntity: Decodable {
     let userID: String
     let lastUpdated: Int64
@@ -29,6 +36,7 @@ struct ChatEntity: Decodable {
     let points: Int
     let text: String
     let teammate: TeammatePart?
+    let systemType: SystemType?
 
     private let imagesReceived: [String]?
     private let smallImagesReceived: [String]?
@@ -53,6 +61,7 @@ struct ChatEntity: Decodable {
         case imageRatiosReceived = "ImageRatios"
         case teammate = "TeammatePart"
         case dateCreated = "Created"
+        case systemType = "SystemType"
     }
 
     struct TeammatePart: Decodable {
