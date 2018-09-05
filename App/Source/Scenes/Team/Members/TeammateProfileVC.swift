@@ -547,7 +547,7 @@ extension TeammateProfileVC: UIScrollViewDelegate {
     }
 }
 
-// MARK: UITableViewDataSource
+// ч
 extension TeammateProfileVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -571,6 +571,8 @@ extension TeammateProfileVC: UITableViewDelegate {
             cell.topLabel.text = item.name.uppercased()
             if item.type == .facebook {
                 cell.bottomLabel.text = "https://m.facebook.com"
+            } else if item.type == .vk {
+                cell.bottomLabel.text = "https://vk.com"
             } else if dataSource.isMyProxy && item.type == .call {
                 cell.bottomLabel.text = "my proxy"
             } else {
