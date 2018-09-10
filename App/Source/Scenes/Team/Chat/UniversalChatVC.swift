@@ -424,11 +424,15 @@ private extension UniversalChatVC {
     private func refresh(backward: Bool, isFirstLoad: Bool) {
         collectionView.reloadData()
         if isFirstLoad, let lastReadIndexPath = dataSource.lastReadIndexPath {
+             guard lastReadIndexPath.row < self.dataSource.count else { return }
+
             self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
         } else if self.shouldScrollToBottom {
             self.scrollToBottom(animated: true)
             self.shouldScrollToBottom = false
         } else if backward, let indexPath = self.dataSource.currentTopCellPath {
+            guard indexPath.row < self.dataSource.count else { return }
+
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
         }
     }
