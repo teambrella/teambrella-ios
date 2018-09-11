@@ -20,6 +20,7 @@ import Geth
 
 class EthWallet {
     struct Constant {
+        static let contractFile                 = "ObsoleteContract"
         static let methodIDteamID               = "8d475461"
         static let methodIDcosigners            = "22c5ec0f"
         static let methodIDtransfer             = "91f34dbd"
@@ -72,7 +73,7 @@ class EthWallet {
     
     
     var contract: String? {
-        guard let fileURL = Bundle.main.path(forResource: "Contract", ofType: "txt") else { return nil }
+        guard let fileURL = Bundle.main.path(forResource: Constant.contractFile, ofType: "txt") else { return nil }
         
         var string = try? String(contentsOfFile: fileURL, encoding: String.Encoding.utf8)
         if let index = string?.index(of: "\n") {

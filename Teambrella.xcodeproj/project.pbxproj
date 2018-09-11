@@ -987,6 +987,8 @@
 		6D8A629A20C1A1A1003CD95B /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8A629920C1A1A1003CD95B /* ComplicationController.swift */; };
 		6D8A629C20C1A1A1003CD95B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D8A629B20C1A1A1003CD95B /* Assets.xcassets */; };
 		6D8A62A120C1A1A1003CD95B /* SurillaWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6D8A628220C1A19F003CD95B /* SurillaWatch.app */; };
+		6D8E89492147BA9E00A21550 /* ObsoleteContract.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6D8E89482147BA9E00A21550 /* ObsoleteContract.txt */; };
+		6D8E894A2147BA9E00A21550 /* ObsoleteContract.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6D8E89482147BA9E00A21550 /* ObsoleteContract.txt */; };
 		6D900E201FC31CFF00FF6FF8 /* RemoteMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */; };
 		6D900E221FC31D4100FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
 		6D900E241FC31D8500FF6FF8 /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */; };
@@ -1554,6 +1556,7 @@
 		6D8C6FE61F754D7000BF65B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8C6FE81F754D8E00BF65B6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Error.strings; sourceTree = "<group>"; };
 		6D8CB40E1F5865B200C72AC3 /* Teambrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Teambrella.entitlements; sourceTree = "<group>"; };
+		6D8E89482147BA9E00A21550 /* ObsoleteContract.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ObsoleteContract.txt; sourceTree = "<group>"; };
 		6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teambrella-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D900E1F1FC31CFF00FF6FF8 /* RemoteMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMessage.swift; sourceTree = "<group>"; };
 		6D900E211FC31D4100FF6FF8 /* RemoteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommand.swift; sourceTree = "<group>"; };
@@ -2291,6 +2294,7 @@
 				6D1EC3D5202B0CB900F0541C /* Server */,
 				6D466A8D1ED07CF1001BC579 /* Storage */,
 				6DB921F31F9DF2A1009D3937 /* Contract.txt */,
+				6D8E89482147BA9E00A21550 /* ObsoleteContract.txt */,
 				6DB922241F9E27CD009D3937 /* AbiArguments.swift */,
 				6D466A881ED07CF1001BC579 /* BlockchainDateFormatter.swift */,
 				6D677E761FA110B800ED1C36 /* EtherAPI.swift */,
@@ -3624,6 +3628,7 @@
 				6D05252920A5D838000B3247 /* TeamCell.xib in Resources */,
 				6D05252A20A5D838000B3247 /* HeaderWithButton.xib in Resources */,
 				6D05252B20A5D838000B3247 /* LabeledIcon.xib in Resources */,
+				6D8E894A2147BA9E00A21550 /* ObsoleteContract.txt in Resources */,
 				6D05252C20A5D838000B3247 /* Main.strings in Resources */,
 				6D05252D20A5D838000B3247 /* JoinTeamMessageCell.xib in Resources */,
 				6D05252E20A5D838000B3247 /* Proxy.strings in Resources */,
@@ -3728,6 +3733,7 @@
 				6D4E5DC81F7AB6870020DEE2 /* TeamCell.xib in Resources */,
 				6D4E5DC91F7AB6870020DEE2 /* HeaderWithButton.xib in Resources */,
 				94282B0D1FD9B1EE0006B5F6 /* LabeledIcon.xib in Resources */,
+				6D8E89492147BA9E00A21550 /* ObsoleteContract.txt in Resources */,
 				6D4E5DCA1F7AB6870020DEE2 /* Main.strings in Resources */,
 				6D4E5DCB1F7AB6870020DEE2 /* JoinTeamMessageCell.xib in Resources */,
 				6D4E5DCC1F7AB6870020DEE2 /* Proxy.strings in Resources */,
