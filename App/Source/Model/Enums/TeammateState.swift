@@ -15,6 +15,7 @@ enum TeammateState: Int, Decodable {
     case normal = 6
     case revoting = 7
     case revotingResults = 8
+    case prejoining = -10
 
     init(from decoder: Decoder) throws {
         let value = try decoder.singleValueContainer().decode(Int.self)

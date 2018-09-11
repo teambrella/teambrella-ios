@@ -63,6 +63,18 @@ class TeammateProfileDataSource {
         }
         return nil
     }
+
+    /// we need this check as votedPart is sent from server for the Android needs
+    private var canAddVoted: Bool {
+        guard let teammate = teammateLarge else { return false }
+
+        switch teammate.basic.state {
+        case .prejoining:
+            return false
+        default:
+            return true
+        }
+    }
     
     init(id: String, teamID: Int, isMe: Bool) {
         self.teammateID = id
@@ -138,11 +150,11 @@ class TeammateProfileDataSource {
             isNewTeammate = true
             if voting.canVote || isMe {
                 source.append(.voting)
-            } else {
+            } else if canAddVoted {
                 source.append(.voted)
             }
             //source.append(.dialogCompact)
-        } else if isVoted {
+        } else if isVoted && canAddVoted {
             source.append(.voted)
         }
         source.append(.object)

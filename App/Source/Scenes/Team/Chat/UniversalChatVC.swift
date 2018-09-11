@@ -96,7 +96,7 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
             guard let `self` = self else { return }
 
-            self.input.isUserInteractionEnabled = self.dataSource.isChatAllowed
+            //self.input.isUserInteractionEnabled = self.dataSource.isChatAllowed
             self.collectionView.refreshControl?.endRefreshing()
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
@@ -110,7 +110,8 @@ final class UniversalChatVC: UIViewController, Routable {
             //                return
             //            }
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
-            self.input.allowInput(self.dataSource.isInputAllowed)
+            self.input.isUserInteractionEnabled = self.dataSource.isChatAllowed
+            self.input.allowInput(self.dataSource.isChatAllowed)
         }
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
