@@ -277,7 +277,8 @@ extension HomeVC: UICollectionViewDataSource {
         HomeCellBuilder.populate(cell: cell, dataSource: dataSource, model: dataSource[indexPath])
         if let cell = cell as? HomeSupportCell {
             let model = dataSource[indexPath]
-            
+
+            cell.isButtonHidden = true
             if model?.itemType == ItemType.fundWallet {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapFundWallet), for: .touchUpInside)

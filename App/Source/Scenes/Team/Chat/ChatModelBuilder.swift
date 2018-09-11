@@ -50,7 +50,7 @@ class ChatModelBuilder {
     func serviceModel(from model: ChatEntity) -> ChatCellModel? {
         guard let type = model.systemType else { return nil }
 
-        var size = TextSizeCalculator().size(for: model.text, font: font, maxWidth: width)
+        let size = TextSizeCalculator().size(for: model.text, font: font, maxWidth: width)
         switch type {
         case .needsFunding:
             return ServiceMessageWithButtonCellModel(date: model.created,
@@ -73,10 +73,11 @@ class ChatModelBuilder {
         for item in chatItems {
             // add service messages
             if let model = serviceModel(from: item) {
-                if let type = item.systemType, !serviceTypesUsed.contains(type) {
-                    result.append(model)
-                    serviceTypesUsed.insert(type)
-                }
+                result.append(model)
+//                if let type = item.systemType, !serviceTypesUsed.contains(type) {
+//                    result.append(model)
+//                    serviceTypesUsed.insert(type)
+//                }
                 continue
             }
 

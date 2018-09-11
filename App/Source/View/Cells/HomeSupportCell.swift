@@ -22,6 +22,10 @@
 import UIKit
 
 class HomeSupportCell: UICollectionViewCell, XIBInitableCell {
+    enum Constant {
+        static let buttonHeight: CGFloat = 40
+    }
+
     @IBOutlet var backView: UIView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var headerLabel: UILabel!
@@ -29,6 +33,15 @@ class HomeSupportCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var bottomLabel: UILabel!
     @IBOutlet var button: BorderedButton!
     @IBOutlet var onlineIndicator: UIView!
+
+    @IBOutlet var buttonHeightConstraint: NSLayoutConstraint!
+
+    var isButtonHidden: Bool = false {
+        didSet {
+            buttonHeightConstraint.constant = isButtonHidden ? 0 : Constant.buttonHeight
+            button.isHidden = isButtonHidden
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,4 +49,5 @@ class HomeSupportCell: UICollectionViewCell, XIBInitableCell {
         backView.layer.cornerRadius = 6
         ViewDecorator.homeCardShadow(for: self)
     }
+
 }
