@@ -306,18 +306,20 @@ extension HomeVC: UICollectionViewDataSource {
             return
         }
         
-        let model = dataSource[indexPath]
-        if let model = model, model.itemType == .attachPhotos {
+        guard let model = dataSource[indexPath] else { return }
+
+        switch model.itemType {
+        case .attachPhotos:
             let details = MyApplicationDetails(topicID: model.topicID, userID: model.userID)
             let context = UniversalChatContext(details)
             context.type = UniversalChatType.with(itemType: model.itemType)
             service.router.presentChat(context: context)
-        } else if model?.itemType != .fundWallet && model?.itemType != .attachPhotos {
-            dataSource[indexPath].map {
-                let context = UniversalChatContext($0)
-                context.type = UniversalChatType.with(itemType: $0.itemType)
-                service.router.presentChat(context: context)
-            }
+        case .fundWallet:
+             service.router.switchToWallet()
+        default:
+            let context = UniversalChatContext(model)
+            context.type = UniversalChatType.with(itemType: model.itemType)
+            service.router.presentChat(context: context)
         }
     }
 }
