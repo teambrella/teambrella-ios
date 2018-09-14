@@ -110,8 +110,8 @@ final class UniversalChatVC: UIViewController, Routable {
             //                return
             //            }
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
-            self.input.isUserInteractionEnabled = self.dataSource.isChatAllowed
-            self.input.allowInput(self.dataSource.isChatAllowed)
+            self.input.isUserInteractionEnabled = self.dataSource.isInputAllowed
+            self.input.allowInput(self.dataSource.isInputAllowed)
         }
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }

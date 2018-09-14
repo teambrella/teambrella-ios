@@ -104,7 +104,7 @@ class EthWallet {
         //            return
         //        }
         
-        let addresses = cosigners.compactMap { $0.teammate.address }
+        let addresses = cosigners.compactMap { $0.teammate?.address }
         guard let contract = contract else {
             failure(EthWalletError.contractDoesNotExist)
             return
@@ -462,7 +462,7 @@ class EthWallet {
 
                 var j = 0
                 for (idx, cosigner) in cosigners.enumerated() {
-                    if let s = txSignatures[cosigner.teammate.id] {
+                    if let id = cosigner.teammate?.id, let s = txSignatures[id] {
                         pos[j] = idx
                         sig[j] = s.signature
                         j += 1
@@ -552,7 +552,7 @@ class EthWallet {
 
                 var j = 0
                 for (idx, cosigner) in cosigners.enumerated() {
-                    if let s = txSignatures[cosigner.teammate.id] {
+                    if let id = cosigner.teammate?.id, let s = txSignatures[id] {
                         pos[j] = idx
                         sig[j] = s.signature
                         j += 1

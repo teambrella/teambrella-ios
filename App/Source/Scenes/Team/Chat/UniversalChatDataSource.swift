@@ -68,14 +68,14 @@ final class UniversalChatDatasource {
     
     var name: String?
 
-    var isChatAllowed: Bool {
-        if isPrivateChat { return true }
-        if let myID = service.session?.currentUserID, let theirID = chatModel?.basic?.userID, myID == theirID {
-            return true
-        } else {
-            return chatModel?.team?.accessLevel == .full ? true : false
-        }
-    }
+//    var isChatAllowed: Bool {
+//        if isPrivateChat { return true }
+//        if let myID = service.session?.currentUserID, let theirID = chatModel?.basic?.userID, myID == theirID {
+//            return true
+//        } else {
+//            return chatModel?.team?.accessLevel == .full ? true : false
+//        }
+//    }
     
     var chatModel: ChatModel? {
         didSet {
@@ -215,10 +215,11 @@ final class UniversalChatDatasource {
             let myTeamID = service.session?.currentTeam?.teamID else { return false }
 
         var isAllowed: Bool = teamID == myTeamID
-
+        
         if let accessLevel = chatModel?.team?.accessLevel {
             switch accessLevel {
             case .hiddenDetailsAndEditMine,
+                 .hiddenDetailsAndStealth,
                  .readAllAndEditMine:
                 if chatType == .application,
                     let chatUserID = chatModel?.basic?.userID,
