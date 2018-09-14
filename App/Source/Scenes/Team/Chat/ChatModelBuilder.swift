@@ -50,20 +50,21 @@ class ChatModelBuilder {
     func serviceModel(from model: ChatEntity) -> ChatCellModel? {
         guard let type = model.systemType else { return nil }
 
-        var size = TextSizeCalculator().size(for: model.text, font: font, maxWidth: width)
+        let size = TextSizeCalculator().size(for: model.text, font: font, maxWidth: width)
         switch type {
         case .needsFunding:
-            return ServiceMessageWithButtonCellModel(date: model.created,
+            return ServiceMessageWithButtonCellModel( messageID: model.id,
+                date: model.created,
                                                      text: model.text,
                                                      buttonText: "Team.Chat.PayToJoin.buttonTitle".localized,
                                                      size: size)
         case .firstPhotoMissing, .firstPostMissing:
-            return ServiceMessageCellModel(date: model.created, text: model.text, size: size)
+            return ServiceMessageCellModel(messageID: model.id, date: model.created, text: model.text, size: size)
         }
     }
 
     /// set of used service messages types that can only appear once in a chat
-    private var serviceTypesUsed: Set<SystemType> = []
+    //private var serviceTypesUsed: Set<SystemType> = []
 
     func cellModels(from chatItems: [ChatEntity],
                     isClaim: Bool,
@@ -73,10 +74,11 @@ class ChatModelBuilder {
         for item in chatItems {
             // add service messages
             if let model = serviceModel(from: item) {
-                if let type = item.systemType, !serviceTypesUsed.contains(type) {
-                    result.append(model)
-                    serviceTypesUsed.insert(type)
-                }
+                result.append(model)
+//                if let type = item.systemType, !serviceTypesUsed.contains(type) {
+//                    result.append(model)
+//                    serviceTypesUsed.insert(type)
+//                }
                 continue
             }
 

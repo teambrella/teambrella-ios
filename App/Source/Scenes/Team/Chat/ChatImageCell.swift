@@ -60,13 +60,9 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
 
     lazy var imageView: ChatImageView = {
         let verticalOffset = 8
-        let imageView = ChatImageView(frame: CGRect(x: Constant.imageInset,
-                                                    y: Constant.imageInset,
-                                                    width: self.cloudWidth - Constant.imageInset * 2,
-                                                    height: self.cloudHeight - Constant.imageInset * 2))
+        let imageView = ChatImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
         imageView.onTap = { [weak self] galleryView in
             self?.onTap(galleryView: galleryView)
         }
@@ -125,6 +121,11 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         setup()
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+    }
+
     func setup() {
         backgroundColor = .clear
     }
@@ -144,16 +145,25 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
 
     func prepare(with model: ChatCellUserDataLike, size: CGSize) {
         if model.id != id, let fragment = model.fragments.first {
+            
             id = model.id
             isMy = model.isMy
             self.cloudWidth = size.width
             self.cloudHeight = size.height
+
+            imageView.frame = CGRect(x: Constant.imageInset,
+                                     y: Constant.imageInset,
+                                     width: self.cloudWidth - Constant.imageInset * 2,
+                                     height: self.cloudHeight - Constant.imageInset * 2)
+            imageView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
+            
             setNeedsDisplay()
 
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
             setupFragment(fragment: fragment)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
+
         }
     }
 

@@ -127,7 +127,7 @@ final class TeambrellaService: NSObject {
 
             self.autoApproveTransactions()
             self.serverUpdateToLocalDb { success in
-                    completion(success)
+                completion(success)
             }
         }
     }
@@ -193,7 +193,7 @@ final class TeambrellaService: NSObject {
             //self.queue.isSuspended = true
             self.verifyIfWalletIsCreated(gasLimit: Constant.gasLimit) { success in
                 log("wallet creation verified: \(success)", type: .crypto)
-               // self.queue.isSuspended = false
+                // self.queue.isSuspended = false
             }
         }
         
@@ -206,11 +206,7 @@ final class TeambrellaService: NSObject {
         }
         
         queue.addOperation {
-            do {
-                try self.cosignApprovedTransactions()
-            } catch {
-                log("Error cosigning approved transactions: \(error)", type: [.error, .crypto])
-            }
+            self.cosignApprovedTransactions()
         }
         
         queue.addOperation {
@@ -302,7 +298,7 @@ final class TeambrellaService: NSObject {
             }
             completion(success)
         }) { error in
-             log("\(String(describing: error))", type: [.cryptoDetails, .error])
+            log("\(String(describing: error))", type: [.cryptoDetails, .error])
             completion(false)
         }
     }
@@ -394,13 +390,18 @@ final class TeambrellaService: NSObject {
         contentProvider.transactionsChangeResolution(txs: txs, to: .approved, when: Date())
     }
     
-    private func cosignApprovedTransactions() throws {
+    private func cosignApprovedTransactions() {
         log("Teambrella service start \(#function)", type: .cryptoDetails)
         let list = contentProvider.transactionsCosignable
         log("Teambrella service has \(list.count) cosignable transactions", type: .crypto)
         let user = contentProvider.user
         for tx in list {
-            try cosignTransaction(transaction: tx, userID: user.id)
+            log("Cosigning tx \(tx.id.uuidString)", type: .cryptoDetails)
+            do {
+                try cosignTransaction(transaction: tx, userID: user.id)
+            } catch {
+                log("Error cosigning approved transactions: \(error)", type: [.error, .crypto])
+            }
         }
     }
 
@@ -479,7 +480,7 @@ final class TeambrellaService: NSObject {
     }
 
     private func endBackgroundTaskIfNeeded(result: UIBackgroundFetchResult,
-                                   completion: @escaping (UIBackgroundFetchResult) -> Void) {
+                                           completion: @escaping (UIBackgroundFetchResult) -> Void) {
         #if MAIN_APP
         endBackgroundTask(result: result, completion: completion)
         #else

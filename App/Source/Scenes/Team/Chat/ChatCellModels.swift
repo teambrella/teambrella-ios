@@ -96,7 +96,8 @@ protocol ServiceMessageLike: ChatCellModel {
 }
 
 struct ServiceMessageCellModel: ServiceMessageLike {
-    var id: String { return "\(type(of: self))|\(date.timeIntervalSince1970)" }
+    var id: String { return "\(type(of: self))|\(messageID)|\(date.timeIntervalSince1970)" }
+    let messageID: String
     let date: Date
     let isTemporary: Bool = false
     let text: String
@@ -105,6 +106,7 @@ struct ServiceMessageCellModel: ServiceMessageLike {
 
 struct ServiceMessageWithButtonCellModel: ServiceMessageLike {
     var id: String { return "\(type(of: self))|\(date.timeIntervalSince1970)" }
+    let messageID: String
     let date: Date
     let isTemporary: Bool = false
     let text: String

@@ -25,8 +25,11 @@ class Cosigner: NSManagedObject {
     var keyOrder: Int { return Int(keyOrderValue) }
     var multisigID: Int64 { return multisigIDValue }
     
-    var teammate: Teammate {
-        return teammateValue!
+    var teammate: Teammate? {
+        if teammateValue == nil {
+            print("Cosigner \(self.description) failed to find teammate")
+        }
+        return teammateValue
     }
     
     var multisig: Multisig {
@@ -61,7 +64,7 @@ extension Cosigner {
 
 extension Cosigner {
     var address: EthereumAddress? {
-        guard let address = teammate.address else { return nil }
+        guard let address = teammate?.address else { return nil }
 
         return EthereumAddress(string: address)
     }

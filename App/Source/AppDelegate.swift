@@ -65,12 +65,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
 
-        return Auth0.resumeAuth(url, options: options)
-
-//        return FBSDKApplicationDelegate.sharedInstance().application(app,
-//                                                                     open: url,
-//                                                                     sourceApplication: source,
-//                                                                     annotation: options[.annotation])
+        if source.hasPrefix("com.facebook") {
+            print("Opening app from Facebook application")
+            return FBSDKApplicationDelegate.sharedInstance().application(app,
+                                                                         open: url,
+                                                                         sourceApplication: source,
+                                                                         annotation: options[.annotation])
+        } else {
+            print("Opening app from Auth0")
+            return Auth0.resumeAuth(url, options: options)
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

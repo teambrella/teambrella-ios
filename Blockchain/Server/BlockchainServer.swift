@@ -129,6 +129,8 @@ public class BlockchainServer {
                 }
             } catch {
                 log("Get updates parsing error: \(error)", type: [.error, .crypto])
+                let data = try? JSONSerialization.jsonObject(with: data, options: [])
+                log("Data is of wrong format, trying to parse JSON object: \(String(describing: data))", type: .cryptoDetails)
                 queue.async {
                     completion(nil, error)
                 }
