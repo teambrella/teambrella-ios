@@ -233,7 +233,7 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     @objc
-    open func userDidTapOnCollectionView() {
+    func userDidTapOnCollectionView() {
         if self.endsEditingWhenTappingOnChatBackground {
             self.view.endEditing(true)
         }

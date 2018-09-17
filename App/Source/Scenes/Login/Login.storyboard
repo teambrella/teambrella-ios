@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RMx-MO-EDz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RMx-MO-EDz">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,7 +54,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VfT-eE-xCt">
-                                        <rect key="frame" x="66.666666666666686" y="144.33333333333334" width="117" height="29"/>
+                                        <rect key="frame" x="66.333333333333343" y="144.33333333333334" width="117" height="29"/>
                                         <segments>
                                             <segment title="Male"/>
                                             <segment title="Female"/>
@@ -80,7 +77,7 @@
                                         </date>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Redeem code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgN-ad-OhS">
-                                        <rect key="frame" x="70" y="378.66666666666674" width="110.33333333333331" height="20.333333333333314"/>
+                                        <rect key="frame" x="69.666666666666686" y="378.66666666666674" width="110.33333333333331" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -92,7 +89,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiJ-Jr-lfh">
-                                        <rect key="frame" x="96.666666666666686" y="453" width="57" height="30"/>
+                                        <rect key="frame" x="96.333333333333343" y="453" width="57" height="30"/>
                                         <state key="normal" title="Register"/>
                                         <connections>
                                             <action selector="tapRegister:" destination="2rH-zg-tvt" eventType="touchUpInside" id="Mo5-jc-ptO"/>
@@ -175,13 +172,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teambrella-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="HaE-vq-3bd">
-                                <rect key="frame" x="56.333333333333343" y="180" width="262.33333333333326" height="52.333333333333343"/>
+                                <rect key="frame" x="56.333333333333343" y="180" width="262.33333333333326" height="52.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HaE-vq-3bd" secondAttribute="height" multiplier="5:1" id="Ki8-z6-kzM"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3C-eL-D90">
-                                <rect key="frame" x="16" y="247.33333333333337" width="343" height="22"/>
+                                <rect key="frame" x="16" y="247.66666666666663" width="343" height="22"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647058823533" green="0.76470588235294112" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -293,6 +290,7 @@
                         <outlet property="tryDemoButton" destination="n5y-0s-mhl" id="tWI-xH-yix"/>
                         <segue destination="RUg-4M-8iQ" kind="show" identifier="invitationOnly" id="3Hc-wB-HHG"/>
                         <segue destination="Mpw-oG-9Tx" kind="unwind" identifier="unwindToInitial" animates="NO" unwindAction="unwindToInitialWithSegue:" id="3aY-tD-QnZ"/>
+                        <segue destination="bNg-UX-aK1" kind="show" id="ikP-j6-OsC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P38-XV-jDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -324,11 +322,11 @@
                                 <rect key="frame" x="0.0" y="24" width="375" height="754"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIQ-Gf-bop">
-                                <rect key="frame" x="80.333333333333314" y="44" width="215" height="162.33333333333334"/>
+                                <rect key="frame" x="80" y="44" width="215" height="162.33333333333334"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teambrella-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-qJ-3a4">
-                                <rect key="frame" x="80.333333333333314" y="206.33333333333334" width="215" height="43"/>
+                                <rect key="frame" x="80" y="206.33333333333334" width="215" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="ahq-Ad-kov"/>
                                     <constraint firstAttribute="width" secondItem="2Jk-qJ-3a4" secondAttribute="height" multiplier="5:1" id="jtN-3y-ZKp"/>
@@ -359,7 +357,7 @@
                                         <rect key="frame" x="163.66666666666666" y="63.333333333333371" width="0.0" height="0.0"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yg-At-X1f" userLabel="Support">
-                                                <rect key="frame" x="-187.66666666666666" y="-408.66666666666669" width="39" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="39" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="UHz-c0-QGo"/>
                                                 </constraints>
@@ -372,7 +370,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pr7-PO-vtj" userLabel="Support">
-                                                <rect key="frame" x="-187.66666666666666" y="-408.66666666666669" width="39" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="39" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="iPI-M3-qGN"/>
                                                 </constraints>
@@ -412,7 +410,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvt-gk-Wwi" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="163.33333333333334" y="702" width="49" height="30"/>
+                                <rect key="frame" x="163" y="702" width="49" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="k68-JX-rPp"/>
                                 </constraints>
@@ -503,6 +501,61 @@
                 <exit id="DcY-20-aah" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="908" y="868"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="m0C-1U-CEL">
+            <objects>
+                <viewController id="bNg-UX-aK1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C2w-hs-ANQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2as-kY-el4"/>
+                    </view>
+                    <connections>
+                        <segue destination="giV-Jf-mTh" kind="show" id="qfq-Y2-pJh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f44-k9-qBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="908" y="1621"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wVi-Ah-rEG">
+            <objects>
+                <viewController id="giV-Jf-mTh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HZE-sh-ioB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Bkf-q1-5kG"/>
+                    </view>
+                    <connections>
+                        <segue destination="xP7-Ae-DRk" kind="show" id="X5i-vf-PBq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Tt-Df-EXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1850" y="1611"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="nBC-qA-apI">
+            <objects>
+                <viewController id="xP7-Ae-DRk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vWH-eY-4aO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9NT-2x-grd"/>
+                    </view>
+                    <connections>
+                        <segue destination="gqq-ga-NmQ" kind="unwind" unwindAction="unwindToInitialWithSegue:" id="1Rx-Zz-Jkp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cug-Mm-iYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gqq-ga-NmQ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2801" y="1611"/>
         </scene>
     </scenes>
     <resources>
