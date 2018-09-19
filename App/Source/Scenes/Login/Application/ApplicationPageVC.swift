@@ -18,7 +18,7 @@ import UIKit
 
 class ApplicationPageVC: UIPageViewController {
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newColoredViewController("green"),
+        return [ApplicationGreetingVC.instantiate(),
                 self.newColoredViewController("blue")]
     }()
     

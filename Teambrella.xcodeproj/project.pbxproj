@@ -1049,6 +1049,8 @@
 		6DB743E62150103400F57D00 /* ApplicationFlowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB743E42150103400F57D00 /* ApplicationFlowVC.swift */; };
 		6DB743E8215012BC00F57D00 /* ApplicationPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB743E7215012BC00F57D00 /* ApplicationPageVC.swift */; };
 		6DB743E9215012BC00F57D00 /* ApplicationPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB743E7215012BC00F57D00 /* ApplicationPageVC.swift */; };
+		6DB743EB2152732A00F57D00 /* ApplicationGreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB743EA2152732A00F57D00 /* ApplicationGreetingVC.swift */; };
+		6DB743EC2152732A00F57D00 /* ApplicationGreetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB743EA2152732A00F57D00 /* ApplicationGreetingVC.swift */; };
 		6DB921EF1F9DEC27009D3937 /* EthWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB921ED1F9DEC27009D3937 /* EthWallet.swift */; };
 		6DB921F51F9DF2A1009D3937 /* Contract.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6DB921F31F9DF2A1009D3937 /* Contract.txt */; };
 		6DB922261F9E27CD009D3937 /* AbiArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB922241F9E27CD009D3937 /* AbiArguments.swift */; };
@@ -1674,6 +1676,7 @@
 		6DB743E1214FF82D00F57D00 /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationRouter.swift; path = App/Source/Scenes/Login/Application/ApplicationRouter.swift; sourceTree = SOURCE_ROOT; };
 		6DB743E42150103400F57D00 /* ApplicationFlowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationFlowVC.swift; path = App/Source/Scenes/Login/Application/ApplicationFlowVC.swift; sourceTree = SOURCE_ROOT; };
 		6DB743E7215012BC00F57D00 /* ApplicationPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationPageVC.swift; path = App/Source/Scenes/Login/Application/ApplicationPageVC.swift; sourceTree = SOURCE_ROOT; };
+		6DB743EA2152732A00F57D00 /* ApplicationGreetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationGreetingVC.swift; path = App/Source/Scenes/Login/Application/ApplicationGreetingVC.swift; sourceTree = SOURCE_ROOT; };
 		6DB8121C1EE6F78700B202CE /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Formatter.swift; path = Helpers/Extensions/Formatter.swift; sourceTree = "<group>"; };
 		6DB812211EE6FD2E00B202CE /* ClaimVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClaimVC.swift; path = Scenes/Team/Claims/ClaimVC.swift; sourceTree = "<group>"; };
 		6DB812281EE715DA00B202CE /* DiscussionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscussionCell.swift; path = View/Cells/DiscussionCell.swift; sourceTree = "<group>"; };
@@ -2954,6 +2957,7 @@
 				6DB743E1214FF82D00F57D00 /* ApplicationRouter.swift */,
 				6DB743E42150103400F57D00 /* ApplicationFlowVC.swift */,
 				6DB743E7215012BC00F57D00 /* ApplicationPageVC.swift */,
+				6DB743EA2152732A00F57D00 /* ApplicationGreetingVC.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -4428,6 +4432,7 @@
 				6D05241A20A5D838000B3247 /* TeambrellaRequestType.swift in Sources */,
 				6D05241B20A5D838000B3247 /* PrivateMessagesDataSource.swift in Sources */,
 				6D05241C20A5D838000B3247 /* FeedChunk.swift in Sources */,
+				6DB743EC2152732A00F57D00 /* ApplicationGreetingVC.swift in Sources */,
 				6D7A01A920B5BC77006A30FA /* WithdrawCellModelBuilder.swift in Sources */,
 				6D05241D20A5D838000B3247 /* UIImage.swift in Sources */,
 				6D05241E20A5D838000B3247 /* ServerDAO.swift in Sources */,
@@ -4872,6 +4877,7 @@
 				6D4E5CD71F7AB6870020DEE2 /* PrivateMessagesDataSource.swift in Sources */,
 				6D30A4AE1FD167FE003149DB /* FeedChunk.swift in Sources */,
 				6D7A01A820B5BC77006A30FA /* WithdrawCellModelBuilder.swift in Sources */,
+				6DB743EB2152732A00F57D00 /* ApplicationGreetingVC.swift in Sources */,
 				6D4E5CD81F7AB6870020DEE2 /* UIImage.swift in Sources */,
 				6D4E5CD91F7AB6870020DEE2 /* ServerDAO.swift in Sources */,
 				6DA3FBA31FF2B39A00CA8FA1 /* Voter.swift in Sources */,
