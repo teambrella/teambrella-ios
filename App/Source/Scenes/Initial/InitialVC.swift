@@ -110,8 +110,12 @@ final class InitialVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
+        if segue.source is ApplicationFlowVC {
+            performSegue(withIdentifier: "application", sender: self)
+        } else {
         mode = .idle
         getTeams()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

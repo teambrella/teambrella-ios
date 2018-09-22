@@ -30,5 +30,10 @@
 "Login.LoginBlueVC.continueWithVKButton"           = "Continue with VK";
 
 "Login.Application.User.Title"                     = "Получи приглашение в группу";
-"Login.Application.Name" = "Имя";
-
+"Login.Application.Name.Title"                     = "МЕНЯ ЗОВУТ";
+"Login.Application.City.Title"                     = "ГОРОД";
+"Login.Application.Item.Title"                     = "МАРКА, МОДЕЛЬ, ГОД";
+"Login.Application.Email.Title"                    = "EMAIL";
+"Login.Application.RegisteerButton.Title"          = "Зарегистрироваться";
+"Login.Application.TermsAndConditions.format"      = "Создавая учётную запись, ты принимаешь %@, Teambrella";
+"Login.Application.TermsAndConditions.Link"        = "Условия Использования";

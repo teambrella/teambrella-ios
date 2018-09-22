@@ -21,28 +21,37 @@ class ApplicationFlowVC: UIViewController {
     @IBOutlet var teamNameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     
-    var pageVC: ApplicationPageVC?
+    @IBOutlet var shadowView: UIView!
+    @IBOutlet var containerView: RoundedCornersView!
+    @IBOutlet var facebookButton: BorderedButton!
+    @IBOutlet var vkButton: BorderedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        ViewDecorator.homeCardShadow(for: shadowView)
+    }
+
+    @IBAction func tapButton(_ sender: UIButton) {
+        switch sender {
+        case facebookButton:
+             performSegue(withIdentifier: "application", sender: self)
+        case vkButton:
+             performSegue(withIdentifier: "error screen", sender: self)
+        default:
+            break
+        }
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("preparing segue: \(segue.identifier ?? "?")")
         switch segue.identifier {
-        case "to page vc":
-            if let vc = segue.destination as? ApplicationPageVC {
-                pageVC = vc
-                vc.showIntro()
+        case "error screen":
+            if let vc = segue.destination as? LoginNoInviteVC {
+                vc.error = TeambrellaError(kind: .permissionDenied, description: "sdf")
             }
         default:
             break
         }
     }
-
+    
 }

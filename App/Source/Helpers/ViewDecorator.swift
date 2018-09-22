@@ -39,6 +39,7 @@ struct ViewDecorator {
                        opacity: Float,
                        radius: Float,
                        offset: CGSize = CGSize.zero) {
+        let layer: CGLayer
         view.layer.shadowColor = color.cgColor
         view.layer.shadowOffset = offset
         view.layer.shadowOpacity = opacity

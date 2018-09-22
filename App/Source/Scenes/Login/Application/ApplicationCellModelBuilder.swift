@@ -17,8 +17,37 @@
 import Foundation
 
 class ApplicationCellModelBuilder {
-    func headerModel() -> ApplicationHeaderCellModel {
-        return ApplicationHeaderCellModel(image: "", name: "", city: "")
+    func carGroupHeaderModels() -> [ApplicationHeaderCellModel] {
+        return [ApplicationHeaderCellModel(image: "", name: "Антикаско", city: "РОССИЯ")]
+    }
+    
+    func carGroupModels() -> [ApplicationCellModel] {
+        return [ApplicationTitleCellModel(title: "Login.Application.User.Title".localized),
+                ApplicationInputCellModel(type: .item,
+                                          text: "Login.Application.Item.Title".localized,
+                                          headlightText: "",
+                                          placeholderText: "",
+                                          inputText: nil),
+                ApplicationInputCellModel(type: .city,
+                                          text: "Login.Application.City.Title".localized,
+                                          headlightText: "",
+                                          placeholderText: "",
+                                          inputText: nil),
+                ApplicationInputCellModel(type: .name,
+                                          text: "Login.Application.Name.Title".localized,
+                                          headlightText: "",
+                                          placeholderText: "",
+                                          inputText: nil),
+                ApplicationInputCellModel(type: .email,
+                                          text: "Login.Application.Email.Title".localized,
+                                          headlightText: "",
+                                          placeholderText: "",
+                                          inputText: nil),
+                ApplicationTermsAndConditionsCellModel(format: "Login.Application.TermsAndConditions.format",
+                                                       linkText: "Login.Application.TermsAndConditions.Link".localized,
+                                                       link: "www.google.com"),
+                ApplicationActionCellModel(buttonText: "Login.Application.RegisteerButton.Title".localized)
+        ]
     }
     
     /*

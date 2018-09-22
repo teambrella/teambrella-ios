@@ -17,31 +17,51 @@
 import Foundation
 
 struct ApplicationHeaderCellModel: ApplicationCellModel {
+    let identifier: ApplicationCellIdentifier = .header
     let image: String
     let name: String
     let city: String
 }
 
 struct ApplicationTitleCellModel: ApplicationCellModel {
+    let identifier: ApplicationCellIdentifier = .title
     let title: String
 }
 
 struct ApplicationInputCellModel: ApplicationCellModel {
+    enum InputType {
+        case name, item, city, email
+    }
+    
+    let identifier: ApplicationCellIdentifier = .input
+    let type: InputType
     let text: String
     let headlightText: String
     let placeholderText: String
-    var inputText: String
+    var inputText: String?
+}
+
+struct ApplicationTermsAndConditionsCellModel: ApplicationCellModel {
+    let identifier: ApplicationCellIdentifier = .termsAndConditions
+    let format: String
+    let linkText: String
+    let link: String
+    var text: NSAttributedString {
+        return format.localized(linkText).link(substring: linkText, urlString: link)
+    }
 }
 
 struct ApplicationActionCellModel: ApplicationCellModel {
+    let identifier: ApplicationCellIdentifier = .action
     let buttonText: String
 }
 
-struct ApplicationInputDateCellModel: ApplicationCellModel {
-    let text: String
-    let placeholderText: String
-    var date: Date?
-}
+//struct ApplicationInputDateCellModel: ApplicationCellModel {
+//    let identifier: ApplicationCellIdentifier =
+//    let text: String
+//    let placeholderText: String
+//    var date: Date?
+//}
 
 class ApplicationUserData {
     var name: String?
@@ -49,10 +69,15 @@ class ApplicationUserData {
     var location: String?
 }
 
+enum ApplicationCellIdentifier: String {
+    case header, title, input, termsAndConditions, action
+}
+
 protocol ApplicationCellModel {
-    
+    var identifier: ApplicationCellIdentifier { get }
 }
 
 protocol ApplicationCell {
     func setup(with model: ApplicationCellModel)
 }
+

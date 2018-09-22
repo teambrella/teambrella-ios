@@ -16,19 +16,28 @@
 
 import UIKit
 
-class ApplicationHeaderView: UICollectionReusableView, ApplicationCell {
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var cityLabel: UILabel!
+class ApplicationTermsAndConditionsCell: UICollectionViewCell {
+    @IBOutlet var textView: UITextView!
     
+    
+}
+
+extension ApplicationTermsAndConditionsCell: ApplicationCell {
     func setup(with model: ApplicationCellModel) {
-        guard let model = model as? ApplicationHeaderCellModel else {
-            fatalError("Wrong header model")
+        guard let model = model as? ApplicationTermsAndConditionsCellModel else {
+            fatalError("Wrong model type")
         }
         
-        imageView.showImage(string: model.image)
-        nameLabel.text = model.name
-        cityLabel.text = model.city
+        textView.attributedText = model.text
+        textView.delegate = self
     }
-    
+}
+
+extension ApplicationTermsAndConditionsCell: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL,
+                  in characterRange: NSRange,
+                  interaction: UITextItemInteraction) -> Bool {
+        print(URL)
+        return true
+    }
 }
