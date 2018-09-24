@@ -16,13 +16,23 @@
 
 import UIKit
 
-class ApplicationActionCell: UICollectionViewCell {
+class ApplicationActionCell: UICollectionViewCell, ApplicationCellDecorable {
     @IBOutlet var button: BorderedButton!
     
     var onButtonTap: ((UIButton) -> Void)?
     
     @IBAction func tapButton(_ sender: UIButton) {
         onButtonTap?(sender)
+    }
+    
+    var isDecorated: Bool = false
+    
+    func decorate() {
+        guard !isDecorated else { return }
+        
+        ViewDecorator.rounded(edges: [.bottomLeft, .bottomRight], for: self)
+        ViewDecorator.shadow(for: self)
+        isDecorated = true
     }
 }
 

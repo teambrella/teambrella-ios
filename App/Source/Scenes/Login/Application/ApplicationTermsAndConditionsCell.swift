@@ -16,9 +16,17 @@
 
 import UIKit
 
-class ApplicationTermsAndConditionsCell: UICollectionViewCell {
+class ApplicationTermsAndConditionsCell: UICollectionViewCell, ApplicationCellDecorable {
     @IBOutlet var textView: UITextView!
     
+    var isDecorated: Bool = false
+    
+    func decorate() {
+        guard !isDecorated else { return }
+        
+        ViewDecorator.shadow(for: self)
+        isDecorated = true
+    }
     
 }
 

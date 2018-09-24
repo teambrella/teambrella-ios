@@ -89,6 +89,7 @@ class ApplicationVC: UICollectionViewController, Routable {
         
         let model = models[indexPath.row]
         applicationCell.setup(with: model)
+        (applicationCell as? ApplicationCellDecorable)?.decorate()
     }
     
     override func collectionView(_ collectionView: UICollectionView,

@@ -16,8 +16,17 @@
 
 import UIKit
 
-class ApplicationTitleCell: UICollectionViewCell {
+class ApplicationTitleCell: UICollectionViewCell, ApplicationCellDecorable {
     @IBOutlet var titleLabel: UILabel!
+    var isDecorated: Bool = false
+    
+    func decorate() {
+        guard !isDecorated else { return }
+        
+        ViewDecorator.rounded(edges: [.topLeft, .topRight], for: self)
+        ViewDecorator.shadow(for: self)
+        isDecorated = true
+    }
     
 }
 

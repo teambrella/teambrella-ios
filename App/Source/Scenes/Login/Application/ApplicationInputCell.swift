@@ -16,11 +16,18 @@
 
 import UIKit
 
-class ApplicationInputCell: UICollectionViewCell {
+class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var headlightLabel: UILabel!
     @IBOutlet var inputTextField: UITextField!
+    var isDecorated: Bool = false
     
+    func decorate() {
+        guard !isDecorated else { return }
+        
+        ViewDecorator.shadow(for: self)
+        isDecorated = true
+    }
 }
 
 extension ApplicationInputCell: ApplicationCell {

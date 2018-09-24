@@ -19,7 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import Foundation
+import UIKit
 
 struct ViewDecorator {
     static func shadow(for cell: UICollectionReusableView) {
@@ -60,6 +60,25 @@ struct ViewDecorator {
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = 4
         }
+    }
+    
+    static func rounded(edges: UIRectCorner, radius: CGFloat = 4, for cell: UICollectionReusableView) {
+        let layer: CALayer
+        if let cell = cell as? UICollectionViewCell {
+           layer = cell.contentView.layer
+        } else {
+            layer = cell.layer
+        }
+//        layer.masksToBounds = true
+//        layer.cornerRadius = radius
+        
+        let mask = CAShapeLayer()
+        mask.frame = cell.bounds
+        let size = CGSize(width: radius, height: radius)
+        let path = UIBezierPath(roundedRect: cell.bounds, byRoundingCorners: edges, cornerRadii: size)
+        mask.path = path.cgPath
+        
+        layer.mask = mask
     }
     
     static func addCloseButton(for cell: UICollectionReusableView) {

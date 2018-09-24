@@ -1053,6 +1053,8 @@
 		6DB894F6215551F600780D5F /* ApplicationTermsAndConditionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB894F4215551F600780D5F /* ApplicationTermsAndConditionsCell.swift */; };
 		6DB894F821556B6300780D5F /* HomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB894F721556B6300780D5F /* HomeBackgroundView.swift */; };
 		6DB894F921556B6300780D5F /* HomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB894F721556B6300780D5F /* HomeBackgroundView.swift */; };
+		6DB894FB2159015700780D5F /* ApplicationCellDecorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB894FA2159015700780D5F /* ApplicationCellDecorable.swift */; };
+		6DB894FC2159015700780D5F /* ApplicationCellDecorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB894FA2159015700780D5F /* ApplicationCellDecorable.swift */; };
 		6DB921EF1F9DEC27009D3937 /* EthWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB921ED1F9DEC27009D3937 /* EthWallet.swift */; };
 		6DB921F51F9DF2A1009D3937 /* Contract.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6DB921F31F9DF2A1009D3937 /* Contract.txt */; };
 		6DB922261F9E27CD009D3937 /* AbiArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB922241F9E27CD009D3937 /* AbiArguments.swift */; };
@@ -1684,6 +1686,7 @@
 		6DB812291EE715DA00B202CE /* DiscussionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscussionCell.xib; path = View/Cells/DiscussionCell.xib; sourceTree = "<group>"; };
 		6DB894F4215551F600780D5F /* ApplicationTermsAndConditionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationTermsAndConditionsCell.swift; path = App/Source/Scenes/Login/Application/ApplicationTermsAndConditionsCell.swift; sourceTree = SOURCE_ROOT; };
 		6DB894F721556B6300780D5F /* HomeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeBackgroundView.swift; path = View/Complex/HomeBackgroundView.swift; sourceTree = "<group>"; };
+		6DB894FA2159015700780D5F /* ApplicationCellDecorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationCellDecorable.swift; path = App/Source/Scenes/Login/Application/ApplicationCellDecorable.swift; sourceTree = SOURCE_ROOT; };
 		6DB921ED1F9DEC27009D3937 /* EthWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthWallet.swift; sourceTree = "<group>"; };
 		6DB921F31F9DF2A1009D3937 /* Contract.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Contract.txt; sourceTree = "<group>"; };
 		6DB922241F9E27CD009D3937 /* AbiArguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AbiArguments.swift; path = Blockchain/AbiArguments.swift; sourceTree = SOURCE_ROOT; };
@@ -2962,6 +2965,7 @@
 				6DB743E42150103400F57D00 /* ApplicationFlowVC.swift */,
 				6DB743ED21550D2000F57D00 /* ApplicationCellSizer.swift */,
 				6DB894F4215551F600780D5F /* ApplicationTermsAndConditionsCell.swift */,
+				6DB894FA2159015700780D5F /* ApplicationCellDecorable.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -3523,6 +3527,11 @@
 				TargetAttributes = {
 					6D05234B20A5D838000B3247 = {
 						DevelopmentTeam = Y6A22RLVJG;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					6D42CC9A20E133B300C2B146 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -3532,6 +3541,11 @@
 					};
 					6D4E5C241F7AB6870020DEE2 = {
 						DevelopmentTeam = Y6A22RLVJG;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					6D59FCF51FBC8407006C0A2B = {
 						CreatedOnToolsVersion = 9.1;
@@ -4524,6 +4538,7 @@
 				6D05246E20A5D838000B3247 /* VotingScrollerCellModel.swift in Sources */,
 				6DB743E62150103400F57D00 /* ApplicationFlowVC.swift in Sources */,
 				6D05246F20A5D838000B3247 /* PhotoPreviewVC.swift in Sources */,
+				6DB894FC2159015700780D5F /* ApplicationCellDecorable.swift in Sources */,
 				6D05247020A5D838000B3247 /* SODVC.swift in Sources */,
 				6D10A3422136A90A00DB59A1 /* ServiceChatCell.swift in Sources */,
 				6D05247120A5D838000B3247 /* VersionValidator.swift in Sources */,
@@ -4970,6 +4985,7 @@
 				6D4E5D181F7AB6870020DEE2 /* PhotoPreviewVC.swift in Sources */,
 				6DB743E52150103400F57D00 /* ApplicationFlowVC.swift in Sources */,
 				6D2A7C641FCC66960094ABB7 /* SODVC.swift in Sources */,
+				6DB894FB2159015700780D5F /* ApplicationCellDecorable.swift in Sources */,
 				6DEC9482208E449C0017E87B /* VersionValidator.swift in Sources */,
 				6D10A3402136A90200DB59A1 /* ServiceChatCell.swift in Sources */,
 				6D4E5D191F7AB6870020DEE2 /* ImageGalleryCell.swift in Sources */,

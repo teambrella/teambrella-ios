@@ -173,5 +173,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         service.teambrella.startUpdating(completion: completionHandler)
 
     }
+    
+    func application(_ application: UIApplication,
+                     continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        print(userActivity)
+        return true
+    }
 
 }
