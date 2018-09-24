@@ -22,6 +22,7 @@ end
 def firebase_pods
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'Firebase/DynamicLinks'
 end
 
 def swift_frameworks_pods

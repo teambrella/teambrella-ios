@@ -35,5 +35,5 @@
 "Login.Application.Item.Title"                     = "МАРКА, МОДЕЛЬ, ГОД";
 "Login.Application.Email.Title"                    = "EMAIL";
 "Login.Application.RegisteerButton.Title"          = "Зарегистрироваться";
-"Login.Application.TermsAndConditions.format"      = "Создавая учётную запись, ты принимаешь %@, Teambrella";
+"Login.Application.TermsAndConditions.format"      = "Создавая учётную запись, ты принимаешь %@ Teambrella";
 "Login.Application.TermsAndConditions.Link"        = "Условия Использования";

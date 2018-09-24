@@ -401,33 +401,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jz9-mY-7nL" customClass="HomeBackgroundView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrL-Nr-m8O">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esn-1B-zTN" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-50" width="375" height="417"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                                <color key="value" red="0.25882352939999997" green="0.30588235289999999" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
-                                                <color key="value" red="0.32156862749999998" green="0.36862745099999999" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti-home" translatesAutoresizingMaskIntoConstraints="NO" id="dFA-AD-aVp">
-                                        <rect key="frame" x="0.0" y="-50" width="375" height="417"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpc-1k-hiH" customClass="UmbrellaView" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="242" width="375" height="125"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anticasco-logo" translatesAutoresizingMaskIntoConstraints="NO" id="vqI-ev-Rxi">
                                         <rect key="frame" x="152.66666666666666" y="16" width="70" height="70"/>
                                         <constraints>
@@ -535,26 +515,14 @@ Follow a few short steps to apply.</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="rnF-03-03C" secondAttribute="trailing" constant="20" id="7BN-M5-faW"/>
-                                    <constraint firstItem="vpc-1k-hiH" firstAttribute="width" secondItem="esn-1B-zTN" secondAttribute="width" id="A1b-7a-jCT"/>
-                                    <constraint firstItem="esn-1B-zTN" firstAttribute="leading" secondItem="SrL-Nr-m8O" secondAttribute="leading" id="ABb-Ah-yMs"/>
-                                    <constraint firstItem="dFA-AD-aVp" firstAttribute="width" secondItem="esn-1B-zTN" secondAttribute="width" id="Bo7-Ct-99n"/>
                                     <constraint firstItem="vqI-ev-Rxi" firstAttribute="centerX" secondItem="SrL-Nr-m8O" secondAttribute="centerX" id="H8w-Ji-YdR"/>
-                                    <constraint firstAttribute="trailing" secondItem="esn-1B-zTN" secondAttribute="trailing" id="HYi-DE-eBe"/>
-                                    <constraint firstItem="vpc-1k-hiH" firstAttribute="height" secondItem="esn-1B-zTN" secondAttribute="height" multiplier="0.3" id="KIp-s2-DT5"/>
                                     <constraint firstItem="rnF-03-03C" firstAttribute="leading" secondItem="SrL-Nr-m8O" secondAttribute="leading" constant="20" id="LNj-wk-gGw"/>
-                                    <constraint firstItem="esn-1B-zTN" firstAttribute="bottom" secondItem="SrL-Nr-m8O" secondAttribute="centerY" id="MNM-L4-baP"/>
-                                    <constraint firstItem="dFA-AD-aVp" firstAttribute="centerY" secondItem="esn-1B-zTN" secondAttribute="centerY" id="Tbr-f3-zOE"/>
                                     <constraint firstItem="ena-Wj-V6x" firstAttribute="centerX" secondItem="vqI-ev-Rxi" secondAttribute="centerX" id="V0P-ch-8Su"/>
-                                    <constraint firstItem="vpc-1k-hiH" firstAttribute="bottom" secondItem="esn-1B-zTN" secondAttribute="bottom" id="WYM-mM-bAF"/>
                                     <constraint firstItem="ena-Wj-V6x" firstAttribute="top" secondItem="vqI-ev-Rxi" secondAttribute="bottom" constant="8" id="h86-Ej-RCw"/>
-                                    <constraint firstItem="esn-1B-zTN" firstAttribute="top" secondItem="SrL-Nr-m8O" secondAttribute="top" constant="-50" id="hW1-Nx-9Ae"/>
                                     <constraint firstItem="DWF-DN-pUi" firstAttribute="centerX" secondItem="ena-Wj-V6x" secondAttribute="centerX" id="nEK-Ko-1OW"/>
-                                    <constraint firstItem="vpc-1k-hiH" firstAttribute="centerX" secondItem="esn-1B-zTN" secondAttribute="centerX" id="q24-3R-Nm6"/>
-                                    <constraint firstItem="dFA-AD-aVp" firstAttribute="height" secondItem="esn-1B-zTN" secondAttribute="height" id="rdd-Mz-uYe"/>
-                                    <constraint firstItem="dFA-AD-aVp" firstAttribute="centerX" secondItem="esn-1B-zTN" secondAttribute="centerX" id="tEi-L9-zBt"/>
                                     <constraint firstItem="rnF-03-03C" firstAttribute="top" secondItem="DWF-DN-pUi" secondAttribute="bottom" constant="20" id="xa9-7L-m3X"/>
                                     <constraint firstItem="DWF-DN-pUi" firstAttribute="top" secondItem="ena-Wj-V6x" secondAttribute="bottom" constant="8" id="zJl-6S-fdz"/>
                                 </constraints>
@@ -564,9 +532,13 @@ Follow a few short steps to apply.</string>
                         <constraints>
                             <constraint firstItem="zFg-Gu-eib" firstAttribute="trailing" secondItem="SrL-Nr-m8O" secondAttribute="trailing" id="0s2-uk-q9H"/>
                             <constraint firstItem="SrL-Nr-m8O" firstAttribute="top" secondItem="Iae-qr-HCo" secondAttribute="top" constant="44" id="2k1-BI-gcK"/>
+                            <constraint firstItem="zFg-Gu-eib" firstAttribute="trailing" secondItem="Jz9-mY-7nL" secondAttribute="trailing" id="C0T-0J-WwO"/>
                             <constraint firstItem="SrL-Nr-m8O" firstAttribute="leading" secondItem="Iae-qr-HCo" secondAttribute="leading" id="TaH-nX-MKd"/>
+                            <constraint firstItem="Jz9-mY-7nL" firstAttribute="leading" secondItem="zFg-Gu-eib" secondAttribute="leading" id="VKz-NJ-Q7E"/>
+                            <constraint firstItem="Jz9-mY-7nL" firstAttribute="top" secondItem="Iae-qr-HCo" secondAttribute="top" id="dnx-AE-0HK"/>
                             <constraint firstItem="vqI-ev-Rxi" firstAttribute="top" secondItem="zFg-Gu-eib" secondAttribute="top" constant="16" id="lBL-9k-cB7"/>
-                            <constraint firstItem="zFg-Gu-eib" firstAttribute="bottom" secondItem="SrL-Nr-m8O" secondAttribute="bottom" id="ml4-cL-s6g"/>
+                            <constraint firstAttribute="bottom" secondItem="SrL-Nr-m8O" secondAttribute="bottom" id="ml4-cL-s6g"/>
+                            <constraint firstAttribute="bottom" secondItem="Jz9-mY-7nL" secondAttribute="bottom" id="rcR-fR-MoW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zFg-Gu-eib"/>
                     </view>
@@ -697,7 +669,7 @@ Follow a few short steps to apply.</string>
                                     <outlet property="textLabel" destination="tDM-4z-2HJ" id="0MR-b6-jCu"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="action" id="Hsi-iI-unK" customClass="ApplicationActionCell" customModule="Surilla" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="action" id="Hsi-iI-unK" customClass="ApplicationActionCell" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="379" width="375" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -705,10 +677,10 @@ Follow a few short steps to apply.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvB-sv-YEa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="497"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lA-HB-9Se" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="39" width="343" height="50"/>
+                                                    <rect key="frame" x="16" y="427" width="343" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="JaB-No-TdR"/>
                                                     </constraints>
@@ -733,7 +705,6 @@ Follow a few short steps to apply.</string>
                                         </view>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="LvB-sv-YEa" secondAttribute="trailing" id="c9T-Ab-CCf"/>
                                     <constraint firstItem="LvB-sv-YEa" firstAttribute="leading" secondItem="Hsi-iI-unK" secondAttribute="leading" id="gHt-ey-GdJ"/>
@@ -789,7 +760,7 @@ Follow a few short steps to apply.</string>
                             <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lam-sG-3Xm">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anticasco-logo" translatesAutoresizingMaskIntoConstraints="NO" id="lam-sG-3Xm">
                                     <rect key="frame" x="152.66666666666666" y="0.0" width="70" height="70"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="lam-sG-3Xm" secondAttribute="height" multiplier="1:1" id="d8f-Cn-HW9"/>
@@ -828,17 +799,17 @@ Follow a few short steps to apply.</string>
                             <outlet property="delegate" destination="W08-zs-DM3" id="Wtq-8h-aA8"/>
                         </connections>
                     </collectionView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jeo-fC-nju" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="303" y="-850"/>
+            <point key="canvasLocation" x="301.60000000000002" y="-850.49261083743841"/>
         </scene>
     </scenes>
     <resources>
         <image name="anticasco-logo" width="300" height="300"/>
         <image name="closeIcon" width="20" height="20"/>
         <image name="confetti" width="1500" height="2668"/>
-        <image name="confetti-home" width="375" height="219"/>
         <image name="facebook" width="24" height="24"/>
         <image name="teambrella-logo-white" width="150" height="24"/>
         <image name="vk" width="2500" height="2500"/>

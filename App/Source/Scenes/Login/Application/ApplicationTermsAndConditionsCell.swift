@@ -24,7 +24,7 @@ class ApplicationTermsAndConditionsCell: UICollectionViewCell, ApplicationCellDe
     func decorate() {
         guard !isDecorated else { return }
         
-        ViewDecorator.shadow(for: self)
+         ViewDecorator.homeCardShadow(for: self, offset: CGSize(width: 0, height: 9))
         isDecorated = true
     }
     

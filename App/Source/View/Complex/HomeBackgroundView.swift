@@ -20,8 +20,9 @@ class HomeBackgroundView: UIView {
     lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = UIColor.frenchBlue
-        view.image = #imageLiteral(resourceName: "sketchconfettiCopy2")
-        view.contentMode = .scaleToFill
+        view.image = #imageLiteral(resourceName: "confetti")
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         self.addSubview(view)
         return view
     }()
@@ -29,6 +30,7 @@ class HomeBackgroundView: UIView {
     lazy var umbrellaView: UmbrellaView = {
         let view = UmbrellaView()
         self.addSubview(view)
+        self.backgroundColor = view.fillColor
         return view
     }()
     

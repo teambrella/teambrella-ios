@@ -30,8 +30,8 @@ struct ViewDecorator {
         shadow(for: cell, opacity: 0.2, radius: 5, offset: CGSize(width: 0, height: 1))
     }
     
-    static func homeCardShadow(for view: UIView) {
-        shadow(for: view, color: #colorLiteral(red: 0.08235294118, green: 0.2078431373, blue: 0.3529411765, alpha: 0.2000214041), opacity: 1, radius: 5, offset: CGSize(width: 0, height: 5))
+    static func homeCardShadow(for view: UIView, offset: CGSize = CGSize(width: 0, height: 5)) {
+        shadow(for: view, color: #colorLiteral(red: 0.08235294118, green: 0.2078431373, blue: 0.3529411765, alpha: 0.2000214041), opacity: 1, radius: 5, offset: offset)
     }
     
     static func shadow(for view: UIView,
@@ -39,7 +39,6 @@ struct ViewDecorator {
                        opacity: Float,
                        radius: Float,
                        offset: CGSize = CGSize.zero) {
-        let layer: CGLayer
         view.layer.shadowColor = color.cgColor
         view.layer.shadowOffset = offset
         view.layer.shadowOpacity = opacity
@@ -69,8 +68,6 @@ struct ViewDecorator {
         } else {
             layer = cell.layer
         }
-//        layer.masksToBounds = true
-//        layer.cornerRadius = radius
         
         let mask = CAShapeLayer()
         mask.frame = cell.bounds

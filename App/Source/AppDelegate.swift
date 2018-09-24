@@ -23,6 +23,7 @@ import Auth0
 import Fabric
 import FBSDKCoreKit
 import Firebase
+import FirebaseDynamicLinks
 import PushKit
 import UIKit
 
@@ -71,6 +72,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                          open: url,
                                                                          sourceApplication: source,
                                                                          annotation: options[.annotation])
+        } else if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            return handle(dynamicLink: dynamicLink)
         } else {
             print("Opening app from Auth0")
             return Auth0.resumeAuth(url, options: options)
@@ -141,6 +144,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         lastTime = link.targetTimestamp
     }
+    
+    func handle(dynamicLink: DynamicLink) -> Bool {
+        print("Handling firebase dynamic link: \(dynamicLink)")
+        return true
+    }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         service.socket?.stop()
@@ -178,7 +186,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         print(userActivity)
-        return true
+        guard let url = userActivity.webpageURL else {
+            return false
+        }
+        
+        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { link, error in
+            guard let link = link else { return }
+            
+            _ = self.handle(dynamicLink: link)
+        }
+        return handled
     }
 
 }
