@@ -37,6 +37,15 @@ class ApplicationVC: UICollectionViewController, Routable {
         let view = HomeBackgroundView(frame: self.view.bounds)
         view.backgroundColor = .white
         collectionView?.backgroundView = view
+        
+        service.dao.getCars(string: "q").observe { result in
+            switch result {
+            case let .value(cars):
+                print("Cars: \(cars)")
+            case let .error(error):
+                print("Error: \(error)")
+            }
+        }
     }
     
     /*
@@ -55,7 +64,6 @@ class ApplicationVC: UICollectionViewController, Routable {
         // #warning Incomplete implementation, return the number of sections
         return headers.count
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -104,46 +112,19 @@ class ApplicationVC: UICollectionViewController, Routable {
         applicationView.setup(with: model)
     }
     
-    // MARK: UICollectionViewDelegate
-    
-    /*
-     // Uncomment this method to specify if the specified item should be highlighted during tracking
-     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-     
-     }
-     */
-    
 }
 
 extension ApplicationVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let model = models[indexPath.row]
         return ApplicationCellSizer(size: collectionView.bounds.size, offset: 16).cellSize(model: model)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         return ApplicationCellSizer(size: collectionView.bounds.size, offset: 16).headerSize
     }
 }

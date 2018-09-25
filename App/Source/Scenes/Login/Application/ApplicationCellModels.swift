@@ -80,4 +80,3 @@ protocol ApplicationCellModel {
 protocol ApplicationCell {
     func setup(with model: ApplicationCellModel)
 }
-

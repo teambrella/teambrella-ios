@@ -18,5 +18,6 @@ import Foundation
 
 protocol ApplicationCellDecorable {
     var isDecorated: Bool { get set }
+    
     func decorate()
 }

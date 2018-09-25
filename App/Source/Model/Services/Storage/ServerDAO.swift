@@ -658,4 +658,14 @@ class ServerDAO: DAO {
         }
     }
     
+    func getCars(string: String) -> Future<[String]> {
+        let promise = Promise<[String]>()
+        let request = TeambrellaGetRequest<[String]>(type: .cars,
+                                           parameters: ["q": string],
+                                           success: promise.resolve,
+                                           failure: promise.reject)
+        request.start(server: self.server)
+        return promise
+    }
+    
 }

@@ -65,6 +65,10 @@ enum TeambrellaRequestType: String {
     case me = "me/getMe"
 }
 
+enum TeambrellaGetRequestType: String {
+    case cars = "carobject/getcars"
+}
+
 extension TeambrellaRequestType {
     static func with(itemType: ItemType) -> TeambrellaRequestType {
         switch itemType {
