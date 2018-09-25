@@ -98,4 +98,5 @@ protocol DAO {
     func performRequest(request: TeambrellaRequest)
     
     func getCars(string: String) -> Future<[String]>
+    func getCities(string: String) -> Future<[String]>
 }

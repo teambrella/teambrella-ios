@@ -67,6 +67,7 @@ enum TeambrellaRequestType: String {
 
 enum TeambrellaGetRequestType: String {
     case cars = "carobject/getcars"
+    case cities = "geoObject/getCities"
 }
 
 extension TeambrellaRequestType {

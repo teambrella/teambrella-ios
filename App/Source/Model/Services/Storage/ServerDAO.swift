@@ -648,7 +648,7 @@ class ServerDAO: DAO {
     }
     
     func freshKey(completion: @escaping (Key) -> Void) {
-        if let time = lastKeyTime, Date().timeIntervalSince(time) < 60.0 * 5.0 {
+        if let time = lastKeyTime, Date().timeIntervalSince(time) < 60.0 * 10.0 {
             completion(server.key)
         } else {
             self.server.updateTimestamp(completion: { _, _ in
@@ -659,11 +659,19 @@ class ServerDAO: DAO {
     }
     
     func getCars(string: String) -> Future<[String]> {
+    return getQuery(string: string, type: .cars)
+    }
+    
+    func getCities(string: String) -> Future<[String]> {
+       return getQuery(string: string, type: .cities)
+    }
+    
+    private func getQuery(string: String, type: TeambrellaGetRequestType) -> Future<[String]> {
         let promise = Promise<[String]>()
-        let request = TeambrellaGetRequest<[String]>(type: .cars,
-                                           parameters: ["q": string],
-                                           success: promise.resolve,
-                                           failure: promise.reject)
+        let request = TeambrellaGetRequest<[String]>(type: type,
+                                                     parameters: ["q": string],
+                                                     success: promise.resolve,
+                                                     failure: promise.reject)
         request.start(server: self.server)
         return promise
     }
