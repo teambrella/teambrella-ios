@@ -19,7 +19,7 @@ import UIKit
 class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var headlightLabel: UILabel!
-    @IBOutlet var inputTextField: UITextField!
+    @IBOutlet var inputTextField: TextField!
     var isDecorated: Bool = false
     
     func decorate() {
