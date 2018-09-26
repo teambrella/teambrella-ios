@@ -30,6 +30,9 @@ class ApplicationFlowVC: UIViewController {
         super.viewDidLoad()
 
         ViewDecorator.homeCardShadow(for: shadowView)
+        self.view.needsUpdateConstraints()
+        logoImageView.layer.cornerRadius = 4
+        logoImageView.clipsToBounds = true
     }
 
     @IBAction func tapButton(_ sender: UIButton) {

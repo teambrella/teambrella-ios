@@ -521,6 +521,8 @@
 		6D1EC3F0202B0F7300F0541C /* TxInputServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3EE202B0F7300F0541C /* TxInputServerImpl.swift */; };
 		6D1EC3F3202B114A00F0541C /* UpdatesServerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1EC3F1202B114A00F0541C /* UpdatesServerImpl.swift */; };
 		6D20CF971FDEE1890049BE9C /* TeamPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D20CF951FDEE1890049BE9C /* TeamPart.swift */; };
+		6D244E34215BC9C100401CDA /* ApplicationBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D244E33215BC9C100401CDA /* ApplicationBackgroundView.swift */; };
+		6D244E35215BC9C500401CDA /* ApplicationBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D244E33215BC9C100401CDA /* ApplicationBackgroundView.swift */; };
 		6D251C3A20348643005081E4 /* ClaimVotingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D251C3720348634005081E4 /* ClaimVotingView.xib */; };
 		6D251C3B20348646005081E4 /* ClaimVotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3620348634005081E4 /* ClaimVotingView.swift */; };
 		6D251C3F2034B118005081E4 /* ChatObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D251C3C2034B118005081E4 /* ChatObjectView.swift */; };
@@ -1379,6 +1381,7 @@
 		6D1EC3EE202B0F7300F0541C /* TxInputServerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxInputServerImpl.swift; sourceTree = "<group>"; };
 		6D1EC3F1202B114A00F0541C /* UpdatesServerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesServerImpl.swift; sourceTree = "<group>"; };
 		6D20CF951FDEE1890049BE9C /* TeamPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamPart.swift; path = Model/Entities/TeamPart.swift; sourceTree = "<group>"; };
+		6D244E33215BC9C100401CDA /* ApplicationBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationBackgroundView.swift; path = View/Complex/ApplicationBackgroundView.swift; sourceTree = "<group>"; };
 		6D251C3620348634005081E4 /* ClaimVotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClaimVotingView.swift; path = Controller/ClaimVotingView.swift; sourceTree = "<group>"; };
 		6D251C3720348634005081E4 /* ClaimVotingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ClaimVotingView.xib; path = Controller/ClaimVotingView.xib; sourceTree = "<group>"; };
 		6D251C3C2034B118005081E4 /* ChatObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatObjectView.swift; path = Controller/ChatObjectView.swift; sourceTree = "<group>"; };
@@ -2230,6 +2233,7 @@
 				6D251C3C2034B118005081E4 /* ChatObjectView.swift */,
 				6D251C3D2034B118005081E4 /* ChatObjectView.xib */,
 				6DB894F721556B6300780D5F /* HomeBackgroundView.swift */,
+				6D244E33215BC9C100401CDA /* ApplicationBackgroundView.swift */,
 			);
 			name = ComplexViews;
 			sourceTree = "<group>";
@@ -4016,7 +4020,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png",
@@ -4037,7 +4041,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6D05254620A5F336000B3247 /* Swiftlint */ = {
@@ -4158,7 +4162,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png",
@@ -4179,7 +4183,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8F73F72AC1E236FABBC621AB /* [CP] Check Pods Manifest.lock */ = {
@@ -4370,6 +4374,7 @@
 				6D0523C920A5D838000B3247 /* JoinTeamCellModels.swift in Sources */,
 				6D0523CA20A5D838000B3247 /* DeveloperTools.swift in Sources */,
 				6D0523CB20A5D838000B3247 /* ReportCellBuilder.swift in Sources */,
+				6D244E35215BC9C500401CDA /* ApplicationBackgroundView.swift in Sources */,
 				6D0523CC20A5D838000B3247 /* EtherAPI.swift in Sources */,
 				6D0523CD20A5D838000B3247 /* HomeVC.swift in Sources */,
 				6D0523CE20A5D838000B3247 /* EntityEnums.swift in Sources */,
@@ -4818,6 +4823,7 @@
 				6D4E5C931F7AB6870020DEE2 /* ReportCellBuilder.swift in Sources */,
 				6D677E781FA110B800ED1C36 /* EtherAPI.swift in Sources */,
 				6D4E5C951F7AB6870020DEE2 /* HomeVC.swift in Sources */,
+				6D244E34215BC9C100401CDA /* ApplicationBackgroundView.swift in Sources */,
 				6D4E5C961F7AB6870020DEE2 /* EntityEnums.swift in Sources */,
 				6D4E5C971F7AB6870020DEE2 /* ChatCellModels.swift in Sources */,
 				6D4E5C981F7AB6870020DEE2 /* TeammateVoteCell.swift in Sources */,

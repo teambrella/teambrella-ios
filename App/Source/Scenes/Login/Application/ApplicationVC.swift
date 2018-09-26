@@ -34,8 +34,7 @@ class ApplicationVC: UICollectionViewController, Routable {
         models = builder.carGroupModels()
         headers = builder.carGroupHeaderModels()
         
-        let view = HomeBackgroundView(frame: self.view.bounds)
-        view.backgroundColor = .white
+        let view = ApplicationBackgroundView(frame: self.view.bounds)
         collectionView?.backgroundView = view
         
         service.dao.getCars(string: "q").observe { result in

@@ -42,7 +42,7 @@ struct ApplicationCellSizer {
     }
     
     var headerSize: CGSize {
-        return CGSize(width: size.width, height: 160)
+        return CGSize(width: size.width, height: 180)
     }
     
     func cellSize(model: ApplicationCellModel) -> CGSize {

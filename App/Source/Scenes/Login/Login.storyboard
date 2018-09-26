@@ -210,27 +210,27 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confetti" translatesAutoresizingMaskIntoConstraints="NO" id="1Sf-LV-D1X">
-                                <rect key="frame" x="0.0" y="68" width="375" height="710"/>
+                                <rect key="frame" x="0.0" y="24" width="375" height="754"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIQ-Gf-bop">
-                                <rect key="frame" x="80" y="88.000000000000014" width="215" height="162.33333333333337"/>
+                                <rect key="frame" x="80" y="44" width="215" height="162.33333333333334"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teambrella-logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-qJ-3a4">
-                                <rect key="frame" x="80" y="250.33333333333337" width="215" height="43"/>
+                                <rect key="frame" x="80" y="206.33333333333334" width="215" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="ahq-Ad-kov"/>
                                     <constraint firstAttribute="width" secondItem="2Jk-qJ-3a4" secondAttribute="height" multiplier="5:1" id="jtN-3y-ZKp"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ilg-bB-Wml">
-                                <rect key="frame" x="16" y="308.33333333333331" width="343" height="22"/>
+                                <rect key="frame" x="16" y="264.33333333333331" width="343" height="22"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                 <color key="textColor" red="0.74117647060000003" green="0.76470588240000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="4QV-T4-WRb">
-                                <rect key="frame" x="24" y="389.33333333333331" width="327" height="73.333333333333314"/>
+                                <rect key="frame" x="24" y="345.33333333333331" width="327" height="73.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooX-xL-xb7">
                                         <rect key="frame" x="0.0" y="15.999999999999998" width="327" height="18.333333333333329"/>
@@ -290,7 +290,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6R-gJ-CtI">
-                                <rect key="frame" x="323" y="96" width="44" height="44"/>
+                                <rect key="frame" x="323" y="52" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="CXj-g0-Q7h"/>
                                     <constraint firstAttribute="width" secondItem="z6R-gJ-CtI" secondAttribute="height" multiplier="1:1" id="O5S-lj-c7B"/>
@@ -401,7 +401,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jz9-mY-7nL" customClass="HomeBackgroundView" customModule="Surilla" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jz9-mY-7nL" customClass="ApplicationBackgroundView" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -409,50 +409,51 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anticasco-logo" translatesAutoresizingMaskIntoConstraints="NO" id="vqI-ev-Rxi">
-                                        <rect key="frame" x="152.66666666666666" y="16" width="70" height="70"/>
+                                        <rect key="frame" x="152.66666666666666" y="30" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="vqI-ev-Rxi" secondAttribute="height" multiplier="1:1" id="f5M-Po-twN"/>
                                             <constraint firstAttribute="width" constant="70" id="zJi-Tq-stM"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Антикаско" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ena-Wj-V6x">
-                                        <rect key="frame" x="141.66666666666666" y="94" width="91.666666666666657" height="21"/>
-                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
+                                        <rect key="frame" x="112" y="108" width="151" height="34"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="28"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="РОССИЯ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWF-DN-pUi">
-                                        <rect key="frame" x="150.66666666666666" y="123" width="74" height="21"/>
-                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="152.66666666666666" y="150" width="69.666666666666657" height="19.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
+                                        <color key="textColor" white="0.8048480308219178" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnF-03-03C">
-                                        <rect key="frame" x="20" y="164" width="335" height="329"/>
+                                        <rect key="frame" x="20" y="189.66666666666663" width="335" height="386"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns7-nW-fpu" customClass="RoundedCornersView" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="386"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi there!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DX-9I-jMm">
-                                                        <rect key="frame" x="22" y="32" width="81" height="25"/>
-                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="20"/>
+                                                        <rect key="frame" x="22" y="32.000000000000028" width="97" height="29.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="24"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAQ-xd-ZAF">
-                                                        <rect key="frame" x="22" y="77" width="293" height="102"/>
+                                                        <rect key="frame" x="22" y="81.333333333333357" width="293" height="144.66666666666663"/>
                                                         <string key="text">We welcome you to join the team Bicycle Backup. The team makes every decision by discussion and voting. If there are no claims, you get to keep 100% of your money.
 
 Follow a few short steps to apply.</string>
-                                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
+                                                        <color key="textColor" red="0.40000000000000002" green="0.45098039215686275" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ME7-le-iSE" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="264" width="295" height="45"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ME7-le-iSE" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="317" width="295" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="vXt-Hf-Jbz"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                                         <state key="normal" title="Continue with VK">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -463,11 +464,12 @@ Follow a few short steps to apply.</string>
                                                             <action selector="tapButton:" destination="XCd-3U-UJI" eventType="touchUpInside" id="XOq-d7-hX7"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFa-pn-Cjb" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="199" width="295" height="45"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFa-pn-Cjb" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="245" width="295" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="a1d-re-sae"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                                         <state key="normal" title="Continue with Facebook">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -491,7 +493,7 @@ Follow a few short steps to apply.</string>
                                                     <constraint firstItem="TFa-pn-Cjb" firstAttribute="trailing" secondItem="ME7-le-iSE" secondAttribute="trailing" id="hdn-kz-QBI"/>
                                                     <constraint firstItem="6DX-9I-jMm" firstAttribute="top" secondItem="Ns7-nW-fpu" secondAttribute="top" constant="32" id="iaW-Zb-i3h"/>
                                                     <constraint firstItem="TFa-pn-Cjb" firstAttribute="leading" secondItem="ME7-le-iSE" secondAttribute="leading" id="lcR-Ph-pxF"/>
-                                                    <constraint firstItem="TFa-pn-Cjb" firstAttribute="top" secondItem="dAQ-xd-ZAF" secondAttribute="bottom" constant="20" id="qFh-TH-Lwm"/>
+                                                    <constraint firstItem="TFa-pn-Cjb" firstAttribute="top" secondItem="dAQ-xd-ZAF" secondAttribute="bottom" constant="30" id="qFh-TH-Lwm"/>
                                                     <constraint firstItem="ME7-le-iSE" firstAttribute="top" secondItem="TFa-pn-Cjb" secondAttribute="bottom" constant="20" id="rYy-wG-4ly"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -536,7 +538,7 @@ Follow a few short steps to apply.</string>
                             <constraint firstItem="SrL-Nr-m8O" firstAttribute="leading" secondItem="Iae-qr-HCo" secondAttribute="leading" id="TaH-nX-MKd"/>
                             <constraint firstItem="Jz9-mY-7nL" firstAttribute="leading" secondItem="zFg-Gu-eib" secondAttribute="leading" id="VKz-NJ-Q7E"/>
                             <constraint firstItem="Jz9-mY-7nL" firstAttribute="top" secondItem="Iae-qr-HCo" secondAttribute="top" id="dnx-AE-0HK"/>
-                            <constraint firstItem="vqI-ev-Rxi" firstAttribute="top" secondItem="zFg-Gu-eib" secondAttribute="top" constant="16" id="lBL-9k-cB7"/>
+                            <constraint firstItem="vqI-ev-Rxi" firstAttribute="top" secondItem="zFg-Gu-eib" secondAttribute="top" constant="30" id="lBL-9k-cB7"/>
                             <constraint firstAttribute="bottom" secondItem="SrL-Nr-m8O" secondAttribute="bottom" id="ml4-cL-s6g"/>
                             <constraint firstAttribute="bottom" secondItem="Jz9-mY-7nL" secondAttribute="bottom" id="rcR-fR-MoW"/>
                         </constraints>
@@ -669,7 +671,7 @@ Follow a few short steps to apply.</string>
                                     <outlet property="textLabel" destination="tDM-4z-2HJ" id="0MR-b6-jCu"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="action" id="Hsi-iI-unK" customClass="ApplicationActionCell" customModule="Surilla" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="action" id="Hsi-iI-unK" customClass="ApplicationActionCell" customModule="Surilla" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="379" width="375" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -677,10 +679,10 @@ Follow a few short steps to apply.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvB-sv-YEa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="497"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8lA-HB-9Se" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="427" width="343" height="50"/>
+                                                    <rect key="frame" x="16" y="39" width="343" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="JaB-No-TdR"/>
                                                     </constraints>
@@ -768,15 +770,15 @@ Follow a few short steps to apply.</string>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cda-wH-2ZI">
-                                    <rect key="frame" x="165.66666666666666" y="92" width="44" height="21"/>
-                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
+                                    <rect key="frame" x="151.33333333333334" y="92" width="72.333333333333343" height="34"/>
+                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="28"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roq-3W-VOt">
-                                    <rect key="frame" x="165.66666666666666" y="121" width="44" height="21"/>
-                                    <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <rect key="frame" x="165.66666666666666" y="134" width="44" height="21"/>
+                                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
+                                    <color key="textColor" white="0.79652718321917804" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -833,6 +835,6 @@ Follow a few short steps to apply.</string>
         <image name="vk" width="2500" height="2500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3Hc-wB-HHG"/>
+        <segue reference="KI3-Cg-VfK"/>
     </inferredMetricsTieBreakers>
 </document>
