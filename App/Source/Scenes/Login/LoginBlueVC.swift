@@ -104,7 +104,7 @@ final class LoginBlueVC: UIViewController {
 
         HUD.show(.progress)
         loginWorker.loginAndRegister(type: type, in: self) { [weak self] token, error in
-            if let token = token, error == nil {
+            if token != nil && error == nil {
                 self?.logIn()
             } else {
                 self?.handleFailure(error: error)

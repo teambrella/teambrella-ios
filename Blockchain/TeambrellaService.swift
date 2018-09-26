@@ -69,7 +69,7 @@ final class TeambrellaService: NSObject {
         isStorageCleared = true
     }
 
-    #if MAIN_APP
+//    #if MAIN_APP
     func signToSockets(service: SocketService) {
         log("Teambrella service signing to socket", type: .cryptoDetails)
         service.add(listener: self) { [weak self] action in
@@ -83,7 +83,7 @@ final class TeambrellaService: NSObject {
             }
         }
     }
-    #endif
+//    #endif
 
     func sendDBDump(completion: @escaping (Bool) -> Void) {
         let dumper = Dumper(api: self.server)

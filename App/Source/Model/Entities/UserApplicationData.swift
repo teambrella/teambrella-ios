@@ -26,6 +26,10 @@ struct UserApplicationData {
     var emailString: String?
     var model: String?
     
-    var email: EmailAddress? { return emailString.map { EmailAddress(string: $0) } }
-}
+    var email: EmailAddress? {
+        guard let emailString = emailString else { return nil }
 
+        return EmailAddress(string: emailString)
+    }
+
+}
