@@ -25,8 +25,8 @@ class UniversalChatContext {
     var title: String?
     var canLoadBackward: Bool = true
 
-    var requestType: TeambrellaRequestType = .teammateChat
-    var postType: TeambrellaRequestType = .newPost
+    var requestType: TeambrellaPostRequestType = .teammateChat
+    var postType: TeambrellaPostRequestType = .newPost
 
     var isPrivate: Bool { return requestType == .privateChat }
     var isRateNeeded: Bool { return type == .application || type == .claim }
@@ -63,7 +63,7 @@ class UniversalChatContext {
 
     init(_ feed: FeedEntity) {
         title = feed.chatTitle ?? feed.modelOrName
-        requestType = TeambrellaRequestType.with(itemType: feed.itemType)
+        requestType = TeambrellaPostRequestType.with(itemType: feed.itemType)
         claimID = feed.itemID
         teamID = service.session?.currentTeam?.teamID
         userID = feed.itemUserID
@@ -73,7 +73,7 @@ class UniversalChatContext {
 
     init(_ homeCardModel: HomeCardModel) {
         title = homeCardModel.chatTitle
-        requestType = TeambrellaRequestType.with(itemType: homeCardModel.itemType)
+        requestType = TeambrellaPostRequestType.with(itemType: homeCardModel.itemType)
 
         claimID = homeCardModel.itemID
         teamID = service.session?.currentTeam?.teamID

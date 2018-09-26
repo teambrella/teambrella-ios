@@ -60,7 +60,7 @@ struct TeambrellaGetRequest<Value: Decodable> {
 
 // swiftlint:disable function_body_length
 struct TeambrellaRequest {
-    let type: TeambrellaRequestType
+    let type: TeambrellaPostRequestType
     var parameters: [String: String]?
     let success: TeambrellaRequestSuccess
     var failure: TeambrellaRequestFailure?
@@ -78,7 +78,7 @@ struct TeambrellaRequest {
         return type.rawValue
     }
     
-    init (type: TeambrellaRequestType,
+    init (type: TeambrellaPostRequestType,
           parameters: [String: String]? = nil,
           
           body: RequestBody? = nil,

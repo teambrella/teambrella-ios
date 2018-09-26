@@ -52,7 +52,7 @@ class ServerDAO: DAO {
         let server = self.server
         freshKey { key in
             let body = RequestBody(key: key, payload: [:])
-            let requestType: TeambrellaRequestType = demo ? .demoTeams : .teams
+            let requestType: TeambrellaPostRequestType = demo ? .demoTeams : .teams
             let request = TeambrellaRequest(type: requestType, parameters: nil, body: body, success: { response in
                 if case .teams(let teamsEntity) = response { promise.resolve(with: teamsEntity) }
             }, failure: { error in promise.reject(with: error) })
@@ -84,7 +84,7 @@ class ServerDAO: DAO {
         let promise = Promise<String>()
         freshKey { key in
             let body = RequestBody(key: key)
-            let requestType: TeambrellaRequestType
+            let requestType: TeambrellaPostRequestType
             if let locale = Locale.current.languageCode, locale == "es" {
                 requestType = .setLanguageEs
             } else {
@@ -449,7 +449,7 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestChat(type: TeambrellaRequestType, body: RequestBody) -> Future<TeambrellaResponseType> {
+    func requestChat(type: TeambrellaPostRequestType, body: RequestBody) -> Future<TeambrellaResponseType> {
         let promise = Promise<TeambrellaResponseType>()
         freshKey { key in
             let request = TeambrellaRequest(type: type, body: body, success: { response in

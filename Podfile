@@ -47,6 +47,7 @@ def swift_frameworks_pods
   pod 'BigNumber', :git => 'https://github.com/mkrd/Swift-Big-Integer.git'
   pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'
   pod 'ThoraxMath', :git => 'https://github.com/yaro812/ThoraxMath.git'
+  pod 'SwiftEmail', :git => 'https://github.com/yaro812/SwiftEmail.git'
 end
 
 def notification_swift_pods

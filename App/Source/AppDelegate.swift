@@ -63,6 +63,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      options: [UIApplicationOpenURLOptionsKey: Any] = [ : ]) -> Bool {
         guard let source = options[.sourceApplication] as? String else {
             print("Failed to get source application from options")
+            if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+                 return handle(dynamicLink: dynamicLink)
+            }
             return false
         }
 
@@ -72,8 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                          open: url,
                                                                          sourceApplication: source,
                                                                          annotation: options[.annotation])
-        } else if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
-            return handle(dynamicLink: dynamicLink)
         } else {
             print("Opening app from Auth0")
             return Auth0.resumeAuth(url, options: options)
