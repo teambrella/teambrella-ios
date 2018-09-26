@@ -1,0 +1,248 @@
+PODS:
+  - Auth0 (1.13.0):
+    - SimpleKeychain
+  - BigNumber (2.0)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - CoreBitcoin (0.6.8.1):
+    - ISO8601DateFormatter
+    - OpenSSL-Universal (= 1.0.1.16)
+  - Crashlytics (3.10.7):
+    - Fabric (~> 1.7.11)
+  - ExtensionsPack (1.1.0)
+  - Fabric (1.7.11)
+  - FBSDKCoreKit (4.36.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.36.0):
+    - FBSDKCoreKit
+  - Firebase/Core (5.8.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.1.2)
+  - Firebase/CoreOnly (5.8.0):
+    - FirebaseCore (= 5.1.3)
+  - Firebase/DynamicLinks (5.8.0):
+    - Firebase/Core
+    - FirebaseDynamicLinks (= 3.0.2)
+  - Firebase/Messaging (5.8.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.1.2)
+  - FirebaseAnalytics (5.1.2):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.2)
+    - GoogleAppMeasurement (~> 5.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
+    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.1.3):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseDynamicLinks (3.0.2):
+    - FirebaseAnalytics (~> 5.1)
+  - FirebaseInstanceID (3.2.1):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.2)
+  - FirebaseMessaging (3.1.2):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleUtilities/Reachability (~> 5.2)
+    - Protobuf (~> 3.1)
+  - Geth (1.8.15)
+  - GoogleAppMeasurement (5.1.2):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
+    - GoogleUtilities/MethodSwizzler (~> 5.2.0)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (5.2.3):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.2.3)
+  - GoogleUtilities/Logger (5.2.3):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.2.3):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.2.3):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.2.3)"
+  - GoogleUtilities/Reachability (5.2.3):
+    - GoogleUtilities/Logger
+  - ImageSlideshow (1.6.1):
+    - ImageSlideshow/Core (= 1.6.1)
+  - ImageSlideshow/Core (1.6.1)
+  - ISO8601DateFormatter (0.8)
+  - KeychainAccess (3.1.1)
+  - Kingfisher (4.9.0)
+  - MessengerKit (1.0.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - OpenSSL-Universal (1.0.1.16)
+  - PKHUD (5.1.0)
+  - Protobuf (3.6.1)
+  - QRCode (2.0)
+  - ReachabilitySwift (4.2.1)
+  - SimpleKeychain (0.8.1)
+  - SinchRTC (3.12.6)
+  - Starscream (3.0.5)
+  - SwiftDate (5.0.7)
+  - SwiftEmail (0.1)
+  - SwiftMessages (5.0.1):
+    - SwiftMessages/App (= 5.0.1)
+  - SwiftMessages/App (5.0.1)
+  - SwiftSoup (1.7.2)
+  - ThoraxMath (1.1.0)
+  - XLPagerTabStrip (8.0.1)
+
+DEPENDENCIES:
+  - Auth0 (~> 1.0)
+  - BigNumber (from `https://github.com/mkrd/Swift-Big-Integer.git`)
+  - CoreBitcoin (from `https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec`)
+  - Crashlytics
+  - ExtensionsPack (from `https://github.com/yaro812/ExtensionsPack.git`)
+  - Fabric
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - Firebase/Core
+  - Firebase/DynamicLinks
+  - Firebase/Messaging
+  - Geth (~> 1.7)
+  - ImageSlideshow
+  - KeychainAccess
+  - Kingfisher
+  - MessengerKit (from `https://github.com/steve228uk/MessengerKit.git`)
+  - PKHUD
+  - QRCode
+  - ReachabilitySwift
+  - SimpleKeychain
+  - SinchRTC
+  - Starscream
+  - SwiftDate
+  - SwiftEmail (from `https://github.com/yaro812/SwiftEmail.git`)
+  - SwiftMessages
+  - SwiftSoup
+  - ThoraxMath (from `https://github.com/yaro812/ThoraxMath.git`)
+  - XLPagerTabStrip (from `https://github.com/xmartlabs/XLPagerTabStrip.git`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Auth0
+    - Bolts
+    - Crashlytics
+    - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseDynamicLinks
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - Geth
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - ImageSlideshow
+    - ISO8601DateFormatter
+    - KeychainAccess
+    - Kingfisher
+    - nanopb
+    - OpenSSL-Universal
+    - PKHUD
+    - Protobuf
+    - QRCode
+    - ReachabilitySwift
+    - SimpleKeychain
+    - SinchRTC
+    - Starscream
+    - SwiftDate
+    - SwiftMessages
+    - SwiftSoup
+
+EXTERNAL SOURCES:
+  BigNumber:
+    :git: https://github.com/mkrd/Swift-Big-Integer.git
+  CoreBitcoin:
+    :podspec: https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec
+  ExtensionsPack:
+    :git: https://github.com/yaro812/ExtensionsPack.git
+  MessengerKit:
+    :git: https://github.com/steve228uk/MessengerKit.git
+  SwiftEmail:
+    :git: https://github.com/yaro812/SwiftEmail.git
+  ThoraxMath:
+    :git: https://github.com/yaro812/ThoraxMath.git
+  XLPagerTabStrip:
+    :git: https://github.com/xmartlabs/XLPagerTabStrip.git
+
+CHECKOUT OPTIONS:
+  BigNumber:
+    :commit: df6342839b6b3658feac8265780b14df7155d7b5
+    :git: https://github.com/mkrd/Swift-Big-Integer.git
+  ExtensionsPack:
+    :commit: a8ea4d44d7658f2f51309bf675614372f8959623
+    :git: https://github.com/yaro812/ExtensionsPack.git
+  MessengerKit:
+    :commit: 669991a4a0226d493d700303353d0bf69dea379f
+    :git: https://github.com/steve228uk/MessengerKit.git
+  SwiftEmail:
+    :commit: 1f8e3eda12a796c87bdb4b7d056fc36e1af17db0
+    :git: https://github.com/yaro812/SwiftEmail.git
+  ThoraxMath:
+    :commit: eb1fc92b1f375da9835ba5a9e5cab83317066426
+    :git: https://github.com/yaro812/ThoraxMath.git
+  XLPagerTabStrip:
+    :commit: 1619ad4fe1cd6a32f81352a549448bd1538c4419
+    :git: https://github.com/xmartlabs/XLPagerTabStrip.git
+
+SPEC CHECKSUMS:
+  Auth0: 7e99e1ca69543bc243d9687fd612057072f3eaaf
+  BigNumber: bcc393c06b3e7e2752e5121be58c032c45c6f36b
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  CoreBitcoin: 4ac6f6a61e543f08399c2fe57496d4fdcbaf74f9
+  Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
+  ExtensionsPack: b1e93f49af7729b5e522714585ead40ed92f4ad0
+  Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
+  FBSDKCoreKit: 3b8e6570eedb443f9fc4af196a7bf39f18e3a3d8
+  FBSDKLoginKit: 8bccb6064708ab2f4251a7fc4e3b6d8d00ad91ba
+  Firebase: 25812f43e7a53b11ae2f0a5f4c6d12faeb1f7cd7
+  FirebaseAnalytics: df15839e9c6ca6bd14d2e8ab6b0c672e6c49097e
+  FirebaseCore: 27bd80e5bfaaf9552a1f5cacb4c7e8bb925bab22
+  FirebaseDynamicLinks: eb41fb20677b0a6e944b47f45cbe59f388e9e5cc
+  FirebaseInstanceID: ea5af6920d0a4a29b40459d055bebe4a6c1333c4
+  FirebaseMessaging: d6feeb06218d2675b4149b0ada925a6b707a74cf
+  Geth: 65ecc639d58a1794053d737825648b8e05e3b20f
+  GoogleAppMeasurement: fc4a4c3fe0144db9313cbf443ffe62e6b1d6268c
+  GoogleUtilities: 6f681e27050c5e130325e89fa0316dfca826f954
+  ImageSlideshow: f0f33e1a20668e83d77f5fb7729e4ae4437c0759
+  ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
+  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
+  Kingfisher: 64539b51826b778206daa6ed815d12653caa69dd
+  MessengerKit: 98afa44728b8e12672ece6db7764433e72832bf7
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  OpenSSL-Universal: 85ef63bf81d0741b03c8719cd29685c37c59518d
+  PKHUD: 62ea46a1e88c4def1da784878d199bb54c841e3c
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
+  ReachabilitySwift: 35720ffea59c1c76d15f885be77fd33e33985427
+  SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
+  SinchRTC: 82ff35f50ee298ff632f88b934a2323b9b821a63
+  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
+  SwiftDate: f053fb89250c59af5eff777f3b832d2b9dd57403
+  SwiftEmail: 6fc022c42d84fa225a27be070bf80652f03cafb9
+  SwiftMessages: 32ce3cfc8388b41aae56ff4853cc752a20101147
+  SwiftSoup: e5f61d37e3d802a4b5db81b4945de3da9bfdf115
+  ThoraxMath: 5a3328f333477deec5fb004bac3de6b06f06e9fc
+  XLPagerTabStrip: 964298dab059adad2eace170f253df35c3e06aaa
+
+PODFILE CHECKSUM: 8c80bb480856efb68b2fdccc5fdd37725be41f4b
+
+COCOAPODS: 1.6.0.beta.1

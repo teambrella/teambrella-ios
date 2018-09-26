@@ -20,7 +20,7 @@ DerivedData
 *.DS_Store
 
 # Pods
-Podfile.lock
+# Podfile.lock
 .idea
 Pods/*
 docs
