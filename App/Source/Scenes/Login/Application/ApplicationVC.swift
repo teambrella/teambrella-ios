@@ -47,16 +47,6 @@ class ApplicationVC: UICollectionViewController, Routable {
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -84,6 +74,7 @@ class ApplicationVC: UICollectionViewController, Routable {
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                    withReuseIdentifier: model.identifier.rawValue,
                                                                    for: indexPath)
+        cell.tag = indexPath.row
         return cell
     }
     
@@ -97,6 +88,21 @@ class ApplicationVC: UICollectionViewController, Routable {
         let model = models[indexPath.row]
         applicationCell.setup(with: model)
         (applicationCell as? ApplicationCellDecorable)?.decorate()
+        if let cell = cell as? ApplicationInputCell {
+            cell.inputTextField.isAutocompleteEnabled = true
+            cell.onTextChange = { textField in
+                guard let text = textField.text else { return }
+                
+                service.dao.getCars(string: text).observe(with: { result in
+                    switch result {
+                    case let .value(value):
+                        textField.suggestions = value
+                    case let .error(error):
+                        print(error)
+                    }
+                })
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView,

@@ -22,6 +22,22 @@ class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     @IBOutlet var inputTextField: TextField!
     var isDecorated: Bool = false
     
+    var onTextChange: ((TextField)-> Void)?
+    
+    private func setup() {
+        inputTextField.addTarget(self, action: #selector(changeText), for: .editingChanged)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
+    }
+    
+    @objc
+    private func changeText(textField: TextField) {
+        onTextChange?(textField)
+    }
+    
     func decorate() {
         guard !isDecorated else { return }
         

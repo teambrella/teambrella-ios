@@ -37,3 +37,8 @@
 "Login.Application.RegisteerButton.Title"          = "Зарегистрироваться";
 "Login.Application.TermsAndConditions.format"      = "Создавая учётную запись, ты принимаешь %@ Teambrella";
 "Login.Application.TermsAndConditions.Link"        = "Условия Использования";
+
+"Login.Application.Item.Placeholder"               = "Ford Focus 2014";
+"Login.Application.Name.Placeholder"               = "Gerry Smith";
+"Login.Application.Email.Placeholder"              = "myemail@hotmail.com";
+"Login.Application.City.Placeholder"               = "New York, US";
