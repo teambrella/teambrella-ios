@@ -36,13 +36,13 @@ def swift_frameworks_pods
   pod 'QRCode', :modular_headers => true
   pod 'Starscream'
   pod 'SwiftDate'
-  pod 'SwiftMessages'
+  pod 'SwiftMessages', '~> 5.0'
   pod 'MessengerKit', :git => 'https://github.com/steve228uk/MessengerKit.git'
 
   pod 'Fabric'
   pod 'Crashlytics'
 
-  pod 'SinchRTC'
+  pod 'SinchRTC', :modular_headers => true
 
   pod 'BigNumber', :git => 'https://github.com/mkrd/Swift-Big-Integer.git'
   pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'

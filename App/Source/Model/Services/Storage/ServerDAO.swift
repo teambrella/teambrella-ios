@@ -658,16 +658,23 @@ class ServerDAO: DAO {
         }
     }
     
-    func getCars(string: String) -> Future<[String]> {
+    func getCars(string: String?) -> Future<[String]> {
     return getQuery(string: string, type: .cars)
     }
     
-    func getCities(string: String) -> Future<[String]> {
+    func getCities(string: String?) -> Future<[String]> {
        return getQuery(string: string, type: .cities)
     }
     
-    private func getQuery(string: String, type: TeambrellaGetRequestType) -> Future<[String]> {
+    private func getQuery(string: String?, type: TeambrellaGetRequestType) -> Future<[String]> {
         let promise = Promise<[String]>()
+        guard let string = string else {
+            defer {
+                promise.resolve(with: [])
+            }
+            return promise
+        }
+        
         let request = TeambrellaGetRequest<[String]>(type: type,
                                                      parameters: ["q": string],
                                                      success: promise.resolve,

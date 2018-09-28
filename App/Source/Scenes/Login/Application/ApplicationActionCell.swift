@@ -30,7 +30,7 @@ class ApplicationActionCell: UICollectionViewCell, ApplicationCellDecorable {
     func decorate() {
         guard !isDecorated else { return }
         
-        ViewDecorator.homeCardShadow(for: self, offset: CGSize(width: 0, height: 9))
+        //ViewDecorator.homeCardShadow(for: self, offset: CGSize(width: 0, height: 9))
         ViewDecorator.rounded(edges: [.bottomLeft, .bottomRight], for: self)
         isDecorated = true
     }

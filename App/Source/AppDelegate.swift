@@ -23,7 +23,7 @@ import Auth0
 import Fabric
 import FBSDKCoreKit
 import Firebase
-import FirebaseDynamicLinks
+//import FirebaseDynamicLinks
 import PushKit
 import UIKit
 
@@ -123,13 +123,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.sharedSDK().debug = true
 
         // Check how screen rendering is working
+        /*
         let link = CADisplayLink(target: self, selector: #selector(AppDelegate.update(link:)))
         link.add(to: .main, forMode: .commonModes)
+ */
         #endif
     }
 
+    /*
     var lastTime: TimeInterval = 0
-
     @objc
     private func update(link: CADisplayLink) {
         if lastTime == 0 {
@@ -145,6 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         lastTime = link.targetTimestamp
     }
+    */
     
     func handle(dynamicLink: DynamicLink) -> Bool {
         print("Handling firebase dynamic link: \(dynamicLink)")

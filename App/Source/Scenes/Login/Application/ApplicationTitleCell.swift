@@ -24,7 +24,7 @@ class ApplicationTitleCell: UICollectionViewCell, ApplicationCellDecorable {
         guard !isDecorated else { return }
         
         ViewDecorator.rounded(edges: [.topLeft, .topRight], for: self)
-         ViewDecorator.homeCardShadow(for: self)
+         //ViewDecorator.homeCardShadow(for: self)
         isDecorated = true
     }
     
