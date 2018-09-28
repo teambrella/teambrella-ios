@@ -31,7 +31,7 @@ class ApplicationTermsAndConditionsCell: UICollectionViewCell, ApplicationCellDe
 }
 
 extension ApplicationTermsAndConditionsCell: ApplicationCell {
-    func setup(with model: ApplicationCellModel) {
+    func setup(with model: ApplicationCellModel, userData: UserApplicationData) {
         guard let model = model as? ApplicationTermsAndConditionsCellModel else {
             fatalError("Wrong model type")
         }

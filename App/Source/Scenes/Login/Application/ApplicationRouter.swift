@@ -23,7 +23,7 @@ class ApplicationRouter {
         self.navigationController = navigationController
     }
     
-    func presentApplication(type: ApplicationScreenType, userData: ApplicationUserData, animated: Bool) {
+    func presentApplication(type: ApplicationScreenType, userData: UserApplicationData, animated: Bool) {
         let vc = controller(type: type, userData: userData)
         
         if navigationController.viewControllers.contains(vc) {
@@ -33,7 +33,7 @@ class ApplicationRouter {
         }
     }
     
-    func performNext(from vc: ApplicationVC, userData: ApplicationUserData) {
+    func performNext(from vc: ApplicationVC, userData: UserApplicationData) {
         if let nextType = controllerType(after: vc.type) {
             presentApplication(type: nextType, userData: userData, animated: true)
         } else {
@@ -45,7 +45,7 @@ class ApplicationRouter {
         vc.performSegue(withIdentifier: "unwindToInitial", sender: vc)
     }
     
-    func controller(type: ApplicationScreenType, userData: ApplicationUserData, reuse: Bool = true) -> ApplicationVC {
+    func controller(type: ApplicationScreenType, userData: UserApplicationData, reuse: Bool = true) -> ApplicationVC {
         if reuse {
             for vc in navigationController.viewControllers {
                 if let vc = vc as? ApplicationVC, vc.type == type {

@@ -31,7 +31,7 @@ class ApplicationTitleCell: UICollectionViewCell, ApplicationCellDecorable {
 }
 
 extension ApplicationTitleCell: ApplicationCell {
-    func setup(with model: ApplicationCellModel) {
+    func setup(with model: ApplicationCellModel, userData: UserApplicationData) {
         guard let model = model as? ApplicationTitleCellModel else {
             fatalError("Wrong model type")
         }

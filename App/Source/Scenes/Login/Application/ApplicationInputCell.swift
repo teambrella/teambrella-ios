@@ -23,6 +23,7 @@ class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     var isDecorated: Bool = false
     
     var onTextChange: ((TextField) -> Void)?
+    var onUserInput: ((String?) -> Void)?
     
     private func setup() {
         inputTextField.addTarget(self, action: #selector(changeText), for: .editingChanged)
@@ -35,6 +36,7 @@ class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     
     @objc
     private func changeText(textField: TextField) {
+        onUserInput?(textField.text)
         onTextChange?(textField)
     }
     
@@ -47,14 +49,14 @@ class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
 }
 
 extension ApplicationInputCell: ApplicationCell {
-    func setup(with model: ApplicationCellModel) {
+    func setup(with model: ApplicationCellModel, userData: UserApplicationData) {
         guard let model = model as? ApplicationInputCellModel else {
             fatalError("Wrong model type")
         }
         
         textLabel.text = model.text
         headlightLabel.text = model.headlightText
-        inputTextField.text = model.inputText
+        inputTextField.text = userData.text(for: model)
         inputTextField.placeholder = model.placeholderText
     }
 }

@@ -38,7 +38,6 @@ struct ApplicationInputCellModel: ApplicationCellModel {
     let text: String
     let headlightText: String
     let placeholderText: String
-    var inputText: String?
 }
 
 struct ApplicationTermsAndConditionsCellModel: ApplicationCellModel {
@@ -63,12 +62,6 @@ struct ApplicationActionCellModel: ApplicationCellModel {
 //    var date: Date?
 //}
 
-class ApplicationUserData {
-    var name: String?
-    var birthday: Date?
-    var location: String?
-}
-
 enum ApplicationCellIdentifier: String {
     case header, title, input, termsAndConditions, action
 }
@@ -78,5 +71,5 @@ protocol ApplicationCellModel {
 }
 
 protocol ApplicationCell {
-    func setup(with model: ApplicationCellModel)
+    func setup(with model: ApplicationCellModel, userData: UserApplicationData)
 }

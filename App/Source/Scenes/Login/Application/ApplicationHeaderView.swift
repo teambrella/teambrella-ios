@@ -21,7 +21,7 @@ class ApplicationHeaderView: UICollectionReusableView, ApplicationCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var cityLabel: UILabel!
     
-    func setup(with model: ApplicationCellModel) {
+    func setup(with model: ApplicationCellModel, userData: UserApplicationData) {
         guard let model = model as? ApplicationHeaderCellModel else {
             fatalError("Wrong header model")
         }

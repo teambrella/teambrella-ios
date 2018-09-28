@@ -31,5 +31,31 @@ struct UserApplicationData {
 
         return EmailAddress(string: emailString)
     }
+    
+    mutating func update(with string: String?, model: ApplicationInputCellModel) {
+        switch model.type {
+        case .city:
+            area = string
+        case .email:
+            emailString = string
+        case .item:
+            self.model = string
+        case .name:
+        name = string
+        }
+    }
+    
+    func text(for model: ApplicationInputCellModel) -> String? {
+        switch model.type {
+        case .city:
+            return area
+        case .email:
+           return emailString
+        case .item:
+            return self.model
+        case .name:
+            return name
+        }
+    }
 
 }

@@ -25,6 +25,8 @@ class ApplicationVC: UICollectionViewController, Routable {
     var models: [ApplicationCellModel] = []
     var headers: [ApplicationCellModel] = []
     
+    var userData: UserApplicationData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,18 @@ class ApplicationVC: UICollectionViewController, Routable {
         
         let view = ApplicationBackgroundView(frame: self.view.bounds)
         collectionView?.backgroundView = view
+        
+        setupUserData(teamID: 2028, inviteCode: "XYZ")
+        assert(userData != nil)
+    }
+    
+    func setupUserData(teamID: Int, inviteCode: String?) {
+        userData = UserApplicationData(teamID: teamID,
+                                       inviteCode: inviteCode,
+                                       name: nil,
+                                       area: nil,
+                                       emailString: nil,
+                                       model: nil)
     }
     
     // MARK: UICollectionViewDataSource
@@ -73,7 +87,7 @@ class ApplicationVC: UICollectionViewController, Routable {
         }
         
         let model = models[indexPath.row]
-        applicationCell.setup(with: model)
+        applicationCell.setup(with: model, userData: userData)
         (applicationCell as? ApplicationCellDecorable)?.decorate()
         if let cell = applicationCell as? ApplicationInputCell {
             applicationInput(cell: cell, addActionsFor: model)
@@ -91,6 +105,10 @@ class ApplicationVC: UICollectionViewController, Routable {
             case let .error(error):
                 print(error)
             }
+        }
+        
+        cell.onUserInput = { [weak self] text in
+            self?.userData.update(with: text, model: model)
         }
         
         switch model.type {
@@ -118,7 +136,7 @@ class ApplicationVC: UICollectionViewController, Routable {
             }
             
             let model = headers[indexPath.section]
-            applicationView.setup(with: model)
+            applicationView.setup(with: model, userData: userData)
         }
         
     }
