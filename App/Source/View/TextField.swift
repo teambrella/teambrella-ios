@@ -107,7 +107,7 @@ class TextField: UITextField {
 //        for item in suggestions { //2
 //            let myString: NSString! = item as NSString
 //            let substringRange: NSRange! = myString.range(of: userText)
-//            
+//
 //            if substringRange.location == 0 {
 //                possibleMatches.append(item)
 //            }

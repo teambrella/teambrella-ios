@@ -22,7 +22,7 @@ class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     @IBOutlet var inputTextField: TextField!
     var isDecorated: Bool = false
     
-    var onTextChange: ((TextField)-> Void)?
+    var onTextChange: ((TextField) -> Void)?
     
     private func setup() {
         inputTextField.addTarget(self, action: #selector(changeText), for: .editingChanged)
