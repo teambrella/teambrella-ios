@@ -79,7 +79,7 @@ class TextField: UITextField {
     
     func putColorFormattedText(text: String, original: String) {
         let coloredString: NSMutableAttributedString = NSMutableAttributedString(string: original + text)
-        coloredString.addAttribute(NSAttributedStringKey.foregroundColor,
+        coloredString.addAttribute(NSAttributedString.Key.foregroundColor,
                                    value: UIColor.green,
                                    range: NSRange(location: original.count, length: text.count))
         self.attributedText = coloredString

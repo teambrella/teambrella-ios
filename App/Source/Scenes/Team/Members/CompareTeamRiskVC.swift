@@ -48,7 +48,7 @@ class CompareTeamRiskVC: UIViewController, Routable {
     
     func registerCells() {
         collectionView.register(InfoHeader.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
         collectionView.register(RiskCell.nib, forCellWithReuseIdentifier: RiskCell.cellID)
     }
@@ -71,7 +71,7 @@ extension CompareTeamRiskVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                withReuseIdentifier: InfoHeader.cellID,
                                                                for: indexPath)
     }

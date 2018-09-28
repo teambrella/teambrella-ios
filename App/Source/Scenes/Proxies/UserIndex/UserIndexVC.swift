@@ -85,7 +85,7 @@ class UserIndexVC: UIViewController {
     private func setupCollectionView() {
         collectionView.register(UserIndexCell.nib, forCellWithReuseIdentifier: UserIndexCell.cellID)
         collectionView.register(InfoHeader.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
     }
     
@@ -155,7 +155,7 @@ extension UserIndexVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                withReuseIdentifier: InfoHeader.cellID,
                                                                for: indexPath)
     }

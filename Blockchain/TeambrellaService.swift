@@ -42,7 +42,7 @@ final class TeambrellaService: NSObject {
     private let server = BlockchainServer()
     private let keyStorage: KeyStorage = KeyStorage.shared
     lazy private var contentProvider: TeambrellaContentProvider = TeambrellaContentProvider(keyStorage: self.keyStorage)
-    private var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+    private var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     private var currentAttempt = 0
     private var hasChanges: Bool = true
     lazy private var queue: OperationQueue = {

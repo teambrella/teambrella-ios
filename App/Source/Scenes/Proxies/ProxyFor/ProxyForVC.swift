@@ -72,7 +72,7 @@ class ProxyForVC: UIViewController {
     private func setupCollectionView() {
         collectionView.register(ProxyForCell.nib, forCellWithReuseIdentifier: ProxyForCell.cellID)
         collectionView.register(ProxyForHeader.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: ProxyForHeader.cellID)
     }
     
@@ -102,7 +102,7 @@ extension ProxyForVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                withReuseIdentifier: ProxyForHeader.cellID,
                                                                for: indexPath)
     }

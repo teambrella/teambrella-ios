@@ -38,7 +38,7 @@ class LoginDetailsVC: UIViewController {
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(textChanged),
-                                               name: .UITextFieldTextDidChange,
+                                               name: UITextField.textDidChangeNotification,
                                                object: nil)
         
 //        listenForKeyboard()

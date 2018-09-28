@@ -40,8 +40,8 @@ final class TopBarVC: UIViewController {
         vc.view.frame = view.bounds
         vc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(vc.view)
-        viewController.addChildViewController(vc)
-        vc.didMove(toParentViewController: viewController)
+        viewController.addChild(vc)
+        vc.didMove(toParent: viewController)
         
         vc.router = service.router
         vc.session = service.session

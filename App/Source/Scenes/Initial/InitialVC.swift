@@ -59,7 +59,7 @@ final class InitialVC: UIViewController {
             print("Running in background")
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(performTransitionsAfterWakeUp),
-                                                   name: .UIApplicationDidBecomeActive,
+                                                   name: UIApplication.didBecomeActiveNotification,
                                                    object: nil)
             return
         }
@@ -78,7 +78,7 @@ final class InitialVC: UIViewController {
     @objc
     func performTransitionsAfterWakeUp() {
         NotificationCenter.default.removeObserver(self,
-                                                  name: .UIApplicationDidBecomeActive,
+                                                  name: UIApplication.didBecomeActiveNotification,
                                                   object: nil)
         performTransitions()
     }

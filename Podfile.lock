@@ -11,10 +11,10 @@ PODS:
   - CoreBitcoin (0.6.8.1):
     - ISO8601DateFormatter
     - OpenSSL-Universal (= 1.0.1.16)
-  - Crashlytics (3.10.7):
-    - Fabric (~> 1.7.11)
+  - Crashlytics (3.10.8):
+    - Fabric (~> 1.7.12)
   - ExtensionsPack (1.1.0)
-  - Fabric (1.7.11)
+  - Fabric (1.7.12)
   - FBSDKCoreKit (4.36.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.36.0):
@@ -93,7 +93,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - OpenSSL-Universal (1.0.1.16)
-  - PKHUD (5.1.0)
+  - PKHUD (5.2.0)
   - Protobuf (3.6.1)
   - QRCode (2.0)
   - ReachabilitySwift (4.2.1)
@@ -215,9 +215,9 @@ SPEC CHECKSUMS:
   BigNumber: bcc393c06b3e7e2752e5121be58c032c45c6f36b
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CoreBitcoin: 4ac6f6a61e543f08399c2fe57496d4fdcbaf74f9
-  Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
+  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
   ExtensionsPack: b1e93f49af7729b5e522714585ead40ed92f4ad0
-  Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
+  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   FBSDKCoreKit: 3b8e6570eedb443f9fc4af196a7bf39f18e3a3d8
   FBSDKLoginKit: 8bccb6064708ab2f4251a7fc4e3b6d8d00ad91ba
   Firebase: 383fa29aca93e371cab776b48a5c66544d3c2003
@@ -237,7 +237,7 @@ SPEC CHECKSUMS:
   MessengerKit: 98afa44728b8e12672ece6db7764433e72832bf7
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OpenSSL-Universal: 85ef63bf81d0741b03c8719cd29685c37c59518d
-  PKHUD: 62ea46a1e88c4def1da784878d199bb54c841e3c
+  PKHUD: dd5357ac65f26115c35c4a68e9b328053326c5fe
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
   ReachabilitySwift: 35720ffea59c1c76d15f885be77fd33e33985427
@@ -251,6 +251,6 @@ SPEC CHECKSUMS:
   ThoraxMath: 5a3328f333477deec5fb004bac3de6b06f06e9fc
   XLPagerTabStrip: 964298dab059adad2eace170f253df35c3e06aaa
 
-PODFILE CHECKSUM: ef3c84fbb4fe8ce2175e6d31e6e4549afbcad03f
+PODFILE CHECKSUM: 5bd8f829f6bf868f282ad05ea5a080f62239a55e
 
 COCOAPODS: 1.6.0.beta.1

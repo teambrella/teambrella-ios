@@ -31,7 +31,7 @@ class RoundImageView: UIImageView {
             return imageView.image
         }
         set {
-//            imageView.image = nil
+            //            imageView.image = nil
             imageView.image = newValue
         }
     }
@@ -78,13 +78,13 @@ class RoundImageView: UIImageView {
     @IBInspectable var textColor: UIColor?
     
     var font: UIFont?
-    
-    override var contentMode: UIViewContentMode {
+
+    override var contentMode: UIView.ContentMode {
         didSet {
             imageView.contentMode = contentMode
         }
     }
-    
+
     @IBInspectable var inset: CGFloat = 0.0 {
         didSet {
             setNeedsLayout()

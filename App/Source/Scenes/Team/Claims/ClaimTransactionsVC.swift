@@ -50,7 +50,7 @@ class ClaimTransactionsVC: UIViewController, Routable {
         
         collectionView.register(WalletTransactionCell.nib, forCellWithReuseIdentifier: WalletTransactionCell.cellID)
         collectionView.register(InfoHeader.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
         
         guard let teamID = teamID, let claimID = claimID else { return }
@@ -108,7 +108,7 @@ extension ClaimTransactionsVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                withReuseIdentifier: InfoHeader.cellID,
                                                                for: indexPath)
     }

@@ -79,7 +79,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
     func setupCollectionView() {
         collectionView.register(TeamFeedCell.nib, forCellWithReuseIdentifier: TeamFeedCell.cellID)
         collectionView.register(HeaderWithButton.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: HeaderWithButton.cellID)
         addRefreshControl()
     }
@@ -115,7 +115,7 @@ extension FeedVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                withReuseIdentifier: HeaderWithButton.cellID,
                                                                for: indexPath)
     }

@@ -252,8 +252,8 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     func keyboardWillChangeFrame(notification: Notification) {
-        if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let initialFrame = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let finalFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let initialFrame = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             var offset =  collectionView.contentOffset
             guard finalFrame.minY < collectionView.contentSize.height else { return }
             
@@ -343,7 +343,7 @@ private extension UniversalChatVC {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsSelection = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.autoresizingMask = UIViewAutoresizing()
+        collectionView.autoresizingMask = UIView.AutoresizingMask()
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -394,7 +394,7 @@ private extension UniversalChatVC {
         collectionView.register(ChatNewMessagesSeparatorCell.self,
                                 forCellWithReuseIdentifier: Constant.newMessagesSeparatorCellID)
         collectionView.register(ChatFooter.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionFooter,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                 withReuseIdentifier: ChatFooter.cellID)
         collectionView.register(ChatClaimPaidCell.nib,
                                 forCellWithReuseIdentifier: ChatClaimPaidCell.cellID)
@@ -404,12 +404,12 @@ private extension UniversalChatVC {
     private func listenForKeyboard() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillChangeFrame),
-                                               name: Notification.Name.UIKeyboardWillChangeFrame,
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
     }
     
     private func stopListeningKeyboard() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     private func setupTapGestureRecognizer() {
@@ -671,7 +671,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,
                                                                    withReuseIdentifier: ChatFooter.cellID,
                                                                    for: indexPath)
         return view

@@ -67,7 +67,7 @@ class ImagePickerController: NSObject {
        showSource(source: .camera)
     }
     
-    private func showSource(source: UIImagePickerControllerSourceType) {
+    private func showSource(source: UIImagePickerController.SourceType) {
         guard let controller = parent else { return }
         
         let picker = UIImagePickerController()
@@ -81,7 +81,7 @@ class ImagePickerController: NSObject {
         guard let resizedImage = ImageTransformer(image: image).imageToFit(maxSide: maxSide) else {
             fatalError("Can't resize image")
         }
-        guard let imageData = UIImageJPEGRepresentation(resizedImage, self.compressionRate) else {
+        guard let imageData = resizedImage.jpegData(compressionQuality: self.compressionRate) else {
             fatalError("Can't process image")
         }
         
@@ -109,9 +109,10 @@ extension ImagePickerController: UIImagePickerControllerDelegate {
         delegate?.imagePicker(controller: self, willClosePickerByCancel: true)
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             delegate?.imagePicker(controller: self, didSelectImage: pickedImage)
         }
         

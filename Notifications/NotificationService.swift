@@ -79,7 +79,7 @@ class NotificationService: UNNotificationServiceExtension {
     private func saveImageToDisk(image: UIImage?) -> URL? {
         guard let image = image else { return nil }
         
-        if let data = UIImagePNGRepresentation(image) {
+        if let data = image.pngData() {
             let filename = ProcessInfo.processInfo.globallyUniqueString
             let path = URL(fileURLWithPath: NSTemporaryDirectory())
             let filePath = path.appendingPathComponent("\(filename).png")
