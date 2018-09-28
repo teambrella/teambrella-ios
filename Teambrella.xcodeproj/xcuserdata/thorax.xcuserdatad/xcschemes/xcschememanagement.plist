@@ -17,17 +17,17 @@
 		<key>SurillaWatch (Complication).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>43</integer>
+			<integer>56</integer>
 		</dict>
 		<key>SurillaWatch (Notification).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>42</integer>
+			<integer>55</integer>
 		</dict>
 		<key>SurillaWatch.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>41</integer>
+			<integer>54</integer>
 		</dict>
 		<key>Teambrella copy.xcscheme</key>
 		<dict>
