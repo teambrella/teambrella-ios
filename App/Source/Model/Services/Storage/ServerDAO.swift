@@ -621,15 +621,17 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func registerKey(facebookToken: String, signature: String) -> Future<Bool> {
+    func registerKey(facebookToken: String, signature: String, wallet: String) -> Future<Bool> {
         let payload: [String: String] = ["facebookToken": facebookToken,
-                                         "sigOfPublicKey": signature]
+                                         "sigOfPublicKey": signature,
+                                         "a": wallet]
         return registerKey(payload: payload)
     }
 
-    func registerKey(socialToken: String, signature: String) -> Future<Bool> {
+    func registerKey(socialToken: String, signature: String, wallet: String) -> Future<Bool> {
         let payload: [String: String] = ["auth0Token": socialToken,
-                                         "sigOfPublicKey": signature]
+                                         "sigOfPublicKey": signature,
+                                         "a": wallet]
         return registerKey(payload: payload)
     }
 
@@ -648,7 +650,7 @@ class ServerDAO: DAO {
     }
     
     func freshKey(completion: @escaping (Key) -> Void) {
-        if let time = lastKeyTime, Date().timeIntervalSince(time) < 60.0 * 10.0 {
+        if let time = lastKeyTime, Date().timeIntervalSince(time) < 60.0 * 5.0 {
             completion(server.key)
         } else {
             self.server.updateTimestamp(completion: { _, _ in

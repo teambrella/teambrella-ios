@@ -96,7 +96,7 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
             guard let `self` = self else { return }
 
-            self.input.isUserInteractionEnabled = self.dataSource.isChatAllowed
+            //self.input.isUserInteractionEnabled = self.dataSource.isChatAllowed
             self.collectionView.refreshControl?.endRefreshing()
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
@@ -110,6 +110,7 @@ final class UniversalChatVC: UIViewController, Routable {
             //                return
             //            }
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
+            self.input.isUserInteractionEnabled = self.dataSource.isInputAllowed
             self.input.allowInput(self.dataSource.isInputAllowed)
         }
         dataSource.onSendMessage = { [weak self] indexPath in
@@ -232,7 +233,7 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     @objc
-    open func userDidTapOnCollectionView() {
+    func userDidTapOnCollectionView() {
         if self.endsEditingWhenTappingOnChatBackground {
             self.view.endEditing(true)
         }
@@ -424,11 +425,15 @@ private extension UniversalChatVC {
     private func refresh(backward: Bool, isFirstLoad: Bool) {
         collectionView.reloadData()
         if isFirstLoad, let lastReadIndexPath = dataSource.lastReadIndexPath {
+             guard lastReadIndexPath.row < self.dataSource.count else { return }
+
             self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
         } else if self.shouldScrollToBottom {
             self.scrollToBottom(animated: true)
             self.shouldScrollToBottom = false
         } else if backward, let indexPath = self.dataSource.currentTopCellPath {
+            guard indexPath.row < self.dataSource.count else { return }
+
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
         }
     }

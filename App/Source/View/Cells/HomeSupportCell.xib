@@ -136,6 +136,7 @@
                 <outlet property="backView" destination="F6U-lg-7J1" id="ZzL-Qa-zPi"/>
                 <outlet property="bottomLabel" destination="X30-OO-rRz" id="RVg-7Y-u6B"/>
                 <outlet property="button" destination="ibe-tf-PeM" id="b07-bq-uvy"/>
+                <outlet property="buttonHeightConstraint" destination="Khr-Qj-moq" id="zD6-n2-241"/>
                 <outlet property="centerLabel" destination="N3b-4e-h0v" id="aIC-5g-tKB"/>
                 <outlet property="headerLabel" destination="9jj-my-DjP" id="h36-nJ-7Ob"/>
                 <outlet property="imageView" destination="VXr-cm-2gg" id="cjW-Hd-064"/>

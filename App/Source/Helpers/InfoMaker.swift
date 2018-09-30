@@ -118,7 +118,7 @@ class InfoMaker {
                     options.insert(.pushNeverAsked)
                 case .authorized:
                     options.insert(.pushEnabled)
-                case .denied:
+                default:
                     break
                 }
                 self.options = options

@@ -274,6 +274,8 @@ parameters[key] = value
                 return
             }
             do {
+                let rawReply = try JSONSerialization.jsonObject(with: data, options: [])
+                print("Raw reply: \(rawReply)")
                 let reply = try JSONDecoder().decode(EthereumAPIReply.self, from: data)
                 if let result = reply.result {
                     success(result)
