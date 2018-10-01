@@ -107,6 +107,7 @@ PODS:
   - SwiftMessages/App (5.0.1)
   - SwiftSoup (1.7.4)
   - ThoraxMath (1.1.0)
+  - UXCam (3.0.0)
   - XLPagerTabStrip (8.0.1)
 
 DEPENDENCIES:
@@ -137,6 +138,7 @@ DEPENDENCIES:
   - SwiftMessages (~> 5.0)
   - SwiftSoup
   - ThoraxMath (from `https://github.com/yaro812/ThoraxMath.git`)
+  - UXCam
   - XLPagerTabStrip (from `https://github.com/xmartlabs/XLPagerTabStrip.git`)
 
 SPEC REPOS:
@@ -173,6 +175,7 @@ SPEC REPOS:
     - SwiftDate
     - SwiftMessages
     - SwiftSoup
+    - UXCam
 
 EXTERNAL SOURCES:
   BigNumber:
@@ -249,8 +252,9 @@ SPEC CHECKSUMS:
   SwiftMessages: 32ce3cfc8388b41aae56ff4853cc752a20101147
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
   ThoraxMath: 5a3328f333477deec5fb004bac3de6b06f06e9fc
+  UXCam: b710bf9357ea0a5b6b7e7c8dea3c141f0453574c
   XLPagerTabStrip: 964298dab059adad2eace170f253df35c3e06aaa
 
-PODFILE CHECKSUM: ef3c84fbb4fe8ce2175e6d31e6e4549afbcad03f
+PODFILE CHECKSUM: 4cfc75fb9b623123ecbafcb60071c061797908f3
 
 COCOAPODS: 1.5.3

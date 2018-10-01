@@ -26,6 +26,7 @@ import Firebase
 //import FirebaseDynamicLinks
 import PushKit
 import UIKit
+import UXCam
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -118,6 +119,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureLibs() {
         // Add firebase support
         FirebaseApp.configure()
+        
+        // Add XCam
+        UXCam.start(withKey: Resources.UXCam.accountKey)
+        
         // Add Crashlytics in debug mode
         #if SURILLA
         Fabric.sharedSDK().debug = true
