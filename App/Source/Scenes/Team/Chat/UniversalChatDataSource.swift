@@ -220,11 +220,14 @@ final class UniversalChatDatasource {
             switch accessLevel {
             case .hiddenDetailsAndEditMine,
                  .hiddenDetailsAndStealth,
-                 .readAllAndEditMine:
+                 .readAllAndEditMine,
+                 .readOnlyAllAndStealth:
                 if chatType == .application,
                     let chatUserID = chatModel?.basic?.userID,
                     let myID = service.session?.currentUserID {
                     isAllowed = chatUserID == myID
+                } else {
+                    isAllowed = false
                 }
             case .noAccess,
                  .readOnly:

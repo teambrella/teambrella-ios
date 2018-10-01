@@ -93,7 +93,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         setupWalletContainer()
         
         switchToCurrentTeam()
-        service.push.executeCommand()
+
         consoleAccessSetup()
         
         if isIpadSimulatingPhone {
@@ -147,7 +147,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         super.viewDidAppear(animated)
         Statistics.log(event: .showHomeScreen)
         service.dao.recentScene = .home
-        service.push.executeCommand()
+        service.push.executeCommandIfPossible()
         guard isFirstLoading == false else {
             isFirstLoading = false
             return

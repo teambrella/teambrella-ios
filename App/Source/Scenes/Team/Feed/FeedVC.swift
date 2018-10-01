@@ -58,7 +58,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        service.push.executeCommand()
+        service.push.executeCommandIfPossible()
         service.dao.recentScene = .feed
         isFirstLoading = false
     }
