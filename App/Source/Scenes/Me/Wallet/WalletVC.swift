@@ -82,14 +82,11 @@ final class WalletVC: UIViewController {
     }
     
     func prepareWalletAddress() {
-        service.dao.freshKey { [weak self] key in
-            let processor = EthereumProcessor(key: key)
-            let walletID = processor.ethAddressString ?? ""
-            self?.walletID = walletID
+            let walletID = service.session?.currentUserEthereumAddress ?? ""
+            self.walletID = walletID
             let codeManager = QRCodeManager()
             codeManager.size = CGSize(width: 79, height: 75)
-            self?.qrCode = codeManager.code(from: walletID)
-        }
+            qrCode = codeManager.code(from: walletID)
     }
     
     @objc

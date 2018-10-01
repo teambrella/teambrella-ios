@@ -1,10 +1,11 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '10.0'
 use_frameworks!(false)
+use_modular_headers!
 inhibit_all_warnings!
 
 def bitcoin_pods
-  pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec'
+    pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec', :modular_headers => false
 end
 
 def ethereum_pods
@@ -12,11 +13,11 @@ def ethereum_pods
 end
 
 def social_pods
-  pod 'FBSDKCoreKit', :modular_headers => true
-  pod 'FBSDKLoginKit', :modular_headers => true
+    pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
 
-  pod 'Auth0', '~> 1.0', :modular_headers => true
-  pod 'SimpleKeychain', :modular_headers => true # dependency for the Auth0
+  pod 'Auth0', '~> 1.0'
+  pod 'SimpleKeychain' # dependency for the Auth0
 end
 
 def firebase_pods
@@ -32,10 +33,10 @@ def swift_frameworks_pods
   pod 'Kingfisher'
   pod 'PKHUD'
   pod 'ReachabilitySwift'
-  pod 'QRCode', :modular_headers => true
+  pod 'QRCode'
   pod 'Starscream'
   pod 'SwiftDate'
-  pod 'SwiftMessages'
+  pod 'SwiftMessages', '~> 5.0'
   pod 'MessengerKit', :git => 'https://github.com/steve228uk/MessengerKit.git'
 
   pod 'Fabric'
@@ -53,8 +54,6 @@ def notification_swift_pods
   #ethereum_pods
   pod 'Kingfisher'
   pod 'KeychainAccess'
-  #pod 'Starscream'
-  #pod 'BigNumber', :git => 'https://github.com/mkrd/Swift-Big-Integer.git'
   pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'
 end
 

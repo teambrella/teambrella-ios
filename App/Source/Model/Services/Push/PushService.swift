@@ -48,7 +48,9 @@ final class PushService: NSObject {
         let pushKit = PushKitWorker()
         return pushKit
     }()
-    
+
+    var isReadyToExecute: Bool { return service.session != nil }
+
     override init() {
         super.init()
         UNUserNotificationCenter.current().delegate = self
@@ -161,7 +163,7 @@ final class PushService: NSObject {
         //guard command == nil else { return }
 
         prepareCommand(userInfo: userInfo)
-        executeCommand()
+        executeCommandIfPossible()
     }
 
     private func prepareCommand(userInfo: [AnyHashable: Any]) {
@@ -175,8 +177,14 @@ final class PushService: NSObject {
 
         clearNotificationsThread(id: aps.threadID)
     }
-    
-    func executeCommand() {
+
+    func executeCommandIfPossible() {
+        if isReadyToExecute {
+            executeCommand()
+        }
+    }
+
+    private func executeCommand() {
         guard let command = command else {
             print("No remote command to execute")
             return

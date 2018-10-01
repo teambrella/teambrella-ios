@@ -94,14 +94,15 @@ class LoginWorker {
             completion(nil, LoginWorkerError.noTokenProvided)
             return
         }
+        let ethereumWallet = processor.ethAddressString ?? ""
 
         let future: Future<Bool>
 
         switch type {
         case .facebook:
-            future = dao.registerKey(facebookToken: token, signature: signature)
+            future = dao.registerKey(facebookToken: token, signature: signature, wallet: ethereumWallet)
         case .vk:
-            future = dao.registerKey(socialToken: token, signature: signature)
+            future = dao.registerKey(socialToken: token, signature: signature, wallet: ethereumWallet)
         }
         future.observe { result in
             switch result {
