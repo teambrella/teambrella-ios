@@ -45,14 +45,6 @@ final class InitialVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        /*
-         When application wakes up by PushKit after been killed or by BackgroundFetch
-         it runs viewDidAppear in background.
-         if we start loading teams in that mode our server won't distinguish background fetch from UI activity
-         that's why we use the following hack
-         ||
-         \/
-         */
         let state = UIApplication.shared.applicationState
         print("Application state is: \(state.rawValue)")
         guard state != .background else {
