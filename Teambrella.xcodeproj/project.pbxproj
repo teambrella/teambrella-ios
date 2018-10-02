@@ -2974,7 +2974,8 @@
 				6DB894F4215551F600780D5F /* ApplicationTermsAndConditionsCell.swift */,
 				6DB894FA2159015700780D5F /* ApplicationCellDecorable.swift */,
 			);
-			path = Application;
+			name = Application;
+			path = Scenes/Login/Application;
 			sourceTree = "<group>";
 		};
 		6DB812151EE6E68C00B202CE /* Chat */ = {
