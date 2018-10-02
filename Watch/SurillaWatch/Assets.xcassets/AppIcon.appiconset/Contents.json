@@ -83,6 +83,14 @@
       "idiom" : "watch-marketing",
       "filename" : "watch-marketing.png",
       "scale" : "1x"
+    },
+    {
+      "size" : "44x44",
+      "idiom" : "watch",
+      "filename" : "LongLook@2x.png",
+      "scale" : "2x",
+      "role" : "longLook",
+      "subtype" : "42mm"
     }
   ],
   "info" : {

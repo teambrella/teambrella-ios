@@ -121,8 +121,7 @@ final class ServerService: NSObject {
                                        "pushKitToken": service.push.pushKit.tokenString,
                                        "deviceId": application.uniqueIdentifier,
                                        "info": infoMaker.info,
-                                       "a": service.session?.currentUserEthereumAddress ?? "" ]
-            
+                                       "a": service.session?.currentUserEthereumAddress ?? ""]
             log("Headers:", type: .serverHeaders)
             for (key, value) in dict {
                 log("\(key): \(value)", type: .serverHeaders)
