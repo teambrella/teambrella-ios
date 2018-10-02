@@ -75,7 +75,7 @@ protocol DAO {
                               isOrderedByRisk: Bool) -> Future<[TeammateListEntity]>
     func requestTeammate(userID: String, teamID: Int) -> Future<TeammateLarge>
 
-    func requestChat(type: TeambrellaRequestType, body: RequestBody) -> Future<TeambrellaResponseType>
+    func requestChat(type: TeambrellaPostRequestType, body: RequestBody) -> Future<TeambrellaResponseType>
 
     // MARK: Send data
 
@@ -96,4 +96,7 @@ protocol DAO {
     func updateClaimVote(claimID: Int, vote: Float?, lastUpdated: Int64) -> Future<ClaimVoteUpdate>
 
     func performRequest(request: TeambrellaRequest)
+    
+    func getCars(string: String?) -> Future<[String]>
+    func getCities(string: String?) -> Future<[String]>
 }

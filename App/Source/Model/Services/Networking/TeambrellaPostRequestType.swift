@@ -16,57 +16,67 @@
 
 import Foundation
 
-enum TeambrellaRequestType: String {
-    case timestamp = "me/GetTimestamp"
-    case initClient = "me/InitClient"
-    case updates = "me/GetUpdates"
-    case teams = "me/getTeams"
-    case demoTeams = "demo/getTeams"
-    case registerKey = "me/registerKey"
-    case coverageForDate = "me/getCoverageForDate"
-    case setLanguageEn = "me/setUiLang/en"
-    case setLanguageEs = "me/setUiLang/es"
-    case teammatesList = "teammate/getList"
-    case teammate = "teammate/getOne"
-    case teammateVote = "teammate/setVote"
-    case teammateChat = "teammate/getChat"
-    case newPost = "post/newPost"
+enum TeambrellaGetRequestType: String {
+    case cars = "carObject/getCars"
+    case cities = "geoObject/getCities"
+}
+
+enum TeambrellaPostRequestType: String {
     case claimsList = "claim/getList"
     case claim = "claim/getOne"
     case claimVote = "claim/setVote"
     case claimChat = "claim/getChat"
     case newClaim = "claim/newClaim"
     case claimTransactions = "claim/getTransactionsList"
+    case claimVotesList = "claim/getAllVotesList"
+
+    case demoTeams = "demo/getTeams"
+
     case home = "feed/getHome"
     case feedDeleteCard = "feed/delCard"
     case teamFeed = "feed/getList"
     case feedChat = "feed/getChat"
     case newChat = "feed/newChat"
-    case wallet = "wallet/getOne"
-    case walletTransactions = "wallet/getMyTxList"
-    case uploadPhoto = "post/newUpload"
+    case feedPinVote = "feed/setPinVote"
+    case mute = "feed/setIsMuted"
+
+    case timestamp = "me/GetTimestamp"
+    case initClient = "me/InitClient"
+    case updates = "me/GetUpdates"
+    case teams = "me/getTeams"
+    case registerKey = "me/registerKey"
+    case coverageForDate = "me/getCoverageForDate"
+    case setLanguageEn = "me/setUiLang/en"
+    case setLanguageEs = "me/setUiLang/es"
+    case me = "me/getMe"
+    
+    case privateChat = "privatemessage/getChat"
+    case privateList = "privatemessage/getList"
+    case newPrivatePost = "privatemessage/newMessage"
+
     case myProxy = "proxy/setMyProxy"
     case myProxies = "proxy/getMyProxiesList"
     case proxyFor = "proxy/getIAmProxyForList"
     case proxyPosition = "proxy/setMyProxyPosition"
     case proxyRatingList = "proxy/getRatingList"
     
-    case privateChat = "privatemessage/getChat"
-    case privateList = "privatemessage/getList"
-    case newPrivatePost = "privatemessage/newMessage"
-    case feedPinVote = "feed/setPinVote"
+    case teammatesList = "teammate/getList"
+    case teammate = "teammate/getOne"
+    case teammateVote = "teammate/setVote"
+    case teammateChat = "teammate/getChat"
+    case teammateVotesList = "teammate/getAllVotesList"
     
+    case newPost = "post/newPost"
+    case uploadPhoto = "post/newUpload"
+    
+    case wallet = "wallet/getOne"
+    case walletTransactions = "wallet/getMyTxList"
     case withdrawTransactions = "wallet/getWithdraw"
     case withdraw = "wallet/newWithdraw"
-    case mute = "feed/setIsMuted"
-    
-    case teammateVotesList = "teammate/getAllVotesList"
-    case claimVotesList = "claim/getAllVotesList"
-    case me = "me/getMe"
 }
 
-extension TeambrellaRequestType {
-    static func with(itemType: ItemType) -> TeambrellaRequestType {
+extension TeambrellaPostRequestType {
+    static func with(itemType: ItemType) -> TeambrellaPostRequestType {
         switch itemType {
         case .claim:
             return .claimChat

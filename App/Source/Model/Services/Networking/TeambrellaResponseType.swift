@@ -16,6 +16,10 @@
 
 import Foundation
 
+enum TeambrellaGetResponseType {
+    case cars([String])
+}
+
 enum TeambrellaResponseType {
     case timestamp
     case initClient

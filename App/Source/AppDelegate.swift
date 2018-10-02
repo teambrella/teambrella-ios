@@ -23,8 +23,10 @@ import Auth0
 import Fabric
 import FBSDKCoreKit
 import Firebase
+//import FirebaseDynamicLinks
 import PushKit
 import UIKit
+import UXCam
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -62,6 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      options: [UIApplicationOpenURLOptionsKey: Any] = [ : ]) -> Bool {
         guard let source = options[.sourceApplication] as? String else {
             print("Failed to get source application from options")
+            if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+                 return handle(dynamicLink: dynamicLink)
+            }
             return false
         }
 
@@ -114,18 +119,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureLibs() {
         // Add firebase support
         FirebaseApp.configure()
+        
+        // Add XCam
+        UXCam.start(withKey: Resources.UXCam.accountKey)
+        
         // Add Crashlytics in debug mode
         #if SURILLA
         Fabric.sharedSDK().debug = true
 
         // Check how screen rendering is working
+        /*
         let link = CADisplayLink(target: self, selector: #selector(AppDelegate.update(link:)))
         link.add(to: .main, forMode: .commonModes)
+ */
         #endif
     }
 
+    /*
     var lastTime: TimeInterval = 0
-
     @objc
     private func update(link: CADisplayLink) {
         if lastTime == 0 {
@@ -140,6 +151,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Dropped frames! elapsed time: \(elapsedTime) ms.")
         }
         lastTime = link.targetTimestamp
+    }
+    */
+    
+    func handle(dynamicLink: DynamicLink) -> Bool {
+        print("Handling firebase dynamic link: \(dynamicLink)")
+        return true
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -172,6 +189,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         service.teambrella.startUpdating(completion: completionHandler)
 
+    }
+    
+    func application(_ application: UIApplication,
+                     continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        print(userActivity)
+        guard let url = userActivity.webpageURL else {
+            return false
+        }
+        
+        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(url) { link, error in
+            guard let link = link else { return }
+            
+            _ = self.handle(dynamicLink: link)
+        }
+        return handled
     }
 
 }

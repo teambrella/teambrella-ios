@@ -21,10 +21,11 @@
 
 import UIKit
 
+@IBDesignable
 class UmbrellaView: UIView {
 var fillLayer: CAShapeLayer?
-    var startCurveCoeff: CGFloat = 0.4
-    var fillColor: UIColor = #colorLiteral(red: 0.9725490196, green: 0.9803921569, blue: 0.9921568627, alpha: 1)
+    @IBInspectable var startCurveCoeff: CGFloat = 0.4
+    @IBInspectable var fillColor: UIColor = #colorLiteral(red: 0.9725490196, green: 0.9803921569, blue: 0.9921568627, alpha: 1)
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -97,7 +97,7 @@ struct EthereumProcessor {
         
         let last32bytes = bytes[(bytes.count - 32)...]
         do {
-            log("ethereum address: \(account.getAddress().getHex())", type: .cryptoDetails)
+            log("ethereum address: \(String(describing: account.getAddress().getHex()))", type: .cryptoDetails)
             log("last 32 bytes: \(Data(last32bytes).hexString)", type: .cryptoDetails)
             log("secret string: \(secretString)", type: .cryptoDetails)
             let signed = try ethKeyStore?.signHashPassphrase(account, passphrase: secretString, hash: Data(last32bytes))

@@ -28,3 +28,17 @@
 "Login.LoginNoInviteVC.pendingApplication.details" = "Please, check missing points and finalise it. We are waiting for you! Feel free to contact us if you have any questions.";
 "Login.QRCodeButton"                               = "Log with QR code";
 "Login.LoginBlueVC.continueWithVKButton"           = "Continue with VK";
+
+"Login.Application.User.Title"                     = "Получи приглашение в группу";
+"Login.Application.Name.Title"                     = "МЕНЯ ЗОВУТ";
+"Login.Application.City.Title"                     = "ГОРОД";
+"Login.Application.Item.Title"                     = "МАРКА, МОДЕЛЬ, ГОД";
+"Login.Application.Email.Title"                    = "EMAIL";
+"Login.Application.RegisteerButton.Title"          = "Зарегистрироваться";
+"Login.Application.TermsAndConditions.format"      = "Создавая учётную запись, ты принимаешь %@ Teambrella";
+"Login.Application.TermsAndConditions.Link"        = "Условия Использования";
+
+"Login.Application.Item.Placeholder"               = "Ford Focus 2014";
+"Login.Application.Name.Placeholder"               = "Gerry Smith";
+"Login.Application.Email.Placeholder"              = "myemail@hotmail.com";
+"Login.Application.City.Placeholder"               = "New York, US";

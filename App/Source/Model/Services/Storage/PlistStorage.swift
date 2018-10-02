@@ -48,7 +48,7 @@ struct PlistStorage {
     }
     */
 
-    func path(requestType: TeambrellaRequestType, id: String) -> String? {
+    func path(requestType: TeambrellaPostRequestType, id: String) -> String? {
         let type = requestType.rawValue.replacingOccurrences(of: "/", with: "_")
         return userURL?.appendingPathComponent(type + "-" + id).path
     }

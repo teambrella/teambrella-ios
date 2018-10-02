@@ -60,7 +60,7 @@ struct Key: CustomDebugStringConvertible {
         return """
         Teambrella.Key:
         private key: \(privateKey)
-        private key testnet: \(key.wifTestnet)
+        private key testnet: \(key.wifTestnet ?? "?")
         address: \(address)
         public key: \(publicKey)
         signatire: \(signature)

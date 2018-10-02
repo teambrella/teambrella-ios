@@ -36,4 +36,4 @@ else
 fi
 
 echo "Teambrella is ready to use"
-say Сборка проэкта Тимбрэлла, завершена
+say -v Milena Сборка проэкта Тимбрэлла, завершена

@@ -192,8 +192,7 @@ final class PushService: NSObject {
 
         router.popToBase()
 
-        let type = command.type
-        switch type {
+        switch command.type {
         case .newTeammate:
             router.presentMemberProfile(teammateID: String(command.teammateIDValue))
         case .privateMessage:

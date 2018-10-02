@@ -20,6 +20,7 @@
  */
 
 import Foundation
+import UXCam
 
 class Session {
     var isDemo: Bool
@@ -94,5 +95,8 @@ extension Session {
         currentUserID = model.userID
         currentUserName = model.name
         currentUserAvatar = model.avatar
+        
+        // Lets UXCam know the name of the person whose screen is being inspected
+        UXCam.setUserIdentity(model.name.entire)
     }
 }
