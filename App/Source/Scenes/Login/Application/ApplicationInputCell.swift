@@ -24,9 +24,11 @@ class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     
     var onTextChange: ((TextField) -> Void)?
     var onUserInput: ((String?) -> Void)?
+    var onBeginEditing: ((TextField) -> Void)?
     
     private func setup() {
         inputTextField.addTarget(self, action: #selector(changeText), for: .editingChanged)
+        inputTextField.addTarget(self, action: #selector(changeText), for: .editingDidBegin)
     }
     
     override func awakeFromNib() {
@@ -38,6 +40,11 @@ class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     private func changeText(textField: TextField) {
         onUserInput?(textField.text)
         onTextChange?(textField)
+    }
+    
+    @objc
+    private func beginEditing(textField: TextField) {
+        onBeginEditing?(textField)
     }
     
     func decorate() {

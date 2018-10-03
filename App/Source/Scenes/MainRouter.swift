@@ -364,6 +364,15 @@ final class MainRouter {
         viewController.present(vc, animated: true, completion: nil)
         return vc
     }
+    
+    func showSuggestions(in viewController: UIViewController, delegate: SuggestionsVCDelegate, text: String?) {
+        guard let vc = SuggestionsVC.instantiate() as? SuggestionsVC else { fatalError() }
+        
+        vc.delegate = delegate
+        vc.textField.text = text
+        
+        viewController.present(vc, animated: true, completion: nil)
+    }
 
     /*
      func pushOrReuse(vc: UIViewController,

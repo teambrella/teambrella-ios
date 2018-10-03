@@ -117,6 +117,9 @@ class ApplicationVC: UICollectionViewController, Routable {
             cell.onTextChange = { textField in
                service.dao.getCars(string: textField.text).observe(with: result)
             }
+            cell.onBeginEditing = { textField in
+                service.router.showSuggestions(in: self, delegate: self, text: textField.text)
+            }
         case .city:
             cell.inputTextField.isAutocompleteEnabled = true
             cell.onTextChange = { textField in
@@ -154,4 +157,14 @@ class ApplicationVC: UICollectionViewController, Routable {
                             referenceSizeForHeaderInSection section: Int) -> CGSize {
             return ApplicationCellSizer(size: collectionView.bounds.size, offset: 16).headerSize
         }
+}
+
+extension ApplicationVC: SuggestionsVCDelegate {
+    func suggestions(vc: SuggestionsVC, textChanged: String) {
+        
+    }
+    
+    func suggestionsVCWillClose(vc: SuggestionsVC) {
+        
+    }
 }
