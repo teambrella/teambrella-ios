@@ -23,6 +23,10 @@ extension String {
         return attributedString
     }
     
+    func attributed() -> NSMutableAttributedString {
+        return  NSMutableAttributedString(string: self)
+    }
+    
     func attributedBoldString(nonBoldRange: NSRange?) -> NSAttributedString {
         let fontSize = UIFont.systemFontSize
         let attrs = [

@@ -38,7 +38,7 @@ struct ApplicationCellSizer {
     }
     
     var termsAndConditionsSize: CGSize {
-        return CGSize(width: defaultWidth, height: 80)
+        return CGSize(width: defaultWidth, height: 100)
     }
     
     var headerSize: CGSize {

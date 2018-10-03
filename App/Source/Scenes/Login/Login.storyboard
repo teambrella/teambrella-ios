@@ -415,41 +415,41 @@
                                             <constraint firstAttribute="width" constant="70" id="zJi-Tq-stM"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Антикаско" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ena-Wj-V6x">
-                                        <rect key="frame" x="112" y="108" width="151" height="34"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Антикаско" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ena-Wj-V6x">
+                                        <rect key="frame" x="118.33333333333333" y="108" width="138.33333333333337" height="32.666666666666657"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="28"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="РОССИЯ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWF-DN-pUi">
-                                        <rect key="frame" x="152.66666666666666" y="150" width="69.666666666666657" height="19.666666666666657"/>
+                                        <rect key="frame" x="153.33333333333334" y="148.66666666666666" width="68.333333333333343" height="19.666666666666657"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                         <color key="textColor" white="0.8048480308219178" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnF-03-03C">
-                                        <rect key="frame" x="20" y="189.66666666666663" width="335" height="311"/>
+                                        <rect key="frame" x="20" y="198.33333333333334" width="335" height="317.33333333333326"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns7-nW-fpu" customClass="RoundedCornersView" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="311"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="317.33333333333331"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi there!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DX-9I-jMm">
-                                                        <rect key="frame" x="22" y="32.000000000000028" width="97" height="29.333333333333329"/>
+                                                        <rect key="frame" x="22" y="31.999999999999972" width="90" height="28"/>
                                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="24"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAQ-xd-ZAF">
-                                                        <rect key="frame" x="22" y="81.333333333333357" width="293" height="144.66666666666663"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAQ-xd-ZAF">
+                                                        <rect key="frame" x="22" y="79.999999999999957" width="293" height="142.33333333333337"/>
                                                         <string key="text">We welcome you to join the team Bicycle Backup. The team makes every decision by discussion and voting. If there are no claims, you get to keep 100% of your money.
 
 Follow a few short steps to apply.</string>
-                                                        <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
-                                                        <color key="textColor" red="0.40000000000000002" green="0.45098039215686275" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                        <color key="textColor" red="0.40000000000000002" green="0.45098039220000002" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ME7-le-iSE" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="246" width="295" height="45"/>
+                                                        <rect key="frame" x="20" y="252.33333333333337" width="295" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="vXt-Hf-Jbz"/>
                                                         </constraints>
@@ -474,7 +474,7 @@ Follow a few short steps to apply.</string>
                                                     <constraint firstItem="ME7-le-iSE" firstAttribute="leading" secondItem="Ns7-nW-fpu" secondAttribute="leading" constant="20" id="dRR-82-Co4"/>
                                                     <constraint firstAttribute="bottom" secondItem="ME7-le-iSE" secondAttribute="bottom" constant="20" id="exM-52-Eui"/>
                                                     <constraint firstItem="6DX-9I-jMm" firstAttribute="leading" secondItem="Ns7-nW-fpu" secondAttribute="leading" constant="22" id="fO6-Oq-N2d"/>
-                                                    <constraint firstItem="ME7-le-iSE" firstAttribute="top" secondItem="dAQ-xd-ZAF" secondAttribute="bottom" constant="20" id="h0v-1a-4gN"/>
+                                                    <constraint firstItem="ME7-le-iSE" firstAttribute="top" secondItem="dAQ-xd-ZAF" secondAttribute="bottom" constant="30" id="h0v-1a-4gN"/>
                                                     <constraint firstItem="6DX-9I-jMm" firstAttribute="top" secondItem="Ns7-nW-fpu" secondAttribute="top" constant="32" id="iaW-Zb-i3h"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -504,9 +504,11 @@ Follow a few short steps to apply.</string>
                                     <constraint firstItem="vqI-ev-Rxi" firstAttribute="centerX" secondItem="SrL-Nr-m8O" secondAttribute="centerX" id="H8w-Ji-YdR"/>
                                     <constraint firstItem="rnF-03-03C" firstAttribute="leading" secondItem="SrL-Nr-m8O" secondAttribute="leading" constant="20" id="LNj-wk-gGw"/>
                                     <constraint firstItem="ena-Wj-V6x" firstAttribute="centerX" secondItem="vqI-ev-Rxi" secondAttribute="centerX" id="V0P-ch-8Su"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ena-Wj-V6x" secondAttribute="trailing" constant="16" id="bEn-BQ-5k0"/>
                                     <constraint firstItem="ena-Wj-V6x" firstAttribute="top" secondItem="vqI-ev-Rxi" secondAttribute="bottom" constant="8" id="h86-Ej-RCw"/>
+                                    <constraint firstItem="ena-Wj-V6x" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SrL-Nr-m8O" secondAttribute="leading" constant="16" id="jvd-6w-Rgt"/>
                                     <constraint firstItem="DWF-DN-pUi" firstAttribute="centerX" secondItem="ena-Wj-V6x" secondAttribute="centerX" id="nEK-Ko-1OW"/>
-                                    <constraint firstItem="rnF-03-03C" firstAttribute="top" secondItem="DWF-DN-pUi" secondAttribute="bottom" constant="20" id="xa9-7L-m3X"/>
+                                    <constraint firstItem="rnF-03-03C" firstAttribute="top" secondItem="DWF-DN-pUi" secondAttribute="bottom" constant="30" id="xa9-7L-m3X"/>
                                     <constraint firstItem="DWF-DN-pUi" firstAttribute="top" secondItem="ena-Wj-V6x" secondAttribute="bottom" constant="8" id="zJl-6S-fdz"/>
                                 </constraints>
                             </view>
@@ -605,13 +607,13 @@ Follow a few short steps to apply.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDM-4z-2HJ">
-                                                    <rect key="frame" x="16" y="8" width="26" height="12.333333333333336"/>
+                                                    <rect key="frame" x="16" y="10" width="24.666666666666671" height="12.333333333333336"/>
                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                     <color key="textColor" red="0.27058823529411763" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxb-pJ-9KN">
-                                                    <rect key="frame" x="50" y="8" width="26" height="12.333333333333336"/>
+                                                    <rect key="frame" x="48.666666666666664" y="10" width="24.666666666666664" height="12.333333333333336"/>
                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                     <color key="textColor" red="0.80392156862745101" green="0.27058823529411763" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -629,9 +631,9 @@ Follow a few short steps to apply.</string>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="Sxb-pJ-9KN" firstAttribute="centerY" secondItem="tDM-4z-2HJ" secondAttribute="centerY" id="Nes-00-oxj"/>
-                                                <constraint firstItem="tDM-4z-2HJ" firstAttribute="top" secondItem="DkL-Fn-dlK" secondAttribute="top" constant="8" id="YCK-i7-kqp"/>
+                                                <constraint firstItem="tDM-4z-2HJ" firstAttribute="top" secondItem="DkL-Fn-dlK" secondAttribute="top" constant="10" id="YCK-i7-kqp"/>
                                                 <constraint firstItem="Sxb-pJ-9KN" firstAttribute="leading" secondItem="tDM-4z-2HJ" secondAttribute="trailing" constant="8" id="fKU-s7-T7D"/>
-                                                <constraint firstItem="0Kw-Tu-Mdz" firstAttribute="top" secondItem="tDM-4z-2HJ" secondAttribute="bottom" constant="8" id="fln-lI-Kas"/>
+                                                <constraint firstItem="0Kw-Tu-Mdz" firstAttribute="top" secondItem="tDM-4z-2HJ" secondAttribute="bottom" constant="6" id="fln-lI-Kas"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sxb-pJ-9KN" secondAttribute="trailing" constant="16" id="jYZ-o7-4BU"/>
                                                 <constraint firstItem="tDM-4z-2HJ" firstAttribute="leading" secondItem="DkL-Fn-dlK" secondAttribute="leading" constant="16" id="lsB-UJ-W3V"/>
                                                 <constraint firstAttribute="trailing" secondItem="0Kw-Tu-Mdz" secondAttribute="trailing" constant="16" id="reu-6D-g2b"/>

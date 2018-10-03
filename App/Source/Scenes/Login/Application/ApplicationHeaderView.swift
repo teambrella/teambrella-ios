@@ -28,7 +28,7 @@ class ApplicationHeaderView: UICollectionReusableView, ApplicationCell {
         
         imageView.show(model.image)
         nameLabel.text = model.name
-        cityLabel.text = model.city
+        cityLabel.text = model.city.localizedUppercase
         
         imageView.layer.cornerRadius = 4
         imageView.clipsToBounds = true

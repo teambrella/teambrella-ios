@@ -34,9 +34,13 @@ class ApplicationFlowVC: UIViewController {
             
             logoImageView.show(welcome.teamLogo)
             teamNameLabel.text = welcome.teamName
-            locationLabel.text = welcome.location
+            locationLabel.text = welcome.location.localizedUppercase
             headerLabel.text = welcome.title
-            textView.text = welcome.text
+            textView.attributedText = welcome.text
+                .attributed()
+                .add(font: UIFont.teambrella(size: 17), range: nil)
+                .add(fontColor: #colorLiteral(red: 0.4743444324, green: 0.5259671211, blue: 0.5632535219, alpha: 1), range: nil)
+                .add(lineInterval: 0.5 * 17, range: nil)
         }
     }
     
