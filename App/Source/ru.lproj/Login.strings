@@ -30,13 +30,13 @@
 
 "Login.LoginBlueVC.continueWithVKButton"           = "Продолжить с VK";
 
-"Login.Application.User.Title"                     = "Получи приглашение в группу";
-"Login.Application.Name.Title"                     = "МЕНЯ ЗОВУТ";
+"Login.Application.User.Title"                     = "Регистрация";
+"Login.Application.Name.Title"                     = "ИМЯ";
 "Login.Application.City.Title"                     = "ГОРОД";
-"Login.Application.Item.Title"                     = "МАРКА, МОДЕЛЬ, ГОД";
-"Login.Application.Email.Title"                    = "EMAIL";
+"Login.Application.Item.Title"                     = "АВТОМОБИЛЬ";
+"Login.Application.Email.Title"                    = "E-MAIL";
 "Login.Application.RegisteerButton.Title"          = "Зарегистрироваться";
-"Login.Application.TermsAndConditions.format"      = "Создавая учётную запись, ты принимаешь %@ Teambrella";
+"Login.Application.TermsAndConditions.format"      = "Регистрируясь в Teambrella, ты принимаешь %@";
 "Login.Application.TermsAndConditions.Link"        = "Условия Использования";
 
 "Login.Application.Item.Placeholder"               = "Ford Focus 2014";
