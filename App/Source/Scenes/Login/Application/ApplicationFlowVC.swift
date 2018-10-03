@@ -28,6 +28,20 @@ class ApplicationFlowVC: UIViewController {
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var textView: UILabel!
     
+    var welcome: WelcomeEntity? {
+        didSet {
+            guard let welcome = welcome else { return }
+            
+            logoImageView.show(welcome.teamLogo)
+            teamNameLabel.text = welcome.teamName
+            locationLabel.text = welcome.location
+            headerLabel.text = welcome.title
+            textView.text = welcome.text
+        }
+    }
+    
+    var inviteCode: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,7 +49,21 @@ class ApplicationFlowVC: UIViewController {
         self.view.needsUpdateConstraints()
        
         setup()
-        service.dao.ge
+        getWelcomeData()
+    }
+    
+    private func getWelcomeData() {
+        let teamID = 2028
+        inviteCode = "ABCZ"
+        
+        service.dao.getWelcome(teamID: teamID, inviteCode: inviteCode).observe { result in
+            switch result {
+            case let .value(welcome):
+                self.welcome = welcome
+            case let .error(error):
+                print(error)
+            }
+        }
     }
     
     private func setup() {
@@ -61,7 +89,9 @@ class ApplicationFlowVC: UIViewController {
                 vc.error = TeambrellaError(kind: .permissionDenied, description: "sdf")
             }
         default:
-            break
+            if let vc = segue.destination as? ApplicationVC, let welcome = welcome {
+                vc.setupUserData(welcome: welcome, inviteCode: inviteCode)
+            }
         }
     }
     

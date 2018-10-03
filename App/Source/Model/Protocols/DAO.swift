@@ -99,4 +99,5 @@ protocol DAO {
     
     func getCars(string: String?) -> Future<[String]>
     func getCities(string: String?) -> Future<[String]>
+    func getWelcome(teamID: Int, inviteCode: String?) -> Future<WelcomeEntity>
 }

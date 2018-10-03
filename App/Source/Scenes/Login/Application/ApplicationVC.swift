@@ -23,8 +23,8 @@ class ApplicationVC: UICollectionViewController, Routable {
     var router: ApplicationRouter?
     
     var models: [ApplicationCellModel] = []
-    var headers: [ApplicationCellModel] = []
     
+    var headerModel: ApplicationHeaderCellModel!
     var userData: UserApplicationData!
     
     override func viewDidLoad() {
@@ -32,28 +32,29 @@ class ApplicationVC: UICollectionViewController, Routable {
         
         let builder = ApplicationCellModelBuilder()
         models = builder.carGroupModels()
-        headers = builder.carGroupHeaderModels()
         
         let view = ApplicationBackgroundView(frame: self.view.bounds)
         collectionView?.backgroundView = view
         
-        setupUserData(teamID: 2028, inviteCode: "XYZ")
         assert(userData != nil)
     }
     
-    func setupUserData(teamID: Int, inviteCode: String?) {
-        userData = UserApplicationData(teamID: teamID,
+    func setupUserData(welcome: WelcomeEntity, inviteCode: String) {
+        userData = UserApplicationData(teamID: welcome.teamID,
                                        inviteCode: inviteCode,
-                                       name: nil,
-                                       area: nil,
+                                       name: welcome.nameTo?.entire,
+                                       area: welcome.location,
                                        emailString: nil,
                                        model: nil)
+        headerModel = ApplicationHeaderCellModel(image: welcome.teamLogo,
+                                                 name: welcome.teamName,
+                                                 city: welcome.location)
     }
     
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return headers.count
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,9 +72,8 @@ class ApplicationVC: UICollectionViewController, Routable {
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
-        let model = headers[indexPath.section]
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                   withReuseIdentifier: model.identifier.rawValue,
+                                                                   withReuseIdentifier: headerModel.identifier.rawValue,
                                                                    for: indexPath)
         cell.tag = indexPath.row
         return cell
@@ -135,8 +135,7 @@ class ApplicationVC: UICollectionViewController, Routable {
                 fatalError("Wrong header")
             }
             
-            let model = headers[indexPath.section]
-            applicationView.setup(with: model, userData: userData)
+            applicationView.setup(with: headerModel, userData: userData)
         }
         
     }

@@ -668,6 +668,18 @@ class ServerDAO: DAO {
        return getQuery(string: string, type: .cities)
     }
     
+    func getWelcome(teamID: Int, inviteCode: String?) -> Future<WelcomeEntity> {
+        let promise = Promise<WelcomeEntity>()
+        
+        let request = TeambrellaGetRequest<ServerReplyBox<WelcomeEntity>>(type: .welcome,
+                                                     parameters: ["teamId": String(teamID),
+                                                                  "invite": inviteCode ?? ""],
+                                                     success: { box in promise.resolve(with: box.data) },
+                                                     failure: promise.reject)
+        request.start(server: self.server)
+        return promise
+    }
+    
     private func getQuery(string: String?, type: TeambrellaGetRequestType) -> Future<[String]> {
         let promise = Promise<[String]>()
         guard let string = string else {

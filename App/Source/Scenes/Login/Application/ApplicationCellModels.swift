@@ -18,7 +18,7 @@ import Foundation
 
 struct ApplicationHeaderCellModel: ApplicationCellModel {
     let identifier: ApplicationCellIdentifier = .header
-    let image: String
+    let image: Photo
     let name: String
     let city: String
 }
