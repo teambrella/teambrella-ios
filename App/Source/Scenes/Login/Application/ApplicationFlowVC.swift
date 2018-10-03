@@ -23,27 +23,35 @@ class ApplicationFlowVC: UIViewController {
     
     @IBOutlet var shadowView: UIView!
     @IBOutlet var containerView: RoundedCornersView!
-    @IBOutlet var facebookButton: BorderedButton!
-    @IBOutlet var vkButton: BorderedButton!
+    @IBOutlet var forwardButton: BorderedButton!
+    
+    @IBOutlet var headerLabel: UILabel!
+    @IBOutlet var textView: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ViewDecorator.homeCardShadow(for: shadowView)
         self.view.needsUpdateConstraints()
+       
+        setup()
+        service.dao.ge
+    }
+    
+    private func setup() {
         logoImageView.layer.cornerRadius = 4
         logoImageView.clipsToBounds = true
+        
+        teamNameLabel.text = nil
+        locationLabel.text = nil
+        headerLabel.text = nil
+        textView.text = nil
+        
+        forwardButton.setTitle("General.forward".localized, for: .normal)
     }
 
     @IBAction func tapButton(_ sender: UIButton) {
-        switch sender {
-        case facebookButton:
              performSegue(withIdentifier: "application", sender: self)
-        case vkButton:
-             performSegue(withIdentifier: "error screen", sender: self)
-        default:
-            break
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -428,10 +428,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnF-03-03C">
-                                        <rect key="frame" x="20" y="189.66666666666663" width="335" height="386"/>
+                                        <rect key="frame" x="20" y="189.66666666666663" width="335" height="311"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ns7-nW-fpu" customClass="RoundedCornersView" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="386"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="311"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi there!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DX-9I-jMm">
                                                         <rect key="frame" x="22" y="32.000000000000028" width="97" height="29.333333333333329"/>
@@ -448,8 +448,8 @@ Follow a few short steps to apply.</string>
                                                         <color key="textColor" red="0.40000000000000002" green="0.45098039215686275" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ME7-le-iSE" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="317" width="295" height="45"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ME7-le-iSE" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="246" width="295" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="vXt-Hf-Jbz"/>
                                                         </constraints>
@@ -461,23 +461,7 @@ Follow a few short steps to apply.</string>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="hasGradientBackground" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="tapButton:" destination="XCd-3U-UJI" eventType="touchUpInside" id="XOq-d7-hX7"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFa-pn-Cjb" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="245" width="295" height="45"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="45" id="a1d-re-sae"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
-                                                        <state key="normal" title="Continue with Facebook">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasGradientBackground" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="tapButton:" destination="XCd-3U-UJI" eventType="touchUpInside" id="qaL-ih-fvU"/>
+                                                            <action selector="tapButton:" destination="XCd-3U-UJI" eventType="touchUpInside" id="eCj-J1-dfX"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -490,11 +474,8 @@ Follow a few short steps to apply.</string>
                                                     <constraint firstItem="ME7-le-iSE" firstAttribute="leading" secondItem="Ns7-nW-fpu" secondAttribute="leading" constant="20" id="dRR-82-Co4"/>
                                                     <constraint firstAttribute="bottom" secondItem="ME7-le-iSE" secondAttribute="bottom" constant="20" id="exM-52-Eui"/>
                                                     <constraint firstItem="6DX-9I-jMm" firstAttribute="leading" secondItem="Ns7-nW-fpu" secondAttribute="leading" constant="22" id="fO6-Oq-N2d"/>
-                                                    <constraint firstItem="TFa-pn-Cjb" firstAttribute="trailing" secondItem="ME7-le-iSE" secondAttribute="trailing" id="hdn-kz-QBI"/>
+                                                    <constraint firstItem="ME7-le-iSE" firstAttribute="top" secondItem="dAQ-xd-ZAF" secondAttribute="bottom" constant="20" id="h0v-1a-4gN"/>
                                                     <constraint firstItem="6DX-9I-jMm" firstAttribute="top" secondItem="Ns7-nW-fpu" secondAttribute="top" constant="32" id="iaW-Zb-i3h"/>
-                                                    <constraint firstItem="TFa-pn-Cjb" firstAttribute="leading" secondItem="ME7-le-iSE" secondAttribute="leading" id="lcR-Ph-pxF"/>
-                                                    <constraint firstItem="TFa-pn-Cjb" firstAttribute="top" secondItem="dAQ-xd-ZAF" secondAttribute="bottom" constant="30" id="qFh-TH-Lwm"/>
-                                                    <constraint firstItem="ME7-le-iSE" firstAttribute="top" secondItem="TFa-pn-Cjb" secondAttribute="bottom" constant="20" id="rYy-wG-4ly"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="YES"/>
@@ -547,12 +528,13 @@ Follow a few short steps to apply.</string>
                     <navigationItem key="navigationItem" id="ugO-aR-fAd"/>
                     <connections>
                         <outlet property="containerView" destination="Ns7-nW-fpu" id="ath-lB-Bf2"/>
-                        <outlet property="facebookButton" destination="TFa-pn-Cjb" id="7JJ-9i-Pm1"/>
+                        <outlet property="forwardButton" destination="ME7-le-iSE" id="sbc-eA-UGG"/>
+                        <outlet property="headerLabel" destination="6DX-9I-jMm" id="Fah-fw-Q5M"/>
                         <outlet property="locationLabel" destination="DWF-DN-pUi" id="NMg-VO-7iH"/>
                         <outlet property="logoImageView" destination="vqI-ev-Rxi" id="7qU-tV-wFS"/>
                         <outlet property="shadowView" destination="rnF-03-03C" id="j92-ls-JTW"/>
                         <outlet property="teamNameLabel" destination="ena-Wj-V6x" id="Yt9-kD-vEZ"/>
-                        <outlet property="vkButton" destination="ME7-le-iSE" id="FJe-W9-EF1"/>
+                        <outlet property="textView" destination="dAQ-xd-ZAF" id="TDF-j0-a7S"/>
                         <segue destination="W08-zs-DM3" kind="show" identifier="application" id="0P6-m8-1RU"/>
                         <segue destination="RUg-4M-8iQ" kind="show" identifier="error screen" id="KI3-Cg-VfK"/>
                     </connections>

@@ -563,6 +563,8 @@
 		6D49FDE22020C12800A908D2 /* Risk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE02020C12800A908D2 /* Risk.swift */; };
 		6D49FDE52020C20B00A908D2 /* ClaimVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE32020C20B00A908D2 /* ClaimVote.swift */; };
 		6D49FDE82020C34900A908D2 /* Fiat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D49FDE62020C34900A908D2 /* Fiat.swift */; };
+		6D4BC58921650D7D00877B52 /* WelcomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BC58821650D7D00877B52 /* WelcomeEntity.swift */; };
+		6D4BC58A21650D7D00877B52 /* WelcomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4BC58821650D7D00877B52 /* WelcomeEntity.swift */; };
 		6D4C792B20AC6E1F00AFD997 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FCF81FBC8407006C0A2B /* NotificationService.swift */; };
 		6D4E590F1FD2EF8D0029D2F0 /* EthereumAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */; };
 		6D4E59101FD2EF900029D2F0 /* WithdrawChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */; };
@@ -1449,6 +1451,7 @@
 		6D49FDE02020C12800A908D2 /* Risk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Risk.swift; path = Model/Entities/Risk.swift; sourceTree = "<group>"; };
 		6D49FDE32020C20B00A908D2 /* ClaimVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClaimVote.swift; path = Model/Entities/ClaimVote.swift; sourceTree = "<group>"; };
 		6D49FDE62020C34900A908D2 /* Fiat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Fiat.swift; path = Model/Entities/Fiat.swift; sourceTree = "<group>"; };
+		6D4BC58821650D7D00877B52 /* WelcomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeEntity.swift; path = Model/Entities/WelcomeEntity.swift; sourceTree = "<group>"; };
 		6D4E5DD91F7AB6870020DEE2 /* Surilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D538525210F5D7400410138 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginWorker.swift; path = Model/Services/LoginWorker.swift; sourceTree = "<group>"; };
 		6D5535972136ED92000DB0F2 /* Auth0Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Auth0Authenticator.swift; path = Model/Services/Auth0Authenticator.swift; sourceTree = "<group>"; };
@@ -3216,6 +3219,7 @@
 				6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */,
 				6D35566A1FD2EE4400AEBF07 /* WithdrawTx.swift */,
 				6DE3E31A2048560C0042CD72 /* MeModel.swift */,
+				6D4BC58821650D7D00877B52 /* WelcomeEntity.swift */,
 			);
 			name = ServerModels;
 			sourceTree = "<group>";
@@ -4610,6 +4614,7 @@
 				6D0524B020A5D838000B3247 /* HomeCollectionCell.swift in Sources */,
 				17AD14AA211C8B4E007C7613 /* VotedRiskCell.swift in Sources */,
 				6D0524B120A5D838000B3247 /* ClaimVotingView.swift in Sources */,
+				6D4BC58A21650D7D00877B52 /* WelcomeEntity.swift in Sources */,
 				6D0524B220A5D838000B3247 /* Dumper.swift in Sources */,
 				6DB894F921556B6300780D5F /* HomeBackgroundView.swift in Sources */,
 				6D0524B320A5D838000B3247 /* CosignerEntity.swift in Sources */,
@@ -5059,6 +5064,7 @@
 				6D4E5D4F1F7AB6870020DEE2 /* HomeCollectionCell.swift in Sources */,
 				17AD14A9211C8B4E007C7613 /* VotedRiskCell.swift in Sources */,
 				6D251C3B20348646005081E4 /* ClaimVotingView.swift in Sources */,
+				6D4BC58921650D7D00877B52 /* WelcomeEntity.swift in Sources */,
 				6D9F6ADC2014EB3000B3287D /* Dumper.swift in Sources */,
 				6DB894F821556B6300780D5F /* HomeBackgroundView.swift in Sources */,
 				6D4E5D501F7AB6870020DEE2 /* CosignerEntity.swift in Sources */,
