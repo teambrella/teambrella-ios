@@ -14,7 +14,7 @@ extension String {
         return Formatter.teambrella.date(from: self)
     }
     
-    func link(substring: String, urlString: String) -> NSAttributedString {
+    func link(substring: String, urlString: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: self)
         guard let range = self.range(of: substring) else { return attributedString }
         

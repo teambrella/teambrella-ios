@@ -45,9 +45,6 @@ struct ApplicationTermsAndConditionsCellModel: ApplicationCellModel {
     let format: String
     let linkText: String
     let link: String
-    var text: NSAttributedString {
-        return format.localized(linkText).link(substring: linkText, urlString: link)
-    }
 }
 
 struct ApplicationActionCellModel: ApplicationCellModel {

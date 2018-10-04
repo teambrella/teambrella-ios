@@ -23,7 +23,6 @@ import Auth0
 import Fabric
 import FBSDKCoreKit
 import Firebase
-//import FirebaseDynamicLinks
 import PushKit
 import UIKit
 import UXCam
@@ -36,26 +35,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         service.push.register(application: application)
         service.push.startPushKit()
-
         if let userID = SimpleStorage().string(forKey: .userID) {
             service.sinch.startWith(userID: userID)
         }
-
         TeambrellaStyle.apply()
-        //        if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
-        //            service.push.remoteNotificationOnStart(in: application, userInfo: notification)
-        //        }
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
-
         // Pull in case of emergency :)
         // service.cryptoMalfunction()
-
         configureLibs()
-
         return true
     }
 
@@ -126,33 +116,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Add Crashlytics in debug mode
         #if SURILLA
         Fabric.sharedSDK().debug = true
-
-        // Check how screen rendering is working
-        /*
-        let link = CADisplayLink(target: self, selector: #selector(AppDelegate.update(link:)))
-        link.add(to: .main, forMode: .commonModes)
- */
         #endif
     }
-
-    /*
-    var lastTime: TimeInterval = 0
-    @objc
-    private func update(link: CADisplayLink) {
-        if lastTime == 0 {
-            lastTime = link.timestamp
-        }
-
-        let currentTime = link.timestamp
-        let elapsedTime = floor((currentTime - lastTime) * 10_000) / 10
-
-        // less than 60 frames per second
-        if elapsedTime > 16.7 {
-            print("Dropped frames! elapsed time: \(elapsedTime) ms.")
-        }
-        lastTime = link.targetTimestamp
-    }
-    */
     
     func handle(dynamicLink: DynamicLink) -> Bool {
         print("Handling firebase dynamic link: \(dynamicLink)")
