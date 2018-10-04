@@ -36,4 +36,5 @@ enum SegueType: String {
     case transactionsResult
     case invitationOnly
     case unwindToInitial
+    case welcome
 }

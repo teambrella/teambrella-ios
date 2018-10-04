@@ -44,7 +44,7 @@ class ApplicationVC: UICollectionViewController, Routable {
                                        inviteCode: inviteCode,
                                        name: welcome.nameTo?.entire,
                                        area: welcome.location,
-                                       emailString: nil,
+                                       emailString: welcome.email,
                                        model: nil)
         headerModel = ApplicationHeaderCellModel(image: welcome.teamLogo,
                                                  name: welcome.teamName,

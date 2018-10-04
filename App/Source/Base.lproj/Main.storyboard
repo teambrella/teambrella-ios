@@ -76,7 +76,6 @@
                     <connections>
                         <segue destination="Ncn-5L-LbE" kind="presentation" identifier="login" animates="NO" id="OTa-lG-lZY"/>
                         <segue destination="LDY-qk-qZO" kind="show" identifier="teambrella" id="WLE-fZ-f3z"/>
-                        <segue destination="eSq-wY-tks" kind="presentation" identifier="login old" id="lry-dh-PbT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ep4-ci-iap" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -151,14 +150,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QCc-dq-ql8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="761" y="297"/>
-        </scene>
-        <!--old login navigation-->
-        <scene sceneID="7E2-Z5-Ucu">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Login" referencedIdentifier="old login navigation" id="eSq-wY-tks" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HPY-7D-V2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1524" y="296"/>
         </scene>
         <!--Navigator-->
         <scene sceneID="oew-N5-y95">

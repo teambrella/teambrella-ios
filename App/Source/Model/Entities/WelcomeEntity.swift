@@ -25,6 +25,7 @@ struct WelcomeEntity: Decodable {
     let nameTo: Name?
     let title: String
     let text: String
+    let email: String?
     
     enum CodingKeys: String, CodingKey {
         case teamID = "TeamId"
@@ -35,5 +36,6 @@ struct WelcomeEntity: Decodable {
         case nameTo = "NameTo"
         case title = "WelcomeTitle"
         case text = "WelcomeText"
+        case email = "Email"
     }
 }
