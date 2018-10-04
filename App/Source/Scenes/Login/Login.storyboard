@@ -741,9 +741,10 @@ Follow a few short steps to apply.</string>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="HAF-66-zRM" firstAttribute="centerY" secondItem="Pjg-bU-VDd" secondAttribute="centerY" id="1qN-DD-wG2"/>
                                                 <constraint firstItem="HAF-66-zRM" firstAttribute="leading" secondItem="Pjg-bU-VDd" secondAttribute="leading" constant="16" id="OEo-55-0bb"/>
-                                                <constraint firstAttribute="bottom" secondItem="HAF-66-zRM" secondAttribute="bottom" id="Rzl-pd-2Pk"/>
-                                                <constraint firstItem="HAF-66-zRM" firstAttribute="top" secondItem="Pjg-bU-VDd" secondAttribute="top" id="ciG-Ol-qKE"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HAF-66-zRM" secondAttribute="bottom" id="Rzl-pd-2Pk"/>
+                                                <constraint firstItem="HAF-66-zRM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Pjg-bU-VDd" secondAttribute="top" id="ciG-Ol-qKE"/>
                                                 <constraint firstAttribute="trailing" secondItem="HAF-66-zRM" secondAttribute="trailing" constant="16" id="tRx-ym-rYS"/>
                                             </constraints>
                                         </view>

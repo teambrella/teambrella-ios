@@ -39,6 +39,7 @@ extension ApplicationTermsAndConditionsCell: ApplicationCell {
         textView.attributedText = model.format.localized(model.linkText)
             .link(substring: model.linkText, urlString: model.link)
             .add(font: UIFont.teambrella(size: 14), range: nil)
+            .add(alignment: .center)
         textView.delegate = self
     }
 }

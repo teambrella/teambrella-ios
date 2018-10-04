@@ -38,6 +38,14 @@ extension NSMutableAttributedString {
         return self
     }
     
+    func add(alignment: NSTextAlignment) -> NSMutableAttributedString {
+        let range = NSRange(location: 0, length: self.length)
+        let style = NSMutableParagraphStyle()
+        style.alignment = alignment
+        addAttribute(.paragraphStyle, value: style, range: range)
+        return self
+    }
+    
     func add(fontColor: UIColor, range: NSRange?) -> NSMutableAttributedString {
         let range = range ?? NSRange(location: 0, length: self.length)
         addAttribute(.foregroundColor, value: fontColor, range: range)
