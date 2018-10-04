@@ -806,8 +806,12 @@ Follow a few short steps to apply.</string>
                         </connections>
                     </collectionView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <segue destination="gCX-k3-ezC" kind="unwind" identifier="unwindToInitial" unwindAction="unwindToInitialWithSegue:" id="dVG-Dh-72U"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jeo-fC-nju" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gCX-k3-ezC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="301.60000000000002" y="-850.49261083743841"/>
         </scene>
@@ -821,6 +825,6 @@ Follow a few short steps to apply.</string>
         <image name="vk" width="2500" height="2500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3Hc-wB-HHG"/>
+        <segue reference="KI3-Cg-VfK"/>
     </inferredMetricsTieBreakers>
 </document>

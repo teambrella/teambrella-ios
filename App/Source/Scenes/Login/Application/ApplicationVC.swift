@@ -39,13 +39,9 @@ class ApplicationVC: UICollectionViewController, Routable {
         assert(userData != nil)
     }
     
-    func setupUserData(welcome: WelcomeEntity, inviteCode: String) {
-        userData = UserApplicationData(teamID: welcome.teamID,
-                                       inviteCode: inviteCode,
-                                       name: welcome.nameTo?.entire,
-                                       area: welcome.location,
-                                       emailString: welcome.email,
-                                       model: nil)
+    func setupUserData(welcome: WelcomeEntity, inviteCode: String?) {
+        userData = UserApplicationData(welcome: welcome)
+        userData.inviteCode = inviteCode ?? ""
         headerModel = ApplicationHeaderCellModel(image: welcome.teamLogo,
                                                  name: welcome.teamName,
                                                  city: welcome.location)
@@ -91,6 +87,20 @@ class ApplicationVC: UICollectionViewController, Routable {
         (applicationCell as? ApplicationCellDecorable)?.decorate()
         if let cell = applicationCell as? ApplicationInputCell {
             applicationInput(cell: cell, addActionsFor: model)
+        }
+        if let cell = applicationCell as? ApplicationActionCell {
+            cell.onButtonTap = { [weak self] button in
+                self?.register()
+            }
+        }
+    }
+    
+    func register() {
+        let loginWorker = LoginWorker()
+        loginWorker.register(userData: userData) { error in
+            guard error == nil else { return }
+            
+            self.performSegue(type: .unwindToInitial, sender: self)
         }
     }
     

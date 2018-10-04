@@ -579,7 +579,7 @@ class ServerDAO: DAO {
         }
         return promise
     }
-
+    
     // TMP: remove when possible
     func performRequest(request: TeambrellaRequest) {
         request.start(server: server)
@@ -627,15 +627,15 @@ class ServerDAO: DAO {
                                          "a": wallet]
         return registerKey(payload: payload)
     }
-
+    
     func registerKey(socialToken: String, signature: String, wallet: String) -> Future<Bool> {
         let payload: [String: String] = ["auth0Token": socialToken,
                                          "sigOfPublicKey": signature,
                                          "a": wallet]
         return registerKey(payload: payload)
     }
-
-    func registerKey(payload: [String: String]) -> Future<Bool> {
+    
+    func registerKey(payload: [String: Any]) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in
             let body = RequestBody(key: key, payload: payload)
@@ -647,6 +647,15 @@ class ServerDAO: DAO {
             request.start(server: self.server)
         }
         return promise
+    }
+    
+    func registerKey(signature: String, userData: UserApplicationData) -> Future<Bool> {
+        guard var payload = userData.dictionary else {
+            fatalError()
+        }
+        
+        payload["sigOfPublicKey"] = signature
+        return registerKey(payload: payload)
     }
     
     func freshKey(completion: @escaping (Key) -> Void) {
@@ -661,21 +670,25 @@ class ServerDAO: DAO {
     }
     
     func getCars(string: String?) -> Future<[String]> {
-    return getQuery(string: string, type: .cars)
+        return getQuery(string: string, type: .cars)
     }
     
     func getCities(string: String?) -> Future<[String]> {
-       return getQuery(string: string, type: .cities)
+        return getQuery(string: string, type: .cities)
     }
     
-    func getWelcome(teamID: Int, inviteCode: String?) -> Future<WelcomeEntity> {
+    func getWelcome(teamID: Int?, inviteCode: String?) -> Future<WelcomeEntity> {
         let promise = Promise<WelcomeEntity>()
         
+        let teamID = teamID.map { String($0) } ?? ""
+        let inviteCode = inviteCode ?? ""
         let request = TeambrellaGetRequest<ServerReplyBox<WelcomeEntity>>(type: .welcome,
-                                                     parameters: ["teamId": String(teamID),
-                                                                  "invite": inviteCode ?? ""],
-                                                     success: { box in promise.resolve(with: box.data) },
-                                                     failure: promise.reject)
+                                                                          parameters: ["teamId": teamID,
+                                                                                       "invite": inviteCode],
+                                                                          success: { box in
+                                                                            promise.resolve(with: box.data)
+        },
+                                                                          failure: promise.reject)
         request.start(server: self.server)
         return promise
     }

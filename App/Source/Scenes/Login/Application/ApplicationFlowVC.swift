@@ -44,7 +44,8 @@ class ApplicationFlowVC: UIViewController {
         }
     }
     
-    var inviteCode: String = ""
+    var inviteCode: String?
+    var teamID: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +58,6 @@ class ApplicationFlowVC: UIViewController {
     }
     
     private func getWelcomeData() {
-        let teamID = 2028
-        inviteCode = "ABCZ"
-        
         service.dao.getWelcome(teamID: teamID, inviteCode: inviteCode).observe { result in
             switch result {
             case let .value(welcome):

@@ -17,14 +17,22 @@
 import Foundation
 import SwiftEmail
 
-struct UserApplicationData {
-    let teamID: Int
-    let inviteCode: String?
+class UserApplicationData: Codable {
+    var teamID: Int?
+    var inviteCode: String?
     
-    var name: String?
-    var area: String?
+    var name: Name?
+    var location: String?
     var emailString: String?
     var model: String?
+    
+    var gender: Gender?
+    var subType: String?
+    var year: Int?
+    var price: Decimal?
+    var spayed: Bool?
+    var photos: [String]?
+    var message: String?
     
     var email: EmailAddress? {
         guard let emailString = emailString else { return nil }
@@ -32,30 +40,54 @@ struct UserApplicationData {
         return EmailAddress(string: emailString)
     }
     
-    mutating func update(with string: String?, model: ApplicationInputCellModel) {
+    init(welcome: WelcomeEntity) {
+        teamID = welcome.teamID
+        name = welcome.nameTo
+        location = welcome.location
+        emailString = welcome.email
+    }
+    
+    func update(with string: String?, model: ApplicationInputCellModel) {
         switch model.type {
         case .city:
-            area = string
+            location = string
         case .email:
             emailString = string
         case .item:
             self.model = string
         case .name:
-        name = string
+            name = string.map { Name(fullName: $0) }
         }
     }
     
     func text(for model: ApplicationInputCellModel) -> String? {
         switch model.type {
         case .city:
-            return area
+            return location
         case .email:
            return emailString
         case .item:
             return self.model
         case .name:
-            return name
+            return name?.entire
         }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case teamID = "teamId"
+        case inviteCode = "invite"
+        case name = "Name"
+        case location = "Location"
+        case emailString = "Email"
+        case model = "CarModelString"
+        
+        case gender = "Gender"
+        case subType = "SubType"
+        case year = "Year"
+        case price = "Price"
+        case spayed = "Spayed"
+        case photos = "Photos"
+        case message = "Message"
     }
 
 }

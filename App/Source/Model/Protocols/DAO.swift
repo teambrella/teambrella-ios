@@ -90,8 +90,10 @@ protocol DAO {
     func mute(topicID: String, isMuted: Bool) -> Future<Bool>
 
     func sendRiskVote(teammateID: Int, risk: Double?) -> Future<TeammateVotingResult>
+    
     func registerKey(facebookToken: String, signature: String, wallet: String) -> Future<Bool>
     func registerKey(socialToken: String, signature: String, wallet: String) -> Future<Bool>
+    func registerKey(signature: String, userData: UserApplicationData) -> Future<Bool>
 
     func updateClaimVote(claimID: Int, vote: Float?, lastUpdated: Int64) -> Future<ClaimVoteUpdate>
 
@@ -99,5 +101,5 @@ protocol DAO {
     
     func getCars(string: String?) -> Future<[String]>
     func getCities(string: String?) -> Future<[String]>
-    func getWelcome(teamID: Int, inviteCode: String?) -> Future<WelcomeEntity>
+    func getWelcome(teamID: Int?, inviteCode: String?) -> Future<WelcomeEntity>
 }
