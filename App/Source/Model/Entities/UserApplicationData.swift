@@ -21,7 +21,7 @@ class UserApplicationData: Codable {
     var teamID: Int?
     var inviteCode: String?
     
-    var name: Name?
+    var name: String?
     var location: String?
     var emailString: String?
     var model: String?
@@ -42,7 +42,7 @@ class UserApplicationData: Codable {
     
     init(welcome: WelcomeEntity) {
         teamID = welcome.teamID
-        name = welcome.nameTo
+        name = welcome.nameTo?.entire
         location = welcome.location
         emailString = welcome.email
     }
@@ -56,7 +56,7 @@ class UserApplicationData: Codable {
         case .item:
             self.model = string
         case .name:
-            name = string.map { Name(fullName: $0) }
+                name = string
         }
     }
     
@@ -69,7 +69,7 @@ class UserApplicationData: Codable {
         case .item:
             return self.model
         case .name:
-            return name?.entire
+            return name
         }
     }
     

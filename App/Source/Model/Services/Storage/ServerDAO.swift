@@ -625,21 +625,21 @@ class ServerDAO: DAO {
         let payload: [String: String] = ["facebookToken": facebookToken,
                                          "sigOfPublicKey": signature,
                                          "a": wallet]
-        return registerKey(payload: payload)
+        return registerKey(payload: payload, type: .registerKey)
     }
     
     func registerKey(socialToken: String, signature: String, wallet: String) -> Future<Bool> {
         let payload: [String: String] = ["auth0Token": socialToken,
                                          "sigOfPublicKey": signature,
                                          "a": wallet]
-        return registerKey(payload: payload)
+        return registerKey(payload: payload, type: .registerKey)
     }
     
-    func registerKey(payload: [String: Any]) -> Future<Bool> {
+    func registerKey(payload: [String: Any], type: TeambrellaPostRequestType) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in
             let body = RequestBody(key: key, payload: payload)
-            let request = TeambrellaRequest(type: .registerKey,
+            let request = TeambrellaRequest(type: type,
                                             body: body,
                                             success: { response in
                                                 promise.resolve(with: true)
@@ -655,7 +655,7 @@ class ServerDAO: DAO {
         }
         
         payload["sigOfPublicKey"] = signature
-        return registerKey(payload: payload)
+        return registerKey(payload: payload, type: .joinRregisterKey)
     }
     
     func freshKey(completion: @escaping (Key) -> Void) {

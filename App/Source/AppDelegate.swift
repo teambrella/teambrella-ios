@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let source = options[.sourceApplication] as? String else {
             print("Failed to get source application from options")
             if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
-                 return handle(dynamicLink: dynamicLink)
+                return handle(dynamicLink: dynamicLink)
             }
             return false
         }
@@ -121,6 +121,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func handle(dynamicLink: DynamicLink) -> Bool {
         print("Handling firebase dynamic link: \(dynamicLink)")
+        guard let url = dynamicLink.url else { return false }
+
+        let components = url.pathComponents
+        let team = components.last
+
+        var invite: String?
+        if let query = url.query, let range = query.range(of: "invite=") {
+            invite = String(query[range.upperBound...])
+        }
+
+        service.invite = invite
+        service.joinTeamID = team.flatMap { Int($0) }
+
+        NotificationCenter.default.post(name: .dynamicLinkReceived, object: nil)
         return true
     }
 

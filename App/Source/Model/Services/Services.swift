@@ -63,5 +63,9 @@ final class ServicesHandler {
     var session: Session?
 
     var sinch: SinchService = SinchService()
+
+    // For dynamic links support
+    var invite: String?
+    var joinTeamID: Int?
     
 }

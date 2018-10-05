@@ -55,6 +55,11 @@ final class LoginBlueVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if service.joinTeamID != nil {
+            performSegue(type: .welcome)
+        }
+
         centerLabel.text = "Login.LoginBlueVC.centerLabel".localized
         continueWithFBButton.setTitle("Login.LoginBlueVC.continueWithFBButton".localized, for: .normal)
         continueWithVKButton.setTitle("Login.LoginBlueVC.continueWithVKButton".localized, for: .normal)
@@ -67,8 +72,13 @@ final class LoginBlueVC: UIViewController {
         
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
-//        continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
+        //        continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
         animateCenterLabel()
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(dynamicLinkReceived),
+                                               name: .dynamicLinkReceived,
+                                               object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -102,7 +112,7 @@ final class LoginBlueVC: UIViewController {
     }
 
     @IBAction func tapNextButton() {
-       performSegue(type: .welcome)
+        performSegue(type: .welcome)
     }
     
     func register(type: LoginWorker.LoginType) {
@@ -238,15 +248,9 @@ Are you sure you want to completely remove your private key from this device?
         performSegue(withIdentifier: "unwindToInitial", sender: nil)
     }
 
-    /*
-    private func logAsFacebookUser(user: FacebookUser?) {
-        HUD.hide()
-        performSegue(withIdentifier: "unwindToInitial", sender: user)
+    @objc
+    private func dynamicLinkReceived() {
+        navigationController?.popToViewController(self, animated: false)
+        performSegue(type: .welcome)
     }
-    
-    private func logAsVKUser(userToken: String) {
-        HUD.hide()
-        performSegue(withIdentifier: "unwindToInitial", sender: userToken)
-    }
-    */
 }

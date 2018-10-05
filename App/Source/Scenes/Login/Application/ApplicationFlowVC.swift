@@ -44,9 +44,6 @@ class ApplicationFlowVC: UIViewController {
         }
     }
     
-    var inviteCode: String?
-    var teamID: Int?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,7 +55,7 @@ class ApplicationFlowVC: UIViewController {
     }
     
     private func getWelcomeData() {
-        service.dao.getWelcome(teamID: teamID, inviteCode: inviteCode).observe { result in
+        service.dao.getWelcome(teamID: service.joinTeamID, inviteCode: service.invite).observe { result in
             switch result {
             case let .value(welcome):
                 self.welcome = welcome
@@ -92,7 +89,7 @@ class ApplicationFlowVC: UIViewController {
             }
         default:
             if let vc = segue.destination as? ApplicationVC, let welcome = welcome {
-                vc.setupUserData(welcome: welcome, inviteCode: inviteCode)
+                vc.setupUserData(welcome: welcome, inviteCode: service.invite)
             }
         }
     }
