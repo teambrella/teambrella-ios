@@ -19,7 +19,6 @@ import Foundation
 enum TeambrellaGetRequestType: String {
     case cars = "carObject/getCars"
     case cities = "geoObject/getCities"
-    case welcome = "join/getWelcome"
 }
 
 enum TeambrellaPostRequestType: String {
@@ -41,6 +40,7 @@ enum TeambrellaPostRequestType: String {
     case feedPinVote = "feed/setPinVote"
     case mute = "feed/setIsMuted"
 
+    case welcome = "join/getWelcome"
     case joinRregisterKey = "join/registerKey"
 
     case timestamp = "me/GetTimestamp"

@@ -244,6 +244,9 @@ struct TeambrellaRequest {
             case .me:
                 let myModel = try decoder.decode(MeModel.self, from: serverReply.data)
                 success(.me(myModel))
+            case .welcome:
+                let welcome = try decoder.decode(WelcomeEntity.self, from: serverReply.data)
+                success(.welcome(welcome))
             default:
                 break
             }

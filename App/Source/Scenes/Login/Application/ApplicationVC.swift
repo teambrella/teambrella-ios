@@ -44,7 +44,7 @@ class ApplicationVC: UICollectionViewController, Routable {
         userData.inviteCode = inviteCode ?? ""
         headerModel = ApplicationHeaderCellModel(image: welcome.teamLogo,
                                                  name: welcome.teamName,
-                                                 city: welcome.location)
+                                                 city: welcome.location ?? "")
     }
     
     // MARK: UICollectionViewDataSource
@@ -99,7 +99,8 @@ class ApplicationVC: UICollectionViewController, Routable {
         let loginWorker = LoginWorker()
         loginWorker.register(userData: userData) { error in
             guard error == nil else { return }
-            
+
+            SimpleStorage().store(bool: false, forKey: .isRegistering)
             self.performSegue(type: .unwindToInitial, sender: self)
         }
     }

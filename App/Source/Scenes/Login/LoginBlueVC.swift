@@ -29,6 +29,7 @@ final class LoginBlueVC: UIViewController {
     @IBOutlet var continueWithVKButton: UIButton!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var tryDemoButton: UIButton!
+    @IBOutlet var qrCodeButton: UIButton!
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var confetti: SKView!
 
@@ -64,6 +65,7 @@ final class LoginBlueVC: UIViewController {
         continueWithFBButton.setTitle("Login.LoginBlueVC.continueWithFBButton".localized, for: .normal)
         continueWithVKButton.setTitle("Login.LoginBlueVC.continueWithVKButton".localized, for: .normal)
         nextButton.setTitle("General.forward".localized, for: .normal)
+        qrCodeButton.setTitle("Login.QRCodeButton".localized, for: .normal)
         
         tryDemoButton.setTitle("Login.LoginBlueVC.tryDemoButton".localized, for: .normal)
         continueWithFBButton.layer.cornerRadius = 2
@@ -72,6 +74,8 @@ final class LoginBlueVC: UIViewController {
         
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
+
+        qrCodeButton.addGestureRecognizer(clearAllRecognizer)
         //        continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
         animateCenterLabel()
 
@@ -112,7 +116,13 @@ final class LoginBlueVC: UIViewController {
     }
 
     @IBAction func tapNextButton() {
-        performSegue(type: .welcome)
+        if service.keyStorage.isRealPrivateKeySet && SimpleStorage().bool(forKey: .isRegistering) == false {
+            service.keyStorage.setToRealUser()
+            performSegue(type: .unwindToInitial)
+        } else {
+            SimpleStorage().store(bool: true, forKey: .isRegistering)
+            performSegue(type: .welcome)
+        }
     }
     
     func register(type: LoginWorker.LoginType) {
@@ -133,9 +143,22 @@ final class LoginBlueVC: UIViewController {
     
     @IBAction func tapTryDemoButton(_ sender: Any) {
         service.keyStorage.setToDemoUser()
-        performSegue(withIdentifier: "unwindToInitial", sender: self)
+        performSegue(type: .unwindToInitial, sender: self)
     }
-    
+
+    @IBAction func tapQRCode(_ sender: UIButton) {
+        Statistics.log(event: .tapQRCodeLogin)
+        service.router.showCodeCapture(in: self, delegate: self, type: .privateKey)
+    }
+
+     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+        if let vc = segue.source as? ApplicationFlowVC, let error = vc.error {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                self.handleFailure(error: error)
+            }
+        }
+    }
+
     @objc
     private func secretTap(sender: UILongPressGestureRecognizer) {
         let controller = UIAlertController(title: "Secret entrance",
@@ -245,12 +268,34 @@ Are you sure you want to completely remove your private key from this device?
 
     private func logIn() {
         HUD.hide()
-        performSegue(withIdentifier: "unwindToInitial", sender: nil)
+        performSegue(type: .unwindToInitial)
     }
 
     @objc
     private func dynamicLinkReceived() {
         navigationController?.popToViewController(self, animated: false)
         performSegue(type: .welcome)
+    }
+
+    private func newPrivateKeySet(privateKey: String) {
+        service.keyStorage.saveNewPrivateKey(string: privateKey)
+        service.keyStorage.setToRealUser()
+        self.performSegue(withIdentifier: "unwindToInitial", sender: self)
+    }
+}
+
+// MARK: CodeCaptureDelegate
+extension LoginBlueVC: CodeCaptureDelegate {
+    func codeCapture(controller: CodeCaptureVC, didCapture: String, type: QRCodeType) {
+        if type == .bitcoinWiF {
+            controller.close(cancelled: false)
+            self.newPrivateKeySet(privateKey: didCapture)
+        } else {
+            print("Wrong type: \(type)")
+        }
+    }
+
+    func codeCaptureWillClose(controller: CodeCaptureVC, cancelled: Bool) {
+
     }
 }

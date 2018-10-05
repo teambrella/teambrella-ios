@@ -27,6 +27,8 @@ class ApplicationFlowVC: UIViewController {
     
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var textView: UILabel!
+
+    var error: Error?
     
     var welcome: WelcomeEntity? {
         didSet {
@@ -34,7 +36,7 @@ class ApplicationFlowVC: UIViewController {
             
             logoImageView.show(welcome.teamLogo)
             teamNameLabel.text = welcome.teamName
-            locationLabel.text = welcome.location.localizedUppercase
+            locationLabel.text = welcome.location?.localizedUppercase ?? ""
             headerLabel.text = welcome.title
             textView.attributedText = welcome.text
                 .attributed()
@@ -60,7 +62,9 @@ class ApplicationFlowVC: UIViewController {
             case let .value(welcome):
                 self.welcome = welcome
             case let .error(error):
-                print(error)
+                self.error = error
+                service.clearDynamicLinkData()
+                self.performSegue(type: .unwindToLogin)
             }
         }
     }

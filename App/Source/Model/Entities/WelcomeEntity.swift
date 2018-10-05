@@ -20,7 +20,7 @@ struct WelcomeEntity: Decodable {
     let teamID: Int
     let teamName: String
     let teamLogo: Photo
-    let location: String
+    let location: String?
     let nameFrom: Name?
     let nameTo: Name?
     let title: String

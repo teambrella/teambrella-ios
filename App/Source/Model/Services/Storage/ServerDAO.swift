@@ -682,14 +682,18 @@ class ServerDAO: DAO {
         
         let teamID = teamID.map { String($0) } ?? ""
         let inviteCode = inviteCode ?? ""
-        let request = TeambrellaGetRequest<ServerReplyBox<WelcomeEntity>>(type: .welcome,
-                                                                          parameters: ["teamId": teamID,
-                                                                                       "invite": inviteCode],
-                                                                          success: { box in
-                                                                            promise.resolve(with: box.data)
-        },
-                                                                          failure: promise.reject)
-        request.start(server: self.server)
+
+        let body = RequestBody(timestamp: 0, signature: "", publicKey: "", payload: ["teamId": teamID,
+                                                                                     "invite": inviteCode])
+            let request = TeambrellaRequest(type: .welcome,
+                                            body: body,
+                                            success: { response in
+                                                if case let .welcome(welcome) = response {
+                                                    promise.resolve(with: welcome)
+                                                }
+            },
+                                            failure: promise.reject)
+            request.start(server: self.server)
         return promise
     }
     

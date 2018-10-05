@@ -395,6 +395,9 @@ final class MainRouter {
             SimpleStorage().store(string: userID, forKey: .userID)
             service.sinch.startWith(userID: userID)
         }
+
+        service.joinTeamID = nil
+        service.invite = nil
     }
     
     @discardableResult

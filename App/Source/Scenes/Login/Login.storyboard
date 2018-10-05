@@ -104,7 +104,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkd-j6-Z6y">
-                                <rect key="frame" x="16" y="673" width="343" height="40"/>
+                                <rect key="frame" x="16" y="626" width="343" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="tvE-ob-CWt"/>
@@ -137,6 +137,17 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="GFu-Ou-VZp">
                                 <rect key="frame" x="36" y="684" width="24" height="24"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgl-A7-H88">
+                                <rect key="frame" x="168" y="686" width="39" height="27"/>
+                                <accessibility key="accessibilityConfiguration" identifier="tryDemo"/>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapQRCode:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="VgZ-IM-o5q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1333333333" green="0.20000000000000001" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -144,6 +155,8 @@
                             <constraint firstItem="O3C-eL-D90" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" constant="16" id="6NY-MS-fpM"/>
                             <constraint firstItem="TKO-fV-G5k" firstAttribute="top" secondItem="eP3-7Q-JtA" secondAttribute="bottom" constant="16" id="6cB-ch-YIU"/>
                             <constraint firstItem="n5y-0s-mhl" firstAttribute="centerX" secondItem="TKO-fV-G5k" secondAttribute="centerX" id="6zV-1a-u5i"/>
+                            <constraint firstItem="xgl-A7-H88" firstAttribute="top" secondItem="bkd-j6-Z6y" secondAttribute="bottom" constant="20" id="8Nb-yE-E7u"/>
+                            <constraint firstItem="n5y-0s-mhl" firstAttribute="top" secondItem="xgl-A7-H88" secondAttribute="bottom" constant="20" id="8qI-f9-Bcu"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="width" secondItem="7DX-bd-hFW" secondAttribute="width" multiplier="0.7" id="ASg-K4-N3W"/>
                             <constraint firstItem="usP-eT-Dn2" firstAttribute="trailing" secondItem="bkd-j6-Z6y" secondAttribute="trailing" constant="16" id="CHg-vZ-EYP"/>
                             <constraint firstItem="Osc-M6-i2X" firstAttribute="top" secondItem="eP3-7Q-JtA" secondAttribute="top" constant="8" id="CZW-YD-DzZ"/>
@@ -152,10 +165,10 @@
                             <constraint firstAttribute="trailing" secondItem="TKO-fV-G5k" secondAttribute="trailing" constant="28" id="Npf-Vr-QUO"/>
                             <constraint firstItem="GFu-Ou-VZp" firstAttribute="leading" secondItem="Osc-M6-i2X" secondAttribute="leading" id="PBh-ny-tFv"/>
                             <constraint firstAttribute="trailing" secondItem="O7m-EB-YXq" secondAttribute="trailing" id="PEP-n2-pjr"/>
+                            <constraint firstItem="xgl-A7-H88" firstAttribute="centerX" secondItem="n5y-0s-mhl" secondAttribute="centerX" id="Pzg-w7-tII"/>
                             <constraint firstItem="eP3-7Q-JtA" firstAttribute="leading" secondItem="TKO-fV-G5k" secondAttribute="leading" id="RPQ-Ev-yoe"/>
                             <constraint firstItem="GFu-Ou-VZp" firstAttribute="bottom" secondItem="TKO-fV-G5k" secondAttribute="bottom" constant="-8" id="Rsi-oc-reW"/>
                             <constraint firstItem="ZSJ-w0-Tqs" firstAttribute="top" secondItem="7DX-bd-hFW" secondAttribute="top" id="SSJ-wp-jNg"/>
-                            <constraint firstItem="n5y-0s-mhl" firstAttribute="top" secondItem="bkd-j6-Z6y" secondAttribute="bottom" constant="20" id="ZNw-0j-vSg"/>
                             <constraint firstItem="bkd-j6-Z6y" firstAttribute="leading" secondItem="usP-eT-Dn2" secondAttribute="leading" constant="16" id="a3x-kT-p6P"/>
                             <constraint firstItem="JJj-TS-F5o" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" id="bxK-vK-XUz"/>
                             <constraint firstItem="Osc-M6-i2X" firstAttribute="centerY" secondItem="eP3-7Q-JtA" secondAttribute="centerY" id="dT5-L7-7vh"/>
@@ -197,6 +210,7 @@
                         <outlet property="continueWithVKButton" destination="eP3-7Q-JtA" id="xLb-TC-61C"/>
                         <outlet property="gradientView" destination="JJj-TS-F5o" id="xCU-IY-abS"/>
                         <outlet property="nextButton" destination="bkd-j6-Z6y" id="BPH-4q-pKa"/>
+                        <outlet property="qrCodeButton" destination="xgl-A7-H88" id="rFe-YV-3oo"/>
                         <outlet property="tryDemoButton" destination="n5y-0s-mhl" id="tWI-xH-yix"/>
                         <segue destination="RUg-4M-8iQ" kind="show" identifier="invitationOnly" id="3Hc-wB-HHG"/>
                         <segue destination="Mpw-oG-9Tx" kind="unwind" identifier="unwindToInitial" animates="NO" unwindAction="unwindToInitialWithSegue:" id="3aY-tD-QnZ"/>
@@ -558,9 +572,11 @@ Follow a few short steps to apply.</string>
                         <outlet property="textView" destination="dAQ-xd-ZAF" id="TDF-j0-a7S"/>
                         <segue destination="W08-zs-DM3" kind="show" identifier="application" id="0P6-m8-1RU"/>
                         <segue destination="RUg-4M-8iQ" kind="show" identifier="error screen" id="KI3-Cg-VfK"/>
+                        <segue destination="Xfv-xr-77t" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="mLC-SC-AII"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="smf-Cf-fLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Xfv-xr-77t" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-695" y="-850"/>
         </scene>
@@ -590,7 +606,7 @@ Follow a few short steps to apply.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSF-rS-i2d">
-                                                    <rect key="frame" x="16" y="16" width="343" height="20"/>
+                                                    <rect key="frame" x="16" y="16" width="343" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
                                                     <color key="textColor" red="0.3411764705882353" green="0.66274509803921566" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -626,13 +642,13 @@ Follow a few short steps to apply.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDM-4z-2HJ">
-                                                    <rect key="frame" x="16" y="10" width="24.666666666666671" height="12.333333333333336"/>
+                                                    <rect key="frame" x="16" y="10" width="26" height="12.333333333333336"/>
                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                     <color key="textColor" red="0.27058823529411763" green="0.30196078431372547" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxb-pJ-9KN">
-                                                    <rect key="frame" x="48.666666666666664" y="10" width="24.666666666666664" height="12.333333333333336"/>
+                                                    <rect key="frame" x="50" y="10" width="26" height="12.333333333333336"/>
                                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="10"/>
                                                     <color key="textColor" red="0.80392156862745101" green="0.27058823529411763" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -774,13 +790,13 @@ Follow a few short steps to apply.</string>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cda-wH-2ZI">
-                                    <rect key="frame" x="153.33333333333334" y="92" width="68.666666666666657" height="32.666666666666657"/>
+                                    <rect key="frame" x="151.33333333333334" y="92" width="72.333333333333343" height="34"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="28"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roq-3W-VOt">
-                                    <rect key="frame" x="166.66666666666666" y="132.66666666666666" width="41.666666666666657" height="20"/>
+                                    <rect key="frame" x="165.66666666666666" y="134" width="44" height="20"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
                                     <color key="textColor" white="0.79652718321917804" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
