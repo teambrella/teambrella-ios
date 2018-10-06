@@ -71,6 +71,7 @@ class Session {
             break
         }
         self.currentTeam = currentTeam ?? teams.first
+        SimpleStorage().store(bool: false, forKey: .isRegistering)
     }
     
     @discardableResult

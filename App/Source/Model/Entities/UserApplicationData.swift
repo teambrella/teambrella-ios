@@ -72,6 +72,28 @@ class UserApplicationData: Codable {
             return name
         }
     }
+
+    func validate(model: ApplicationInputCellModel) -> Bool {
+        switch model.type {
+        case .city:
+            if let location = location, location.count > 1 {
+                return true
+            }
+        case .email:
+            if let emailString = emailString, EmailAddress(string: emailString) != nil {
+                return true
+            }
+        case .item:
+            if let model = self.model, model.count > 1 {
+                return true
+            }
+        case .name:
+            if let name = name, name.count > 1 {
+                return true
+            }
+        }
+        return false
+    }
     
     enum CodingKeys: String, CodingKey {
         case teamID = "teamId"
