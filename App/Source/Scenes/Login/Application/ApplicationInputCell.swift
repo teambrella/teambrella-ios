@@ -74,3 +74,13 @@ extension ApplicationInputCell: ApplicationCell {
         }
     }
 }
+
+extension ApplicationInputCell: SuggestionsVCDelegate {
+    func suggestions(vc: SuggestionsVC, textChanged: String) {
+        inputTextField.text = textChanged
+    }
+    
+    func suggestionsVCWillClose(vc: SuggestionsVC) {
+        onUserInput?(inputTextField?.text)
+    }
+}

@@ -148,11 +148,19 @@ class ApplicationVC: UICollectionViewController, Routable {
             self?.userData.update(with: text, model: model)
         }
         cell.onBeginEditing = { [weak self] cell in
+            guard let self = self else { return }
+            
             switch model.type {
             case .city:
-                print(model)
+               service.router.showSuggestions(in: self,
+                                              delegate: cell,
+                                              dataSource: CitiesFetcher(),
+                                              text: cell.inputTextField.text)
             case .item:
-                print(model)
+                service.router.showSuggestions(in: self,
+                                               delegate: cell,
+                                               dataSource: CarsFetcher(),
+                                               text: cell.inputTextField.text)
             default:
                 break
             }
@@ -164,6 +172,9 @@ class ApplicationVC: UICollectionViewController, Routable {
             cell.inputTextField.isAutocompleteEnabled = true
             cell.onTextChange = { textField in
                 service.dao.getCars(string: textField.text).observe(with: result)
+            }
+            cell.onBeginEditing = { textField in
+                service.router.showSuggestions(in: self, delegate: self, text: textField.text)
             }
         case .city:
             cell.inputTextField.isAutocompleteEnabled = true

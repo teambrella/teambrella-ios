@@ -706,6 +706,7 @@ class ServerDAO: DAO {
             return promise
         }
         
+        let safeString = string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let request = TeambrellaGetRequest<[String]>(type: type,
                                                      parameters: ["q": string],
                                                      success: promise.resolve,

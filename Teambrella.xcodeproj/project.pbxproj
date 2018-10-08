@@ -497,6 +497,10 @@
 		6D12927E1F83BD6D001CCC31 /* SceneType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12927C1F83BD6A001CCC31 /* SceneType.swift */; };
 		6D12928A1F83DC46001CCC31 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1292881F83DC46001CCC31 /* Name.swift */; };
 		6D12928C1F83DE38001CCC31 /* NameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12928B1F83DE38001CCC31 /* NameTests.swift */; };
+		6D12BF66216B9106005AF3FB /* SuggestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12BF65216B9106005AF3FB /* SuggestionsVC.swift */; };
+		6D12BF67216B9106005AF3FB /* SuggestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12BF65216B9106005AF3FB /* SuggestionsVC.swift */; };
+		6D12BF69216B9B44005AF3FB /* SugggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12BF68216B9B44005AF3FB /* SugggestionsCell.swift */; };
+		6D12BF6A216B9B44005AF3FB /* SugggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12BF68216B9B44005AF3FB /* SugggestionsCell.swift */; };
 		6D12C2EB1FCD6C6200A8926D /* Info.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D12C2E81FCD6C6200A8926D /* Info.strings */; };
 		6D1616AA20D280C600C8FBBE /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1616A920D280C600C8FBBE /* SharedAssets.xcassets */; };
 		6D1B287520C6B795003B2D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1B287420C6B795003B2D32 /* Assets.xcassets */; };
@@ -1349,6 +1353,8 @@
 		6D12927C1F83BD6A001CCC31 /* SceneType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneType.swift; path = Model/Enums/SceneType.swift; sourceTree = "<group>"; };
 		6D1292881F83DC46001CCC31 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Name.swift; path = Model/Entities/Name.swift; sourceTree = "<group>"; };
 		6D12928B1F83DE38001CCC31 /* NameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTests.swift; sourceTree = "<group>"; };
+		6D12BF65216B9106005AF3FB /* SuggestionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionsVC.swift; path = Scenes/Info/SuggestionsVC.swift; sourceTree = "<group>"; };
+		6D12BF68216B9B44005AF3FB /* SugggestionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SugggestionsCell.swift; path = Scenes/Info/SugggestionsCell.swift; sourceTree = "<group>"; };
 		6D12C2E91FCD6C6200A8926D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Info.strings; sourceTree = "<group>"; };
 		6D12C2EC1FCD6D3D00A8926D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Info.strings; sourceTree = "<group>"; };
 		6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotingRiskCell.swift; path = View/Cells/VotingRiskCell.swift; sourceTree = "<group>"; };
@@ -2331,12 +2337,14 @@
 		6D2A7C611FCC66490094ABB7 /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				6D12BF65216B9106005AF3FB /* SuggestionsVC.swift */,
 				6DCFB4F9212C5823000817F6 /* CallVC.swift */,
 				6D1CAC0D1FF51AA000FA58B6 /* OthersVoted */,
 				6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */,
 				6D2A7C621FCC66960094ABB7 /* SODVC.swift */,
 				6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */,
 				6D106F0E203AEA400049E92E /* Console.swift */,
+				6D12BF68216B9B44005AF3FB /* SugggestionsCell.swift */,
 			);
 			name = Info;
 			sourceTree = "<group>";
@@ -4280,6 +4288,7 @@
 				6DB743D1214FBDD700F57D00 /* ApplicationInputCell.swift in Sources */,
 				6D7A01B020B5BCBF006A30FA /* WalletCosignersCellBuilder.swift in Sources */,
 				6D05237D20A5D838000B3247 /* NSMutableAttributedString.swift in Sources */,
+				6D12BF6A216B9B44005AF3FB /* SugggestionsCell.swift in Sources */,
 				6D05237E20A5D838000B3247 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D26F58E212C69840016CC02 /* CallKitService.swift in Sources */,
 				6D05237F20A5D838000B3247 /* GasStation.swift in Sources */,
@@ -4371,6 +4380,7 @@
 				6D0523C820A5D838000B3247 /* SwipeToVote.swift in Sources */,
 				6D0523C920A5D838000B3247 /* JoinTeamCellModels.swift in Sources */,
 				6D0523CA20A5D838000B3247 /* DeveloperTools.swift in Sources */,
+				6D12BF67216B9106005AF3FB /* SuggestionsVC.swift in Sources */,
 				6D0523CB20A5D838000B3247 /* ReportCellBuilder.swift in Sources */,
 				6D244E35215BC9C500401CDA /* ApplicationBackgroundView.swift in Sources */,
 				6D0523CC20A5D838000B3247 /* EtherAPI.swift in Sources */,
@@ -4732,6 +4742,7 @@
 				6DB743D0214FBDD700F57D00 /* ApplicationInputCell.swift in Sources */,
 				6D4E5C4F1F7AB6870020DEE2 /* Cosigner.swift in Sources */,
 				6D7A01AF20B5BCBF006A30FA /* WalletCosignersCellBuilder.swift in Sources */,
+				6D12BF69216B9B44005AF3FB /* SugggestionsCell.swift in Sources */,
 				6D6FCBFE1FD878FB0032041A /* NSMutableAttributedString.swift in Sources */,
 				6D4E5C501F7AB6870020DEE2 /* ChatNewMessagesSeparatorCell.swift in Sources */,
 				6D878E50200CF63600066492 /* GasStation.swift in Sources */,
@@ -4823,6 +4834,7 @@
 				6D4E5C921F7AB6870020DEE2 /* DeveloperTools.swift in Sources */,
 				6D4E5C931F7AB6870020DEE2 /* ReportCellBuilder.swift in Sources */,
 				6D677E781FA110B800ED1C36 /* EtherAPI.swift in Sources */,
+				6D12BF66216B9106005AF3FB /* SuggestionsVC.swift in Sources */,
 				6D4E5C951F7AB6870020DEE2 /* HomeVC.swift in Sources */,
 				6D244E34215BC9C100401CDA /* ApplicationBackgroundView.swift in Sources */,
 				6D4E5C961F7AB6870020DEE2 /* EntityEnums.swift in Sources */,
