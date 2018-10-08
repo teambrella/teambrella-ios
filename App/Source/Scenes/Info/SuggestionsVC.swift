@@ -25,12 +25,14 @@ protocol SuggestionsVCDelegate: class {
 
 class SuggestionsVC: UIViewController, Routable {
     static let storyboardName = "Info"
-
+    
     @IBOutlet var topContainerView: UIView!
     @IBOutlet var textField: TextField!
     @IBOutlet var confirmButton: UIButton!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var effectView: UIVisualEffectView!
+    
+    var lastClickDate: Date = Date()
     
     weak var delegate: SuggestionsVCDelegate?
     
@@ -46,7 +48,7 @@ class SuggestionsVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         
         confirmButton.setTitle("General.choose".localized, for: .normal)
@@ -60,39 +62,48 @@ class SuggestionsVC: UIViewController, Routable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.tableFooterView = UIView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        textField.becomeFirstResponder()
+        
         let parameters = UICubicTimingParameters(animationCurve: .easeIn)
         let animator = UIViewPropertyAnimator(duration: 0.5, timingParameters: parameters)
         animator.addAnimations {
             self.effectView.effect = UIBlurEffect(style: .dark)
         }
-       animator.startAnimation()
+        animator.startAnimation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textField.becomeFirstResponder()
     }
     
     @IBAction func tapConfirmButton(_ sender: Any) {
-       close()
+        close()
     }
     
     @objc
     private func textChanged(sender: TextField) {
         delegate?.suggestions(vc: self, textChanged: sender.text ?? "")
         
-        if let text = sender.text {
-            dataSource.updateSuggestions(for: text) { [weak self] in
-                self?.tableView.reloadData()
-            }
+        lastClickDate = Date()
+        Timer.scheduledTimer(withTimeInterval: 0.51, repeats: false) { timer in
+            guard Date().timeIntervalSince(self.lastClickDate) > 0.5 else { return }
+            guard let text = self.textField.text else { return }
+            
+            self.updateSuggestions(text: text)
+        }
+    }
+    
+    private func updateSuggestions(text: String) {
+        dataSource.updateSuggestions(for: text) { [weak self] in
+            self?.tableView.reloadData()
         }
     }
     
     private func close() {
-         delegate?.suggestionsVCWillClose(vc: self)
-          dismiss(animated: true, completion: nil)
+        delegate?.suggestionsVCWillClose(vc: self)
+        dismiss(animated: true, completion: nil)
     }
-
+    
 }
 
 extension SuggestionsVC: UITableViewDataSource {

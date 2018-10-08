@@ -150,19 +150,21 @@ class ApplicationVC: UICollectionViewController, Routable {
         cell.onBeginEditing = { [weak self] cell in
             guard let self = self else { return }
             
+            let fetcher: SuggestionsFetcher?
             switch model.type {
             case .city:
-               service.router.showSuggestions(in: self,
-                                              delegate: cell,
-                                              dataSource: CitiesFetcher(),
-                                              text: cell.inputTextField.text)
+                fetcher = CitiesFetcher()
             case .item:
-                service.router.showSuggestions(in: self,
-                                               delegate: cell,
-                                               dataSource: CarsFetcher(),
-                                               text: cell.inputTextField.text)
+                fetcher = CarsFetcher()
             default:
-                break
+                fetcher = nil
+            }
+            if let fetcher = fetcher {
+            let vc = service.router.showSuggestions(in: self,
+                                                      delegate: cell,
+                                                      dataSource: fetcher,
+                                                      text: cell.inputTextField.text)
+            vc.textField.placeholder = cellTextField.placeholder
             }
         }
         

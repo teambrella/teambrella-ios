@@ -485,10 +485,11 @@ final class MainRouter {
                                                name: .cryptoKeyFailure, object: nil)
     }
     
+    @discardableResult
     func showSuggestions(in viewController: UIViewController,
                          delegate: SuggestionsVCDelegate,
                          dataSource: SuggestionsFetcher,
-                         text: String?) {
+                         text: String?) -> SuggestionsVC {
         guard let vc = SuggestionsVC.instantiate() as? SuggestionsVC else { fatalError() }
         
         vc.loadViewIfNeeded()
@@ -497,6 +498,7 @@ final class MainRouter {
         vc.textField.text = text
         
         viewController.present(vc, animated: true, completion: nil)
+        return vc
     }
 
     @objc

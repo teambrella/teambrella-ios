@@ -597,7 +597,7 @@
         <!--SuggestionsVC-->
         <scene sceneID="Ybr-t9-Zpq">
             <objects>
-                <viewController storyboardIdentifier="SuggestionsVC" modalPresentationStyle="overFullScreen" id="kVT-0n-QU5" customClass="SuggestionsVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SuggestionsVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="kVT-0n-QU5" customClass="SuggestionsVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ofr-6u-FNb"/>
                         <viewControllerLayoutGuide type="bottom" id="SnD-ej-gAa"/>
@@ -617,7 +617,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2m-Fe-37R">
                                 <rect key="frame" x="16" y="50" width="343" height="60"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mh1-Kt-si7" customClass="TextField" customModule="Surilla" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mh1-Kt-si7" customClass="TextField" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="16" y="14" width="249" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -642,8 +642,11 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="200" translatesAutoresizingMaskIntoConstraints="NO" id="2fp-kw-DPM">
-                                <rect key="frame" x="16" y="110" width="343" height="557"/>
+                                <rect key="frame" x="16" y="110" width="343" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" constant="100" id="A3t-VY-ctF"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Suggestions cell" textLabel="QpQ-qq-P5h" style="IBUITableViewCellStyleDefault" id="a6u-Jq-nOB" customClass="SugggestionsCell" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
@@ -676,7 +679,7 @@
                             <constraint firstItem="SnD-ej-gAa" firstAttribute="top" secondItem="S7R-sW-mrl" secondAttribute="bottom" id="8k1-GN-pKi"/>
                             <constraint firstItem="S7R-sW-mrl" firstAttribute="leading" secondItem="RO7-Af-aeh" secondAttribute="leading" id="D1V-CU-n8n"/>
                             <constraint firstItem="2fp-kw-DPM" firstAttribute="leading" secondItem="RO7-Af-aeh" secondAttribute="leadingMargin" id="MMc-9J-W2K"/>
-                            <constraint firstItem="SnD-ej-gAa" firstAttribute="top" secondItem="2fp-kw-DPM" secondAttribute="bottom" id="Mqi-S9-9AT"/>
+                            <constraint firstItem="SnD-ej-gAa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2fp-kw-DPM" secondAttribute="bottom" constant="220" id="Mqi-S9-9AT"/>
                             <constraint firstItem="P2m-Fe-37R" firstAttribute="trailing" secondItem="RO7-Af-aeh" secondAttribute="trailingMargin" id="SFS-Q1-gI2"/>
                             <constraint firstItem="S7R-sW-mrl" firstAttribute="top" secondItem="RO7-Af-aeh" secondAttribute="top" id="bn6-3y-xai"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2fp-kw-DPM" secondAttribute="trailing" id="eZx-il-9hF"/>
