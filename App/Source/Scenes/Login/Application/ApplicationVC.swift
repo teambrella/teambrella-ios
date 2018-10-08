@@ -147,6 +147,17 @@ class ApplicationVC: UICollectionViewController, Routable {
         cell.onUserInput = { [weak self] text in
             self?.userData.update(with: text, model: model)
         }
+        cell.onBeginEditing = { [weak self] cell in
+            switch model.type {
+            case .city:
+                print(model)
+            case .item:
+                print(model)
+            default:
+                break
+            }
+        }
+        
         /*
         switch model.type {
         case .item:
