@@ -11,13 +11,13 @@ PODS:
   - CoreBitcoin (0.6.8.1):
     - ISO8601DateFormatter
     - OpenSSL-Universal (= 1.0.1.16)
-  - Crashlytics (3.10.7):
-    - Fabric (~> 1.7.11)
+  - Crashlytics (3.10.9):
+    - Fabric (~> 1.7.13)
   - ExtensionsPack (1.1.0)
-  - Fabric (1.7.11)
-  - FBSDKCoreKit (4.36.0):
+  - Fabric (1.7.13)
+  - FBSDKCoreKit (4.37.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.36.0):
+  - FBSDKLoginKit (4.37.0):
     - FBSDKCoreKit
   - Firebase/Core (5.9.0):
     - Firebase/CoreOnly
@@ -84,7 +84,7 @@ PODS:
     - ImageSlideshow/Core (= 1.7.0)
   - ImageSlideshow/Core (1.7.0)
   - ISO8601DateFormatter (0.8)
-  - KeychainAccess (3.1.1)
+  - KeychainAccess (3.1.2)
   - Kingfisher (4.10.0)
   - MessengerKit (1.0.0)
   - nanopb (0.3.8):
@@ -93,10 +93,10 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - OpenSSL-Universal (1.0.1.16)
-  - PKHUD (5.1.0)
+  - PKHUD (5.2.0)
   - Protobuf (3.6.1)
   - QRCode (2.0)
-  - ReachabilitySwift (4.2.1)
+  - ReachabilitySwift (4.3.0)
   - SimpleKeychain (0.8.1)
   - SinchRTC (3.12.6)
   - Starscream (3.0.5)
@@ -107,7 +107,7 @@ PODS:
   - SwiftMessages/App (5.0.1)
   - SwiftSoup (1.7.4)
   - ThoraxMath (1.1.0)
-  - UXCam (3.0.0)
+  - UXCam (3.0.1)
   - XLPagerTabStrip (8.0.1)
 
 DEPENDENCIES:
@@ -201,7 +201,7 @@ CHECKOUT OPTIONS:
     :commit: a8ea4d44d7658f2f51309bf675614372f8959623
     :git: https://github.com/yaro812/ExtensionsPack.git
   MessengerKit:
-    :commit: 669991a4a0226d493d700303353d0bf69dea379f
+    :commit: 0aa7d371d8cd2527b7bb650cbbb05fd4e2229a9e
     :git: https://github.com/steve228uk/MessengerKit.git
   SwiftEmail:
     :commit: 1f8e3eda12a796c87bdb4b7d056fc36e1af17db0
@@ -210,7 +210,7 @@ CHECKOUT OPTIONS:
     :commit: eb1fc92b1f375da9835ba5a9e5cab83317066426
     :git: https://github.com/yaro812/ThoraxMath.git
   XLPagerTabStrip:
-    :commit: 1619ad4fe1cd6a32f81352a549448bd1538c4419
+    :commit: 73ffb21720c0e39d03c5a76b1d26b7ebdc69d6ee
     :git: https://github.com/xmartlabs/XLPagerTabStrip.git
 
 SPEC CHECKSUMS:
@@ -218,11 +218,11 @@ SPEC CHECKSUMS:
   BigNumber: bcc393c06b3e7e2752e5121be58c032c45c6f36b
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CoreBitcoin: 4ac6f6a61e543f08399c2fe57496d4fdcbaf74f9
-  Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
+  Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   ExtensionsPack: b1e93f49af7729b5e522714585ead40ed92f4ad0
-  Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
-  FBSDKCoreKit: 3b8e6570eedb443f9fc4af196a7bf39f18e3a3d8
-  FBSDKLoginKit: 8bccb6064708ab2f4251a7fc4e3b6d8d00ad91ba
+  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
+  FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
   Firebase: 383fa29aca93e371cab776b48a5c66544d3c2003
   FirebaseAnalytics: 831f1f127f4a75698e9875a87bf7e2668730d953
   FirebaseAnalyticsInterop: 31b00d2a916918327308b2dff47251eb96f9e4ad
@@ -235,15 +235,15 @@ SPEC CHECKSUMS:
   GoogleUtilities: 760ccb53b7c7f40f9c02d8c241f76f841a7a6162
   ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
   ISO8601DateFormatter: 4551b6ce4f83185425f583b0b3feb3c7b59b942c
-  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   MessengerKit: 98afa44728b8e12672ece6db7764433e72832bf7
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OpenSSL-Universal: 85ef63bf81d0741b03c8719cd29685c37c59518d
-  PKHUD: 62ea46a1e88c4def1da784878d199bb54c841e3c
+  PKHUD: dd5357ac65f26115c35c4a68e9b328053326c5fe
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
-  ReachabilitySwift: 35720ffea59c1c76d15f885be77fd33e33985427
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
   SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
   SinchRTC: 82ff35f50ee298ff632f88b934a2323b9b821a63
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
@@ -252,9 +252,9 @@ SPEC CHECKSUMS:
   SwiftMessages: 32ce3cfc8388b41aae56ff4853cc752a20101147
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
   ThoraxMath: 5a3328f333477deec5fb004bac3de6b06f06e9fc
-  UXCam: b710bf9357ea0a5b6b7e7c8dea3c141f0453574c
-  XLPagerTabStrip: 964298dab059adad2eace170f253df35c3e06aaa
+  UXCam: 03319369e7d95b44f645fc74325d500a6bcc4eaa
+  XLPagerTabStrip: 347144ea331dee5566be29a110d25d281a6b32ec
 
 PODFILE CHECKSUM: 4cfc75fb9b623123ecbafcb60071c061797908f3
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.5.3
