@@ -122,6 +122,7 @@ final class ServerService: NSObject {
                                        "deviceId": application.uniqueIdentifier,
                                        "info": infoMaker.info,
                                        "a": service.session?.currentUserEthereumAddress ?? ""]
+
             log("Headers:", type: .serverHeaders)
             for (key, value) in dict {
                 log("\(key): \(value)", type: .serverHeaders)
