@@ -54,7 +54,7 @@ final class UniversalChatDatasource {
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
     
-    var notificationsType: TopicMuteType            = .unknown
+    var notificationsType: ChatMuteType            = .unknown
     var hasNext                                     = true
     var hasPrevious                                 = true
     var isFirstLoad                                 = true
@@ -67,19 +67,10 @@ final class UniversalChatDatasource {
     }
     
     var name: String?
-
-//    var isChatAllowed: Bool {
-//        if isPrivateChat { return true }
-//        if let myID = service.session?.currentUserID, let theirID = chatModel?.basic?.userID, myID == theirID {
-//            return true
-//        } else {
-//            return chatModel?.team?.accessLevel == .full ? true : false
-//        }
-//    }
     
     var chatModel: ChatModel? {
         didSet {
-            notificationsType = TopicMuteType.type(from: chatModel?.discussion.isMuted)
+            notificationsType = ChatMuteType.type(from: chatModel?.discussion.isMuted)
             cellModelBuilder.showRate = chatType == .application || chatType == .claim
         }
     }
@@ -239,14 +230,14 @@ final class UniversalChatDatasource {
         return isAllowed
     }
     
-    func mute(type: TopicMuteType, completion: @escaping (Bool) -> Void) {
+    func mute(type: ChatMuteType, completion: @escaping (Bool) -> Void) {
         guard let topicID = chatModel?.discussion.topicID else { return }
         
         let isMuted = type == .muted
         dao.mute(topicID: topicID, isMuted: isMuted).observe { [weak self] result in
             switch result {
             case let .value(muted):
-                self?.notificationsType = TopicMuteType.type(from: muted)
+                self?.notificationsType = ChatMuteType.type(from: muted)
                 completion(muted)
             case let .error(error):
                 log("\(error)", type: [.error, .serverReply])

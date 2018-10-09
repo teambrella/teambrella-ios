@@ -278,8 +278,7 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     private func tapMuteButton(sender: UIButton) {
-        router.showNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
-        
+        router.showChatNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
     }
     
 }
@@ -304,7 +303,7 @@ private extension UniversalChatVC {
         slidingView.showObjectView()
     }
     
-    private func showMuteInfo(muteType: TopicMuteType) {
+    private func showMuteInfo(muteType: ChatMuteType) {
         let cloudView = CloudView()
         self.view.addSubview(cloudView)
         let rightCloudOffset: CGFloat = 8
@@ -366,7 +365,7 @@ private extension UniversalChatVC {
         navigationItem.setRightBarButton(barItem, animated: true)
     }
     
-    private func setMuteButtonImage(type: TopicMuteType) {
+    private func setMuteButtonImage(type: ChatMuteType) {
         guard dataSource.chatType != .privateChat else {
             muteButton.isEnabled = false
             muteButton.isHidden = true
@@ -592,7 +591,7 @@ private extension UniversalChatVC {
         input.adjustHeight()
         
         if dataSource.notificationsType == .unknown && dataSource.chatType != .privateChat {
-            let type: TopicMuteType = .unmuted
+            let type: ChatMuteType = .unmuted
             dataSource.mute(type: type, completion: { [weak self] muted in
                 self?.showMuteInfo(muteType: type)
                 self?.setMuteButtonImage(type: type)
@@ -902,7 +901,9 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
 
 // MARK: MuteControllerDelegate
 extension UniversalChatVC: MuteControllerDelegate {
-    func mute(controller: MuteVC, didSelect type: TopicMuteType) {
+    func mute(controller: MuteVC, didSelect index: Int) {
+        guard let type = controller.dataSource.type(for: index) as? ChatMuteType else { return }
+        
         dataSource.mute(type: type) { [weak self] success in
             self?.setMuteButtonImage(type: type)
         }

@@ -224,3 +224,8 @@
 
 "Team.Chat.ObjectView.TitleLabel.teamVote" = "TEAM VOTE";
 "Team.ClaimCell.voting.ended" = "Ended ";
+
+"Team.Notfications.never" = "Never";
+"Team.Notifications.often" = "Once in a Day";
+"Team.Notifications.occasionally" = "Once every 3 days";
+"Team.Notifications.rarely" = "Once a week";
