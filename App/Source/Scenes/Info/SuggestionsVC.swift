@@ -24,6 +24,10 @@ protocol SuggestionsVCDelegate: class {
 }
 
 class SuggestionsVC: UIViewController, Routable {
+    enum Constant {
+        static let cornerRadius: CGFloat = 4
+    }
+    
     static let storyboardName = "Info"
     
     @IBOutlet var topContainerView: UIView!
@@ -52,11 +56,11 @@ class SuggestionsVC: UIViewController, Routable {
         textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         
         confirmButton.setTitle("General.choose".localized, for: .normal)
-        topContainerView.layer.cornerRadius = 4
+        
+        topContainerView.layer.cornerRadius = Constant.cornerRadius
         topContainerView.clipsToBounds = true
         
         effectView.effect = nil
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

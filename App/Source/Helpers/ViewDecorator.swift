@@ -61,7 +61,7 @@ struct ViewDecorator {
         }
     }
     
-    static func rounded(edges: UIRectCorner, radius: CGFloat = 4, for cell: UICollectionReusableView) {
+    static func rounded(edges: UIRectCorner, radius: CGFloat = 4, for cell: UIView) {
         let layer: CALayer
         if let cell = cell as? UICollectionViewCell {
            layer = cell.contentView.layer
