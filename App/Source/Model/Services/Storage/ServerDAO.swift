@@ -579,7 +579,7 @@ class ServerDAO: DAO {
         }
         return promise
     }
-
+    
     // TMP: remove when possible
     func performRequest(request: TeambrellaRequest) {
         request.start(server: server)
@@ -625,21 +625,21 @@ class ServerDAO: DAO {
         let payload: [String: String] = ["facebookToken": facebookToken,
                                          "sigOfPublicKey": signature,
                                          "a": wallet]
-        return registerKey(payload: payload)
+        return registerKey(payload: payload, type: .registerKey)
     }
-
+    
     func registerKey(socialToken: String, signature: String, wallet: String) -> Future<Bool> {
         let payload: [String: String] = ["auth0Token": socialToken,
                                          "sigOfPublicKey": signature,
                                          "a": wallet]
-        return registerKey(payload: payload)
+        return registerKey(payload: payload, type: .registerKey)
     }
-
-    func registerKey(payload: [String: String]) -> Future<Bool> {
+    
+    func registerKey(payload: [String: Any], type: TeambrellaPostRequestType) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in
             let body = RequestBody(key: key, payload: payload)
-            let request = TeambrellaRequest(type: .registerKey,
+            let request = TeambrellaRequest(type: type,
                                             body: body,
                                             success: { response in
                                                 promise.resolve(with: true)
@@ -647,6 +647,15 @@ class ServerDAO: DAO {
             request.start(server: self.server)
         }
         return promise
+    }
+    
+    func registerKey(signature: String, userData: UserApplicationData) -> Future<Bool> {
+        guard var payload = userData.dictionary else {
+            fatalError()
+        }
+        
+        payload["sigOfPublicKey"] = signature
+        return registerKey(payload: payload, type: .joinRregisterKey)
     }
     
     func freshKey(completion: @escaping (Key) -> Void) {
@@ -661,11 +670,31 @@ class ServerDAO: DAO {
     }
     
     func getCars(string: String?) -> Future<[String]> {
-    return getQuery(string: string, type: .cars)
+        return getQuery(string: string, type: .cars)
     }
     
     func getCities(string: String?) -> Future<[String]> {
-       return getQuery(string: string, type: .cities)
+        return getQuery(string: string, type: .cities)
+    }
+    
+    func getWelcome(teamID: Int?, inviteCode: String?) -> Future<WelcomeEntity> {
+        let promise = Promise<WelcomeEntity>()
+        
+        let teamID = teamID.map { String($0) } ?? ""
+        let inviteCode = inviteCode ?? ""
+
+        let body = RequestBody(timestamp: 0, signature: "", publicKey: "", payload: ["teamId": teamID,
+                                                                                     "invite": inviteCode])
+            let request = TeambrellaRequest(type: .welcome,
+                                            body: body,
+                                            success: { response in
+                                                if case let .welcome(welcome) = response {
+                                                    promise.resolve(with: welcome)
+                                                }
+            },
+                                            failure: promise.reject)
+            request.start(server: self.server)
+        return promise
     }
     
     private func getQuery(string: String?, type: TeambrellaGetRequestType) -> Future<[String]> {

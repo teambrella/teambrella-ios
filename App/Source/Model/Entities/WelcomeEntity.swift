@@ -14,24 +14,28 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
-import UIKit
+import Foundation
 
-class ApplicationHeaderView: UICollectionReusableView, ApplicationCell {
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var cityLabel: UILabel!
+struct WelcomeEntity: Decodable {
+    let teamID: Int
+    let teamName: String
+    let teamLogo: Photo
+    let location: String?
+    let nameFrom: Name?
+    let nameTo: Name?
+    let title: String
+    let text: String
+    let email: String?
     
-    func setup(with model: ApplicationCellModel, userData: UserApplicationData) {
-        guard let model = model as? ApplicationHeaderCellModel else {
-            fatalError("Wrong header model")
-        }
-        
-        imageView.show(model.image)
-        nameLabel.text = model.name
-        cityLabel.text = model.city.localizedUppercase
-        
-        imageView.layer.cornerRadius = 4
-        imageView.clipsToBounds = true
+    enum CodingKeys: String, CodingKey {
+        case teamID = "TeamId"
+        case teamName = "TeamName"
+        case teamLogo = "TeamLogo"
+        case nameFrom = "NameFrom"
+        case location = "Location"
+        case nameTo = "NameTo"
+        case title = "WelcomeTitle"
+        case text = "WelcomeText"
+        case email = "Email"
     }
-    
 }

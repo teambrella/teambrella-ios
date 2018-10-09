@@ -24,9 +24,11 @@ class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     
     var onTextChange: ((TextField) -> Void)?
     var onUserInput: ((String?) -> Void)?
+    var onBeginEditing: ((ApplicationInputCell) -> Void)?
     
     private func setup() {
         inputTextField.addTarget(self, action: #selector(changeText), for: .editingChanged)
+        inputTextField.addTarget(self, action: #selector(beginEditing), for: .editingDidBegin)
     }
     
     override func awakeFromNib() {
@@ -38,6 +40,11 @@ class ApplicationInputCell: UICollectionViewCell, ApplicationCellDecorable {
     private func changeText(textField: TextField) {
         onUserInput?(textField.text)
         onTextChange?(textField)
+    }
+    
+    @objc
+    private func beginEditing(textField: TextField) {
+        onBeginEditing?(self)
     }
     
     func decorate() {
@@ -58,5 +65,22 @@ extension ApplicationInputCell: ApplicationCell {
         headlightLabel.text = model.headlightText
         inputTextField.text = userData.text(for: model)
         inputTextField.placeholder = model.placeholderText
+        
+        switch model.type {
+        case .email:
+           inputTextField.keyboardType = .emailAddress
+        default:
+           inputTextField.keyboardType = .default
+        }
+    }
+}
+
+extension ApplicationInputCell: SuggestionsVCDelegate {
+    func suggestions(vc: SuggestionsVC, textChanged: String) {
+        inputTextField.text = textChanged
+    }
+    
+    func suggestionsVCWillClose(vc: SuggestionsVC) {
+        onUserInput?(inputTextField?.text)
     }
 }

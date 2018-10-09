@@ -364,6 +364,15 @@ final class MainRouter {
         viewController.present(vc, animated: true, completion: nil)
         return vc
     }
+    
+    func showSuggestions(in viewController: UIViewController, delegate: SuggestionsVCDelegate, text: String?) {
+        guard let vc = SuggestionsVC.instantiate() as? SuggestionsVC else { fatalError() }
+        
+        vc.delegate = delegate
+        vc.textField.text = text
+        
+        viewController.present(vc, animated: true, completion: nil)
+    }
 
     /*
      func pushOrReuse(vc: UIViewController,
@@ -395,6 +404,9 @@ final class MainRouter {
             SimpleStorage().store(string: userID, forKey: .userID)
             service.sinch.startWith(userID: userID)
         }
+
+        service.joinTeamID = nil
+        service.invite = nil
     }
     
     @discardableResult
@@ -471,6 +483,22 @@ final class MainRouter {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(cryptoMalfunction),
                                                name: .cryptoKeyFailure, object: nil)
+    }
+    
+    @discardableResult
+    func showSuggestions(in viewController: UIViewController,
+                         delegate: SuggestionsVCDelegate,
+                         dataSource: SuggestionsFetcher,
+                         text: String?) -> SuggestionsVC {
+        guard let vc = SuggestionsVC.instantiate() as? SuggestionsVC else { fatalError() }
+        
+        vc.loadViewIfNeeded()
+        vc.dataSource = dataSource
+        vc.delegate = delegate
+        vc.textField.text = text
+        
+        viewController.present(vc, animated: true, completion: nil)
+        return vc
     }
 
     @objc

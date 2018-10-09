@@ -133,7 +133,8 @@ struct TeambrellaRequest {
                 let teamVotingResult = try decoder.decode(TeammateVotingResult.self, from: serverReply.data)
                 log("teammmate voting result id: \(teamVotingResult.id)", type: .serverReplyStats)
                 success(.teammateVote(teamVotingResult))
-            case .registerKey:
+            case .registerKey,
+                 .joinRregisterKey:
                 success(.registerKey)
             case .coverageForDate:
                 let coverageForDate = try decoder.decode(CoverageForDate.self, from: serverReply.data)
@@ -243,6 +244,9 @@ struct TeambrellaRequest {
             case .me:
                 let myModel = try decoder.decode(MeModel.self, from: serverReply.data)
                 success(.me(myModel))
+            case .welcome:
+                let welcome = try decoder.decode(WelcomeEntity.self, from: serverReply.data)
+                success(.welcome(welcome))
             default:
                 break
             }

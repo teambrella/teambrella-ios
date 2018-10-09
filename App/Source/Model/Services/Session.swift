@@ -71,6 +71,7 @@ class Session {
             break
         }
         self.currentTeam = currentTeam ?? teams.first
+        SimpleStorage().store(bool: false, forKey: .isRegistering)
     }
     
     @discardableResult
@@ -96,7 +97,8 @@ extension Session {
         currentUserName = model.name
         currentUserAvatar = model.avatar
         
-        // Lets UXCam know the name of the person whose screen is being inspected
-        UXCam.setUserIdentity(model.name.entire)
+        if let ethereumAddress = currentUserEthereumAddress {
+            UXCam.setUserIdentity(ethereumAddress)
+        }
     }
 }

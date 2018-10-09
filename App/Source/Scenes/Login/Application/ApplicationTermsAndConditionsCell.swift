@@ -36,7 +36,10 @@ extension ApplicationTermsAndConditionsCell: ApplicationCell {
             fatalError("Wrong model type")
         }
         
-        textView.attributedText = model.text
+        textView.attributedText = model.format.localized(model.linkText)
+            .link(substring: model.linkText, urlString: model.link)
+            .add(font: UIFont.teambrella(size: 14), range: nil)
+            .add(alignment: .center)
         textView.delegate = self
     }
 }

@@ -36,6 +36,6 @@ extension ApplicationTitleCell: ApplicationCell {
             fatalError("Wrong model type")
         }
         
-        titleLabel.text = model.title
+        titleLabel.text = model.title.localizedUppercase
     }
 }

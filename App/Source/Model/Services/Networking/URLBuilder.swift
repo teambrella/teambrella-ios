@@ -29,16 +29,7 @@ class URLBuilder {
     func url(for string: String, parameters: [String: String]?) -> URL? {
         var urlComponents = URLComponents(string: urlString(string: string))
         if let parameters = parameters {
-            var queryItems: [URLQueryItem] = []
-            for (key, value) in parameters {
-                guard let key = key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-                    let value = value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-                        continue
-                }
-                
-                queryItems.append(URLQueryItem(name: key, value: value))
-            }
-            urlComponents?.queryItems = queryItems
+            urlComponents?.queryItems = parameters.map { key, value in URLQueryItem(name: key, value: value) }
         }
         return urlComponents?.url
     }

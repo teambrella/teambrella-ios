@@ -68,3 +68,5 @@
 
 "General.ok" = "OK";
 "General.longAgo" = "long ago";
+"General.forward" = "Next";
+"General.choose" = "Choose";

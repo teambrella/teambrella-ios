@@ -20,7 +20,6 @@
  */
 
 import PKHUD
-import SpriteKit
 import UIKit
 
 final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
@@ -61,7 +60,6 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     @IBOutlet var itemCard: ItemCard!
     
-    @IBOutlet var emitterScene: SKView!
     @IBOutlet var topBarContainer: UIView!
     var topBarVC: TopBarVC!
 
@@ -138,8 +136,6 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        emitterScene.isHidden = true
-        //        addEmitter()
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
@@ -175,21 +171,6 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     private func setupWalletContainer() {
         ViewDecorator.shadow(for: walletContainer, opacity: 0.08, radius: 3, offset: CGSize(width: 0, height: -3))
-    }
-    
-    private func addEmitter() {
-        guard !isEmitterAdded else { return }
-        
-        isEmitterAdded = true
-        let skScene: SKScene = SKScene(size: emitterScene.frame.size)
-        skScene.scaleMode = .aspectFit
-        skScene.backgroundColor = .clear
-        if let emitter: SKEmitterNode = SKEmitterNode(fileNamed: "Fill.sks") {
-            emitter.position = CGPoint(x: emitterScene.center.x, y: 0)
-            skScene.addChild(emitter)
-            emitterScene.presentScene(skScene)
-            emitterScene.allowsTransparency = true
-        }
     }
     
     private func setup() {

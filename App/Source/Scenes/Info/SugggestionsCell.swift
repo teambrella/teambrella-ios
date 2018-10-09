@@ -16,22 +16,17 @@
 
 import UIKit
 
-class ApplicationHeaderView: UICollectionReusableView, ApplicationCell {
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var cityLabel: UILabel!
-    
-    func setup(with model: ApplicationCellModel, userData: UserApplicationData) {
-        guard let model = model as? ApplicationHeaderCellModel else {
-            fatalError("Wrong header model")
-        }
-        
-        imageView.show(model.image)
-        nameLabel.text = model.name
-        cityLabel.text = model.city.localizedUppercase
-        
-        imageView.layer.cornerRadius = 4
-        imageView.clipsToBounds = true
+class SugggestionsCell: UITableViewCell {
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
-    
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
 }

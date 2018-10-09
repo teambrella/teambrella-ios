@@ -40,6 +40,9 @@ enum TeambrellaPostRequestType: String {
     case feedPinVote = "feed/setPinVote"
     case mute = "feed/setIsMuted"
 
+    case welcome = "join/getWelcome"
+    case joinRregisterKey = "join/registerKey"
+
     case timestamp = "me/GetTimestamp"
     case initClient = "me/InitClient"
     case updates = "me/GetUpdates"

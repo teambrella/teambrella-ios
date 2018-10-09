@@ -56,4 +56,5 @@ enum TeambrellaResponseType {
     
     case votesList(VotersList)
     case me(MeModel)
+    case welcome(WelcomeEntity)
 }

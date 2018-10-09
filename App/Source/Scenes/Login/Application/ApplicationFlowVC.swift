@@ -23,27 +23,66 @@ class ApplicationFlowVC: UIViewController {
     
     @IBOutlet var shadowView: UIView!
     @IBOutlet var containerView: RoundedCornersView!
-    @IBOutlet var facebookButton: BorderedButton!
-    @IBOutlet var vkButton: BorderedButton!
+    @IBOutlet var forwardButton: BorderedButton!
+    
+    @IBOutlet var headerLabel: UILabel!
+    @IBOutlet var textView: UILabel!
+
+    var error: Error?
+    
+    var welcome: WelcomeEntity? {
+        didSet {
+            guard let welcome = welcome else { return }
+            
+            logoImageView.show(welcome.teamLogo)
+            teamNameLabel.text = welcome.teamName
+            locationLabel.text = welcome.location?.localizedUppercase ?? ""
+            headerLabel.text = welcome.title
+            textView.attributedText = welcome.text
+                .attributed()
+                .add(font: UIFont.teambrella(size: 17), range: nil)
+                .add(fontColor: #colorLiteral(red: 0.4743444324, green: 0.5259671211, blue: 0.5632535219, alpha: 1), range: nil)
+                .add(lineInterval: 0.5 * 17, range: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         ViewDecorator.homeCardShadow(for: shadowView)
         self.view.needsUpdateConstraints()
+       
+        setup()
+        getWelcomeData()
+    }
+    
+    private func getWelcomeData() {
+        service.dao.getWelcome(teamID: service.joinTeamID, inviteCode: service.invite).observe { result in
+            switch result {
+            case let .value(welcome):
+                self.welcome = welcome
+            case let .error(error):
+                self.error = error
+                service.clearDynamicLinkData()
+                self.performSegue(type: .unwindToLogin)
+            }
+        }
+    }
+    
+    private func setup() {
         logoImageView.layer.cornerRadius = 4
         logoImageView.clipsToBounds = true
+        
+        teamNameLabel.text = nil
+        locationLabel.text = nil
+        headerLabel.text = nil
+        textView.text = nil
+        
+        forwardButton.setTitle("General.forward".localized, for: .normal)
     }
 
     @IBAction func tapButton(_ sender: UIButton) {
-        switch sender {
-        case facebookButton:
              performSegue(withIdentifier: "application", sender: self)
-        case vkButton:
-             performSegue(withIdentifier: "error screen", sender: self)
-        default:
-            break
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,7 +92,9 @@ class ApplicationFlowVC: UIViewController {
                 vc.error = TeambrellaError(kind: .permissionDenied, description: "sdf")
             }
         default:
-            break
+            if let vc = segue.destination as? ApplicationVC, let welcome = welcome {
+                vc.setupUserData(welcome: welcome, inviteCode: service.invite)
+            }
         }
     }
     

@@ -24,4 +24,6 @@ extension Notification.Name {
     static let internetConnected = Notification.Name("teambrella.reachability.internetIsReachable")
     
     static let serverUnreachable = Notification.Name("teambrella.reachability.serverNotConnected")
+
+    static let dynamicLinkReceived = Notification.Name("teambrella.dynamicLinkReceived")
 }

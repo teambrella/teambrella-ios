@@ -33,8 +33,12 @@ final class KeyStorage {
     var isDemoUser: Bool { return lastUserType == .demo }
     var isUserSelected: Bool { return lastUserType == .real }
     var hasRealPrivateKey: Bool {
-        return keychain.value(forKey: .privateKey) != nil
+        return isRealPrivateKeySet
         && SimpleStorage().bool(forKey: .didLogWithKey)
+    }
+
+    var isRealPrivateKeySet: Bool {
+        return keychain.value(forKey: .privateKey) != nil
     }
 
     var privateKey: String {

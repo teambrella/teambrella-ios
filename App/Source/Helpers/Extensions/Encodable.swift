@@ -14,24 +14,21 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
-import UIKit
+import Foundation
 
-class ApplicationHeaderView: UICollectionReusableView, ApplicationCell {
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var cityLabel: UILabel!
-    
-    func setup(with model: ApplicationCellModel, userData: UserApplicationData) {
-        guard let model = model as? ApplicationHeaderCellModel else {
-            fatalError("Wrong header model")
-        }
-        
-        imageView.show(model.image)
-        nameLabel.text = model.name
-        cityLabel.text = model.city.localizedUppercase
-        
-        imageView.layer.cornerRadius = 4
-        imageView.clipsToBounds = true
+extension Encodable {
+    var dictionary: [String: Any]? {
+        guard let data = try? JSONEncoder().encode(self) else { return nil }
+        return (try? JSONSerialization.jsonObject(with: data, options: .allowFragments))
+            .flatMap { $0 as? [String: Any] }
     }
     
+    func convertToDictionary() throws -> [String: Any] {
+        let data = try JSONEncoder().encode(self)
+        guard let dictionary = try JSONSerialization.jsonObject(with: data,
+                                                                options: .allowFragments) as? [String: Any] else {
+            throw NSError()
+        }
+        return dictionary
+    }
 }

@@ -23,18 +23,18 @@ class LoginWorker {
         case unknownError
         case noTokenProvided
     }
-
+    
     enum LoginType {
         case facebook, vk
     }
-
+    
     typealias CompletionHandler = (String?, Error?) -> Void
-
+    
     var dao: DAO { return service.dao }
     var keyStorage: KeyStorage { return service.keyStorage }
     var router: MainRouter { return service.router }
     var teambrella: TeambrellaService { return service.teambrella }
-
+    
     func getTeams(completion: @escaping (TeamsModel, Bool) -> Void, failure: @escaping (Error) -> Void) {
         let isDemo = keyStorage.isDemoUser
         dao.requestTeams(demo: isDemo).observe { result in
@@ -49,7 +49,7 @@ class LoginWorker {
             }
         }
     }
-
+    
     func loginAndRegister(type: LoginType,
                           in controller: UIViewController,
                           completion: @escaping CompletionHandler) {
@@ -63,7 +63,7 @@ class LoginWorker {
             loginVK(in: controller, completion: handler)
         }
     }
-
+    
     func loginFacebook(in controller: UIViewController,
                        completion: @escaping CompletionHandler) {
         let manager = FBSDKLoginManager()
@@ -74,13 +74,31 @@ class LoginWorker {
             completion(result?.token?.tokenString, error)
         }
     }
-
+    
     func loginVK(in controller: UIViewController,
                  completion: @escaping CompletionHandler) {
         let auth0 = Auth0Authenticator()
         auth0.authWithVK(completion: completion)
     }
-
+    
+    func register(userData: UserApplicationData, completion: @escaping (Error?) -> Void) {
+        keyStorage.setToRealUser()
+        let processor = teambrella.processor
+        guard let signature = processor.publicKeySignature else {
+            router.logout()
+            return
+        }
+        
+        dao.registerKey(signature: signature, userData: userData).observe { result in
+            switch result {
+            case .value:
+                completion(nil)
+            case let .error(error):
+                completion(error)
+            }
+        }
+    }
+    
     func register(type: LoginType, token: String?, completion: @escaping CompletionHandler) {
         keyStorage.setToRealUser()
         let processor = teambrella.processor
@@ -88,16 +106,16 @@ class LoginWorker {
             router.logout()
             return
         }
-
+        
         log("Eth address: \(processor.ethAddressString ?? "none")", type: .info)
         guard let token = token else {
             completion(nil, LoginWorkerError.noTokenProvided)
             return
         }
         let ethereumWallet = processor.ethAddressString ?? ""
-
+        
         let future: Future<Bool>
-
+        
         switch type {
         case .facebook:
             future = dao.registerKey(facebookToken: token, signature: signature, wallet: ethereumWallet)
@@ -113,5 +131,5 @@ class LoginWorker {
             }
         }
     }
-
+    
 }

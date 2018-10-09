@@ -23,37 +23,35 @@ class ApplicationVC: UICollectionViewController, Routable {
     var router: ApplicationRouter?
     
     var models: [ApplicationCellModel] = []
-    var headers: [ApplicationCellModel] = []
     
+    var headerModel: ApplicationHeaderCellModel!
     var userData: UserApplicationData!
+    var isInEditingMode: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let builder = ApplicationCellModelBuilder()
         models = builder.carGroupModels()
-        headers = builder.carGroupHeaderModels()
         
         let view = ApplicationBackgroundView(frame: self.view.bounds)
         collectionView?.backgroundView = view
         
-        setupUserData(teamID: 2028, inviteCode: "XYZ")
         assert(userData != nil)
     }
     
-    func setupUserData(teamID: Int, inviteCode: String?) {
-        userData = UserApplicationData(teamID: teamID,
-                                       inviteCode: inviteCode,
-                                       name: nil,
-                                       area: nil,
-                                       emailString: nil,
-                                       model: nil)
+    func setupUserData(welcome: WelcomeEntity, inviteCode: String?) {
+        userData = UserApplicationData(welcome: welcome)
+        userData.inviteCode = inviteCode ?? ""
+        headerModel = ApplicationHeaderCellModel(image: welcome.teamLogo,
+                                                 name: welcome.teamName,
+                                                 city: welcome.location ?? "")
     }
     
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return headers.count
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,9 +69,8 @@ class ApplicationVC: UICollectionViewController, Routable {
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
-        let model = headers[indexPath.section]
         let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                   withReuseIdentifier: model.identifier.rawValue,
+                                                                   withReuseIdentifier: headerModel.identifier.rawValue,
                                                                    for: indexPath)
         cell.tag = indexPath.row
         return cell
@@ -91,6 +88,46 @@ class ApplicationVC: UICollectionViewController, Routable {
         (applicationCell as? ApplicationCellDecorable)?.decorate()
         if let cell = applicationCell as? ApplicationInputCell {
             applicationInput(cell: cell, addActionsFor: model)
+            if isInEditingMode, let model = model as? ApplicationInputCellModel {
+                cell.inputTextField.isInAlertMode = !userData.validate(model: model)
+            } else {
+                cell.inputTextField.isInAlertMode = false
+            }
+        }
+        if let cell = applicationCell as? ApplicationActionCell {
+            cell.onButtonTap = { [weak self] button in
+                guard let `self` = self else { return }
+
+                if self.validateInput() {
+                    self.register()
+                } else {
+                    self.collectionView?.reloadData()
+                }
+            }
+        }
+    }
+
+    func validateInput() -> Bool {
+        for model in models {
+            guard let model = model as? ApplicationInputCellModel else {
+                continue
+            }
+
+            if userData.validate(model: model) == false {
+                isInEditingMode = true
+                return false
+            }
+        }
+        return true
+    }
+    
+    func register() {
+        let loginWorker = LoginWorker()
+        loginWorker.register(userData: userData) { error in
+            guard error == nil else { return }
+
+            SimpleStorage().store(bool: false, forKey: .isRegistering)
+            self.performSegue(type: .unwindToInitial, sender: self)
         }
     }
     
@@ -110,12 +147,36 @@ class ApplicationVC: UICollectionViewController, Routable {
         cell.onUserInput = { [weak self] text in
             self?.userData.update(with: text, model: model)
         }
+        cell.onBeginEditing = { [weak self] cell in
+            guard let self = self else { return }
+            
+            let fetcher: SuggestionsFetcher?
+            switch model.type {
+            case .city:
+                fetcher = CitiesFetcher()
+            case .item:
+                fetcher = CarsFetcher()
+            default:
+                fetcher = nil
+            }
+            if let fetcher = fetcher {
+            let vc = service.router.showSuggestions(in: self,
+                                                      delegate: cell,
+                                                      dataSource: fetcher,
+                                                      text: cell.inputTextField.text)
+            vc.textField.placeholder = cellTextField.placeholder
+            }
+        }
         
+        /*
         switch model.type {
         case .item:
             cell.inputTextField.isAutocompleteEnabled = true
             cell.onTextChange = { textField in
-               service.dao.getCars(string: textField.text).observe(with: result)
+                service.dao.getCars(string: textField.text).observe(with: result)
+            }
+            cell.onBeginEditing = { textField in
+                service.router.showSuggestions(in: self, delegate: self, text: textField.text)
             }
         case .city:
             cell.inputTextField.isAutocompleteEnabled = true
@@ -125,33 +186,33 @@ class ApplicationVC: UICollectionViewController, Routable {
         default:
             break
         }
+ */
     }
-        
-        override func collectionView(_ collectionView: UICollectionView,
-                                     willDisplaySupplementaryView view: UICollectionReusableView,
-                                     forElementKind elementKind: String,
-                                     at indexPath: IndexPath) {
-            guard let applicationView = view as? ApplicationCell else {
-                fatalError("Wrong header")
-            }
-            
-            let model = headers[indexPath.section]
-            applicationView.setup(with: model, userData: userData)
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 willDisplaySupplementaryView view: UICollectionReusableView,
+                                 forElementKind elementKind: String,
+                                 at indexPath: IndexPath) {
+        guard let applicationView = view as? ApplicationCell else {
+            fatalError("Wrong header")
         }
-        
+
+        applicationView.setup(with: headerModel, userData: userData)
     }
-    
-    extension ApplicationVC: UICollectionViewDelegateFlowLayout {
-        func collectionView(_ collectionView: UICollectionView,
-                            layout collectionViewLayout: UICollectionViewLayout,
-                            sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let model = models[indexPath.row]
-            return ApplicationCellSizer(size: collectionView.bounds.size, offset: 16).cellSize(model: model)
-        }
-        
-        func collectionView(_ collectionView: UICollectionView,
-                            layout collectionViewLayout: UICollectionViewLayout,
-                            referenceSizeForHeaderInSection section: Int) -> CGSize {
-            return ApplicationCellSizer(size: collectionView.bounds.size, offset: 16).headerSize
-        }
+
+}
+
+extension ApplicationVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let model = models[indexPath.row]
+        return ApplicationCellSizer(size: collectionView.bounds.size, offset: 16).cellSize(model: model)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return ApplicationCellSizer(size: collectionView.bounds.size, offset: 16).headerSize
+    }
 }

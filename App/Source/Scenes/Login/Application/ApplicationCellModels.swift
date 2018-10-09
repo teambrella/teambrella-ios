@@ -18,7 +18,7 @@ import Foundation
 
 struct ApplicationHeaderCellModel: ApplicationCellModel {
     let identifier: ApplicationCellIdentifier = .header
-    let image: String
+    let image: Photo
     let name: String
     let city: String
 }
@@ -45,9 +45,6 @@ struct ApplicationTermsAndConditionsCellModel: ApplicationCellModel {
     let format: String
     let linkText: String
     let link: String
-    var text: NSAttributedString {
-        return format.localized(linkText).link(substring: linkText, urlString: link)
-    }
 }
 
 struct ApplicationActionCellModel: ApplicationCellModel {
