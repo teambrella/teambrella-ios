@@ -137,17 +137,17 @@ extension SinchService: SINClientDelegate {
 // Manage outgoing calls
 extension SinchService: SINCallDelegate {
     func callDidEstablish(_ call: SINCall!) {
-        print("\(#file); \(#function), \(call)")
+        print("\(#file); \(#function), \(String(describing: call))")
         delegate?.sinch(service: self, didStartCall: call)
     }
 
     func callDidProgress(_ call: SINCall!) {
-        print("\(#file); \(#function), \(call)")
+        print("\(#file); \(#function), \(String(describing: call))")
         self.call = call
     }
 
     func callDidEnd(_ call: SINCall!) {
-        print("\(#file); \(#function), \(call.details)")
+        print("\(#file); \(#function), \(String(describing: call.details))")
         switch call.details.endCause {
         case .canceled:
             print("cancelled")
@@ -174,7 +174,7 @@ extension SinchService: SINCallDelegate {
     }
 
     func call(_ call: SINCall!, shouldSendPushNotifications pushPairs: [Any]!) {
-        print("\(#file); \(#function); \(pushPairs)")
+        print("\(#file); \(#function); \(String(describing: pushPairs))")
     }
 }
 
@@ -215,7 +215,7 @@ extension SinchService: SINManagedPushDelegate {
     func managedPush(_ managedPush: SINManagedPush!,
                      didReceiveIncomingPushWithPayload payload: [AnyHashable: Any]!,
                      forType pushType: String!) {
-        print("Sinch Service Received push with payload: \(payload)")
+        print("Sinch Service Received push with payload: \(String(describing: payload))")
     }
 }
 

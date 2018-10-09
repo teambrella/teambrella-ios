@@ -30,6 +30,7 @@ public class GradientView: UIView {
     @IBInspectable public var topColor: UIColor? = UIColor.clear
     @IBInspectable public var bottomColor: UIColor? = UIColor.black
     @IBInspectable public var isHorizontal: Bool = false
+    @IBInspectable public var isGradientVisible: Bool = true
     var colors: [UIColor]?
     var locations: [NSNumber] = [0.0, 1.0]
     
@@ -67,8 +68,12 @@ public class GradientView: UIView {
     }
     
     override public func layoutSubviews() {
-        gradientLayer.frame = self.layer.bounds
-        updateGradient()
+        if isGradientVisible {
+            gradientLayer.frame = self.layer.bounds
+            updateGradient()
+        } else {
+            gradientLayer.removeFromSuperlayer()
+        }
         super.layoutSubviews()
     }
     

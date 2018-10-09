@@ -30,6 +30,7 @@ final class SimpleStorage {
         case userID                      = "com.teambrella.userID"
 
         case didMoveToRealGroup          = "com.teambrella.didMoveToRealGroup"
+        case isRegistering               = "com.teambrella.isRegistering"
     }
     
     func store(int: Int, forKey: StorageKey) {

@@ -32,7 +32,7 @@
 		<key>Teambrella copy.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>14</integer>
 		</dict>
 		<key>Teambrella debug.xcscheme_^#shared#^_</key>
 		<dict>
@@ -67,7 +67,7 @@
 		<key>notification copy.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>21</integer>
 		</dict>
 		<key>notification.xcscheme_^#shared#^_</key>
 		<dict>

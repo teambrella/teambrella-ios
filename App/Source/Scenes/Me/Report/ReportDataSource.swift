@@ -168,8 +168,6 @@ class ReportDataSource {
     }
     
     subscript(indexPath: IndexPath) -> ReportCellModel {
-        get {
             return items[indexPath.row]
-        }
     }
 }

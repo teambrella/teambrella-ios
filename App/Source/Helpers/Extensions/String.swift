@@ -14,6 +14,19 @@ extension String {
         return Formatter.teambrella.date(from: self)
     }
     
+    func link(substring: String, urlString: String) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: self)
+        guard let range = self.range(of: substring) else { return attributedString }
+        
+        let nsRange = NSRange(range, in: self)
+        attributedString.addAttribute(.link, value: urlString, range: nsRange)
+        return attributedString
+    }
+    
+    func attributed() -> NSMutableAttributedString {
+        return  NSMutableAttributedString(string: self)
+    }
+    
     func attributedBoldString(nonBoldRange: NSRange?) -> NSAttributedString {
         let fontSize = UIFont.systemFontSize
         let attrs = [

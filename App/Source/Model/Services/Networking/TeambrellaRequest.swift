@@ -25,9 +25,42 @@ import Foundation
 typealias TeambrellaRequestSuccess = (_ result: TeambrellaResponseType) -> Void
 typealias TeambrellaRequestFailure = (_ error: Error) -> Void
 
+private var decoder: JSONDecoder = {
+    let decoder = JSONDecoder()
+    decoder.dateDecodingStrategy = .formatted(DateFormatter.teambrella)
+    decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
+                                                                    negativeInfinity: "NegativeInfinity",
+                                                                    nan: "NaN")
+    return decoder
+}()
+
+struct TeambrellaGetRequest<Value: Decodable> {
+    let type: TeambrellaGetRequestType
+    var parameters: [String: String]
+    let success: (Value) -> Void
+    var failure: ((Error) -> Void)?
+    
+    func start(server: ServerService) {
+        server.get(string: type.rawValue, parameters: parameters, success: self.parseReply, failure: self.handleError)
+    }
+    
+    func parseReply(data: Data) {
+        do {
+            let value = try decoder.decode(Value.self, from: data)
+            success(value)
+        } catch {
+            handleError(error: error)
+        }
+    }
+    
+    func handleError(error: Error) {
+        failure?(error)
+    }
+}
+
 // swiftlint:disable function_body_length
 struct TeambrellaRequest {
-    let type: TeambrellaRequestType
+    let type: TeambrellaPostRequestType
     var parameters: [String: String]?
     let success: TeambrellaRequestSuccess
     var failure: TeambrellaRequestFailure?
@@ -45,8 +78,9 @@ struct TeambrellaRequest {
         return type.rawValue
     }
     
-    init (type: TeambrellaRequestType,
+    init (type: TeambrellaPostRequestType,
           parameters: [String: String]? = nil,
+          
           body: RequestBody? = nil,
           success: @escaping TeambrellaRequestSuccess,
           failure: TeambrellaRequestFailure? = nil) {
@@ -72,11 +106,6 @@ struct TeambrellaRequest {
     // swiftlint:disable:next cyclomatic_complexity
     private func parseReply(serverReply: ServerReply) {
         log("Server reply: \(serverReply.json)", type: .serverReply)
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(DateFormatter.teambrella)
-        decoder.nonConformingFloatDecodingStrategy = .convertFromString(positiveInfinity: "PositiveInfinity",
-                                                                        negativeInfinity: "NegativeInfinity",
-                                                                        nan: "NaN")
         //decoder.keyDecodingStrategy = .convertFromUpperCamelCase
         log("Reply type: \(type)", type: .serverReplyStats)
         do {
@@ -104,7 +133,8 @@ struct TeambrellaRequest {
                 let teamVotingResult = try decoder.decode(TeammateVotingResult.self, from: serverReply.data)
                 log("teammmate voting result id: \(teamVotingResult.id)", type: .serverReplyStats)
                 success(.teammateVote(teamVotingResult))
-            case .registerKey:
+            case .registerKey,
+                 .joinRregisterKey:
                 success(.registerKey)
             case .coverageForDate:
                 let coverageForDate = try decoder.decode(CoverageForDate.self, from: serverReply.data)
@@ -116,7 +146,7 @@ struct TeambrellaRequest {
                     failure?(TeambrellaErrorFactory.wrongReply())
                     return
                 }
-
+                
                 log("language: \(language)", type: .serverReplyStats)
                 success(.setLanguage(language))
             case .claimsList:
@@ -146,7 +176,7 @@ struct TeambrellaRequest {
                     failure?(TeambrellaErrorFactory.noPagingInfo())
                     return
                 }
-
+                
                 let feed = try decoder.decode([FeedEntity].self, from: serverReply.data)
                 let chunk = FeedChunk(feed: feed, pagingInfo: pagingInfo)
                 log("feed with items count: \(chunk.feed.count)", type: .serverReplyStats)
@@ -178,7 +208,7 @@ struct TeambrellaRequest {
                     failure?(TeambrellaErrorFactory.wrongReply())
                     return
                 }
-
+                
                 let isGoodReply = string == "Proxy voter is added." || string == "Proxy voter is removed."
                 success(.myProxy(isGoodReply))
             case .myProxies:
@@ -205,7 +235,7 @@ struct TeambrellaRequest {
                     failure?(TeambrellaErrorFactory.wrongReply())
                     return
                 }
-
+                
                 success(.mute(bool))
             case .claimVotesList,
                  .teammateVotesList:
@@ -214,6 +244,9 @@ struct TeambrellaRequest {
             case .me:
                 let myModel = try decoder.decode(MeModel.self, from: serverReply.data)
                 success(.me(myModel))
+            case .welcome:
+                let welcome = try decoder.decode(WelcomeEntity.self, from: serverReply.data)
+                success(.welcome(welcome))
             default:
                 break
             }

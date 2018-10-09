@@ -29,14 +29,14 @@ final class ServerService: NSObject {
     var router: MainRouter
     var infoMaker: InfoMaker
     var key: Key { return Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp) }
-
+    
     lazy private var session: URLSession = {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = TimeInterval(20)
         config.timeoutIntervalForResource = TimeInterval(60)
         return URLSession(configuration: config)
     }()
-
+    
     required init(router: MainRouter, infoMaker: InfoMaker) {
         self.router = router
         self.infoMaker = infoMaker
@@ -55,7 +55,38 @@ final class ServerService: NSObject {
             completion(timestamp, nil)
         }
     }
-
+    
+    func get(string: String,
+             parameters: [String: String],
+             success: @escaping (Data) -> Void,
+             failure: @escaping (Error) -> Void) {
+        guard let url = URLBuilder().url(for: string, parameters: parameters) else {
+            fatalError("Couldn't create URL for get request")
+        }
+        
+        var request = URLRequest(url: url)
+        log(url.absoluteString, type: .serverURL)
+        request.httpMethod = "GET"
+        
+        let queue = DispatchQueue.main
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            queue.async {
+                if let error = error {
+                    failure(error)
+                    return
+                }
+                guard let value = data else {
+                    failure(TeambrellaErrorFactory.emptyReplyError())
+                    return
+                }
+                
+                success(value)
+            }
+        }
+        task.resume()
+    }
+    
     // swiftlint:disable:next function_body_length
     func ask(for string: String,
              parameters: [String: String]? = nil,
@@ -98,7 +129,7 @@ final class ServerService: NSObject {
                 request.setValue(String(describing: value), forHTTPHeaderField: key)
             }
         }
-
+        
         let queue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -113,7 +144,7 @@ final class ServerService: NSObject {
                 }
                 return
             }
-
+            
             do {
                 let reply = try ServerReply(data: value)
                 guard reply.status.isValid else {
@@ -123,11 +154,11 @@ final class ServerService: NSObject {
                     }
                     return
                 }
-
+                
                 queue.async {
                     success(reply)
                 }
-
+                
                 let manager = SODManager(router: self.router)
                 manager.checkVersion(serverReply: reply)
             } catch {

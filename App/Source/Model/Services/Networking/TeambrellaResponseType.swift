@@ -16,6 +16,10 @@
 
 import Foundation
 
+enum TeambrellaGetResponseType {
+    case cars([String])
+}
+
 enum TeambrellaResponseType {
     case timestamp
     case initClient
@@ -52,4 +56,5 @@ enum TeambrellaResponseType {
     
     case votesList(VotersList)
     case me(MeModel)
+    case welcome(WelcomeEntity)
 }

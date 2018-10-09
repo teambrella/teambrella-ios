@@ -20,6 +20,7 @@
  */
 
 import Foundation
+import UXCam
 
 class Session {
     var isDemo: Bool
@@ -70,6 +71,7 @@ class Session {
             break
         }
         self.currentTeam = currentTeam ?? teams.first
+        SimpleStorage().store(bool: false, forKey: .isRegistering)
     }
     
     @discardableResult
@@ -94,5 +96,9 @@ extension Session {
         currentUserID = model.userID
         currentUserName = model.name
         currentUserAvatar = model.avatar
+        
+        if let ethereumAddress = currentUserEthereumAddress {
+            UXCam.setUserIdentity(ethereumAddress)
+        }
     }
 }

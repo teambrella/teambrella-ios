@@ -19,7 +19,7 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import Foundation
+import UIKit
 
 struct ViewDecorator {
     static func shadow(for cell: UICollectionReusableView) {
@@ -30,8 +30,8 @@ struct ViewDecorator {
         shadow(for: cell, opacity: 0.2, radius: 5, offset: CGSize(width: 0, height: 1))
     }
     
-    static func homeCardShadow(for view: UIView) {
-        shadow(for: view, color: #colorLiteral(red: 0.08235294118, green: 0.2078431373, blue: 0.3529411765, alpha: 0.2000214041), opacity: 1, radius: 5, offset: CGSize(width: 0, height: 5))
+    static func homeCardShadow(for view: UIView, offset: CGSize = CGSize(width: 0, height: 5)) {
+        shadow(for: view, color: #colorLiteral(red: 0.08235294118, green: 0.2078431373, blue: 0.3529411765, alpha: 0.2000214041), opacity: 1, radius: 5, offset: offset)
     }
     
     static func shadow(for view: UIView,
@@ -59,6 +59,23 @@ struct ViewDecorator {
             cell.layer.masksToBounds = true
             cell.layer.cornerRadius = 4
         }
+    }
+    
+    static func rounded(edges: UIRectCorner, radius: CGFloat = 4, for cell: UIView) {
+        let layer: CALayer
+        if let cell = cell as? UICollectionViewCell {
+           layer = cell.contentView.layer
+        } else {
+            layer = cell.layer
+        }
+        
+        let mask = CAShapeLayer()
+        mask.frame = cell.bounds
+        let size = CGSize(width: radius, height: radius)
+        let path = UIBezierPath(roundedRect: cell.bounds, byRoundingCorners: edges, cornerRadii: size)
+        mask.path = path.cgPath
+        
+        layer.mask = mask
     }
     
     static func addCloseButton(for cell: UICollectionReusableView) {

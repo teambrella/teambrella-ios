@@ -52,7 +52,7 @@ class ServerDAO: DAO {
         let server = self.server
         freshKey { key in
             let body = RequestBody(key: key, payload: [:])
-            let requestType: TeambrellaRequestType = demo ? .demoTeams : .teams
+            let requestType: TeambrellaPostRequestType = demo ? .demoTeams : .teams
             let request = TeambrellaRequest(type: requestType, parameters: nil, body: body, success: { response in
                 if case .teams(let teamsEntity) = response { promise.resolve(with: teamsEntity) }
             }, failure: { error in promise.reject(with: error) })
@@ -84,7 +84,7 @@ class ServerDAO: DAO {
         let promise = Promise<String>()
         freshKey { key in
             let body = RequestBody(key: key)
-            let requestType: TeambrellaRequestType
+            let requestType: TeambrellaPostRequestType
             if let locale = Locale.current.languageCode, locale == "es" {
                 requestType = .setLanguageEs
             } else {
@@ -449,7 +449,7 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestChat(type: TeambrellaRequestType, body: RequestBody) -> Future<TeambrellaResponseType> {
+    func requestChat(type: TeambrellaPostRequestType, body: RequestBody) -> Future<TeambrellaResponseType> {
         let promise = Promise<TeambrellaResponseType>()
         freshKey { key in
             let request = TeambrellaRequest(type: type, body: body, success: { response in
@@ -579,7 +579,7 @@ class ServerDAO: DAO {
         }
         return promise
     }
-
+    
     // TMP: remove when possible
     func performRequest(request: TeambrellaRequest) {
         request.start(server: server)
@@ -625,21 +625,21 @@ class ServerDAO: DAO {
         let payload: [String: String] = ["facebookToken": facebookToken,
                                          "sigOfPublicKey": signature,
                                          "a": wallet]
-        return registerKey(payload: payload)
+        return registerKey(payload: payload, type: .registerKey)
     }
-
+    
     func registerKey(socialToken: String, signature: String, wallet: String) -> Future<Bool> {
         let payload: [String: String] = ["auth0Token": socialToken,
                                          "sigOfPublicKey": signature,
                                          "a": wallet]
-        return registerKey(payload: payload)
+        return registerKey(payload: payload, type: .registerKey)
     }
-
-    func registerKey(payload: [String: String]) -> Future<Bool> {
+    
+    func registerKey(payload: [String: Any], type: TeambrellaPostRequestType) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in
             let body = RequestBody(key: key, payload: payload)
-            let request = TeambrellaRequest(type: .registerKey,
+            let request = TeambrellaRequest(type: type,
                                             body: body,
                                             success: { response in
                                                 promise.resolve(with: true)
@@ -647,6 +647,15 @@ class ServerDAO: DAO {
             request.start(server: self.server)
         }
         return promise
+    }
+    
+    func registerKey(signature: String, userData: UserApplicationData) -> Future<Bool> {
+        guard var payload = userData.dictionary else {
+            fatalError()
+        }
+        
+        payload["sigOfPublicKey"] = signature
+        return registerKey(payload: payload, type: .joinRregisterKey)
     }
     
     func freshKey(completion: @escaping (Key) -> Void) {
@@ -658,6 +667,51 @@ class ServerDAO: DAO {
                 completion(self.server.key)
             })
         }
+    }
+    
+    func getCars(string: String?) -> Future<[String]> {
+        return getQuery(string: string, type: .cars)
+    }
+    
+    func getCities(string: String?) -> Future<[String]> {
+        return getQuery(string: string, type: .cities)
+    }
+    
+    func getWelcome(teamID: Int?, inviteCode: String?) -> Future<WelcomeEntity> {
+        let promise = Promise<WelcomeEntity>()
+        
+        let teamID = teamID.map { String($0) } ?? ""
+        let inviteCode = inviteCode ?? ""
+
+        let body = RequestBody(timestamp: 0, signature: "", publicKey: "", payload: ["teamId": teamID,
+                                                                                     "invite": inviteCode])
+            let request = TeambrellaRequest(type: .welcome,
+                                            body: body,
+                                            success: { response in
+                                                if case let .welcome(welcome) = response {
+                                                    promise.resolve(with: welcome)
+                                                }
+            },
+                                            failure: promise.reject)
+            request.start(server: self.server)
+        return promise
+    }
+    
+    private func getQuery(string: String?, type: TeambrellaGetRequestType) -> Future<[String]> {
+        let promise = Promise<[String]>()
+        guard let string = string else {
+            defer {
+                promise.resolve(with: [])
+            }
+            return promise
+        }
+        
+        let request = TeambrellaGetRequest<[String]>(type: type,
+                                                     parameters: ["q": string],
+                                                     success: promise.resolve,
+                                                     failure: promise.reject)
+        request.start(server: self.server)
+        return promise
     }
     
 }

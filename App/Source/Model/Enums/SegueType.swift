@@ -35,5 +35,8 @@ enum SegueType: String {
     case teammateDetails
     case transactionsResult
     case invitationOnly
+    case welcome
+
     case unwindToInitial
+    case unwindToLogin
 }

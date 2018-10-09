@@ -70,8 +70,8 @@ struct ServerReply {
         }
         status = try decoder.decode(ServerStatus.self, from: statusData)
 
-        var string: String? = nil
-        var bool: Bool? = nil
+        var string: String?
+        var bool: Bool?
         switch dataJSON {
         case let value as String:
             string = value

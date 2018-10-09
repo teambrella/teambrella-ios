@@ -23,6 +23,7 @@ end
 def firebase_pods
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'Firebase/DynamicLinks'
 end
 
 def swift_frameworks_pods
@@ -43,10 +44,12 @@ def swift_frameworks_pods
   pod 'Crashlytics'
 
   pod 'SinchRTC'
+  pod 'UXCam'
 
   pod 'BigNumber', :git => 'https://github.com/mkrd/Swift-Big-Integer.git'
   pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'
   pod 'ThoraxMath', :git => 'https://github.com/yaro812/ThoraxMath.git'
+  pod 'SwiftEmail', :git => 'https://github.com/yaro812/SwiftEmail.git'
 end
 
 def notification_swift_pods

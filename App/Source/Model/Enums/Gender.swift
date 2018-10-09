@@ -21,7 +21,7 @@
 
 import Foundation
 
-enum Gender: Decodable {
+enum Gender: Codable {
     case male
     case female
     
@@ -39,4 +39,11 @@ enum Gender: Decodable {
         let type = Gender.fromServer(integer: value)
         self = type
     }
+    
+    func encode(to encoder: Encoder) throws {
+        let intValue = self == .male ? 1 : 2
+        var container = encoder.singleValueContainer()
+        try container.encode(intValue)
+    }
+    
 }

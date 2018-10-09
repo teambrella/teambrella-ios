@@ -28,3 +28,17 @@
 "Login.QRCodeButton"                               = "Iniciar sesión con código QR";
 
 "Login.LoginBlueVC.continueWithVKButton"           = "Continuar con VK";
+
+"Login.Application.User.Title"                     = "Регистрация";
+"Login.Application.Name.Title"                     = "ИМЯ";
+"Login.Application.City.Title"                     = "ГОРОД";
+"Login.Application.Item.Title"                     = "АВТОМОБИЛЬ";
+"Login.Application.Email.Title"                    = "E-MAIL";
+"Login.Application.RegisteerButton.Title"          = "Зарегистрироваться";
+"Login.Application.TermsAndConditions.format"      = "Регистрируясь в Teambrella, ты принимаешь %@";
+"Login.Application.TermsAndConditions.Link"        = "Условия Использования";
+
+"Login.Application.Item.Placeholder"               = "Ford Focus 2014";
+"Login.Application.Name.Placeholder"               = "Gerry Smith";
+"Login.Application.Email.Placeholder"              = "myemail@hotmail.com";
+"Login.Application.City.Placeholder"               = "New York, US";
