@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         service.push.register(application: application)
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureLibs()
         return true
     }
-
+    
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplicationOpenURLOptionsKey: Any] = [ : ]) -> Bool {
@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             return false
         }
-
+        
         if source.hasPrefix("com.facebook") {
             print("Opening app from Facebook application")
             return FBSDKApplicationDelegate.sharedInstance().application(app,
@@ -71,25 +71,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return Auth0.resumeAuth(url, options: options)
         }
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         service.socket?.start()
-
+        
         if service.session != nil {
             service.teambrella.startUpdating(completion: { result in
                 let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
                 log("Teambrella service get updates results: \(description)", type: .info)
             })
         }
-
+        
         let router = service.router
         let info = service.info
         info.prepareServices()
         SODManager(router: router).checkSilentPush(infoMaker: info)
-
+        
         stitches()
     }
-
+    
     /// move all users to real group once
     private func stitches() {
         let storage = SimpleStorage()
@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             lastUserType == KeyStorage.LastUserType.real.rawValue {
             return
         }
-
+        
         if storage.bool(forKey: .didMoveToRealGroup) == false {
             service.router.logout()
             service.keyStorage.setToRealUser()
@@ -105,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             storage.store(bool: true, forKey: .didMoveToRealGroup)
         }
     }
-
+    
     private func configureLibs() {
         // Add firebase support
         FirebaseApp.configure()
@@ -122,27 +122,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func handle(dynamicLink: DynamicLink) -> Bool {
         print("Handling firebase dynamic link: \(dynamicLink)")
         guard let url = dynamicLink.url else { return false }
-
+        
         let components = url.pathComponents
         let team = components.last
-
+        
         var invite: String?
         if let query = url.query, let range = query.range(of: "invite=") {
             invite = String(query[range.upperBound...])
         }
-
+        
         service.invite = invite
         service.joinTeamID = team.flatMap { Int($0) }
-
+        
         NotificationCenter.default.post(name: .dynamicLinkReceived, object: nil)
         return true
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         service.socket?.stop()
         print("enter background")
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         print("will terminate")
     }
@@ -163,11 +163,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log("remote notification: \(userInfo)", type: .push)
         service.push.remoteNotification(in: application, userInfo: userInfo, completionHandler: completionHandler)
     }
-
+    
     func application(_ application: UIApplication,
                      performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         service.teambrella.startUpdating(completion: completionHandler)
-
+        
     }
     
     func application(_ application: UIApplication,
@@ -185,5 +185,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return handled
     }
-
+    
 }
