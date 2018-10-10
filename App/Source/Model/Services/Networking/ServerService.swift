@@ -25,7 +25,7 @@ import Foundation
  Service to interoperate with the server fetching all UI related information
  */
 final class ServerService: NSObject {
-    @objc dynamic private(set)var timestamp: Int64 = 0
+    var timestamp: Int64 = 0
     var router: MainRouter
     var infoMaker: InfoMaker
     var key: Key { return Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp) }

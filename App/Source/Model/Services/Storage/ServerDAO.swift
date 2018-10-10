@@ -580,11 +580,6 @@ class ServerDAO: DAO {
         return promise
     }
     
-    // TMP: remove when possible
-    func performRequest(request: TeambrellaRequest) {
-        request.start(server: server)
-    }
-    
     func mute(topicID: String, isMuted: Bool) -> Future<Bool> {
         let promise = Promise<Bool>()
         freshKey { key in

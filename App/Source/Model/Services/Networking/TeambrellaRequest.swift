@@ -62,7 +62,7 @@ struct TeambrellaGetRequest<Value: Decodable> {
 struct TeambrellaRequest<Value: Decodable> {
     let type: TeambrellaPostRequestType
     var parameters: [String: String]?
-    let success: (Value) -> Void
+    let success: (ServerReplyBox<Value>) -> Void
     var failure: TeambrellaRequestFailure?
     var body: RequestBody?
     
@@ -79,8 +79,8 @@ struct TeambrellaRequest<Value: Decodable> {
     }
     
     func start(server: ServerService, isErrorAutoManaged: Bool = true) {
-        server.ask(for: requestString, parameters: parameters, body: body, success: { serverReply in
-            self.parseReply(serverReply: serverReply)
+        server.ask(for: requestString, parameters: parameters, body: body, success: { reply in
+            self.parseReply(server: server, reply: reply)
         }, failure: { error in
             log("\(error)", type: [.error, .serverReply])
             if isErrorAutoManaged {
@@ -91,10 +91,15 @@ struct TeambrellaRequest<Value: Decodable> {
     }
     
     // swiftlint:disable:next cyclomatic_complexity
-    private func parseReply(serverReply: Data) {
+    private func parseReply(server: ServerService, reply: Data) {
         do {
-            let value = try decoder.decode(Value.self, from: serverReply)
-            success(value)
+            let box = try decoder.decode(ServerReplyBox<Value>.self, from: reply)
+            server.timestamp = box.status.timestamp
+            if box.status.isError {
+            // handle error
+            } else {
+            success(box)
+            }
         } catch {
             failure?(error)
         }
