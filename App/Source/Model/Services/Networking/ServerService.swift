@@ -91,7 +91,7 @@ final class ServerService: NSObject {
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,
-             success: @escaping (ServerReply) -> Void,
+             success: @escaping (Data) -> Void,
              failure: @escaping (Error) -> Void) {
         
         guard let url = URLBuilder().url(for: string, parameters: parameters) else {
@@ -144,28 +144,12 @@ final class ServerService: NSObject {
                 }
                 return
             }
+             queue.async {
+            success(value)
             
-            do {
-                let reply = try ServerReply(data: value)
-                guard reply.status.isValid else {
-                    let error = TeambrellaErrorFactory.error(with: reply.status)
-                    queue.async {
-                        failure(error)
-                    }
-                    return
-                }
-                
-                queue.async {
-                    success(reply)
-                }
-                
-                let manager = SODManager(router: self.router)
-                manager.checkVersion(serverReply: reply)
-            } catch {
-                queue.async {
-                    failure(error)
-                }
             }
+//                let manager = SODManager(router: self.router)
+//                manager.checkVersion(serverReply: reply)
         }
         task.resume()
     }

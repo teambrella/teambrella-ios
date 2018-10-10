@@ -97,7 +97,7 @@ protocol DAO {
 
     func updateClaimVote(claimID: Int, vote: Float?, lastUpdated: Int64) -> Future<ClaimVoteUpdate>
 
-    func performRequest(request: TeambrellaRequest)
+//    func performRequest(request: TeambrellaRequest)
     
     func getCars(string: String?) -> Future<[String]>
     func getCities(string: String?) -> Future<[String]>

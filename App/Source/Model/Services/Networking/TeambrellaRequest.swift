@@ -59,10 +59,10 @@ struct TeambrellaGetRequest<Value: Decodable> {
 }
 
 // swiftlint:disable function_body_length
-struct TeambrellaRequest {
+struct TeambrellaRequest<Value: Decodable> {
     let type: TeambrellaPostRequestType
     var parameters: [String: String]?
-    let success: TeambrellaRequestSuccess
+    let success: (Value) -> Void
     var failure: TeambrellaRequestFailure?
     var body: RequestBody?
     
@@ -78,19 +78,6 @@ struct TeambrellaRequest {
         return type.rawValue
     }
     
-    init (type: TeambrellaPostRequestType,
-          parameters: [String: String]? = nil,
-          
-          body: RequestBody? = nil,
-          success: @escaping TeambrellaRequestSuccess,
-          failure: TeambrellaRequestFailure? = nil) {
-        self.type = type
-        self.parameters = parameters
-        self.success = success
-        self.failure = failure
-        self.body = body
-    }
-    
     func start(server: ServerService, isErrorAutoManaged: Bool = true) {
         server.ask(for: requestString, parameters: parameters, body: body, success: { serverReply in
             self.parseReply(serverReply: serverReply)
@@ -104,7 +91,15 @@ struct TeambrellaRequest {
     }
     
     // swiftlint:disable:next cyclomatic_complexity
-    private func parseReply(serverReply: ServerReply) {
+    private func parseReply(serverReply: Data) {
+        do {
+            let value = try decoder.decode(Value.self, from: serverReply)
+            success(value)
+        } catch {
+            failure?(error)
+        }
+    }
+     /*
         log("Server reply: \(serverReply.json)", type: .serverReply)
         //decoder.keyDecodingStrategy = .convertFromUpperCamelCase
         log("Reply type: \(type)", type: .serverReplyStats)
@@ -255,5 +250,5 @@ struct TeambrellaRequest {
             failure?(error)
         }
     }
-    
+    */
 }
