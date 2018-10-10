@@ -16,10 +16,21 @@
 
 import Foundation
 
-struct ServerReplyBox<T: Decodable>: Decodable {
+struct ServerReplyBox<T: Decodable>: Decodable, CustomStringConvertible {
     let status: ServerStatus
     let paging: PagingInfo?
     let data: T?
+    
+    var description: String {
+        if let data = data {
+            let pagingInfo = paging?.description ?? ""
+            return "🎁{\(type(of: data))} \(pagingInfo)"
+        } else if status.isError {
+            return "🎁{error: \(status.resultCode)"
+        } else {
+            return "🎁{Nothing}"
+        }
+    }
     
     enum CodingKeys: String, CodingKey {
         case status = "Status"

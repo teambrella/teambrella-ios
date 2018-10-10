@@ -72,17 +72,18 @@ protocol DAO {
     func requestTeammatesList(teamID: Int,
                               offset: Int,
                               limit: Int,
-                              isOrderedByRisk: Bool) -> Future<[TeammateListEntity]>
+                              isOrderedByRisk: Bool) -> Future<(TeammatesList, PagingInfo?)>
     func requestTeammate(userID: String, teamID: Int) -> Future<TeammateLarge>
 
     func requestChat(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel>
+    func sendPrivateChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel>
     func sendChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatEntity>
 
     // MARK: Send data
 
     func deleteCard(topicID: String) -> Future<HomeModel>
     func setLanguage() -> Future<String>
-    func sendPhoto(data: Data) -> Future<String>
+    func sendPhoto(data: Data) -> Future<[String]>
 
     func createNewClaim(model: NewClaimModel) -> Future<ClaimEntityLarge>
     func createNewChat(model: NewChatModel) -> Future<ChatModel>

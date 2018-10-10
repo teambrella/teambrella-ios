@@ -55,13 +55,12 @@ struct TeambrellaGetRequest<Value: Decodable> {
     }
 }
 
-// swiftlint:disable function_body_length
 struct TeambrellaRequest<Value: Decodable> {
     let type: TeambrellaPostRequestType
-    var parameters: [String: String]? = nil
+    var parameters: [String: String]?
     let body: RequestBody
     let success: (ServerReplyBox<Value>) -> Void
-    var failure: (Error) -> Void
+    let failure: (Error) -> Void
     
     private var requestString: String {
         switch type {
@@ -102,17 +101,20 @@ struct TeambrellaRequest<Value: Decodable> {
     private func printRawReply(data: Data) {
         do {
         let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            print("Raw json object: \(json)")
+            log("Raw json object: \(json)", type: .serverReply)
         } catch {
-            print("Error printing raw json: \(error)")
+            log("Error printing raw json: \(error)", type: .error)
         }
     }
-        
+    
     private func parseReply(server: ServerService, reply: Data) {
+        #if DEBUG
         printRawReply(data: reply)
+        #endif
+        
         do {
             let box = try decoder.decode(ServerReplyBox<Value>.self, from: reply)
-            log("Boxed reply: \(box)", type: [.serverReply])
+            log("Boxed reply: \(box)", type: [.serverReplyStats])
             server.timestamp = box.status.timestamp
             //                let manager = SODManager(router: self.router)
             //                manager.checkVersion(serverReply: reply)

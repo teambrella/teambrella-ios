@@ -89,8 +89,10 @@ class ImagePickerController: NSObject {
             guard let me = self else { return }
             
             switch result {
-            case let .value(imageString):
-                me.delegate?.imagePicker(controller: me, didSendImage: image, urlString: imageString)
+            case let .value(imageStrings):
+                guard  let first = imageStrings.first else { return }
+                
+                me.delegate?.imagePicker(controller: me, didSendImage: image, urlString: first)
             case .error:
                 break
             }

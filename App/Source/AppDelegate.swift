@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         // Add XCam
-        UXCam.start(withKey: Resources.UXCam.accountKey)
+        //UXCam.start(withKey: Resources.UXCam.accountKey)
         
         // Add Crashlytics in debug mode
         #if SURILLA

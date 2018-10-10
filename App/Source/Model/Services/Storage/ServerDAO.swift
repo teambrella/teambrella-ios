@@ -190,11 +190,23 @@ class ServerDAO: DAO {
     
     func updateProxyPosition(teamID: Int, userID: String, newPosition: Int) -> Future<Bool> {
         let promise = Promise<Bool>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "UserId": userID,
-                            "Position": newPosition],
-                     type: .proxyPosition)
+        
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "UserId": userID,
+                                                       "Position": newPosition])
+            let request = TeambrellaRequest<String>(type: .proxyPosition, body: body, success: { box in
+                guard let data = box.data else { fatalError() }
+                
+                switch data.lowercased() {
+                case "ok":
+                    promise.resolve(with: true)
+                default:
+                    promise.resolve(with: false)
+                }
+            }, failure: promise.reject)
+            request.start(server: self.server)
+        }
         return promise
     }
     
@@ -279,15 +291,21 @@ class ServerDAO: DAO {
     func requestTeammatesList(teamID: Int,
                               offset: Int,
                               limit: Int,
-                              isOrderedByRisk: Bool) -> Future<[TeammateListEntity]> {
-        let promise = Promise<[TeammateListEntity]>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "Offset": offset,
-                            "Limit": limit,
-                            "AvatarSize": Constant.avatarSize,
-                            "OrderByRisk": isOrderedByRisk],
-                     type: .teammatesList)
+                              isOrderedByRisk: Bool) -> Future<(TeammatesList, PagingInfo?)> {
+        let promise = Promise<(TeammatesList, PagingInfo?)>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID,
+                                                       "Offset": offset,
+                                                       "Limit": limit,
+                                                       "AvatarSize": Constant.avatarSize,
+                                                       "OrderByRisk": isOrderedByRisk])
+            let request = TeambrellaRequest<TeammatesList>(type: .teammatesList, body: body, success: { box in
+                guard let data = box.data else { fatalError() }
+                
+                promise.resolve(with: (data, box.paging))
+            }, failure: promise.reject)
+            request.start(server: self.server)
+        }
         return promise
     }
     
@@ -340,6 +358,12 @@ class ServerDAO: DAO {
         return promise
     }
     
+    func sendPrivateChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel> {
+        let promise = Promise<ChatModel>()
+        startRequest(promise: promise, body: body, type: type)
+        return promise
+    }
+    
     func withdraw(teamID: Int, amount: Double, address: EthereumAddress) -> Future<WithdrawChunk> {
         let promise = Promise<WithdrawChunk>()
         startRequest(promise: promise,
@@ -369,19 +393,19 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func sendPhoto(data: Data) -> Future<String> {
-        let promise = Promise<String>()
+    func sendPhoto(data: Data) -> Future<[String]> {
+        let promise = Promise<[String]>()
         freshKey { key in
             var body = RequestBody(key: key, payload: nil)
             body.contentType = "image/jpeg"
             body.data = data
-            let request = TeambrellaRequest<String>(type: .uploadPhoto, body: body, success: { box in
+            let request = TeambrellaRequest<[String]>(type: .uploadPhoto, body: body, success: { box in
                 guard let data = box.data else {
                     fatalError()
                 }
                 
-                promise.resolve(with: data)},
-                                                    failure: promise.reject)
+                promise.resolve(with: data) },
+                                                      failure: promise.reject)
             request.start(server: self.server)
         }
         return promise
