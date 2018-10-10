@@ -17,21 +17,8 @@
 import UIKit
 
 protocol MuteControllerDelegate: class {
-    func mute(controller: MuteVC, didSelect type: TopicMuteType)
+    func mute(controller: MuteVC, didSelect index: Int)
     func didCloseMuteController(controller: MuteVC)
-}
-
-enum TopicMuteType: Int {
-    case unknown = -1
-    case unmuted = 0
-    case muted = 1
-    
-    static func type(from boolean: Bool?) -> TopicMuteType {
-        if let boolean = boolean {
-            return boolean == true ? .muted : .unmuted
-        }
-        return .unknown
-    }
 }
 
 class MuteVC: UIViewController, Routable {
@@ -44,10 +31,10 @@ class MuteVC: UIViewController, Routable {
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UICollectionView!
     
-    fileprivate var dataSource = MuteDataSource()
+    var dataSource: MuteDataSource!
     weak var delegate: MuteControllerDelegate?
     
-    var type: TopicMuteType = .unknown
+    var selectedIndex: Int = 0
     
     @IBAction func tapClose(_ sender: Any) {
         close()
@@ -63,14 +50,19 @@ class MuteVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      setup()
+        
+    }
+    
+    private func setup() {
         collectionView.register(MuteCell.nib, forCellWithReuseIdentifier: MuteCell.cellID)
-        headerLabel.text = "Team.Chat.NotificationSettings.title".localized
-        dataSource.createModels()
         
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(close))
         recognizer.delegate = self
         backView.addGestureRecognizer(recognizer)
         backView.isUserInteractionEnabled = true
+        
+          headerLabel.text = "Team.Chat.NotificationSettings.title".localized
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -125,14 +117,14 @@ extension MuteVC: UICollectionViewDelegate {
             cell.icon.image = model.icon
             cell.upperLabel.text = model.topText
             cell.lowerLabel.text = model.bottomText
-            cell.checker.isHidden = indexPath.row != type.rawValue
+            cell.checker.isHidden = indexPath.row != selectedIndex
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is MuteCell {
-            type = TopicMuteType(rawValue: indexPath.row) ?? .unknown
-            delegate?.mute(controller: self, didSelect: type)
+            selectedIndex = indexPath.row
+            delegate?.mute(controller: self, didSelect: selectedIndex)
             collectionView.reloadData()
             close()
         }

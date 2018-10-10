@@ -81,13 +81,13 @@ class MembersDatasource {
                 guard let `self` = self else { return }
 
                 switch result {
-                case let .value(teammates):
+                case let .value((list, paging)):
                     if self.isSilentUpdate {
                         self.clearDataSource()
                         self.isSilentUpdate = false
                     }
-                    self.strategy.arrange(teammates: teammates)
-                    self.offset += teammates.count
+                    self.strategy.arrange(teammates: list.teammates)
+                    self.offset += list.teammates.count
                     self.onUpdate?()
                     self.isLoading = false
                 case let .error(error):

@@ -380,7 +380,6 @@
 		6D0524C020A5D838000B3247 /* TxSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D466A981ED07CF1001BC579 /* TxSignature.swift */; };
 		6D0524C120A5D838000B3247 /* WithdrawChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */; };
 		6D0524C220A5D838000B3247 /* ClaimsCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DA25F1EE1DAA400307C73 /* ClaimsCellBuilder.swift */; };
-		6D0524C320A5D838000B3247 /* TeambrellaResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */; };
 		6D0524C420A5D838000B3247 /* ImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D1001F056A2400F9DE87 /* ImageTransformer.swift */; };
 		6D0524C520A5D838000B3247 /* WalletDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D69DA191EFD171C00DED5CE /* WalletDataSource.swift */; };
 		6D0524C620A5D838000B3247 /* ClaimTransactionsCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94266A371F55B3240089543F /* ClaimTransactionsCellBuilder.swift */; };
@@ -509,7 +508,6 @@
 		6D1B287C20C6F81F003B2D32 /* Watch.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D1B287A20C6F81F003B2D32 /* Watch.strings */; };
 		6D1B287F20C7072F003B2D32 /* SurillaNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6D59FCF61FBC8407006C0A2B /* SurillaNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6D1CAC061FF4FEE900FA58B6 /* TeambrellaPostRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC041FF4FEE900FA58B6 /* TeambrellaPostRequestType.swift */; };
-		6D1CAC091FF4FF3800FA58B6 /* TeambrellaResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */; };
 		6D1CAC0C1FF51A1200FA58B6 /* OthersVotedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC0A1FF51A1200FA58B6 /* OthersVotedVC.swift */; };
 		6D1CAC101FF51B6700FA58B6 /* OthersVotedDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC0E1FF51B6700FA58B6 /* OthersVotedDataSource.swift */; };
 		6D1CAC131FF52B7600FA58B6 /* OthersVotedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1CAC111FF52B7600FA58B6 /* OthersVotedCell.swift */; };
@@ -1376,7 +1374,6 @@
 		6D1B287E20C6F83C003B2D32 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Watch.strings; sourceTree = "<group>"; };
 		6D1C23871E8EA99F009B05A3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Helpers/Extensions/Data.swift; sourceTree = "<group>"; };
 		6D1CAC041FF4FEE900FA58B6 /* TeambrellaPostRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeambrellaPostRequestType.swift; path = Model/Services/Networking/TeambrellaPostRequestType.swift; sourceTree = "<group>"; };
-		6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeambrellaResponseType.swift; path = Model/Services/Networking/TeambrellaResponseType.swift; sourceTree = "<group>"; };
 		6D1CAC0A1FF51A1200FA58B6 /* OthersVotedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OthersVotedVC.swift; path = Scenes/Info/OthersVotedVC.swift; sourceTree = "<group>"; };
 		6D1CAC0E1FF51B6700FA58B6 /* OthersVotedDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OthersVotedDataSource.swift; path = Scenes/Info/OthersVotedDataSource.swift; sourceTree = "<group>"; };
 		6D1CAC111FF52B7600FA58B6 /* OthersVotedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OthersVotedCell.swift; path = Scenes/Info/OthersVotedCell.swift; sourceTree = "<group>"; };
@@ -2878,7 +2875,6 @@
 				6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */,
 				6D59FD171FBC9693006C0A2B /* URLBuilder.swift */,
 				6D1CAC041FF4FEE900FA58B6 /* TeambrellaPostRequestType.swift */,
-				6D1CAC071FF4FF3800FA58B6 /* TeambrellaResponseType.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -4654,7 +4650,6 @@
 				6D0524C020A5D838000B3247 /* TxSignature.swift in Sources */,
 				6D0524C120A5D838000B3247 /* WithdrawChunk.swift in Sources */,
 				6D0524C220A5D838000B3247 /* ClaimsCellBuilder.swift in Sources */,
-				6D0524C320A5D838000B3247 /* TeambrellaResponseType.swift in Sources */,
 				6D0524C420A5D838000B3247 /* ImageTransformer.swift in Sources */,
 				6D0524C520A5D838000B3247 /* WalletDataSource.swift in Sources */,
 				6D0524C620A5D838000B3247 /* ClaimTransactionsCellBuilder.swift in Sources */,
@@ -5108,7 +5103,6 @@
 				6D4E5D601F7AB6870020DEE2 /* TxSignature.swift in Sources */,
 				6D4E59101FD2EF900029D2F0 /* WithdrawChunk.swift in Sources */,
 				6D4E5D611F7AB6870020DEE2 /* ClaimsCellBuilder.swift in Sources */,
-				6D1CAC091FF4FF3800FA58B6 /* TeambrellaResponseType.swift in Sources */,
 				6D4E5D621F7AB6870020DEE2 /* ImageTransformer.swift in Sources */,
 				6D4E5D631F7AB6870020DEE2 /* WalletDataSource.swift in Sources */,
 				6D4E5D641F7AB6870020DEE2 /* ClaimTransactionsCellBuilder.swift in Sources */,

@@ -221,3 +221,8 @@
 "Team.Chat.PayToJoin.buttonTitle" = "Пополнить кошелёк";
 "Team.Chat.ObjectView.TitleLabel.teamVote" = "ГОЛОС ГРУППЫ";
 "Team.ClaimCell.voting.ended" = "Закончилось ";
+
+"Team.Notfications.never" = "Никогда";
+"Team.Notifications.often" = "Раз в день";
+"Team.Notifications.occasionally" = "Раз в три дня";
+"Team.Notifications.rarely" = "Раз в неделю";

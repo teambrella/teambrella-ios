@@ -30,13 +30,13 @@ import XLPagerTabStrip
  */
 final class MainRouter {
     let mainStoryboardName = "Main"
-
+    
     // MARK: Services
     //    var session: Session?
-
+    
     //    var teambrella: TeambrellaService?
     //    var error: ErrorPresenter?
-
+    
     var navigator: Navigator? {
         let appDelegate  = UIApplication.shared.delegate as? AppDelegate
         let viewController = appDelegate?.window?.rootViewController as? Navigator
@@ -50,7 +50,7 @@ final class MainRouter {
     var frontmostViewController: UIViewController? {
         return topViewController()
     }
-
+    
     var initialVC: InitialVC? {
         return navigator?.viewControllers.filter { $0 is InitialVC }.first as? InitialVC
     }
@@ -326,13 +326,31 @@ final class MainRouter {
         viewController.present(vc, animated: false, completion: nil)
     }
     
-    func showNotificationFilter(in viewController: UIViewController,
-                                delegate: MuteControllerDelegate,
-                                currentState type: TopicMuteType) {
+    func showChatNotificationFilter(in viewController: UIViewController,
+                                    delegate: MuteControllerDelegate,
+                                    currentState type: MuteType) {
+        showFilter(in: viewController,
+                   delegate: delegate,
+                   dataSource: ChatMuteDataSource(), currentState: type)
+    }
+    
+    func showNotificationsFilter(in viewController: UIViewController,
+                                 delegate: MuteControllerDelegate,
+                                 currentState type: MuteType) {
+        showFilter(in: viewController,
+                   delegate: delegate,
+                   dataSource: NotificationsMuteDataSource(), currentState: type)
+    }
+    
+    private func showFilter(in viewController: UIViewController,
+                            delegate: MuteControllerDelegate,
+                            dataSource: MuteDataSource,
+                            currentState type: MuteType) {
         guard let vc = MuteVC.instantiate() as? MuteVC else { fatalError("Error instantiating") }
         
         vc.delegate = delegate
-        vc.type = type
+        vc.dataSource = dataSource
+        vc.selectedIndex = dataSource.index(for: type) ?? 0
         viewController.present(vc, animated: false, completion: nil)
     }
     
@@ -353,11 +371,11 @@ final class MainRouter {
         vc.privateKey = service.keyStorage.privateKey
         viewController.present(vc, animated: true, completion: nil)
     }
-
+    
     @discardableResult
     func showCall(in viewController: UIViewController, to name: String, avatar: String, id: String) -> CallVC {
         guard let vc = CallVC.instantiate() as? CallVC else { fatalError("Error instantiating") }
-
+        
         vc.name = name
         vc.avatar = avatar
         vc.id = id
@@ -373,7 +391,7 @@ final class MainRouter {
         
         viewController.present(vc, animated: true, completion: nil)
     }
-
+    
     /*
      func pushOrReuse(vc: UIViewController,
      animated: Bool = true,
@@ -390,21 +408,21 @@ final class MainRouter {
      */
     
     // MARK: Other
-
+    
     func startNewSession(isDemo: Bool, teamsModel: TeamsModel) {
         service.session = Session(teamsModel: teamsModel, isDemo: isDemo)
-
+        
         let socket = SocketService(dao: service.dao, url: nil)
         service.socket = socket
         service.teambrella.signToSockets(service: socket)
         service.watch = WatchService()
-
+        
         if !isDemo {
             let userID = teamsModel.userID
             SimpleStorage().store(string: userID, forKey: .userID)
             service.sinch.startWith(userID: userID)
         }
-
+        
         service.joinTeamID = nil
         service.invite = nil
     }
@@ -436,11 +454,11 @@ final class MainRouter {
         completion?()
         return nil
     }
-
+    
     func login(teamID: Int?) {
         initialVC?.login(teamID: teamID)
     }
-
+    
     func switchTeam() {
         let initial = navigator?.viewControllers.filter { $0 is InitialVC }.first
         if let initial = initial {
@@ -465,7 +483,7 @@ final class MainRouter {
         controller.present(vc, animated: true)
         return vc
     }
-
+    
     @discardableResult
     func showCodeCapture(in controller: UIViewController,
                          delegate: CodeCaptureDelegate,
@@ -477,7 +495,7 @@ final class MainRouter {
         controller.present(vc, animated: true)
         return vc
     }
-
+    
     /* private */ init() {
         PKHUD.sharedHUD.gracePeriod = 0.5
         NotificationCenter.default.addObserver(self,
@@ -500,7 +518,7 @@ final class MainRouter {
         viewController.present(vc, animated: true, completion: nil)
         return vc
     }
-
+    
     @objc
     func cryptoMalfunction() {
         service.keyStorage.deleteStoredKeys()

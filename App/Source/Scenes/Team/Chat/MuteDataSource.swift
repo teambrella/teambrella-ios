@@ -16,21 +16,68 @@
 
 import Foundation
 
-struct MuteDataSource {
-    var count: Int { return models.count }
-    var models: [MuteCellModel] = []
+protocol MuteDataSource {
+    var count: Int { get }
+    var models: [MuteCellModel] { get }
     
-    mutating func createModels() {
-        models = [MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
-                                topText: "Team.Chat.NotificationSettings.subscribed".localized,
-                                bottomText: "Team.Chat.NotificationSettings.subscribed.details".localized),
-                  MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
-                                topText: "Team.Chat.NotificationSettings.unsubscribed".localized,
-                                bottomText: "Team.Chat.NotificationSettings.unsubscribed.details".localized)]
-    }
+    func index(for type: MuteType) -> Int?
+    func type(for index: Int) -> MuteType
+    
+    subscript(index: IndexPath) -> MuteCellModel { get }
+}
+
+extension MuteDataSource {
+    var count: Int { return models.count }
     
     subscript(indexPath: IndexPath) -> MuteCellModel {
         return models[indexPath.row]
     }
     
+    func index(for type: MuteType) -> Int? {
+        for (idx, model) in models.enumerated() where model.type.rawValue == type.rawValue {
+            return idx
+        }
+        return nil
+    }
+    
+    func type(for index: Int) -> MuteType {
+        return models[index].type
+    }
 }
+
+struct ChatMuteDataSource: MuteDataSource {
+    let models: [MuteCellModel] = [
+        MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+                      topText: "Team.Chat.NotificationSettings.subscribed".localized,
+                      bottomText: "Team.Chat.NotificationSettings.subscribed.details".localized,
+                      type: ChatMuteType.unmuted),
+        
+        MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
+                      topText: "Team.Chat.NotificationSettings.unsubscribed".localized,
+                      bottomText: "Team.Chat.NotificationSettings.unsubscribed.details".localized,
+                      type: ChatMuteType.muted)
+    ]
+}
+
+struct NotificationsMuteDataSource: MuteDataSource {
+    let models: [MuteCellModel] = [
+        MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+                      topText: "Team.Notifications.often".localized,
+                      bottomText: "",
+                      type: NotificationsMuteType.often),
+        
+        MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+                      topText: "Team.Notifications.occasionally".localized,
+                      bottomText: "",
+                      type: NotificationsMuteType.occasionally),
+        MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+                      topText: "Team.Notifications.rarely".localized,
+                      bottomText: "",
+                      type: NotificationsMuteType.rarely),
+        MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
+                      topText: "Team.Notifications.never".localized,
+                      bottomText: "",
+                      type: NotificationsMuteType.never)
+    ]
+}
+

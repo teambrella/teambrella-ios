@@ -20,4 +20,28 @@ struct MuteCellModel {
     var icon: UIImage
     var topText: String
     var bottomText: String
+    var type: MuteType
+}
+
+protocol MuteType {
+    var rawValue: Int { get }
+}
+
+enum ChatMuteType: Int, MuteType {
+    case unknown = -1
+    case unmuted = 0
+    case muted = 1
+    
+    static func type(from bool: Bool?) -> ChatMuteType {
+        guard let bool = bool else { return .unknown }
+        
+        return bool == false ? .unmuted : .muted
+    }
+}
+
+enum NotificationsMuteType: Int, MuteType {
+    case never = 0
+    case often = 1
+    case occasionally = 2
+    case rarely = 3
 }
