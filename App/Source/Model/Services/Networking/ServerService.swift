@@ -148,8 +148,7 @@ final class ServerService: NSObject {
             success(value)
             
             }
-//                let manager = SODManager(router: self.router)
-//                manager.checkVersion(serverReply: reply)
+
         }
         task.resume()
     }

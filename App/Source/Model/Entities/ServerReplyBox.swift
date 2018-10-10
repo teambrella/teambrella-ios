@@ -19,7 +19,7 @@ import Foundation
 struct ServerReplyBox<T: Decodable>: Decodable {
     let status: ServerStatus
     let paging: PagingInfo?
-    let data: T
+    let data: T?
     
     enum CodingKeys: String, CodingKey {
         case status = "Status"

@@ -280,22 +280,20 @@ final class UniversalChatDatasource {
             }
         }
 
-        dao.freshKey { [weak self] key in
+        let body = strategy.updatedMessagePayload(body: ["Text": text,
+                                                          "NewPostId": id,
+                                                          "Images": images])
+        dao.sendChatMessage(type: strategy.postType, body: body).observe { [weak self] result in
             guard let `self` = self else { return }
             
-            let body = self.strategy.updatedMessageBody(body: RequestBody(key: key, payload: ["Text": text,
-                                                                                              "NewPostId": id,
-                                                                                              "Images": images]))
-            let request = TeambrellaRequest(type: self.strategy.postType, body: body, success: { [weak self] response in
-                guard let `self` = self else { return }
-                
+            switch result {
+            case let .value(message):
                 self.hasNext = true
                 self.isLoading = false
-                self.process(response: response, isPrevious: false, isMyNewMessage: true)
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            self.dao.performRequest(request: request)
+                self.processMyNew(message: message)
+            case let .error(error):
+                self.onError?(error)
+            }
         }
     }
     
@@ -344,38 +342,34 @@ extension UniversalChatDatasource {
             isLoadNextNeeded = false
         }
         
-        dao.freshKey { [weak self] key in
-            guard let `self` = self else { return }
-            
-            self.currentLimit = Constant.limit
-
-            var offset = previous
-                ? self.backwardOffset
-                : self.forwardOffset
-
-            if self.isFirstLoad {
-                self.currentLimit += Constant.firstLoadPreviousMessagesCount
-                offset -= Constant.firstLoadPreviousMessagesCount
+        self.currentLimit = Constant.limit
+        
+        var offset = previous
+            ? self.backwardOffset
+            : self.forwardOffset
+        
+        if self.isFirstLoad {
+            self.currentLimit += Constant.firstLoadPreviousMessagesCount
+            offset -= Constant.firstLoadPreviousMessagesCount
+        }
+        var payload: [String: Any] = ["limit": self.currentLimit,
+                                      "offset": offset,
+                                      "avatarSize": self.avatarSize,
+                                      "commentAvatarSize": self.commentAvatarSize]
+        if self.lastRead > 0 {
+            payload["since"] = self.lastRead
+        }
+        payload = strategy.updatedChatBody(body: payload)
+        
+        dao.requestChat(type: strategy.requestType, body: payload).observe { [weak self] result in
+             guard let`self` = self else { return }
+            switch result {
+            case let .value(chat):
+                self.isLoading = false
+                self.process(model: chat, isPrevious: previous)
+            case let .error(error):
+                self.onError?(error)
             }
-            var payload: [String: Any] = ["limit": self.currentLimit,
-                                          "offset": offset,
-                                          "avatarSize": self.avatarSize,
-                                          "commentAvatarSize": self.commentAvatarSize]
-            if self.lastRead > 0 {
-                payload["since"] = self.lastRead
-            }
-            let body = self.strategy.updatedChatBody(body: RequestBody(key: key, payload: payload))
-            let request = TeambrellaRequest(type: self.strategy.requestType,
-                                            body: body,
-                                            success: { [weak self] response in
-                                                guard let`self` = self else { return }
-                                                
-                                                self.isLoading = false
-                                                self.process(response: response,
-                                                             isPrevious: previous,
-                                                             isMyNewMessage: false)
-            })
-            self.dao.performRequest(request: request)
         }
     }
     
@@ -489,25 +483,22 @@ extension UniversalChatDatasource {
         return false
     }
     
-    private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {
+    private func processMyNew(message: ChatEntity) {
         let count = self.count
-        switch response {
-        case let .chat(model):
+        let models = createCellModels(from: [message], isTemporary: true)
+        addCellModels(models: models)
+        postsCount += 1
+        forwardOffset = 0
+        
+        onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
+        isFirstLoad = false
+    }
+    
+    private func process(model: ChatModel, isPrevious: Bool) {
+        let count = self.count
             processCommonChat(model: model, isPrevious: isPrevious)
-        case let .newPost(post):
-            let models = createCellModels(from: [post], isTemporary: true)
-            addCellModels(models: models)
-            postsCount += 1
-            forwardOffset = 0
-        default:
-            return
-        }
         let hasNewModels = self.count > count
-        if isMyNewMessage {
-            onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
-        } else {
             onUpdate?(isPrevious, hasNewModels, isFirstLoad)
-        }
         isFirstLoad = false
     }
 

@@ -114,41 +114,41 @@ class UniversalChatContext {
         userID = privateUser.id
     }
 
-    func updatedChatBody(body: RequestBody) -> RequestBody {
+    func updatedChatBody(body: [String: Any]) -> [String: Any] {
         var body = body
-        claimID.map { body.payload?["claimId"] = $0 }
-        teamID.map { body.payload?["teamid"] = $0 }
-        userID.map { body.payload?["userid"] = $0 }
-        topicID.map { body.payload?["topicid"] = $0 }
+        claimID.map { body["claimId"] = $0 }
+        teamID.map { body["teamid"] = $0 }
+        userID.map { body["userid"] = $0 }
+        topicID.map { body["topicid"] = $0 }
 
         return updateIfPrivateChat(body: body)
     }
 
-    func updatedMessageBody(body: RequestBody) -> RequestBody {
+    func updatedMessagePayload(body: [String: Any]) -> [String: Any] {
         var body = body
-        topicID.map { body.payload?["topicId"] = $0 }
+        topicID.map { body["topicId"] = $0 }
 
         return updateIfPrivateMessage(body: body)
     }
 
-    private func updateIfPrivateChat(body: RequestBody) -> RequestBody {
+    private func updateIfPrivateChat(body: [String: Any]) -> [String: Any] {
         guard requestType == .privateChat else { return body }
 
         var body = body
-        body.payload?["avatarSize"] = nil
-        body.payload?["commentAvatarSize"] = nil
+        body["avatarSize"] = nil
+        body["commentAvatarSize"] = nil
         return body
     }
 
-    private func updateIfPrivateMessage(body: RequestBody) -> RequestBody {
+    private func updateIfPrivateMessage(body: [String: Any]) -> [String: Any] {
         guard requestType == .privateChat else { return body }
 
         var body = body
-        body.payload?["ToUserId"] = userID
-        if let newPostID = body.payload?["NewPostId"] as? String {
-            body.payload?["NewMessageId"] = newPostID
+        body["ToUserId"] = userID
+        if let newPostID = body["NewPostId"] as? String {
+            body["NewMessageId"] = newPostID
         }
-        body.payload?["NewPostId"] = nil
+        body["NewPostId"] = nil
         return body
     }
 
