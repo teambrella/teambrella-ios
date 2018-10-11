@@ -485,6 +485,18 @@ class ServerDAO: DAO {
         return promise
     }
     
+    func requestPin(topicID: String) -> Future<PinEntity> {
+        let promise = Promise<PinEntity>()
+        startRequest(promise: promise, body: ["TopicId": topicID], type: .pin)
+        return promise
+    }
+    
+    func sendPin(topicID: String, pinType: ChatPinType) -> Future<PinEntity> {
+        let promise = Promise<PinEntity>()
+        startRequest(promise: promise, body: ["TopicId": topicID, "MyPin": pinType.rawValue], type: .setPin)
+        return promise
+    }
+    
     func registerKey(facebookToken: String, signature: String, wallet: String) -> Future<Bool> {
         let payload: [String: String] = ["facebookToken": facebookToken,
                                          "sigOfPublicKey": signature,

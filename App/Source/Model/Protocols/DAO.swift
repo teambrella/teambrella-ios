@@ -101,6 +101,9 @@ protocol DAO {
     
     func requestSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity>
     func sendSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity>
+    
+    func requestPin(topicID: String) -> Future<PinEntity>
+    func sendPin(topicID: String, pinType: ChatPinType) -> Future<PinEntity>
 
 //    func performRequest(request: TeambrellaRequest)
     
