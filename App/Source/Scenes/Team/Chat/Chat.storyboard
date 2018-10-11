@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,7 +86,7 @@
                                         <rect key="frame" x="0.0" y="691" width="375" height="198"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXQ-la-7Xz" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="187" y="25.5" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="187.5" y="25" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -110,7 +109,7 @@
                                                     <action selector="tapClose:" destination="Yf4-wk-oE6" eventType="touchUpInside" id="5ks-cO-2aD"/>
                                                 </connections>
                                             </button>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KHL-Q5-vb5">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KHL-Q5-vb5">
                                                 <rect key="frame" x="0.0" y="51" width="375" height="147"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5Gt-pQ-LHN">
@@ -140,7 +139,7 @@
                                             <constraint firstAttribute="trailing" secondItem="zIe-SB-0rt" secondAttribute="trailing" constant="8" id="4RF-rG-O6Q"/>
                                             <constraint firstAttribute="trailing" secondItem="NsN-2u-RdJ" secondAttribute="trailing" id="7Qq-kS-ipi"/>
                                             <constraint firstAttribute="trailing" secondItem="KHL-Q5-vb5" secondAttribute="trailing" id="B5K-II-RLn"/>
-                                            <constraint firstAttribute="height" constant="198" id="I8z-B7-cgu"/>
+                                            <constraint firstAttribute="height" priority="250" constant="198" id="I8z-B7-cgu"/>
                                             <constraint firstItem="KHL-Q5-vb5" firstAttribute="leading" secondItem="NDV-JV-uai" secondAttribute="leading" id="JPQ-Ay-NgS"/>
                                             <constraint firstItem="jXQ-la-7Xz" firstAttribute="centerX" secondItem="NDV-JV-uai" secondAttribute="centerX" id="Q8C-wK-1WR"/>
                                             <constraint firstItem="KHL-Q5-vb5" firstAttribute="top" secondItem="NsN-2u-RdJ" secondAttribute="bottom" id="VZC-ek-UFn"/>

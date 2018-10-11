@@ -358,4 +358,8 @@ extension HomeVC: TopBarDelegate {
     func topBar(vc: TopBarVC, didSwitchTeamToID: Int) {
         
     }
+    
+    func topBar(vc: TopBarVC, didTapNotifications: UIButton) {
+        
+    }
 }

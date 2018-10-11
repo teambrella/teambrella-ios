@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBarVC" customModule="Surilla" customModuleProvider="target">
             <connections>
+                <outlet property="notificationsButton" destination="YXc-5i-f8Q" id="Lef-qn-gGU"/>
                 <outlet property="privateMessagesButton" destination="2CG-X1-qCi" id="4iG-tX-fEy"/>
                 <outlet property="teamButton" destination="ee1-KA-a3k" id="Dsj-iA-xza"/>
                 <outlet property="titleLabel" destination="18b-sS-yPd" id="TDl-1o-rEu"/>
@@ -27,8 +29,43 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-KA-a3k" customClass="DropDownButton" customModule="Surilla" customModuleProvider="target">
-                    <rect key="frame" x="16" y="0.0" width="44" height="44"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18b-sS-yPd">
+                    <rect key="frame" x="68" y="0.0" width="210" height="60"/>
+                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XDk-0U-GN6">
+                    <rect key="frame" x="278" y="10.5" width="32" height="23"/>
+                    <subviews>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXc-5i-f8Q" customClass="LabeledButton" customModule="Surilla" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="32" height="23"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="91t-U1-bfn"/>
+                            </constraints>
+                            <state key="normal" image="iconBell1"/>
+                            <connections>
+                                <action selector="tapNotifications:" destination="-1" eventType="touchUpInside" id="Ciq-eU-6n9"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CG-X1-qCi" customClass="LabeledButton" customModule="Surilla" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="32" height="23"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="NGc-iE-kVS"/>
+                                <constraint firstAttribute="height" constant="23" id="Zo9-44-EJo"/>
+                            </constraints>
+                            <state key="normal" image="inbox"/>
+                            <connections>
+                                <action selector="tapPrivateMessages:" destination="-1" eventType="touchUpInside" id="SIB-8j-NKq"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="YXc-5i-f8Q" firstAttribute="height" secondItem="2CG-X1-qCi" secondAttribute="height" id="b0S-r7-IYc"/>
+                    </constraints>
+                </stackView>
+                <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-KA-a3k" customClass="DropDownButton" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="10" y="0.0" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="NbZ-ng-6VY"/>
                         <constraint firstAttribute="height" constant="44" id="UXP-dd-J1d"/>
@@ -38,33 +75,16 @@
                         <action selector="tapTeams:" destination="-1" eventType="touchUpInside" id="GdB-bN-4a6"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CG-X1-qCi" customClass="LabeledButton" customModule="Surilla" customModuleProvider="target">
-                    <rect key="frame" x="278" y="11" width="32" height="23"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="32" id="NGc-iE-kVS"/>
-                        <constraint firstAttribute="height" constant="23" id="Zo9-44-EJo"/>
-                    </constraints>
-                    <state key="normal" image="inbox"/>
-                    <connections>
-                        <action selector="tapPrivateMessages:" destination="-1" eventType="touchUpInside" id="SIB-8j-NKq"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18b-sS-yPd">
-                    <rect key="frame" x="68" y="0.0" width="202" height="60"/>
-                    <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="ee1-KA-a3k" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4EW-id-QEp"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="18b-sS-yPd" secondAttribute="bottom" id="4Ib-9J-fRN"/>
                 <constraint firstItem="18b-sS-yPd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5Db-8O-46J"/>
-                <constraint firstItem="2CG-X1-qCi" firstAttribute="leading" secondItem="18b-sS-yPd" secondAttribute="trailing" constant="8" id="C0n-hC-fSE"/>
                 <constraint firstItem="18b-sS-yPd" firstAttribute="leading" secondItem="ee1-KA-a3k" secondAttribute="trailing" constant="8" id="GlH-9k-IwG"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="2CG-X1-qCi" secondAttribute="trailing" constant="10" id="YYs-7K-PVa"/>
-                <constraint firstItem="2CG-X1-qCi" firstAttribute="centerY" secondItem="ee1-KA-a3k" secondAttribute="centerY" id="pxF-6W-osb"/>
+                <constraint firstItem="18b-sS-yPd" firstAttribute="trailing" secondItem="XDk-0U-GN6" secondAttribute="leading" id="ogD-k7-Rla"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XDk-0U-GN6" secondAttribute="trailing" constant="10" id="sy0-0l-7X0"/>
+                <constraint firstItem="XDk-0U-GN6" firstAttribute="centerY" secondItem="ee1-KA-a3k" secondAttribute="centerY" id="wgA-vP-ZuD"/>
                 <constraint firstItem="ee1-KA-a3k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="yQb-Yi-MwM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -73,6 +93,7 @@
         </view>
     </objects>
     <resources>
+        <image name="iconBell1" width="18" height="20"/>
         <image name="inbox" width="22" height="17"/>
     </resources>
 </document>

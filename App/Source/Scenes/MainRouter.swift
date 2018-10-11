@@ -328,7 +328,7 @@ final class MainRouter {
     
     func showChatNotificationFilter(in viewController: UIViewController,
                                     delegate: MuteControllerDelegate,
-                                    currentState type: MuteType) {
+                                    currentState type: ChatMuteType) {
         showFilter(in: viewController,
                    delegate: delegate,
                    dataSource: ChatMuteDataSource(), currentState: type)
@@ -336,7 +336,7 @@ final class MainRouter {
     
     func showNotificationsFilter(in viewController: UIViewController,
                                  delegate: MuteControllerDelegate,
-                                 currentState type: MuteType) {
+                                 currentState type: TeamNotificationsFrequencyType) {
         showFilter(in: viewController,
                    delegate: delegate,
                    dataSource: NotificationsMuteDataSource(), currentState: type)

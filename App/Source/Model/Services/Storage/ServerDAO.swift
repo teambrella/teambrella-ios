@@ -467,7 +467,7 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettinsEntity> {
+    func requestSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity> {
         let promise = Promise<SettingsEntity>()
         startRequest(promise: promise,
                      body: ["TeamId": teamID,
@@ -476,7 +476,7 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func sendSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettinsEntity> {
+    func sendSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity> {
         let promise = Promise<SettingsEntity>()
         startRequest(promise: promise,
                      body: ["TeamId": teamID,

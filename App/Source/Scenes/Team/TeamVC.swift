@@ -67,6 +67,8 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         topBarVC.session = session
         topBarVC.delegate = self
         
+        topBarVC.notificationsButton.isHidden = false
+        
         topBarVC.setup()
     }
     
@@ -95,6 +97,20 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
 
 extension TeamVC: TopBarDelegate {
     func topBar(vc: TopBarVC, didSwitchTeamToID: Int) {
+        
+    }
+    
+    func topBar(vc: TopBarVC, didTapNotifications: UIButton) {
+        service.router.showNotificationsFilter(in: self, delegate: self, currentState: .never)
+    }
+}
+
+extension TeamVC: MuteControllerDelegate {
+    func mute(controller: MuteVC, didSelect index: Int) {
+        
+    }
+    
+    func didCloseMuteController(controller: MuteVC) {
         
     }
 }
