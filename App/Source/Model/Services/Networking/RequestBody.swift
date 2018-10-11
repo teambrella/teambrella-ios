@@ -21,25 +21,6 @@
 
 import Foundation
 
-struct RequestBodyFactory {
-    static func teammatesBody(key: Key, teamID: Int = service.session?.currentTeam?.teamID ?? 0) -> RequestBody {
-        let payload: [String: Any] = ["TeamId": teamID,
-                                      "P": 0,
-                                      "Search": NSNull()]
-        return RequestBody(timestamp: key.timestamp,
-                           signature: key.signature,
-                           publicKey: key.publicKey,
-                           payload: payload)
-    }
-    
-    static func newPostBody(key: Key, topicID: String, text: String) -> RequestBody? {
-        let payload: [String: Any] = ["TopicId": topicID,
-                                      "Text": text]
-        return RequestBody(key: key, payload: payload)
-    }
-    
-}
-
 struct RequestBody {
     var payload: [String: Any]?
     let timestamp: Int64
