@@ -75,8 +75,6 @@ class MuteVC: UIViewController, Routable {
     
     func calculateHeight() -> CGFloat {
         let margins = view.layoutMargins
-//        let height: CGFloat = 70
-//        let items = collectionView.numberOfItems(inSection: 0)
         let height = collectionView.contentSize.height
         return height + margins.bottom
     }

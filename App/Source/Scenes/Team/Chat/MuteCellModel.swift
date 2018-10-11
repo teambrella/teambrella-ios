@@ -60,7 +60,7 @@ enum TeamNotificationsFrequencyType: Int, MuteType, Codable {
 
 struct SettingsEntity: Codable {
     let type: TeamNotificationsFrequencyType
-    let teamID: Int
+    let teamID: Int?
     
     enum CodingKeys: String, CodingKey {
         case type = "NewTeammatesNotification"

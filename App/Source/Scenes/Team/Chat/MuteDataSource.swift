@@ -75,9 +75,8 @@ struct NotificationsMuteDataSource: MuteDataSource {
                       bottomText: "Team.Notifications.Details.never".localized,
                       type: TeamNotificationsFrequencyType.rarely),
         MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
-                      topText: "Team.Notifications.never".localized,
+                      topText: "Team.Notfications.never".localized,
                       bottomText: "Team.Notifications.Details.never".localized,
                       type: TeamNotificationsFrequencyType.never)
     ]
 }
-

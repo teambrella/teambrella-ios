@@ -28,6 +28,12 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
     @IBOutlet var topBarContainer: UIView!
     var topBarVC: TopBarVC!
     
+    var notificationType: TeamNotificationsFrequencyType = .never {
+        didSet {
+            updateImageForNotificationsButton(with: notificationType)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         title = "Main.team".localized
@@ -41,7 +47,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         setupTransparentNavigationBar()
         navigationItem.title = "" //service.session?.currentTeam?.teamName ?? "Main.team".localized
         addTopBar()
-       
+        updateNotificationsType()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,6 +99,30 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         return [feed, members, claims /* , rules */]
     }
     
+    private func updateNotificationsType() {
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        
+        service.dao.requestSettings(current: notificationType, teamID: teamID).observe { [weak self] result in
+            switch result {
+            case let .value(settings):
+                self?.notificationType = settings.type
+            case let .error(error):
+                log(error)
+            }
+        }
+    }
+    
+    private func updateImageForNotificationsButton(with type: TeamNotificationsFrequencyType) {
+        let image: UIImage
+        switch type {
+        case .never:
+            image = #imageLiteral(resourceName: "iconBellMuted1")
+        default:
+            image = #imageLiteral(resourceName: "iconBell1")
+        }
+        topBarVC.notificationsButton.setImage(image, for: .normal)
+    }
+    
 }
 
 extension TeamVC: TopBarDelegate {
@@ -101,13 +131,26 @@ extension TeamVC: TopBarDelegate {
     }
     
     func topBar(vc: TopBarVC, didTapNotifications: UIButton) {
-        service.router.showNotificationsFilter(in: self, delegate: self, currentState: .never)
+        service.router.showNotificationsFilter(in: self, delegate: self, currentState: notificationType)
     }
 }
 
 extension TeamVC: MuteControllerDelegate {
     func mute(controller: MuteVC, didSelect index: Int) {
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        guard let selectedType = controller.dataSource.type(for: index) as? TeamNotificationsFrequencyType  else {
+            return
+        }
         
+        notificationType = selectedType
+        service.dao.sendSettings(current: notificationType, teamID: teamID).observe { [weak self] result in
+            switch result {
+            case let .value(settings):
+                self?.notificationType = settings.type
+            case let .error(error):
+                log(error)
+            }
+        }
     }
     
     func didCloseMuteController(controller: MuteVC) {
