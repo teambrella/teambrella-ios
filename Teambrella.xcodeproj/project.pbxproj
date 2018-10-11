@@ -550,6 +550,8 @@
 		6D31102C20A449B300F66ED5 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
 		6D31102D20A449B300F66ED5 /* PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF479111F41E4300025F489 /* PromiseKit.swift */; };
 		6D3AE8851FB2015F00A027BB /* BigNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3AE8841FB2015F00A027BB /* BigNumberTests.swift */; };
+		6D3BA54B216FA64C008DD30D /* ChatCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3BA54A216FA64C008DD30D /* ChatCellBuilder.swift */; };
+		6D3BA54C216FA64C008DD30D /* ChatCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3BA54A216FA64C008DD30D /* ChatCellBuilder.swift */; };
 		6D40248D1F9F357300A2F2CD /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248B1F9F357200A2F2CD /* Hex.swift */; };
 		6D40248F1F9F782600A2F2CD /* AbiArgumentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */; };
 		6D41416720AC537000F6B48E /* TimestampFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD131FBC95CB006C0A2B /* TimestampFetcher.swift */; };
@@ -1419,6 +1421,7 @@
 		6D3556741FD2EF3200AEBF07 /* EthereumAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EthereumAddress.swift; path = Model/Entities/EthereumAddress.swift; sourceTree = "<group>"; };
 		6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WithdrawChunk.swift; path = Model/Entities/WithdrawChunk.swift; sourceTree = "<group>"; };
 		6D3AE8841FB2015F00A027BB /* BigNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigNumberTests.swift; sourceTree = "<group>"; };
+		6D3BA54A216FA64C008DD30D /* ChatCellBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatCellBuilder.swift; path = Scenes/Team/Chat/ChatCellBuilder.swift; sourceTree = "<group>"; };
 		6D40248B1F9F357200A2F2CD /* Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
 		6D40248E1F9F782600A2F2CD /* AbiArgumentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbiArgumentsTests.swift; sourceTree = "<group>"; };
 		6D42CC9B20E133B300C2B146 /* TeambrellaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeambrellaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3008,6 +3011,7 @@
 				9475D9311FA390BC00F881C9 /* MuteCellModel.swift */,
 				6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */,
 				6D96E119208A1338009F99F5 /* ChatTextCell.swift */,
+				6D3BA54A216FA64C008DD30D /* ChatCellBuilder.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -4525,6 +4529,7 @@
 				6D05245A20A5D838000B3247 /* WalletCosignerCell.swift in Sources */,
 				6D05245B20A5D838000B3247 /* TeammateSummaryCell.swift in Sources */,
 				6D05245C20A5D838000B3247 /* HomeModel.swift in Sources */,
+				6D3BA54C216FA64C008DD30D /* ChatCellBuilder.swift in Sources */,
 				6D05245D20A5D838000B3247 /* ChooseYourTeamVC.swift in Sources */,
 				6D05245E20A5D838000B3247 /* HomeSupportCell.swift in Sources */,
 				6D6388F220C3257900FD3351 /* WatchService.swift in Sources */,
@@ -4977,6 +4982,7 @@
 				6D4E5D071F7AB6870020DEE2 /* TeammateSummaryCell.swift in Sources */,
 				6D4E5D081F7AB6870020DEE2 /* HomeModel.swift in Sources */,
 				6D4E5D091F7AB6870020DEE2 /* ChooseYourTeamVC.swift in Sources */,
+				6D3BA54B216FA64C008DD30D /* ChatCellBuilder.swift in Sources */,
 				6D4E5D0A1F7AB6870020DEE2 /* HomeSupportCell.swift in Sources */,
 				6D6388F120C3257900FD3351 /* WatchService.swift in Sources */,
 				6D4E5D0D1F7AB6870020DEE2 /* MeCell.swift in Sources */,

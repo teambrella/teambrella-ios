@@ -58,6 +58,12 @@ enum TeamNotificationsFrequencyType: Int, MuteType, Codable {
     
 }
 
+enum ChatPinType: Int, MuteType {
+    case unpinned = -1
+    case unknown = 0
+    case pinned = 1
+}
+
 struct SettingsEntity: Codable {
     let type: TeamNotificationsFrequencyType
     let teamID: Int?

@@ -29,7 +29,7 @@ final class UniversalChatVC: UIViewController, Routable {
         static let textCellID = "com.chat.text.cell"
         static let singleImageCellID = "com.chat.image.cell"
     }
-
+    
     static var storyboardName = "Chat"
     
     @IBOutlet var collectionView: UICollectionView!
@@ -44,8 +44,9 @@ final class UniversalChatVC: UIViewController, Routable {
     
     var conversationID: String { return dataSource.topicID ?? dataSource.chatModel?.basic?.userID ?? "" }
     
+    let dataSource = UniversalChatDatasource()
+    
     private let input: InputAccessoryView = InputAccessoryView()
-    private let dataSource = UniversalChatDatasource()
     private var socketToken = "UniversalChat"
     private var lastTypingDate: Date = Date()
     private var typingUsers: [String: Date] = [:]
@@ -54,15 +55,28 @@ final class UniversalChatVC: UIViewController, Routable {
     
     private var endsEditingWhenTappingOnChatBackground = true
     private var shouldScrollToBottom: Bool = false
-    //  private var shouldScrollToBottomSilently: Bool = false
     
     var muteButton = UIButton()
+    var pinButton = UIButton()
     
     var keyboardTopY: CGFloat?
     var keyboardHeight: CGFloat {
         guard let top = self.keyboardTopY else { return 0 }
         
         return self.view.bounds.maxY - top
+    }
+    var pinDataSource = PinDataSource()
+    var pinState: ChatPinType = .unknown {
+        didSet {
+            let image: UIImage
+            switch pinState {
+            case .unpinned:
+                image = #imageLiteral(resourceName: "iconBellMuted")
+            default:
+                image = #imageLiteral(resourceName: "iconBellMuted1")
+            }
+            pinButton.setImage(image, for: .normal)
+        }
     }
     
     private var showIsTyping: Bool = false {
@@ -83,11 +97,11 @@ final class UniversalChatVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.accessibilityIdentifier = "UniversalChatCollectionView"
         addGradientNavBar()
-        addMuteButton()
+        addTopButtons()
         setMuteButtonImage(type: dataSource.notificationsType)
+        setPinButtonImage()
         setupCollectionView()
         collectionView.refreshControl?.beginRefreshing()
         setupInput()
@@ -95,20 +109,12 @@ final class UniversalChatVC: UIViewController, Routable {
         setupScrollHandler()
         dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
             guard let `self` = self else { return }
-
-            //self.input.isUserInteractionEnabled = self.dataSource.isChatAllowed
+            
             self.collectionView.refreshControl?.endRefreshing()
             self.setupActualObjectViewIfNeeded()
             self.setupTitle()
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
             self.updateSlidingView()
-            //            guard hasNew else {
-            //                if isFirstLoad {
-            //                    self.shouldScrollToBottom = true
-            //                    self.dataSource.isLoadPreviousNeeded = true
-            //                }
-            //                return
-            //            }
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
             self.input.isUserInteractionEnabled = self.dataSource.isInputAllowed
             self.input.allowInput(self.dataSource.isInputAllowed)
@@ -135,7 +141,7 @@ final class UniversalChatVC: UIViewController, Routable {
         slidingView.setupViews(with: self, session: session)
         slidingView.delegate = self
     }
-
+    
     func updateSlidingView() {
         if dataSource.isObjectViewNeeded {
             slidingView.isHidden = false
@@ -144,7 +150,7 @@ final class UniversalChatVC: UIViewController, Routable {
             slidingView.isHidden = true
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startListeningSockets()
@@ -281,6 +287,41 @@ final class UniversalChatVC: UIViewController, Routable {
         router.showChatNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
     }
     
+    @objc
+    func tapPinButton(_ sender: UIButton) {
+        router.showPinFilter(in: self,
+                             delegate: self,
+                             datasource: pinDataSource,
+                             currentState: pinState)
+    }
+    
+    func cloudSize(for indexPath: IndexPath) -> CGSize {
+        if let model = dataSource[indexPath] as? ChatTextCellModel {
+            let textInset = ChatVariousContentCell.Constant.textInset
+            let minimalFragmentWidth: CGFloat = 50
+            let fragmentWidth = max(model.maxFragmentsWidth,
+                                    minimalFragmentWidth)
+            let calculator = TextSizeCalculator()
+            let rightLabelWidth = calculator.size(for: model.rateText ?? "",
+                                                  font: ChatVariousContentCell.Constant.leftLabelFont,
+                                                  maxWidth: cloudWidth).width
+            let leftLabelWidth = calculator.size(for: model.userName.entire,
+                                                 font: ChatVariousContentCell.Constant.leftLabelFont,
+                                                 maxWidth: cloudWidth - rightLabelWidth).width
+            
+            let width = max(fragmentWidth + textInset * 2,
+                            rightLabelWidth + leftLabelWidth + textInset * 3)
+            
+            let verticalInset = verticalInsetForCloud(with: model)
+            return CGSize(width: width,
+                          height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
+        } else if let model = dataSource[indexPath] as? ChatImageCellModel {
+            return CGSize(width: model.maxFragmentsWidth + ChatImageCell.Constant.imageInset * 2,
+                          height: model.totalFragmentsHeight + ChatImageCell.Constant.imageInset * 2)
+        } else {
+            return .zero
+        }
+    }
 }
 
 // MARK: Private
@@ -356,22 +397,21 @@ private extension UniversalChatVC {
         layout?.sectionHeadersPinToVisibleBounds = true
     }
     
-    private func addMuteButton() {
-        let button = UIButton()
-        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        let barItem = UIBarButtonItem(customView: button)
-        button.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
-        self.muteButton = button
-        navigationItem.setRightBarButton(barItem, animated: true)
-    }
-    
-    private func setMuteButtonImage(type: ChatMuteType) {
+    private func addTopButtons() {
         guard dataSource.chatType != .privateChat else {
-            muteButton.isEnabled = false
-            muteButton.isHidden = true
             return
         }
         
+        muteButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        muteButton.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
+        
+        pinButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        pinButton.addTarget(self, action: #selector(tapPinButton), for: .touchUpInside)
+        navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: muteButton),
+                                               UIBarButtonItem(customView: pinButton)], animated: false)
+    }
+    
+    private func setMuteButtonImage(type: ChatMuteType) {
         let image: UIImage
         if  type == .muted {
             image = #imageLiteral(resourceName: "iconBellMuted1")
@@ -379,6 +419,14 @@ private extension UniversalChatVC {
             image = #imageLiteral(resourceName: "iconBell1")
         }
         muteButton.setImage(image, for: .normal)
+    }
+    
+    private func setPinButtonImage() {
+        pinDataSource.getModels { [weak self] state in
+            self?.pinState = state
+        }
+        let image: UIImage = #imageLiteral(resourceName: "iconBellMuted")
+        pinButton.setImage(image, for: .normal)
     }
     
     private func registerCells() {
@@ -424,44 +472,16 @@ private extension UniversalChatVC {
     private func refresh(backward: Bool, isFirstLoad: Bool) {
         collectionView.reloadData()
         if isFirstLoad, let lastReadIndexPath = dataSource.lastReadIndexPath {
-             guard lastReadIndexPath.row < self.dataSource.count else { return }
-
+            guard lastReadIndexPath.row < self.dataSource.count else { return }
+            
             self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
         } else if self.shouldScrollToBottom {
             self.scrollToBottom(animated: true)
             self.shouldScrollToBottom = false
         } else if backward, let indexPath = self.dataSource.currentTopCellPath {
             guard indexPath.row < self.dataSource.count else { return }
-
+            
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
-        }
-    }
-    
-    private func cloudSize(for indexPath: IndexPath) -> CGSize {
-        if let model = dataSource[indexPath] as? ChatTextCellModel {
-            let textInset = ChatVariousContentCell.Constant.textInset
-            let minimalFragmentWidth: CGFloat = 50
-            let fragmentWidth = max(model.maxFragmentsWidth,
-                                    minimalFragmentWidth)
-            let calculator = TextSizeCalculator()
-            let rightLabelWidth = calculator.size(for: model.rateText ?? "",
-                                                  font: ChatVariousContentCell.Constant.leftLabelFont,
-                                                  maxWidth: cloudWidth).width
-            let leftLabelWidth = calculator.size(for: model.userName.entire,
-                                                 font: ChatVariousContentCell.Constant.leftLabelFont,
-                                                 maxWidth: cloudWidth - rightLabelWidth).width
-            
-            let width = max(fragmentWidth + textInset * 2,
-                            rightLabelWidth + leftLabelWidth + textInset * 3)
-            
-            let verticalInset = verticalInsetForCloud(with: model)
-            return CGSize(width: width,
-                          height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
-        } else if let model = dataSource[indexPath] as? ChatImageCellModel {
-            return CGSize(width: model.maxFragmentsWidth + ChatImageCell.Constant.imageInset * 2,
-                          height: model.totalFragmentsHeight + ChatImageCell.Constant.imageInset * 2)
-        } else {
-            return .zero
         }
     }
     
@@ -573,7 +593,6 @@ private extension UniversalChatVC {
             default:
                 break
             }
-            //             self.loadNewMessages()
             return true
         }
     }
@@ -614,13 +633,13 @@ private extension UniversalChatVC {
         let fragment = ChatFragment.imageFragment(image: image, urlString: name, urlStringSmall: "")
         send(text: input.textView.text ?? "", imageFragments: [fragment])
     }
-
+    
     private func sizeForServiceMessage(model: ServiceMessageCellModel) -> CGSize {
         var size = model.size
         size.height += 32
         return model.size
     }
-
+    
     private func sizeForServiceMessageWithButton(model: ServiceMessageWithButtonCellModel) -> CGSize {
         var size = model.size
         size.height += (50 + 32)
@@ -686,104 +705,13 @@ extension UniversalChatVC: UICollectionViewDelegate {
         if indexPath.row == dataSource.count - 1 {
             dataSource.isLoadNextNeeded = true
         }
-
+        
         let model = dataSource[indexPath]
         switch model {
         case let model as ChatCellUserDataLike:
-            populateUserData(cell: cell, indexPath: indexPath, model: model)
+            ChatCellBuilder.populateUserData(cell: cell, controller: self, indexPath: indexPath, model: model)
         default:
-            populateService(cell: cell, model: model)
-        }
-    }
-    
-    private func populateUserData(cell: UICollectionViewCell, indexPath: IndexPath, model: ChatCellUserDataLike) {
-        if let cell = cell as? ChatVariousContentCell {
-            cell.prepare(with: model,
-                         myVote: dataSource.myVote,
-                         type: dataSource.chatType,
-                         size: cloudSize(for: indexPath))
-            cell.avatarView.tag = indexPath.row
-            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
-            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
-            cell.onTapImage = { [weak self] cell, galleryView in
-                guard let `self` = self else { return }
-                
-                galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
-            }
-        } else if let cell = cell as? ChatTextCell {
-            cell.prepare(with: model,
-                         myVote: dataSource.myVote,
-                         type: dataSource.chatType,
-                         size: cloudSize(for: indexPath))
-            cell.avatarView.tag = indexPath.row
-            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
-            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
-            cell.onTapImage = { [weak self] cell, galleryView in
-                guard let `self` = self else { return }
-                
-                galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
-            }
-        } else if let cell = cell as? ChatImageCell {
-            cell.prepare(with: model, size: cloudSize(for: indexPath))
-            cell.avatarView.tag = indexPath.row
-            cell.avatarTap.removeTarget(self, action: #selector(tapAvatar))
-            cell.avatarTap.addTarget(self, action: #selector(tapAvatar))
-            cell.onTapImage = { [weak self] cell, galleryView in
-                guard let `self` = self else { return }
-                
-                galleryView.fullscreen(in: self, imageStrings: self.dataSource.allImages)
-            }
-        }
-    }
-    
-    // swiftlint:disable:next cyclomatic_complexity
-    func populateService(cell: UICollectionViewCell, model: ChatCellModel) {
-        if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
-            cell.text = DateProcessor().yearFilter(from: model.date)
-        } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
-            cell.text = DateProcessor().yearFilter(from: model.date)
-        } else if let cell = cell as? ChatNewMessagesSeparatorCell,
-            let model = model as? ChatNewMessagesSeparatorModel {
-            cell.setNeedsDisplay()
-            cell.label.text = model.text
-        } else if let cell = cell as? ChatClaimPaidCell {
-            if let model = model as? ServiceMessageWithButtonCellModel {
-                cell.messageLabel.textAlignment = .left
-                cell.messageLabel.text = model.text
-                cell.button.setTitle(model.buttonText, for: .normal)
-                cell.confettiView.isHidden = true
-                cell.onButtonTap = { [weak self] in
-                    log("tap fund wallet (from chat)", type: .userInteraction)
-
-                    self?.router.switchToWallet()
-                    if let nc = self?.navigationController {
-                        for vc in nc.viewControllers where vc is MasterTabBarController {
-                            nc.popToViewController(vc, animated: false)
-                            break
-                        }
-                    }
-                    //                    self?.navigationController?.popViewController(animated: false)
-                }
-            } else if model is ChatClaimPaidCellModel {
-                cell.messageLabel.textAlignment = .center
-                cell.messageLabel.text = "Team.Chat.ClaimPaidCell.text".localized
-                cell.button.setTitle("Team.Chat.ClaimPaidCell.buttonTitle".localized, for: .normal)
-                cell.onButtonTap = { [weak self] in
-                    guard let model = self?.dataSource.chatModel,
-                        let claimID = model.basic?.claimID,
-                        let team = model.team else { return }
-
-                    let urlText = URLBuilder().urlString(claimID: claimID, teamID: team.teamID)
-                    let messageText = CoverageLocalizer(type: team.coverageType).paidClaimText()
-                    let combinedText = "\(messageText)\n\(urlText)"
-                    let vc = UIActivityViewController(activityItems: [combinedText], applicationActivities: [])
-                    self?.present(vc, animated: true)
-                }
-            }
-        } else if let cell = cell as? ServiceChatCell {
-            if let model = model as? ServiceMessageCellModel {
-                cell.label.text = model.text
-            }
+            ChatCellBuilder.populateService(cell: cell, controller: self, model: model)
         }
     }
     
@@ -902,10 +830,14 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
 // MARK: MuteControllerDelegate
 extension UniversalChatVC: MuteControllerDelegate {
     func mute(controller: MuteVC, didSelect index: Int) {
-        guard let type = controller.dataSource.type(for: index) as? ChatMuteType else { return }
-        
-        dataSource.mute(type: type) { [weak self] success in
-            self?.setMuteButtonImage(type: type)
+        let type = controller.dataSource.type(for: index)
+        if let type = type as? ChatMuteType {
+            dataSource.mute(type: type) { [weak self] success in
+                self?.setMuteButtonImage(type: type)
+            }
+        } else if let type = type as? ChatPinType {
+            pinState = type
+            pinDataSource.change(state: type)
         }
     }
     

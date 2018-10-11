@@ -342,6 +342,15 @@ final class MainRouter {
                    dataSource: NotificationsMuteDataSource(), currentState: type)
     }
     
+    func showPinFilter(in viewController: UIViewController,
+                                 delegate: MuteControllerDelegate,
+                                 datasource: PinDataSource,
+                                 currentState type: ChatPinType) {
+        showFilter(in: viewController,
+                   delegate: delegate,
+                   dataSource: datasource, currentState: type)
+    }
+    
     private func showFilter(in viewController: UIViewController,
                             delegate: MuteControllerDelegate,
                             dataSource: MuteDataSource,

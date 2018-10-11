@@ -80,3 +80,29 @@ struct NotificationsMuteDataSource: MuteDataSource {
                       type: TeamNotificationsFrequencyType.never)
     ]
 }
+
+struct PinDataSource: MuteDataSource {
+    var models: [MuteCellModel] = []
+    
+    mutating func getModels(completion: (ChatPinType) -> Void) {
+        fakeModels()
+        completion(.unknown)
+    }
+    
+    mutating private func fakeModels() {
+        models = [
+            MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+                          topText: "Team.Notifications.often".localized,
+                          bottomText: "Team.Notifications.Details.often".localized,
+                          type: ChatPinType.pinned),
+            MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
+                          topText: "Team.Notfications.never".localized,
+                          bottomText: "Team.Notifications.Details.never".localized,
+                          type: ChatPinType.unpinned)
+        ]
+    }
+    
+    mutating func change(state: ChatPinType) {
+        // call to server
+    }
+}
