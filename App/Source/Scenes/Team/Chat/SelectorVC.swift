@@ -22,7 +22,7 @@ protocol SelectorDelegate: class {
 }
 
 class SelectorVC: UIViewController, Routable {
-   static let storyboardName = "Chat"
+    static let storyboardName = "Chat"
     
     @IBOutlet var backView: UIView!
     @IBOutlet var muteView: UIView!
@@ -53,7 +53,7 @@ class SelectorVC: UIViewController, Routable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      setup()
+        setup()
         
     }
     
@@ -65,7 +65,7 @@ class SelectorVC: UIViewController, Routable {
         backView.addGestureRecognizer(recognizer)
         backView.isUserInteractionEnabled = true
         
-          headerLabel.text = dataSource.header
+        headerLabel.text = dataSource.header
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,7 +93,7 @@ class SelectorVC: UIViewController, Routable {
     }
     
     func disappear(completion: @escaping () -> Void) {
-      topConstraint.isActive = true
+        topConstraint.isActive = true
         bottomAnchor?.isActive = false
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
             self.backView.backgroundColor = .clear
@@ -139,7 +139,9 @@ extension SelectorVC: UICollectionViewDelegate {
             selectedIndex = indexPath.row
             delegate?.mute(controller: self, didSelect: selectedIndex)
             collectionView.reloadData()
-            close()
+            if dataSource.isHidingOnSelection {
+                close()
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ protocol MuteDataSource {
     var header: String { get }
     var count: Int { get }
     var models: [SelectorCellModel] { get }
+    var isHidingOnSelection: Bool { get }
     
     func index(for type: SelectorItemsType) -> Int?
     func type(for index: Int) -> SelectorItemsType
@@ -48,6 +49,7 @@ extension MuteDataSource {
 
 struct ChatMuteDataSource: MuteDataSource {
     let header = "Team.Chat.NotificationSettings.title".localized
+    let isHidingOnSelection: Bool = true
     let models: [SelectorCellModel] = [
         SelectorCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Chat.NotificationSettings.subscribed".localized,
@@ -63,6 +65,7 @@ struct ChatMuteDataSource: MuteDataSource {
 
 struct NotificationsMuteDataSource: MuteDataSource {
     let header = "Team.Chat.NotificationSettings.title".localized
+    let isHidingOnSelection: Bool = true
     let models: [SelectorCellModel] = [
         SelectorCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Notifications.often".localized,
@@ -75,7 +78,7 @@ struct NotificationsMuteDataSource: MuteDataSource {
                       type: TeamNotificationsType.occasionally),
         SelectorCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Notifications.rarely".localized,
-                      bottomText: "Team.Notifications.Details.never".localized,
+                      bottomText: "Team.Notifications.Details.rarely".localized,
                       type: TeamNotificationsType.rarely),
         SelectorCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
                       topText: "Team.Notfications.never".localized,
@@ -86,6 +89,7 @@ struct NotificationsMuteDataSource: MuteDataSource {
 
 class PinDataSource: MuteDataSource {
     let header = "Прикрепить тему".uppercased()
+    let isHidingOnSelection: Bool = true
     var models: [SelectorCellModel] = []
     
    func getModels(topicID: String, completion: @escaping (PinType) -> Void) {
