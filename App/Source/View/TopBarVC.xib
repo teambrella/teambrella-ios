@@ -30,15 +30,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18b-sS-yPd">
-                    <rect key="frame" x="68" y="0.0" width="210" height="60"/>
+                    <rect key="frame" x="68" y="11.5" width="210" height="21"/>
                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XDk-0U-GN6">
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XDk-0U-GN6">
                     <rect key="frame" x="278" y="10.5" width="32" height="23"/>
                     <subviews>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXc-5i-f8Q" customClass="LabeledButton" customModule="Surilla" customModuleProvider="target">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXc-5i-f8Q" customClass="LabeledButton" customModule="Surilla" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="32" height="23"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="91t-U1-bfn"/>
@@ -48,7 +48,7 @@
                                 <action selector="tapNotifications:" destination="-1" eventType="touchUpInside" id="Ciq-eU-6n9"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CG-X1-qCi" customClass="LabeledButton" customModule="Surilla" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CG-X1-qCi" customClass="LabeledButton" customModule="Surilla" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="32" height="23"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="NGc-iE-kVS"/>
@@ -64,8 +64,8 @@
                         <constraint firstItem="YXc-5i-f8Q" firstAttribute="height" secondItem="2CG-X1-qCi" secondAttribute="height" id="b0S-r7-IYc"/>
                     </constraints>
                 </stackView>
-                <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-KA-a3k" customClass="DropDownButton" customModule="Surilla" customModuleProvider="target">
-                    <rect key="frame" x="10" y="0.0" width="44" height="44"/>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee1-KA-a3k" customClass="DropDownButton" customModule="Surilla" customModuleProvider="target">
+                    <rect key="frame" x="16" y="0.0" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="NbZ-ng-6VY"/>
                         <constraint firstAttribute="height" constant="44" id="UXP-dd-J1d"/>
@@ -79,9 +79,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="ee1-KA-a3k" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4EW-id-QEp"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="18b-sS-yPd" secondAttribute="bottom" id="4Ib-9J-fRN"/>
-                <constraint firstItem="18b-sS-yPd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5Db-8O-46J"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="18b-sS-yPd" secondAttribute="bottom" id="4Ib-9J-fRN"/>
+                <constraint firstItem="18b-sS-yPd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" id="5Db-8O-46J"/>
                 <constraint firstItem="18b-sS-yPd" firstAttribute="leading" secondItem="ee1-KA-a3k" secondAttribute="trailing" constant="8" id="GlH-9k-IwG"/>
+                <constraint firstItem="18b-sS-yPd" firstAttribute="centerY" secondItem="ee1-KA-a3k" secondAttribute="centerY" id="KJy-7K-ZAM"/>
                 <constraint firstItem="18b-sS-yPd" firstAttribute="trailing" secondItem="XDk-0U-GN6" secondAttribute="leading" id="ogD-k7-Rla"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XDk-0U-GN6" secondAttribute="trailing" constant="10" id="sy0-0l-7X0"/>
                 <constraint firstItem="XDk-0U-GN6" firstAttribute="centerY" secondItem="ee1-KA-a3k" secondAttribute="centerY" id="wgA-vP-ZuD"/>
