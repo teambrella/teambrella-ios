@@ -62,12 +62,12 @@ class ServerDAO: DAO {
             let request = TeambrellaRequest<HomeModel>(type: .home,
                                                        body: body,
                                                        success: { box in
-                                                        guard let data = box.data else {
+                                                        guard let value = box.value else {
                                                             fatalError()
                                                         }
                                                         
-                                                        service.session?.updateMyUser(with: data)
-                                                        promise.resolve(with: data)
+                                                        service.session?.updateMyUser(with: value)
+                                                        promise.resolve(with: value)
             },
                                                        failure: promise.reject)
             request.start(server: self.server)
@@ -88,13 +88,12 @@ class ServerDAO: DAO {
             let request = TeambrellaRequest<String>(type: requestType,
                                                     body: body,
                                                     success: { box in
-                                                        guard let data = box.data else {
+                                                        guard let value = box.value else {
                                                             fatalError()
                                                         }
                                                         
-                                                        let language = data
-                                                        log("Language is set to \(language)", type: .info)
-                                                        promise.resolve(with: language)
+                                                        log("Language is set to \(value)", type: .info)
+                                                        promise.resolve(with: value)
                                                         
             }, failure: { error in promise.reject(with: error) })
             request.start(server: self.server)
@@ -117,11 +116,11 @@ class ServerDAO: DAO {
                                                        "search": context.search ?? NSNull()])
             let request = TeambrellaRequest<[FeedEntity]>(type: .teamFeed,
                                                           body: body, success: { box in
-                                                            guard let data = box.data else {
+                                                            guard let value = box.value else {
                                                                 fatalError()
                                                             }
                                                             
-                                                            let chunk = FeedChunk(feed: data,
+                                                            let chunk = FeedChunk(feed: value,
                                                                                   pagingInfo: box.paging)
                                                             promise.resolve(with: chunk)
             }, failure: promise.reject)
@@ -168,11 +167,11 @@ class ServerDAO: DAO {
     
     private func successHandler<Value>(promise: Promise<Value>) -> (ServerReplyBox<Value>) -> Void {
         return { box in
-            guard let data = box.data else {
+            guard let value = box.value else {
                 fatalError()
             }
             
-            promise.resolve(with: data)
+            promise.resolve(with: value)
         }
     }
     
@@ -196,9 +195,11 @@ class ServerDAO: DAO {
                                                        "UserId": userID,
                                                        "Position": newPosition])
             let request = TeambrellaRequest<String>(type: .proxyPosition, body: body, success: { box in
-                guard let data = box.data else { fatalError() }
+                guard let value = box.value else {
+                    fatalError()
+                }
                 
-                switch data.lowercased() {
+                switch value.lowercased() {
                 case "ok":
                     promise.resolve(with: true)
                 default:
@@ -300,9 +301,11 @@ class ServerDAO: DAO {
                                                        "AvatarSize": Constant.avatarSize,
                                                        "OrderByRisk": isOrderedByRisk])
             let request = TeambrellaRequest<TeammatesList>(type: .teammatesList, body: body, success: { box in
-                guard let data = box.data else { fatalError() }
+                guard let value = box.value else {
+                    fatalError()
+                }
                 
-                promise.resolve(with: (data, box.paging))
+                promise.resolve(with: (value, box.paging))
             }, failure: promise.reject)
             request.start(server: self.server)
         }
@@ -380,7 +383,7 @@ class ServerDAO: DAO {
             let body = RequestBody(key: key, payload: ["UserId": userID,
                                                        "add": add])
             let request = TeambrellaRequest<String>(type: .myProxy, body: body, success: { box in
-                switch box.data {
+                switch box.value {
                 case "Proxy voter is added.",
                      "Proxy voter is removed.":
                     promise.resolve(with: true)
@@ -400,11 +403,11 @@ class ServerDAO: DAO {
             body.contentType = "image/jpeg"
             body.data = data
             let request = TeambrellaRequest<[String]>(type: .uploadPhoto, body: body, success: { box in
-                guard let data = box.data else {
+                guard let value = box.value else {
                     fatalError()
                 }
                 
-                promise.resolve(with: data) },
+                promise.resolve(with: value) },
                                                       failure: promise.reject)
             request.start(server: self.server)
         }
@@ -485,12 +488,7 @@ class ServerDAO: DAO {
             let request = TeambrellaRequest<String>(type: type,
                                                     body: body,
                                                     success: { box in
-                                                        guard let data = box.data else {
-                                                            fatalError()
-                                                        }
-                                                        
-                                                        print(data)
-                                                        switch data.lowercased() {
+                                                        switch box.value?.lowercased() {
                                                         case "ok":
                                                             promise.resolve(with: true)
                                                         default:
