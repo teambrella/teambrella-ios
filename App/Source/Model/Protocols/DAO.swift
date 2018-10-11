@@ -98,6 +98,9 @@ protocol DAO {
     func registerKey(signature: String, userData: UserApplicationData) -> Future<Bool>
 
     func updateClaimVote(claimID: Int, vote: Float?, lastUpdated: Int64) -> Future<ClaimVoteUpdate>
+    
+    func requestSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity>
+    func sendSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity>
 
 //    func performRequest(request: TeambrellaRequest)
     

@@ -28,8 +28,11 @@ class MuteVC: UIViewController, Routable {
     @IBOutlet var muteView: UIView!
     @IBOutlet var headerLabel: BlockHeaderLabel!
     @IBOutlet var closeButton: UIButton!
-    @IBOutlet var bottomConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UICollectionView!
+    
+    @IBOutlet var collectionHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var topConstraint: NSLayoutConstraint!
+    var bottomAnchor: NSLayoutConstraint?
     
     var dataSource: MuteDataSource!
     weak var delegate: MuteControllerDelegate?
@@ -70,8 +73,17 @@ class MuteVC: UIViewController, Routable {
         appear()
     }
     
+    func calculateHeight() -> CGFloat {
+        let margins = view.layoutMargins
+        let height = collectionView.contentSize.height
+        return height + margins.bottom
+    }
+    
     func appear() {
-        self.bottomConstraint.constant = 0
+        collectionHeightConstraint.constant = calculateHeight()
+        topConstraint.isActive = false
+        bottomAnchor = muteView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        bottomAnchor?.isActive = true
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
             self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.view.layoutIfNeeded()
@@ -81,7 +93,8 @@ class MuteVC: UIViewController, Routable {
     }
     
     func disappear(completion: @escaping () -> Void) {
-        self.bottomConstraint.constant = -self.muteView.frame.height
+      topConstraint.isActive = true
+        bottomAnchor?.isActive = false
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
             self.backView.backgroundColor = .clear
             self.view.layoutIfNeeded()
@@ -135,7 +148,7 @@ extension MuteVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height / 2)
+        return CGSize(width: collectionView.bounds.width, height: 70)
     }
 }
 

@@ -222,7 +222,12 @@
 "Team.Chat.ObjectView.TitleLabel.teamVote" = "ГОЛОС ГРУППЫ";
 "Team.ClaimCell.voting.ended" = "Закончилось ";
 
-"Team.Notfications.never" = "Никогда";
-"Team.Notifications.often" = "Раз в день";
+"Team.Notfications.never" = "Выключены";
+"Team.Notifications.often" = "Каждый день";
 "Team.Notifications.occasionally" = "Раз в три дня";
 "Team.Notifications.rarely" = "Раз в неделю";
+
+"Team.Notifications.Details.never" = "Уведомления о новостях команды выключены.";
+"Team.Notifications.Details.often" = "Ты будешь оперативно получать все новости о команде.";
+"Team.Notifications.Details.occasionally" = "Ни одно голосование не пройдет мимо тебя.";
+"Team.Notifications.Details.rarely" = "Ты будешь получать сводку о том, что произошло в команде за неделю.";

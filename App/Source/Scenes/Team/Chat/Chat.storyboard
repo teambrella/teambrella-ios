@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -87,7 +86,7 @@
                                         <rect key="frame" x="0.0" y="691" width="375" height="198"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXQ-la-7Xz" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="187" y="25.5" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="187.5" y="25" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -110,9 +109,12 @@
                                                     <action selector="tapClose:" destination="Yf4-wk-oE6" eventType="touchUpInside" id="5ks-cO-2aD"/>
                                                 </connections>
                                             </button>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KHL-Q5-vb5">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KHL-Q5-vb5">
                                                 <rect key="frame" x="0.0" y="51" width="375" height="147"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="147" id="nH0-HG-PfQ"/>
+                                                </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5Gt-pQ-LHN">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -140,7 +142,6 @@
                                             <constraint firstAttribute="trailing" secondItem="zIe-SB-0rt" secondAttribute="trailing" constant="8" id="4RF-rG-O6Q"/>
                                             <constraint firstAttribute="trailing" secondItem="NsN-2u-RdJ" secondAttribute="trailing" id="7Qq-kS-ipi"/>
                                             <constraint firstAttribute="trailing" secondItem="KHL-Q5-vb5" secondAttribute="trailing" id="B5K-II-RLn"/>
-                                            <constraint firstAttribute="height" constant="198" id="I8z-B7-cgu"/>
                                             <constraint firstItem="KHL-Q5-vb5" firstAttribute="leading" secondItem="NDV-JV-uai" secondAttribute="leading" id="JPQ-Ay-NgS"/>
                                             <constraint firstItem="jXQ-la-7Xz" firstAttribute="centerX" secondItem="NDV-JV-uai" secondAttribute="centerX" id="Q8C-wK-1WR"/>
                                             <constraint firstItem="KHL-Q5-vb5" firstAttribute="top" secondItem="NsN-2u-RdJ" secondAttribute="bottom" id="VZC-ek-UFn"/>
@@ -156,7 +157,6 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="NDV-JV-uai" secondAttribute="trailing" id="Ohs-A9-dbM"/>
                                     <constraint firstItem="NDV-JV-uai" firstAttribute="leading" secondItem="JIf-M7-juu" secondAttribute="leading" id="RoE-Vj-NDf"/>
-                                    <constraint firstAttribute="bottom" secondItem="NDV-JV-uai" secondAttribute="bottom" constant="-198" id="hfk-HF-JDh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -165,17 +165,19 @@
                             <constraint firstItem="JIf-M7-juu" firstAttribute="leading" secondItem="4p0-x4-V0e" secondAttribute="leading" id="S3E-nV-70n"/>
                             <constraint firstItem="4p0-x4-V0e" firstAttribute="trailing" secondItem="JIf-M7-juu" secondAttribute="trailing" id="TxE-bL-aws"/>
                             <constraint firstItem="JIf-M7-juu" firstAttribute="top" secondItem="4p0-x4-V0e" secondAttribute="top" constant="-44" id="ZT4-zp-YGR"/>
+                            <constraint firstItem="NDV-JV-uai" firstAttribute="top" secondItem="4p0-x4-V0e" secondAttribute="bottom" id="iZU-iP-c5G"/>
                             <constraint firstItem="4p0-x4-V0e" firstAttribute="bottom" secondItem="JIf-M7-juu" secondAttribute="bottom" id="snq-iT-Zzk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4p0-x4-V0e"/>
                     </view>
                     <connections>
                         <outlet property="backView" destination="JIf-M7-juu" id="pTS-Ih-Hga"/>
-                        <outlet property="bottomConstraint" destination="hfk-HF-JDh" id="n2K-Yh-QSm"/>
                         <outlet property="closeButton" destination="zIe-SB-0rt" id="krV-aj-ZmH"/>
+                        <outlet property="collectionHeightConstraint" destination="nH0-HG-PfQ" id="Cp1-b7-66m"/>
                         <outlet property="collectionView" destination="KHL-Q5-vb5" id="Mvv-La-mv0"/>
                         <outlet property="headerLabel" destination="jXQ-la-7Xz" id="hMU-n7-QAY"/>
                         <outlet property="muteView" destination="NDV-JV-uai" id="CUl-Uv-OX9"/>
+                        <outlet property="topConstraint" destination="iZU-iP-c5G" id="7iW-4B-dH5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9K-8O-024" userLabel="First Responder" sceneMemberID="firstResponder"/>

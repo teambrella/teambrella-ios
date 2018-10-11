@@ -36,8 +36,10 @@ enum TeambrellaPostRequestType: String {
     case feedDeleteCard = "feed/delCard"
     case teamFeed = "feed/getList"
     case feedChat = "feed/getChat"
+    case mySettings = "feed/getMySettings"
     case newChat = "feed/newChat"
     case feedPinVote = "feed/setPinVote"
+    case setMySettings = "feed/setMySettings"
     case mute = "feed/setIsMuted"
 
     case welcome = "join/getWelcome"

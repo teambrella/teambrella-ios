@@ -467,6 +467,24 @@ class ServerDAO: DAO {
         return promise
     }
     
+    func requestSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity> {
+        let promise = Promise<SettingsEntity>()
+        startRequest(promise: promise,
+                     body: ["TeamId": teamID,
+                            "NewTeammatesNotification": current.rawValue],
+                     type: .mySettings)
+        return promise
+    }
+    
+    func sendSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity> {
+        let promise = Promise<SettingsEntity>()
+        startRequest(promise: promise,
+                     body: ["TeamId": teamID,
+                            "NewTeammatesNotification": current.rawValue],
+                     type: .setMySettings)
+        return promise
+    }
+    
     func registerKey(facebookToken: String, signature: String, wallet: String) -> Future<Bool> {
         let payload: [String: String] = ["facebookToken": facebookToken,
                                          "sigOfPublicKey": signature,

@@ -39,9 +39,31 @@ enum ChatMuteType: Int, MuteType {
     }
 }
 
-enum NotificationsMuteType: Int, MuteType {
+enum TeamNotificationsFrequencyType: Int, MuteType, Codable {
     case never = 0
     case often = 1
     case occasionally = 2
     case rarely = 3
+    
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Int.self)
+        self = TeamNotificationsFrequencyType(rawValue: value) ?? .never
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        let intValue = self.rawValue
+        var container = encoder.singleValueContainer()
+        try container.encode(intValue)
+    }
+    
+}
+
+struct SettingsEntity: Codable {
+    let type: TeamNotificationsFrequencyType
+    let teamID: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case type = "NewTeammatesNotification"
+        case teamID = "TeamId"
+    }
 }
