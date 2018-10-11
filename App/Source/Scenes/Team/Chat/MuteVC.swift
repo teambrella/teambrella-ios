@@ -65,7 +65,7 @@ class MuteVC: UIViewController, Routable {
         backView.addGestureRecognizer(recognizer)
         backView.isUserInteractionEnabled = true
         
-          headerLabel.text = "Team.Chat.NotificationSettings.title".localized
+          headerLabel.text = dataSource.header
     }
     
     override func viewDidAppear(_ animated: Bool) {

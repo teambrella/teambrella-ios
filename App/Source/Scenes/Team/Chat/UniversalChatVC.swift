@@ -401,11 +401,11 @@ private extension UniversalChatVC {
         guard dataSource.chatType != .privateChat else {
             return
         }
-        
-        muteButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+
+        muteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         muteButton.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
         
-        pinButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        pinButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         pinButton.addTarget(self, action: #selector(tapPinButton), for: .touchUpInside)
         navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: muteButton),
                                                UIBarButtonItem(customView: pinButton)], animated: false)

@@ -17,6 +17,7 @@
 import Foundation
 
 protocol MuteDataSource {
+    var header: String { get }
     var count: Int { get }
     var models: [MuteCellModel] { get }
     
@@ -46,6 +47,7 @@ extension MuteDataSource {
 }
 
 struct ChatMuteDataSource: MuteDataSource {
+    let header = "Team.Chat.NotificationSettings.title".localized
     let models: [MuteCellModel] = [
         MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Chat.NotificationSettings.subscribed".localized,
@@ -60,6 +62,7 @@ struct ChatMuteDataSource: MuteDataSource {
 }
 
 struct NotificationsMuteDataSource: MuteDataSource {
+    let header = "Team.Chat.NotificationSettings.title".localized
     let models: [MuteCellModel] = [
         MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Notifications.often".localized,
@@ -82,6 +85,7 @@ struct NotificationsMuteDataSource: MuteDataSource {
 }
 
 struct PinDataSource: MuteDataSource {
+    let header = "Прикрепить тему".uppercased()
     var models: [MuteCellModel] = []
     
     mutating func getModels(completion: (ChatPinType) -> Void) {
