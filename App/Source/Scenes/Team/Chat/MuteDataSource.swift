@@ -64,20 +64,20 @@ struct NotificationsMuteDataSource: MuteDataSource {
         MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Notifications.often".localized,
                       bottomText: "",
-                      type: NotificationsMuteType.often),
+                      type: TeamNotificationsFrequencyType.often),
         
         MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Notifications.occasionally".localized,
                       bottomText: "",
-                      type: NotificationsMuteType.occasionally),
+                      type: TeamNotificationsFrequencyType.occasionally),
         MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Notifications.rarely".localized,
                       bottomText: "",
-                      type: NotificationsMuteType.rarely),
+                      type: TeamNotificationsFrequencyType.rarely),
         MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
                       topText: "Team.Notifications.never".localized,
                       bottomText: "",
-                      type: NotificationsMuteType.never)
+                      type: TeamNotificationsFrequencyType.never)
     ]
 }
 
