@@ -54,7 +54,7 @@ final class UniversalChatDatasource {
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
     
-    var notificationsType: ChatMuteType            = .unknown
+    var notificationsType: MuteType            = .unknown
     var hasNext                                     = true
     var hasPrevious                                 = true
     var isFirstLoad                                 = true
@@ -70,7 +70,7 @@ final class UniversalChatDatasource {
     
     var chatModel: ChatModel? {
         didSet {
-            notificationsType = ChatMuteType.type(from: chatModel?.discussion.isMuted)
+            notificationsType = MuteType.type(from: chatModel?.discussion.isMuted)
             cellModelBuilder.showRate = chatType == .application || chatType == .claim
         }
     }
@@ -230,14 +230,14 @@ final class UniversalChatDatasource {
         return isAllowed
     }
     
-    func mute(type: ChatMuteType, completion: @escaping (Bool) -> Void) {
+    func mute(type: MuteType, completion: @escaping (Bool) -> Void) {
         guard let topicID = chatModel?.discussion.topicID else { return }
         
         let isMuted = type == .muted
         dao.mute(topicID: topicID, isMuted: isMuted).observe { [weak self] result in
             switch result {
             case let .value(muted):
-                self?.notificationsType = ChatMuteType.type(from: muted)
+                self?.notificationsType = MuteType.type(from: muted)
                 completion(muted)
             case let .error(error):
                 log("\(error)", type: [.error, .serverReply])

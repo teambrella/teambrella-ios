@@ -16,30 +16,30 @@
 
 import Foundation
 
-struct MuteCellModel {
+struct SelectorCellModel {
     var icon: UIImage
     var topText: String
     var bottomText: String
-    var type: MuteType
+    var type: SelectorItemsType
 }
 
-protocol MuteType {
+protocol SelectorItemsType {
     var rawValue: Int { get }
 }
 
-enum ChatMuteType: Int, MuteType {
+enum MuteType: Int, SelectorItemsType {
     case unknown = -1
     case unmuted = 0
     case muted = 1
     
-    static func type(from bool: Bool?) -> ChatMuteType {
+    static func type(from bool: Bool?) -> MuteType {
         guard let bool = bool else { return .unknown }
         
         return bool == false ? .unmuted : .muted
     }
 }
 
-enum TeamNotificationsFrequencyType: Int, MuteType, Codable {
+enum TeamNotificationsType: Int, SelectorItemsType, Codable {
     case never = 0
     case often = 1
     case occasionally = 2
@@ -47,7 +47,7 @@ enum TeamNotificationsFrequencyType: Int, MuteType, Codable {
     
     init(from decoder: Decoder) throws {
         let value = try decoder.singleValueContainer().decode(Int.self)
-        self = TeamNotificationsFrequencyType(rawValue: value) ?? .never
+        self = TeamNotificationsType(rawValue: value) ?? .never
     }
     
     func encode(to encoder: Encoder) throws {
@@ -58,19 +58,19 @@ enum TeamNotificationsFrequencyType: Int, MuteType, Codable {
     
 }
 
-enum ChatPinType: Int, MuteType, Decodable {
+enum PinType: Int, SelectorItemsType, Decodable {
     case unpinned = -1
     case unknown = 0
     case pinned = 1
     
     init(from decoder: Decoder) throws {
         let value = try decoder.singleValueContainer().decode(Int.self)
-        self = ChatPinType(rawValue: value) ?? .unknown
+        self = PinType(rawValue: value) ?? .unknown
     }
 }
 
 struct SettingsEntity: Codable {
-    let type: TeamNotificationsFrequencyType
+    let type: TeamNotificationsType
     let teamID: Int?
     
     enum CodingKeys: String, CodingKey {

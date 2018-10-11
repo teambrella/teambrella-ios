@@ -28,7 +28,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
     @IBOutlet var topBarContainer: UIView!
     var topBarVC: TopBarVC!
     
-    var notificationType: TeamNotificationsFrequencyType = .never {
+    var notificationType: TeamNotificationsType = .never {
         didSet {
             updateImageForNotificationsButton(with: notificationType)
         }
@@ -112,7 +112,7 @@ class TeamVC: ButtonBarPagerTabStripViewController, TabRoutable {
         }
     }
     
-    private func updateImageForNotificationsButton(with type: TeamNotificationsFrequencyType) {
+    private func updateImageForNotificationsButton(with type: TeamNotificationsType) {
         let image: UIImage
         switch type {
         case .never:
@@ -131,14 +131,14 @@ extension TeamVC: TopBarDelegate {
     }
     
     func topBar(vc: TopBarVC, didTapNotifications: UIButton) {
-        service.router.showNotificationsFilter(in: self, delegate: self, currentState: notificationType)
+        service.router.showTeamNotificationsSelector(in: self, delegate: self, currentState: notificationType)
     }
 }
 
-extension TeamVC: MuteControllerDelegate {
-    func mute(controller: MuteVC, didSelect index: Int) {
+extension TeamVC: SelectorDelegate {
+    func mute(controller: SelectorVC, didSelect index: Int) {
         guard let teamID = service.session?.currentTeam?.teamID else { return }
-        guard let selectedType = controller.dataSource.type(for: index) as? TeamNotificationsFrequencyType  else {
+        guard let selectedType = controller.dataSource.type(for: index) as? TeamNotificationsType  else {
             return
         }
         
@@ -153,7 +153,7 @@ extension TeamVC: MuteControllerDelegate {
         }
     }
     
-    func didCloseMuteController(controller: MuteVC) {
+    func didCloseMuteController(controller: SelectorVC) {
         
     }
 }

@@ -41,7 +41,7 @@ struct FeedEntity: Decodable {
     let posterCount: Int
     let topPosterAvatars: [Avatar]
     let year: Year?
-    let myPinType: ChatPinType
+    let myPinType: PinType
     let teamPinVote: Double
 
     enum CodingKeys: String, CodingKey {

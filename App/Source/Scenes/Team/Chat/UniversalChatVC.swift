@@ -66,7 +66,7 @@ final class UniversalChatVC: UIViewController, Routable {
         return self.view.bounds.maxY - top
     }
     var pinDataSource = PinDataSource()
-    var pinState: ChatPinType = .unknown {
+    var pinState: PinType = .unknown {
         didSet {
             let image: UIImage
             switch pinState {
@@ -284,12 +284,12 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     private func tapMuteButton(sender: UIButton) {
-        router.showChatNotificationFilter(in: self, delegate: self, currentState: dataSource.notificationsType)
+        router.showMuteSelector(in: self, delegate: self, currentState: dataSource.notificationsType)
     }
     
     @objc
     func tapPinButton(_ sender: UIButton) {
-        router.showPinFilter(in: self,
+        router.showPinSelector(in: self,
                              delegate: self,
                              datasource: pinDataSource,
                              currentState: pinState)
@@ -344,7 +344,7 @@ private extension UniversalChatVC {
         slidingView.showObjectView()
     }
     
-    private func showMuteInfo(muteType: ChatMuteType) {
+    private func showMuteInfo(muteType: MuteType) {
         let cloudView = CloudView()
         self.view.addSubview(cloudView)
         let rightCloudOffset: CGFloat = 8
@@ -411,7 +411,7 @@ private extension UniversalChatVC {
                                                UIBarButtonItem(customView: pinButton)], animated: false)
     }
     
-    private func setMuteButtonImage(type: ChatMuteType) {
+    private func setMuteButtonImage(type: MuteType) {
         let image: UIImage
         if  type == .muted {
             image = #imageLiteral(resourceName: "iconBellMuted1")
@@ -612,7 +612,7 @@ private extension UniversalChatVC {
         input.adjustHeight()
         
         if dataSource.notificationsType == .unknown && dataSource.chatType != .privateChat {
-            let type: ChatMuteType = .unmuted
+            let type: MuteType = .unmuted
             dataSource.mute(type: type, completion: { [weak self] muted in
                 self?.showMuteInfo(muteType: type)
                 self?.setMuteButtonImage(type: type)
@@ -830,14 +830,14 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
 }
 
 // MARK: MuteControllerDelegate
-extension UniversalChatVC: MuteControllerDelegate {
-    func mute(controller: MuteVC, didSelect index: Int) {
+extension UniversalChatVC: SelectorDelegate {
+    func mute(controller: SelectorVC, didSelect index: Int) {
         let type = controller.dataSource.type(for: index)
-        if let type = type as? ChatMuteType {
+        if let type = type as? MuteType {
             dataSource.mute(type: type) { [weak self] success in
                 self?.setMuteButtonImage(type: type)
             }
-        } else if let type = type as? ChatPinType {
+        } else if let type = type as? PinType {
             guard let topicID = dataSource.topicID else { return }
             
             pinState = type
@@ -845,7 +845,7 @@ extension UniversalChatVC: MuteControllerDelegate {
         }
     }
     
-    func didCloseMuteController(controller: MuteVC) {
+    func didCloseMuteController(controller: SelectorVC) {
         
     }
 }

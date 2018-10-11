@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="-1383.2" y="118.29085457271366"/>
         </scene>
-        <!--MuteVC-->
+        <!--SelectorVC-->
         <scene sceneID="NdT-BP-BHG">
             <objects>
-                <viewController storyboardIdentifier="MuteVC" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yf4-wk-oE6" customClass="MuteVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectorVC" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yf4-wk-oE6" customClass="SelectorVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pQw-eJ-Aql">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

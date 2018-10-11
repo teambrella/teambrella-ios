@@ -16,12 +16,12 @@
 
 import UIKit
 
-protocol MuteControllerDelegate: class {
-    func mute(controller: MuteVC, didSelect index: Int)
-    func didCloseMuteController(controller: MuteVC)
+protocol SelectorDelegate: class {
+    func mute(controller: SelectorVC, didSelect index: Int)
+    func didCloseMuteController(controller: SelectorVC)
 }
 
-class MuteVC: UIViewController, Routable {
+class SelectorVC: UIViewController, Routable {
    static let storyboardName = "Chat"
     
     @IBOutlet var backView: UIView!
@@ -35,7 +35,7 @@ class MuteVC: UIViewController, Routable {
     var bottomAnchor: NSLayoutConstraint?
     
     var dataSource: MuteDataSource!
-    weak var delegate: MuteControllerDelegate?
+    weak var delegate: SelectorDelegate?
     
     var selectedIndex: Int = 0
     
@@ -105,7 +105,7 @@ class MuteVC: UIViewController, Routable {
     
 }
 
-extension MuteVC: UICollectionViewDataSource {
+extension SelectorVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -120,7 +120,7 @@ extension MuteVC: UICollectionViewDataSource {
     }
 }
 
-extension MuteVC: UICollectionViewDelegate {
+extension SelectorVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
@@ -144,7 +144,7 @@ extension MuteVC: UICollectionViewDelegate {
     }
 }
 
-extension MuteVC: UICollectionViewDelegateFlowLayout {
+extension SelectorVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -152,7 +152,7 @@ extension MuteVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension MuteVC: UIGestureRecognizerDelegate {
+extension SelectorVC: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return touch.view == gestureRecognizer.view
     }

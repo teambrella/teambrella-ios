@@ -17,14 +17,14 @@
 import Foundation
 
 struct PinEntity: Decodable {
-    let type: ChatPinType
+    let type: PinType
     let teamVote: Double
     let pinTitle: String
     let pinText: String
     let unpinTitle: String
     let unpinText: String
     
-    static func teamPinType(from vote: Double) -> ChatPinType {
+    static func teamPinType(from vote: Double) -> PinType {
         switch vote {
         case ...(-0.501):
             return .unpinned

@@ -99,11 +99,11 @@ protocol DAO {
 
     func updateClaimVote(claimID: Int, vote: Float?, lastUpdated: Int64) -> Future<ClaimVoteUpdate>
     
-    func requestSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity>
-    func sendSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity>
+    func requestSettings(current: TeamNotificationsType, teamID: Int) -> Future<SettingsEntity>
+    func sendSettings(current: TeamNotificationsType, teamID: Int) -> Future<SettingsEntity>
     
     func requestPin(topicID: String) -> Future<PinEntity>
-    func sendPin(topicID: String, pinType: ChatPinType) -> Future<PinEntity>
+    func sendPin(topicID: String, pinType: PinType) -> Future<PinEntity>
 
 //    func performRequest(request: TeambrellaRequest)
     
