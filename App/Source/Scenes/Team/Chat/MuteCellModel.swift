@@ -58,10 +58,15 @@ enum TeamNotificationsFrequencyType: Int, MuteType, Codable {
     
 }
 
-enum ChatPinType: Int, MuteType {
+enum ChatPinType: Int, MuteType, Decodable {
     case unpinned = -1
     case unknown = 0
     case pinned = 1
+    
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Int.self)
+        self = ChatPinType(rawValue: value) ?? .unknown
+    }
 }
 
 struct SettingsEntity: Codable {

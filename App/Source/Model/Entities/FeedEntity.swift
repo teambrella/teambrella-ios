@@ -41,6 +41,8 @@ struct FeedEntity: Decodable {
     let posterCount: Int
     let topPosterAvatars: [Avatar]
     let year: Year?
+    let myPinType: ChatPinType
+    let teamPinVote: Double
 
     enum CodingKeys: String, CodingKey {
         case text = "Text"
@@ -62,6 +64,8 @@ struct FeedEntity: Decodable {
         case posterCount = "PosterCount"
         case topPosterAvatars = "TopPosterAvatars"
         case year = "Year"
+        case myPinType = "MyPin"
+        case teamPinVote = "TeamPin"
     }
     
 }
