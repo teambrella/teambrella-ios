@@ -89,7 +89,7 @@ struct NotificationsMuteDataSource: MuteDataSource {
 
 class PinDataSource: MuteDataSource {
     let header = "Прикрепить тему".uppercased()
-    let isHidingOnSelection: Bool = true
+    let isHidingOnSelection: Bool = false
     var models: [SelectorCellModel] = []
     
    func getModels(topicID: String, completion: @escaping (PinType) -> Void) {

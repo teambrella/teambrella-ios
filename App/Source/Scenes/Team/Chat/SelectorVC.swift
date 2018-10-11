@@ -64,6 +64,7 @@ class SelectorVC: UIViewController, Routable {
         recognizer.delegate = self
         backView.addGestureRecognizer(recognizer)
         backView.isUserInteractionEnabled = true
+//        muteView.isUserInteractionEnabled = true
         
         headerLabel.text = dataSource.header
     }
