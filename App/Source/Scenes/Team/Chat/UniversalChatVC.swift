@@ -422,7 +422,9 @@ private extension UniversalChatVC {
     }
     
     private func setPinButtonImage() {
-        pinDataSource.getModels { [weak self] state in
+        guard let topicID = dataSource.topicID else { return }
+        
+        pinDataSource.getModels(topicID: topicID) { [weak self] state in
             self?.pinState = state
         }
         let image: UIImage = #imageLiteral(resourceName: "iconBellMuted")
@@ -836,8 +838,10 @@ extension UniversalChatVC: MuteControllerDelegate {
                 self?.setMuteButtonImage(type: type)
             }
         } else if let type = type as? ChatPinType {
+            guard let topicID = dataSource.topicID else { return }
+            
             pinState = type
-            pinDataSource.change(state: type)
+            pinDataSource.change(topicID: topicID, type: type)
         }
     }
     
