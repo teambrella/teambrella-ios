@@ -84,29 +84,44 @@ struct NotificationsMuteDataSource: MuteDataSource {
     ]
 }
 
-struct PinDataSource: MuteDataSource {
+class PinDataSource: MuteDataSource {
     let header = "Прикрепить тему".uppercased()
     var models: [MuteCellModel] = []
     
-    mutating func getModels(completion: (ChatPinType) -> Void) {
-        fakeModels()
-        completion(.unknown)
+   func getModels(topicID: String, completion: @escaping (ChatPinType) -> Void) {
+        service.dao.requestPin(topicID: topicID).observe { [weak self] result in
+            switch result {
+            case let .value(pin):
+                self?.updateModels(pin: pin)
+                completion(pin.type)
+            case let .error(error):
+                log(error)
+            }
+        }
     }
     
-    mutating private func fakeModels() {
+    func updateModels(pin: PinEntity) {
         models = [
             MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
-                          topText: "Team.Notifications.often".localized,
-                          bottomText: "Team.Notifications.Details.often".localized,
+                          topText: pin.pinTitle,
+                          bottomText: pin.pinText,
                           type: ChatPinType.pinned),
             MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
-                          topText: "Team.Notfications.never".localized,
-                          bottomText: "Team.Notifications.Details.never".localized,
+                          topText: pin.unpinTitle,
+                          bottomText: pin.unpinText,
                           type: ChatPinType.unpinned)
         ]
     }
     
-    mutating func change(state: ChatPinType) {
-        // call to server
+    func change(topicID: String, type: ChatPinType) {
+        service.dao.sendPin(topicID: topicID, pinType: type).observe { [weak self] result in
+            switch result {
+            case let .value(pin):
+                self?.updateModels(pin: pin)
+            case let .error(error):
+                log(error)
+            }
+        }
     }
+    
 }

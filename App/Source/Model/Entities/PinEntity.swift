@@ -17,7 +17,7 @@
 import Foundation
 
 struct PinEntity: Decodable {
-    let pinType: ChatPinType
+    let type: ChatPinType
     let teamVote: Double
     let pinTitle: String
     let pinText: String
@@ -36,7 +36,7 @@ struct PinEntity: Decodable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case pinType = "MyPin"
+        case type = "MyPin"
         case teamVote = "TeamPin"
         case pinTitle = "PinTitle"
         case pinText = "PinText"
