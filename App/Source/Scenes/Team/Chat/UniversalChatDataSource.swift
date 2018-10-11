@@ -23,7 +23,7 @@ import Foundation
 
 enum UniversalChatType {
     case privateChat, application, claim, discussion
-
+    
     static func with(itemType: ItemType) -> UniversalChatType {
         switch itemType {
         case .claim:
@@ -43,13 +43,13 @@ final class UniversalChatDatasource {
         static let limit = 30
         static let firstLoadPreviousMessagesCount = 10
     }
-
+    
     var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool, _ isFirstLoad: Bool) -> Void)?
     var onError: ((Error) -> Void)?
     var onSendMessage: ((IndexPath) -> Void)?
     var onLoadPrevious: ((Int) -> Void)?
     var onClaimVoteUpdate: (() -> Void)?
-
+    
     var cloudWidth: CGFloat                         = 0
     var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
@@ -103,15 +103,15 @@ final class UniversalChatDatasource {
     var myVote: Double? {
         return chatModel?.voting?.myVote
     }
-
+    
     var claimDate: Date? {
         return chatModel?.basic?.incidentDate
     }
-
+    
     var topicID: String? { return chatModel?.discussion.topicID }
     
     var count: Int { return models.count }
-
+    
     var dao: DAO { return service.dao }
     
     var title: String {
@@ -139,9 +139,9 @@ final class UniversalChatDatasource {
         if chatModel?.basic?.claimAmount != nil { return .claim }
         if chatModel?.basic?.title != nil { return .discussion }
         if chatModel?.basic?.userID != nil { return .application }
-
+        
         if let type = strategy.type { return type }
-
+        
         return .discussion
     }
     
@@ -164,10 +164,10 @@ final class UniversalChatDatasource {
         }
         return nil
     }
-
+    
     var lastReadIndexPath: IndexPath? {
         guard lastRead != 0 else { return lastIndexPath }
-
+        
         let lastReadDate = Date(ticks: lastRead)
         for (idx, model) in models.enumerated() where model.date >= lastReadDate {
             return IndexPath(row: idx, section: 0)
@@ -204,7 +204,7 @@ final class UniversalChatDatasource {
         if isPrivateChat { return true }
         guard let teamID = chatModel?.team?.teamID,
             let myTeamID = service.session?.currentTeam?.teamID else { return false }
-
+        
         var isAllowed: Bool = teamID == myTeamID
         
         if let accessLevel = chatModel?.team?.accessLevel {
@@ -279,29 +279,42 @@ final class UniversalChatDatasource {
                 return nil
             }
         }
-
-        dao.freshKey { [weak self] key in
-            guard let `self` = self else { return }
-            
-            let body = self.strategy.updatedMessageBody(body: RequestBody(key: key, payload: ["Text": text,
-                                                                                              "NewPostId": id,
-                                                                                              "Images": images]))
-            let request = TeambrellaRequest(type: self.strategy.postType, body: body, success: { [weak self] response in
+        
+        let body = strategy.updatedMessagePayload(body: ["Text": text,
+                                                         "NewPostId": id,
+                                                         "Images": images])
+        if isPrivateChat {
+            dao.sendPrivateChatMessage(type: strategy.postType, body: body).observe { [weak self] result in
                 guard let `self` = self else { return }
                 
-                self.hasNext = true
-                self.isLoading = false
-                self.process(response: response, isPrevious: false, isMyNewMessage: true)
-                }, failure: { [weak self] error in
-                    self?.onError?(error)
-            })
-            self.dao.performRequest(request: request)
+                switch result {
+                case let .value(model):
+                    self.hasNext = true
+                    self.isLoading = false
+                    self.process(model: model, isPrevious: false)
+                case let .error(error):
+                    self.onError?(error)
+                }
+            }
+        } else {
+            dao.sendChatMessage(type: strategy.postType, body: body).observe { [weak self] result in
+                guard let `self` = self else { return }
+                
+                switch result {
+                case let .value(message):
+                    self.hasNext = true
+                    self.isLoading = false
+                    self.processMyNew(message: message)
+                case let .error(error):
+                    self.onError?(error)
+                }
+            }
         }
     }
     
     func updateVoteOnServer(vote: Float?) {
         guard let claimID = chatModel?.id else { return }
-
+        
         let lastUpdated = chatModel?.lastUpdated ?? 0
         service.dao.updateClaimVote(claimID: claimID,
                                     vote: vote,
@@ -319,7 +332,7 @@ final class UniversalChatDatasource {
                 }
         }
     }
-
+    
     subscript(indexPath: IndexPath) -> ChatCellModel {
         guard indexPath.row < models.count else {
             fatalError("Wrong index: \(indexPath), while have only \(models.count) models")
@@ -327,7 +340,7 @@ final class UniversalChatDatasource {
         
         return models[indexPath.row]
     }
-
+    
 }
 
 // MARK: Private
@@ -344,38 +357,34 @@ extension UniversalChatDatasource {
             isLoadNextNeeded = false
         }
         
-        dao.freshKey { [weak self] key in
-            guard let `self` = self else { return }
-            
-            self.currentLimit = Constant.limit
-
-            var offset = previous
-                ? self.backwardOffset
-                : self.forwardOffset
-
-            if self.isFirstLoad {
-                self.currentLimit += Constant.firstLoadPreviousMessagesCount
-                offset -= Constant.firstLoadPreviousMessagesCount
+        self.currentLimit = Constant.limit
+        
+        var offset = previous
+            ? self.backwardOffset
+            : self.forwardOffset
+        
+        if self.isFirstLoad {
+            self.currentLimit += Constant.firstLoadPreviousMessagesCount
+            offset -= Constant.firstLoadPreviousMessagesCount
+        }
+        var payload: [String: Any] = ["limit": self.currentLimit,
+                                      "offset": offset,
+                                      "avatarSize": self.avatarSize,
+                                      "commentAvatarSize": self.commentAvatarSize]
+        if self.lastRead > 0 {
+            payload["since"] = self.lastRead
+        }
+        payload = strategy.updatedChatBody(body: payload)
+        
+        dao.requestChat(type: strategy.requestType, body: payload).observe { [weak self] result in
+            guard let`self` = self else { return }
+            switch result {
+            case let .value(chat):
+                self.isLoading = false
+                self.process(model: chat, isPrevious: previous)
+            case let .error(error):
+                self.onError?(error)
             }
-            var payload: [String: Any] = ["limit": self.currentLimit,
-                                          "offset": offset,
-                                          "avatarSize": self.avatarSize,
-                                          "commentAvatarSize": self.commentAvatarSize]
-            if self.lastRead > 0 {
-                payload["since"] = self.lastRead
-            }
-            let body = self.strategy.updatedChatBody(body: RequestBody(key: key, payload: payload))
-            let request = TeambrellaRequest(type: self.strategy.requestType,
-                                            body: body,
-                                            success: { [weak self] response in
-                                                guard let`self` = self else { return }
-                                                
-                                                self.isLoading = false
-                                                self.process(response: response,
-                                                             isPrevious: previous,
-                                                             isMyNewMessage: false)
-            })
-            self.dao.performRequest(request: request)
         }
     }
     
@@ -388,12 +397,12 @@ extension UniversalChatDatasource {
             models.append(model)
             return
         }
-
+        
         // find the place in array where to insert new item
         if !models.isEmpty && lastInsertionIndex >= models.count {
             lastInsertionIndex = models.count - 1
         }
-
+        
         while lastInsertionIndex > 0
             && models[lastInsertionIndex].date > model.date {
                 lastInsertionIndex -= 1
@@ -402,7 +411,7 @@ extension UniversalChatDatasource {
             && models[lastInsertionIndex].date <= model.date {
                 lastInsertionIndex += 1
         }
-
+        
         // insert new item in the array
         let previous = lastInsertionIndex > 0 ? models[lastInsertionIndex - 1] : nil
         let next = lastInsertionIndex < models.count ? models[lastInsertionIndex] : nil
@@ -416,7 +425,7 @@ extension UniversalChatDatasource {
             models.append(model)
         }
         addSeparatorIfNeeded()
-
+        
     }
     
     private func removeTemporaryIfNeeded() {
@@ -467,7 +476,7 @@ extension UniversalChatDatasource {
     private func insertNewMessagesSeparator(lastRead: UInt64) {
         guard isFirstLoad else { return }
         guard lastRead != 0 else { return }
-
+        
         _ = removeNewMessagesSeparator()
         let lastReadDate = Date(ticks: lastRead)
         let separatorDate = lastReadDate.addingTimeInterval(0.1)
@@ -489,28 +498,25 @@ extension UniversalChatDatasource {
         return false
     }
     
-    private func process(response: TeambrellaResponseType, isPrevious: Bool, isMyNewMessage: Bool) {
+    private func processMyNew(message: ChatEntity) {
         let count = self.count
-        switch response {
-        case let .chat(model):
-            processCommonChat(model: model, isPrevious: isPrevious)
-        case let .newPost(post):
-            let models = createCellModels(from: [post], isTemporary: true)
-            addCellModels(models: models)
-            postsCount += 1
-            forwardOffset = 0
-        default:
-            return
-        }
-        let hasNewModels = self.count > count
-        if isMyNewMessage {
-            onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
-        } else {
-            onUpdate?(isPrevious, hasNewModels, isFirstLoad)
-        }
+        let models = createCellModels(from: [message], isTemporary: true)
+        addCellModels(models: models)
+        postsCount += 1
+        forwardOffset = 0
+        
+        onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
         isFirstLoad = false
     }
-
+    
+    private func process(model: ChatModel, isPrevious: Bool) {
+        let count = self.count
+        processCommonChat(model: model, isPrevious: isPrevious)
+        let hasNewModels = self.count > count
+        onUpdate?(isPrevious, hasNewModels, isFirstLoad)
+        isFirstLoad = false
+    }
+    
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
         addModels(models: model.discussion.chat, isPrevious: isPrevious, chatModel: model)
         chatModel = model
@@ -525,13 +531,13 @@ extension UniversalChatDatasource {
         if !isPrevious && model.discussion.lastRead == 0 {
             hasNext = false
         }
-
+        
         teamAccessLevel = model.team?.accessLevel ?? .noAccess
-
+        
         addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
         //addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
     }
-
+    
     private func addClaimPaidIfNeeded(date: Date?) {
         guard !isClaimPaidModelAdded, let date = date else { return }
         
@@ -547,7 +553,7 @@ extension UniversalChatDatasource {
     //        addCellModels(models: [model])
     //        isPayToJoinModelAdded = true
     //    }
-
+    
     private func createCellModels(from entities: [ChatEntity], isTemporary: Bool) -> [ChatCellModel] {
         cellModelBuilder.font = font
         cellModelBuilder.width = cloudWidth - labelHorizontalInset * 2

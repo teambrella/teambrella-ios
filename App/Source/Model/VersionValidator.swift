@@ -20,11 +20,11 @@ struct VersionValidator {
     let router: MainRouter
 
     @discardableResult
-    func validate(serverReply: ServerReply) -> Bool {
+    func validate(serverStatus: ServerStatus) -> Bool {
         let application = Application()
         guard let currentBuild = Int(application.build) else { return false }
 
-        let serverRecommendedBuild = serverReply.status.recommendedVersion
+        let serverRecommendedBuild = serverStatus.recommendedVersion
         let result = currentBuild >= serverRecommendedBuild
         return result
     }

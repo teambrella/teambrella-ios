@@ -19,8 +19,9 @@ import Foundation
 /**
     Used in feed/getList reply to manage pagination with chunks
  */
-struct PagingInfo: Codable {
+struct PagingInfo: Codable, CustomStringConvertible {
     let lastIndex: UInt64
+    var description: String { return "PagingInfo(lastIndex: \(lastIndex))"}
     
     enum CodingKeys: String, CodingKey {
         case lastIndex = "LastIndex"
