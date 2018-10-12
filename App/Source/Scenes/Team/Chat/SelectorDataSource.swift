@@ -16,7 +16,7 @@
 
 import Foundation
 
-protocol MuteDataSource {
+protocol SelectorDataSource {
     var header: String { get }
     var count: Int { get }
     var models: [SelectorCellModel] { get }
@@ -28,7 +28,7 @@ protocol MuteDataSource {
     subscript(index: IndexPath) -> SelectorCellModel { get }
 }
 
-extension MuteDataSource {
+extension SelectorDataSource {
     var count: Int { return models.count }
     
     subscript(indexPath: IndexPath) -> SelectorCellModel {
@@ -47,7 +47,7 @@ extension MuteDataSource {
     }
 }
 
-struct ChatMuteDataSource: MuteDataSource {
+struct ChatMuteDataSource: SelectorDataSource {
     let header = "Team.Chat.NotificationSettings.title".localized
     let isHidingOnSelection: Bool = true
     let models: [SelectorCellModel] = [
@@ -63,7 +63,7 @@ struct ChatMuteDataSource: MuteDataSource {
     ]
 }
 
-struct NotificationsMuteDataSource: MuteDataSource {
+struct NotificationsMuteDataSource: SelectorDataSource {
     let header = "Team.Chat.NotificationSettings.title".localized
     let isHidingOnSelection: Bool = true
     let models: [SelectorCellModel] = [
@@ -87,7 +87,7 @@ struct NotificationsMuteDataSource: MuteDataSource {
     ]
 }
 
-class PinDataSource: MuteDataSource {
+class PinDataSource: SelectorDataSource {
     let header = "Team.Selector.Pin.header".localized.uppercased()
     let isHidingOnSelection: Bool = false
     var models: [SelectorCellModel] = []

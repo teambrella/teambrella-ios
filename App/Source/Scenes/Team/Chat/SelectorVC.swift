@@ -34,7 +34,7 @@ class SelectorVC: UIViewController, Routable {
     @IBOutlet var topConstraint: NSLayoutConstraint!
     var bottomAnchor: NSLayoutConstraint?
     
-    var dataSource: MuteDataSource!
+    var dataSource: SelectorDataSource!
     weak var delegate: SelectorDelegate?
     
     var selectedIndex: Int = 0

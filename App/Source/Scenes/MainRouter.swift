@@ -353,7 +353,7 @@ final class MainRouter {
     
     private func showFilter(in viewController: UIViewController,
                             delegate: SelectorDelegate,
-                            dataSource: MuteDataSource,
+                            dataSource: SelectorDataSource,
                             currentState type: SelectorItemsType) {
         guard let vc = SelectorVC.instantiate() as? SelectorVC else { fatalError("Error instantiating") }
         
