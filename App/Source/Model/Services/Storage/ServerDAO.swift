@@ -414,6 +414,28 @@ class ServerDAO: DAO {
         return promise
     }
     
+    func sendAvatar(data: Data) -> Future<String> {
+        let promise = Promise<String>()
+        freshKey { key in
+            var body = RequestBody(key: key, payload: nil)
+            body.contentType = "image/jpeg"
+            body.data = data
+            let request = TeambrellaRequest<[String: String]>(type: .uploadAvatar,
+                                                              body: body,
+                                                              success: { box in
+                                                                guard let avatar = box.value?["Avatar"] else {
+                                                                    let error = TeambrellaErrorFactory.wrongReply()
+                                                                    promise.reject(with: error)
+                                                                    return  }
+                                                                
+                                                                promise.resolve(with: avatar)
+            },
+                                                              failure: promise.reject)
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
     func sendRiskVote(teammateID: Int, risk: Double?) -> Future<TeammateVotingResult> {
         let promise = Promise<TeammateVotingResult>()
         startRequest(promise: promise,

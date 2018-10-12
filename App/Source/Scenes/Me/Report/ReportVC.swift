@@ -457,7 +457,7 @@ extension ReportVC: ImagePickerControllerDelegate {
     }
     
     func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
-        controller.send(image: image)
+        controller.send(image: image, isAvatar: false)
     }
     
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
