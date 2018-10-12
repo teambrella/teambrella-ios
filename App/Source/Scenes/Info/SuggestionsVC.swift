@@ -153,7 +153,7 @@ class CitiesFetcher: SuggestionsFetcher {
             case let .value(items):
                 self.items = items
             case let .error(error):
-                print(error)
+                log(error)
             }
             completion()
         }
@@ -168,7 +168,7 @@ class CarsFetcher: SuggestionsFetcher {
             case let .value(items):
                 self.items = items
             case let .error(error):
-                print(error)
+                log(error)
             }
             completion()
         }

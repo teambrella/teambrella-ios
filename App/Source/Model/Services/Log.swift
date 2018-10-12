@@ -39,7 +39,7 @@ func log(_ error: Error) {
 
 final class Log {
     /// Change log level to filter logs along the entire application
-    var logLevel: LogLevel = .all
+    var logLevel: LogLevel = .app
 
     lazy var types: LogType = { self.typesFor(level: self.logLevel) }()
     
@@ -101,6 +101,9 @@ final class Log {
         if type.contains(.database) {
             emojis.append("🗃")
         }
+        if type.contains(.voip) {
+            emojis.append("📱")
+        }
         return emojis + " " + string
     }
     
@@ -109,16 +112,17 @@ final class Log {
         switch level {
         case .none: return []
         case .errorsOnly: return [.error]
-        case .app: return [.error, .serverURL, .serverReplyStats, .info, .database]
+        case .app: return [.error, .serverURL, .serverReplyStats, .info, .database, .crypto, .socket]
         case .appDetailed: return [.error, .serverURL, .info, .serverRequest, .serverHeaders,
-                                   .serverReplyStats, .socket, .push, .social, .database]
+                                   .serverReplyStats, .socket, .push, .social, .database, .voip]
         case .appAll: return [.error, .serverURL, .info, .serverReply, .serverRequest, .serverHeaders,
-                              .serverReplyStats, .socket, .push, .social, .database]
+                              .serverReplyStats, .socket, .push, .social, .database, .voip]
 
-        case .server: return [.serverURL, .serverRequest, .serverReply]
+        case .server: return [.serverURL, .serverRequest, .serverReply, .error]
         case .socket: return [.socket, .error]
         case .push: return [.push, .error]
         case .facebook: return [.social, .error]
+        case .voip: return [.voip, .error]
 
         case .crypto: return [.error, .crypto, .database]
         case .cryptoDetailed: return [.error, .crypto, .cryptoDetails, .database]
@@ -150,6 +154,7 @@ final class Log {
         case push
         case facebook
         case cryptoRequests
+        case voip
 
         // Log everything
         case all
@@ -178,6 +183,8 @@ final class Log {
         static let cryptoRequests   = LogType(rawValue: 1 << 13)
 
         static let database         = LogType(rawValue: 1 << 14)
+        
+        static let voip             = LogType(rawValue: 1 << 15)
 
         static var all: LogType { return LogType(rawValue: Int.max) }
 

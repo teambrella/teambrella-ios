@@ -46,9 +46,9 @@ final class InitialVC: UIViewController {
         super.viewDidAppear(animated)
 
         let state = UIApplication.shared.applicationState
-        print("Application state is: \(state.rawValue)")
+        log("Application state is: \(state.rawValue)", type: .info)
         guard state != .background else {
-            print("Running in background")
+            log("Running in background", type: .info)
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(performTransitionsAfterWakeUp),
                                                    name: .UIApplicationDidBecomeActive,
@@ -168,7 +168,7 @@ final class InitialVC: UIViewController {
     }
     
     private func failure(error: Error) {
-        print("InitialVC got error: \(error)")
+        log("InitialVC got error: \(error)", type: .error)
         HUD.hide()
         service.router.logout()
         SimpleStorage().store(bool: false, forKey: .didLogWithKey)

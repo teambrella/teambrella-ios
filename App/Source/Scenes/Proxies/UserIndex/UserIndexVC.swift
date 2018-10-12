@@ -198,7 +198,7 @@ extension UserIndexVC: UICollectionViewDelegate {
         } else {
             let teammate = dataSource[indexPath]
             service.router.presentMemberProfile(teammateID: teammate.userID, teamID: teammate.teams.first)
-            print("can't let u in! no teammate found")
+            log("can't let u in! no teammate found", type: .userInteraction)
         }
     }
     

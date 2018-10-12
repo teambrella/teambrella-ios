@@ -53,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      open url: URL,
                      options: [UIApplicationOpenURLOptionsKey: Any] = [ : ]) -> Bool {
         guard let source = options[.sourceApplication] as? String else {
-            print("Failed to get source application from options")
             if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
                 return handle(dynamicLink: dynamicLink)
             }
@@ -61,13 +60,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if source.hasPrefix("com.facebook") {
-            print("Opening app from Facebook application")
+            log("Opening app from Facebook application", type: .social)
             return FBSDKApplicationDelegate.sharedInstance().application(app,
                                                                          open: url,
                                                                          sourceApplication: source,
                                                                          annotation: options[.annotation])
         } else {
-            print("Opening app from Auth0")
+            log("Opening app from Auth0", type: .social)
             return Auth0.resumeAuth(url, options: options)
         }
     }

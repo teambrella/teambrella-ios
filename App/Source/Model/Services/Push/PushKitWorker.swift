@@ -49,21 +49,21 @@ extension PushKitWorker: PKPushRegistryDelegate {
     }
 
     func pushRegistry(_ registry: PKPushRegistry, didInvalidatePushTokenFor type: PKPushType) {
-        print("PushRegistry did invalidate token")
+        log("PushRegistry did invalidate token", type: .push)
     }
 
     // iOS 11
     func pushRegistry(_ registry: PKPushRegistry,
                       didReceiveIncomingPushWith payload: PKPushPayload,
                       for type: PKPushType) {
-        print("Push received 1")
+        log("Push received 1", type: .push)
     }
 
     func pushRegistry(_ registry: PKPushRegistry,
                       didReceiveIncomingPushWith payload: PKPushPayload,
                       for type: PKPushType,
                       completion: @escaping () -> Void) {
-        print("Push received 2")
+        log("Push received 2", type: .push)
         onPushReceived?(payload.dictionaryPayload, completion)
     }
 

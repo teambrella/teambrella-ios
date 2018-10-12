@@ -562,10 +562,10 @@ private extension UniversalChatVC {
                 self?.processIsTyping(action: action)
             case .privateMessage,
                  .newPost:
-                print("received message, loading new data")
+                log("received message, loading new data", type: .socket)
                 self?.loadNewMessages()
             default:
-                print("unsupported command: \(action.command)")
+                log("unsupported command: \(action.command)", type: .socket)
             }
         })
     }
@@ -590,7 +590,7 @@ private extension UniversalChatVC {
                  .privateMessage:
                 let conversationID = payload["TopicId"] as? String ?? payload["UserId"] as? String ?? ""
                 if self.conversationID == conversationID {
-                    print("No need to show chat Push as chat is already opened")
+                    log("No need to show chat Push as chat is already opened", type: .push)
                     self.loadNewMessages()
                     return false
                 }
@@ -875,7 +875,7 @@ extension UniversalChatVC: ClaimVotingDelegate {
 // MARK: ChatObjectViewDelegate
 extension  UniversalChatVC: ChatObjectViewDelegate {
     func chatObject(view: ChatObjectView, didTap button: UIButton) {
-        print("tap \(button)")
+        log("tap \(button)", type: .userInteraction)
         switch button {
         case view.rightButton:
             if let model = dataSource.chatModel, model.isClaimChat {

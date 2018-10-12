@@ -170,7 +170,7 @@ extension LoginNoInviteVC: CodeCaptureDelegate {
             controller.close(cancelled: false)
             self.newPrivateKeySet(privateKey: didCapture)
         } else {
-            print("Wrong type: \(type)")
+            log("Wrong type: \(type)", type: .info)
         }
     }
 

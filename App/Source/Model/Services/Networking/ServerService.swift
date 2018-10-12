@@ -154,6 +154,7 @@ final class ServerService: NSObject {
     }
     
     private func printAsString(data: Data?) {
+        guard Log.shared.types.contains(.serverRequest) else { return }
         guard let data = data else { return }
         
         if let string = try? JSONSerialization.jsonObject(with: data, options: []) {
