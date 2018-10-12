@@ -136,7 +136,7 @@ extension TeamVC: TopBarDelegate {
 }
 
 extension TeamVC: SelectorDelegate {
-    func mute(controller: SelectorVC, didSelect index: Int) {
+    func selector(controller: SelectorVC, didSelect index: Int) {
         guard let teamID = service.session?.currentTeam?.teamID else { return }
         guard let selectedType = controller.dataSource.type(for: index) as? TeamNotificationsType  else {
             return
@@ -153,7 +153,7 @@ extension TeamVC: SelectorDelegate {
         }
     }
     
-    func didCloseMuteController(controller: SelectorVC) {
+    func didCloseSelectorController(controller: SelectorVC) {
         
     }
 }

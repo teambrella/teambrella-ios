@@ -346,7 +346,7 @@ final class MainRouter {
                          delegate: SelectorDelegate,
                          datasource: PinDataSource,
                          currentState type: PinType) {
-        showFilter(in: viewController,
+         showFilter(in: viewController,
                    delegate: delegate,
                    dataSource: datasource, currentState: type)
     }
@@ -359,7 +359,7 @@ final class MainRouter {
         
         vc.delegate = delegate
         vc.dataSource = dataSource
-        vc.selectedIndex = dataSource.index(for: type) ?? 0
+        vc.selectedIndex = dataSource.index(for: type) ?? -1
         viewController.present(vc, animated: false, completion: nil)
     }
     

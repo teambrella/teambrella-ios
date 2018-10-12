@@ -17,8 +17,8 @@
 import UIKit
 
 protocol SelectorDelegate: class {
-    func mute(controller: SelectorVC, didSelect index: Int)
-    func didCloseMuteController(controller: SelectorVC)
+    func selector(controller: SelectorVC, didSelect index: Int)
+    func didCloseSelectorController(controller: SelectorVC)
 }
 
 class SelectorVC: UIViewController, Routable {
@@ -46,7 +46,7 @@ class SelectorVC: UIViewController, Routable {
     @objc
     private func close() {
         disappear {
-            self.delegate?.didCloseMuteController(controller: self)
+            self.delegate?.didCloseSelectorController(controller: self)
             self.dismiss(animated: false, completion: nil)
         }
     }
@@ -142,7 +142,7 @@ extension SelectorVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is MuteCell {
             selectedIndex = indexPath.row
-            delegate?.mute(controller: self, didSelect: selectedIndex)
+            delegate?.selector(controller: self, didSelect: selectedIndex)
             collectionView.reloadData()
             if dataSource.isHidingOnSelection {
                 close()

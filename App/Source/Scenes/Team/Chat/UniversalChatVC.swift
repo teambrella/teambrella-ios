@@ -833,7 +833,7 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
 
 // MARK: SelectorDelegate
 extension UniversalChatVC: SelectorDelegate {
-    func mute(controller: SelectorVC, didSelect index: Int) {
+    func selector(controller: SelectorVC, didSelect index: Int) {
         let type = controller.dataSource.type(for: index)
         if let type = type as? MuteType {
             dataSource.mute(type: type) { [weak self] success in
@@ -842,14 +842,20 @@ extension UniversalChatVC: SelectorDelegate {
         } else if let type = type as? PinType {
             guard let topicID = dataSource.topicID else { return }
             
-            pinState = type
+            if pinState == type {
+                pinState = .unknown
+                controller.selectedIndex = -1
+            } else {
+                pinState = type
+            }
+            
             pinDataSource.change(topicID: topicID, type: type) { [weak controller] in
                 controller?.reload()
             }
         }
     }
     
-    func didCloseMuteController(controller: SelectorVC) {
+    func didCloseSelectorController(controller: SelectorVC) {
         
     }
 }
