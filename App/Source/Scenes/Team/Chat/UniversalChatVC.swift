@@ -69,11 +69,11 @@ final class UniversalChatVC: UIViewController, Routable {
     var pinState: PinType = .unknown {
         didSet {
             let image: UIImage
-            switch pinState {
+            switch pinDataSource.teamPinType {
             case .unpinned:
-                image = #imageLiteral(resourceName: "pinIconRed").withRenderingMode(.alwaysTemplate)
+                image = #imageLiteral(resourceName: "PinIconRed").withRenderingMode(.alwaysTemplate)
             default:
-                image = #imageLiteral(resourceName: "pinIconGrey")
+                image = #imageLiteral(resourceName: "PinIconGrey")
             }
             pinButton.tintColor = UIColor.navigationButtonGray
             pinButton.setImage(image, for: .normal)
@@ -429,7 +429,7 @@ private extension UniversalChatVC {
         pinDataSource.getModels(topicID: topicID) { [weak self] state in
             self?.pinState = state
         }
-        let image: UIImage = #imageLiteral(resourceName: "pinIconGrey")
+        let image: UIImage = #imageLiteral(resourceName: "PinIconGrey")
         pinButton.setImage(image, for: .normal)
     }
     
@@ -849,7 +849,8 @@ extension UniversalChatVC: SelectorDelegate {
                 pinState = type
             }
             
-            pinDataSource.change(topicID: topicID, type: type) { [weak controller] in
+            pinDataSource.change(topicID: topicID, type: type) { [weak self, weak controller] type in
+                self?.pinState = type
                 controller?.reload()
             }
         }

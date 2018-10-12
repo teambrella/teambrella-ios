@@ -90,6 +90,7 @@ struct NotificationsMuteDataSource: SelectorDataSource {
 class PinDataSource: SelectorDataSource {
     let header = "Team.Selector.Pin.header".localized.uppercased()
     let isHidingOnSelection: Bool = false
+    var teamPinType: PinType = .unknown
     var models: [SelectorCellModel] = []
     
    func getModels(topicID: String, completion: @escaping (PinType) -> Void) {
@@ -105,24 +106,25 @@ class PinDataSource: SelectorDataSource {
     }
     
     func updateModels(pin: PinEntity) {
+        teamPinType = PinEntity.teamPinType(from: pin.teamVote)
         models = [
-            SelectorCellModel(icon: #imageLiteral(resourceName: "pinIconGreen"),
+            SelectorCellModel(icon: #imageLiteral(resourceName: "PinIconGreen"),
                           topText: pin.pinTitle,
                           bottomText: pin.pinText,
                           type: PinType.pinned),
-            SelectorCellModel(icon: #imageLiteral(resourceName: "pinIconRed"),
+            SelectorCellModel(icon: #imageLiteral(resourceName: "PinIconRed"),
                           topText: pin.unpinTitle,
                           bottomText: pin.unpinText,
                           type: PinType.unpinned)
         ]
     }
     
-    func change(topicID: String, type: PinType, completion: @escaping () -> Void) {
+    func change(topicID: String, type: PinType, completion: @escaping (PinType) -> Void) {
         service.dao.sendPin(topicID: topicID, pinType: type).observe { [weak self] result in
             switch result {
             case let .value(pin):
                 self?.updateModels(pin: pin)
-                completion()
+                completion(pin.type)
             case let .error(error):
                 log(error)
             }
