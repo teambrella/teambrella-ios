@@ -88,7 +88,7 @@ struct NotificationsMuteDataSource: MuteDataSource {
 }
 
 class PinDataSource: MuteDataSource {
-    let header = "Прикрепить тему".uppercased()
+    let header = "Team.Selector.Pin.header".localized.uppercased()
     let isHidingOnSelection: Bool = false
     var models: [SelectorCellModel] = []
     
@@ -117,11 +117,12 @@ class PinDataSource: MuteDataSource {
         ]
     }
     
-    func change(topicID: String, type: PinType) {
+    func change(topicID: String, type: PinType, completion: @escaping () -> Void) {
         service.dao.sendPin(topicID: topicID, pinType: type).observe { [weak self] result in
             switch result {
             case let .value(pin):
                 self?.updateModels(pin: pin)
+                completion()
             case let .error(error):
                 log(error)
             }

@@ -118,6 +118,7 @@ final class UniversalChatVC: UIViewController, Routable {
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
             self.input.isUserInteractionEnabled = self.dataSource.isInputAllowed
             self.input.allowInput(self.dataSource.isInputAllowed)
+            self.pinButton.isHidden = !self.dataSource.isInputAllowed
         }
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
@@ -829,7 +830,7 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
     }
 }
 
-// MARK: MuteControllerDelegate
+// MARK: SelectorDelegate
 extension UniversalChatVC: SelectorDelegate {
     func mute(controller: SelectorVC, didSelect index: Int) {
         let type = controller.dataSource.type(for: index)
@@ -841,7 +842,9 @@ extension UniversalChatVC: SelectorDelegate {
             guard let topicID = dataSource.topicID else { return }
             
             pinState = type
-            pinDataSource.change(topicID: topicID, type: type)
+            pinDataSource.change(topicID: topicID, type: type) { [weak controller] in
+                controller?.reload()
+            }
         }
     }
     

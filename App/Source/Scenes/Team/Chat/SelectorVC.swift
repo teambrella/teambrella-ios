@@ -80,6 +80,10 @@ class SelectorVC: UIViewController, Routable {
         return height + margins.bottom
     }
     
+    func reload() {
+        self.collectionView.reloadData()
+    }
+    
     func appear() {
         collectionHeightConstraint.constant = calculateHeight()
         topConstraint.isActive = false
