@@ -326,27 +326,36 @@ final class MainRouter {
         viewController.present(vc, animated: false, completion: nil)
     }
     
-    func showChatNotificationFilter(in viewController: UIViewController,
-                                    delegate: MuteControllerDelegate,
-                                    currentState type: ChatMuteType) {
+    func showMuteSelector(in viewController: UIViewController,
+                          delegate: SelectorDelegate,
+                          currentState type: MuteType) {
         showFilter(in: viewController,
                    delegate: delegate,
                    dataSource: ChatMuteDataSource(), currentState: type)
     }
     
-    func showNotificationsFilter(in viewController: UIViewController,
-                                 delegate: MuteControllerDelegate,
-                                 currentState type: TeamNotificationsFrequencyType) {
+    func showTeamNotificationsSelector(in viewController: UIViewController,
+                                       delegate: SelectorDelegate,
+                                       currentState type: TeamNotificationsType) {
         showFilter(in: viewController,
                    delegate: delegate,
                    dataSource: NotificationsMuteDataSource(), currentState: type)
     }
     
+    func showPinSelector(in viewController: UIViewController,
+                         delegate: SelectorDelegate,
+                         datasource: PinDataSource,
+                         currentState type: PinType) {
+        showFilter(in: viewController,
+                   delegate: delegate,
+                   dataSource: datasource, currentState: type)
+    }
+    
     private func showFilter(in viewController: UIViewController,
-                            delegate: MuteControllerDelegate,
+                            delegate: SelectorDelegate,
                             dataSource: MuteDataSource,
-                            currentState type: MuteType) {
-        guard let vc = MuteVC.instantiate() as? MuteVC else { fatalError("Error instantiating") }
+                            currentState type: SelectorItemsType) {
+        guard let vc = SelectorVC.instantiate() as? SelectorVC else { fatalError("Error instantiating") }
         
         vc.delegate = delegate
         vc.dataSource = dataSource

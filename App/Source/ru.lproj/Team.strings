@@ -231,3 +231,5 @@
 "Team.Notifications.Details.often" = "Ты будешь оперативно получать все новости о команде.";
 "Team.Notifications.Details.occasionally" = "Ни одно голосование не пройдет мимо тебя.";
 "Team.Notifications.Details.rarely" = "Ты будешь получать сводку о том, что произошло в команде за неделю.";
+
+"Team.Selector.Pin.header" = "Прикрепить тему";

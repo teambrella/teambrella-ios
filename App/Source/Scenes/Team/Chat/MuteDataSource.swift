@@ -17,66 +17,116 @@
 import Foundation
 
 protocol MuteDataSource {
+    var header: String { get }
     var count: Int { get }
-    var models: [MuteCellModel] { get }
+    var models: [SelectorCellModel] { get }
+    var isHidingOnSelection: Bool { get }
     
-    func index(for type: MuteType) -> Int?
-    func type(for index: Int) -> MuteType
+    func index(for type: SelectorItemsType) -> Int?
+    func type(for index: Int) -> SelectorItemsType
     
-    subscript(index: IndexPath) -> MuteCellModel { get }
+    subscript(index: IndexPath) -> SelectorCellModel { get }
 }
 
 extension MuteDataSource {
     var count: Int { return models.count }
     
-    subscript(indexPath: IndexPath) -> MuteCellModel {
+    subscript(indexPath: IndexPath) -> SelectorCellModel {
         return models[indexPath.row]
     }
     
-    func index(for type: MuteType) -> Int? {
+    func index(for type: SelectorItemsType) -> Int? {
         for (idx, model) in models.enumerated() where model.type.rawValue == type.rawValue {
             return idx
         }
         return nil
     }
     
-    func type(for index: Int) -> MuteType {
+    func type(for index: Int) -> SelectorItemsType {
         return models[index].type
     }
 }
 
 struct ChatMuteDataSource: MuteDataSource {
-    let models: [MuteCellModel] = [
-        MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+    let header = "Team.Chat.NotificationSettings.title".localized
+    let isHidingOnSelection: Bool = true
+    let models: [SelectorCellModel] = [
+        SelectorCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Chat.NotificationSettings.subscribed".localized,
                       bottomText: "Team.Chat.NotificationSettings.subscribed.details".localized,
-                      type: ChatMuteType.unmuted),
+                      type: MuteType.unmuted),
         
-        MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
+        SelectorCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
                       topText: "Team.Chat.NotificationSettings.unsubscribed".localized,
                       bottomText: "Team.Chat.NotificationSettings.unsubscribed.details".localized,
-                      type: ChatMuteType.muted)
+                      type: MuteType.muted)
     ]
 }
 
 struct NotificationsMuteDataSource: MuteDataSource {
-    let models: [MuteCellModel] = [
-        MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+    let header = "Team.Chat.NotificationSettings.title".localized
+    let isHidingOnSelection: Bool = true
+    let models: [SelectorCellModel] = [
+        SelectorCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Notifications.often".localized,
                       bottomText: "Team.Notifications.Details.often".localized,
-                      type: TeamNotificationsFrequencyType.often),
+                      type: TeamNotificationsType.often),
         
-        MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+        SelectorCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Notifications.occasionally".localized,
                       bottomText: "Team.Notifications.Details.occasionally".localized,
-                      type: TeamNotificationsFrequencyType.occasionally),
-        MuteCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+                      type: TeamNotificationsType.occasionally),
+        SelectorCellModel(icon: #imageLiteral(resourceName: "iconBell"),
                       topText: "Team.Notifications.rarely".localized,
-                      bottomText: "Team.Notifications.Details.never".localized,
-                      type: TeamNotificationsFrequencyType.rarely),
-        MuteCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
+                      bottomText: "Team.Notifications.Details.rarely".localized,
+                      type: TeamNotificationsType.rarely),
+        SelectorCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
                       topText: "Team.Notfications.never".localized,
                       bottomText: "Team.Notifications.Details.never".localized,
-                      type: TeamNotificationsFrequencyType.never)
+                      type: TeamNotificationsType.never)
     ]
+}
+
+class PinDataSource: MuteDataSource {
+    let header = "Team.Selector.Pin.header".localized.uppercased()
+    let isHidingOnSelection: Bool = false
+    var models: [SelectorCellModel] = []
+    
+   func getModels(topicID: String, completion: @escaping (PinType) -> Void) {
+        service.dao.requestPin(topicID: topicID).observe { [weak self] result in
+            switch result {
+            case let .value(pin):
+                self?.updateModels(pin: pin)
+                completion(pin.type)
+            case let .error(error):
+                log(error)
+            }
+        }
+    }
+    
+    func updateModels(pin: PinEntity) {
+        models = [
+            SelectorCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+                          topText: pin.pinTitle,
+                          bottomText: pin.pinText,
+                          type: PinType.pinned),
+            SelectorCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
+                          topText: pin.unpinTitle,
+                          bottomText: pin.unpinText,
+                          type: PinType.unpinned)
+        ]
+    }
+    
+    func change(topicID: String, type: PinType, completion: @escaping () -> Void) {
+        service.dao.sendPin(topicID: topicID, pinType: type).observe { [weak self] result in
+            switch result {
+            case let .value(pin):
+                self?.updateModels(pin: pin)
+                completion()
+            case let .error(error):
+                log(error)
+            }
+        }
+    }
+    
 }

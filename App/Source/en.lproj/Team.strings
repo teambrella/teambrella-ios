@@ -235,3 +235,5 @@
 "Team.Notifications.Details.occasionally" = "You'll be able to take part in every voting.";
 "Team.Notifications.Details.rarely" = "A summary of the team events for the week.";
 
+"Team.Selector.Pin.header" = "Pin the topic";
+

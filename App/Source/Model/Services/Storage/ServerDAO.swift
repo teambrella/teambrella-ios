@@ -467,7 +467,7 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func requestSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity> {
+    func requestSettings(current: TeamNotificationsType, teamID: Int) -> Future<SettingsEntity> {
         let promise = Promise<SettingsEntity>()
         startRequest(promise: promise,
                      body: ["TeamId": teamID,
@@ -476,12 +476,24 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func sendSettings(current: TeamNotificationsFrequencyType, teamID: Int) -> Future<SettingsEntity> {
+    func sendSettings(current: TeamNotificationsType, teamID: Int) -> Future<SettingsEntity> {
         let promise = Promise<SettingsEntity>()
         startRequest(promise: promise,
                      body: ["TeamId": teamID,
                             "NewTeammatesNotification": current.rawValue],
                      type: .setMySettings)
+        return promise
+    }
+    
+    func requestPin(topicID: String) -> Future<PinEntity> {
+        let promise = Promise<PinEntity>()
+        startRequest(promise: promise, body: ["TopicId": topicID], type: .pin)
+        return promise
+    }
+    
+    func sendPin(topicID: String, pinType: PinType) -> Future<PinEntity> {
+        let promise = Promise<PinEntity>()
+        startRequest(promise: promise, body: ["TopicId": topicID, "MyPin": pinType.rawValue], type: .setPin)
         return promise
     }
     
