@@ -48,6 +48,11 @@ final class PrivateMessagesVC: UIViewController, Routable {
         title = "Home.PrivateMessages.title".localized
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.isUserInteractionEnabled = true
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         title = nil
@@ -104,6 +109,9 @@ extension PrivateMessagesVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath.row < dataSource.items.count else { return }
+        
+        collectionView.isUserInteractionEnabled = false
         let user = dataSource.items[indexPath.row]
         router.presentChat(context: UniversalChatContext(user))
     }
