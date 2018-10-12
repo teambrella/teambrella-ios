@@ -56,6 +56,7 @@ enum TeambrellaPostRequestType: String {
     case setLanguageEn = "me/setUiLang/en"
     case setLanguageEs = "me/setUiLang/es"
     case me = "me/getMe"
+    case uploadAvatar = "me/setAvatar"
     
     case privateChat = "privatemessage/getChat"
     case privateList = "privatemessage/getList"
