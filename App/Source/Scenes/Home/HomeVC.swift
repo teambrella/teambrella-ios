@@ -376,6 +376,7 @@ extension HomeVC: ImagePickerControllerDelegate {
         if let teamID = service.session?.currentTeam?.teamID {
             dataSource.updateSilently(teamID: teamID)
         }
+        service.router.masterTabBar?.fetchAvatar()
         HUD.hide()
     }
     
