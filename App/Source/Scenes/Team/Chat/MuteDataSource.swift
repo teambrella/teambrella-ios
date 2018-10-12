@@ -106,11 +106,11 @@ class PinDataSource: MuteDataSource {
     
     func updateModels(pin: PinEntity) {
         models = [
-            SelectorCellModel(icon: #imageLiteral(resourceName: "iconBell"),
+            SelectorCellModel(icon: #imageLiteral(resourceName: "pinIconGreen"),
                           topText: pin.pinTitle,
                           bottomText: pin.pinText,
                           type: PinType.pinned),
-            SelectorCellModel(icon: #imageLiteral(resourceName: "iconBellMuted"),
+            SelectorCellModel(icon: #imageLiteral(resourceName: "pinIconRed"),
                           topText: pin.unpinTitle,
                           bottomText: pin.unpinText,
                           type: PinType.unpinned)

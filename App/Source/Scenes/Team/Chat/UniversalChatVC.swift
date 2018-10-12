@@ -71,10 +71,11 @@ final class UniversalChatVC: UIViewController, Routable {
             let image: UIImage
             switch pinState {
             case .unpinned:
-                image = #imageLiteral(resourceName: "iconBellMuted")
+                image = #imageLiteral(resourceName: "pinIconRed").withRenderingMode(.alwaysTemplate)
             default:
-                image = #imageLiteral(resourceName: "iconBellMuted1")
+                image = #imageLiteral(resourceName: "pinIconGrey")
             }
+            pinButton.tintColor = UIColor.navigationButtonGray
             pinButton.setImage(image, for: .normal)
         }
     }
@@ -428,7 +429,7 @@ private extension UniversalChatVC {
         pinDataSource.getModels(topicID: topicID) { [weak self] state in
             self?.pinState = state
         }
-        let image: UIImage = #imageLiteral(resourceName: "iconBellMuted")
+        let image: UIImage = #imageLiteral(resourceName: "pinIconGrey")
         pinButton.setImage(image, for: .normal)
     }
     
