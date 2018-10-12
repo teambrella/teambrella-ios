@@ -29,6 +29,7 @@ enum ItemType: Int, Codable {
     case teamNotification = 100
     case fundWallet = 200
     case attachPhotos = 210
+    case addAvatar = 211
     
     case privateChat = -10
 }

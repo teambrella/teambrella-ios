@@ -794,7 +794,7 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
     }
     
     func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
-        controller.send(image: image)
+        controller.send(image: image, isAvatar: false)
         
     }
     

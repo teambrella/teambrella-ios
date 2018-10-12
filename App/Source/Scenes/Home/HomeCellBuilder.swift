@@ -35,26 +35,27 @@ struct HomeCellBuilder {
     
     static func populate(cell: UICollectionViewCell, dataSource: HomeDataSource, model: HomeCardModel?) {
         guard let model = model else {
-//            populateSupport(cell: cell, dataSource: dataSource)
             return
         }
         
-        if model.itemType == .attachPhotos {
-            populateAttachPhotos(cell: cell, model: model)
-        } else if model.itemType == .fundWallet {
-            populateFund(cell: cell, model: model)
-        }
-        switch cell {
-        case let cell as HomeCollectionCell:
-            populateHome(cell: cell, model: model)
-        case let cell as HomeApplicationDeniedCell:
-            populate(cell: cell, with: model)
-        case let cell as HomeApplicationAcceptedCell:
-            populate(cell: cell, with: model)
-        case let cell as HomeApplicationStatusCell:
-            populate(cell: cell, with: model)
+        switch model.itemType {
+        case .attachPhotos,
+             .fundWallet,
+             .addAvatar:
+            populateServiceCell(cell: cell, model: model)
         default:
-            break
+            switch cell {
+            case let cell as HomeCollectionCell:
+                populateHome(cell: cell, model: model)
+            case let cell as HomeApplicationDeniedCell:
+                populate(cell: cell, with: model)
+            case let cell as HomeApplicationAcceptedCell:
+                populate(cell: cell, with: model)
+            case let cell as HomeApplicationStatusCell:
+                populate(cell: cell, with: model)
+            default:
+                break
+            }
         }
     }
     
@@ -84,19 +85,7 @@ struct HomeCellBuilder {
         cell.rightNumberView.isBadgeVisible = model.isVoting
     }
     
-    static func populateFund(cell: UICollectionViewCell, model: HomeCardModel) {
-        guard let cell = cell as? HomeSupportCell else { return }
-        
-        cell.button.setTitle("", for: .normal)
-        cell.imageView.show(model.smallPhoto)
-        cell.headerLabel.text = model.chatTitle
-        cell.centerLabel.text = model.subtitle
-        cell.bottomLabel.text = model.text.sane
-        cell.button.setTitle(model.actionText.sane, for: .normal)
-        cell.onlineIndicator.isHidden = true
-    }
-    
-    static func populateAttachPhotos(cell: UICollectionViewCell, model: HomeCardModel) {
+    static func populateServiceCell(cell: UICollectionViewCell, model: HomeCardModel) {
         guard let cell = cell as? HomeSupportCell else { return }
         
         cell.button.setTitle("", for: .normal)
