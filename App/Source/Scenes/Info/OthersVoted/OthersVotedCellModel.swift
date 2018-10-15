@@ -28,6 +28,6 @@ struct OthersVotedCellModel {
         name = voter.name
         subtitle = "Info.OthersVoted.Cell.Weight".localized
         subtitleValue = voter.weight.flatMap { String(format: "%.2f", $0) } ?? "..."
-        value = voter.vote.flatMap { String(format: "%.2f", $0) } ?? "..."
+        value = voter.vote.flatMap { $0.stringRounded } ?? "..."
     }
 }
