@@ -63,13 +63,10 @@ struct DateProcessor {
             let locale = Locale.current
             formatter.locale = locale
             formatter.dateStyle = .short
-            print("days >= 7")
             return formatter.string(from: date)
         } else if days < 1 {
-            print("days < 1")
             return "General.today".localized.capitalized
         } else {
-            print("days >= 1 & days < 7")
             return stringInterval(from: date)
         }
     }
