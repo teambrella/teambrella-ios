@@ -33,5 +33,5 @@ struct Voter: Decodable {
     let weight: Double?
     let weightCombined: Double?
     let proxyVoterID: String?
-    let vote: ClaimVote?
+    let vote: Double?
 }

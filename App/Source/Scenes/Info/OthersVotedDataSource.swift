@@ -85,7 +85,8 @@ extension OthersVotedDataSource: UICollectionViewDelegate {
         guard let cell = cell as? OthersVotedCell else { return }
         guard let voter = self[indexPath] else { return }
         
-        let model = OthersVotedCellModel(voter: voter)
+        let isClaim = vc?.claimID != nil
+        let model = OthersVotedCellModel(voter: voter, isClaim: isClaim)
         cell.update(with: model)
         let isLast = indexPath.section == 0 || indexPath.row == count - 1
         

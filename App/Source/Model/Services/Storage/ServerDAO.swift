@@ -48,10 +48,8 @@ class ServerDAO: DAO {
     }
     
     func requestTeams(demo: Bool) -> Future<TeamsModel> {
-        let promise = Promise<TeamsModel>()
         let requestType: TeambrellaPostRequestType = demo ? .demoTeams : .teams
-        startRequest(promise: promise, body: [:], type: requestType)
-        return promise
+        return startRequest(body: [:], type: requestType)
     }
     
     func requestHome(teamID: Int) -> Future<HomeModel> {
@@ -102,9 +100,7 @@ class ServerDAO: DAO {
     }
     
     func deleteCard(topicID: String) -> Future<HomeModel> {
-        let promise = Promise<HomeModel>()
-        startRequest(promise: promise, body: ["topicId": topicID], type: .feedDeleteCard)
-        return promise
+        return startRequest(body: ["topicId": topicID], type: .feedDeleteCard)
     }
     
     func requestTeamFeed(context: FeedRequestContext, needTemporaryResult: Bool) -> Future<FeedChunk> {
@@ -130,13 +126,10 @@ class ServerDAO: DAO {
     }
     
     func requestCoverage(for date: Date, teamID: Int) -> Future<CoverageForDate> {
-        let promise = Promise<CoverageForDate>()
         let dateString = Formatter.teambrellaShortDashed.string(from: date)
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "Date": dateString],
-                     type: .coverageForDate)
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "Date": dateString],
+                            type: .coverageForDate)
     }
     
     // MARK: Wallet
@@ -155,36 +148,20 @@ class ServerDAO: DAO {
                                    offset: Int,
                                    limit: Int,
                                    search: String) -> Future<[WalletTransactionsModel]> {
-        let promise = Promise<[WalletTransactionsModel]>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "offset": offset,
-                            "limit": limit,
-                            "search": search],
-                     type: .walletTransactions)
-        return promise
-    }
-    
-    private func successHandler<Value>(promise: Promise<Value>) -> (ServerReplyBox<Value>) -> Void {
-        return { box in
-            guard let value = box.value else {
-                fatalError()
-            }
-            
-            promise.resolve(with: value)
-        }
+        return startRequest(body: ["TeamId": teamID,
+                                   "offset": offset,
+                                   "limit": limit,
+                                   "search": search],
+                            type: .walletTransactions)
     }
     
     // MARK: Proxy
     
     func requestMyProxiesList(teamID: Int, offset: Int, limit: Int) -> Future<[ProxyCellModel]> {
-        let promise = Promise<[ProxyCellModel]>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "Offset": offset,
-                            "Limit": limit],
-                     type: .myProxies)
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "Offset": offset,
+                                   "Limit": limit],
+                            type: .myProxies)
     }
     
     func updateProxyPosition(teamID: Int, userID: String, newPosition: Int) -> Future<Bool> {
@@ -216,42 +193,32 @@ class ServerDAO: DAO {
                             limit: Int,
                             searchString: String?,
                             sortBy: SortVC.SortType) -> Future<ProxyRatingEntity> {
-        let promise = Promise<ProxyRatingEntity>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "Offset": offset,
-                            "Limit": limit,
-                            "Search": searchString ?? "",
-                            "SortBy": sortBy.rawValue],
-                     type: .proxyRatingList)
-        return promise
+        return startRequest( body: ["TeamId": teamID,
+                                    "Offset": offset,
+                                    "Limit": limit,
+                                    "Search": searchString ?? "",
+                                    "SortBy": sortBy.rawValue],
+                             type: .proxyRatingList)
     }
     
     func requestProxyFor(teamID: Int, offset: Int, limit: Int) -> Future<ProxyForEntity> {
-        let promise = Promise<ProxyForEntity>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "Offset": offset,
-                            "Limit": limit],
-                     type: .proxyFor)
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "Offset": offset,
+                                   "Limit": limit],
+                            type: .proxyFor)
     }
     
     // MARK: Claims
     
     func updateClaimVote(claimID: Int, vote: Float?, lastUpdated: Int64) -> Future<ClaimVoteUpdate> {
-        let promise = Promise<ClaimVoteUpdate>()
-        startRequest(promise: promise,
-                     body: ["ClaimId": claimID,
-                            "MyVote": vote ?? NSNull(),
-                            "Since": lastUpdated,
-                            "ProxyAvatarSize": Constant.proxyAvatarSize],
-                     type: .claimVote)
-        return promise
+        return startRequest( body: ["ClaimId": claimID,
+                                    "MyVote": vote ?? NSNull(),
+                                    "Since": lastUpdated,
+                                    "ProxyAvatarSize": Constant.proxyAvatarSize],
+                             type: .claimVote)
     }
     
     func requestClaimsList(teamID: Int, offset: Int, limit: Int, filterTeammateID: Int?) -> Future<[ClaimEntity]> {
-        let promise = Promise<[ClaimEntity]>()
         var payload: [String: Any] = ["TeamId": service.session?.currentTeam?.teamID ?? 0,
                                       "Offset": offset,
                                       "Limit": limit,
@@ -259,32 +226,25 @@ class ServerDAO: DAO {
         if let teammateID = filterTeammateID {
             payload["TeammateIdFilter"] = teammateID
         }
-        startRequest(promise: promise, body: payload, type: .claimsList)
-        return promise
+        return startRequest(body: payload, type: .claimsList)
     }
     
     func requestClaim(claimID: Int) -> Future<ClaimEntityLarge> {
-        let promise = Promise<ClaimEntityLarge>()
-        startRequest(promise: promise,
-                     body: ["id": claimID,
-                            "AvatarSize": Constant.avatarSize,
-                            "ProxyAvatarSize": Constant.proxyAvatarSize],
-                     type: .claim)
-        return promise
+        return startRequest(body: ["id": claimID,
+                                   "AvatarSize": Constant.avatarSize,
+                                   "ProxyAvatarSize": Constant.proxyAvatarSize],
+                            type: .claim)
     }
     
     func requestClaimTransactions(teamID: Int,
                                   claimID: Int,
                                   limit: Int,
                                   offset: Int) -> Future<[ClaimTransactionsModel]> {
-        let promise = Promise<[ClaimTransactionsModel]>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "ClaimId": claimID,
-                            "Limit": limit,
-                            "Offset": offset],
-                     type: .claimTransactions)
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "ClaimId": claimID,
+                                   "Limit": limit,
+                                   "Offset": offset],
+                            type: .claimTransactions)
     }
     
     // MARK: Teammates
@@ -313,68 +273,47 @@ class ServerDAO: DAO {
     }
     
     func requestTeammate(userID: String, teamID: Int) -> Future<TeammateLarge> {
-        let promise = Promise<TeammateLarge>()
-        startRequest(promise: promise,
-                     body: [
-                        "UserId": userID,
-                        "TeamId": teamID,
-                        "AfterVer": 0
+        return startRequest(body: [
+            "UserId": userID,
+            "TeamId": teamID,
+            "AfterVer": 0
             ], type: .teammate)
-        return promise
     }
     
     func requestWithdrawTransactions(teamID: Int) -> Future<WithdrawChunk> {
-        let promise = Promise<WithdrawChunk>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID],
-                     type: .withdrawTransactions)
-        return promise
+        return startRequest(body: ["TeamId": teamID],
+                            type: .withdrawTransactions)
     }
     
     func requestTeammateOthersVoted(teamID: Int, teammateID: Int) -> Future<VotersList> {
-        let promise = Promise<VotersList>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "TeammateId": teammateID],
-                     type: .teammateVotesList)
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "TeammateId": teammateID],
+                            type: .teammateVotesList)
     }
     
     func requestClaimOthersVoted(teamID: Int, claimID: Int) -> Future<VotersList> {
-        let promise = Promise<VotersList>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "ClaimId": claimID],
-                     type: .claimVotesList)
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "ClaimId": claimID],
+                            type: .claimVotesList)
     }
     
     func requestChat(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel> {
-        let promise = Promise<ChatModel>()
-        startRequest(promise: promise, body: body, type: type)
-        return promise
+        return startRequest(body: body, type: type)
     }
     
     func sendChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatEntity> {
-        let promise = Promise<ChatEntity>()
-        startRequest(promise: promise, body: body, type: type)
-        return promise
+        return startRequest(body: body, type: type)
     }
     
     func sendPrivateChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel> {
-        let promise = Promise<ChatModel>()
-        startRequest(promise: promise, body: body, type: type)
-        return promise
+        return startRequest(body: body, type: type)
     }
     
     func withdraw(teamID: Int, amount: Double, address: EthereumAddress) -> Future<WithdrawChunk> {
-        let promise = Promise<WithdrawChunk>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "Amount": amount,
-                            "ToAddress": address.string],
-                     type: .withdraw)
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "Amount": amount,
+                                   "ToAddress": address.string],
+                            type: .withdraw)
     }
     
     func myProxy(userID: String, add: Bool) -> Future<Bool> {
@@ -437,86 +376,62 @@ class ServerDAO: DAO {
     }
     
     func sendRiskVote(teammateID: Int, risk: Double?) -> Future<TeammateVotingResult> {
-        let promise = Promise<TeammateVotingResult>()
-        startRequest(promise: promise,
-                     body: ["TeammateId": teammateID,
-                            "MyVote": risk ?? NSNull(),
-                            "Since": server.timestamp,
-                            "ProxyAvatarSize": Constant.proxyAvatarSize],
-                     type: .teammateVote)
-        return promise
+        return startRequest( body: ["TeammateId": teammateID,
+                                    "MyVote": risk ?? NSNull(),
+                                    "Since": server.timestamp,
+                                    "ProxyAvatarSize": Constant.proxyAvatarSize],
+                             type: .teammateVote)
     }
     
     func createNewClaim(model: NewClaimModel) -> Future<ClaimEntityLarge> {
-        let promise = Promise<ClaimEntityLarge>()
         let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
-        startRequest(promise: promise,
-                     body: ["TeamId": model.teamID,
-                            "IncidentDate": dateString,
-                            "Expenses": model.expenses,
-                            "Message": model.text,
-                            "Images": model.images,
-                            "Address": model.address],
-                     type: .newClaim)
-        return promise
+        return startRequest(body: ["TeamId": model.teamID,
+                                   "IncidentDate": dateString,
+                                   "Expenses": model.expenses,
+                                   "Message": model.text,
+                                   "Images": model.images,
+                                   "Address": model.address],
+                            type: .newClaim)
     }
     
     func createNewChat(model: NewChatModel) -> Future<ChatModel> {
-        let promise = Promise<ChatModel>()
-        startRequest(promise: promise,
-                     body: ["TeamId": model.teamID,
-                            "Text": model.text,
-                            "Title": model.title],
-                     type: .newChat)
-        return promise
+        return startRequest(body: ["TeamId": model.teamID,
+                                   "Text": model.text,
+                                   "Title": model.title],
+                            type: .newChat)
     }
     
     func mute(topicID: String, isMuted: Bool) -> Future<Bool> {
-        let promise = Promise<Bool>()
-        startRequest(promise: promise,
-                     body: ["TopicId": topicID,
-                            "IsMuted": isMuted],
-                     type: .mute)
-        return promise
+        return startRequest( body: ["TopicId": topicID,
+                                    "IsMuted": isMuted],
+                             type: .mute)
     }
     
     func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]> {
-        let promise = Promise<[PrivateChatUser]>()
         var body: [String: Any] = ["Offset": offset,
                                    "Limit": limit]
         filter.map { body["Search"] = $0 }
-        startRequest(promise: promise, body: body, type: .privateList)
-        return promise
+        return startRequest(body: body, type: .privateList)
     }
     
     func requestSettings(current: TeamNotificationsType, teamID: Int) -> Future<SettingsEntity> {
-        let promise = Promise<SettingsEntity>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "NewTeammatesNotification": current.rawValue],
-                     type: .mySettings)
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "NewTeammatesNotification": current.rawValue],
+                            type: .mySettings)
     }
     
     func sendSettings(current: TeamNotificationsType, teamID: Int) -> Future<SettingsEntity> {
-        let promise = Promise<SettingsEntity>()
-        startRequest(promise: promise,
-                     body: ["TeamId": teamID,
-                            "NewTeammatesNotification": current.rawValue],
-                     type: .setMySettings)
-        return promise
+        return startRequest( body: ["TeamId": teamID,
+                                    "NewTeammatesNotification": current.rawValue],
+                             type: .setMySettings)
     }
     
     func requestPin(topicID: String) -> Future<PinEntity> {
-        let promise = Promise<PinEntity>()
-        startRequest(promise: promise, body: ["TopicId": topicID], type: .pin)
-        return promise
+        return startRequest(body: ["TopicId": topicID], type: .pin)
     }
     
     func sendPin(topicID: String, pinType: PinType) -> Future<PinEntity> {
-        let promise = Promise<PinEntity>()
-        startRequest(promise: promise, body: ["TopicId": topicID, "MyPin": pinType.rawValue], type: .setPin)
-        return promise
+        return startRequest(body: ["TopicId": topicID, "MyPin": pinType.rawValue], type: .setPin)
     }
     
     func registerKey(facebookToken: String, signature: String, wallet: String) -> Future<Bool> {
@@ -582,15 +497,21 @@ class ServerDAO: DAO {
     }
     
     func getWelcome(teamID: Int?, inviteCode: String?) -> Future<WelcomeEntity> {
-        let promise = Promise<WelcomeEntity>()
-        
         let teamID = teamID.map { String($0) } ?? ""
         let inviteCode = inviteCode ?? ""
-        startRequest(promise: promise,
-                     body: ["teamId": teamID,
-                            "invite": inviteCode],
-                     type: .welcome)
-        return promise
+        return startRequest( body: ["teamId": teamID,
+                                    "invite": inviteCode],
+                             type: .welcome)
+    }
+    
+    private func successHandler<Value>(promise: Promise<Value>) -> (ServerReplyBox<Value>) -> Void {
+        return { box in
+            guard let value = box.value else {
+                fatalError()
+            }
+            
+            promise.resolve(with: value)
+        }
     }
     
     private func getQuery(string: String?, type: TeambrellaGetRequestType) -> Future<[String]> {
@@ -619,14 +540,15 @@ class ServerDAO: DAO {
                                         failure: promise.reject)
     }
     
-    private func startRequest<Value: Decodable>(promise: Promise<Value>,
-                                                body: [String: Any],
-                                                type: TeambrellaPostRequestType) {
+    private func startRequest<Value: Decodable>(body: [String: Any],
+                                                type: TeambrellaPostRequestType) -> Promise<Value> {
+        let promise = Promise<Value>()
         freshKey { key in
             let body = RequestBody(key: key, payload: body)
             let request = self.standardRequest(promise: promise, type: type, body: body)
             request.start(server: self.server)
         }
+        return promise
     }
     
 }
