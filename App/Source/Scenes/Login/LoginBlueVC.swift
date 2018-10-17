@@ -52,6 +52,10 @@ final class LoginBlueVC: UIViewController {
     
     var isRegisteredFacebookUser: Bool { return KeychainService().value(forKey: .privateKey) != nil }
     
+    var canLogWithQRCode: Bool {
+        return !service.keyStorage.isRealPrivateKeySet || SimpleStorage().bool(forKey: .isRegistering)
+    }
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -75,7 +79,7 @@ final class LoginBlueVC: UIViewController {
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
         
-        qrCodeButton.addGestureRecognizer(clearAllRecognizer)
+        nextButton.addGestureRecognizer(clearAllRecognizer)
         //        continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
         animateCenterLabel()
         
@@ -90,6 +94,8 @@ final class LoginBlueVC: UIViewController {
         super.viewWillAppear(animated)
         centerLabel.alpha = 0
         gradientView.alpha = 0
+        
+        qrCodeButton.isHidden = !canLogWithQRCode
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -189,11 +195,19 @@ Are you sure you want to completely remove your private key from this device?
 """,
                                            preferredStyle: .alert)
         
-        controller.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+        controller.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] action in
+            guard let self = self else { return }
+            
             service.keyStorage.deleteStoredKeys()
+            let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
+            animator.addAnimations {
+                self.qrCodeButton.isHidden = !self.canLogWithQRCode
+            }
+            animator.startAnimation()
         }))
         controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
+        Vibrator().lightVibes()
         present(controller, animated: true, completion: nil)
     }
     
@@ -294,7 +308,7 @@ extension LoginBlueVC: CodeCaptureDelegate {
         case .surillaLink,
              .teambrellaLink:
             log("Is teambrella! \(didCapture)", type: .info)
-            guard !service.keyStorage.isRealPrivateKeySet || SimpleStorage().bool(forKey: .isRegistering) else {
+            guard canLogWithQRCode else {
                 log("Private key already exists. Universal link transition is cancelled", type: .info)
                 return
             }

@@ -75,7 +75,7 @@
                                 <color key="textColor" red="0.74117647058823533" green="0.76470588235294112" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKO-fV-G5k">
+                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKO-fV-G5k">
                                 <rect key="frame" x="28" y="676" width="319" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -89,7 +89,7 @@
                                     <action selector="tapContinueWithFBButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="i4x-5F-Upl"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eP3-7Q-JtA">
+                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eP3-7Q-JtA">
                                 <rect key="frame" x="28" y="620" width="319" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -103,76 +103,77 @@
                                     <action selector="tapContinueWithVKButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="wXa-J7-Vf1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkd-j6-Z6y">
-                                <rect key="frame" x="16" y="626" width="343" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="tvE-ob-CWt"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.25490196079999999" green="0.30588235289999999" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapNextButton" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="i4f-2j-ELw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-0s-mhl">
-                                <rect key="frame" x="168" y="733" width="39" height="27"/>
-                                <accessibility key="accessibilityConfiguration" identifier="tryDemo"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapTryDemoButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="yWz-Z2-4TB"/>
-                                </connections>
-                            </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vk" translatesAutoresizingMaskIntoConstraints="NO" id="Osc-M6-i2X">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="vk" translatesAutoresizingMaskIntoConstraints="NO" id="Osc-M6-i2X">
                                 <rect key="frame" x="36" y="628" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Osc-M6-i2X" secondAttribute="height" multiplier="1:1" id="ImO-R0-JJv"/>
                                 </constraints>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="GFu-Ou-VZp">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="GFu-Ou-VZp">
                                 <rect key="frame" x="36" y="684" width="24" height="24"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgl-A7-H88">
-                                <rect key="frame" x="168" y="686" width="39" height="27"/>
-                                <accessibility key="accessibilityConfiguration" identifier="tryDemo"/>
-                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapQRCode:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="VgZ-IM-o5q"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ww0-Ko-iTC">
+                                <rect key="frame" x="16" y="624" width="343" height="134"/>
+                                <subviews>
+                                    <button opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkd-j6-Z6y">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="tvE-ob-CWt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.25490196079999999" green="0.30588235289999999" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapNextButton" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="i4f-2j-ELw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgl-A7-H88">
+                                        <rect key="frame" x="0.0" y="60" width="343" height="27"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="tryDemo"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapQRCode:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="VgZ-IM-o5q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-0s-mhl">
+                                        <rect key="frame" x="0.0" y="107" width="343" height="27"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="tryDemo"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapTryDemoButton:" destination="Fpj-WI-Qkt" eventType="touchUpInside" id="yWz-Z2-4TB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.1333333333" green="0.20000000000000001" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="TKO-fV-G5k" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" constant="28" id="017-G7-ZZt"/>
+                            <constraint firstItem="usP-eT-Dn2" firstAttribute="bottom" secondItem="ww0-Ko-iTC" secondAttribute="bottom" constant="20" id="5oa-Q7-T5M"/>
                             <constraint firstItem="O3C-eL-D90" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" constant="16" id="6NY-MS-fpM"/>
                             <constraint firstItem="TKO-fV-G5k" firstAttribute="top" secondItem="eP3-7Q-JtA" secondAttribute="bottom" constant="16" id="6cB-ch-YIU"/>
-                            <constraint firstItem="n5y-0s-mhl" firstAttribute="centerX" secondItem="TKO-fV-G5k" secondAttribute="centerX" id="6zV-1a-u5i"/>
-                            <constraint firstItem="xgl-A7-H88" firstAttribute="top" secondItem="bkd-j6-Z6y" secondAttribute="bottom" constant="20" id="8Nb-yE-E7u"/>
-                            <constraint firstItem="n5y-0s-mhl" firstAttribute="top" secondItem="xgl-A7-H88" secondAttribute="bottom" constant="20" id="8qI-f9-Bcu"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="width" secondItem="7DX-bd-hFW" secondAttribute="width" multiplier="0.7" id="ASg-K4-N3W"/>
-                            <constraint firstItem="usP-eT-Dn2" firstAttribute="trailing" secondItem="bkd-j6-Z6y" secondAttribute="trailing" constant="16" id="CHg-vZ-EYP"/>
                             <constraint firstItem="Osc-M6-i2X" firstAttribute="top" secondItem="eP3-7Q-JtA" secondAttribute="top" constant="8" id="CZW-YD-DzZ"/>
                             <constraint firstItem="O7m-EB-YXq" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" id="FW5-kO-FIn"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="centerX" secondItem="ZSJ-w0-Tqs" secondAttribute="centerX" id="HLL-nS-ZYf"/>
+                            <constraint firstItem="usP-eT-Dn2" firstAttribute="trailing" secondItem="ww0-Ko-iTC" secondAttribute="trailing" constant="16" id="IV3-vt-HlR"/>
+                            <constraint firstItem="ww0-Ko-iTC" firstAttribute="leading" secondItem="usP-eT-Dn2" secondAttribute="leading" constant="16" id="KXp-eo-d1e"/>
                             <constraint firstAttribute="trailing" secondItem="TKO-fV-G5k" secondAttribute="trailing" constant="28" id="Npf-Vr-QUO"/>
                             <constraint firstItem="GFu-Ou-VZp" firstAttribute="leading" secondItem="Osc-M6-i2X" secondAttribute="leading" id="PBh-ny-tFv"/>
                             <constraint firstAttribute="trailing" secondItem="O7m-EB-YXq" secondAttribute="trailing" id="PEP-n2-pjr"/>
-                            <constraint firstItem="xgl-A7-H88" firstAttribute="centerX" secondItem="n5y-0s-mhl" secondAttribute="centerX" id="Pzg-w7-tII"/>
                             <constraint firstItem="eP3-7Q-JtA" firstAttribute="leading" secondItem="TKO-fV-G5k" secondAttribute="leading" id="RPQ-Ev-yoe"/>
                             <constraint firstItem="GFu-Ou-VZp" firstAttribute="bottom" secondItem="TKO-fV-G5k" secondAttribute="bottom" constant="-8" id="Rsi-oc-reW"/>
                             <constraint firstItem="ZSJ-w0-Tqs" firstAttribute="top" secondItem="7DX-bd-hFW" secondAttribute="top" id="SSJ-wp-jNg"/>
-                            <constraint firstItem="bkd-j6-Z6y" firstAttribute="leading" secondItem="usP-eT-Dn2" secondAttribute="leading" constant="16" id="a3x-kT-p6P"/>
                             <constraint firstItem="JJj-TS-F5o" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" id="bxK-vK-XUz"/>
                             <constraint firstItem="Osc-M6-i2X" firstAttribute="centerY" secondItem="eP3-7Q-JtA" secondAttribute="centerY" id="dT5-L7-7vh"/>
-                            <constraint firstItem="n5y-0s-mhl" firstAttribute="top" secondItem="TKO-fV-G5k" secondAttribute="bottom" constant="17" id="duw-6D-IME"/>
                             <constraint firstItem="ZSJ-w0-Tqs" firstAttribute="leading" secondItem="7DX-bd-hFW" secondAttribute="leading" id="eDc-ZW-LEv"/>
                             <constraint firstItem="GFu-Ou-VZp" firstAttribute="centerY" secondItem="TKO-fV-G5k" secondAttribute="centerY" id="fKi-8c-Vy5"/>
                             <constraint firstItem="JJj-TS-F5o" firstAttribute="top" secondItem="7DX-bd-hFW" secondAttribute="top" id="hJR-dJ-G5Q"/>
@@ -183,7 +184,6 @@
                             <constraint firstItem="eP3-7Q-JtA" firstAttribute="trailing" secondItem="TKO-fV-G5k" secondAttribute="trailing" id="pQD-bY-E8Z"/>
                             <constraint firstItem="HaE-vq-3bd" firstAttribute="top" secondItem="7DX-bd-hFW" secondAttribute="top" constant="180" id="pjn-JT-fu1"/>
                             <constraint firstItem="GFu-Ou-VZp" firstAttribute="width" secondItem="GFu-Ou-VZp" secondAttribute="height" multiplier="1:1" id="rdX-rW-eyW"/>
-                            <constraint firstItem="usP-eT-Dn2" firstAttribute="bottom" secondItem="n5y-0s-mhl" secondAttribute="bottom" constant="18" id="sDb-EU-zsB"/>
                             <constraint firstAttribute="trailing" secondItem="JJj-TS-F5o" secondAttribute="trailing" id="uF6-qb-zrv"/>
                             <constraint firstAttribute="bottom" secondItem="JJj-TS-F5o" secondAttribute="bottom" id="wLi-Se-gQg"/>
                             <constraint firstAttribute="bottom" secondItem="O7m-EB-YXq" secondAttribute="bottom" id="zDk-ot-nBW"/>
@@ -896,6 +896,6 @@ Follow a few short steps to apply.</string>
         <image name="vk" width="2500" height="2500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KI3-Cg-VfK"/>
+        <segue reference="3Hc-wB-HHG"/>
     </inferredMetricsTieBreakers>
 </document>
