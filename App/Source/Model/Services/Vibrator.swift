@@ -36,4 +36,20 @@ class Vibrator {
         }
     }
     
+    func lightVibes() {
+        if UIDevice.current.hasHapticEngine {
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+        } else if UIDevice.current.hasSemiHapticEngine {
+            /*
+             1519 - Peek (weak boom)
+             1520 - Pop (strong boom)
+             1521 - Nope (three weak booms)
+             */
+            AudioServicesPlaySystemSound(1521)
+        } else {
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+        }
+    }
+    
 }

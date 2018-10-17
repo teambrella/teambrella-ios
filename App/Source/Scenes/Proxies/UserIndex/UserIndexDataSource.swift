@@ -92,6 +92,7 @@ class UserIndexDataSource {
                     self.items += proxyRatingEntity.members
                     self.onUpdate?()
                 case let .error(error):
+                    log(error)
                     self.onError?(error)
                 }
                 self.isLoading = false

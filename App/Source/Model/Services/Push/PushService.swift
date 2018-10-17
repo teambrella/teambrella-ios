@@ -202,8 +202,8 @@ final class PushService: NSObject {
         case .topicMessage:
             showTopic(details: command.topicDetails)
         case .newClaim:
-            showTopic(details: command.topicDetails)
-        //showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
+//            showTopic(details: command.topicDetails)
+        showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
         case .approvedTeammate:
             logAsApprovedMember(payload: command)
         default:

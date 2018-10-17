@@ -23,7 +23,8 @@ static let storyboardName = "Info"
     @IBOutlet var pushTokenAPNSField: UITextField!
     @IBOutlet var privateKeyField: UITextField!
     @IBOutlet var publicKeyField: UITextField!
-
+    @IBOutlet var pushKitField: UITextField!
+    
     @IBOutlet var versionLabel: UILabel!
 
     var push: PushService!
@@ -36,6 +37,7 @@ static let storyboardName = "Info"
         pushTokenAPNSField.text = push.apnsTokenString
         privateKeyField.text = teambrella.key.privateKey
         publicKeyField.text = teambrella.key.publicKey
+        pushKitField.text = push.pushKit.tokenString
 
         versionLabel.text = Application().clientVersion
     }
