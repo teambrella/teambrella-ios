@@ -21,4 +21,6 @@ enum QRCodeType {
     case ethereum
     case bitcoinWiF
     case bitcoinPublicKey
+    case teambrellaLink
+    case surillaLink
 }

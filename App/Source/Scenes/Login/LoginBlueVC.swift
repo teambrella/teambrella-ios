@@ -32,10 +32,10 @@ final class LoginBlueVC: UIViewController {
     @IBOutlet var qrCodeButton: UIButton!
     @IBOutlet var gradientView: GradientView!
     @IBOutlet var confetti: SKView!
-
+    
     var isEmitterAdded: Bool = false
     var didTapDemo: Bool = false
-
+    
     var loginWorker: LoginWorker!
     
     lazy var secretRecognizer: UILongPressGestureRecognizer = {
@@ -56,11 +56,11 @@ final class LoginBlueVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if service.joinTeamID != nil {
             performSegue(type: .welcome)
         }
-
+        
         centerLabel.text = "Login.LoginBlueVC.centerLabel".localized
         continueWithFBButton.setTitle("Login.LoginBlueVC.continueWithFBButton".localized, for: .normal)
         continueWithVKButton.setTitle("Login.LoginBlueVC.continueWithVKButton".localized, for: .normal)
@@ -74,17 +74,17 @@ final class LoginBlueVC: UIViewController {
         
         centerLabel.isUserInteractionEnabled = true
         centerLabel.addGestureRecognizer(secretRecognizer)
-
+        
         qrCodeButton.addGestureRecognizer(clearAllRecognizer)
         //        continueWithFBButton.addGestureRecognizer(clearAllRecognizer)
         animateCenterLabel()
-
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(dynamicLinkReceived),
                                                name: .dynamicLinkReceived,
                                                object: nil)
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -114,7 +114,7 @@ final class LoginBlueVC: UIViewController {
     @IBAction func tapContinueWithVKButton() {
         register(type: .vk)
     }
-
+    
     @IBAction func tapNextButton() {
         if service.keyStorage.isRealPrivateKeySet && SimpleStorage().bool(forKey: .isRegistering) == false {
             service.keyStorage.setToRealUser()
@@ -130,7 +130,7 @@ final class LoginBlueVC: UIViewController {
             logIn()
             return
         }
-
+        
         HUD.show(.progress)
         loginWorker.loginAndRegister(type: type, in: self) { [weak self] token, error in
             if token != nil && error == nil {
@@ -145,20 +145,20 @@ final class LoginBlueVC: UIViewController {
         service.keyStorage.setToDemoUser()
         performSegue(type: .unwindToInitial, sender: self)
     }
-
+    
     @IBAction func tapQRCode(_ sender: UIButton) {
         Statistics.log(event: .tapQRCodeLogin)
         service.router.showCodeCapture(in: self, delegate: self, type: .privateKey)
     }
-
-     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+    
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
         if let vc = segue.source as? ApplicationFlowVC, let error = vc.error {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                 self.handleFailure(error: error)
             }
         }
     }
-
+    
     @objc
     private func secretTap(sender: UILongPressGestureRecognizer) {
         let controller = UIAlertController(title: "Secret entrance",
@@ -265,18 +265,18 @@ Are you sure you want to completely remove your private key from this device?
         service.keyStorage.saveNewPrivateKey(string: string)
         logIn()
     }
-
+    
     private func logIn() {
         HUD.hide()
         performSegue(type: .unwindToInitial)
     }
-
+    
     @objc
     private func dynamicLinkReceived() {
         navigationController?.popToViewController(self, animated: false)
         performSegue(type: .welcome)
     }
-
+    
     private func newPrivateKeySet(privateKey: String) {
         service.keyStorage.saveNewPrivateKey(string: privateKey)
         service.keyStorage.setToRealUser()
@@ -287,15 +287,34 @@ Are you sure you want to completely remove your private key from this device?
 // MARK: CodeCaptureDelegate
 extension LoginBlueVC: CodeCaptureDelegate {
     func codeCapture(controller: CodeCaptureVC, didCapture: String, type: QRCodeType) {
-        if type == .bitcoinWiF {
+        switch type {
+        case .bitcoinWiF:
             controller.close(cancelled: false)
             self.newPrivateKeySet(privateKey: didCapture)
-        } else {
-            log("Wrong type: \(type)", type: .info)
+        case .surillaLink,
+             .teambrellaLink:
+            log("Is teambrella! \(didCapture)", type: .info)
+            guard !service.keyStorage.isRealPrivateKeySet || SimpleStorage().bool(forKey: .isRegistering) else {
+                log("Private key already exists. Universal link transition is cancelled", type: .info)
+                return
+            }
+            guard let url = URL(string: didCapture) else { return }
+            
+            controller.close(cancelled: false)
+            SimpleStorage().store(bool: true, forKey: .isRegistering)
+            let activity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
+            activity.webpageURL = url
+            let application = UIApplication.shared
+            let delegate = application.delegate
+            _ = delegate?.application?(application, continue: activity, restorationHandler: { item in
+                
+            })
+        default:
+            log("Wrong type: \(type), \(didCapture)", type: .info)
         }
     }
-
+    
     func codeCaptureWillClose(controller: CodeCaptureVC, cancelled: Bool) {
-
+        
     }
 }
