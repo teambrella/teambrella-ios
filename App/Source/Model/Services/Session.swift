@@ -39,6 +39,9 @@ class Session {
     
     var cryptoCurrency: Ether = Ether.empty
     var cryptoCoin: MEth = MEth(0)
+    
+    // messages in chats that user began to type but didn't finish
+    var draftMessages: [String: String] = [:]
 
     //var coinName: String { return cryptoCurrency.child?.code ?? "" }
     

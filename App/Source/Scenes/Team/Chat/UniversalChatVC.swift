@@ -42,7 +42,13 @@ final class UniversalChatVC: UIViewController, Routable {
     
     lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
     
-    var conversationID: String { return dataSource.topicID ?? dataSource.chatModel?.basic?.userID ?? "" }
+    var conversationID: String {
+        if dataSource.isPrivateChat {
+            return dataSource.chatModel?.basic?.userID ?? ""
+        } else {
+            return dataSource.topicID ?? ""
+        }
+     }
     
     let dataSource = UniversalChatDatasource()
     
@@ -174,6 +180,7 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.reloadData()
+        rememberMessage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -181,6 +188,7 @@ final class UniversalChatVC: UIViewController, Routable {
         stopListeningSockets()
         stopListeningPushes()
         stopListeningKeyboard()
+        memoriseMessage()
         title = nil
     }
     
@@ -610,7 +618,7 @@ private extension UniversalChatVC {
         
         self.shouldScrollToBottom = true
         dataSource.send(text: text, imageFragments: imageFragments)
-        input.textView.text = nil
+        forgetMessage()
         input.adjustHeight()
         
         if dataSource.notificationsType == .unknown && dataSource.chatType != .privateChat {
@@ -648,6 +656,30 @@ private extension UniversalChatVC {
         var size = model.size
         size.height += (50 + 32)
         return size
+    }
+    
+    private func memoriseMessage() {
+        guard let session = service.session else { return }
+        guard let text = input.textView.text else { return }
+        
+        session.draftMessages[conversationID] = text
+    }
+    
+    private func rememberMessage() {
+        guard let session = service.session else { return }
+        guard let text = session.draftMessages[conversationID] else { return }
+        
+        let textView = input.textView
+        textView.text = nil
+        textView.insertText(text)
+        input.placeholderLabel.isHidden = true
+    }
+    
+    private func forgetMessage() {
+        guard let session = service.session else { return }
+        
+        input.textView.text = nil
+        session.draftMessages[conversationID] = nil
     }
 }
 
