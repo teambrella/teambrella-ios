@@ -32,10 +32,14 @@ class MasterTabBarController: UITabBarController {
             item.accessibilityIdentifier = "TabBarItem\(idx)"
         }
         
+        fetchAvatar()
+    }
+    
+    func fetchAvatar() {
         UIImage.fetchImage(string: service.session?.myAvatarStringSmall ?? "") { [weak self] image, error in
             guard let image = image else { return }
-                
-                self?.setLastTabImage(image: image)
+            
+            self?.setLastTabImage(image: image)
         }
     }
     

@@ -66,7 +66,6 @@ final class WithdrawDataSource {
                     }
                 }
             }
-            print(transactions)
         }
     }
 

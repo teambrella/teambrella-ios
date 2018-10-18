@@ -48,17 +48,8 @@ class ServerDAO: DAO {
     }
     
     func requestTeams(demo: Bool) -> Future<TeamsModel> {
-        let promise = Promise<TeamsModel>()
-        let server = self.server
-        freshKey { key in
-            let body = RequestBody(key: key, payload: [:])
-            let requestType: TeambrellaPostRequestType = demo ? .demoTeams : .teams
-            let request = TeambrellaRequest(type: requestType, parameters: nil, body: body, success: { response in
-                if case .teams(let teamsEntity) = response { promise.resolve(with: teamsEntity) }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: server)
-        }
-        return promise
+        let requestType: TeambrellaPostRequestType = demo ? .demoTeams : .teams
+        return startRequest(body: [:], type: requestType)
     }
     
     func requestHome(teamID: Int) -> Future<HomeModel> {
@@ -66,15 +57,17 @@ class ServerDAO: DAO {
         let promise = Promise<HomeModel>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
-            let request = TeambrellaRequest(type: .home, body: body, success: { response in
-                if case let .home(model) = response {
-                    service.session?.updateMyUser(with: model)
-                    promise.resolve(with: model)
-                } else {
-                    promise.reject(with: TeambrellaError(kind: .wrongReply,
-                                                         description: "Was waiting .home got \(response)"))
-                }
-            }, failure: { error in promise.reject(with: error) })
+            let request = TeambrellaRequest<HomeModel>(type: .home,
+                                                       body: body,
+                                                       success: { box in
+                                                        guard let value = box.value else {
+                                                            fatalError()
+                                                        }
+                                                        
+                                                        service.session?.updateMyUser(with: value)
+                                                        promise.resolve(with: value)
+            },
+                                                       failure: promise.reject)
             request.start(server: self.server)
         }
         return promise
@@ -90,17 +83,16 @@ class ServerDAO: DAO {
             } else {
                 requestType = .setLanguageEn
             }
-            let request = TeambrellaRequest(type: requestType,
-                                            body: body,
-                                            success: { response in
-                                                if case let .setLanguage(language) = response {
-                                                    log("Language is set to \(language)", type: .info)
-                                                    promise.resolve(with: language)
-                                                } else {
-                                                    let errorMessage = "Was waiting .setLanguage got \(response)"
-                                                    promise.reject(with: TeambrellaError(kind: .wrongReply,
-                                                                                         description: errorMessage))
-                                                }
+            let request = TeambrellaRequest<String>(type: requestType,
+                                                    body: body,
+                                                    success: { box in
+                                                        guard let value = box.value else {
+                                                            fatalError()
+                                                        }
+                                                        
+                                                        log("Language is set to \(value)", type: .info)
+                                                        promise.resolve(with: value)
+                                                        
             }, failure: { error in promise.reject(with: error) })
             request.start(server: self.server)
         }
@@ -108,20 +100,7 @@ class ServerDAO: DAO {
     }
     
     func deleteCard(topicID: String) -> Future<HomeModel> {
-        let promise = Promise<HomeModel>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["topicId": topicID])
-            let request = TeambrellaRequest(type: .feedDeleteCard, body: body, success: { response in
-                if case let .feedDeleteCard(homeModel) = response {
-                    promise.resolve(with: homeModel)
-                } else {
-                    promise.reject(with: TeambrellaError(kind: .wrongReply,
-                                                         description: "Was waiting .deleteCard got \(response)"))
-                }
-            })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["topicId": topicID], type: .feedDeleteCard)
     }
     
     func requestTeamFeed(context: FeedRequestContext, needTemporaryResult: Bool) -> Future<FeedChunk> {
@@ -131,37 +110,26 @@ class ServerDAO: DAO {
                                                        "StartIndex": context.startIndex,
                                                        "limit": context.limit,
                                                        "search": context.search ?? NSNull()])
-            let request = TeambrellaRequest(type: .teamFeed, body: body, success: { response in
-                if case let .teamFeed(chunk) = response {
-                    promise.resolve(with: chunk)
-                } else {
-                    promise.reject(with: TeambrellaError(kind: .wrongReply,
-                                                         description: "Was waiting .teamFeed, got \(response)"))
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
+            let request = TeambrellaRequest<[FeedEntity]>(type: .teamFeed,
+                                                          body: body, success: { box in
+                                                            guard let value = box.value else {
+                                                                fatalError()
+                                                            }
+                                                            
+                                                            let chunk = FeedChunk(feed: value,
+                                                                                  pagingInfo: box.paging)
+                                                            promise.resolve(with: chunk)
+            }, failure: promise.reject)
             request.start(server: self.server)
         }
         return promise
     }
     
     func requestCoverage(for date: Date, teamID: Int) -> Future<CoverageForDate> {
-        let promise = Promise<CoverageForDate>()
         let dateString = Formatter.teambrellaShortDashed.string(from: date)
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "Date": dateString])
-            let request = TeambrellaRequest(type: .coverageForDate, body: body, success: { response in
-                if case let .coverageForDate(coverageForDate) = response {
-                    promise.resolve(with: coverageForDate)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "Date": dateString],
+                            type: .coverageForDate)
     }
     
     // MARK: Wallet
@@ -170,13 +138,7 @@ class ServerDAO: DAO {
         let promise = Promise<WalletEntity>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID])
-            let request = TeambrellaRequest(type: .wallet, body: body, success: { response in
-                if case .wallet(let wallet) = response {
-                    promise.resolve(with: wallet)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
+            let request = self.standardRequest(promise: promise, type: .wallet, body: body)
             request.start(server: self.server, isErrorAutoManaged: false)
         }
         return promise
@@ -186,51 +148,41 @@ class ServerDAO: DAO {
                                    offset: Int,
                                    limit: Int,
                                    search: String) -> Future<[WalletTransactionsModel]> {
-        let promise = Promise<[WalletTransactionsModel]>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "offset": offset,
-                                                       "limit": limit,
-                                                       "search": search])
-            let request = TeambrellaRequest(type: .walletTransactions, body: body, success: { response in
-                if case let .walletTransactions(transactions) = response {
-                    promise.resolve(with: transactions)
-                }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "offset": offset,
+                                   "limit": limit,
+                                   "search": search],
+                            type: .walletTransactions)
     }
     
     // MARK: Proxy
     
     func requestMyProxiesList(teamID: Int, offset: Int, limit: Int) -> Future<[ProxyCellModel]> {
-        let promise = Promise<[ProxyCellModel]>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "Offset": offset,
-                                                       "Limit": limit])
-            let request = TeambrellaRequest(type: .myProxies, body: body, success: { response in
-                if case let .myProxies(proxies) = response {
-                    promise.resolve(with: proxies)
-                }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "Offset": offset,
+                                   "Limit": limit],
+                            type: .myProxies)
     }
     
     func updateProxyPosition(teamID: Int, userID: String, newPosition: Int) -> Future<Bool> {
         let promise = Promise<Bool>()
+        
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID,
                                                        "UserId": userID,
                                                        "Position": newPosition])
-            let request = TeambrellaRequest(type: .proxyPosition, body: body, success: { response in
-                if case .proxyPosition = response {
-                    promise.resolve(with: true)
+            let request = TeambrellaRequest<String>(type: .proxyPosition, body: body, success: { box in
+                guard let value = box.value else {
+                    fatalError()
                 }
-            }, failure: { error in promise.reject(with: error) })
+                
+                switch value.lowercased() {
+                case "ok":
+                    promise.resolve(with: true)
+                default:
+                    promise.resolve(with: false)
+                }
+            }, failure: promise.reject)
             request.start(server: self.server)
         }
         return promise
@@ -241,107 +193,58 @@ class ServerDAO: DAO {
                             limit: Int,
                             searchString: String?,
                             sortBy: SortVC.SortType) -> Future<ProxyRatingEntity> {
-        let promise = Promise<ProxyRatingEntity>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "Offset": offset,
-                                                       "Limit": limit,
-                                                       "Search": searchString ?? "",
-                                                       "SortBy": sortBy.rawValue])
-            let request = TeambrellaRequest(type: .proxyRatingList, body: body, success: { response in
-                if case let .proxyRatingList(proxyRatingEntity) = response {
-                    promise.resolve(with: proxyRatingEntity)
-                }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest( body: ["TeamId": teamID,
+                                    "Offset": offset,
+                                    "Limit": limit,
+                                    "Search": searchString ?? "",
+                                    "SortBy": sortBy.rawValue],
+                             type: .proxyRatingList)
     }
     
     func requestProxyFor(teamID: Int, offset: Int, limit: Int) -> Future<ProxyForEntity> {
-        let promise = Promise<ProxyForEntity>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "Offset": offset,
-                                                       "Limit": limit])
-            let request = TeambrellaRequest(type: .proxyFor, body: body, success: { response in
-                if case let .proxyFor(proxyForEntity) = response { promise.resolve(with: proxyForEntity) }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "Offset": offset,
+                                   "Limit": limit],
+                            type: .proxyFor)
     }
     
     // MARK: Claims
     
     func updateClaimVote(claimID: Int, vote: Float?, lastUpdated: Int64) -> Future<ClaimVoteUpdate> {
-        let promise = Promise<ClaimVoteUpdate>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["ClaimId": claimID,
-                                                       "MyVote": vote ?? NSNull(),
-                                                       "Since": lastUpdated,
-                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
-            let request = TeambrellaRequest(type: .claimVote, body: body, success: { response in
-                if case let .claimVote(voteUpdate) = response { promise.resolve(with: voteUpdate) }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest( body: ["ClaimId": claimID,
+                                    "MyVote": vote ?? NSNull(),
+                                    "Since": lastUpdated,
+                                    "ProxyAvatarSize": Constant.proxyAvatarSize],
+                             type: .claimVote)
     }
     
     func requestClaimsList(teamID: Int, offset: Int, limit: Int, filterTeammateID: Int?) -> Future<[ClaimEntity]> {
-        let promise = Promise<[ClaimEntity]>()
-        freshKey { key in
-            var payload: [String: Any] = ["TeamId": service.session?.currentTeam?.teamID ?? 0,
-                                          "Offset": offset,
-                                          "Limit": limit,
-                                          "AvatarSize": Constant.avatarSize]
-            if let teammateID = filterTeammateID {
-                payload["TeammateIdFilter"] = teammateID
-            }
-            let body = RequestBody(key: key, payload: payload)
-            let request = TeambrellaRequest(type: .claimsList, body: body, success: { response in
-                if case let .claimsList(claims) = response {
-                    promise.resolve(with: claims)
-                }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
+        var payload: [String: Any] = ["TeamId": service.session?.currentTeam?.teamID ?? 0,
+                                      "Offset": offset,
+                                      "Limit": limit,
+                                      "AvatarSize": Constant.avatarSize]
+        if let teammateID = filterTeammateID {
+            payload["TeammateIdFilter"] = teammateID
         }
-        return promise
+        return startRequest(body: payload, type: .claimsList)
     }
     
     func requestClaim(claimID: Int) -> Future<ClaimEntityLarge> {
-        let promise = Promise<ClaimEntityLarge>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["id": claimID,
-                                                       "AvatarSize": Constant.avatarSize,
-                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
-            let request = TeambrellaRequest(type: .claim, body: body, success: { response in
-                if case let .claim(claim) = response { promise.resolve(with: claim) }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["id": claimID,
+                                   "AvatarSize": Constant.avatarSize,
+                                   "ProxyAvatarSize": Constant.proxyAvatarSize],
+                            type: .claim)
     }
     
     func requestClaimTransactions(teamID: Int,
                                   claimID: Int,
                                   limit: Int,
                                   offset: Int) -> Future<[ClaimTransactionsModel]> {
-        let promise = Promise<[ClaimTransactionsModel]>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "ClaimId": claimID,
-                                                       "Limit": limit,
-                                                       "Offset": offset])
-            let request = TeambrellaRequest(type: .claimTransactions, body: body, success: { response in
-                if case let .claimTransactions(transactions) = response {
-                    promise.resolve(with: transactions)
-                }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "ClaimId": claimID,
+                                   "Limit": limit,
+                                   "Offset": offset],
+                            type: .claimTransactions)
     }
     
     // MARK: Teammates
@@ -349,138 +252,68 @@ class ServerDAO: DAO {
     func requestTeammatesList(teamID: Int,
                               offset: Int,
                               limit: Int,
-                              isOrderedByRisk: Bool) -> Future<[TeammateListEntity]> {
-        let promise = Promise<[TeammateListEntity]>()
+                              isOrderedByRisk: Bool) -> Future<(TeammatesList, PagingInfo?)> {
+        let promise = Promise<(TeammatesList, PagingInfo?)>()
         freshKey { key in
             let body = RequestBody(key: key, payload: ["TeamId": teamID,
                                                        "Offset": offset,
                                                        "Limit": limit,
                                                        "AvatarSize": Constant.avatarSize,
                                                        "OrderByRisk": isOrderedByRisk])
-            let request = TeambrellaRequest(type: .teammatesList, body: body, success: { response in
-                if case let .teammatesList(teammates) = response { promise.resolve(with: teammates) }
-            }, failure: { error in promise.reject(with: error) })
+            let request = TeambrellaRequest<TeammatesList>(type: .teammatesList, body: body, success: { box in
+                guard let value = box.value else {
+                    fatalError()
+                }
+                
+                promise.resolve(with: (value, box.paging))
+            }, failure: promise.reject)
             request.start(server: self.server)
         }
         return promise
     }
     
     func requestTeammate(userID: String, teamID: Int) -> Future<TeammateLarge> {
-        let promise = Promise<TeammateLarge>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: [
-                "UserId": userID,
-                "TeamId": teamID,
-                "AfterVer": 0
-                ])
-            let request = TeambrellaRequest(type: .teammate, body: body, success: {response in
-                if case let .teammate(teammate) = response {
-                    promise.resolve(with: teammate)
-                }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: [
+            "UserId": userID,
+            "TeamId": teamID,
+            "AfterVer": 0
+            ], type: .teammate)
     }
     
     func requestWithdrawTransactions(teamID: Int) -> Future<WithdrawChunk> {
-        let promise = Promise<WithdrawChunk>()
-        
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID])
-            let request = TeambrellaRequest(type: .withdrawTransactions, body: body, success: { response in
-                if case let .withdrawTransactions(chunk) = response {
-                    promise.resolve(with: chunk)
-                } else {
-                    let error = TeambrellaError(kind: .wrongReply,
-                                                description: "Was waiting withdrawTransactions, got \(response)")
-                    promise.reject(with: error)
-                    service.error.present(error: error)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["TeamId": teamID],
+                            type: .withdrawTransactions)
     }
     
     func requestTeammateOthersVoted(teamID: Int, teammateID: Int) -> Future<VotersList> {
-        let promise = Promise<VotersList>()
-        
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "TeammateId": teammateID])
-            let request = TeambrellaRequest(type: .teammateVotesList, body: body, success: { response in
-                if case let .votesList(votesList) = response {
-                    promise.resolve(with: votesList)
-                } else {
-                    let error = TeambrellaError(kind: .wrongReply,
-                                                description: "Was waiting votesList, got \(response)")
-                    promise.reject(with: error)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "TeammateId": teammateID],
+                            type: .teammateVotesList)
     }
     
     func requestClaimOthersVoted(teamID: Int, claimID: Int) -> Future<VotersList> {
-        let promise = Promise<VotersList>()
-        
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "ClaimId": claimID])
-            let request = TeambrellaRequest(type: .claimVotesList, body: body, success: { response in
-                if case let .votesList(votesList) = response {
-                    promise.resolve(with: votesList)
-                } else {
-                    let error = TeambrellaError(kind: .wrongReply,
-                                                description: "Was waiting votesList, got \(response)")
-                    promise.reject(with: error)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "ClaimId": claimID],
+                            type: .claimVotesList)
     }
     
-    func requestChat(type: TeambrellaPostRequestType, body: RequestBody) -> Future<TeambrellaResponseType> {
-        let promise = Promise<TeambrellaResponseType>()
-        freshKey { key in
-            let request = TeambrellaRequest(type: type, body: body, success: { response in
-                promise.resolve(with: response)
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+    func requestChat(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel> {
+        return startRequest(body: body, type: type)
+    }
+    
+    func sendChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatEntity> {
+        return startRequest(body: body, type: type)
+    }
+    
+    func sendPrivateChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel> {
+        return startRequest(body: body, type: type)
     }
     
     func withdraw(teamID: Int, amount: Double, address: EthereumAddress) -> Future<WithdrawChunk> {
-        let promise = Promise<WithdrawChunk>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": teamID,
-                                                       "Amount": amount,
-                                                       "ToAddress": address.string])
-            let request = TeambrellaRequest(type: .withdraw, body: body, success: { response in
-                if case let .withdrawTransactions(chunk) = response {
-                    promise.resolve(with: chunk)
-                } else {
-                    let error = TeambrellaError(kind: .wrongReply,
-                                                description: "Was waiting withdrawTransactions, got \(response)")
-                    promise.reject(with: error)
-                    service.error.present(error: error)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest(body: ["TeamId": teamID,
+                                   "Amount": amount,
+                                   "ToAddress": address.string],
+                            type: .withdraw)
     }
     
     func myProxy(userID: String, add: Bool) -> Future<Bool> {
@@ -488,137 +321,117 @@ class ServerDAO: DAO {
         freshKey { key in
             let body = RequestBody(key: key, payload: ["UserId": userID,
                                                        "add": add])
-            let request = TeambrellaRequest(type: .myProxy, body: body, success: { response in
-                if case .myProxy(let isProxy) = response {
-                    promise.resolve(with: isProxy)
-                } else {
-                    let error = TeambrellaError(kind: .wrongReply,
-                                                description: "Was waiting .myProxy, got \(response)")
-                    promise.reject(with: error)
-                    service.error.present(error: error)
+            let request = TeambrellaRequest<String>(type: .myProxy, body: body, success: { box in
+                switch box.value {
+                case "Proxy voter is added.",
+                     "Proxy voter is removed.":
+                    promise.resolve(with: true)
+                default:
+                    promise.resolve(with: false)
                 }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
+            }, failure: promise.reject)
             request.start(server: self.server)
         }
         return promise
     }
     
-    func sendPhoto(data: Data) -> Future<String> {
+    func sendPhoto(data: Data) -> Future<[String]> {
+        let promise = Promise<[String]>()
+        freshKey { key in
+            var body = RequestBody(key: key, payload: nil)
+            body.contentType = "image/jpeg"
+            body.data = data
+            let request = TeambrellaRequest<[String]>(type: .uploadPhoto, body: body, success: { box in
+                guard let value = box.value else {
+                    fatalError()
+                }
+                
+                promise.resolve(with: value) },
+                                                      failure: promise.reject)
+            request.start(server: self.server)
+        }
+        return promise
+    }
+    
+    func sendAvatar(data: Data) -> Future<String> {
         let promise = Promise<String>()
         freshKey { key in
             var body = RequestBody(key: key, payload: nil)
             body.contentType = "image/jpeg"
             body.data = data
-            let request = TeambrellaRequest(type: .uploadPhoto, body: body, success: { response in
-                if case .uploadPhoto(let name) = response {
-                    promise.resolve(with: name)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
+            let request = TeambrellaRequest<[String: String]>(type: .uploadAvatar,
+                                                              body: body,
+                                                              success: { box in
+                                                                guard let avatar = box.value?["Avatar"] else {
+                                                                    let error = TeambrellaErrorFactory.wrongReply()
+                                                                    promise.reject(with: error)
+                                                                    return  }
+                                                                
+                                                                promise.resolve(with: avatar)
+            },
+                                                              failure: promise.reject)
             request.start(server: self.server)
         }
         return promise
     }
     
     func sendRiskVote(teammateID: Int, risk: Double?) -> Future<TeammateVotingResult> {
-        let promise = Promise<TeammateVotingResult>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeammateId": teammateID,
-                                                       "MyVote": risk ?? NSNull(),
-                                                       "Since": key.timestamp,
-                                                       "ProxyAvatarSize": Constant.proxyAvatarSize])
-            let request = TeambrellaRequest(type: .teammateVote, body: body, success: { response in
-                if case let .teammateVote(votingResult) = response {
-                    promise.resolve(with: votingResult)
-                }
-            }, failure: { error in promise.reject(with: error) })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest( body: ["TeammateId": teammateID,
+                                    "MyVote": risk ?? NSNull(),
+                                    "Since": server.timestamp,
+                                    "ProxyAvatarSize": Constant.proxyAvatarSize],
+                             type: .teammateVote)
     }
     
     func createNewClaim(model: NewClaimModel) -> Future<ClaimEntityLarge> {
-        let promise = Promise<ClaimEntityLarge>()
-        freshKey { key in
-            let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
-            let body = RequestBody(key: key, payload: ["TeamId": model.teamID,
-                                                       "IncidentDate": dateString,
-                                                       "Expenses": model.expenses,
-                                                       "Message": model.text,
-                                                       "Images": model.images,
-                                                       "Address": model.address])
-            let request = TeambrellaRequest(type: .newClaim, body: body, success: { response in
-                if case .claim(let claim) = response {
-                    promise.resolve(with: claim)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start(server: self.server)
-        }
-        return promise
+        let dateString = Formatter.teambrellaShortDashed.string(from: model.incidentDate)
+        return startRequest(body: ["TeamId": model.teamID,
+                                   "IncidentDate": dateString,
+                                   "Expenses": model.expenses,
+                                   "Message": model.text,
+                                   "Images": model.images,
+                                   "Address": model.address],
+                            type: .newClaim)
     }
     
     func createNewChat(model: NewChatModel) -> Future<ChatModel> {
-        let promise = Promise<ChatModel>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TeamId": model.teamID,
-                                                       "Text": model.text,
-                                                       "Title": model.title])
-            let request = TeambrellaRequest(type: .newChat, body: body, success: { response in
-                if case .chat(let chat) = response {
-                    promise.resolve(with: chat)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start(server: self.server)
-        }
-        return promise
-    }
-    
-    // TMP: remove when possible
-    func performRequest(request: TeambrellaRequest) {
-        request.start(server: server)
+        return startRequest(body: ["TeamId": model.teamID,
+                                   "Text": model.text,
+                                   "Title": model.title],
+                            type: .newChat)
     }
     
     func mute(topicID: String, isMuted: Bool) -> Future<Bool> {
-        let promise = Promise<Bool>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: ["TopicId": topicID,
-                                                       "IsMuted": isMuted])
-            let request = TeambrellaRequest(type: .mute, body: body, success: { response in
-                if case let .mute(success) = response {
-                    promise.resolve(with: success)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start(server: self.server)
-        }
-        return promise
+        return startRequest( body: ["TopicId": topicID,
+                                    "IsMuted": isMuted],
+                             type: .mute)
     }
     
     func requestPrivateList(offset: Int, limit: Int, filter: String?) -> Future<[PrivateChatUser]> {
-        let promise = Promise<[PrivateChatUser]>()
-        freshKey { key in
-            var payload: [String: Any] = ["Offset": offset,
-                                          "Limit": limit]
-            filter.map { payload["Search"] = $0 }
-            let body = RequestBody(key: key, payload: payload)
-            let request = TeambrellaRequest(type: .privateList, body: body, success: { response in
-                if case .privateList(let users) = response {
-                    promise.resolve(with: users)
-                }
-            }, failure: { error in
-                promise.reject(with: error)
-            })
-            request.start(server: self.server)
-        }
-        return promise
+        var body: [String: Any] = ["Offset": offset,
+                                   "Limit": limit]
+        filter.map { body["Search"] = $0 }
+        return startRequest(body: body, type: .privateList)
+    }
+    
+    func requestSettings(current: TeamNotificationsType, teamID: Int) -> Future<SettingsEntity> {
+        return startRequest(body: ["TeamId": teamID,
+                                   "NewTeammatesNotification": current.rawValue],
+                            type: .mySettings)
+    }
+    
+    func sendSettings(current: TeamNotificationsType, teamID: Int) -> Future<SettingsEntity> {
+        return startRequest( body: ["TeamId": teamID,
+                                    "NewTeammatesNotification": current.rawValue],
+                             type: .setMySettings)
+    }
+    
+    func requestPin(topicID: String) -> Future<PinEntity> {
+        return startRequest(body: ["TopicId": topicID], type: .pin)
+    }
+    
+    func sendPin(topicID: String, pinType: PinType) -> Future<PinEntity> {
+        return startRequest(body: ["TopicId": topicID, "MyPin": pinType.rawValue], type: .setPin)
     }
     
     func registerKey(facebookToken: String, signature: String, wallet: String) -> Future<Bool> {
@@ -639,11 +452,17 @@ class ServerDAO: DAO {
         let promise = Promise<Bool>()
         freshKey { key in
             let body = RequestBody(key: key, payload: payload)
-            let request = TeambrellaRequest(type: type,
-                                            body: body,
-                                            success: { response in
-                                                promise.resolve(with: true)
-            }, failure: { error in promise.reject(with: error) })
+            let request = TeambrellaRequest<String>(type: type,
+                                                    body: body,
+                                                    success: { box in
+                                                        switch box.value?.lowercased() {
+                                                        case "ok":
+                                                            promise.resolve(with: true)
+                                                        default:
+                                                            promise.resolve(with: false)
+                                                        }
+                                                        
+            }, failure: promise.reject)
             request.start(server: self.server)
         }
         return promise
@@ -678,23 +497,21 @@ class ServerDAO: DAO {
     }
     
     func getWelcome(teamID: Int?, inviteCode: String?) -> Future<WelcomeEntity> {
-        let promise = Promise<WelcomeEntity>()
-        
         let teamID = teamID.map { String($0) } ?? ""
         let inviteCode = inviteCode ?? ""
-
-        let body = RequestBody(timestamp: 0, signature: "", publicKey: "", payload: ["teamId": teamID,
-                                                                                     "invite": inviteCode])
-            let request = TeambrellaRequest(type: .welcome,
-                                            body: body,
-                                            success: { response in
-                                                if case let .welcome(welcome) = response {
-                                                    promise.resolve(with: welcome)
-                                                }
-            },
-                                            failure: promise.reject)
-            request.start(server: self.server)
-        return promise
+        return startRequest( body: ["teamId": teamID,
+                                    "invite": inviteCode],
+                             type: .welcome)
+    }
+    
+    private func successHandler<Value>(promise: Promise<Value>) -> (ServerReplyBox<Value>) -> Void {
+        return { box in
+            guard let value = box.value else {
+                fatalError()
+            }
+            
+            promise.resolve(with: value)
+        }
     }
     
     private func getQuery(string: String?, type: TeambrellaGetRequestType) -> Future<[String]> {
@@ -711,6 +528,26 @@ class ServerDAO: DAO {
                                                      success: promise.resolve,
                                                      failure: promise.reject)
         request.start(server: self.server)
+        return promise
+    }
+    
+    private func standardRequest<Value>(promise: Promise<Value>,
+                                        type: TeambrellaPostRequestType,
+                                        body: RequestBody) -> TeambrellaRequest<Value> {
+        return TeambrellaRequest<Value>(type: type,
+                                        body: body,
+                                        success: self.successHandler(promise: promise),
+                                        failure: promise.reject)
+    }
+    
+    private func startRequest<Value: Decodable>(body: [String: Any],
+                                                type: TeambrellaPostRequestType) -> Promise<Value> {
+        let promise = Promise<Value>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: body)
+            let request = self.standardRequest(promise: promise, type: type, body: body)
+            request.start(server: self.server)
+        }
         return promise
     }
     

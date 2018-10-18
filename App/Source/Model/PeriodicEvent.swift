@@ -36,7 +36,6 @@ class PeriodicEvent {
 
     deinit {
         invalidate()
-        print("\(#file) deinitialized")
     }
 
 }

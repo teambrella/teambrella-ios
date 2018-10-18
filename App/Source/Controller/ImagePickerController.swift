@@ -64,7 +64,7 @@ class ImagePickerController: NSObject {
     }
     
     func showCamera() {
-       showSource(source: .camera)
+        showSource(source: .camera)
     }
     
     private func showSource(source: UIImagePickerControllerSourceType) {
@@ -77,7 +77,7 @@ class ImagePickerController: NSObject {
         controller.present(picker, animated: true, completion: nil)
     }
     
-    func send(image: UIImage) {
+    func send(image: UIImage, isAvatar: Bool) {
         guard let resizedImage = ImageTransformer(image: image).imageToFit(maxSide: maxSide) else {
             fatalError("Can't resize image")
         }
@@ -85,14 +85,29 @@ class ImagePickerController: NSObject {
             fatalError("Can't process image")
         }
         
-        service.dao.sendPhoto(data: imageData).observe { [weak self] result in
-            guard let me = self else { return }
-            
-            switch result {
-            case let .value(imageString):
-                me.delegate?.imagePicker(controller: me, didSendImage: image, urlString: imageString)
-            case .error:
-                break
+        if isAvatar {
+            service.dao.sendAvatar(data: imageData).observe { [weak self] result in
+                guard let `self` = self else { return }
+                
+                switch result {
+                case let .value(avatar):
+                    self.delegate?.imagePicker(controller: self, didSendImage: image, urlString: avatar)
+                case let .error(error):
+                    log(error)
+                }
+            }
+        } else {
+            service.dao.sendPhoto(data: imageData).observe { [weak self] result in
+                guard let me = self else { return }
+                
+                switch result {
+                case let .value(imageStrings):
+                    guard  let first = imageStrings.first else { return }
+                    
+                    me.delegate?.imagePicker(controller: me, didSendImage: image, urlString: first)
+                case .error:
+                    break
+                }
             }
         }
     }

@@ -16,38 +16,28 @@
 
 import UIKit
 
-protocol MuteControllerDelegate: class {
-    func mute(controller: MuteVC, didSelect type: TopicMuteType)
-    func didCloseMuteController(controller: MuteVC)
+protocol SelectorDelegate: class {
+    func selector(controller: SelectorVC, didSelect index: Int)
+    func didCloseSelectorController(controller: SelectorVC)
 }
 
-enum TopicMuteType: Int {
-    case unknown = -1
-    case unmuted = 0
-    case muted = 1
-    
-    static func type(from boolean: Bool?) -> TopicMuteType {
-        if let boolean = boolean {
-            return boolean == true ? .muted : .unmuted
-        }
-        return .unknown
-    }
-}
-
-class MuteVC: UIViewController, Routable {
-   static let storyboardName = "Chat"
+class SelectorVC: UIViewController, Routable {
+    static let storyboardName = "Chat"
     
     @IBOutlet var backView: UIView!
     @IBOutlet var muteView: UIView!
     @IBOutlet var headerLabel: BlockHeaderLabel!
     @IBOutlet var closeButton: UIButton!
-    @IBOutlet var bottomConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UICollectionView!
     
-    fileprivate var dataSource = MuteDataSource()
-    weak var delegate: MuteControllerDelegate?
+    @IBOutlet var collectionHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var topConstraint: NSLayoutConstraint!
+    var bottomAnchor: NSLayoutConstraint?
     
-    var type: TopicMuteType = .unknown
+    var dataSource: SelectorDataSource!
+    weak var delegate: SelectorDelegate?
+    
+    var selectedIndex: Int = 0
     
     @IBAction func tapClose(_ sender: Any) {
         close()
@@ -56,21 +46,27 @@ class MuteVC: UIViewController, Routable {
     @objc
     private func close() {
         disappear {
-            self.delegate?.didCloseMuteController(controller: self)
+            self.delegate?.didCloseSelectorController(controller: self)
             self.dismiss(animated: false, completion: nil)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+        
+    }
+    
+    private func setup() {
         collectionView.register(MuteCell.nib, forCellWithReuseIdentifier: MuteCell.cellID)
-        headerLabel.text = "Team.Chat.NotificationSettings.title".localized
-        dataSource.createModels()
         
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(close))
         recognizer.delegate = self
         backView.addGestureRecognizer(recognizer)
         backView.isUserInteractionEnabled = true
+//        muteView.isUserInteractionEnabled = true
+        
+        headerLabel.text = dataSource.header
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,8 +74,21 @@ class MuteVC: UIViewController, Routable {
         appear()
     }
     
+    func calculateHeight() -> CGFloat {
+        let margins = view.layoutMargins
+        let height = collectionView.contentSize.height
+        return height + margins.bottom
+    }
+    
+    func reload() {
+        self.collectionView.reloadData()
+    }
+    
     func appear() {
-        self.bottomConstraint.constant = 0
+        collectionHeightConstraint.constant = calculateHeight()
+        topConstraint.isActive = false
+        bottomAnchor = muteView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        bottomAnchor?.isActive = true
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
             self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.view.layoutIfNeeded()
@@ -89,7 +98,8 @@ class MuteVC: UIViewController, Routable {
     }
     
     func disappear(completion: @escaping () -> Void) {
-        self.bottomConstraint.constant = -self.muteView.frame.height
+        topConstraint.isActive = true
+        bottomAnchor?.isActive = false
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
             self.backView.backgroundColor = .clear
             self.view.layoutIfNeeded()
@@ -100,7 +110,7 @@ class MuteVC: UIViewController, Routable {
     
 }
 
-extension MuteVC: UICollectionViewDataSource {
+extension SelectorVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -115,7 +125,7 @@ extension MuteVC: UICollectionViewDataSource {
     }
 }
 
-extension MuteVC: UICollectionViewDelegate {
+extension SelectorVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
@@ -125,29 +135,31 @@ extension MuteVC: UICollectionViewDelegate {
             cell.icon.image = model.icon
             cell.upperLabel.text = model.topText
             cell.lowerLabel.text = model.bottomText
-            cell.checker.isHidden = indexPath.row != type.rawValue
+            cell.checker.isHidden = indexPath.row != selectedIndex
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.cellForItem(at: indexPath) is MuteCell {
-            type = TopicMuteType(rawValue: indexPath.row) ?? .unknown
-            delegate?.mute(controller: self, didSelect: type)
+            selectedIndex = indexPath.row
+            delegate?.selector(controller: self, didSelect: selectedIndex)
             collectionView.reloadData()
-            close()
+            if dataSource.isHidingOnSelection {
+                close()
+            }
         }
     }
 }
 
-extension MuteVC: UICollectionViewDelegateFlowLayout {
+extension SelectorVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height / 2)
+        return CGSize(width: collectionView.bounds.width, height: 70)
     }
 }
 
-extension MuteVC: UIGestureRecognizerDelegate {
+extension SelectorVC: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return touch.view == gestureRecognizer.view
     }

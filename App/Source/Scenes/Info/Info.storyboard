@@ -120,7 +120,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RiR-zx-8uI">
-                                <rect key="frame" x="0.0" y="60" width="375" height="263.33333333333331"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="321.66666666666669"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vCo-Uf-wMS">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50.333333333333336"/>
@@ -156,8 +156,25 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="S6z-By-wHB">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="A1y-h7-zl0">
                                         <rect key="frame" x="0.0" y="116.66666666666664" width="375" height="50.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PushKit token:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcm-Cj-4L4" userLabel="PushKit">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RnC-O2-3oj">
+                                                <rect key="frame" x="0.0" y="20.333333333333343" width="375" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="S6z-By-wHB">
+                                        <rect key="frame" x="0.0" y="175" width="375" height="50.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private key:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXk-sz-ikS" userLabel="Private key:">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="20.333333333333332"/>
@@ -174,7 +191,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zwT-aT-Tw9">
-                                        <rect key="frame" x="0.0" y="175" width="375" height="50.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="233.33333333333334" width="375" height="50.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public key:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gc-CJ-HIH" userLabel="Private key:">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="20.333333333333332"/>
@@ -183,7 +200,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fG4-6e-Fvn">
-                                                <rect key="frame" x="0.0" y="20.333333333333343" width="375" height="30"/>
+                                                <rect key="frame" x="0.0" y="20.333333333333371" width="375" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -191,7 +208,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95D-sJ-ew0">
-                                        <rect key="frame" x="0.0" y="233.33333333333331" width="375" height="30"/>
+                                        <rect key="frame" x="0.0" y="291.66666666666669" width="375" height="30"/>
                                         <state key="normal" title="Send database dump"/>
                                         <connections>
                                             <action selector="sendDbDump:" destination="q24-SJ-857" eventType="touchUpInside" id="npu-yN-d2O"/>
@@ -219,6 +236,7 @@
                     <connections>
                         <outlet property="privateKeyField" destination="Yju-Pk-soy" id="755-rL-2Sy"/>
                         <outlet property="publicKeyField" destination="fG4-6e-Fvn" id="bpb-cc-xR3"/>
+                        <outlet property="pushKitField" destination="RnC-O2-3oj" id="Tca-BV-kMo"/>
                         <outlet property="pushTokenAPNSField" destination="rnT-Sy-7jl" id="0x4-h9-nDQ"/>
                         <outlet property="pushTokenField" destination="Q17-Hh-Jwz" id="3sg-RA-RvI"/>
                         <outlet property="versionLabel" destination="4NP-Qb-DX6" id="u3r-MF-8EG"/>

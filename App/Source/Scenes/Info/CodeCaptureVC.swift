@@ -155,7 +155,9 @@ class CodeCaptureVC: UIViewController, Routable, AVCaptureMetadataOutputObjectsD
         let array: [(String, QRCodeType)] = [
             ("^[5KL][1-9A-HJ-NP-Za-km-z]{50,51}$", .bitcoinWiF),
             ("^[123mn][1-9A-HJ-NP-Za-km-z]{26,35}", .bitcoinPublicKey),
-            ("^0x[a-fA-F0-9]{40}$", .ethereum)
+            ("^0x[a-fA-F0-9]{40}$", .ethereum),
+            ("https://surilla.*", .surillaLink),
+            ("https://teambrella.*", .teambrellaLink)
         ]
         for item in array {
             if text.range(of: item.0, options: .regularExpression) != nil {

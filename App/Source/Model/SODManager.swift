@@ -20,9 +20,9 @@ struct SODManager {
     let router: MainRouter
     let storage = SimpleStorage()
 
-    func checkVersion(serverReply: ServerReply) {
+    func checkVersion(serverStatus: ServerStatus) {
         let validator = VersionValidator(router: router)
-        let isValid = validator.validate(serverReply: serverReply)
+        let isValid = validator.validate(serverStatus: serverStatus)
         if !isValid {
              presentOldVersionNotificationIfNeeded()
         }

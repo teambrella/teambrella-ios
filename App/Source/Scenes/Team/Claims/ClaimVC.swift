@@ -55,6 +55,7 @@ final class ClaimVC: UIViewController, Routable {
         dataSource.onUpdate = { [weak self] in
             guard let `self` = self else { return }
             
+            self.updateVotingCell(fromServer: true)
             self.reloadData()
             if self.isScrollToVoteNeeded {
                 self.isScrollToVoteNeeded = false
@@ -62,6 +63,7 @@ final class ClaimVC: UIViewController, Routable {
                     self.collectionView.scrollToItem(at: index, at: .top, animated: true)
                 }
             }
+            
         }
         dataSource.loadData(claimID: claimID)
     }
@@ -102,7 +104,7 @@ final class ClaimVC: UIViewController, Routable {
     
     @objc
     func sliderMoved(slider: UISlider) {
-        updateVotingCell()
+        updateVotingCell(fromServer: false)
         lastUpdatedVote = Date()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
             if let lastUpdate = self?.lastUpdatedVote {
@@ -149,7 +151,7 @@ final class ClaimVC: UIViewController, Routable {
     
     // MARK: Private
     
-    private func updateVotingCell() {
+    private func updateVotingCell(fromServer: Bool) {
         let cells = collectionView.visibleCells.compactMap { $0 as? ClaimVoteCell }
         guard let cell = cells.first else { return }
         
@@ -160,8 +162,8 @@ final class ClaimVC: UIViewController, Routable {
             let claimVote = ClaimVote(cell.slider.value)
             cell.yourVoteAmount.text = String.truncatedNumber(claimVote.fiat(from: amount).value)
         }
-        cell.yourVotePercentValue.alpha = 0.5
-        cell.yourVoteAmount.alpha = 0.5
+        cell.yourVotePercentValue.alpha = fromServer ? 1 : 0.5
+        cell.yourVoteAmount.alpha = fromServer ? 1 : 0.5
     }
     
     private func addGradientNavBarIfNeeded() {

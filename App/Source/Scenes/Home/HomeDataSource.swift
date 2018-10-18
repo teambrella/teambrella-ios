@@ -67,9 +67,12 @@ class HomeDataSource {
     
     func cellID(with cardModel: HomeCardModel) -> String {
         switch cardModel.itemType {
-        case .teammate, .claim:
+        case .teammate,
+             .claim:
             return "HomeCollectionCell"
-        case .fundWallet, .attachPhotos:
+        case .fundWallet,
+             .attachPhotos,
+             .addAvatar:
             return HomeSupportCell.cellID
         default:
             return "HomeCollectionCell"

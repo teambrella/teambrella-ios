@@ -55,6 +55,8 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     @IBOutlet var gradientViewBottomConstraint: NSLayoutConstraint!
     
+     lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
+    
     var draggablePageWidth: Float { return Float(cardWidth) }
     var cardWidth: CGFloat { return collectionView.bounds.width - Constant.cardInterval * 2 }
     
@@ -267,6 +269,8 @@ extension HomeVC: UICollectionViewDataSource {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapAttachPhotos), for: .touchUpInside)
                 cell.button.tag = indexPath.row
+            } else if model?.itemType == ItemType.addAvatar {
+                
             } else {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
@@ -297,6 +301,8 @@ extension HomeVC: UICollectionViewDataSource {
             service.router.presentChat(context: context)
         case .fundWallet:
              service.router.switchToWallet()
+        case .addAvatar:
+            picker.showOptions()
         default:
             let context = UniversalChatContext(model)
             context.type = UniversalChatType.with(itemType: model.itemType)
@@ -357,5 +363,30 @@ extension HomeVC: ReportDelegate {
 extension HomeVC: TopBarDelegate {
     func topBar(vc: TopBarVC, didSwitchTeamToID: Int) {
         
+    }
+    
+    func topBar(vc: TopBarVC, didTapNotifications: UIButton) {
+        
+    }
+}
+
+// MARK: ImagePickerControllerDelegate
+extension HomeVC: ImagePickerControllerDelegate {
+    func imagePicker(controller: ImagePickerController, didSendImage image: UIImage, urlString: String) {
+        if let teamID = service.session?.currentTeam?.teamID {
+            dataSource.updateSilently(teamID: teamID)
+        }
+        service.router.masterTabBar?.fetchAvatar()
+        HUD.hide()
+    }
+    
+    func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
+        HUD.show(.progress)
+        controller.send(image: image, isAvatar: true)
+        
+    }
+    
+    func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
+        HUD.hide()
     }
 }

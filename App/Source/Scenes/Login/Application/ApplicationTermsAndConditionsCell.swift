@@ -48,7 +48,7 @@ extension ApplicationTermsAndConditionsCell: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL,
                   in characterRange: NSRange,
                   interaction: UITextItemInteraction) -> Bool {
-        print(URL)
+        log("\(URL)", type: .info)
         return true
     }
 }

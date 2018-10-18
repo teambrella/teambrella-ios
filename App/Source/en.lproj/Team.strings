@@ -224,3 +224,16 @@
 
 "Team.Chat.ObjectView.TitleLabel.teamVote" = "TEAM VOTE";
 "Team.ClaimCell.voting.ended" = "Ended ";
+
+"Team.Notfications.never" = "Turned off";
+"Team.Notifications.often" = "Every day";
+"Team.Notifications.occasionally" = "Once every 3 days";
+"Team.Notifications.rarely" = "Once a week";
+
+"Team.Notifications.Details.never" = "Notifications about team news are turned off.";
+"Team.Notifications.Details.often" = "You'll be receiving fresh news every day.";
+"Team.Notifications.Details.occasionally" = "You'll be able to take part in every voting.";
+"Team.Notifications.Details.rarely" = "A summary of the team events for the week.";
+
+"Team.Selector.Pin.header" = "Pin the topic";
+

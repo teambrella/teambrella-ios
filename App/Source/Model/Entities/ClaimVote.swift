@@ -27,6 +27,7 @@ struct ClaimVote: Decodable {
     
     var percentage: Double { return value * 100 }
     var integerPercentage: Int { return Int(percentage + 0.5) }
+    var stringRounded: String { return "\(integerPercentage)%"}
 
     init(_ value: Double) {
         self.value = value

@@ -140,7 +140,7 @@ class ApplicationVC: UICollectionViewController, Routable {
             case let .value(value):
                 cellTextField.suggestions = value
             case let .error(error):
-                print(error)
+                log(error)
             }
         }
         

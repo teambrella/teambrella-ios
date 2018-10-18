@@ -18,6 +18,7 @@ import UIKit
 
 protocol TopBarDelegate: class {
     func topBar(vc: TopBarVC, didSwitchTeamToID: Int)
+    func topBar(vc: TopBarVC, didTapNotifications button: UIButton)
 }
 
 final class TopBarVC: UIViewController {
@@ -28,6 +29,7 @@ final class TopBarVC: UIViewController {
     
     @IBOutlet var teamButton: DropDownButton!
     @IBOutlet var privateMessagesButton: LabeledButton!
+    @IBOutlet var notificationsButton: LabeledButton!
     @IBOutlet var titleLabel: UILabel!
     
     var router: MainRouter?
@@ -94,6 +96,9 @@ final class TopBarVC: UIViewController {
         router?.presentPrivateMessages()
     }
     
+    @IBAction func tapNotifications(_ sender: LabeledButton) {
+        delegate?.topBar(vc: self, didTapNotifications: sender)
+    }
 }
 
 extension TopBarVC: ChooseYourTeamControllerDelegate {

@@ -48,23 +48,23 @@ class CallKitService: NSObject {
     }
 
     func outgoingCallStartedConnecting(id: UUID) {
-        print("\(#function)")
+        log("\(#function)", type: .voip)
         provider.reportOutgoingCall(with: id, startedConnectingAt: Date())
     }
 
     func outgoingCallConnected(id: UUID) {
-        print("\(#function)")
+        log("\(#function)", type: .voip)
         provider.reportOutgoingCall(with: id, connectedAt: Date())
     }
 
     func remoteCallEnded(id: UUID) {
-        print("\(#function)")
+        log("\(#function)", type: .voip)
         let reason = CXCallEndedReason.remoteEnded
         provider.reportCall(with: id, endedAt: Date(), reason: reason)
     }
 
     func endRemoteCall(id: UUID) {
-        print("\(#function)")
+        log("\(#function)", type: .voip)
         let reason = CXCallEndedReason.remoteEnded
         provider.reportCall(with: id, endedAt: Date(), reason: reason)
     }

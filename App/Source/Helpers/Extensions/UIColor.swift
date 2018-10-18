@@ -29,6 +29,7 @@ extension UIColor {
     class var paleLilac: UIColor { return               #colorLiteral(red: 0.8784313725, green: 0.8862745098, blue: 1, alpha: 1) }
     class var lightPeriwinkleTwo: UIColor { return      #colorLiteral(red: 0.8039215686, green: 0.8235294118, blue: 0.9960784314, alpha: 1) }
     class var lavender: UIColor { return                #colorLiteral(red: 0.737254902, green: 0.7568627451, blue: 0.9490196078, alpha: 1) }
+    class var navigationButtonGray: UIColor { return    #colorLiteral(red: 0.7411764706, green: 0.7647058824, blue: 1, alpha: 1) }
     class var robinEggBlue: UIColor { return            #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) }
     class var lightBlue: UIColor { return               #colorLiteral(red: 0.3058823529, green: 0.768627451, blue: 0.9490196078, alpha: 1) }
     class var teambrellaLightBlue: UIColor { return     #colorLiteral(red: 0.3058823529, green: 0.768627451, blue: 0.9490196078, alpha: 1) }

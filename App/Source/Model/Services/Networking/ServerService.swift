@@ -25,7 +25,7 @@ import Foundation
  Service to interoperate with the server fetching all UI related information
  */
 final class ServerService: NSObject {
-    @objc dynamic private(set)var timestamp: Int64 = 0
+    var timestamp: Int64 = 0
     var router: MainRouter
     var infoMaker: InfoMaker
     var key: Key { return Key(base58String: KeyStorage.shared.privateKey, timestamp: timestamp) }
@@ -91,7 +91,7 @@ final class ServerService: NSObject {
     func ask(for string: String,
              parameters: [String: String]? = nil,
              body: RequestBody? = nil,
-             success: @escaping (ServerReply) -> Void,
+             success: @escaping (Data) -> Void,
              failure: @escaping (Error) -> Void) {
         
         guard let url = URLBuilder().url(for: string, parameters: parameters) else {
@@ -144,33 +144,17 @@ final class ServerService: NSObject {
                 }
                 return
             }
+             queue.async {
+            success(value)
             
-            do {
-                let reply = try ServerReply(data: value)
-                guard reply.status.isValid else {
-                    let error = TeambrellaErrorFactory.error(with: reply.status)
-                    queue.async {
-                        failure(error)
-                    }
-                    return
-                }
-                
-                queue.async {
-                    success(reply)
-                }
-                
-                let manager = SODManager(router: self.router)
-                manager.checkVersion(serverReply: reply)
-            } catch {
-                queue.async {
-                    failure(error)
-                }
             }
+
         }
         task.resume()
     }
     
     private func printAsString(data: Data?) {
+        guard Log.shared.types.contains(.serverRequest) else { return }
         guard let data = data else { return }
         
         if let string = try? JSONSerialization.jsonObject(with: data, options: []) {

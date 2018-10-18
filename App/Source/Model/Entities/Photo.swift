@@ -17,7 +17,7 @@
 import Foundation
 
 /**
- Photo is a string address to the photo file located on server
+ Photo is a string address of the photo file located on server
  */
 struct Photo: Decodable {
     let string: String

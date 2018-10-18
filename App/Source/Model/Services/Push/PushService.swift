@@ -69,21 +69,21 @@ final class PushService: NSObject {
 
     func startPushKit() {
         self.pushKit.onTokenUpdate = { token in
-            print("PushKit token: \(token)")
+            log("PushKit token: \(token)", type: .push)
         }
         pushKit.onPushReceived = { [weak self] dict, completion in
             guard let cmd = dict["cmd"] as? String, let command = PushKitCommand(rawValue: cmd) else {
-                print("No command found in PushKit dictionary: \(dict)")
+                log("No command found in PushKit dictionary: \(dict)", type: .push)
                 Statistics.log(event: .voipPushWrongPayload, dict: dict as? [String: Any])
                 return
             }
             
             Statistics.log(event: .voipPushReceived, dict: dict as? [String: Any])
-            print("got cmd string: \(cmd), command: \(command)")
+            log("got cmd string: \(cmd), command: \(command)", type: .push)
             switch command {
             case .getUpdates:
                 self?.teambrella.startUpdating { result in
-                    print("PushKit has finished it's job")
+                    log("PushKit has finished it's job", type: .push)
                     completion()
                 }
             case .getDatabaseDump:
@@ -186,7 +186,7 @@ final class PushService: NSObject {
 
     private func executeCommand() {
         guard let command = command else {
-            print("No remote command to execute")
+            log("No remote command to execute", type: .push)
             return
         }
 
@@ -202,8 +202,8 @@ final class PushService: NSObject {
         case .topicMessage:
             showTopic(details: command.topicDetails)
         case .newClaim:
-            showTopic(details: command.topicDetails)
-        //showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
+//            showTopic(details: command.topicDetails)
+        showNewClaim(teamID: command.teamIDValue, claimID: command.claimIDValue)
         case .approvedTeammate:
             logAsApprovedMember(payload: command)
         default:

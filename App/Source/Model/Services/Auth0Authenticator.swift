@@ -43,10 +43,10 @@ extension Auth0Authenticator: VKAuthenticating {
                 DispatchQueue.main.async {
                     switch result {
                     case .failure(let error):
-                        print("Error: \(error)")
+                        log("Error: \(error)", type: .error)
                         completion(nil, error)
                     case let .success(credentials):
-                        print("Credentials: \(credentials)")
+                        log("Credentials: \(credentials)", type: .info)
                         self?.credentials = credentials
                         completion(credentials.accessToken, nil)
                     }

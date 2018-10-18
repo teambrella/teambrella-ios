@@ -222,7 +222,6 @@ struct EthereumProcessor {
         let hash = GethHash(fromBytes: data)
         guard let hashData = hash?.getBytes() else {
             let string = data.hexString
-            log("Error getting sha3 hash from data: \(string)", type: [.crypto, .error])
             return try sha3(string)
         }
 

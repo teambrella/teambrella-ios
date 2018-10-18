@@ -38,7 +38,8 @@ final class TeambrellaService: NSObject {
         }
     }
 
-    private let dispatchQueue = DispatchQueue(label: "com.teambrella.teambrellaService.queue", qos: .background)
+    private let dispatchQueue = DispatchQueue.main
+        //DispatchQueue(label: "com.teambrella.teambrellaService.queue", qos: .background)
     private let server = BlockchainServer()
     private let keyStorage: KeyStorage = KeyStorage.shared
     lazy private var contentProvider: TeambrellaContentProvider = TeambrellaContentProvider(keyStorage: self.keyStorage)
