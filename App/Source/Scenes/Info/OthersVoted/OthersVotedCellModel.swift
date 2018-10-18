@@ -17,7 +17,7 @@
 import Foundation
 
 struct OthersVotedCellModel {
-    let avatar: String
+    let avatar: Avatar
     let name: String
     let subtitle: String
     let subtitleValue: String

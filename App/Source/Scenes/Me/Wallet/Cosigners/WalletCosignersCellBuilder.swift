@@ -29,7 +29,9 @@ struct WalletCosignersCellBuilder {
     
     static func populate(cell: UICollectionViewCell, with model: CosignerEntity) {
         if let cell = cell as? WalletCosignerCell {
-            cell.avatar.showAvatar(string: model.avatar)
+            if let url = model.avatar.url {
+                cell.avatar.showAvatar(url: url)
+            }
             cell.nameLabel.text = model.name
         }
     }

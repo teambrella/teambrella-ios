@@ -51,7 +51,7 @@ struct TeammateCellBuilder {
     private static func populateMeCell(cell: MeCell,
                                        with teammate: TeammateLarge,
                                        controller: TeammateProfileVC?) {
-        cell.avatar.showAvatar(string: teammate.basic.avatar)
+        cell.avatar.show(teammate.basic.avatar)
         cell.nameLabel.text = teammate.basic.name.entire
         if let city = teammate.basic.city {
             cell.infoLabel.text = city.uppercased()
@@ -226,7 +226,7 @@ struct TeammateCellBuilder {
         }
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
-        cell.middleAvatar.showAvatar(string: teammate.basic.avatar)
+        cell.middleAvatar.show(teammate.basic.avatar)
         
         if SimpleStorage().bool(forKey: .swipeHelperWasShown) {
             cell.swipeToVoteView.isHidden = true
@@ -385,8 +385,8 @@ struct TeammateCellBuilder {
         cell.addButton.addTarget(controller, action: #selector(TeammateProfileVC.tapAddToProxy), for: .touchUpInside)
     }
     
-    private static func populateDiscussion(cell: DiscussionCell, with stats: TopicEntity, avatar: String) {
-        cell.avatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: avatar)))
+    private static func populateDiscussion(cell: DiscussionCell, with stats: TopicEntity, avatar: Avatar) {
+        cell.avatarView.kf.setImage(with: avatar.url)
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         let minutesSinceLastPost = stats.minutesSinceLastPost
         switch minutesSinceLastPost {
@@ -417,8 +417,8 @@ struct TeammateCellBuilder {
     
     private static func populateCompactDiscussion(cell: DiscussionCompactCell,
                                                   with stats: TopicEntity,
-                                                  avatar: String) {
-        cell.avatarView.showAvatar(string: avatar)
+                                                  avatar: Avatar) {
+        cell.avatarView.show(avatar)
         cell.titleLabel.text = "Team.TeammateCell.applicationDiscussion".localized
         cell.timeLabel.text = DateProcessor().stringFromNow(seconds: stats.minutesSinceLastPost).uppercased()
         let message = stats.originalPostText.sane

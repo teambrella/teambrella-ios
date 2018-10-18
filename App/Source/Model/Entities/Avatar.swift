@@ -20,11 +20,21 @@ import Foundation
  Avatar is a string address to the user avarar file located on server.
  It differs from photo and can't be used instead of it
  */
-struct Avatar: Decodable {
+struct Avatar: Codable {
     static var none: Avatar { return Avatar("") }
     
     let string: String
-
+    
+    // image doesn't originate from our server
+    var isForeignImage: Bool { return string.hasPrefix("http") }
+    
+    var urlString: String {
+        if isForeignImage { return string }
+        return URLBuilder().avatarURLstring(for: string)
+    }
+    
+    var url: URL? { return URL(string: urlString) }
+    
     init(_ string: String) {
         self.string = string
     }
@@ -32,10 +42,10 @@ struct Avatar: Decodable {
     init(from decoder: Decoder) throws {
         string = try decoder.singleValueContainer().decode(String.self)
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(string)
+    }
 
-}
-
-extension Avatar {
-    var urlString: String { return URLBuilder().avatarURLstring(for: string) }
-    var url: URL? { return URL(string: urlString) }
 }

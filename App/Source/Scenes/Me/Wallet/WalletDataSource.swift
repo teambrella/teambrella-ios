@@ -75,7 +75,7 @@ class WalletDataSource {
         items.append(WalletFundingCellModel(maxCoverageFunding: wallet.coveragePart.nextCoverage,
                                             uninterruptedCoverageFunding: wallet.recommendedCrypto))
         let avatars = wallet.cosigners.map { $0.avatar }
-        var avatarsPreview: [String] = []
+        var avatarsPreview: [Avatar] = []
         if avatars.count >= 3 {
             avatarsPreview = Array(avatars[..<3])
         }

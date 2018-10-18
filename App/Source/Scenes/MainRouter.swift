@@ -382,7 +382,7 @@ final class MainRouter {
     }
     
     @discardableResult
-    func showCall(in viewController: UIViewController, to name: String, avatar: String, id: String) -> CallVC {
+    func showCall(in viewController: UIViewController, to name: String, avatar: Avatar, id: String) -> CallVC {
         guard let vc = CallVC.instantiate() as? CallVC else { fatalError("Error instantiating") }
         
         vc.name = name

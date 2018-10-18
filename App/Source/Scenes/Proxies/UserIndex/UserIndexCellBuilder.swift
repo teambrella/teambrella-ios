@@ -25,7 +25,7 @@ import Kingfisher
 struct UserIndexCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: UserIndexCellModel) {
         if let cell = cell as? UserIndexCell {
-            cell.avatarView.showAvatar(string: model.avatarString)
+            cell.avatarView.show(model.avatar)
             cell.nameLabel.text = model.name
             cell.detailsLabel.text = model.location.uppercased()
             cell.amountLabel.text = String(format: "%.1f", model.proxyRank)

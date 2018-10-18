@@ -26,29 +26,20 @@ extension UIImageView {
     func setStandardPlaceholder() {
         image = #imageLiteral(resourceName: "imagePlaceholder")
     }
-
+    
     func show(_ avatar: Avatar,
               options: KingfisherOptionsInfo? = nil,
               isFullSize: Bool = false,
               completion: ((UIImage?, NSError?) -> Void)? = nil) {
-        showAvatar(string: avatar.string, options: options, isFullSize: isFullSize, completion: completion)
+        guard let url = avatar.url else { return }
+        
+        showAvatar(url: url, options: options, completion: completion)
+        
     }
     
     func show(_ image: Photo,
               completion: ((UIImage?, NSError?) -> Void)? = nil) {
         showImage(string: image.string, completion: completion)
-    }
-    
-    func showAvatar(string: String,
-                    options: KingfisherOptionsInfo? = nil,
-                    isFullSize: Bool = false,
-                    completion: ((UIImage?, NSError?) -> Void)? = nil) {
-        let modified = isFullSize
-            ? URLBuilder().avatarURLstring(for: string, width: nil, crop: nil)
-            : URLBuilder().avatarURLstring(for: string)
-        guard let url = URL(string: modified) else { return }
-        
-        showAvatar(url: url, options: options, completion: completion)
     }
     
     func showAvatar(url: URL,

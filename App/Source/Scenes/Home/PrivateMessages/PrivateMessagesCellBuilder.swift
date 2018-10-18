@@ -28,7 +28,7 @@ struct PrivateMessagesCellBuilder {
     
     static func populate(cell: UICollectionViewCell, with model: PrivateChatUser) {
         if let cell = cell as? PrivateChatUserCell {
-            cell.avatarView.showAvatar(string: model.avatar)
+            cell.avatarView.show(model.avatar)
             cell.nameLabel.text = model.name
             cell.messageLabel.text = model.text
             let minutes = model.minutesSinceLast

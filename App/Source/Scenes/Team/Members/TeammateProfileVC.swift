@@ -58,6 +58,8 @@ final class TeammateProfileVC: UIViewController, Routable {
     
     private var currentRiskVote: Double?
     
+    lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
+    
     //    var router: MainRouter!
     //    var session: Session!
     //    var currencyName: String!
@@ -87,22 +89,7 @@ final class TeammateProfileVC: UIViewController, Routable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setTitle()
-        
-        dataSource.loadEntireTeammate(completion: { [weak self] extendedTeammate in
-            HUD.hide()
-            guard let `self` = self else { return }
-            
-            self.prepareLinearFunction()
-            self.setTitle()
-            self.collectionView.reloadData()
-            
-            if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
-                self.scrollToVote = false
-                self.collectionView.scrollToItem(at: index, at: .top, animated: true)
-            }
-            }, failure: {  [weak self] error in
-                self?.navigationController?.popViewController(animated: true)
-        })
+        reloadTeammate()
     }
     
     override func viewDidLayoutSubviews() {
@@ -251,6 +238,24 @@ final class TeammateProfileVC: UIViewController, Routable {
         }
     }
     
+    private func reloadTeammate() {
+        dataSource.loadEntireTeammate(completion: { [weak self] extendedTeammate in
+            HUD.hide()
+            guard let self = self else { return }
+            
+            self.prepareLinearFunction()
+            self.setTitle()
+            self.collectionView.reloadData()
+            
+            if self.scrollToVote, let index = self.dataSource.votingCellIndexPath {
+                self.scrollToVote = false
+                self.collectionView.scrollToItem(at: index, at: .top, animated: true)
+            }
+            }, failure: {  [weak self] error in
+                self?.navigationController?.popViewController(animated: true)
+        })
+    }
+    
     private func registerCells() {
         collectionView.register(DiscussionCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.dialog.rawValue)
         collectionView.register(MeCell.nib, forCellWithReuseIdentifier: TeammateProfileCellType.me.rawValue)
@@ -291,7 +296,7 @@ final class TeammateProfileVC: UIViewController, Routable {
             }
             view.radarView.centerY = -view.bounds.midY
             ViewDecorator.shadow(for: view, opacity: 0.05, radius: 4)
-            view.avatarView.showAvatar(string: teammate.basic.avatar)
+            view.avatarView.show(teammate.basic.avatar)
             if let left = view.leftNumberView {
                 let genderization = teammate.basic.gender == .male ? "Team.TeammateCell.HeWouldCoverMe".localized
                     : "Team.TeammateCell.SheWouldCoverMe".localized
@@ -348,6 +353,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         service.sinch.call(userID: teammateID, name: myName.entire)
         service.router.showCall(in: self, to: basic.name.entire, avatar: basic.avatar, id: teammateID)
     }
+
 }
 
 // MARK: UICollectionViewDataSource
@@ -410,11 +416,20 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             }
             view.title.text = teammate.basic.name.entire
             //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
-            view.avatarView.present(avatarString: teammate.basic.avatar)
+            if teammate.basic.avatar.isForeignImage == false {
+                view.avatarView.present(avatarString: teammate.basic.avatar.string)
+            } else {
+                (view.avatarView as? UIImageView)?.show(teammate.basic.avatar)
+            }
+            
             view.avatarView.onTap = { [weak self] view in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 
+                if self.dataSource.isMe && teammate.basic.avatar.isForeignImage {
+                    self.picker.showOptions()
+                } else {
                 view.fullscreen(in: self, imageStrings: nil)
+                }
             }
             //cell.avatarView.kf.setImage(with: url)
             if let left = view.leftNumberView {
@@ -654,8 +669,10 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
             
             avatarView.isHidden = false
             label.isHidden = false
-            avatarView.showAvatar(string: teammate.avatar,
-                                  options: [.transition(.fade(0.5)), .forceTransition])
+            avatarView.show(teammate.avatar,
+                            options: [.transition(.fade(0.5)), .forceTransition],
+                            isFullSize: true,
+                            completion: nil)
             label.text = String(format: "%.2f", teammate.risk)
             label.backgroundColor = .blueWithAHintOfPurple
         }
@@ -728,5 +745,24 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
     
     func averageVotingRisk(cell: VotingRiskCell) -> Double {
         return dataSource.teammateLarge?.voting?.averageRisk ?? 0
+    }
+}
+
+// MARK: ImagePickerControllerDelegate
+extension TeammateProfileVC: ImagePickerControllerDelegate {
+    func imagePicker(controller: ImagePickerController, didSendImage image: UIImage, urlString: String) {
+        reloadTeammate()
+        service.router.masterTabBar?.fetchAvatar()
+        HUD.hide()
+    }
+    
+    func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
+        HUD.show(.progress)
+        controller.send(image: image, isAvatar: true)
+        
+    }
+    
+    func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
+        HUD.hide()
     }
 }

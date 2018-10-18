@@ -24,7 +24,7 @@ import Foundation
 struct UserIndexCellModel: Decodable {
     enum CodingKeys: String, CodingKey {
         case userID = "UserId"
-        case avatarString = "Avatar"
+        case avatar = "Avatar"
         case name = "Name"
         case location = "Location"
         case proxyRank = "ProxyRank"
@@ -36,7 +36,7 @@ struct UserIndexCellModel: Decodable {
     }
     
     let userID: String
-    let avatarString: String
+    let avatar: Avatar
     let proxyRank: Double
     let discussionFreq: Double?
     let decisionFreq: Double?

@@ -38,7 +38,7 @@ struct WalletFundingCellModel: WalletCellModel {
 }
 
 struct WalletButtonsCellModel: WalletCellModel {
-    let avatars: [String]
-    let avatarsPreview: [String]
+    let avatars: [Avatar]
+    let avatarsPreview: [Avatar]
 
 }

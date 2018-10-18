@@ -24,14 +24,14 @@ import Foundation
 struct ProxyForCellModel: Decodable {
     enum CodingKeys: String, CodingKey {
         case userID = "UserId"
-        case avatarString = "Avatar"
+        case avatar = "Avatar"
         case name = "Name"
         case lastVoted = "LastVoted"
         case amount = "Commission"
     }
     
     let userID: String
-    let avatarString: String
+    let avatar: Avatar
     let name: String
     let lastVoted: Date?
     let amount: Double // commission

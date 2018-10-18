@@ -28,16 +28,8 @@ struct CosignerEntity: Decodable {
         case userId = "UserId"
     }
     
-    var avatar: String
+    var avatar: Avatar
     var name: String
     var userId: String
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-    
-        avatar = try container.decode(String.self, forKey: .avatar)
-        name = try container.decode(String.self, forKey: .name)
-        userId = try container.decode(String.self, forKey: .userId)
-    }
 
 }
