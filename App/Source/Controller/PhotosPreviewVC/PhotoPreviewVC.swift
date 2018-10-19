@@ -85,7 +85,7 @@ class PhotoPreviewVC: UICollectionViewController {
             
         } else {
             cell.imageView.image = nil
-        cell.imageView.showImage(string: imageString)
+            cell.imageView.showImage(string: imageString, needHeaders: true)
         }
         cell.cancelButton.removeTarget(self, action: nil, for: .allEvents)
         cell.cancelButton.addTarget(self, action: #selector(cellTapCancel), for: .touchUpInside)

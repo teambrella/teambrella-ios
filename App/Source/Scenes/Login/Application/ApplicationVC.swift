@@ -135,15 +135,6 @@ class ApplicationVC: UICollectionViewController, Routable {
         guard let model = model as? ApplicationInputCellModel else { return }
         guard let cellTextField = cell.inputTextField else { return }
         
-        let result: (Result<[String]>) -> Void = { result in
-            switch result {
-            case let .value(value):
-                cellTextField.suggestions = value
-            case let .error(error):
-                log(error)
-            }
-        }
-        
         cell.onUserInput = { [weak self] text in
             self?.userData.update(with: text, model: model)
         }
@@ -167,26 +158,6 @@ class ApplicationVC: UICollectionViewController, Routable {
             vc.textField.placeholder = cellTextField.placeholder
             }
         }
-        
-        /*
-        switch model.type {
-        case .item:
-            cell.inputTextField.isAutocompleteEnabled = true
-            cell.onTextChange = { textField in
-                service.dao.getCars(string: textField.text).observe(with: result)
-            }
-            cell.onBeginEditing = { textField in
-                service.router.showSuggestions(in: self, delegate: self, text: textField.text)
-            }
-        case .city:
-            cell.inputTextField.isAutocompleteEnabled = true
-            cell.onTextChange = { textField in
-                service.dao.getCities(string: textField.text).observe(with: result)
-            }
-        default:
-            break
-        }
- */
     }
 
     override func collectionView(_ collectionView: UICollectionView,

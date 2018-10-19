@@ -68,7 +68,7 @@ struct ClaimCellBuilder {
             }
             cell.setupGallery(with: imageURLStrings, options: [.requestModifier(modifier)])
         }
-        cell.objectView.showImage(string: claim.discussion.smallPhoto)
+        cell.objectView.showImage(string: claim.discussion.smallPhoto, needHeaders: true)
         cell.titleLabel.text = "Team.ClaimCell.claimID_format".localized(claim.id)
         cell.textLabel.text = claim.discussion.originalPostText.sane
         cell.unreadCountLabel.text = "\(claim.discussion.unreadCount)"

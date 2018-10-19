@@ -36,12 +36,11 @@ struct RequestBody {
         self.publicKey = publicKey
     }
     
-    init(key: Key, payload: [String: Any]? = nil) {
-        let key = key
+    init(key: Key?, payload: [String: Any]? = nil) {
         self.payload = payload
-        self.timestamp = key.timestamp
-        self.signature = key.signature
-        self.publicKey = key.publicKey
+        self.timestamp = key?.timestamp ?? 0
+        self.signature = key?.signature ?? ""
+        self.publicKey = key?.publicKey ?? ""
     }
     
     var dictionary: [String: Any] {
