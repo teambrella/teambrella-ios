@@ -62,6 +62,8 @@ final class TeambrellaService: NSObject {
     }
     
     func startUpdating(completion: @escaping (UIBackgroundFetchResult) -> Void) {
+        guard !service.keyStorage.isDemoUser else { return }
+        
         sync(completion: completion)
     }
 
