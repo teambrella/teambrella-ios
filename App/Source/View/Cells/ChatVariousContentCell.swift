@@ -405,7 +405,7 @@ class ChatImageView: UIImageView {
     }
     
     func setStartingImage(small: String, large: String) {
-        self.showImage(string: small)
+        self.showImage(string: small, needHeaders: true)
         startingImageString = large
         
         galleryView?.removeFromSuperview()

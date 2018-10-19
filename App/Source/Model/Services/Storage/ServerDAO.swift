@@ -501,7 +501,8 @@ class ServerDAO: DAO {
         let inviteCode = inviteCode ?? ""
         return startRequest( body: ["teamId": teamID,
                                     "invite": inviteCode],
-                             type: .welcome)
+                             type: .welcome,
+                             isKeyNeeded: false)
     }
     
     private func successHandler<Value>(promise: Promise<Value>) -> (ServerReplyBox<Value>) -> Void {
@@ -541,13 +542,21 @@ class ServerDAO: DAO {
     }
     
     private func startRequest<Value: Decodable>(body: [String: Any],
-                                                type: TeambrellaPostRequestType) -> Promise<Value> {
+                                                type: TeambrellaPostRequestType,
+                                                isKeyNeeded: Bool = true) -> Promise<Value> {
         let promise = Promise<Value>()
-        freshKey { key in
-            let body = RequestBody(key: key, payload: body)
-            let request = self.standardRequest(promise: promise, type: type, body: body)
-            request.start(server: self.server)
+        if isKeyNeeded {
+            freshKey { key in
+                let body = RequestBody(key: key, payload: body)
+                let request = self.standardRequest(promise: promise, type: type, body: body)
+                request.start(server: self.server)
+            }
+        } else {
+            let body = RequestBody(key: nil, payload: body)
+            let request = standardRequest(promise: promise, type: type, body: body)
+            request.start(server: server)
         }
+       
         return promise
     }
     

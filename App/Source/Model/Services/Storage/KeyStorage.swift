@@ -23,7 +23,7 @@ import Foundation
 
 final class KeyStorage {
     enum LastUserType: String {
-        case none, real,  demo
+        case none, real, demo
     }
     
     static let shared = KeyStorage()

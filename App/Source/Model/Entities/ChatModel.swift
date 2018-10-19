@@ -112,7 +112,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
 
     struct BasicPart: Decodable {
         let userID: String
-        let avatar: String
+        let avatar: Avatar
         let title: String?
 
         let model: String?

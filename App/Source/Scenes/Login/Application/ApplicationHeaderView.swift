@@ -26,7 +26,7 @@ class ApplicationHeaderView: UICollectionReusableView, ApplicationCell {
             fatalError("Wrong header model")
         }
         
-        imageView.show(model.image)
+        imageView.show(model.image, needHeaders: false)
         nameLabel.text = model.name
         cityLabel.text = model.city.localizedUppercase
         
