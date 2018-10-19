@@ -184,8 +184,10 @@ final class InitialVC: UIViewController {
                     return
                 } else {
                     service.keyStorage.clearLastUserType()
-                    SimpleStorage().store(bool: false, forKey: .didLogWithKey)
-//                    service.keyStorage.deleteStoredKeys()
+                    SimpleStorage().store(bool: true, forKey: .isRegistering)
+                    defer {
+                        loginBlueVC?.tapNextButton()
+                    }
                 }
             default:
                 break
