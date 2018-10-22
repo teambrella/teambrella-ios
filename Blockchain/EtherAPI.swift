@@ -105,6 +105,7 @@ class EtherAPI {
          }
          */
         
+        log("Pushing tx to etherscan hex: \(hex)", type: .cryptoRequests)
         sendPostRequest(urlString: "api",
                         parameters:[
                             "module": "proxy",
@@ -125,6 +126,7 @@ class EtherAPI {
                         "action": "eth_getTransactionCount",
                         "address": address],
                        success: { string in
+                        log("nonce for address: \(address) is: \(string)", type: .cryptoDetails)
                         success(string)
         }) { error in
             failure(error)
@@ -144,6 +146,7 @@ class EtherAPI {
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        log("check tx hash \(hash) with request: \(request)", type: .cryptoRequests)
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 failure(error ?? EtherAPIError.noData)
@@ -168,6 +171,7 @@ class EtherAPI {
     
     func readContractString(to: String, callDataString: String) -> Future<String> {
         let promise = Promise<String>()
+        log("read contract to: \(to), callData: \(callDataString)", type: .cryptoRequests)
         sendGetRequest(urlString: "api",
                        parameters: [
                         "module": "proxy",
@@ -183,6 +187,7 @@ class EtherAPI {
     }
     
     func checkBalance(address: String, success: @escaping (Decimal) -> Void, failure: @escaping failureClosure) {
+        log("Checking balance for: \(address)", type: .cryptoRequests)
         sendGetRequest(urlString: "api",
                        parameters: [
                         "module": "account",
@@ -193,7 +198,9 @@ class EtherAPI {
                             failure(EtherAPIError.corruptedData)
                             return
                         }
+                        log("Balance received: \(string)", type: .cryptoDetails)
                         balance = balance / 1_000_000_000_000_000_000
+                        log("Balance converted: \(balance)", type: .cryptoDetails)
                         success(balance)
         }) { error in
             failure(error)

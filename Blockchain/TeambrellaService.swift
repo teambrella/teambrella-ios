@@ -399,7 +399,7 @@ final class TeambrellaService: NSObject {
         log("Teambrella service has \(list.count) cosignable transactions", type: .crypto)
         let user = contentProvider.user
         for tx in list {
-            log("Cosigning tx \(tx.id.uuidString)", type: .cryptoDetails)
+            log("Cosigning tx \(tx.id.uuidString), of kind \(String(describing: tx.kind))", type: .cryptoDetails)
             do {
                 try cosignTransaction(transaction: tx, userID: user.id)
             } catch {

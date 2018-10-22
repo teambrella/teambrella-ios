@@ -322,6 +322,7 @@ class EthWallet {
 
     func cosignPay(transaction: Tx, payFrom: TxInput) throws -> Data {
         let opNum = payFrom.previousTransactionIndex + 1
+        log("Cosign pay with opNum: \(opNum)", type: .cryptoDetails)
         guard let sourceMultisig = transaction.fromMultisig else {
             log("There is no from Multisig", type: [.error, .cryptoDetails])
             throw EthWalletError.noFromMultisig
@@ -329,7 +330,9 @@ class EthWallet {
 
         let teamID = sourceMultisig.teamID
         let payToAddresses = toAddresses(destinations: transaction.outputs)
+        log("pay to addresses: \(payToAddresses)", type: .cryptoDetails)
         let payToValues = toValues(destinations: transaction.outputs)
+        log("pay to values: \(payToValues)", type: .cryptoDetails)
         let h = try hashForPaySignature(teamID: teamID, opNum: opNum, addresses: payToAddresses, values: payToValues)
         log("Hash created for Tx transfer(s): \(h.hexString)", type: .crypto)
         let sig = try processor.signHashAndCalculateV(hash256: h)
@@ -398,8 +401,10 @@ class EthWallet {
         let a2 = String(format: "%064x", opNum)
         let a3: [String] = addresses.map { address in hex.truncatePrefix(string: address) }
         let a4: [String] = values.map { value in hex.truncatePrefix(string: value) }
+        log("Preparing hash for pay signature\na0 (prefix):\t\(a0),\na1 (teamID):\t\(a1)\na2 (opNum):\t\t\(a2)\n" +
+            "a3 (addresses):\t\(a3)\na4 (values):\t\(a4)", type: .cryptoDetails)
         let data = try hex.data(from: a0, a1, a2, a3, a4)
-        log("hashForPaySignature values: \(values);\ndata: \(data.hexString))", type: .cryptoDetails)
+        log("hashForPaySignature data: \(data.hexString))", type: .cryptoDetails)
         return try processor.sha3(data)
     }
 
@@ -531,16 +536,24 @@ class EthWallet {
                 let methodID = Constant.methodIDtransfer
 
                 let opNum = payFrom.previousTransactionIndex + 1
+                log("Publish move with opNum: \(opNum)", type: .cryptoDetails)
                 let payToAddresses = self.toAddresses(destinations: tx.outputs)
+                log("Pay to addresses: \(payToAddresses)", type: .cryptoDetails)
                 let payToValues = self.toValues(destinations: tx.outputs)
+                log("Pay to values: \(payToValues)", type: .cryptoDetails)
 
                 var sig: [Data] = [Data(), Data(), Data()]
                 var pos: [Int] = [0, 0, 0]
                 var txSignatures: [Int: TxSignature] = [:]
+                log("Creating dictionary of signatures", type: .cryptoDetails)
                 for input in tx.inputs {
-                    guard let signatures = input.signaturesValue as? Set<TxSignature> else { continue }
+                    guard let signatures = input.signaturesValue as? Set<TxSignature> else {
+                        log("Input \(input) had no signatures", type: [.cryptoDetails, .error])
+                        continue
+                    }
 
                     for signature in signatures {
+                        log("associating \(signature), with \(signature.teammateID)", type: .cryptoDetails)
                         txSignatures[signature.teammateID] = signature
                     }
                 }
@@ -555,10 +568,13 @@ class EthWallet {
                     if let id = cosigner.teammate?.id, let s = txSignatures[id] {
                         pos[j] = idx
                         sig[j] = s.signature
+                        log("Added signature: \(s.signature) to position \(idx)", type: .cryptoDetails)
                         j += 1
                         if j >= 3 {
                             break
                         }
+                    } else {
+                        log("Did not add: \(cosigner)", type: .cryptoDetails)
                     }
                 }
 
