@@ -133,8 +133,12 @@ extension SuggestionsVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         textField.text = nil
-        textField.insertText(dataSource.items[indexPath.row])
+        let text = dataSource.items[indexPath.row]
+        textField.insertText(text)
         tableView.deselectRow(at: indexPath, animated: true)
+        if text.hasSuffix(" ") == false {
+            close()
+        }
     }
 }
 
