@@ -42,7 +42,7 @@ class SuggestionsVC: UIViewController, Routable {
     
     var dataSource: SuggestionsFetcher! {
         didSet {
-            guard let text = textField.text, text != "" else { return }
+            let text = textField.text ?? ""
             
             dataSource.updateSuggestions(for: text, completion: { [weak self] in
                 self?.tableView.reloadData()
@@ -54,6 +54,7 @@ class SuggestionsVC: UIViewController, Routable {
         super.viewDidLoad()
         
         textField.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+        textField.autocapitalizationType = .words
         
         confirmButton.setTitle("General.choose".localized, for: .normal)
         

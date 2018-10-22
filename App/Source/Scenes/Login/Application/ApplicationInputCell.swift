@@ -65,12 +65,15 @@ extension ApplicationInputCell: ApplicationCell {
         headlightLabel.text = model.headlightText
         inputTextField.text = userData.text(for: model)
         inputTextField.placeholder = model.placeholderText
+        inputTextField.autocapitalizationType = .none
         
         switch model.type {
         case .email:
-           inputTextField.keyboardType = .emailAddress
+            inputTextField.keyboardType = .emailAddress
+        case .name:
+            inputTextField.autocapitalizationType = .words
         default:
-           inputTextField.keyboardType = .default
+            inputTextField.keyboardType = .default
         }
     }
 }
