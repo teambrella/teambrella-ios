@@ -20,7 +20,7 @@ import Geth
 
 class EthWallet {
     struct Constant {
-        static let contractFile                 = "ObsoleteContract"
+        static let contractFile                 = "Contract"
         static let methodIDteamID               = "8d475461"
         static let methodIDcosigners            = "22c5ec0f"
         static let methodIDtransfer             = "91f34dbd"
@@ -110,6 +110,7 @@ class EthWallet {
             return
         }
         
+        log("Creating one Wallet", type: .cryptoDetails)
         do {
             var cryptoTx = try processor.contractTx(nonce: myNonce,
                                                     gasLimit: gaslLimit,
@@ -117,7 +118,7 @@ class EthWallet {
                                                     byteCode: contract,
                                                     arguments: [addresses, multisig.teamID])
             cryptoTx = try processor.signTx(unsignedTx: cryptoTx, isTestNet: isTestNet)
-            log("CryptoTx created teamID: \(multisig.teamID), tx: \(cryptoTx)", type: .crypto)
+            log("CryptoTx created with teamID: \(multisig.teamID), tx: \(cryptoTx)", type: .crypto)
             publish(cryptoTx: cryptoTx, completion: completion, failure: failure)
         } catch let AbiArguments.AbiArgumentsError.unEncodableArgument(wrongArgument) {
             log("AbiArguments failed to accept the wrong argument: \(wrongArgument)", type: [.error, .cryptoDetails])

@@ -5571,7 +5571,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA -DMAIN_APP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -5619,7 +5619,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA -DMAIN_APP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
