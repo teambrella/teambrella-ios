@@ -13,11 +13,11 @@ def ethereum_pods
 end
 
 def social_pods
-    pod 'FBSDKCoreKit'
-  pod 'FBSDKLoginKit'
+    #  pod 'FBSDKCoreKit'
+    #  pod 'FBSDKLoginKit'
 
-  pod 'Auth0', '~> 1.0'
-  pod 'SimpleKeychain' # dependency for the Auth0
+    #  pod 'Auth0', '~> 1.0'
+    #  pod 'SimpleKeychain' # dependency for the Auth0
 end
 
 def firebase_pods
@@ -38,13 +38,13 @@ def swift_frameworks_pods
   pod 'Starscream'
   pod 'SwiftDate'
   pod 'SwiftMessages', '~> 5.0'
-  pod 'MessengerKit', :git => 'https://github.com/steve228uk/MessengerKit.git'
+  #  pod 'MessengerKit', :git => 'https://github.com/steve228uk/MessengerKit.git'
 
   pod 'Fabric'
   pod 'Crashlytics'
 
   pod 'SinchRTC'
-  pod 'UXCam'
+  #  pod 'UXCam'
 
   pod 'BigNumber', :git => 'https://github.com/mkrd/Swift-Big-Integer.git'
   pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'

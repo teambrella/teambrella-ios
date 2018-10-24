@@ -19,13 +19,13 @@
  * along with this program.  If not, see<http://www.gnu.org/licenses/>.
  */
 
-import Auth0
+//import Auth0
 import Fabric
-import FBSDKCoreKit
+//import FBSDKCoreKit
 import Firebase
 import PushKit
 import UIKit
-import UXCam
+//import UXCam
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         service.push.register(application: application)
         service.push.startPushKit()
@@ -59,16 +59,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         
-        if source.hasPrefix("com.facebook") {
-            log("Opening app from Facebook application", type: .social)
-            return FBSDKApplicationDelegate.sharedInstance().application(app,
-                                                                         open: url,
-                                                                         sourceApplication: source,
-                                                                         annotation: options[.annotation])
-        } else {
-            log("Opening app from Auth0", type: .social)
-            return Auth0.resumeAuth(url, options: options)
-        }
+//        if source.hasPrefix("com.facebook") {
+//            log("Opening app from Facebook application", type: .social)
+//            return FBSDKApplicationDelegate.sharedInstance().application(app,
+//                                                                         open: url,
+//                                                                         sourceApplication: source,
+//                                                                         annotation: options[.annotation])
+//        } else {
+//            log("Opening app from Auth0", type: .social)
+//            return Auth0.resumeAuth(url, options: options)
+//        }
+        return true
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {

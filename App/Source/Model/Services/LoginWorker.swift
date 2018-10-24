@@ -14,8 +14,8 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
-import FBSDKCoreKit
-import FBSDKLoginKit
+//import FBSDKCoreKit
+//import FBSDKLoginKit
 import Foundation
 
 class LoginWorker {
@@ -66,19 +66,19 @@ class LoginWorker {
     
     func loginFacebook(in controller: UIViewController,
                        completion: @escaping CompletionHandler) {
-        let manager = FBSDKLoginManager()
-        manager.logOut()
-        // remove user_friends permission to comply with FBSDK 3.0
-        let permissions =  ["public_profile", "email"]
-        manager.logIn(withReadPermissions: permissions, from: controller) { result, error in
-            completion(result?.token?.tokenString, error)
-        }
+//        let manager = FBSDKLoginManager()
+//        manager.logOut()
+//        // remove user_friends permission to comply with FBSDK 3.0
+//        let permissions =  ["public_profile", "email"]
+//        manager.logIn(withReadPermissions: permissions, from: controller) { result, error in
+//            completion(result?.token?.tokenString, error)
+//        }
     }
     
     func loginVK(in controller: UIViewController,
                  completion: @escaping CompletionHandler) {
-        let auth0 = Auth0Authenticator()
-        auth0.authWithVK(completion: completion)
+//        let auth0 = Auth0Authenticator()
+//        auth0.authWithVK(completion: completion)
     }
     
     func register(userData: UserApplicationData, completion: @escaping (Error?) -> Void) {
