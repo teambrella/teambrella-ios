@@ -24,7 +24,7 @@ import Foundation
 final class TeambrellaService: NSObject {
     struct Constant {
         static let maxAttempts = 3
-        static let gasLimit = 1300001
+        static let gasLimit = 1_600_001
     }
     
     var key: Key { return Key(base58String: self.contentProvider.user.privateKey(in: keyStorage),
@@ -187,7 +187,11 @@ final class TeambrellaService: NSObject {
         queue.addOperation {
             //self.queue.isSuspended = true
             self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
-                log("wallet created \(success)", type: .crypto)
+                if success {
+                    log("wallet created", type: .crypto)
+                } else {
+                     log("wallet not created", type: .crypto)
+                }
                 //self.queue.isSuspended = false
             })
         }

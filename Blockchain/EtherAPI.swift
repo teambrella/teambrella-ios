@@ -270,7 +270,6 @@ class EtherAPI {
             
         }
         log("Sending request: \(task.currentRequest)", type: .cryptoRequests)
-        log("HTTP fields: \(task.currentRequest?.allHTTPHeaderFields)", type: .cryptoDetails)
         task.resume()
         session.finishTasksAndInvalidate()
     }
