@@ -23,6 +23,7 @@ import BigNumber
 import ExtensionsPack
 import Foundation
 import Geth
+import SwiftKeccak
 
 /**
  * Interaction with Ethereum wallet
@@ -214,15 +215,22 @@ struct EthereumProcessor {
     
     /// returns hash made by Keccak algorithm
     func sha3(_ string: String) throws -> Data {
+        let hash = string.keccak()
+        return hash
+       /*
         let hash = GethHash(fromHex: string)
         guard let hashData = hash?.getBytes() else {
             throw EthereumProcessorError.failedSHA3Hash(string)
         }
         return hashData
+ */
     }
     
     /// returns hash made by Keccak algorithm
     func sha3(_ data: Data) throws -> Data {
+        let hash = data.keccak()
+        return hash
+        /*
         let hash = GethHash(fromBytes: data)
         guard let hashData = hash?.getBytes() else {
             let string = data.hexString
@@ -230,6 +238,7 @@ struct EthereumProcessor {
         }
 
         return hashData
+ */
     }
 
     func signHash(hash256: Data) throws -> Data {
