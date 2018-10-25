@@ -501,6 +501,8 @@
 		6D12BF6A216B9B44005AF3FB /* SugggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12BF68216B9B44005AF3FB /* SugggestionsCell.swift */; };
 		6D12C2EB1FCD6C6200A8926D /* Info.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D12C2E81FCD6C6200A8926D /* Info.strings */; };
 		6D1616AA20D280C600C8FBBE /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1616A920D280C600C8FBBE /* SharedAssets.xcassets */; };
+		6D17A510218221B200A77DA2 /* SwiftKeccak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D17A50F218221B200A77DA2 /* SwiftKeccak.framework */; };
+		6D17A511218221B200A77DA2 /* SwiftKeccak.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D17A50F218221B200A77DA2 /* SwiftKeccak.framework */; };
 		6D1B287520C6B795003B2D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1B287420C6B795003B2D32 /* Assets.xcassets */; };
 		6D1B287720C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
 		6D1B287820C6C3D1003B2D32 /* PushKitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1B287620C6C3D1003B2D32 /* PushKitCommand.swift */; };
@@ -1365,6 +1367,7 @@
 		6D1653B41F56B7F00022D5EA /* PrivateMessagesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesDataSource.swift; path = Scenes/Home/PrivateMessages/PrivateMessagesDataSource.swift; sourceTree = "<group>"; };
 		6D1653B61F56C08A0022D5EA /* PrivateMessagesCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateMessagesCellBuilder.swift; path = Scenes/Home/PrivateMessages/PrivateMessagesCellBuilder.swift; sourceTree = "<group>"; };
 		6D1683871F13BE3E002B52EE /* DropDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropDownButton.swift; path = View/Buttons/DropDownButton.swift; sourceTree = "<group>"; };
+		6D17A50F218221B200A77DA2 /* SwiftKeccak.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftKeccak.framework; path = Carthage/Build/iOS/SwiftKeccak.framework; sourceTree = "<group>"; };
 		6D1A9B241F55CF92004192AC /* PrivateChatUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatUser.swift; path = Model/Entities/PrivateChatUser.swift; sourceTree = "<group>"; };
 		6D1A9B261F55D306004192AC /* PrivateChatUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivateChatUserCell.swift; path = View/PrivateChatUserCell.swift; sourceTree = "<group>"; };
 		6D1A9B271F55D306004192AC /* PrivateChatUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrivateChatUserCell.xib; path = View/PrivateChatUserCell.xib; sourceTree = "<group>"; };
@@ -1928,6 +1931,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D17A511218221B200A77DA2 /* SwiftKeccak.framework in Frameworks */,
 				6D8A627F20C07761003CD95B /* PushKit.framework in Frameworks */,
 				6D0524D920A5D838000B3247 /* SpriteKit.framework in Frameworks */,
 				6EB6C5A3A1AD4F95F386210D /* libPods-Teambrella.a in Frameworks */,
@@ -1945,6 +1949,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D17A510218221B200A77DA2 /* SwiftKeccak.framework in Frameworks */,
 				6D8A624E20C02B82003CD95B /* PushKit.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
 				FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */,
@@ -3310,6 +3315,7 @@
 		A3DA38407FE7184F4611CDC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6D17A50F218221B200A77DA2 /* SwiftKeccak.framework */,
 				6D8A624D20C02B82003CD95B /* PushKit.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
 				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
@@ -3998,13 +4004,14 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		6D05253620A5D838000B3247 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4040,28 +4047,24 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png",
-				"${PODS_CONFIGURATION_BUILD_DIR}/MessengerKit/MessengerKit.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/PKHUD/PKHUDResources.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/XLPagerTabStrip/XLPagerTabStrip.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MessengerKit.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PKHUDResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLPagerTabStrip.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6D05254620A5F336000B3247 /* Swiftlint */ = {
@@ -4084,6 +4087,7 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeccak.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -4168,28 +4172,24 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh",
-				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
 				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png",
-				"${PODS_CONFIGURATION_BUILD_DIR}/MessengerKit/MessengerKit.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/PKHUD/PKHUDResources.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/XLPagerTabStrip/XLPagerTabStrip.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MessengerKit.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PKHUDResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLPagerTabStrip.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8F73F72AC1E236FABBC621AB /* [CP] Check Pods Manifest.lock */ = {
@@ -5555,6 +5555,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -5571,7 +5572,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA -DMAIN_APP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -5603,6 +5604,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -5619,7 +5621,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA -DMAIN_APP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

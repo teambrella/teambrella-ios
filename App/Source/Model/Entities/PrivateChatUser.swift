@@ -32,7 +32,7 @@ struct PrivateChatUser: Decodable {
     }
     
     let id: String
-    let avatar: String
+    let avatar: Avatar
     let name: String
     let text: String
     let unreadCount: Int
@@ -52,7 +52,11 @@ struct PrivateChatUser: Decodable {
         case .privateMessage:
             self.id = remotePayload.userIDValue
             self.name = remotePayload.userNameValue
-            self.avatar = remotePayload.avatar ?? ""
+            if let avatar = remotePayload.avatar {
+                self.avatar = Avatar(avatar)
+            } else {
+                self.avatar = Avatar.none
+            }
             self.text = remotePayload.messageValue
             self.unreadCount = 0
             self.minutesSinceLast = 0

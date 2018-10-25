@@ -20,7 +20,7 @@ struct EthereumAPIReply: Codable {
     let jsonrpc: String?
     let error: EthereumError?
     let result: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case jsonrpc = "jsonrpc"
         case error = "error"
@@ -32,7 +32,7 @@ struct EthereumError: Codable, Error {
     let code: Int
     let message: String
     let data: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case code = "code"
         case message = "message"
@@ -44,7 +44,7 @@ struct EthereumTxReceiptReply: Codable {
     let jsonrpc: String
     let error: EthereumError?
     let result: TxReceipt?
-
+    
     enum CodingKeys: String, CodingKey {
         case jsonrpc = "jsonrpc"
         case error = "error"
@@ -55,7 +55,7 @@ struct TxReceipt: Codable {
     let blockNumber: String
     let gasUsed: String
     let contractAddress: String
-
+    
 }
 
 class EtherAPI {
@@ -71,11 +71,6 @@ class EtherAPI {
     typealias failureClosure = (Error) -> Void
     
     let server: String
-
-    lazy private var session: URLSession = {
-        let config = URLSessionConfiguration.default
-        return URLSession(configuration: config)
-    }()
     
     init(server: String?) {
         self.server = server ?? "https://api.etherscan.io/"
@@ -105,6 +100,7 @@ class EtherAPI {
          }
          */
         
+        log("Pushing tx to etherscan", type: .cryptoRequests)
         sendPostRequest(urlString: "api",
                         parameters:[
                             "module": "proxy",
@@ -112,8 +108,10 @@ class EtherAPI {
             ],
                         body: ["hex": hex],
                         success: { string in
+                            log("Pushed tx result: \(string)", type: .cryptoDetails)
                             success(string)
         }) { error in
+            log("Push tx error: \(error)", type: [.cryptoDetails, .error])
             failure(error)
         }
     }
@@ -125,6 +123,7 @@ class EtherAPI {
                         "action": "eth_getTransactionCount",
                         "address": address],
                        success: { string in
+                        log("nonce for address: \(address) is: \(string)", type: .cryptoDetails)
                         success(string)
         }) { error in
             failure(error)
@@ -141,15 +140,19 @@ class EtherAPI {
             failure(EtherAPIError.malformedURL)
             return
         }
-
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config, delegate: nil, delegateQueue: nil)
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        log("check tx hash \(hash) with request: \(request)", type: .cryptoRequests)
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 failure(error ?? EtherAPIError.noData)
                 return
             }
-
+            
             do {
                 let reply = try JSONDecoder().decode(EthereumTxReceiptReply.self, from: data)
                 if let result = reply.result {
@@ -164,10 +167,12 @@ class EtherAPI {
             }
         }
         task.resume()
+        session.finishTasksAndInvalidate()
     }
     
     func readContractString(to: String, callDataString: String) -> Future<String> {
         let promise = Promise<String>()
+        log("read contract to: \(to), callData: \(callDataString)", type: .cryptoRequests)
         sendGetRequest(urlString: "api",
                        parameters: [
                         "module": "proxy",
@@ -183,6 +188,7 @@ class EtherAPI {
     }
     
     func checkBalance(address: String, success: @escaping (Decimal) -> Void, failure: @escaping failureClosure) {
+        log("Checking balance for: \(address)", type: .cryptoRequests)
         sendGetRequest(urlString: "api",
                        parameters: [
                         "module": "account",
@@ -193,7 +199,9 @@ class EtherAPI {
                             failure(EtherAPIError.corruptedData)
                             return
                         }
+                        log("Balance received: \(string)", type: .cryptoDetails)
                         balance = balance / 1_000_000_000_000_000_000
+                        log("Balance converted: \(balance)", type: .cryptoDetails)
                         success(balance)
         }) { error in
             failure(error)
@@ -207,20 +215,33 @@ class EtherAPI {
                                  body: [String: String],
                                  success: @escaping successClosure,
                                  failure: @escaping failureClosure) {
-        var parameters = parameters
-        for (key, value) in body {
-parameters[key] = value
-        }
+        //        var parameters = parameters
+        //        for (key, value) in body {
+        //            parameters[key] = value
+        //        }
         guard let url = urlWith(address: server + urlString, parameters: parameters) else {
             failure(EtherAPIError.malformedURL)
             return
         }
-
+        
         let queue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config, delegate: nil, delegateQueue: nil)
+        
+        let bodyArray = body.map { key, value in """
+            \(key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")=\
+            \(value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
+            """
+        }
+        let bodyString = bodyArray.joined(separator: "&")
+        let bodyData = bodyString.data(using: .utf8, allowLossyConversion: true)
+        
+        log("Body string: \(bodyString)", type: .cryptoDetails)
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-//        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
-
+        request.addValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = bodyData
+        
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 queue.async {
@@ -228,27 +249,29 @@ parameters[key] = value
                 }
                 return
             }
-
+            
             log("raw post request reply: \(data)", type: .cryptoRequests)
             do {
                 let reply = try JSONDecoder().decode(EthereumAPIReply.self, from: data)
-                 queue.async {
-                if let result = reply.result {
-                    success(result)
-                } else if let error = reply.error {
-                    failure(EtherAPIError.etherscanError(error.code, error.message))
-                } else {
-                    failure(EtherAPIError.corruptedData)
-                }
+                queue.async {
+                    if let result = reply.result {
+                        success(result)
+                    } else if let error = reply.error {
+                        failure(EtherAPIError.etherscanError(error.code, error.message))
+                    } else {
+                        failure(EtherAPIError.corruptedData)
+                    }
                 }
             } catch {
-                 queue.async {
-                failure(error)
+                queue.async {
+                    failure(error)
                 }
             }
-
+            
         }
+        log("Sending request: \(task.currentRequest)", type: .cryptoRequests)
         task.resume()
+        session.finishTasksAndInvalidate()
     }
     
     private func sendGetRequest(urlString: String,
@@ -268,6 +291,9 @@ parameters[key] = value
     private func sendRequest(_ request: URLRequest,
                              success: @escaping successClosure,
                              failure: @escaping failureClosure) {
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config, delegate: nil, delegateQueue: nil)
+        
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 failure(error ?? EtherAPIError.noData)
@@ -288,6 +314,7 @@ parameters[key] = value
             }
         }
         task.resume()
+        session.finishTasksAndInvalidate()
     }
     
     private func urlWith(address: String, parameters: [String: String]) -> URL? {

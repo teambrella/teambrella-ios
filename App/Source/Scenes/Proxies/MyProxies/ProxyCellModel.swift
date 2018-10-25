@@ -25,7 +25,7 @@ struct ProxyCellModel: Decodable {
     enum CodingKeys: String, CodingKey {
         case isMyTeammate = "IsMyTeammate"
         case userID = "UserId"
-        case avatarString = "Avatar"
+        case avatar = "Avatar"
         case name = "Name"
         case address = "Location"
         case proxyRank = "ProxyRank"
@@ -36,7 +36,7 @@ struct ProxyCellModel: Decodable {
     
     let isMyTeammate: Bool
     let userID: String
-    let avatarString: String
+    let avatar: Avatar
     let name: String
     let address: String?
     let proxyRank: Double?

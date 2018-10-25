@@ -1,6 +1,8 @@
 #  Libraries
-#github "yaro812/SwiftKeccak.git"
+github "yaro812/SwiftKeccak.git"
 
 # Views
 # github "xmartlabs/XLPagerTabStrip" ~> 7.0
 # github "pkluz/PKHUD"
+
+#github "uport-project/SwiftKeccak"

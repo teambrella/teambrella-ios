@@ -76,7 +76,7 @@ extension LoginDetailsVC: LoginDetailsView {
         genderControl.selectedSegmentIndex = gender == .male ? 0 : 1
     }
     
-    func showAvatar(url: URL) {
-        avatarView.kf.setImage(with: url)
+    func showAvatar(_ avatar: Avatar) {
+        avatarView.kf.setImage(with: avatar.url)
     }
 }

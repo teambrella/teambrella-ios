@@ -14,10 +14,11 @@
  * along with this program.  If not, see http://www.gnu.org/licenses/
  */
 
-import Auth0
+//import Auth0
 import Foundation
 
 class Auth0Authenticator {
+    /*
     var credentials: Credentials?
     var domain: String {
         #if SURILLA
@@ -53,4 +54,5 @@ extension Auth0Authenticator: VKAuthenticating {
                 }
         }
     }
+ */
 }

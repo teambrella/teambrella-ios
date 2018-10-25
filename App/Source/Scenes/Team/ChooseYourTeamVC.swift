@@ -119,7 +119,7 @@ extension ChooseYourTeamVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
          let model = dataSource[indexPath]
         if let cell = cell as? TeamCell, let model = model as? ChooseYourTeamCellModel {
-            cell.teamIcon.showImage(string: model.teamIcon)
+            cell.teamIcon.showImage(string: model.teamIcon, needHeaders: false)
             cell.incomingCount.text = model.incomingCount
             cell.incomingCount.isHidden = model.incomingCount == ""
             cell.teamName.text = model.teamName

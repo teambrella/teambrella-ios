@@ -28,7 +28,7 @@ class GalleryView: ImageSlideshow {
     var onCloseFullscreen: ((GalleryView) -> Void)?
     
     var mainImageString: String?
- 
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -72,9 +72,10 @@ class GalleryView: ImageSlideshow {
                 return request
             }
             
-            let inputs: [InputSource] = imageStrings.compactMap { KingfisherSource(urlString: $0,
-                                                                                placeholder: #imageLiteral(resourceName: "imagePlaceholder"),
-                                                                                options: [.requestModifier(modifier)])
+            let inputs: [InputSource] = imageStrings.compactMap {
+                KingfisherSource(urlString: $0,
+                                 placeholder: #imageLiteral(resourceName: "imagePlaceholder"),
+                                 options: [.requestModifier(modifier)])
                 
             }
             completion(inputs)
@@ -89,7 +90,7 @@ class GalleryView: ImageSlideshow {
     func fullscreen(in controller: UIViewController?, imageStrings: [String]?) {
         guard let controller = controller else { return }
         guard let imageStrings = imageStrings else {
-           self.presentFullScreenController(from: controller)
+            self.presentFullScreenController(from: controller)
             return
         }
         

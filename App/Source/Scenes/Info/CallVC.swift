@@ -26,7 +26,7 @@ class CallVC: UIViewController, Routable {
     @IBOutlet var timeLabel: UILabel!
 
     var name: String!
-    var avatar: String!
+    var avatar: Avatar!
     var id: String!
 
     var sinch: SinchService { return service.sinch }
@@ -38,7 +38,7 @@ class CallVC: UIViewController, Routable {
         super.viewDidLoad()
 
         nameLabel.text = name
-        avatarView.showAvatar(string: avatar)
+        avatarView.show(avatar)
 
         sinch.delegate = self
 

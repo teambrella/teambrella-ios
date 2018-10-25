@@ -26,7 +26,7 @@ struct FeedCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: FeedEntity) {
         if let cell = cell as? TeamFeedCell {
             if model.itemType == .claim {
-                cell.avatarView.showImage(string: model.smallPhotoOrAvatar)
+                cell.avatarView.showImage(string: model.smallPhotoOrAvatar, needHeaders: true)
                 cell.avatarView.layer.masksToBounds = true
                 cell.avatarView.layer.cornerRadius = 4
                 cell.titleLabel.text = model.modelOrName
@@ -34,7 +34,7 @@ struct FeedCellBuilder {
                 if let avatar = model.itemUserAvatar {
                     cell.avatarView.show(avatar)
                 } else {
-                    cell.avatarView.showImage(string: model.smallPhotoOrAvatar)
+                    cell.avatarView.showImage(string: model.smallPhotoOrAvatar, needHeaders: true)
                 }
                 cell.avatarView.layer.masksToBounds = true
                 cell.avatarView.layer.cornerRadius = cell.avatarView.frame.height / 2

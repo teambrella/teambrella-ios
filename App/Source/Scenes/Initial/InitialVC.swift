@@ -27,24 +27,28 @@ final class InitialVC: UIViewController {
         case login
         case demoExpired
     }
-
+    
+    enum Constant {
+        static let getTeamsAttempts = 3
+    }
+    
     let loginWorker: LoginWorker = LoginWorker()
     var mode: InitialVCMode = .login
     weak var sod: SODVC?
     weak var loginBlueVC: LoginBlueVC?
-
+    
     var isFirstLoad: Bool = true
-
+    
     // MARK: Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         let state = UIApplication.shared.applicationState
         log("Application state is: \(state.rawValue)", type: .info)
         guard state != .background else {
@@ -55,10 +59,10 @@ final class InitialVC: UIViewController {
                                                    object: nil)
             return
         }
-
+        
         performTransitions()
     }
-
+    
     func login(teamID: Int?) {
         loginBlueVC?.dismiss(animated: false, completion: nil)
         if service.keyStorage.hasRealPrivateKey {
@@ -66,7 +70,7 @@ final class InitialVC: UIViewController {
             getTeams()
         }
     }
-
+    
     @objc
     func performTransitionsAfterWakeUp() {
         NotificationCenter.default.removeObserver(self,
@@ -74,7 +78,7 @@ final class InitialVC: UIViewController {
                                                   object: nil)
         performTransitions()
     }
-
+    
     func performTransitions() {
         if isFirstLoad, service.keyStorage.isUserSelected {
             mode = .idle
@@ -93,7 +97,7 @@ final class InitialVC: UIViewController {
             default:
                 break
             }
-
+            
             mode = .idle
         }
         isFirstLoad = false
@@ -102,18 +106,18 @@ final class InitialVC: UIViewController {
     // MARK: Callbacks
     
     @IBAction func unwindToInitial(segue: UIStoryboardSegue) {
-//        if segue.source is ApplicationFlowVC {
-//            performSegue(withIdentifier: "application", sender: self)
-//        } else {
+        //        if segue.source is ApplicationFlowVC {
+        //            performSegue(withIdentifier: "application", sender: self)
+        //        } else {
         mode = .idle
         getTeams()
-//        }
+        //        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         HUD.hide()
         if segue.type == .teambrella {
-
+            
         }
         if let nc = segue.destination as? UINavigationController,
             let vc = nc.viewControllers.first as? LoginBlueVC {
@@ -141,6 +145,7 @@ final class InitialVC: UIViewController {
     // MARK: Private
     
     private func getTeams() {
+        signInAttemptsRemaining -= 1
         HUD.show(.progress)
         loginWorker.getTeams(completion: { [weak self] teamsModel, isDemo in
             self?.startSession(teamsEntity: teamsModel, isDemo: isDemo)
@@ -150,18 +155,19 @@ final class InitialVC: UIViewController {
     }
     
     private func startSession(teamsEntity: TeamsModel, isDemo: Bool) {
+        signInAttemptsRemaining = Constant.getTeamsAttempts
+        service.router.startNewSession(isDemo: isDemo, teamsModel: teamsEntity)
+        
         if !isDemo {
             Statistics.register(userID: teamsEntity.userID)
+            SimpleStorage().store(bool: true, forKey: .didLogWithKey)
         }
-
-        service.router.startNewSession(isDemo: isDemo, teamsModel: teamsEntity)
         
         service.teambrella.startUpdating(completion: { result in
             let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
             log("Teambrella service get updates results: \(description)", type: .info)
         })
-
-        SimpleStorage().store(bool: true, forKey: .didLogWithKey)
+        
         HUD.hide()
         presentMasterTab()
         requestPush()
@@ -170,9 +176,38 @@ final class InitialVC: UIViewController {
     private func failure(error: Error) {
         log("InitialVC got error: \(error)", type: .error)
         HUD.hide()
+        switch error {
+        case let error as TeambrellaError:
+            switch error.kind {
+            case .brokenSignature:
+                if retryGettingTeams() {
+                    return
+                } else {
+                    service.keyStorage.clearLastUserType()
+                    SimpleStorage().store(bool: true, forKey: .isRegistering)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.loginBlueVC?.tapNextButton()
+                    }
+                }
+            default:
+                break
+            }
+        default:
+            break
+        }
         service.router.logout()
         SimpleStorage().store(bool: false, forKey: .didLogWithKey)
         performSegue(type: .login)
+    }
+    
+    var signInAttemptsRemaining = Constant.getTeamsAttempts
+    
+    func retryGettingTeams() -> Bool {
+        if signInAttemptsRemaining > 0 {
+            getTeams()
+            return true
+        }
+        return false
     }
     
     private func presentMasterTab() {

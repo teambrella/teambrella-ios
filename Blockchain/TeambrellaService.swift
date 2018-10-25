@@ -24,7 +24,7 @@ import Foundation
 final class TeambrellaService: NSObject {
     struct Constant {
         static let maxAttempts = 3
-        static let gasLimit = 1300001
+        static let gasLimit = 1_600_001
     }
     
     var key: Key { return Key(base58String: self.contentProvider.user.privateKey(in: keyStorage),
@@ -62,6 +62,8 @@ final class TeambrellaService: NSObject {
     }
     
     func startUpdating(completion: @escaping (UIBackgroundFetchResult) -> Void) {
+        guard !service.keyStorage.isDemoUser else { return }
+        
         sync(completion: completion)
     }
 
@@ -185,7 +187,11 @@ final class TeambrellaService: NSObject {
         queue.addOperation {
             //self.queue.isSuspended = true
             self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
-                log("wallet created \(success)", type: .crypto)
+                if success {
+                    log("wallet created", type: .crypto)
+                } else {
+                     log("wallet not created", type: .crypto)
+                }
                 //self.queue.isSuspended = false
             })
         }
@@ -397,7 +403,7 @@ final class TeambrellaService: NSObject {
         log("Teambrella service has \(list.count) cosignable transactions", type: .crypto)
         let user = contentProvider.user
         for tx in list {
-            log("Cosigning tx \(tx.id.uuidString)", type: .cryptoDetails)
+            log("Cosigning tx \(tx.id.uuidString), of kind \(String(describing: tx.kind))", type: .cryptoDetails)
             do {
                 try cosignTransaction(transaction: tx, userID: user.id)
             } catch {

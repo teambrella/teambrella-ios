@@ -18,7 +18,7 @@ import Foundation
 
 struct RiskScaleTeammate: Decodable {
     let id: String
-    let avatar: String
+    let avatar: Avatar
     let risk: Double
 
     enum CodingKeys: String, CodingKey {

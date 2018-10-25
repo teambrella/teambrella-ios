@@ -15,6 +15,7 @@
  */
 
 import XCTest
+import BigNumber
 
 @testable import Teambrella
 
@@ -27,4 +28,12 @@ class BigNumberTests: XCTestCase {
         XCTAssertEqual(weis!.hexString.uppercased(), "241A9B4F617A280000".uppercased())
     }
     
+    func testConversion() {
+        let value = Decimal(string: "0.00713923")
+        XCTAssertNotNil(value)
+        let weis = value! * 1_000_000_000_000_000_000
+        let weisHex = BInt((weis as NSDecimalNumber).stringValue)?.asString(radix: 16)
+        print(weisHex)
+        XCTAssertEqual(weisHex?.fromBase64, "0.00713923")
+    }
 }

@@ -91,6 +91,12 @@ struct Name: Codable {
             }
         }
         
+        // in case the name consists of one word from lowercase letter
+        if components.isEmpty {
+            let component = NameComponent(fragments: [fullName], hasPrefix: false)
+            components.append(component)
+        }
+        
         self.components = components
         hasLastName = components.count > 1
     }

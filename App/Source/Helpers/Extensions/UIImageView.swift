@@ -26,29 +26,21 @@ extension UIImageView {
     func setStandardPlaceholder() {
         image = #imageLiteral(resourceName: "imagePlaceholder")
     }
-
+    
     func show(_ avatar: Avatar,
               options: KingfisherOptionsInfo? = nil,
               isFullSize: Bool = false,
               completion: ((UIImage?, NSError?) -> Void)? = nil) {
-        showAvatar(string: avatar.string, options: options, isFullSize: isFullSize, completion: completion)
+        guard let url = avatar.url else { return }
+        
+        showAvatar(url: url, options: options, completion: completion)
+        
     }
     
     func show(_ image: Photo,
+              needHeaders: Bool = true,
               completion: ((UIImage?, NSError?) -> Void)? = nil) {
-        showImage(string: image.string, completion: completion)
-    }
-    
-    func showAvatar(string: String,
-                    options: KingfisherOptionsInfo? = nil,
-                    isFullSize: Bool = false,
-                    completion: ((UIImage?, NSError?) -> Void)? = nil) {
-        let modified = isFullSize
-            ? URLBuilder().avatarURLstring(for: string, width: nil, crop: nil)
-            : URLBuilder().avatarURLstring(for: string)
-        guard let url = URL(string: modified) else { return }
-        
-        showAvatar(url: url, options: options, completion: completion)
+        showImage(string: image.string, needHeaders: needHeaders, completion: completion)
     }
     
     func showAvatar(url: URL,
@@ -63,7 +55,8 @@ extension UIImageView {
         })
     }
     
-    func showImage(url: URL, completion: ((UIImage?, NSError?) -> Void)? = nil) {
+    func showImage(url: URL, needHeaders: Bool, completion: ((UIImage?, NSError?) -> Void)? = nil) {
+        if needHeaders {
         service.dao.freshKey { [weak self] key in
             let modifier = AnyModifier { request in
                 var request = request
@@ -73,7 +66,18 @@ extension UIImageView {
                 return request
             }
             
-            self?.kf.setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)],
+            self?.kf.setImage(with: url,
+                              placeholder: nil,
+                              options: [.requestModifier(modifier)],
+                              progressBlock: nil,
+                              completionHandler: { image, error, _, _ in
+                                completion?(image, error)
+            })
+        }
+        } else {
+            self.kf.setImage(with: url,
+                              placeholder: nil,
+                              options: [],
                               progressBlock: nil,
                               completionHandler: { image, error, _, _ in
                                 completion?(image, error)
@@ -81,10 +85,10 @@ extension UIImageView {
         }
     }
     
-    func showImage(string: String?, completion: ((UIImage?, NSError?) -> Void)? = nil) {
+    func showImage(string: String?, needHeaders: Bool, completion: ((UIImage?, NSError?) -> Void)? = nil) {
         guard let string = string else { return }
         guard let url = URLBuilder().url(string: string) else { return }
         
-        showImage(url: url, completion: completion)
+        showImage(url: url, needHeaders: needHeaders, completion: completion)
     }
 }

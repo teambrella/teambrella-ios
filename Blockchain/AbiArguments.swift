@@ -81,13 +81,20 @@ class AbiArguments {
         let weisInt = UInt(weis)
         let hex = String(weisInt, radix: 16)
 */
-        guard let bigDecimal = BDouble(decimal.stringValue, radix: 10) else { return nil }
-
-        let weis: BDouble = bigDecimal * BDouble(Constant.weisInEth)
-        let weisInt = weis.rounded()
-        let hex = weisInt.asString(radix: 16)
+        
+        let weis = decimal as Decimal * 1_000_000_000_000_000_000
+        guard let hex = BInt((weis as NSDecimalNumber).stringValue)?.asString(radix: 16) else {
+            fatalError()
+//            throw EthereumProcessorError.wrongNumber
+        }
+        
+//        guard let bigDecimal = BDouble(decimal.stringValue, radix: 10) else { return nil }
+//
+//        let weis: BDouble = bigDecimal * BDouble(Constant.weisInEth)
+//        let weisInt = weis.rounded()
+//        let hex = weisInt.asString(radix: 16)
     
-        log("Parse amount in ETH: \(decimal) to Weis dec: \(weisInt); hex: \(hex)", type: .crypto)
+//        log("Parse amount in ETH: \(decimal) to Weis dec: \(weisInt); hex: \(hex)", type: .crypto)
         return Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
 //        return  Hex().formattedString(string: hex, bytesCount: Constant.bytesInWord)
     }

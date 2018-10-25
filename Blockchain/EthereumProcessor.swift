@@ -23,6 +23,7 @@ import BigNumber
 import ExtensionsPack
 import Foundation
 import Geth
+import SwiftKeccak
 
 /**
  * Interaction with Ethereum wallet
@@ -184,10 +185,12 @@ struct EthereumProcessor {
             "v": "0x29",
             "r": "0x29",
             "s": "0x29"]
+        log("prepared messageTX: \(dict)", type: .cryptoDetails)
         let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [])
         let json = String(bytes: jsonData, encoding: .utf8) ?? ""
         guard let tx = GethTransaction(fromJSON: json) else { throw EthereumProcessorError.inconsistentTxData(json) }
 
+        log("Geth prepared transaction: \(tx)", type: .cryptoDetails)
         return  tx
     }
     
@@ -195,12 +198,14 @@ struct EthereumProcessor {
         guard let keyStore = ethKeyStore else { throw EthereumProcessorError.noKeyStore }
         guard let account = ethAccount else { throw EthereumProcessorError.noAccount }
         
+        log("signing tx: \(unsignedTx)", type: .cryptoDetails)
         let chainID = self.chainID(isTestNet: isTestNet)
         let passphrase = secretString
         let signed = try keyStore.signTxPassphrase(account,
                                                    passphrase: passphrase,
                                                    tx: unsignedTx,
                                                    chainID: chainID)
+        log("signed: \(signed)", type: .cryptoDetails)
         return signed 
     }
     
@@ -210,15 +215,22 @@ struct EthereumProcessor {
     
     /// returns hash made by Keccak algorithm
     func sha3(_ string: String) throws -> Data {
+        let hash = string.keccak()
+        return hash
+       /*
         let hash = GethHash(fromHex: string)
         guard let hashData = hash?.getBytes() else {
             throw EthereumProcessorError.failedSHA3Hash(string)
         }
         return hashData
+ */
     }
     
     /// returns hash made by Keccak algorithm
     func sha3(_ data: Data) throws -> Data {
+        let hash = data.keccak()
+        return hash
+        /*
         let hash = GethHash(fromBytes: data)
         guard let hashData = hash?.getBytes() else {
             let string = data.hexString
@@ -226,6 +238,7 @@ struct EthereumProcessor {
         }
 
         return hashData
+ */
     }
 
     func signHash(hash256: Data) throws -> Data {

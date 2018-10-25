@@ -63,7 +63,7 @@ class TeammateLarge: Decodable {
         let id: String
         let teamID: Int
 
-        let avatar: String
+        let avatar: Avatar
         let name: Name
         let city: String?
         let facebook: String?

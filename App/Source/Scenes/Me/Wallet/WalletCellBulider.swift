@@ -87,7 +87,7 @@ struct WalletCellBuilder {
     }
     
     private static func populateButtons(cell: WalletButtonsCell, model: WalletButtonsCellModel, delegate: WalletVC) {
-        let avatars = model.avatarsPreview.compactMap { URL(string: URLBuilder().avatarURLstring(for: $0)) }
+        let avatars = model.avatarsPreview.compactMap { $0.url }
         let maxAvatarsStackCount = 4
         let otherVotersCount = model.avatars.count - maxAvatarsStackCount + 1
         let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil

@@ -24,7 +24,7 @@ import Foundation
 struct ProxyForCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: ProxyForCellModel) {
         if let cell = cell as? ProxyForCell {
-            cell.avatarView.showAvatar(string: model.avatarString)
+                cell.avatarView.show(model.avatar)
             cell.nameLabel.text = model.name
             if let lastVoted = model.lastVoted {
                 let dateString = DateProcessor().stringInterval(from: lastVoted)

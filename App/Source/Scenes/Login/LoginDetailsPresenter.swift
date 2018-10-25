@@ -30,7 +30,7 @@ protocol LoginDetailsView: class {
     func greeting(text: String)
     func changeDate(to date: Date)
     func changeGender(to gender: Gender)
-    func showAvatar(url: URL)
+    func showAvatar(_ avatar: Avatar)
 }
 
 protocol LoginDetailsPresenter {
@@ -63,9 +63,9 @@ class LoginDetailsPresenterImpl: LoginDetailsPresenter {
         view.changeDate(to: defaultDate)
         view.changeGender(to: user.gender)
         
-        if let avatar = user.picture, let url = URL(string: avatar) {
-            view.showAvatar(url: url)
-        }
+//        if let avatar = user.picture {
+//            view.showAvatar(avatar)
+//        }
     }
     
     func tapRegister() {

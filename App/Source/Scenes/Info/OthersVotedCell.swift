@@ -41,7 +41,7 @@ class OthersVotedCell: UICollectionViewCell {
     }
     
     func update(with model: OthersVotedCellModel) {
-        avatarView.showAvatar(string: model.avatar)
+        avatarView.show(model.avatar)
         nameLabel.text = model.name
         subtitleLabel.text = model.subtitle
         subtitleValueLabel.text = model.subtitleValue

@@ -34,7 +34,7 @@ class ApplicationFlowVC: UIViewController {
         didSet {
             guard let welcome = welcome else { return }
             
-            logoImageView.show(welcome.teamLogo)
+            logoImageView.show(welcome.teamLogo, needHeaders: false)
             teamNameLabel.text = welcome.teamName
             locationLabel.text = welcome.location?.localizedUppercase ?? ""
             headerLabel.text = welcome.title

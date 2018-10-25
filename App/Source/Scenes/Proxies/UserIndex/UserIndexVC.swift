@@ -72,7 +72,7 @@ class UserIndexVC: UIViewController {
         dataSource.onUpdate = { [weak self] in
             guard let dataSource = self?.dataSource, let me = dataSource.meModel else { return }
             
-            self?.avatarView.showAvatar(string: me.avatarString)
+            self?.avatarView.show(me.avatar)
             self?.detailsLabel.text = me.location.uppercased()
             self?.rankLabel.text = String(format: "%.1f", me.proxyRank)
             HUD.hide()

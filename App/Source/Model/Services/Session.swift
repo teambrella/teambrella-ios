@@ -20,7 +20,7 @@
  */
 
 import Foundation
-import UXCam
+//import UXCam
 
 class Session {
     var isDemo: Bool
@@ -100,8 +100,8 @@ extension Session {
         currentUserName = model.name
         currentUserAvatar = model.avatar
         
-        if let ethereumAddress = currentUserEthereumAddress {
-            UXCam.setUserIdentity(ethereumAddress)
-        }
+//        if let ethereumAddress = currentUserEthereumAddress {
+//            UXCam.setUserIdentity(ethereumAddress)
+//        }
     }
 }
