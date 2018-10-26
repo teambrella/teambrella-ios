@@ -250,7 +250,6 @@ struct EntityFactory {
             if let sig = fetcher.signature(input: txInputID,
                                            teammateID: Int(teammateID)) {
                 sig.isServerUpdateNeededValue = false
-                fetcher.save()
                 continue
             }
             guard let txInput = fetcher.input(id: txInputID) else { continue } // malformed TX

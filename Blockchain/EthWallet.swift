@@ -479,7 +479,7 @@ class EthWallet {
                 }
 
                 log("sigs: \(sig.count), positions: \(pos)", type: .cryptoDetails)
-                guard (sig.count < 3 && sig.count < txSignatures.count) == false else {
+                guard (j < 3 && j < txSignatures.count) == false else {
                     print("""
                         tx was skipped. One or more signatures are not from a valid cosigner. \
                         Total signatures: \(txSignatures.count)  Valid signatures: \(sig.count) \
