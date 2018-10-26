@@ -27,7 +27,7 @@ struct OthersVotedCellModel {
         avatar = voter.avatar
         name = voter.name
         subtitle = "Info.OthersVoted.Cell.Weight".localized
-        subtitleValue = voter.weight.flatMap { String(format: "%.2f", $0) } ?? "..."
+        subtitleValue = voter.weightCombined.flatMap { String(format: "%.2f", $0) } ?? "..."
         if let vote = voter.vote {
             value = isClaim ? ClaimVote(vote).stringRounded : String(format: "%.2f", vote)
         } else {
