@@ -55,7 +55,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     @IBOutlet var gradientViewBottomConstraint: NSLayoutConstraint!
     
-     lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
+    lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
     
     var draggablePageWidth: Float { return Float(cardWidth) }
     var cardWidth: CGFloat { return collectionView.bounds.width - Constant.cardInterval * 2 }
@@ -64,7 +64,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     @IBOutlet var topBarContainer: UIView!
     var topBarVC: TopBarVC!
-
+    
     var configurator: HomeConfigurator = HomeDefaultConfigurator()
     var dataSource: HomeDataSource = HomeDataSource()
     
@@ -93,7 +93,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         setupWalletContainer()
         
         switchToCurrentTeam()
-
+        
         consoleAccessSetup()
         
         if isIpadSimulatingPhone {
@@ -104,16 +104,16 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
-
+        
     }
-
+    
     private func consoleAccessSetup() {
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 8
         tap.addTarget(self, action: #selector(tapConsole))
         topBarContainer.addGestureRecognizer(tap)
     }
-
+    
     @objc
     private func tapConsole() {
         service.router.presentConsole()
@@ -162,9 +162,9 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         dataSource.onUpdate = { [weak self] in
             self?.setup()
         }
-        if let teamID = service.session?.currentTeam?.teamID {
-            dataSource.loadData(teamID: teamID)
-        }
+        
+        dataSource.teamID = service.session?.currentTeam?.teamID
+        dataSource.loadData()
     }
     
     private func clearScreen() {
@@ -177,7 +177,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     
     private func setup() {
         collectionView.reloadData()
-        configurator.model = dataSource.model
+        configurator.model = dataSource.item
         configurator.configure(controller: self)
         HUD.hide()
     }
@@ -196,10 +196,10 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @IBOutlet var submitClaimButton: BorderedButton!
     
     @IBAction func tapSubmitClaim(_ sender: UIButton) {
-        guard let model = dataSource.model else { return }
+        guard let item = dataSource.item else { return }
         
-        let item = ClaimItem(name: model.objectName, photo: model.smallPhoto, location: "")
-        let context = ReportContext.claim(item: item, coverage: model.coverage, balance: model.balance)
+        let claim = ClaimItem(name: item.objectName, photo: item.smallPhoto, location: "")
+        let context = ReportContext.claim(item: claim, coverage: item.coverage, balance: item.balance)
         service.router.presentReport(context: context, delegate: self)
     }
     
@@ -224,7 +224,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
     @objc
     func tapAttachPhotos(_ sender: UIButton) {
         guard sender.tag < dataSource.cardsCount else { return }
-
+        
         dataSource[sender.tag].map {
             let details = MyApplicationDetails(topicID: $0.topicID, userID: $0.userID)
             let context = UniversalChatContext(details)
@@ -260,7 +260,7 @@ extension HomeVC: UICollectionViewDataSource {
         HomeCellBuilder.populate(cell: cell, dataSource: dataSource, model: dataSource[indexPath])
         if let cell = cell as? HomeSupportCell {
             let model = dataSource[indexPath]
-
+            
             cell.isButtonHidden = true
             if model?.itemType == ItemType.fundWallet {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
@@ -292,7 +292,7 @@ extension HomeVC: UICollectionViewDataSource {
         }
         
         guard let model = dataSource[indexPath] else { return }
-
+        
         switch model.itemType {
         case .attachPhotos:
             let details = MyApplicationDetails(topicID: model.topicID, userID: model.userID)
@@ -300,7 +300,7 @@ extension HomeVC: UICollectionViewDataSource {
             context.type = UniversalChatType.with(itemType: model.itemType)
             service.router.presentChat(context: context)
         case .fundWallet:
-             service.router.switchToWallet()
+            service.router.switchToWallet()
         case .addAvatar:
             picker.showOptions()
         default:

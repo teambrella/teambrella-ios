@@ -21,10 +21,9 @@
 
 import Foundation
 
-class FeedDataSource {
+class FeedDataSource: StandardDataSource {
     let teamID: Int
-    private var items: [FeedEntity] = []
-    var count: Int { return items.count }
+    private(set) var items: [FeedEntity] = []
     
     var startIndex: UInt64 = 0
     let limit = 100
@@ -33,7 +32,7 @@ class FeedDataSource {
     var canLoadForward = true
     private(set) var isLoading = false
     
-    var onLoad: (() -> Void)?
+    var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
     init(teamID: Int) {
@@ -66,17 +65,13 @@ class FeedDataSource {
                                             }
                                             self.items.append(contentsOf: feedChunk.feed)
                                             feedChunk.pagingInfo.map { self.startIndex = $0.lastIndex }
-                                            self.onLoad?()
+                                            self.onUpdate?()
                                         case let .error(error):
                                             log("\(error)", type: .error)
                                             self.onError?(error)
                                         }
                                         self.isLoading = false
         }
-    }
-    
-    subscript(indexPath: IndexPath) -> FeedEntity {
-        return items[indexPath.row]
     }
     
 }

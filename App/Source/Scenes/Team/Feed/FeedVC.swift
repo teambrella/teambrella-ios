@@ -39,7 +39,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
         super.viewDidLoad()
         setupCollectionView()
         HUD.show(.progress, onView: view)
-        dataSource.onLoad = { [weak self] in
+        dataSource.onUpdate = { [weak self] in
             HUD.hide()
             self?.collectionView.reloadData()
             self?.collectionView.refreshControl?.endRefreshing()

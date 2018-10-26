@@ -1025,6 +1025,8 @@
 		6D9374AA202C9EB800BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
 		6D9374AB202C9EB900BB28CB /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
 		6D96E11B208A1338009F99F5 /* ChatTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D96E119208A1338009F99F5 /* ChatTextCell.swift */; };
+		6D9800232183595F007DA798 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9800222183595F007DA798 /* DataSource.swift */; };
+		6D9800242183595F007DA798 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9800222183595F007DA798 /* DataSource.swift */; };
 		6D9F6ADC2014EB3000B3287D /* Dumper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9F6ADA2014EB3000B3287D /* Dumper.swift */; };
 		6DA1A5401FBF0AEA000FDECA /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA1D1021F056DF900F9DE87 /* UIImage.swift */; };
 		6DA1A5411FBF0B0E000FDECA /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59FD171FBC9693006C0A2B /* URLBuilder.swift */; };
@@ -1624,6 +1626,7 @@
 		6D91BC061EB3A79100FDC332 /* UUIDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDTests.swift; sourceTree = "<group>"; };
 		6D92BBB92089E28F00E2E953 /* ChatImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatImageCell.swift; path = Scenes/Team/Chat/ChatImageCell.swift; sourceTree = "<group>"; };
 		6D96E119208A1338009F99F5 /* ChatTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatTextCell.swift; path = Scenes/Team/Chat/ChatTextCell.swift; sourceTree = "<group>"; };
+		6D9800222183595F007DA798 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = Model/Protocols/DataSource.swift; sourceTree = "<group>"; };
 		6D9ACA251F434C7700A9B6C8 /* CurrencyProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyProcessor.swift; path = Helpers/CurrencyProcessor.swift; sourceTree = "<group>"; };
 		6D9CC6121ED47C79007F936E /* LoginDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginDetailsVC.swift; path = Scenes/Login/LoginDetailsVC.swift; sourceTree = "<group>"; };
 		6D9CC6141ED48244007F936E /* SegueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueType.swift; path = Model/Enums/SegueType.swift; sourceTree = "<group>"; };
@@ -3175,6 +3178,7 @@
 				6DA5B4621F98D80700021E8E /* CryptoWorker.swift */,
 				6DAD941B1FCEF4500011557C /* CodeCaptureDelegate.swift */,
 				6D55359A2136EFD1000DB0F2 /* VKAuthenticating.swift */,
+				6D9800222183595F007DA798 /* DataSource.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -4353,6 +4357,7 @@
 				6D0523B120A5D838000B3247 /* MembersDataSource.swift in Sources */,
 				6D26F595212DC63E0016CC02 /* CallVC.swift in Sources */,
 				6D0523B220A5D838000B3247 /* JoinTeamPersonalCell.swift in Sources */,
+				6D9800242183595F007DA798 /* DataSource.swift in Sources */,
 				6D7A019520B5BC44006A30FA /* WalletTransactionsCellBuilder.swift in Sources */,
 				6D0523B320A5D838000B3247 /* WalletCellBulider.swift in Sources */,
 				6D0523B420A5D838000B3247 /* WalletDetailsVC.swift in Sources */,
@@ -4807,6 +4812,7 @@
 				6D4E5C7A1F7AB6870020DEE2 /* MembersDataSource.swift in Sources */,
 				6D4E5C7B1F7AB6870020DEE2 /* JoinTeamPersonalCell.swift in Sources */,
 				6D7A019420B5BC44006A30FA /* WalletTransactionsCellBuilder.swift in Sources */,
+				6D9800232183595F007DA798 /* DataSource.swift in Sources */,
 				6D4E5C7C1F7AB6870020DEE2 /* WalletCellBulider.swift in Sources */,
 				6D4E5C7D1F7AB6870020DEE2 /* WalletDetailsVC.swift in Sources */,
 				6DB921EF1F9DEC27009D3937 /* EthWallet.swift in Sources */,

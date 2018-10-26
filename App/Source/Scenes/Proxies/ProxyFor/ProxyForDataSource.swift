@@ -21,25 +21,21 @@
 
 import Foundation
 
-class ProxyForDataSource {
+class ProxyForDataSource: StandardDataSource {
     var items: [ProxyForCellModel] = []
-    var count: Int { return items.count }
-    var isEmpty: Bool { return items.isEmpty }
+
     let teamID: Int
     let limit: Int = 100
     var commission: Double = 0.0
     
     var isSilentUpdate = false
     
+    var isLoading: Bool = false
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
     init(teamID: Int) {
         self.teamID = teamID
-    }
-    
-    subscript(indexPath: IndexPath) -> ProxyForCellModel {
-        return items[indexPath.row]
     }
     
     func updateSilently() {
@@ -48,10 +44,14 @@ class ProxyForDataSource {
     }
     
     func loadData() {
+        guard !isLoading else { return }
+        
+        isLoading = true
         let offset = isSilentUpdate ? 0 : count
         service.dao.requestProxyFor(teamID: teamID, offset: offset, limit: limit).observe { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
+            self.isLoading = false
             switch result {
             case let .value(proxyForEntity):
                 if self.isSilentUpdate {

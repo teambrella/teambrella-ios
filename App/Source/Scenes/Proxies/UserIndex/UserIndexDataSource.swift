@@ -21,9 +21,8 @@
 
 import Foundation
 
-class UserIndexDataSource {
+class UserIndexDataSource: StandardDataSource {
     var items: [UserIndexCellModel] = []
-    var count: Int { return items.count }
     let teamID: Int
     let limit: Int = 10
     let search: String = ""
@@ -56,10 +55,6 @@ class UserIndexDataSource {
     
     init(teamID: Int) {
         self.teamID = teamID
-    }
-    
-    subscript(indexPath: IndexPath) -> UserIndexCellModel {
-        return items[indexPath.row]
     }
     
     subscript(index: Int) -> UserIndexCellModel {

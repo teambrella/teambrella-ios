@@ -38,24 +38,28 @@ struct SocialItem {
     let address: String
 }
 
-class TeammateProfileDataSource {
+class TeammateProfileDataSource: SingleItemDataSource {
     let teammateID: String
     let teamID: Int
     let isMe: Bool
     // let isVoting: Bool
     var isMyProxy: Bool {
         get {
-            return teammateLarge?.basic.isMyProxy ?? false
+            return item?.basic.isMyProxy ?? false
         }
         set {
-            teammateLarge?.myProxy(set: newValue)
+            item?.myProxy(set: newValue)
         }
     }
     
     var source: [TeammateProfileCellType] = []
-    var teammateLarge: TeammateLarge?
-    var riskScale: RiskScaleEntity? { return teammateLarge?.riskScale }
+    var item: TeammateLarge?
+    var riskScale: RiskScaleEntity? { return item?.riskScale }
     var isNewTeammate = false
+    
+    var isLoading: Bool = false
+    var onUpdate: (() -> Void)?
+    var onError: ((Error) -> Void)?
     
     var votingCellIndexPath: IndexPath? {
         for (idx, cellType) in source.enumerated() where cellType == .voting {
@@ -66,7 +70,7 @@ class TeammateProfileDataSource {
 
     /// we need this check as votedPart is sent from server for the Android needs
     private var canAddVoted: Bool {
-        guard let teammate = teammateLarge else { return false }
+        guard let teammate = item else { return false }
 
         switch teammate.basic.state {
         case .prejoining:
@@ -92,18 +96,21 @@ class TeammateProfileDataSource {
         return source[indexPath.row]
     }
     
-    func loadEntireTeammate(completion: @escaping (TeammateLarge) -> Void,
-                            failure: @escaping (Error) -> Void) {
+    func loadData() {
+        guard !isLoading else { return }
+        
+        isLoading = true
         service.dao.requestTeammate(userID: teammateID, teamID: teamID).observe { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
 
+            self.isLoading = false
             switch result {
             case let .value(teammate):
-                self.teammateLarge = teammate
+                self.item = teammate
                 self.modifySource()
-                completion(teammate)
+                self.onUpdate?()
             case let .error(error):
-                failure(error)
+                self.onError?(error)
             }
         }
     }
@@ -129,7 +136,7 @@ class TeammateProfileDataSource {
 
             switch result {
             case let .value(votingResult):
-                self.teammateLarge?.update(votingResult: votingResult)
+                self.item?.update(votingResult: votingResult)
                 completion(votingResult)
             case let .error(error):
                 log("\(#file) \(error)", type: .error)
@@ -138,7 +145,7 @@ class TeammateProfileDataSource {
     }
     
     private func modifySource() {
-        guard let teammate = teammateLarge else { return }
+        guard let teammate = item else { return }
         
         source.removeAll()
         isMyProxy = teammate.basic.isMyProxy
@@ -166,10 +173,10 @@ class TeammateProfileDataSource {
     
     var socialItems: [SocialItem] {
         var items: [SocialItem] = []
-        if let facebook = teammateLarge?.basic.facebook {
+        if let facebook = item?.basic.facebook {
             items.append(SocialItem(type: .facebook, icon: #imageLiteral(resourceName: "facebook"), address: facebook))
         }
-        if let vk = teammateLarge?.basic.vk {
+        if let vk = item?.basic.vk {
             items.append(SocialItem(type: .facebook, icon: #imageLiteral(resourceName: "vk"), address: vk))
         }
         if isMyProxy {

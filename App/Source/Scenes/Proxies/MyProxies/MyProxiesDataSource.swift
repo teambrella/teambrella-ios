@@ -21,13 +21,12 @@
 
 import Foundation
 
-class MyProxiesDataSource {
+class MyProxiesDataSource: StandardDataSource {
     var items: [ProxyCellModel] = []
-    var count: Int { return items.count }
-    var isEmpty: Bool { return items.isEmpty }
     let teamID: Int
     let limit: Int = 100
     
+    var isLoading: Bool = false
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     
@@ -43,21 +42,20 @@ class MyProxiesDataSource {
         refreshDataFor(userID: items[to.row].userID, at: to.row)
     }
     
-    subscript(indexPath: IndexPath) -> ProxyCellModel {
-        let model = items[indexPath.row]
-        return model
-    }
-    
     func updateSilently() {
         isSilentUpdate = true
         loadData()
     }
     
     func loadData() {
+        guard !isLoading else { return }
+        
+        isLoading = true
         let offset = isSilentUpdate ? 0 : count
         service.dao.requestMyProxiesList(teamID: teamID, offset: offset, limit: limit).observe { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             
+            self.isLoading = false
             switch result {
             case let .value(proxies):
                 if self.isSilentUpdate {

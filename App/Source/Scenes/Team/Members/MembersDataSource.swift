@@ -25,7 +25,11 @@ enum TeammateSectionType {
     case new, teammate
 }
 
-class MembersDatasource {
+class MembersDatasource: SectionedDataSource {
+    var items: [[TeammateListEntity]] { return strategy.items }
+    
+    typealias Item = TeammateListEntity
+    
     struct Constant {
         static let limit = 1000
     }

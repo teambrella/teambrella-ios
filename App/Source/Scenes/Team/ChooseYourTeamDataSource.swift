@@ -21,9 +21,10 @@
 
 import Foundation
 
-struct ChooseYourTeamDataSource {
-    var count: Int { return models.count }
-    var models: [TeamCellModel] = []
+struct ChooseYourTeamDataSource: FlatDataSource {
+    typealias Model = TeamCellModel
+    
+    var items: [TeamCellModel] = []
     var currentTeamIndex: Int {
         if let currentTeam = service.session?.currentTeam, let idx = service.session?.teams.index(of: currentTeam) {
             return idx
@@ -35,13 +36,9 @@ struct ChooseYourTeamDataSource {
         guard let teams = service.session?.teams else { return }
         
         for team in teams {
-            models.append(ChooseYourTeamCellModel(team: team))
+            items.append(ChooseYourTeamCellModel(team: team))
         }
-        models.append(SwitchUserTeamCellModel())
-    }
-    
-    subscript(indexPath: IndexPath) -> TeamCellModel {
-        return models[indexPath.row]
+        items.append(SwitchUserTeamCellModel())
     }
     
 }

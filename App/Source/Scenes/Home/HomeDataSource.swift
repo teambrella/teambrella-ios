@@ -21,32 +21,40 @@
 
 import Foundation
 
-class HomeDataSource {
-    var model: HomeModel?
+class HomeDataSource: SingleItemDataSource {
+    var item: HomeModel?
     var cardsCount: Int {
-        guard let count = model?.cards.count else { return 0 }
+        guard let count = item?.cards.count else { return 0 }
         
         return count // + 1
     }
     
     var isSilentUpdate = false
+    var teamID: Int?
     
+    var isLoading: Bool = false
     var onUpdate: (() -> Void)?
+    var onError: ((Error) -> Void)?
     
-    var currency: String { return model?.teamPart.currency ?? "?" }
-    var name: Name { return model?.name ?? Name.empty }
+    var currency: String { return item?.teamPart.currency ?? "?" }
+    var name: Name { return item?.name ?? Name.empty }
     
-    func loadData(teamID: Int) {
+    func loadData() {
+        guard isLoading == false else {  return }
+        guard let teamID = self.teamID else { return }
+        
+        isLoading = true
         service.dao.requestHome(teamID: teamID).observe { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             
+            self.isLoading = false
             switch result {
             case .value(let value):
                 if self.isSilentUpdate {
-                    self.model?.cards.removeAll()
+                    self.item?.cards.removeAll()
                     self.isSilentUpdate = false
                 }
-                self.model = value
+                self.item = value
                 self.onUpdate?()
             case .error(let error):
                 log("\(error)", type: .error)
@@ -56,7 +64,8 @@ class HomeDataSource {
     
     func updateSilently(teamID: Int) {
         isSilentUpdate = true
-        loadData(teamID: teamID)
+        self.teamID = teamID
+        loadData()
     }
     
     func cellID(for indexPath: IndexPath) -> String {
@@ -80,12 +89,12 @@ class HomeDataSource {
     }
     
     func deleteCard(at index: Int) {
-        guard let card = model?.cards.remove(at: index) else { return }
+        guard let card = item?.cards.remove(at: index) else { return }
         
         service.dao.deleteCard(topicID: card.topicID).observe { [weak self] result in
             switch result {
             case .value(let homeModel):
-                self?.model = homeModel
+                self?.item = homeModel
                 self?.onUpdate?()
             case .error(let error):
                 log("can't delete card: \(error)", type: .error)
@@ -95,15 +104,15 @@ class HomeDataSource {
     }
     
     subscript(indexPath: IndexPath) -> HomeCardModel? {
-        guard let model = model, indexPath.row < model.cards.count else { return nil }
+        guard let item = item, indexPath.row < item.cards.count else { return nil }
         
-        return model.cards[indexPath.row]
+        return item.cards[indexPath.row]
     }
     
     subscript(row: Int) -> HomeCardModel? {
-        guard let model = model, row < model.cards.count else { return nil }
+        guard let item = item, row < item.cards.count else { return nil }
         
-        return model.cards[row]
+        return item.cards[row]
     }
     
 }

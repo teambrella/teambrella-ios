@@ -21,7 +21,9 @@
 
 import Foundation
 
-class ClaimsDataSource {
+class ClaimsDataSource: SectionedDataSource {
+    typealias Model = ClaimEntity
+    
     struct Constant {
         static let loadLimit = 10
         static let avatarSize = 128
@@ -43,7 +45,7 @@ class ClaimsDataSource {
         }
     }
     
-    lazy var claims: [[ClaimEntity]] = {
+    lazy var items: [[ClaimEntity]] = {
         var array: [[ClaimEntity]] = []
         for _ in self.order {
             var subArray: [ClaimEntity] = []
@@ -77,14 +79,12 @@ class ClaimsDataSource {
                                            .voted,
                                            .paid,
                                            .fullyPaid]
-    
-    var count: Int { return claims.flatMap { $0 }.count }
     // swiftlint:disable:next empty_count
     var isEmpty: Bool { return count == 0 }
     
-    var sections: Int { return claims.count }
     var offset = 0
     var isLoading = false
+    
     var onUpdate: (() -> Void)?
     var onError: ((Error) -> Void)?
     var onLoadHome: (() -> Void)?
@@ -107,8 +107,8 @@ class ClaimsDataSource {
                 switch result {
                 case let .value(claims):
                     if self.isSilentUpdate {
-                        for idx in 0..<self.claims.count {
-                            self.claims[idx].removeAll()
+                        for idx in 0..<self.items.count {
+                            self.items[idx].removeAll()
                         }
                         self.isSilentUpdate = false
                     }
@@ -152,7 +152,7 @@ class ClaimsDataSource {
     }
     
     func showHeader(for section: Int) -> Bool {
-        return claims[section].isEmpty == false
+        return items[section].isEmpty == false
     }
     
     private func process(claims: [ClaimEntity]) {
@@ -164,11 +164,9 @@ class ClaimsDataSource {
             case .inPayment: idx         = 2
             default: idx                 = 3
             }
-            self.claims[idx].append(claim)
+            self.items[idx].append(claim)
         }
     }
-    
-    func itemsInSection(section: Int) -> Int { return self.claims[section].count }
     
     func cellType(for indexPath: IndexPath) -> ClaimsCellType {
         return order[indexPath.section]
@@ -178,11 +176,4 @@ class ClaimsDataSource {
         return order[indexPath.section].identifier
     }
     
-    func cellsIn(section: Int) -> Int {
-        return claims[section].count
-    }
-    
-    subscript(indexPath: IndexPath) -> ClaimEntity {
-        return claims[indexPath.section][indexPath.row]
-    }
 }

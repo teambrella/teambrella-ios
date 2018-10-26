@@ -25,6 +25,7 @@ protocol MembersFetchStrategy {
     var sections: Int { get }
     var sortType: SortVC.SortType { get }
     var ranges: [RiskScaleRange] { get set }
+    var items: [[TeammateListEntity]] { get }
     
     func type(indexPath: IndexPath) -> TeammateSectionType
     func itemsInSection(section: Int) -> Int
@@ -42,7 +43,7 @@ class MembersListStrategy: MembersFetchStrategy {
     var newTeammates: [TeammateListEntity] = []
     var teammates: [TeammateListEntity] = []
     var sortType: SortVC.SortType = .none
-    
+    var items: [[TeammateListEntity]] { return [newTeammates, teammates] }
     func removeData() {
         teammates.removeAll()
         newTeammates.removeAll()
@@ -130,13 +131,13 @@ class MembersListStrategy: MembersFetchStrategy {
 }
 
 class MembersRiskStrategy: MembersFetchStrategy {
-    var arrayOfRanges: [[TeammateListEntity]] = []
+    var items: [[TeammateListEntity]] = []
     var ranges: [RiskScaleRange] = []
-    var sections: Int { return arrayOfRanges.count }
+    var sections: Int { return items.count }
     var sortType: SortVC.SortType = .none
     
     func removeData() {
-        arrayOfRanges.removeAll()
+        items.removeAll()
     }
     
     func type(indexPath: IndexPath) -> TeammateSectionType {
@@ -144,7 +145,7 @@ class MembersRiskStrategy: MembersFetchStrategy {
     }
     
     func itemsInSection(section: Int) -> Int {
-        return arrayOfRanges[section].count
+        return items[section].count
     }
     
     func headerTitle(indexPath: IndexPath) -> String {
@@ -157,9 +158,9 @@ class MembersRiskStrategy: MembersFetchStrategy {
     }
     
     func arrange(teammates: [TeammateListEntity]) {
-        if arrayOfRanges.isEmpty {
+        if items.isEmpty {
             for _ in ranges {
-                arrayOfRanges.append([TeammateListEntity]())
+                items.append([TeammateListEntity]())
             }
         }
         
@@ -167,7 +168,7 @@ class MembersRiskStrategy: MembersFetchStrategy {
             for teammate in teammates {
                 let risk = teammate.risk ?? 0
                 if risk >= range.left && risk <= range.right {
-                    arrayOfRanges[idx].append(teammate)
+                    items[idx].append(teammate)
                 }
             }
         }
@@ -179,6 +180,6 @@ class MembersRiskStrategy: MembersFetchStrategy {
     }
     
     subscript(indexPath: IndexPath) -> TeammateListEntity {
-        return arrayOfRanges[indexPath.section][indexPath.row]
+        return items[indexPath.section][indexPath.row]
     }
 }

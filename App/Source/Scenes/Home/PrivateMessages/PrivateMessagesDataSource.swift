@@ -21,30 +21,34 @@
 
 import UIKit
 
-class PrivateMessagesDataSource: NSObject {
+class PrivateMessagesDataSource: NSObject, StandardDataSource {
+    var isLoading: Bool = false
+    
     let limit = 100
     var offset = 0
     var hasNext: Bool = true
     var previousFilter: String?
+    var filter: String?
     
     var items: [PrivateChatUser] = []
-    
-    var isEmpty: Bool { return items.isEmpty }
   
-    var onLoad: (() -> Void)?
+    var onUpdate: (() -> Void)?
+    var onError: ((Error) -> Void)?
     
-    func loadNext(filter: String? = nil) {
+    func loadData() {
         if filter != previousFilter { items.removeAll() }
         previousFilter = filter
+        isLoading = true
         service.dao.requestPrivateList(offset: offset, limit: limit, filter: filter).observe { [weak self] result in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             
+            self.isLoading = false
             switch result {
             case let .value(users):
                 self.items.append(contentsOf: users)
                 self.offset += users.count
                 self.hasNext = users.count == self.limit
-                self.onLoad?()
+                self.onUpdate?()
             case .error:
                 break
             }
@@ -55,7 +59,7 @@ class PrivateMessagesDataSource: NSObject {
         offset = 0
         hasNext = true
         items = []
-        loadNext()
+        loadData()
     }
     
 }

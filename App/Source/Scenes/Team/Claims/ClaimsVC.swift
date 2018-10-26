@@ -163,7 +163,7 @@ extension ClaimsVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.cellsIn(section: section)
+        return dataSource.items(in: section)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -187,7 +187,7 @@ extension ClaimsVC: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         ClaimsCellBuilder.populate(cell: cell, with: dataSource[indexPath])
-        let maxRow = dataSource.itemsInSection(section: indexPath.section)
+        let maxRow = dataSource.items(in: indexPath.section)
         if let cell = cell as? ClaimsOpenCell {
             ViewDecorator.decorateCollectionView(cell: cell,
                                                  isFirst: indexPath.row == 0,

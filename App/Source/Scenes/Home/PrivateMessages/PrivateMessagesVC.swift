@@ -36,7 +36,7 @@ final class PrivateMessagesVC: UIViewController, Routable {
         collectionView.delegate = self
         PrivateMessagesCellBuilder.registerCells(in: collectionView)
         
-        dataSource.onLoad = { [weak self] in
+        dataSource.onUpdate = { [weak self] in
             self?.collectionView.reloadData()
             self?.showEmptyIfNeeded()
         }

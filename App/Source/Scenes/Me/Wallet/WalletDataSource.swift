@@ -21,7 +21,7 @@
 
 import Foundation
 
-class WalletDataSource {
+class WalletDataSource: StandardDataSource {
     var items: [WalletCellModel] = []
     var count: Int { return items.count }
     var fundAddress: String = ""
@@ -82,7 +82,4 @@ class WalletDataSource {
         items.append(WalletButtonsCellModel(avatars: avatars, avatarsPreview: avatarsPreview))
     }
     
-    subscript(indexPath: IndexPath) -> WalletCellModel {
-        return items[indexPath.row]
-    }
 }
