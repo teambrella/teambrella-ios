@@ -47,22 +47,25 @@ class GalleryView: ImageSlideshow {
     
     func present(imageString: String) {
         mainImageString = imageString
-        inputs(from: [imageString]) { [weak self] inputs in
+        inputs(from: [imageString], updateURL: true) { [weak self] inputs in
             self?.setImageInputs(inputs)
             self?.contentScaleMode = .scaleAspectFill
         }
     }
     
-    func present(avatarString: String) {
-        mainImageString = avatarString
-        inputs(from: [avatarString]) { [weak self] inputs in
+    func present(absoluteString: String) {
+        mainImageString = absoluteString
+        inputs(from: [absoluteString], updateURL: false) { [weak self] inputs in
             self?.setImageInputs(inputs)
             self?.contentScaleMode = .scaleAspectFill
         }
     }
     
-    func inputs(from imageStrings: [String], completion: @escaping ([InputSource]) -> Void) {
-        let imageStrings = imageStrings.map { URLBuilder().urlString(string: $0) }
+    func inputs(from imageStrings: [String], updateURL: Bool, completion: @escaping ([InputSource]) -> Void) {
+        var imageStrings = imageStrings
+        if updateURL {
+            imageStrings = imageStrings.map { URLBuilder().urlString(string: $0) }
+        }
         service.dao.freshKey { key in
             let modifier = AnyModifier { request in
                 var request = request
@@ -94,7 +97,7 @@ class GalleryView: ImageSlideshow {
             return
         }
         
-        inputs(from: imageStrings, completion: { [weak self] inputs in
+        inputs(from: imageStrings, updateURL: true, completion: { [weak self] inputs in
             guard let `self` = self else { return }
             
             self.setImageInputs(inputs)

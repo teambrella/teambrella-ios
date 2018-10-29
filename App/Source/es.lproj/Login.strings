@@ -35,8 +35,8 @@
 "Login.Application.Item.Title"                     = "АВТОМОБИЛЬ";
 "Login.Application.Email.Title"                    = "E-MAIL";
 "Login.Application.RegisteerButton.Title"          = "Зарегистрироваться";
-"Login.Application.TermsAndConditions.format"      = "Регистрируясь в Teambrella, ты принимаешь %@";
-"Login.Application.TermsAndConditions.Link"        = "Условия Использования";
+"Login.Application.TermsConditions.format"         = "Регистрируясь в Teambrella, ты принимаешь %@";
+"Login.Application.TermsConditions.Link"           = "Условия Использования";
 
 "Login.Application.Item.Placeholder"               = "Ford Focus 2014";
 "Login.Application.Name.Placeholder"               = "Gerry Smith";

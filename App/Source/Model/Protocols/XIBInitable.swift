@@ -38,7 +38,7 @@ extension XIBInitable where Self: UIView {
     func xibSetup() {
         contentView = loadViewFromNib()
         contentView.frame = bounds
-        contentView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+        contentView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
         addSubview(contentView)
     }
     

@@ -39,7 +39,7 @@ struct PrivateMessagesCellBuilder {
                 cell.timeLabel.text = "Team.Ago.minutes_format".localized(minutes)
             case 60..<(60 * 24):
                 cell.timeLabel.text = "Team.Ago.hours_format".localized(minutes / 60)
-            case (60 * 24)...(60 * 24 * 7):
+            case 1440...10080: // minutes in a day ... minutes in a week
                 cell.timeLabel.text = "Team.Ago.days_format".localized(minutes / (60 * 24))
             default:
                 let date = Date().addingTimeInterval(TimeInterval(-minutes * 60))

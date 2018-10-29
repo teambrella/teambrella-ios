@@ -32,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         service.push.register(application: application)
         service.push.startPushKit()
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             service.sinch.startWith(userID: userID)
         }
         TeambrellaStyle.apply()
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         // Pull in case of emergency :)
         // service.cryptoMalfunction()
         configureLibs()
@@ -51,8 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication,
                      open url: URL,
-                     options: [UIApplicationOpenURLOptionsKey: Any] = [ : ]) -> Bool {
-        guard let source = options[.sourceApplication] as? String else {
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [ : ]) -> Bool {
+        guard options[.sourceApplication] as? String != nil else {
             if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
                 return handle(dynamicLink: dynamicLink)
             }
@@ -167,12 +167,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         service.teambrella.startUpdating(completion: completionHandler)
-        
     }
     
     func application(_ application: UIApplication,
                      continue userActivity: NSUserActivity,
-                     restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         print(userActivity)
         guard let url = userActivity.webpageURL else {
             return false

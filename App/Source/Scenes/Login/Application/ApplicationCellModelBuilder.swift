@@ -35,8 +35,8 @@ class ApplicationCellModelBuilder {
                                             text: "Login.Application.Item.Title".localized,
                                             headlightText: "",
                                             placeholderText: "Login.Application.Item.Placeholder".localized),
-                  ApplicationTermsAndConditionsCellModel(format: "Login.Application.TermsAndConditions.format",
-                                                         linkText: "Login.Application.TermsAndConditions.Link".localized,
+                  ApplicationTermsAndConditionsCellModel(format: "Login.Application.TermsConditions.format",
+                                                         linkText: "Login.Application.TermsConditions.Link".localized,
                                                          link: "https://teambrella.com/TermsOfService.pdf"),
                   ApplicationActionCellModel(buttonText: "Login.Application.RegisteerButton.Title".localized)
         ]

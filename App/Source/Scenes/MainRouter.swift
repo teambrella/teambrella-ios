@@ -23,6 +23,8 @@ import PKHUD
 import UIKit
 import XLPagerTabStrip
 
+// swiftlint:disable type_body_length
+
 /**
  To push new controller use 'present' methods
  To present controller modally use 'show' methods

@@ -21,7 +21,7 @@ import Foundation
  */
 struct PagingInfo: Codable, CustomStringConvertible {
     let lastIndex: UInt64
-    var description: String { return "PagingInfo(lastIndex: \(lastIndex))"}
+    var description: String { return "PagingInfo(lastIndex: \(lastIndex))" }
     
     enum CodingKeys: String, CodingKey {
         case lastIndex = "LastIndex"

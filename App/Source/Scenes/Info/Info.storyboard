@@ -366,11 +366,11 @@
                                     <constraint firstItem="Bvx-F5-HNr" firstAttribute="centerY" secondItem="RvN-5y-rEQ" secondAttribute="centerY" id="bRZ-pq-Uiy"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwi-30-lOV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwi-30-lOV" userLabel="Top view">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rwi-IA-0i8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rwi-IA-0i8" userLabel="Semitransparent view">
                                 <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOq-l6-oSJ">
@@ -395,8 +395,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BYE-Uc-neJ">
-                                <rect key="frame" x="19.5" y="658" width="46" height="45"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYE-Uc-neJ">
+                                <rect key="frame" x="16" y="658" width="343" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWh-ag-fem" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
@@ -477,6 +477,7 @@
                             <constraint firstItem="YWh-ag-fem" firstAttribute="top" secondItem="qP1-Bh-5yt" secondAttribute="bottom" constant="20" id="tbg-ls-aYJ"/>
                             <constraint firstItem="DHp-Z9-reg" firstAttribute="top" secondItem="Uwi-fS-5KH" secondAttribute="bottom" constant="20" id="ubv-CP-H55"/>
                             <constraint firstItem="BYE-Uc-neJ" firstAttribute="height" secondItem="YWh-ag-fem" secondAttribute="height" id="wIV-vC-c46"/>
+                            <constraint firstItem="BYE-Uc-neJ" firstAttribute="centerX" secondItem="YWh-ag-fem" secondAttribute="centerX" id="xKA-pd-4Rf"/>
                             <constraint firstItem="RvN-5y-rEQ" firstAttribute="leading" secondItem="e7S-9q-rvt" secondAttribute="leading" id="yG4-qg-z5D"/>
                             <constraint firstItem="DHp-Z9-reg" firstAttribute="top" secondItem="XIc-Ry-tx6" secondAttribute="bottom" id="yKH-sG-ftf"/>
                         </constraints>

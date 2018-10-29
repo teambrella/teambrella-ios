@@ -41,8 +41,8 @@ class EmptyVC: UIViewController {
             vc.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         }
         view.addSubview(vc.view)
-        viewController.addChildViewController(vc)
-        vc.didMove(toParentViewController: viewController)
+        viewController.addChild(vc)
+        vc.didMove(toParent: viewController)
         
         if animated {
             vc.view.alpha = 0
@@ -69,8 +69,8 @@ class EmptyVC: UIViewController {
     
     func remove() {
         self.view.removeFromSuperview()
-        self.removeFromParentViewController()
-        self.didMove(toParentViewController: nil)
+        self.removeFromParent()
+        self.didMove(toParent: nil)
         
        // dismiss(animated: true, completion: nil)
     }

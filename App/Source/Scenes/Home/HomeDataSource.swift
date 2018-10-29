@@ -40,7 +40,7 @@ class HomeDataSource: SingleItemDataSource {
     var name: Name { return item?.name ?? Name.empty }
     
     func loadData() {
-        guard isLoading == false else {  return }
+        guard isLoading == false else { return }
         guard let teamID = self.teamID else { return }
         
         isLoading = true
