@@ -101,7 +101,7 @@ class JoinTeamVC: UIViewController, Routable, PagingDraggable {
                             self.view.layoutIfNeeded()
             })
             let animation = CABasicAnimation(keyPath: "cornerRadius")
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
             animation.fromValue = teamImageView.layer.cornerRadius
             animation.toValue = cornerRadius
             animation.duration = 0.5

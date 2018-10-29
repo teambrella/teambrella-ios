@@ -499,7 +499,6 @@ extension UniversalChatDatasource {
     }
     
     private func processMyNew(message: ChatEntity) {
-        let count = self.count
         let models = createCellModels(from: [message], isTemporary: true)
         addCellModels(models: models)
         postsCount += 1

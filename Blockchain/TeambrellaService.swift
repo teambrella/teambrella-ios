@@ -43,7 +43,7 @@ final class TeambrellaService: NSObject {
     private let server = BlockchainServer()
     private let keyStorage: KeyStorage = KeyStorage.shared
     lazy private var contentProvider: TeambrellaContentProvider = TeambrellaContentProvider(keyStorage: self.keyStorage)
-    private var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+    private var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     private var currentAttempt = 0
     private var hasChanges: Bool = true
     lazy private var queue: OperationQueue = {
@@ -501,14 +501,14 @@ final class TeambrellaService: NSObject {
             self?.endBackgroundTask(result: .failed,completion: completion)
         }
         print("Background task registered \(backgroundTask)")
-        assert(backgroundTask != UIBackgroundTaskInvalid)
+        assert(backgroundTask != UIBackgroundTaskIdentifier.invalid)
     }
 
     private func endBackgroundTask(result: UIBackgroundFetchResult,
                                    completion: @escaping (UIBackgroundFetchResult) -> Void) {
         log("Background task ended. Result: \(result.rawValue)", type: .crypto)
         UIApplication.shared.endBackgroundTask(backgroundTask)
-        backgroundTask = UIBackgroundTaskInvalid
+        backgroundTask = UIBackgroundTaskIdentifier.invalid
         completion(result)
     }
     #endif

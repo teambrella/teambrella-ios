@@ -87,7 +87,7 @@ class InputAccessoryView: UIView {
         if #available(iOS 11.0, *) {
             if let window = self.window {
                 self.bottomAnchor
-                    .constraintLessThanOrEqualToSystemSpacingBelow(window.safeAreaLayoutGuide.bottomAnchor,
+                    .constraint(lessThanOrEqualToSystemSpacingBelow: window.safeAreaLayoutGuide.bottomAnchor,
                                                                    multiplier: 1.0)
                     .isActive = true
             }

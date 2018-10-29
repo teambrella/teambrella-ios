@@ -59,7 +59,7 @@ extension WatchService: WCSessionDelegate {
         }
 
         UIImage.fetchImage(string: imageURLString) { image, error in
-            if let image = image, let encodedImage = UIImagePNGRepresentation(image) {
+            if let image = image, let encodedImage = image.pngData() {
                 replyHandler(encodedImage)
             } else {
                 replyHandler(Data())

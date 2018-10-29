@@ -65,7 +65,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         collectionView.register(WalletInfoCell.nib, forCellWithReuseIdentifier: WalletInfoCell.cellID)
         collectionView.register(WithdrawDetailsCell.nib, forCellWithReuseIdentifier: WithdrawDetailsCell.cellID)
         collectionView.register(WithdrawCell.nib, forCellWithReuseIdentifier: WithdrawCell.cellID)
-        collectionView.register(InfoHeader.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+        collectionView.register(InfoHeader.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
         dataSource.onUpdate = { [weak self] in
             HUD.hide()
@@ -115,17 +115,19 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     private func listenForKeyboard() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillChangeFrame),
-                                               name: Notification.Name.UIKeyboardWillChangeFrame,
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
     }
     
     private func stopListeningKeyboard() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillChangeFrameNotification,
+                                                  object: nil)
     }
     
     @objc
     func keyboardWillChangeFrame(notification: Notification) {
-        if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let finalFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let offset = collectionView.contentOffset
             guard finalFrame.minY < collectionView.contentSize.height else { return }
             
@@ -140,22 +142,22 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
         view.addGestureRecognizer(tap)
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(adjustForKeyboard),
-                           name: Notification.Name.UIKeyboardWillHide,
+                           name: UIResponder.keyboardWillHideNotification,
                            object: nil)
         center.addObserver(self, selector: #selector(adjustForKeyboard),
-                           name: Notification.Name.UIKeyboardWillChangeFrame,
+                           name: UIResponder.keyboardWillChangeFrameNotification,
                            object: nil)
     }
     
     @objc
     func adjustForKeyboard(notification: Notification) {
         guard let userInfo = notification.userInfo,
-            let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
+            let value = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         
         let keyboardScreenEndFrame = value.cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         
-        if notification.name == Notification.Name.UIKeyboardWillHide {
+        if notification.name == UIResponder.keyboardWillHideNotification {
             collectionView.contentInset = UIEdgeInsets.zero
         } else {
             collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
@@ -218,7 +220,7 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
                                       style: .cancel))
         alert.addAction(UIAlertAction(title: "Me.Wallet.Withdraw.noCameraAccess.settingsButton".localized,
                                       style: .default) { alert -> Void in
-                                        guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+                                        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
                                         UIApplication.shared.open(url, options: [:], completionHandler: { success in
                                             
                                         })
@@ -293,7 +295,7 @@ extension WithdrawVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                    withReuseIdentifier: InfoHeader.cellID,
                                                                    for: indexPath)
         return view

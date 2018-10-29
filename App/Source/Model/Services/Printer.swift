@@ -28,7 +28,7 @@ final class Printer {
     func print(image: UIImage,
                completion: @escaping (Error?) -> Void) {
         let printInfo = UIPrintInfo(dictionary: nil)
-        printInfo.outputType = UIPrintInfoOutputType.general
+        printInfo.outputType = UIPrintInfo.OutputType.general
         printInfo.jobName = "Teambrella print job"
 
         let printController = UIPrintInteractionController.shared

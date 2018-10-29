@@ -85,7 +85,7 @@ class MembersDatasource: SectionedDataSource {
                 guard let `self` = self else { return }
 
                 switch result {
-                case let .value((list, paging)):
+                case let .value((list, _)):
                     if self.isSilentUpdate {
                         self.clearDataSource()
                         self.isSilentUpdate = false

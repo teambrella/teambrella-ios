@@ -47,7 +47,7 @@ var fillLayer: CAShapeLayer?
         
         let fillLayer = CAShapeLayer()
         fillLayer.path = path.cgPath
-        fillLayer.fillRule = kCAFillRuleEvenOdd
+        fillLayer.fillRule = CAShapeLayerFillRule.evenOdd
         fillLayer.fillColor = fillColor.cgColor
         layer.addSublayer(fillLayer)
         self.fillLayer = fillLayer

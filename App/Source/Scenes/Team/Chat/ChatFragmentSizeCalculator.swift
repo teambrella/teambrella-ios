@@ -59,7 +59,7 @@ struct TextSizeCalculator {
         let constraintRect = CGSize(width: maxWidth, height: .greatestFiniteMagnitude)
         let boundingBox = text.boundingRect(with: constraintRect,
                                             options: .usesLineFragmentOrigin,
-                                            attributes: [NSAttributedStringKey.font: font],
+                                            attributes: [NSAttributedString.Key.font: font],
                                             context: nil)
         return boundingBox.size
     }
