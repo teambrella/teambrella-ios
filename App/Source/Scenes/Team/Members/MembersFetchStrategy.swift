@@ -44,6 +44,7 @@ class MembersListStrategy: MembersFetchStrategy {
     var teammates: [TeammateListEntity] = []
     var sortType: SortVC.SortType = .none
     var items: [[TeammateListEntity]] { return [newTeammates, teammates] }
+    
     func removeData() {
         teammates.removeAll()
         newTeammates.removeAll()
