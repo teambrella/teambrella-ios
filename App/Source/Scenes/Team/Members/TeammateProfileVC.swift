@@ -418,9 +418,9 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             view.title.text = teammate.basic.name.entire
             //let url = URL(string: service.server.avatarURLstring(for: teammate.basic.avatar))
             if teammate.basic.avatar.isForeignImage == false {
-                view.avatarView.present(avatarString: teammate.basic.avatar.string)
+                view.avatarView.present(imageString: teammate.basic.avatar.string)
             } else {
-                (view.avatarView as? UIImageView)?.show(teammate.basic.avatar)
+                view.avatarView.present(absoluteString: teammate.basic.avatar.string)
             }
             
             view.avatarView.onTap = { [weak self] view in

@@ -25,8 +25,6 @@ import UIKit
 
 final class LoginBlueVC: UIViewController {
     @IBOutlet var centerLabel: UILabel!
-    @IBOutlet var continueWithFBButton: UIButton!
-    @IBOutlet var continueWithVKButton: UIButton!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var tryDemoButton: UIButton!
     @IBOutlet var qrCodeButton: UIButton!
@@ -66,14 +64,10 @@ final class LoginBlueVC: UIViewController {
         }
         
         centerLabel.text = "Login.LoginBlueVC.centerLabel".localized
-        continueWithFBButton.setTitle("Login.LoginBlueVC.continueWithFBButton".localized, for: .normal)
-        continueWithVKButton.setTitle("Login.LoginBlueVC.continueWithVKButton".localized, for: .normal)
         nextButton.setTitle("General.forward".localized, for: .normal)
         qrCodeButton.setTitle("Login.QRCodeButton".localized, for: .normal)
         
         tryDemoButton.setTitle("Login.LoginBlueVC.tryDemoButton".localized, for: .normal)
-        continueWithFBButton.layer.cornerRadius = 2
-        continueWithVKButton.layer.cornerRadius = 2
         nextButton.layer.cornerRadius = 2
         
         centerLabel.isUserInteractionEnabled = true
@@ -112,14 +106,6 @@ final class LoginBlueVC: UIViewController {
     }
     
     // MARK: Callbacks
-    
-    @IBAction func tapContinueWithFBButton() {
-        register(type: .facebook)
-    }
-    
-    @IBAction func tapContinueWithVKButton() {
-        register(type: .vk)
-    }
     
     @IBAction func tapNextButton() {
         if service.keyStorage.isRealPrivateKeySet && SimpleStorage().bool(forKey: .isRegistering) == false {

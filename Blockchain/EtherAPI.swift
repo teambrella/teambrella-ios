@@ -269,7 +269,7 @@ class EtherAPI {
             }
             
         }
-        log("Sending request: \(task.currentRequest)", type: .cryptoRequests)
+        log("Sending request: \(String(describing: task.currentRequest))", type: .cryptoRequests)
         task.resume()
         session.finishTasksAndInvalidate()
     }

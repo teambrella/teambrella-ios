@@ -28,11 +28,13 @@ struct DateProcessor {
         let interval = Date() - date
         if let years = interval.year, years > 0 { return "" }
 
-        let days = (interval.month ?? 0) * 30 + (interval.day ?? 0)
+        let days = interval.day ?? 0
+        let months = interval.month ?? 0
+        let daysTotal = months * 30 + days
         return stringFromNow(seconds: interval.second ?? 0,
                              minutes: interval.minute ?? 0,
                              hours: interval.hour ?? 0,
-                             days: days)
+                             days: daysTotal)
     }
 
     func stringFromNow(seconds: Int = 0,
@@ -93,7 +95,7 @@ struct DateProcessor {
             agoText = "Team.Ago.minutes_format".localized(passedMinutes)
         case 60..<(60 * 24):
             agoText = "Team.Ago.hours_format".localized(passedMinutes / 60)
-        case (60 * 24)...(60 * 24 * 7):
+        case 1440...10080: //(60 * 24)...(60 * 24 * 7):
             agoText = "Team.Ago.days_format".localized(passedMinutes / (60 * 24))
         default:
             let date = Date().addingTimeInterval(TimeInterval(-passedMinutes * 60))

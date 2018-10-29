@@ -396,7 +396,7 @@ struct TeammateCellBuilder {
             cell.timeLabel.text = "Team.Ago.minutes_format".localized(minutesSinceLastPost)
         case 60..<(60 * 24):
             cell.timeLabel.text = "Team.Ago.hours_format".localized(minutesSinceLastPost / 60)
-        case (60 * 24)...(60*24*7):
+        case 1440...10080: // 60 * 24...60 * 24 * 7
             cell.timeLabel.text = "Team.Ago.days_format".localized(minutesSinceLastPost / (60 * 24))
         default:
             let date = Date().addingTimeInterval(TimeInterval(-minutesSinceLastPost * 60))
