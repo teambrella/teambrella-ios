@@ -98,12 +98,12 @@ class MyProxiesVC: UIViewController {
             offsetForDraggedCell = offsetOfTouchFrom(recognizer: gesture, inCell: cell)
             }
             collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-        case UIGestureRecognizerState.changed:
+        case UIGestureRecognizer.State.changed:
             var location = gesture.location(in: collectionView)
             location.x += offsetForDraggedCell.x
             location.y += offsetForDraggedCell.y
             collectionView.updateInteractiveMovementTargetPosition(location)
-        case UIGestureRecognizerState.ended:
+        case UIGestureRecognizer.State.ended:
             // without performing batch update the dragged cell blinks when dropped
            // collectionView.performBatchUpdates({
                 self.collectionView.endInteractiveMovement()

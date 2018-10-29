@@ -265,7 +265,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         collectionView.register(VotedRiskCell.nib,
                                 forCellWithReuseIdentifier: TeammateProfileCellType.voted.rawValue)
         collectionView.register(TeammateSummaryView.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: TeammateSummaryView.cellID)
     }
     
@@ -376,13 +376,13 @@ extension TeammateProfileVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionHeader {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader,
+        if kind == UICollectionView.elementKindSectionHeader {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
                                                                    withReuseIdentifier: TeammateSummaryView.cellID,
                                                                    for: indexPath)
         }
-        if kind == UICollectionElementKindSectionFooter {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
+        if kind == UICollectionView.elementKindSectionFooter {
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,
                                                                    withReuseIdentifier: "footer",
                                                                    for: indexPath)
         }
@@ -473,7 +473,7 @@ extension TeammateProfileVC: UICollectionViewDelegate {
                 setupCompactInfoHeader()
             }
         }
-        if elementKind == UICollectionElementKindSectionFooter, let footer = view as? TeammateFooter {
+        if elementKind == UICollectionView.elementKindSectionFooter, let footer = view as? TeammateFooter {
             if let date = teammate.basic.dateJoined {
                 let dateString = Formatter.teambrellaShort.string(from: date)
                 footer.label.text = "Team.Teammate.Footer.MemberSince".localized(dateString)
@@ -553,7 +553,7 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
 // MARK: UIScrollViewDelegate
 extension TeammateProfileVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let visibleViews = collectionView.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader)
+        let visibleViews = collectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader)
         let summaryViews = visibleViews.filter { $0 is TeammateSummaryView }
         guard let summary = summaryViews.first as? TeammateSummaryView else { return }
         guard let numberView = summary.leftNumberView else { return }
@@ -633,7 +633,7 @@ extension TeammateProfileVC: VotingRiskCellDelegate {
         updateAverages(cell: cell, risk: changedRisk)
         cell.showYourNoVote(risk: changedRisk)
         cell.colorizeCenterCell()
-        let kind = UICollectionElementKindSectionHeader
+        let kind = UICollectionView.elementKindSectionHeader
         if let view = collectionView.visibleSupplementaryViews(ofKind: kind).first as? TeammateSummaryView {
             updateAmounts(in: view, with: changedRisk)
         }

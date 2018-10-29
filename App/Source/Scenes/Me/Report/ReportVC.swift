@@ -133,17 +133,19 @@ final class ReportVC: UIViewController, Routable {
     private func listenForKeyboard() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillChangeFrame),
-                                               name: Notification.Name.UIKeyboardWillChangeFrame,
+                                               name: UIResponder.keyboardWillChangeFrameNotification,
                                                object: nil)
     }
     
     private func stopListeningKeyboard() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillChangeFrameNotification,
+                                                  object: nil)
     }
     
     @objc
     func keyboardWillChangeFrame(notification: Notification) {
-        if let finalFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let finalFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let offset = collectionView.contentOffset
             guard finalFrame.minY < collectionView.contentSize.height else { return }
             
@@ -158,10 +160,10 @@ final class ReportVC: UIViewController, Routable {
         view.addGestureRecognizer(tap)
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(adjustForKeyboard),
-                           name: Notification.Name.UIKeyboardWillHide,
+                           name: UIResponder.keyboardWillHideNotification,
                            object: nil)
         center.addObserver(self, selector: #selector(adjustForKeyboard),
-                           name: Notification.Name.UIKeyboardWillChangeFrame,
+                           name: UIResponder.keyboardWillChangeFrameNotification,
                            object: nil)
     }
     
@@ -170,12 +172,12 @@ final class ReportVC: UIViewController, Routable {
     @objc
     func adjustForKeyboard(notification: Notification) {
         guard let userInfo = notification.userInfo,
-            let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else { return }
+            let value = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         
         let keyboardScreenEndFrame = value.cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         
-        if notification.name == Notification.Name.UIKeyboardWillHide {
+        if notification.name == UIResponder.keyboardWillHideNotification {
             collectionView.contentInset = UIEdgeInsets.zero
         } else {
             collectionView.contentInset = UIEdgeInsets(top: 0,
@@ -312,14 +314,14 @@ final class ReportVC: UIViewController, Routable {
             return
         }
         photoController.view.removeFromSuperview()
-        photoController.removeFromParentViewController()
-        photoController.didMove(toParentViewController: nil)
-        photoController.willMove(toParentViewController: self)
+        photoController.removeFromParent()
+        photoController.didMove(toParent: nil)
+        photoController.willMove(toParent: self)
         view.addSubview(photoController.view)
         photoController.view.frame = view.bounds
         photoController.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        self.addChildViewController(photoController)
-        photoController.didMove(toParentViewController: self)
+        self.addChild(photoController)
+        photoController.didMove(toParent: self)
     }
     
     private func validateAndSendData() {

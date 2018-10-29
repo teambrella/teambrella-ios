@@ -73,7 +73,7 @@ class OthersVotedVC: UIViewController, Routable {
     
     private func setupCollectionView() {
         collectionView.register(InfoHeader.nib,
-                                forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: InfoHeader.cellID)
     }
     

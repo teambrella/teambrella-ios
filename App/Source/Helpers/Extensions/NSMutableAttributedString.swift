@@ -61,7 +61,7 @@ extension NSMutableAttributedString {
         return self
     }
     
-    private func decorationAttributes(for type: StringDecorationType) -> [NSAttributedStringKey: Any] {
+    private func decorationAttributes(for type: StringDecorationType) -> [NSAttributedString.Key: Any] {
         switch type {
         case .boldAmount:
             return [.foregroundColor: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1),

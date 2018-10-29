@@ -30,10 +30,10 @@ extension String {
     func attributedBoldString(nonBoldRange: NSRange?) -> NSAttributedString {
         let fontSize = UIFont.systemFontSize
         let attrs = [
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: fontSize),
-            NSAttributedStringKey.foregroundColor: UIColor.black
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: fontSize),
+            NSAttributedString.Key.foregroundColor: UIColor.black
         ]
-        let nonBoldAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)]
+        let nonBoldAttribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]
         let attrStr = NSMutableAttributedString(string: self, attributes: attrs)
         if let range = nonBoldRange {
             attrStr.setAttributes(nonBoldAttribute, range: range)

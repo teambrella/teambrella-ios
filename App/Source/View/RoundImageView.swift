@@ -79,12 +79,12 @@ class RoundImageView: UIImageView {
     
     var font: UIFont?
     
-    override var contentMode: UIViewContentMode {
+    override var contentMode: UIView.ContentMode {
         didSet {
             imageView.contentMode = contentMode
         }
     }
-    
+
     @IBInspectable var inset: CGFloat = 0.0 {
         didSet {
             setNeedsLayout()
