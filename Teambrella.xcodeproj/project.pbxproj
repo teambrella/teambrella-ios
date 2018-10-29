@@ -3574,6 +3574,7 @@
 					6D42CC9A20E133B300C2B146 = {
 						CreatedOnToolsVersion = 9.4.1;
 						DevelopmentTeam = Y6A22RLVJG;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6D05234B20A5D838000B3247;
 					};
@@ -3609,7 +3610,7 @@
 					6DA475B31E8ABEE600B56D9B = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = Y6A22RLVJG;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6D05234B20A5D838000B3247;
 					};
@@ -5516,7 +5517,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.TeambrellaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Teambrella;
 			};
@@ -5537,7 +5538,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.TeambrellaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Teambrella;
 			};
@@ -5938,7 +5939,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Teambrella.app/Teambrella";
 			};
 			name = Debug;
@@ -5955,7 +5956,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.TeambrellaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Teambrella.app/Teambrella";
 			};
 			name = Release;
