@@ -30,19 +30,14 @@ class ChatNewMessagesSeparatorCell: UICollectionViewCell {
         label.backgroundColor = .clear
         label.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(label)
+
+        let superview = self.contentView
+        label.centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
         return label
     }()
-    
-    lazy var separatorLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = self.color
-        self.contentView.addSubview(view)
-        return view
-    }()
-    
+
     var color: UIColor = UIColor.darkTextColor
-    
-    private var areConstraintsUpdated: Bool = false
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("\(#function) not implemented for \(#file)")
@@ -51,28 +46,7 @@ class ChatNewMessagesSeparatorCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        //translatesAutoresizingMaskIntoConstraints = false
         setNeedsUpdateConstraints()
-    }
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        guard areConstraintsUpdated == false else { return }
-
-        let superview = self
-//        label.rightAnchor.constraint(equalTo: superview.rightAnchor, constant: -8).isActive = true
-//        label.leftAnchor.constraint(equalTo: superview.leftAnchor, constant: 8).isActive = true
-        label.topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
-        label.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
-        label.centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
-
-//        separatorLine.translatesAutoresizingMaskIntoConstraints = false
-//        separatorLine.leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
-//        separatorLine.centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
-//        separatorLine.rightAnchor.constraint(equalTo: label.leftAnchor, constant: -8).isActive = true
-//        separatorLine.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-
-        areConstraintsUpdated = true
     }
 
     override func draw(_ rect: CGRect) {
