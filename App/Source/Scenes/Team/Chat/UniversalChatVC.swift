@@ -651,13 +651,15 @@ private extension UniversalChatVC {
     
     private func sizeForServiceMessage(model: ServiceMessageCellModel) -> CGSize {
         var size = model.size
-        size.height += 32
-        return model.size
+        size.height += 16
+        size.width += 16
+        return size
     }
     
     private func sizeForServiceMessageWithButton(model: ServiceMessageWithButtonCellModel) -> CGSize {
         var size = model.size
         size.height += (50 + 32)
+        size.width = collectionView.bounds.width
         return size
     }
     
