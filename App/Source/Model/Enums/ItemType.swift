@@ -26,10 +26,25 @@ enum ItemType: Int, Codable {
     case claim = 1
     case rule = 2
     case teamChat = 3
+
     case teamNotification = 100
     case fundWallet = 200
     case attachPhotos = 210
     case addAvatar = 211
+
+    case inviteFriend = 300
     
     case privateChat = -10
+
+    var isServiceType: Bool {
+        switch self {
+        case .attachPhotos,
+             .fundWallet,
+             .addAvatar,
+             .inviteFriend:
+            return true
+        default:
+            return false
+        }
+    }
 }

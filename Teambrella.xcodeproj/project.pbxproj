@@ -483,6 +483,8 @@
 		6D05254320A5DE3A000B3247 /* TeambrellaNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6DEFE3F22006544100615022 /* TeambrellaNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6D0C39DE1F991B6600941FF3 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C39DC1F991B6600941FF3 /* Notification.swift */; };
 		6D0FD84E201F0A12009CB0ED /* CryptoServerUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */; };
+		6D105CFD2191EB5200BA7157 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D105CFC2191EB5200BA7157 /* ShareController.swift */; };
+		6D105CFE2191EB5200BA7157 /* ShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D105CFC2191EB5200BA7157 /* ShareController.swift */; };
 		6D106F0C203AD4D70049E92E /* NewClaimCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F09203AD4C70049E92E /* NewClaimCell.swift */; };
 		6D106F0D203AD4DD0049E92E /* NewClaimCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D106F08203AD4C70049E92E /* NewClaimCell.xib */; };
 		6D106F10203AEA400049E92E /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D106F0E203AEA400049E92E /* Console.swift */; };
@@ -1348,6 +1350,7 @@
 		6D0E742C1F13C0D70055BF1E /* LabeledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabeledButton.swift; path = View/Buttons/LabeledButton.swift; sourceTree = "<group>"; };
 		6D0E742E1F13C7810055BF1E /* DeveloperTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeveloperTools.swift; path = Helpers/DeveloperTools.swift; sourceTree = "<group>"; };
 		6D0FD84C201F0A12009CB0ED /* CryptoServerUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoServerUpdate.swift; sourceTree = "<group>"; };
+		6D105CFC2191EB5200BA7157 /* ShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShareController.swift; path = Controller/ShareController.swift; sourceTree = "<group>"; };
 		6D106F08203AD4C70049E92E /* NewClaimCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewClaimCell.xib; path = View/Cells/Report/NewClaimCell.xib; sourceTree = "<group>"; };
 		6D106F09203AD4C70049E92E /* NewClaimCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewClaimCell.swift; path = View/Cells/Report/NewClaimCell.swift; sourceTree = "<group>"; };
 		6D106F0E203AEA400049E92E /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Console.swift; path = Scenes/Info/Console.swift; sourceTree = "<group>"; };
@@ -2625,6 +2628,7 @@
 				6DA714EC1EDF49F500F39EBE /* MasterTabBarController.swift */,
 				6D66B4991F4C461A00672583 /* ImagePickerController.swift */,
 				6DDC65611FBAE42700DE4E36 /* TopBar */,
+				6D105CFC2191EB5200BA7157 /* ShareController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -4343,6 +4347,7 @@
 				6D0523A520A5D838000B3247 /* RadarView.swift in Sources */,
 				6D0523A620A5D838000B3247 /* FeedCellModels.swift in Sources */,
 				6DCFB500212C5DD8000817F6 /* Interval.swift in Sources */,
+				6D105CFE2191EB5200BA7157 /* ShareController.swift in Sources */,
 				6D0523A720A5D838000B3247 /* UIColor.swift in Sources */,
 				6D0523A820A5D838000B3247 /* MembersFetchStrategy.swift in Sources */,
 				6D0523A920A5D838000B3247 /* Log.swift in Sources */,
@@ -4798,6 +4803,7 @@
 				6D4E5C6E1F7AB6870020DEE2 /* RadarView.swift in Sources */,
 				6D4E5C6F1F7AB6870020DEE2 /* FeedCellModels.swift in Sources */,
 				6D4E5C701F7AB6870020DEE2 /* UIColor.swift in Sources */,
+				6D105CFD2191EB5200BA7157 /* ShareController.swift in Sources */,
 				6D4E5C711F7AB6870020DEE2 /* MembersFetchStrategy.swift in Sources */,
 				6D4E5C731F7AB6870020DEE2 /* Log.swift in Sources */,
 				6DB922261F9E27CD009D3937 /* AbiArguments.swift in Sources */,

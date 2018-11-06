@@ -127,10 +127,7 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     }
     
     @IBAction func tapInviteFriendButton(_ sender: UIButton) {
-        guard let text = service.session?.currentTeam?.inviteText else { return }
-
-        let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
-        present(vc, animated: true)
+        ShareController().shareInvitation(in: self)
     }
     
     @IBAction func tapSort(_ sender: UIButton) {

@@ -37,13 +37,10 @@ struct HomeCellBuilder {
         guard let model = model else {
             return
         }
-        
-        switch model.itemType {
-        case .attachPhotos,
-             .fundWallet,
-             .addAvatar:
+
+        if model.itemType.isServiceType {
             populateServiceCell(cell: cell, model: model)
-        default:
+        } else {
             switch cell {
             case let cell as HomeCollectionCell:
                 populateHome(cell: cell, model: model)

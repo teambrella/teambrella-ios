@@ -269,8 +269,6 @@ extension HomeVC: UICollectionViewDataSource {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapAttachPhotos), for: .touchUpInside)
                 cell.button.tag = indexPath.row
-            } else if model?.itemType == ItemType.addAvatar {
-                
             } else {
                 cell.button.removeTarget(nil, action: nil, for: .allEvents)
                 cell.button.addTarget(self, action: #selector(tapChatWithSupport), for: .touchUpInside)
@@ -303,12 +301,15 @@ extension HomeVC: UICollectionViewDataSource {
             service.router.switchToWallet()
         case .addAvatar:
             picker.showOptions()
+        case .inviteFriend:
+            ShareController().shareInvitation(in: self)
         default:
             let context = UniversalChatContext(model)
             context.type = UniversalChatType.with(itemType: model.itemType)
             service.router.presentChat(context: context)
         }
     }
+
 }
 
 // MARK: UICollectionViewDelegate

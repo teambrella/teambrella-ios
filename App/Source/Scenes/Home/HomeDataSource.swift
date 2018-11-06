@@ -75,15 +75,9 @@ class HomeDataSource: SingleItemDataSource {
     }
     
     func cellID(with cardModel: HomeCardModel) -> String {
-        switch cardModel.itemType {
-        case .teammate,
-             .claim:
-            return "HomeCollectionCell"
-        case .fundWallet,
-             .attachPhotos,
-             .addAvatar:
+        if cardModel.itemType.isServiceType {
             return HomeSupportCell.cellID
-        default:
+        } else {
             return "HomeCollectionCell"
         }
     }
