@@ -216,6 +216,25 @@ extension SinchService: SINManagedPushDelegate {
                      didReceiveIncomingPushWithPayload payload: [AnyHashable: Any]!,
                      forType pushType: String!) {
         log("Sinch Service Received push with payload: \(String(describing: payload))", type: .voip)
+        guard let cmd = payload["cmd"] as? String, let command = PushKitCommand(rawValue: cmd) else {
+            log("No command found in PushKit dictionary: \(String(describing: payload))", type: .push)
+            Statistics.log(event: .voipPushWrongPayload, dict: payload as? [String: Any])
+            return
+        }
+
+        Statistics.log(event: .voipPushReceived, dict: payload as? [String: Any])
+        log("got cmd string: \(cmd), command: \(command)", type: .push)
+        switch command {
+        case .getUpdates:
+            service.teambrella.startUpdating { result in
+                log("SinchService has finished it's job", type: .push)
+
+            }
+        case .getDatabaseDump:
+            service.teambrella.sendDBDump { success in
+
+            }
+        }
     }
 }
 
