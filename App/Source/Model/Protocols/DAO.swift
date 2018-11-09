@@ -78,6 +78,8 @@ protocol DAO {
     func requestChat(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel>
     func sendPrivateChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel>
     func sendChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatEntity>
+    /// this method guarantees that the photo was made via our app
+    func sendPhotoPost(data: Data) -> Future<[String]>
 
     // MARK: Send data
 

@@ -352,6 +352,16 @@ final class MainRouter {
                    delegate: delegate,
                    dataSource: datasource, currentState: type)
     }
+
+    func showPhotoSelector(in viewController: UIViewController,
+                           delegate: PhotoSelectorDelegate,
+                           dataSource: PhotoSelectorDataSource) {
+        guard let vc = PhotoSelectorVC.instantiate() as? PhotoSelectorVC else { fatalError("Error instantiating") }
+
+        vc.delegate = delegate
+        vc.dataSource = dataSource
+        viewController.present(vc, animated: false, completion: nil)
+    }
     
     private func showFilter(in viewController: UIViewController,
                             delegate: SelectorDelegate,

@@ -336,16 +336,24 @@ class ServerDAO: DAO {
     }
     
     func sendPhoto(data: Data) -> Future<[String]> {
+        return sendPhotoData(data: data, type: .uploadPhoto)
+    }
+
+    func sendPhotoPost(data: Data) -> Future<[String]> {
+        return sendPhotoData(data: data, type: .uploadPhoto)
+    }
+
+    private func sendPhotoData(data: Data, type: TeambrellaPostRequestType) -> Future<[String]> {
         let promise = Promise<[String]>()
         freshKey { key in
             var body = RequestBody(key: key, payload: nil)
             body.contentType = "image/jpeg"
             body.data = data
-            let request = TeambrellaRequest<[String]>(type: .uploadPhoto, body: body, success: { box in
+            let request = TeambrellaRequest<[String]>(type: type, body: body, success: { box in
                 guard let value = box.value else {
                     fatalError()
                 }
-                
+
                 promise.resolve(with: value) },
                                                       failure: promise.reject)
             request.start(server: self.server)

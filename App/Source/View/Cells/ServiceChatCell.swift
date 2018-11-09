@@ -20,9 +20,14 @@ class ServiceChatCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var label: UILabel!
     @IBOutlet var containerView: UIView!
 
+    var onTap: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
          setup()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapCell))
+        containerView.isUserInteractionEnabled = true
+        containerView.addGestureRecognizer(tap)
     }
 
     func setup() {
@@ -31,4 +36,10 @@ class ServiceChatCell: UICollectionViewCell, XIBInitableCell {
         containerView.layer.borderWidth = 1
         containerView.layer.borderColor = UIColor.cornflowerBlueThree.cgColor
     }
+
+    @objc
+    func tapCell() {
+        onTap?()
+    }
+    
 }

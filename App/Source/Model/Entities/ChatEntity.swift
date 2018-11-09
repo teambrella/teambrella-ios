@@ -29,6 +29,10 @@ enum SystemType: Int, Codable {
     
 }
 
+struct SystemMessageID {
+    static let addPhoto = "00000800-0800-0800-0800-000000000001"
+}
+
 struct ChatEntity: Decodable {
     let userID: String
     let lastUpdated: Int64

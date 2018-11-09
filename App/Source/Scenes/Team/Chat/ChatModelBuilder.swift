@@ -58,8 +58,19 @@ class ChatModelBuilder {
                                                      text: model.text,
                                                      buttonText: "Team.Chat.PayToJoin.buttonTitle".localized,
                                                      size: size)
-        case .firstPhotoMissing, .firstPostMissing:
-            return ServiceMessageCellModel(messageID: model.id, date: model.created, text: model.text, size: size)
+        case .firstPhotoMissing:
+            let isClickable = model.id == SystemMessageID.addPhoto
+            return ServiceMessageCellModel(messageID: model.id,
+                                           date: model.created,
+                                           text: model.text,
+                                           size: size,
+                                           isClickable: isClickable)
+            case .firstPostMissing:
+                return ServiceMessageCellModel(messageID: model.id,
+                                               date: model.created,
+                                               text: model.text,
+                                               size: size,
+                                               isClickable: false)
         }
     }
 

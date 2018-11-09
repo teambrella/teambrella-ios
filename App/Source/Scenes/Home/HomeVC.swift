@@ -391,3 +391,10 @@ extension HomeVC: ImagePickerControllerDelegate {
         HUD.hide()
     }
 }
+
+// TMP
+// PhotoSelectorDelegate
+
+extension HomeVC: PhotoSelectorDelegate {
+    
+}

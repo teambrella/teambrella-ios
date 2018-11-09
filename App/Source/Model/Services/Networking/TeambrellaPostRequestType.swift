@@ -57,7 +57,12 @@ enum TeambrellaPostRequestType: String {
     case setLanguageEs = "me/setUiLang/es"
     case me = "me/getMe"
     case uploadAvatar = "me/setAvatar"
-    
+
+    case newPost = "post/newPost"
+    case newPhotoPost = "post/newPhotoPost" // не используется
+    case uploadPhoto = "post/newUpload"
+    case deletePost = "post/delPost"
+
     case privateChat = "privatemessage/getChat"
     case privateList = "privatemessage/getList"
     case newPrivatePost = "privatemessage/newMessage"
@@ -73,9 +78,6 @@ enum TeambrellaPostRequestType: String {
     case teammateVote = "teammate/setVote"
     case teammateChat = "teammate/getChat"
     case teammateVotesList = "teammate/getAllVotesList"
-    
-    case newPost = "post/newPost"
-    case uploadPhoto = "post/newUpload"
     
     case wallet = "wallet/getOne"
     case walletTransactions = "wallet/getMyTxList"

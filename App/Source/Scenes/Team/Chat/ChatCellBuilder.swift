@@ -107,6 +107,13 @@ struct ChatCellBuilder {
         } else if let cell = cell as? ServiceChatCell {
             if let model = model as? ServiceMessageCellModel {
                 cell.label.text = model.text
+                if model.isClickable {
+                    cell.onTap = { [weak controller] in
+                        controller?.internalPhotoPicker.showOptions()
+                    }
+                } else {
+                    cell.onTap = nil
+                }
             }
         }
     }

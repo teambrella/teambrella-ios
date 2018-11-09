@@ -41,6 +41,11 @@ final class UniversalChatVC: UIViewController, Routable {
     override var canBecomeFirstResponder: Bool { return true }
     
     lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
+    lazy var internalPhotoPicker: ImagePickerController = {
+        let picker = ImagePickerController(parent: self, delegate: self)
+        picker.isInsideAppPhoto = true
+        return picker
+    }()
     
     var conversationID: String {
         if dataSource.isPrivateChat {
@@ -780,7 +785,15 @@ extension UniversalChatVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+         let model = dataSource[indexPath]
+        switch model {
+        case let model as ServiceMessageCellModel:
+            if model.isClickable {
+                internalPhotoPicker.showOptions()
+            }
+        default:
+            break
+        }
     }
     
 }

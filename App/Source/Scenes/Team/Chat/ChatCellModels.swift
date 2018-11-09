@@ -102,6 +102,7 @@ struct ServiceMessageCellModel: ServiceMessageLike {
     let isTemporary: Bool = false
     let text: String
     let size: CGSize
+    let isClickable: Bool
 }
 
 struct ServiceMessageWithButtonCellModel: ServiceMessageLike {

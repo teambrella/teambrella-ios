@@ -33,6 +33,9 @@ class ImagePickerController: NSObject {
     
     var compressionRate: CGFloat = 0.3
     var maxSide: CGFloat = 1800
+    var isInsideAppPhoto: Bool = false
+
+    var imageToSend: UIImage?
     
     init(parent: UIViewController, delegate: ImagePickerControllerDelegate?) {
         self.parent = parent
@@ -41,13 +44,18 @@ class ImagePickerController: NSObject {
     }
     
     func showOptions() {
+        if isInsideAppPhoto {
+            showCamera()
+            return
+        }
+
         let alert = UIAlertController(title: "Me.Report.ImageSource.title".localized,
                                       message: nil,
                                       preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Me.Report.ImageSource.camera".localized, style: .default, handler: { _ in
             self.showCamera()
         }))
-        
+
         alert.addAction(UIAlertAction(title: "Me.Report.ImageSource.gallery".localized, style: .default, handler: { _ in
             self.showGallery()
         }))
@@ -84,6 +92,8 @@ class ImagePickerController: NSObject {
         guard let imageData = resizedImage.jpegData(compressionQuality: self.compressionRate) else {
             fatalError("Can't process image")
         }
+
+        imageToSend = resizedImage
         
         if isAvatar {
             service.dao.sendAvatar(data: imageData).observe { [weak self] result in
@@ -97,17 +107,22 @@ class ImagePickerController: NSObject {
                 }
             }
         } else {
-            service.dao.sendPhoto(data: imageData).observe { [weak self] result in
-                guard let me = self else { return }
-                
+            let completion: (Result<[String]>) -> Void = {  [weak self] result in
+                guard let self = self else { return }
+
                 switch result {
                 case let .value(imageStrings):
                     guard  let first = imageStrings.first else { return }
-                    
-                    me.delegate?.imagePicker(controller: me, didSendImage: image, urlString: first)
+
+                    self.delegate?.imagePicker(controller: self, didSendImage: image, urlString: first)
                 case .error:
                     break
                 }
+            }
+            if isInsideAppPhoto {
+                service.dao.sendPhotoPost(data: imageData).observe(with: completion)
+            } else {
+                service.dao.sendPhoto(data: imageData).observe(with: completion)
             }
         }
     }
