@@ -35,6 +35,7 @@ protocol ChatCellUserDataLike: ChatCellModel {
     var date: Date { get }
     var isTemporary: Bool { get }
     var id: String { get }
+    var isDeletable: Bool { get }
 }
 
 struct ChatTextCellModel: ChatCellUserDataLike {
@@ -48,6 +49,7 @@ struct ChatTextCellModel: ChatCellUserDataLike {
     var rateText: String?
     let date: Date
     let isTemporary: Bool
+    let isDeletable: Bool = false
 
     var maxFragmentsWidth: CGFloat { return fragmentSizes.reduce(0) { max($0, $1.width) } }
     var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
@@ -68,6 +70,7 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     var maxFragmentsWidth: CGFloat { return fragmentSizes.reduce(0) { max($0, $1.width) } }
     var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
     var id: String { return entity.id }
+    var isDeletable: Bool { return isMy && date.timeIntervalSinceNow < 60 * 60 * 24 }
 }
 
 struct ChatSeparatorCellModel: ChatCellModel {

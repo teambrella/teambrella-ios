@@ -79,21 +79,6 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
         }
     }
     
-    private func setupObject() {
-        guard let object = dataSource.claimItem else { return }
-        
-        objectImageView.show(object.photo)
-        objectTitle.text = object.name.entire
-        objectSubtitle.text = object.location
-    }
-    
-    private func prepareView() {
-        objectImageView.image = nil
-        objectTitle.text = nil
-        objectSubtitle.text = nil
-        objectView.color = .veryLightBlueThree
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard isFirstLoading == false else {
@@ -154,6 +139,22 @@ class ClaimsVC: UIViewController, IndicatorInfoProvider, Routable {
             emptyVC = nil
         }
     }
+
+    private func setupObject() {
+        guard let object = dataSource.claimItem else { return }
+
+        objectImageView.show(object.photo)
+        objectTitle.text = object.name.entire
+        objectSubtitle.text = object.location
+    }
+
+    private func prepareView() {
+        objectImageView.image = nil
+        objectTitle.text = nil
+        objectSubtitle.text = nil
+        objectView.color = .veryLightBlueThree
+    }
+
 }
 
 // MARK: UICollectionViewDataSource

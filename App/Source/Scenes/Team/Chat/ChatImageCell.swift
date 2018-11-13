@@ -70,6 +70,16 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         return imageView
     }()
 
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        button.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
+        button.addTarget(self, action: #selector(tapDelete), for: .touchUpInside)
+        self.contentView.addSubview(button)
+        return button
+    }()
+
     var width: CGFloat {
         return bounds.width
     }
@@ -110,6 +120,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
     }
 
     var onTapImage: ((ChatImageCell, GalleryView) -> Void)?
+    var onTapDelete: ((ChatImageCell) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -163,7 +174,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
             setupFragment(fragment: fragment)
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
-
+            setupDeleteButton(isDeletable: model.isDeletable)
         }
     }
 
@@ -290,6 +301,19 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         default:
             break
         }
+    }
+
+    private func setupDeleteButton(isDeletable: Bool) {
+        if isDeletable {
+            deleteButton.center = CGPoint(x: imageView.frame.maxX - deleteButton.frame.width / 2,
+                                          y: imageView.frame.minY + deleteButton.frame.height / 2)
+        }
+        deleteButton.isHidden = !isDeletable
+    }
+
+    @objc
+    private func tapDelete() {
+        onTapDelete?(self)
     }
 
     private func onTap(galleryView: GalleryView) {

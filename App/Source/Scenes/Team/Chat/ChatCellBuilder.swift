@@ -57,6 +57,9 @@ struct ChatCellBuilder {
                 
                 galleryView.fullscreen(in: controller, imageStrings: controller.dataSource.allImages)
             }
+            cell.onTapDelete = { [weak controller] cell in
+                controller?.delete(cell)
+            }
         }
     }
     

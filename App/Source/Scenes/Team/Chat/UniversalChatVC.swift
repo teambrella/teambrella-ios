@@ -21,6 +21,7 @@
 
 import UIKit
 
+// swiftlint:disable file_length
 final class UniversalChatVC: UIViewController, Routable {
     struct Constant {
         static let newMessagesSeparatorCellID = "com.chat.new.cell"
@@ -236,6 +237,17 @@ final class UniversalChatVC: UIViewController, Routable {
         } else {
             self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
             completion?()
+        }
+    }
+
+    func delete(_ cell: ChatImageCell) {
+        dataSource.deleteMessage(id: cell.id) { [weak self] error in
+            if let error = error {
+                print("Error deleting cell \(cell.id): \(error)")
+            } else {
+            print("Successfully deleted cell id: \(cell.id)")
+            self?.collectionView.reloadData()
+            }
         }
     }
     

@@ -332,6 +332,23 @@ final class UniversalChatDatasource {
                 }
         }
     }
+
+    func deleteMessage(id: String, completion: @escaping (Error?) -> Void) {
+        dao.deletePost(id: id).observe { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .value:
+                for (idx, model) in self.models.enumerated() where model.id == id {
+                    self.models.remove(at: idx)
+                    break
+                }
+                completion(nil)
+            case let .error(error):
+                completion(error)
+            }
+        }
+    }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
         guard indexPath.row < models.count else {
