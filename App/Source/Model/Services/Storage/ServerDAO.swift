@@ -382,6 +382,10 @@ class ServerDAO: DAO {
         }
         return promise
     }
+
+    func deletePost(id: String) -> Future<String> {
+        return startRequest(body: ["id": id], type: .deletePost)
+    }
     
     func sendRiskVote(teammateID: Int, risk: Double?) -> Future<TeammateVotingResult> {
         return startRequest( body: ["TeammateId": teammateID,

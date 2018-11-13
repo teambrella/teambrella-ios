@@ -80,6 +80,7 @@ protocol DAO {
     func sendChatMessage(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatEntity>
     /// this method guarantees that the photo was made via our app
     func sendPhotoPost(data: Data) -> Future<[String]>
+    func deletePost(id: String) -> Future<String>
 
     // MARK: Send data
 
