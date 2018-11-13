@@ -200,6 +200,12 @@ final class UniversalChatDatasource {
     
     var isPrivateChat: Bool { return strategy.isPrivate }
     
+    var isPrejoining: Bool {
+        guard let accessLevel = chatModel?.team?.accessLevel else { return false }
+
+        return accessLevel == .readOnlyAllAndStealth
+    }
+
     var isInputAllowed: Bool {
         if isPrivateChat { return true }
         guard let teamID = chatModel?.team?.teamID,

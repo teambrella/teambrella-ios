@@ -131,6 +131,9 @@ final class UniversalChatVC: UIViewController, Routable {
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
             self.input.isUserInteractionEnabled = self.dataSource.isInputAllowed
             self.input.allowInput(self.dataSource.isInputAllowed)
+            if self.dataSource.isPrejoining {
+                self.input.leftButton.isHidden = true
+            }
             self.pinButton.isHidden = !self.dataSource.isInputAllowed
         }
         dataSource.onSendMessage = { [weak self] indexPath in
@@ -551,7 +554,7 @@ private extension UniversalChatVC {
     private func setupInput() {
         input.isUserInteractionEnabled = false
         ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.231372549, green: 0.2588235294, blue: 0.4901960784, alpha: 1), opacity: 0.05, radius: 8, offset: CGSize(width: 0, height: -9))
-        if dataSource.isPrivateChat {
+        if dataSource.isPrivateChat || dataSource.isPrejoining {
             input.leftButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
             input.leftButton.isHidden = true
             input.leftButton.isEnabled = false
