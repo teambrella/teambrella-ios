@@ -465,6 +465,15 @@ extension ReportVC: ImagePickerControllerDelegate {
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
         
     }
+
+    func imagePicker(controller: ImagePickerController, didSendPhotoPost post: ChatEntity) {
+        // not needed
+    }
+
+    func imagePicker(controller: ImagePickerController, failedWith error: Error) {
+        log(error)
+        controller.close()
+    }
 }
 
 extension ReportVC: UITextViewDelegate {

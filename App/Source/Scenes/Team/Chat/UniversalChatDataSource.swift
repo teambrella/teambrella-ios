@@ -274,6 +274,14 @@ final class UniversalChatDatasource {
         postsCount = 0
         hasNext = true
     }
+
+    func newPhotoPost() -> ChatMetadata? {
+        guard !isLoading, let topicID = topicID else { return nil }
+
+        let postID = UUID().uuidString
+        // TODO: add new model to models
+        return ChatMetadata(topicID: topicID, postID: postID)
+    }
     
     func send(text: String, imageFragments: [ChatFragment]) {
         isLoading = true

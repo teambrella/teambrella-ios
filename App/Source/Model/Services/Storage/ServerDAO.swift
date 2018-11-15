@@ -48,8 +48,14 @@ class ServerDAO: DAO {
     }
     
     func requestTeams(demo: Bool) -> Future<TeamsModel> {
-        let requestType: TeambrellaPostRequestType = demo ? .demoTeams : .teams
-        return startRequest(body: [:], type: requestType)
+        if demo, let locale = Locale.current.languageCode {
+            let suffix = locale
+            return startRequest(body: [:],
+                                type: .demoTeams,
+                                suffix: suffix)
+        } else {
+            return startRequest(body: [:], type: .teams)
+        }
     }
     
     func requestHome(teamID: Int) -> Future<HomeModel> {
@@ -336,26 +342,40 @@ class ServerDAO: DAO {
     }
     
     func sendPhoto(data: Data) -> Future<[String]> {
-        return sendPhotoData(data: data, type: .uploadPhoto)
-    }
-
-    func sendPhotoPost(data: Data) -> Future<[String]> {
-        return sendPhotoData(data: data, type: .uploadPhoto)
-    }
-
-    private func sendPhotoData(data: Data, type: TeambrellaPostRequestType) -> Future<[String]> {
         let promise = Promise<[String]>()
         freshKey { key in
             var body = RequestBody(key: key, payload: nil)
             body.contentType = "image/jpeg"
             body.data = data
-            let request = TeambrellaRequest<[String]>(type: type, body: body, success: { box in
+            let request = TeambrellaRequest<[String]>(type: .uploadPhoto, body: body, success: { box in
                 guard let value = box.value else {
                     fatalError()
                 }
 
                 promise.resolve(with: value) },
                                                       failure: promise.reject)
+            request.start(server: self.server)
+        }
+        return promise
+    }
+
+    func sendPhotoPost(topicID: String, postID: String, data: Data) -> Future<ChatEntity> {
+        let promise = Promise<ChatEntity>()
+        freshKey { key in
+            var body = RequestBody(key: key, payload: nil)
+            body.contentType = "image/jpeg"
+            body.data = data
+
+            var request = TeambrellaRequest<ChatEntity>(type: .newPhotoPost,
+                                                        parameters: ["PostId": postID],
+                                                        body: body,
+                                                        success: { box in
+                guard let value = box.value else { fatalError() }
+
+                promise.resolve(with: value)
+            },
+                                                        failure: promise.reject)
+            request.suffix = topicID
             request.start(server: self.server)
         }
         return promise
@@ -546,29 +566,44 @@ class ServerDAO: DAO {
     
     private func standardRequest<Value>(promise: Promise<Value>,
                                         type: TeambrellaPostRequestType,
-                                        body: RequestBody) -> TeambrellaRequest<Value> {
-        return TeambrellaRequest<Value>(type: type,
-                                        body: body,
-                                        success: self.successHandler(promise: promise),
-                                        failure: promise.reject)
+                                        body: RequestBody,
+                                        parameters: [String: String]? = nil,
+                                        suffix: String? = nil) -> TeambrellaRequest<Value> {
+        var request = TeambrellaRequest<Value>(type: type,
+                                               parameters: parameters,
+                                               body: body,
+                                               success: self.successHandler(promise: promise),
+                                               failure: promise.reject)
+        request.suffix = suffix
+        return request
     }
     
     private func startRequest<Value: Decodable>(body: [String: Any],
                                                 type: TeambrellaPostRequestType,
+                                                suffix: String? = nil,
+                                                parameters: [String: String]? = nil,
                                                 isKeyNeeded: Bool = true) -> Promise<Value> {
         let promise = Promise<Value>()
         if isKeyNeeded {
             freshKey { key in
                 let body = RequestBody(key: key, payload: body)
-                let request = self.standardRequest(promise: promise, type: type, body: body)
+                let request = self.standardRequest(promise: promise,
+                                                   type: type,
+                                                   body: body,
+                                                   parameters: parameters,
+                                                   suffix: suffix)
                 request.start(server: self.server)
             }
         } else {
             let body = RequestBody(key: nil, payload: body)
-            let request = standardRequest(promise: promise, type: type, body: body)
+            let request = standardRequest(promise: promise,
+                                          type: type,
+                                          body: body,
+                                          parameters: parameters,
+                                          suffix: suffix)
             request.start(server: server)
         }
-       
+
         return promise
     }
     

@@ -61,17 +61,16 @@ struct TeambrellaRequest<Value: Decodable> {
     let body: RequestBody
     let success: (ServerReplyBox<Value>) -> Void
     let failure: (Error) -> Void
+    var suffix: String? = nil
     
     private var requestString: String {
-        switch type {
-        case .demoTeams:
-            if let locale = Locale.current.languageCode {
-                return type.rawValue + "/" + locale
-            }
-        default:
-            break
+        let value: String
+        if let suffix = suffix {
+            value = type.rawValue + "/" + suffix
+        } else {
+            value = type.rawValue
         }
-        return type.rawValue
+        return value
     }
     
     init(type: TeambrellaPostRequestType,

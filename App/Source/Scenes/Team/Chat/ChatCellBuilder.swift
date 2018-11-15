@@ -112,7 +112,10 @@ struct ChatCellBuilder {
                 cell.label.text = model.text
                 if model.isClickable {
                     cell.onTap = { [weak controller] in
-                        controller?.internalPhotoPicker.showOptions()
+                        guard let controller = controller else { return }
+                        
+                            controller.internalPhotoPicker.chatMetadata = controller.dataSource.newPhotoPost()
+                            controller.internalPhotoPicker.showOptions()
                     }
                 } else {
                     cell.onTap = nil

@@ -90,7 +90,9 @@ struct HomeCellBuilder {
         cell.headerLabel.text = model.chatTitle
         cell.centerLabel.text = model.subtitle
         cell.bottomLabel.text = model.text.sane
-        cell.button.setTitle(model.actionText.sane, for: .normal)
+        if let saneText = model.actionText {
+        cell.button.setTitle(saneText.sane, for: .normal)
+        }
         cell.onlineIndicator.isHidden = true
     }
     
@@ -132,7 +134,7 @@ struct HomeCellBuilder {
         let session = service.session
         cell.titleLabel.text = model.itemName
         cell.ownerAvatarView.isHidden = false
-        cell.ownerAvatarView.kf.setImage(with: URL(string: URLBuilder().avatarURLstring(for: model.userAvatar)))
+        cell.ownerAvatarView.show(model.userAvatar)
         cell.subtitleLabel.text = model.userName.entire.uppercased()
         cell.avatarView.show(model.smallPhoto)
         cell.avatarView.roundCorners(.allCorners, radius: 3)
@@ -151,7 +153,7 @@ struct HomeCellBuilder {
         cell.titleLabel.text = model.userName.entire
         cell.subtitleLabel.text = model.itemName.uppercased()
         cell.ownerAvatarView.isHidden = true
-        cell.avatarView.show(model.smallPhoto)
+        cell.avatarView.show(model.userAvatar)
         cell.avatarView.roundCorners(.allCorners, radius: cell.avatarView.bounds.width / 2)
         cell.leftNumberView.titleLabel.text = "Team.Home.Card.coverage".localized
         cell.leftNumberView.isCurrencyVisible = true

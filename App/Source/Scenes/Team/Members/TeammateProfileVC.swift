@@ -766,4 +766,13 @@ extension TeammateProfileVC: ImagePickerControllerDelegate {
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
         HUD.hide()
     }
+
+    func imagePicker(controller: ImagePickerController, didSendPhotoPost post: ChatEntity) {
+        // not needed here
+    }
+
+    func imagePicker(controller: ImagePickerController, failedWith error: Error) {
+        log(error)
+        controller.close()
+    }
 }

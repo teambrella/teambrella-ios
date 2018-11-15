@@ -59,7 +59,7 @@ enum TeambrellaPostRequestType: String {
     case uploadAvatar = "me/setAvatar"
 
     case newPost = "post/newPost"
-    case newPhotoPost = "post/newPhotoPost" // не используется
+    case newPhotoPost = "post/newPhotoPost"
     case uploadPhoto = "post/newUpload"
     case deletePost = "post/delPost"
 

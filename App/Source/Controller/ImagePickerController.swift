@@ -25,6 +25,13 @@ protocol ImagePickerControllerDelegate: class {
     func imagePicker(controller: ImagePickerController, didSendImage image: UIImage, urlString: String)
     func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage)
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool)
+    func imagePicker(controller: ImagePickerController, didSendPhotoPost post: ChatEntity)
+    func imagePicker(controller: ImagePickerController, failedWith error: Error)
+}
+
+struct ChatMetadata {
+    let topicID: String
+    let postID: String
 }
 
 class ImagePickerController: NSObject {
@@ -33,9 +40,11 @@ class ImagePickerController: NSObject {
     
     var compressionRate: CGFloat = 0.3
     var maxSide: CGFloat = 1800
-    var isInsideAppPhoto: Bool = false
+
+    var chatMetadata: ChatMetadata?
 
     var imageToSend: UIImage?
+    weak var imagePicker: UIImagePickerController?
     
     init(parent: UIViewController, delegate: ImagePickerControllerDelegate?) {
         self.parent = parent
@@ -44,7 +53,7 @@ class ImagePickerController: NSObject {
     }
     
     func showOptions() {
-        if isInsideAppPhoto {
+        if chatMetadata != nil {
             showCamera()
             return
         }
@@ -82,10 +91,55 @@ class ImagePickerController: NSObject {
         picker.delegate = self
         picker.allowsEditing = false
         picker.sourceType = source
+        self.imagePicker = picker
         controller.present(picker, animated: true, completion: nil)
     }
-    
-    func send(image: UIImage, isAvatar: Bool) {
+
+    private func sendAvatar(image: UIImage, imageData: Data) {
+        service.dao.sendAvatar(data: imageData).observe { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case let .value(avatar):
+                self.delegate?.imagePicker(controller: self, didSendImage: image, urlString: avatar)
+            case let .error(error):
+                log(error)
+            }
+        }
+    }
+
+    private func sendPhoto(image: UIImage, imageData: Data) {
+        service.dao.sendPhoto(data: imageData).observe { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case let .value(imageStrings):
+                guard  let first = imageStrings.first else { return }
+
+                self.delegate?.imagePicker(controller: self, didSendImage: image, urlString: first)
+            case let .error(error):
+                self.delegate?.imagePicker(controller: self, failedWith: error)
+            }
+        }
+    }
+
+    private func sendPhotoPost(image: UIImage, imageData: Data, chatMetadata: ChatMetadata) {
+        let future = service.dao.sendPhotoPost(topicID: chatMetadata.topicID,
+                                               postID: chatMetadata.postID,
+                                               data: imageData)
+        future.observe { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case let .value(post):
+                self.delegate?.imagePicker(controller: self, didSendPhotoPost: post)
+            case let .error(error):
+                self.delegate?.imagePicker(controller: self, failedWith: error)
+            }
+        }
+    }
+
+    func send(image: UIImage, isAvatar: Bool) -> UIImage {
         guard let resizedImage = ImageTransformer(image: image).imageToFit(maxSide: maxSide) else {
             fatalError("Can't resize image")
         }
@@ -96,35 +150,19 @@ class ImagePickerController: NSObject {
         imageToSend = resizedImage
         
         if isAvatar {
-            service.dao.sendAvatar(data: imageData).observe { [weak self] result in
-                guard let `self` = self else { return }
-                
-                switch result {
-                case let .value(avatar):
-                    self.delegate?.imagePicker(controller: self, didSendImage: image, urlString: avatar)
-                case let .error(error):
-                    log(error)
-                }
-            }
+            sendAvatar(image: image, imageData: imageData)
+        } else if let chatMetadata = chatMetadata {
+            sendPhotoPost(image: image, imageData: imageData, chatMetadata: chatMetadata)
         } else {
-            let completion: (Result<[String]>) -> Void = {  [weak self] result in
-                guard let self = self else { return }
-
-                switch result {
-                case let .value(imageStrings):
-                    guard  let first = imageStrings.first else { return }
-
-                    self.delegate?.imagePicker(controller: self, didSendImage: image, urlString: first)
-                case .error:
-                    break
-                }
-            }
-            if isInsideAppPhoto {
-                service.dao.sendPhotoPost(data: imageData).observe(with: completion)
-            } else {
-                service.dao.sendPhoto(data: imageData).observe(with: completion)
-            }
+            sendPhoto(image: image, imageData: imageData)
         }
+
+        return resizedImage
+    }
+
+    func close(isCancelled: Bool = true) {
+        delegate?.imagePicker(controller: self, willClosePickerByCancel: isCancelled)
+        imagePicker?.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -136,8 +174,7 @@ extension ImagePickerController: UINavigationControllerDelegate {
 // MARK: UIImagePickerControllerDelegate
 extension ImagePickerController: UIImagePickerControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        delegate?.imagePicker(controller: self, willClosePickerByCancel: true)
-        picker.dismiss(animated: true, completion: nil)
+        close()
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
@@ -145,9 +182,8 @@ extension ImagePickerController: UIImagePickerControllerDelegate {
         if let pickedImage = info[.originalImage] as? UIImage {
             delegate?.imagePicker(controller: self, didSelectImage: pickedImage)
         }
-        
-        delegate?.imagePicker(controller: self, willClosePickerByCancel: false)
-        picker.dismiss(animated: true, completion: nil)
+
+        close(isCancelled: false)
     }
     
 }

@@ -44,7 +44,6 @@ final class UniversalChatVC: UIViewController, Routable {
     lazy var picker: ImagePickerController = { ImagePickerController(parent: self, delegate: self) }()
     lazy var internalPhotoPicker: ImagePickerController = {
         let picker = ImagePickerController(parent: self, delegate: self)
-        picker.isInsideAppPhoto = true
         return picker
     }()
     
@@ -799,18 +798,19 @@ extension UniversalChatVC: UICollectionViewDelegate {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-         let model = dataSource[indexPath]
-        switch model {
-        case let model as ServiceMessageCellModel:
-            if model.isClickable {
-                internalPhotoPicker.showOptions()
-            }
-        default:
-            break
-        }
-    }
-    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//         let model = dataSource[indexPath]
+//        switch model {
+//        case let model as ServiceMessageCellModel:
+//            if model.isClickable {
+//                internalPhotoPicker.chatMetadata = dataSource.newPhotoPost()
+//                internalPhotoPicker.showOptions()
+//            }
+//        default:
+//            break
+//        }
+//    }
+
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -866,6 +866,15 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
     
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {
         
+    }
+
+    func imagePicker(controller: ImagePickerController, didSendPhotoPost post: ChatEntity) {
+        print("New photo post: \(post)")
+        dataSource.loadNext()
+    }
+
+    func imagePicker(controller: ImagePickerController, failedWith error: Error) {
+        log(error)
     }
 }
 
