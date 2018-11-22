@@ -180,6 +180,7 @@ final class UniversalChatVC: UIViewController, Routable {
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
             layout.footerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
+
         }
         dataSource.cloudWidth = cloudWidth
         collectionView.contentInset.bottom = keyboardHeight + input.frame.height
@@ -348,6 +349,16 @@ final class UniversalChatVC: UIViewController, Routable {
         } else if let model = dataSource[indexPath] as? ChatImageCellModel {
             return CGSize(width: model.maxFragmentsWidth + ChatImageCell.Constant.imageInset * 2,
                           height: model.totalFragmentsHeight + ChatImageCell.Constant.imageInset * 2)
+        } else if let model = dataSource[indexPath] as? ChatUnsentImageCellModel {
+            let width = collectionView.bounds.width * 0.8
+            let height: CGFloat
+            if let image = model.image {
+                let ratio = image.size.width / image.size.height
+                height = ratio * width
+            } else {
+                height = width
+            }
+            return CGSize(width: width, height: height)
         } else {
             return .zero
         }
@@ -729,6 +740,8 @@ extension UniversalChatVC: UICollectionViewDataSource {
             }
         case _ as ChatImageCellModel:
             identifier = Constant.singleImageCellID
+        case _ as ChatUnsentImageCellModel:
+            identifier = Constant.singleImageCellID
         case _ as ChatSeparatorCellModel:
             identifier = Constant.dateSeparatorCellID
         case _ as ChatNewMessagesSeparatorModel:
@@ -770,6 +783,8 @@ extension UniversalChatVC: UICollectionViewDelegate {
         switch model {
         case let model as ChatCellUserDataLike:
             ChatCellBuilder.populateUserData(cell: cell, controller: self, indexPath: indexPath, model: model)
+        case let model as ChatUnsentImageCellModel:
+            ChatCellBuilder.populateUnsent(cell: cell, controller: self, indexPath: indexPath, model: model)
         default:
             ChatCellBuilder.populateService(cell: cell, controller: self, model: model)
         }
@@ -860,8 +875,11 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
     }
     
     func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
-        controller.send(image: image, isAvatar: false)
-        
+        let processedImage = controller.send(image: image, isAvatar: false)
+        if let metadata = controller.chatMetadata {
+            dataSource.addImage(image: processedImage, toPost: metadata.postID)
+            collectionView.reloadData()
+        }
     }
     
     func imagePicker(controller: ImagePickerController, willClosePickerByCancel cancel: Bool) {

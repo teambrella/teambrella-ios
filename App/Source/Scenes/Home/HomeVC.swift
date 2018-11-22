@@ -226,7 +226,7 @@ final class HomeVC: UIViewController, TabRoutable, PagingDraggable {
         guard sender.tag < dataSource.cardsCount else { return }
         
         dataSource[sender.tag].map {
-            let details = MyApplicationDetails(topicID: $0.topicID, userID: $0.userID)
+            let details = MyApplicationDetails(topicID: $0.topicID ?? "", userID: $0.userID)
             let context = UniversalChatContext(details)
             context.type = UniversalChatType.with(itemType: $0.itemType)
             service.router.presentChat(context: context)
@@ -293,7 +293,7 @@ extension HomeVC: UICollectionViewDataSource {
         
         switch model.itemType {
         case .attachPhotos:
-            let details = MyApplicationDetails(topicID: model.topicID, userID: model.userID)
+            let details = MyApplicationDetails(topicID: model.topicID ?? "", userID: model.userID)
             let context = UniversalChatContext(details)
             context.type = UniversalChatType.with(itemType: model.itemType)
             service.router.presentChat(context: context)

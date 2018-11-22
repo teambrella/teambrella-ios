@@ -62,6 +62,18 @@ struct ChatCellBuilder {
             }
         }
     }
+
+    static func populateUnsent(cell: UICollectionViewCell,
+                                 controller: UniversalChatVC,
+                                 indexPath: IndexPath,
+                                 model: ChatCellModel) {
+        if let model = model as? ChatUnsentImageCellModel, let cell = cell as? ChatImageCell {
+            cell.prepare(with: model, size: controller.cloudSize(for: indexPath))
+            cell.onTapDelete = { [weak controller] cell in
+                controller?.delete(cell)
+            }
+        }
+    }
     
     // swiftlint:disable:next cyclomatic_complexity
     static func populateService(cell: UICollectionViewCell, controller: UniversalChatVC, model: ChatCellModel) {

@@ -32,7 +32,8 @@ extension UIImageView {
               isFullSize: Bool = false,
               completion: ((UIImage?, NSError?) -> Void)? = nil) {
         guard let url = avatar.url else { return }
-        
+
+        self.image = nil
         showAvatar(url: url, options: options, completion: completion)
         
     }
@@ -40,6 +41,7 @@ extension UIImageView {
     func show(_ image: Photo,
               needHeaders: Bool = true,
               completion: ((UIImage?, NSError?) -> Void)? = nil) {
+        self.image = nil
         showImage(string: image.string, needHeaders: needHeaders, completion: completion)
     }
     

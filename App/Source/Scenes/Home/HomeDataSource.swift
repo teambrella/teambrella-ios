@@ -85,7 +85,7 @@ class HomeDataSource: SingleItemDataSource {
     func deleteCard(at index: Int) {
         guard let card = item?.cards.remove(at: index) else { return }
         
-        service.dao.deleteCard(topicID: card.topicID).observe { [weak self] result in
+        service.dao.deleteCard(topicID: card.topicID ?? "").observe { [weak self] result in
             switch result {
             case .value(let homeModel):
                 self?.item = homeModel

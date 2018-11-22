@@ -73,6 +73,15 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     var isDeletable: Bool { return isMy && date.timeIntervalSinceNow < 60 * 60 * 24 }
 }
 
+struct ChatUnsentImageCellModel: ChatCellModel {
+    let id: String
+    let date: Date
+    let isTemporary: Bool = true
+
+    var image: UIImage?
+    var isDeletable: Bool { return true }
+}
+
 struct ChatSeparatorCellModel: ChatCellModel {
     var id: String { return String(describing: date.timeIntervalSince1970) }
     let date: Date

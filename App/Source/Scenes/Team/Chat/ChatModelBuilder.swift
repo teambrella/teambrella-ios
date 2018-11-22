@@ -54,10 +54,10 @@ class ChatModelBuilder {
         switch type {
         case .needsFunding:
             return ServiceMessageWithButtonCellModel( messageID: model.id,
-                date: model.created,
-                                                     text: model.text,
-                                                     buttonText: "Team.Chat.PayToJoin.buttonTitle".localized,
-                                                     size: size)
+                                                      date: model.created,
+                                                      text: model.text,
+                                                      buttonText: "Team.Chat.PayToJoin.buttonTitle".localized,
+                                                      size: size)
         case .firstPhotoMissing:
             let isClickable = model.id == SystemMessageID.addPhoto
             return ServiceMessageCellModel(messageID: model.id,
@@ -65,12 +65,12 @@ class ChatModelBuilder {
                                            text: model.text,
                                            size: size,
                                            isClickable: isClickable)
-            case .firstPostMissing:
-                return ServiceMessageCellModel(messageID: model.id,
-                                               date: model.created,
-                                               text: model.text,
-                                               size: size,
-                                               isClickable: false)
+        case .firstPostMissing:
+            return ServiceMessageCellModel(messageID: model.id,
+                                           date: model.created,
+                                           text: model.text,
+                                           size: size,
+                                           isClickable: false)
         }
     }
 
@@ -86,10 +86,10 @@ class ChatModelBuilder {
             // add service messages
             if let model = serviceModel(from: item) {
                 result.append(model)
-//                if let type = item.systemType, !serviceTypesUsed.contains(type) {
-//                    result.append(model)
-//                    serviceTypesUsed.insert(type)
-//                }
+                //                if let type = item.systemType, !serviceTypesUsed.contains(type) {
+                //                    result.append(model)
+                //                    serviceTypesUsed.insert(type)
+                //                }
                 continue
             }
 

@@ -24,11 +24,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="314" height="155"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="alY-OC-iUP">
-                        <rect key="frame" x="131" y="0.0" width="52" height="155"/>
+                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="alY-OC-iUP">
+                        <rect key="frame" x="0.0" y="0.0" width="314" height="155"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAY-ey-MFq">
-                                <rect key="frame" x="8" y="8" width="36" height="139"/>
+                                <rect key="frame" x="8" y="8" width="298" height="139"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -41,15 +41,17 @@
                             <constraint firstItem="VAY-ey-MFq" firstAttribute="leading" secondItem="alY-OC-iUP" secondAttribute="leading" constant="8" id="rPa-U7-bxb"/>
                             <constraint firstAttribute="trailing" secondItem="VAY-ey-MFq" secondAttribute="trailing" constant="8" id="slZ-84-ixe"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Si-ZH-tWT"/>
                     </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="alY-OC-iUP" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="6e3-hM-eVN"/>
+                <constraint firstItem="alY-OC-iUP" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="AZP-Rg-E9x"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="alY-OC-iUP" secondAttribute="bottom" id="Ktq-qj-ico"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="alY-OC-iUP" secondAttribute="trailing" id="NKJ-M5-1MH"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="alY-OC-iUP" secondAttribute="trailing" id="NKJ-M5-1MH"/>
                 <constraint firstItem="alY-OC-iUP" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="RU9-sx-eZr"/>
-                <constraint firstItem="alY-OC-iUP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="tJx-Pq-dob"/>
+                <constraint firstItem="alY-OC-iUP" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="tJx-Pq-dob"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="314" height="155"/>

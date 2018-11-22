@@ -154,9 +154,18 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         context.drawPath(using: .fillStroke)
     }
 
-    func prepare(with model: ChatCellUserDataLike, size: CGSize) {
+    func prepare(with model: ChatCellModel, size: CGSize) {
+        if let model = model as? ChatCellUserDataLike {
+            prepareRealCell(model: model, size: size)
+        } else if let model = model as? ChatUnsentImageCellModel {
+            prepareUnsentCell(model: model, size: size)
+        }
+
+    }
+
+    func prepareRealCell(model: ChatCellUserDataLike, size: CGSize) {
         if model.id != id, let fragment = model.fragments.first {
-            
+
             id = model.id
             isMy = model.isMy
             self.cloudWidth = size.width
@@ -167,7 +176,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
                                      width: self.cloudWidth - Constant.imageInset * 2,
                                      height: self.cloudHeight - Constant.imageInset * 2)
             imageView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
-            
+
             setNeedsDisplay()
 
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
@@ -177,6 +186,32 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
             setupDeleteButton(isDeletable: model.isDeletable)
         }
     }
+
+    func prepareUnsentCell(model: ChatUnsentImageCellModel, size: CGSize) {
+        id = model.id
+        isMy = true
+        self.cloudWidth = size.width
+        self.cloudHeight = size.height
+
+        imageView.frame = CGRect(x: Constant.imageInset,
+                                 y: Constant.imageInset,
+                                 width: self.cloudWidth - Constant.imageInset * 2,
+                                 height: self.cloudHeight - Constant.imageInset * 2)
+         imageView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
+
+        setNeedsDisplay()
+
+        let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
+        imageView.frame = CGRect(x: cloudBodyMinX + Constant.imageInset,
+                                 y: Constant.imageInset,
+                                 width: cloudWidth - Constant.imageInset * 2,
+                                 height: cloudHeight - Constant.imageInset * 2)
+
+        imageView.image = model.image
+
+        setupBottomLabel(date: model.date, baseFrame: baseFrame)
+        setupDeleteButton(isDeletable: model.isDeletable)
+        }
 
     // MARK: Private
 

@@ -76,6 +76,7 @@ final class UniversalChatDatasource {
     }
     
     private var models: [ChatCellModel]             = []
+    private var unsentIDs: Set<String>              = []
     
     private var lastInsertionIndex                  = 0
     
@@ -279,8 +280,29 @@ final class UniversalChatDatasource {
         guard !isLoading, let topicID = topicID else { return nil }
 
         let postID = UUID().uuidString
-        // TODO: add new model to models
+        let model = ChatUnsentImageCellModel(id: postID, date: Date(), image: nil)
+        unsentIDs.insert(postID)
+        addCellModel(model: model)
         return ChatMetadata(topicID: topicID, postID: postID)
+    }
+
+    func addImage(image: UIImage, toPost id: String) {
+        if let indexPath = indexPath(postID: id), var model = models[indexPath.row] as? ChatUnsentImageCellModel {
+            model.image = image
+            models[indexPath.row] = model
+        }
+    }
+
+    /**
+     Returns index of post model with the given id
+
+     Because most of the time we need index of one of the latest posts, search is done from end to beginning
+ */
+    func indexPath(postID: String) -> IndexPath? {
+        for (idx, model) in models.reversed().enumerated() where model.id == postID {
+            return IndexPath(row: models.count - 1 - idx, section: 0)
+        }
+        return nil
     }
     
     func send(text: String, imageFragments: [ChatFragment]) {
@@ -420,6 +442,13 @@ extension UniversalChatDatasource {
     }
     
     private func addCellModels(models: [ChatCellModel]) {
+        let ids = models.map { $0.id }
+        for id in ids where self.unsentIDs.contains(id) {
+            self.unsentIDs.remove(id)
+            if let index = indexPath(postID: id) {
+                self.models.remove(at: index.row)
+            }
+        }
         models.forEach { self.addCellModel(model: $0) }
     }
     
@@ -430,7 +459,7 @@ extension UniversalChatDatasource {
         }
         
         // find the place in array where to insert new item
-        if !models.isEmpty && lastInsertionIndex >= models.count {
+        if lastInsertionIndex >= models.count {
             lastInsertionIndex = models.count - 1
         }
         
