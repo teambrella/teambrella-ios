@@ -154,15 +154,6 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         context.drawPath(using: .fillStroke)
     }
 
-    func prepare(with model: ChatCellModel, size: CGSize) {
-        if let model = model as? ChatCellUserDataLike {
-            prepareRealCell(model: model, size: size)
-        } else if let model = model as? ChatUnsentImageCellModel {
-            prepareUnsentCell(model: model, size: size)
-        }
-
-    }
-
     func prepareRealCell(model: ChatCellUserDataLike, size: CGSize) {
         if model.id != id, let fragment = model.fragments.first {
 
@@ -187,7 +178,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         }
     }
 
-    func prepareUnsentCell(model: ChatUnsentImageCellModel, size: CGSize) {
+    func prepareUnsentCell(model: ChatUnsentImageCellModel, size: CGSize, image: UIImage?) {
         id = model.id
         isMy = true
         self.cloudWidth = size.width
@@ -207,7 +198,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
                                  width: cloudWidth - Constant.imageInset * 2,
                                  height: cloudHeight - Constant.imageInset * 2)
 
-        imageView.image = model.image
+        imageView.image = image
 
         setupBottomLabel(date: model.date, baseFrame: baseFrame)
         setupDeleteButton(isDeletable: model.isDeletable)

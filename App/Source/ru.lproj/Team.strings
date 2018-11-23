@@ -233,3 +233,5 @@
 "Team.Notifications.Details.rarely" = "Ты будешь получать сводку о том, что произошло в команде за месяц.";
 
 "Team.Selector.Pin.header" = "Прикрепить тему";
+"Team.Chat.AddPhoto.buttonTitle" = "Добавить фото";
+"Team.Chat.AddMorePhoto.text" = "Добавьте ещё фото";

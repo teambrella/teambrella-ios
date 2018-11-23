@@ -29,6 +29,7 @@ final class UniversalChatVC: UIViewController, Routable {
         static let textWithImagesCellID = "com.chat.textWithImages.cell"
         static let textCellID = "com.chat.text.cell"
         static let singleImageCellID = "com.chat.image.cell"
+        static let serviceCellID = "com.chat.service.cell"
     }
     
     static var storyboardName = "Chat"
@@ -253,6 +254,20 @@ final class UniversalChatVC: UIViewController, Routable {
             }
         }
     }
+
+    func sizeForServiceMessage(model: ServiceMessageCellModel) -> CGSize {
+        var size = model.size
+        size.height += 16
+        size.width += 16
+        return size
+    }
+
+    func sizeForServiceMessageWithButton(model: ServiceMessageWithButtonCellModel) -> CGSize {
+        var size = model.size
+        size.height += (50 + 32)
+        size.width = collectionView.bounds.width
+        return size
+    }
     
     // MARK: Callbacks
     
@@ -325,7 +340,9 @@ final class UniversalChatVC: UIViewController, Routable {
                              datasource: pinDataSource,
                              currentState: pinState)
     }
-    
+
+    var unsentImages: [String: UIImage] = [:]
+
     func cloudSize(for indexPath: IndexPath) -> CGSize {
         if let model = dataSource[indexPath] as? ChatTextCellModel {
             let textInset = ChatVariousContentCell.Constant.textInset
@@ -347,21 +364,31 @@ final class UniversalChatVC: UIViewController, Routable {
             return CGSize(width: width,
                           height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
         } else if let model = dataSource[indexPath] as? ChatImageCellModel {
-            return CGSize(width: model.maxFragmentsWidth + ChatImageCell.Constant.imageInset * 2,
-                          height: model.totalFragmentsHeight + ChatImageCell.Constant.imageInset * 2)
+            return cloudSizeForImage(width: model.maxFragmentsWidth, height: model.totalFragmentsHeight)
         } else if let model = dataSource[indexPath] as? ChatUnsentImageCellModel {
-            let width = collectionView.bounds.width * 0.8
-            let height: CGFloat
-            if let image = model.image {
-                let ratio = image.size.width / image.size.height
-                height = ratio * width
-            } else {
-                height = width
-            }
-            return CGSize(width: width, height: height)
+            return cloudSizeForUnsentImage(id: model.id)
         } else {
             return .zero
         }
+    }
+
+    func cloudSizeForUnsentImage(id: String) -> CGSize {
+        guard let image = unsentImages[id] else { return .zero }
+
+        let width = collectionView.bounds.width * 0.8
+        let ratio = image.size.height / image.size.width
+        let height: CGFloat = ratio * width
+        return cloudSizeForImage(width: width, height: height)
+    }
+
+    func cloudSizeForImage(width: CGFloat, height: CGFloat) -> CGSize {
+        return CGSize(width: width + ChatImageCell.Constant.imageInset * 2,
+                      height: height + ChatImageCell.Constant.imageInset * 2)
+    }
+
+    func showAddPhoto() {
+        internalPhotoPicker.chatMetadata = dataSource.newPhotoMeta()
+        internalPhotoPicker.showOptions()
     }
 }
 
@@ -489,6 +516,8 @@ private extension UniversalChatVC {
         collectionView.register(ChatClaimPaidCell.nib,
                                 forCellWithReuseIdentifier: ChatClaimPaidCell.cellID)
         collectionView.register(ServiceChatCell.nib, forCellWithReuseIdentifier: ServiceChatCell.cellID)
+
+        collectionView.register(ChatServiceTextCell.self, forCellWithReuseIdentifier: Constant.serviceCellID)
     }
     
     private func listenForKeyboard() {
@@ -679,20 +708,6 @@ private extension UniversalChatVC {
         send(text: input.textView.text ?? "", imageFragments: [fragment])
     }
     
-    private func sizeForServiceMessage(model: ServiceMessageCellModel) -> CGSize {
-        var size = model.size
-        size.height += 16
-        size.width += 16
-        return size
-    }
-    
-    private func sizeForServiceMessageWithButton(model: ServiceMessageWithButtonCellModel) -> CGSize {
-        var size = model.size
-        size.height += (50 + 32)
-        size.width = collectionView.bounds.width
-        return size
-    }
-    
     private func memoriseMessage() {
         guard let session = service.session else { return }
         guard let text = input.textView.text else { return }
@@ -749,8 +764,8 @@ extension UniversalChatVC: UICollectionViewDataSource {
         case _ as ChatClaimPaidCellModel:
             identifier = ChatClaimPaidCell.cellID
         case _ as ServiceMessageCellModel:
-            identifier = ServiceChatCell.cellID
-        case _ as ServiceMessageWithButtonCellModel:
+            identifier = Constant.serviceCellID
+        case let model as ServiceMessageWithButtonCellModel:
             identifier = ChatClaimPaidCell.cellID
         default:
             fatalError("Unknown cell")
@@ -844,6 +859,8 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
         case _ as ChatImageCellModel:
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
+        case let model as ChatUnsentImageCellModel:
+            return cloudSizeForUnsentImage(id: model.id)
         case _ as ChatSeparatorCellModel:
             return CGSize(width: collectionView.bounds.width, height: 30)
         case _ as ChatNewMessagesSeparatorModel:
@@ -877,7 +894,8 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
     func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
         let processedImage = controller.send(image: image, isAvatar: false)
         if let metadata = controller.chatMetadata {
-            dataSource.addImage(image: processedImage, toPost: metadata.postID)
+            unsentImages[metadata.postID] = processedImage
+            dataSource.addNewUnsentPhoto(metadata: metadata)
             collectionView.reloadData()
         }
     }

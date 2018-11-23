@@ -57,14 +57,23 @@ class ChatModelBuilder {
                                                       date: model.created,
                                                       text: model.text,
                                                       buttonText: "Team.Chat.PayToJoin.buttonTitle".localized,
-                                                      size: size)
+                                                      size: size,
+                                                      command: .needFunding)
         case .firstPhotoMissing:
-            let isClickable = model.id == SystemMessageID.addPhoto
+            if model.id == SystemMessageID.addPhoto {
+                return ServiceMessageWithButtonCellModel(messageID: model.id,
+                                                         date: model.created,
+                                                         text: model.text,
+                                                         buttonText: "Team.Chat.AddPhoto.buttonTitle".localized,
+                                                         size: size,
+                                                         command: .addPhoto)
+            } else {
             return ServiceMessageCellModel(messageID: model.id,
                                            date: model.created,
                                            text: model.text,
                                            size: size,
-                                           isClickable: isClickable)
+                                           isClickable: false)
+            }
         case .firstPostMissing:
             return ServiceMessageCellModel(messageID: model.id,
                                            date: model.created,
@@ -72,6 +81,17 @@ class ChatModelBuilder {
                                            size: size,
                                            isClickable: false)
         }
+    }
+
+    func addMorePhotoModel(lastDate: Date) -> ChatCellModel {
+        let text = "Team.Chat.AddMorePhoto.text".localized
+        let size = TextSizeCalculator().size(for: text, font: font, maxWidth: width)
+        return ServiceMessageWithButtonCellModel(messageID: "addMorePhoto",
+                                                 date: lastDate.addingTimeInterval(1),
+                                                 text: text,
+                                                 buttonText: "Team.Chat.AddPhoto.buttonTitle".localized,
+                                                 size: size,
+                                                 command: .addMorePhoto)
     }
 
     /// set of used service messages types that can only appear once in a chat

@@ -78,7 +78,6 @@ struct ChatUnsentImageCellModel: ChatCellModel {
     let date: Date
     let isTemporary: Bool = true
 
-    var image: UIImage?
     var isDeletable: Bool { return true }
 }
 
@@ -118,6 +117,12 @@ struct ServiceMessageCellModel: ServiceMessageLike {
 }
 
 struct ServiceMessageWithButtonCellModel: ServiceMessageLike {
+    enum Command {
+        case addPhoto
+        case addMorePhoto
+        case needFunding
+    }
+
     var id: String { return "\(type(of: self))|\(date.timeIntervalSince1970)" }
     let messageID: String
     let date: Date
@@ -125,4 +130,5 @@ struct ServiceMessageWithButtonCellModel: ServiceMessageLike {
     let text: String
     let buttonText: String
     let size: CGSize
+    let command: Command
 }

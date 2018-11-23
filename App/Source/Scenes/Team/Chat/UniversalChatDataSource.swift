@@ -98,6 +98,7 @@ final class UniversalChatDatasource {
     private var hasNewMessagesSeparator: Bool       = false
     private var isClaimPaidModelAdded               = false
     private var isPayToJoinModelAdded               = false
+    private var isAddMorePhotoModelAdded            = false
     
     private var topCellDate: Date?
     
@@ -276,21 +277,17 @@ final class UniversalChatDatasource {
         hasNext = true
     }
 
-    func newPhotoPost() -> ChatMetadata? {
+    func newPhotoMeta() -> ChatMetadata? {
         guard !isLoading, let topicID = topicID else { return nil }
 
         let postID = UUID().uuidString
-        let model = ChatUnsentImageCellModel(id: postID, date: Date(), image: nil)
-        unsentIDs.insert(postID)
-        addCellModel(model: model)
         return ChatMetadata(topicID: topicID, postID: postID)
     }
 
-    func addImage(image: UIImage, toPost id: String) {
-        if let indexPath = indexPath(postID: id), var model = models[indexPath.row] as? ChatUnsentImageCellModel {
-            model.image = image
-            models[indexPath.row] = model
-        }
+    func addNewUnsentPhoto(metadata: ChatMetadata) {
+        let model = ChatUnsentImageCellModel(id: metadata.postID, date: Date())
+        unsentIDs.insert(metadata.postID)
+        addCellModel(model: model)
     }
 
     /**
@@ -485,7 +482,25 @@ extension UniversalChatDatasource {
             models.append(model)
         }
         addSeparatorIfNeeded()
-        
+        addAddPhotoIfNeeded()
+    }
+
+    private func addAddPhotoIfNeeded() {
+        guard isPrejoining, let model = models.last as? ChatCellModel else { return }
+        guard model as? ChatImageCellModel != nil || model as? ChatUnsentImageCellModel != nil else { return }
+
+        if isAddMorePhotoModelAdded {
+            for (idx, model) in models.reversed().enumerated() {
+                if let model = model as? ServiceMessageWithButtonCellModel, model.command == .addMorePhoto {
+                    models.remove(at: models.count - 1 - idx)
+                    break
+                }
+            }
+        }
+
+        let addPhotoModel = cellModelBuilder.addMorePhotoModel(lastDate: model.date)
+        models.append(addPhotoModel)
+        isAddMorePhotoModelAdded = true
     }
     
     private func removeTemporaryIfNeeded() {
@@ -596,7 +611,7 @@ extension UniversalChatDatasource {
         addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
         //addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
     }
-    
+
     private func addClaimPaidIfNeeded(date: Date?) {
         guard !isClaimPaidModelAdded, let date = date else { return }
         

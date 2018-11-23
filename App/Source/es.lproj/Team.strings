@@ -236,3 +236,5 @@
 "Team.Notifications.Details.rarely" = "A summary of the team events for the month.";
 
 "Team.Selector.Pin.header" = "Pin the topic";
+"Team.Chat.AddPhoto.buttonTitle" = "Add Photo";
+"Team.Chat.AddMorePhoto.text" = "Add another Photo";

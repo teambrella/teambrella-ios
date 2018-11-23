@@ -48,7 +48,13 @@ struct ChatCellBuilder {
                 galleryView.fullscreen(in: controller, imageStrings: controller.dataSource.allImages)
             }
         } else if let cell = cell as? ChatImageCell {
-            cell.prepare(with: model, size: controller.cloudSize(for: indexPath))
+            if let model = model as? ChatUnsentImageCellModel {
+                cell.prepareUnsentCell(model: model,
+                                       size: controller.cloudSize(for: indexPath),
+                                       image: controller.unsentImages[model.id])
+            } else {
+            cell.prepareRealCell(model: model, size: controller.cloudSize(for: indexPath))
+            }
             cell.avatarView.tag = indexPath.row
             cell.avatarTap.removeTarget(controller, action: #selector(UniversalChatVC.tapAvatar))
             cell.avatarTap.addTarget(controller, action: #selector(UniversalChatVC.tapAvatar))
@@ -64,11 +70,13 @@ struct ChatCellBuilder {
     }
 
     static func populateUnsent(cell: UICollectionViewCell,
-                                 controller: UniversalChatVC,
-                                 indexPath: IndexPath,
-                                 model: ChatCellModel) {
+                               controller: UniversalChatVC,
+                               indexPath: IndexPath,
+                               model: ChatCellModel) {
         if let model = model as? ChatUnsentImageCellModel, let cell = cell as? ChatImageCell {
-            cell.prepare(with: model, size: controller.cloudSize(for: indexPath))
+            cell.prepareUnsentCell(model: model,
+                                   size: controller.cloudSize(for: indexPath),
+                                   image: controller.unsentImages[model.id])
             cell.onTapDelete = { [weak controller] cell in
                 controller?.delete(cell)
             }
@@ -76,7 +84,9 @@ struct ChatCellBuilder {
     }
     
     // swiftlint:disable:next cyclomatic_complexity
-    static func populateService(cell: UICollectionViewCell, controller: UniversalChatVC, model: ChatCellModel) {
+    static func populateService(cell: UICollectionViewCell,
+                                controller: UniversalChatVC,
+                                model: ChatCellModel) {
         if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
             cell.text = DateProcessor().yearFilter(from: model.date)
         } else if let cell = cell as? ChatSeparatorCell, let model = model as? ChatSeparatorCellModel {
@@ -93,15 +103,18 @@ struct ChatCellBuilder {
                 cell.confettiView.isHidden = true
                 cell.onButtonTap = { [weak controller] in
                     log("tap fund wallet (from chat)", type: .userInteraction)
-                    
-                    controller?.router.switchToWallet()
-                    if let nc = controller?.navigationController {
-                        for vc in nc.viewControllers where vc is MasterTabBarController {
-                            nc.popToViewController(vc, animated: false)
-                            break
+                    switch model.command {
+                    case .addPhoto, .addMorePhoto:
+                        controller?.showAddPhoto()
+                    default:
+                        controller?.router.switchToWallet()
+                        if let nc = controller?.navigationController {
+                            for vc in nc.viewControllers where vc is MasterTabBarController {
+                                nc.popToViewController(vc, animated: false)
+                                break
+                            }
                         }
                     }
-                    //                    self?.navigationController?.popViewController(animated: false)
                 }
             } else if model is ChatClaimPaidCellModel {
                 cell.messageLabel.textAlignment = .center
@@ -119,20 +132,9 @@ struct ChatCellBuilder {
                     controller?.present(vc, animated: true)
                 }
             }
-        } else if let cell = cell as? ServiceChatCell {
-            if let model = model as? ServiceMessageCellModel {
-                cell.label.text = model.text
-                if model.isClickable {
-                    cell.onTap = { [weak controller] in
-                        guard let controller = controller else { return }
-                        
-                            controller.internalPhotoPicker.chatMetadata = controller.dataSource.newPhotoPost()
-                            controller.internalPhotoPicker.showOptions()
-                    }
-                } else {
-                    cell.onTap = nil
-                }
-            }
+        } else if let cell = cell as? ChatServiceTextCell,
+            let model = model as? ServiceMessageCellModel {
+            cell.prepare(with: model, size: controller.sizeForServiceMessage(model: model) )
         }
     }
     
