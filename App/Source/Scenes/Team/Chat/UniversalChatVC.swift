@@ -66,7 +66,7 @@ final class UniversalChatVC: UIViewController, Routable {
     private let scrollViewHandler: ScrollViewHandler = ScrollViewHandler()
     
     private var endsEditingWhenTappingOnChatBackground = true
-    private var shouldScrollToBottom: Bool = false
+    private var isScrollToBottomNeeded: Bool = false
     
     var muteButton = UIButton()
     var pinButton = UIButton()
@@ -139,7 +139,7 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
             
-            self.shouldScrollToBottom = true
+            self.isScrollToBottomNeeded = true
             self.refresh(backward: false, isFirstLoad: false)
             self.dataSource.loadNext()
         }
@@ -549,9 +549,9 @@ private extension UniversalChatVC {
             guard lastReadIndexPath.row < self.dataSource.count else { return }
             
             self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
-        } else if self.shouldScrollToBottom {
+        } else if self.isScrollToBottomNeeded {
             self.scrollToBottom(animated: true)
-            self.shouldScrollToBottom = false
+            self.isScrollToBottomNeeded = false
         } else if backward, let indexPath = self.dataSource.currentTopCellPath {
             guard indexPath.row < self.dataSource.count else { return }
             
@@ -643,7 +643,7 @@ private extension UniversalChatVC {
     private func loadNewMessages() {
         showIsTyping = false
         dataSource.hasNext = true
-        shouldScrollToBottom = true
+        isScrollToBottomNeeded = true
         dataSource.loadNext()
     }
     
@@ -678,7 +678,7 @@ private extension UniversalChatVC {
     private func send(text: String, imageFragments: [ChatFragment]) {
         guard dataSource.isLoading == false else { return }
         
-        self.shouldScrollToBottom = true
+        self.isScrollToBottomNeeded = true
         dataSource.send(text: text, imageFragments: imageFragments)
         forgetMessage()
         input.adjustHeight()
@@ -896,7 +896,8 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
         if let metadata = controller.chatMetadata {
             unsentImages[metadata.postID] = processedImage
             dataSource.addNewUnsentPhoto(metadata: metadata)
-            collectionView.reloadData()
+            isScrollToBottomNeeded = true
+            refresh(backward: false, isFirstLoad: false)
         }
     }
     
