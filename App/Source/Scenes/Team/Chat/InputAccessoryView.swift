@@ -160,7 +160,7 @@ class InputAccessoryView: UIView {
     }
 
     func showRightButtonPhoto() {
-        rightButton.setImage(#imageLiteral(resourceName: "iconWallet"), for: .normal)
+        rightButton.setImage(#imageLiteral(resourceName: "camera"), for: .normal)
         onTapRightButton = onTapPhoto
     }
 
