@@ -132,7 +132,7 @@ final class UniversalChatVC: UIViewController, Routable {
             self.input.isUserInteractionEnabled = self.dataSource.isInputAllowed
             self.input.allowInput(self.dataSource.isInputAllowed)
             if self.dataSource.isPrejoining {
-                self.input.leftButton.isHidden = true
+                self.input.hideLeftButton()
             }
             self.pinButton.isHidden = !self.dataSource.isInputAllowed
         }
@@ -274,13 +274,6 @@ final class UniversalChatVC: UIViewController, Routable {
     @objc
     func tapLeftButton(sender: UIButton) {
         picker.showOptions()
-    }
-    
-    @objc
-    func tapRightButton(sender: UIButton) {
-        guard let text = input.textView.text else { return }
-        
-        send(text: text, imageFragments: [])
     }
     
     @objc
@@ -594,19 +587,34 @@ private extension UniversalChatVC {
         input.isUserInteractionEnabled = false
         ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.231372549, green: 0.2588235294, blue: 0.4901960784, alpha: 1), opacity: 0.05, radius: 8, offset: CGSize(width: 0, height: -9))
         if dataSource.isPrivateChat || dataSource.isPrejoining {
-            input.leftButton.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
-            input.leftButton.isHidden = true
-            input.leftButton.isEnabled = false
+            input.hideLeftButton()
         }
         input.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
-        input.rightButton.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
+        input.onTapSend = { [weak self] in
+            guard let self = self else { return }
+            guard let text = self.input.textView.text, text != "" else { return }
+
+            self.send(text: text, imageFragments: [])
+        }
+        input.onTapPhoto = { [weak self] in
+            self?.showAddPhoto()
+        }
         input.onBeginEdit = { [weak self] in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             
             if self.dataSource.removeNewMessagesSeparator() {
                 self.collectionView.reloadData()
             }
+            self.input.showRightButtonSend()
         }
+        input.onEndEditing = { [weak self] text in
+            if text != nil && text != "" {
+                self?.input.showRightButtonSend()
+            } else {
+                self?.input.showRightButtonPhoto()
+            }
+        }
+        input.showRightButtonPhoto()
         
         if let socket = socket,
             let teamID = session?.currentTeam?.teamID {
@@ -682,6 +690,7 @@ private extension UniversalChatVC {
         dataSource.send(text: text, imageFragments: imageFragments)
         forgetMessage()
         input.adjustHeight()
+        input.showRightButtonPhoto()
         
         if dataSource.notificationsType == .unknown && dataSource.chatType != .privateChat {
             let type: MuteType = .unmuted
@@ -765,7 +774,7 @@ extension UniversalChatVC: UICollectionViewDataSource {
             identifier = ChatClaimPaidCell.cellID
         case _ as ServiceMessageCellModel:
             identifier = Constant.serviceCellID
-        case let model as ServiceMessageWithButtonCellModel:
+        case _ as ServiceMessageWithButtonCellModel:
             identifier = ChatClaimPaidCell.cellID
         default:
             fatalError("Unknown cell")

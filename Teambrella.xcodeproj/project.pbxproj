@@ -546,6 +546,8 @@
 		6D2A7C641FCC66960094ABB7 /* SODVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2A7C621FCC66960094ABB7 /* SODVC.swift */; };
 		6D2F2D3D21A720B80038A9DD /* ChatServiceTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F2D3C21A720B80038A9DD /* ChatServiceTextCell.swift */; };
 		6D2F2D3E21A720B80038A9DD /* ChatServiceTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F2D3C21A720B80038A9DD /* ChatServiceTextCell.swift */; };
+		6D2F2D4321A7DD160038A9DD /* PhotoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F2D4221A7DD160038A9DD /* PhotoStorage.swift */; };
+		6D2F2D4421A7DD160038A9DD /* PhotoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F2D4221A7DD160038A9DD /* PhotoStorage.swift */; };
 		6D30A4AB1FD1648E003149DB /* PagingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30A4A91FD1648E003149DB /* PagingInfo.swift */; };
 		6D30A4AE1FD167FE003149DB /* FeedChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D30A4AC1FD167FE003149DB /* FeedChunk.swift */; };
 		6D310FDA20A445D000F66ED5 /* Contract.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6DB921F31F9DF2A1009D3937 /* Contract.txt */; };
@@ -1422,6 +1424,7 @@
 		6D2BD7BD1F60519F00C7F6A8 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Helpers/Operators.swift; sourceTree = "<group>"; };
 		6D2BD7BF1F614EBF00C7F6A8 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = View/TextField.swift; sourceTree = "<group>"; };
 		6D2F2D3C21A720B80038A9DD /* ChatServiceTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatServiceTextCell.swift; path = Scenes/Team/Chat/ChatServiceTextCell.swift; sourceTree = "<group>"; };
+		6D2F2D4221A7DD160038A9DD /* PhotoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStorage.swift; sourceTree = "<group>"; };
 		6D30A4A91FD1648E003149DB /* PagingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PagingInfo.swift; path = Model/Entities/PagingInfo.swift; sourceTree = "<group>"; };
 		6D30A4AC1FD167FE003149DB /* FeedChunk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedChunk.swift; path = Model/Entities/FeedChunk.swift; sourceTree = "<group>"; };
 		6D3141CB1F07DD7400C285DA /* JoinTeamDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinTeamDataSource.swift; path = Scenes/Team/JoinTeam/JoinTeamDataSource.swift; sourceTree = "<group>"; };
@@ -3031,6 +3034,7 @@
 				6D96E119208A1338009F99F5 /* ChatTextCell.swift */,
 				6D3BA54A216FA64C008DD30D /* ChatCellBuilder.swift */,
 				6D2F2D3C21A720B80038A9DD /* ChatServiceTextCell.swift */,
+				6D2F2D4221A7DD160038A9DD /* PhotoStorage.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -4394,6 +4398,7 @@
 				6D0523C720A5D838000B3247 /* TeammateListEntity.swift in Sources */,
 				6D0523C820A5D838000B3247 /* SwipeToVote.swift in Sources */,
 				6D0523C920A5D838000B3247 /* JoinTeamCellModels.swift in Sources */,
+				6D2F2D4421A7DD160038A9DD /* PhotoStorage.swift in Sources */,
 				6D0523CA20A5D838000B3247 /* DeveloperTools.swift in Sources */,
 				6D12BF67216B9106005AF3FB /* SuggestionsVC.swift in Sources */,
 				6D0523CB20A5D838000B3247 /* ReportCellBuilder.swift in Sources */,
@@ -4851,6 +4856,7 @@
 				6D4E5C901F7AB6870020DEE2 /* JoinTeamCellModels.swift in Sources */,
 				6D4E5C921F7AB6870020DEE2 /* DeveloperTools.swift in Sources */,
 				6D4E5C931F7AB6870020DEE2 /* ReportCellBuilder.swift in Sources */,
+				6D2F2D4321A7DD160038A9DD /* PhotoStorage.swift in Sources */,
 				6D677E781FA110B800ED1C36 /* EtherAPI.swift in Sources */,
 				6D12BF66216B9106005AF3FB /* SuggestionsVC.swift in Sources */,
 				6D4E5C951F7AB6870020DEE2 /* HomeVC.swift in Sources */,

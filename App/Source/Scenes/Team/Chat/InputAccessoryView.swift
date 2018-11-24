@@ -45,8 +45,8 @@ class InputAccessoryView: UIView {
     
     lazy var rightButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "send"), for: .normal)
         self.addSubview(button)
+        button.addTarget(self, action: #selector(tapRightButton), for: .touchUpInside)
         return button
     }()
     
@@ -63,6 +63,13 @@ class InputAccessoryView: UIView {
     
     var onTextChange: (() -> Void)?
     var onBeginEdit: (() -> Void)?
+    var onTapSend: (() -> Void)?
+    var onTapPhoto: (() -> Void)?
+    var onEndEditing: ((String?) -> Void)?
+
+    private var onTapRightButton: (() -> Void)?
+
+    var textLeftConstraint: NSLayoutConstraint!
     
     override var intrinsicContentSize: CGSize {
         let textSize = self.textView.sizeThatFits(CGSize(width: self.textView.bounds.width,
@@ -110,7 +117,8 @@ class InputAccessoryView: UIView {
         rightButton.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor).isActive = true
         
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.leftAnchor.constraint(equalTo: leftButton.rightAnchor).isActive = true
+        textLeftConstraint = textView.leftAnchor.constraint(equalTo: leftButton.rightAnchor)
+        textLeftConstraint.isActive = true
         textView.rightAnchor.constraint(equalTo: rightButton.leftAnchor).isActive = true
         textView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
         textView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
@@ -135,6 +143,31 @@ class InputAccessoryView: UIView {
         rightButton.isEnabled = allow
         textView.isUserInteractionEnabled = allow
     }
+
+    func showLeftButton() {
+        leftButton.isHidden = false
+        textLeftConstraint.constant = 0
+    }
+
+    func hideLeftButton() {
+        leftButton.isHidden = true
+        textLeftConstraint.constant = -leftButton.frame.width + 8
+    }
+
+    func showRightButtonSend() {
+        rightButton.setImage(#imageLiteral(resourceName: "send"), for: .normal)
+        onTapRightButton = onTapSend
+    }
+
+    func showRightButtonPhoto() {
+        rightButton.setImage(#imageLiteral(resourceName: "iconWallet"), for: .normal)
+        onTapRightButton = onTapPhoto
+    }
+
+    @objc
+    private func tapRightButton() {
+        onTapRightButton?()
+    }
     
 }
 
@@ -148,11 +181,12 @@ extension InputAccessoryView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         invalidateIntrinsicContentSize()
     }
-    
+ 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == nil || textView.text == "" {
             placeholderLabel.isHidden = false
         }
+        onEndEditing?(textView.text)
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
