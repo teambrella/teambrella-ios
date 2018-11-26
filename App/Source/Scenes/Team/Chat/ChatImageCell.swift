@@ -70,6 +70,20 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         return imageView
     }()
 
+    lazy var hidingView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.4)
+        self.contentView.addSubview(view)
+        return view
+    }()
+
+    lazy var spinner: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .gray)
+        hidingView.addSubview(view)
+        view.startAnimating()
+        return view
+    }()
+
     lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
@@ -167,7 +181,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
                                      width: self.cloudWidth - Constant.imageInset * 2,
                                      height: self.cloudHeight - Constant.imageInset * 2)
             imageView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
-
+            hidingView.isHidden = true
             setNeedsDisplay()
 
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
@@ -199,6 +213,14 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
                                  height: cloudHeight - Constant.imageInset * 2)
 
         imageView.image = image
+
+        hidingView.frame = imageView.frame
+        hidingView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
+        hidingView.isHidden = false
+
+        spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        spinner.center = CGPoint(x: hidingView.bounds.midX, y: hidingView.bounds.midY)
+        spinner.startAnimating()
 
         setupBottomLabel(date: model.date, baseFrame: baseFrame)
         setupDeleteButton(isDeletable: model.isDeletable)
