@@ -126,6 +126,7 @@ class ImagePickerController: NSObject {
     private func sendPhotoPost(image: UIImage, imageData: Data, chatMetadata: ChatMetadata) {
         let future = service.dao.sendPhotoPost(topicID: chatMetadata.topicID,
                                                postID: chatMetadata.postID,
+                                               isCertified: true,
                                                data: imageData)
         future.observe { [weak self] result in
             guard let self = self else { return }

@@ -359,15 +359,19 @@ class ServerDAO: DAO {
         return promise
     }
 
-    func sendPhotoPost(topicID: String, postID: String, data: Data) -> Future<ChatEntity> {
+    func sendPhotoPost(topicID: String, postID: String, isCertified: Bool, data: Data) -> Future<ChatEntity> {
         let promise = Promise<ChatEntity>()
         freshKey { key in
             var body = RequestBody(key: key, payload: nil)
             body.contentType = "image/jpeg"
             body.data = data
 
+            var parameters = ["PostId": postID]
+            if isCertified {
+                parameters["cam"] = "X"
+            }
             var request = TeambrellaRequest<ChatEntity>(type: .newPhotoPost,
-                                                        parameters: ["PostId": postID],
+                                                        parameters: parameters,
                                                         body: body,
                                                         success: { box in
                 guard let value = box.value else { fatalError() }

@@ -186,7 +186,11 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
 
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
             setupFragment(fragment: fragment)
-            setupBottomLabel(date: model.date, baseFrame: baseFrame)
+            var certified = false
+            if case let .image(imageString, _, _) = fragment {
+                certified = imageString.contains("@cam")
+            }
+            setupBottomLabel(date: model.date, baseFrame: baseFrame, isCertifiedImage: certified)
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
             setupDeleteButton(isDeletable: model.isDeletable)
         }
@@ -222,7 +226,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         spinner.center = CGPoint(x: hidingView.bounds.midX, y: hidingView.bounds.midY)
         spinner.startAnimating()
 
-        setupBottomLabel(date: model.date, baseFrame: baseFrame)
+        setupBottomLabel(date: model.date, baseFrame: baseFrame, isCertifiedImage: false)
         setupDeleteButton(isDeletable: model.isDeletable)
         }
 
@@ -326,12 +330,13 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
                                   height: Constant.avatarWidth)
     }
 
-    private func setupBottomLabel(date: Date, baseFrame: CGRect) {
+    private func setupBottomLabel(date: Date, baseFrame: CGRect, isCertifiedImage: Bool) {
         bottomLabel.frame = baseFrame
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale.current
         dateFormatter.timeStyle = .short
-        bottomLabel.text = dateFormatter.string(from: date)
+        let prefix = isCertifiedImage ? "📷 " : ""
+        bottomLabel.text = prefix + dateFormatter.string(from: date)
         bottomLabel.sizeToFit()
         bottomLabel.cornerRadius = bottomLabel.frame.height / 2
         bottomLabel.center = CGPoint(x: cloudBodyMaxX - bottomLabel.frame.width / 2 - Constant.timeInset,
