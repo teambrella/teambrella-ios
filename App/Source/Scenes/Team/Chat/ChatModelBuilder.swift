@@ -28,6 +28,7 @@ class ChatModelBuilder {
     var showTheirAvatar = false
     
     var isPrivateChat: Bool { return !showTheirAvatar }
+    var isPrejoining: Bool = false
     
     var font: UIFont = UIFont.teambrella(size: 14)
     var width: CGFloat = 0
@@ -141,7 +142,8 @@ class ChatModelBuilder {
                                            isMy: isMy,
                                            userAvatar: avatar,
                                            date: date,
-                                           isTemporary: isTemporary)
+                                           isTemporary: isTemporary,
+                                           isDeletable: isPrejoining)
             } else {
                 model = ChatTextCellModel(entity: item,
                                           fragments: fragments,

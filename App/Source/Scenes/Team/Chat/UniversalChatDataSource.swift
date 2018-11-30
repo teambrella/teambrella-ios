@@ -286,7 +286,11 @@ final class UniversalChatDatasource {
     }
 
     func addNewUnsentPhoto(metadata: ChatMetadata) {
-        let model = ChatUnsentImageCellModel(id: metadata.postID, date: Date(), isTemporary: true, isSent: false)
+        let model = ChatUnsentImageCellModel(id: metadata.postID,
+                                             date: Date(),
+                                             isTemporary: true,
+                                             isDeletable: isPrejoining,
+            isSent: false)
         unsentIDs.insert(metadata.postID)
         addCellModel(model: model)
     }
@@ -651,6 +655,7 @@ extension UniversalChatDatasource {
     private func createCellModels(from entities: [ChatEntity], isTemporary: Bool) -> [ChatCellModel] {
         cellModelBuilder.font = font
         cellModelBuilder.width = cloudWidth - labelHorizontalInset * 2
+        cellModelBuilder.isPrejoining = isPrejoining
         let models = cellModelBuilder.cellModels(from: entities,
                                                  isClaim: strategy.requestType == .claimChat,
                                                  isTemporary: isTemporary)

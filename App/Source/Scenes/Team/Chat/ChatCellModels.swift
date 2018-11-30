@@ -66,20 +66,20 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     let userAvatar: Avatar?
     let date: Date
     let isTemporary: Bool
+    let isDeletable: Bool
 
     var maxFragmentsWidth: CGFloat { return fragmentSizes.reduce(0) { max($0, $1.width) } }
     var totalFragmentsHeight: CGFloat { return fragmentSizes.reduce(0) { $0 + $1.height } }
     var id: String { return entity.id }
-    var isDeletable: Bool { return isMy && date.timeIntervalSinceNow < 60 * 60 * 24 }
 }
 
 struct ChatUnsentImageCellModel: ChatCellModel {
     let id: String
     let date: Date
     let isTemporary: Bool
+    let isDeletable: Bool 
     var isSent: Bool
 
-    var isDeletable: Bool { return true }
 }
 
 struct ChatSeparatorCellModel: ChatCellModel {
