@@ -947,6 +947,7 @@ extension UniversalChatVC: UIViewControllerPreviewingDelegate {
         vc.preferredContentSize = CGSize(width: view.bounds.width * 0.9, height: view.bounds.height * 0.9)
         previewingContext.sourceRect = collectionView.convert(cell.frame, to: view)
         vc.isPeeking = true
+
         return vc
     }
 }

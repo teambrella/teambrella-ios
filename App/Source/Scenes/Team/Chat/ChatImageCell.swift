@@ -85,11 +85,14 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
     }()
 
     lazy var deleteButton: UIButton = {
+        let size: CGFloat = 40
         let button = UIButton()
-        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        button.frame = CGRect(x: 0, y: 0, width: size, height: size)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         button.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
         button.addTarget(self, action: #selector(tapDelete), for: .touchUpInside)
+        button.layer.cornerRadius = 20
+        button.layer.masksToBounds = true
         self.contentView.addSubview(button)
         return button
     }()
