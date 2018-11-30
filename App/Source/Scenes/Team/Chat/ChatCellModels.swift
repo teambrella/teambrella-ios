@@ -76,7 +76,8 @@ struct ChatImageCellModel: ChatCellUserDataLike {
 struct ChatUnsentImageCellModel: ChatCellModel {
     let id: String
     let date: Date
-    let isTemporary: Bool = true
+    let isTemporary: Bool
+    var isSent: Bool
 
     var isDeletable: Bool { return true }
 }

@@ -917,7 +917,8 @@ extension UniversalChatVC: ImagePickerControllerDelegate {
 
     func imagePicker(controller: ImagePickerController, didSendPhotoPost post: ChatEntity) {
         print("New photo post: \(post)")
-        dataSource.loadNext()
+        dataSource.unsentPhotoWasSent(chatItem: post)
+        refresh(backward: false, isFirstLoad: false)
     }
 
     func imagePicker(controller: ImagePickerController, failedWith error: Error) {

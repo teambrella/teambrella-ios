@@ -280,14 +280,34 @@ final class UniversalChatDatasource {
     func newPhotoMeta() -> ChatMetadata? {
         guard !isLoading, let topicID = topicID else { return nil }
 
-        let postID = UUID().uuidString
+        let postID = UUID().uuidString.lowercased()
+        print("new photo meta: \(postID)")
         return ChatMetadata(topicID: topicID, postID: postID)
     }
 
     func addNewUnsentPhoto(metadata: ChatMetadata) {
-        let model = ChatUnsentImageCellModel(id: metadata.postID, date: Date())
+        let model = ChatUnsentImageCellModel(id: metadata.postID, date: Date(), isTemporary: true, isSent: false)
         unsentIDs.insert(metadata.postID)
         addCellModel(model: model)
+    }
+
+    func unsentPhotoWasSent(chatItem: ChatEntity) {
+        unsentIDs.remove(chatItem.id)
+//        removeModel(id: chatItem.id)
+//        addModels(models: [chatItem], isPrevious: false, chatModel: nil)
+        if let index = indexPath(postID: chatItem.id),
+            var model = models[index.row] as? ChatUnsentImageCellModel {
+            model.isSent = true
+            models[index.row] = model
+        }
+    }
+
+    @discardableResult
+    func removeModel(id: String) -> ChatCellModel? {
+        if let index = indexPath(postID: id) {
+            return models.remove(at: index.row)
+        }
+        return nil
     }
 
     /**

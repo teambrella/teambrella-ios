@@ -72,7 +72,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
 
     lazy var hidingView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.4)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.6)
         self.contentView.addSubview(view)
         return view
     }()
@@ -221,6 +221,11 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
 
         imageView.image = image
 
+        if model.isSent {
+            hidingView.isHidden = true
+            spinner.stopAnimating()
+            spinner.isHidden = true
+        } else {
         hidingView.frame = imageView.frame
         hidingView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
         hidingView.isHidden = false
@@ -228,8 +233,9 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         spinner.center = CGPoint(x: hidingView.bounds.midX, y: hidingView.bounds.midY)
         spinner.startAnimating()
+        }
 
-        setupBottomLabel(date: model.date, baseFrame: baseFrame, isCertifiedImage: false)
+        setupBottomLabel(date: model.date, baseFrame: baseFrame, isCertifiedImage: true)
         setupDeleteButton(isDeletable: model.isDeletable)
         }
 
