@@ -368,8 +368,8 @@ final class UniversalChatVC: UIViewController, Routable {
     func cloudSizeForUnsentImage(id: String) -> CGSize {
         guard let image = unsentImages[id] else { return .zero }
 
-        let width = collectionView.bounds.width * 0.8
         let ratio = image.size.height / image.size.width
+        let width = dataSource.cellModelBuilder.width
         let height: CGFloat = ratio * width
         return cloudSizeForImage(width: width, height: height)
     }
@@ -869,7 +869,8 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
             let size = cloudSize(for: indexPath)
             return CGSize(width: collectionView.bounds.width, height: size.height)
         case let model as ChatUnsentImageCellModel:
-            return cloudSizeForUnsentImage(id: model.id)
+            let size = cloudSizeForUnsentImage(id: model.id)
+            return  CGSize(width: collectionView.bounds.width, height: size.height)
         case _ as ChatSeparatorCellModel:
             return CGSize(width: collectionView.bounds.width, height: 30)
         case _ as ChatNewMessagesSeparatorModel:
