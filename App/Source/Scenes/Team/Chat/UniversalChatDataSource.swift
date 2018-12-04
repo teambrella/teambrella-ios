@@ -40,8 +40,8 @@ enum UniversalChatType {
 
 final class UniversalChatDatasource {
     enum Constant {
-        static let limit = 30
-        static let firstLoadPreviousMessagesCount = 10
+        static let limit = 500
+        static let firstLoadPreviousMessagesCount = 500
     }
     
     var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool, _ isFirstLoad: Bool) -> Void)?
