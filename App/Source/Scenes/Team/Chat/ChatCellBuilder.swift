@@ -135,6 +135,18 @@ struct ChatCellBuilder {
         } else if let cell = cell as? ChatServiceTextCell,
             let model = model as? ServiceMessageCellModel {
             cell.prepare(with: model, size: controller.sizeForServiceMessage(model: model) )
+            if let command = model.command {
+                cell.onTap = { [weak controller] in
+                    switch command {
+                    case .addMorePhoto:
+                        controller?.showAddPhoto()
+                    default:
+                        break
+                    }
+                }
+            } else {
+                cell.onTap = nil
+            }
         }
     }
     

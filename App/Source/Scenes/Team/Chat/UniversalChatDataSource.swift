@@ -510,12 +510,12 @@ extension UniversalChatDatasource {
     }
 
     private func addAddPhotoIfNeeded() {
-        guard isPrejoining, let model = models.last as? ChatCellModel else { return }
+        guard isPrejoining, let model = models.last else { return }
         guard model as? ChatImageCellModel != nil || model as? ChatUnsentImageCellModel != nil else { return }
 
         if isAddMorePhotoModelAdded {
             for (idx, model) in models.reversed().enumerated() {
-                if let model = model as? ServiceMessageWithButtonCellModel, model.command == .addMorePhoto {
+                if let model = model as? ServiceMessageCellModel, model.command == .addMorePhoto {
                     models.remove(at: models.count - 1 - idx)
                     break
                 }
@@ -616,8 +616,8 @@ extension UniversalChatDatasource {
     }
     
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
-        addModels(models: model.discussion.chat, isPrevious: isPrevious, chatModel: model)
         chatModel = model
+        addModels(models: model.discussion.chat, isPrevious: isPrevious, chatModel: model)
         if model.discussion.chat.count < currentLimit {
             if isPrevious {
                 hasPrevious = false

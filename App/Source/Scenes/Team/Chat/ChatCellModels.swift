@@ -114,16 +114,10 @@ struct ServiceMessageCellModel: ServiceMessageLike {
     let isTemporary: Bool = false
     let text: String
     let size: CGSize
-    let isClickable: Bool
+    let command: ServiceMessageCommand?
 }
 
 struct ServiceMessageWithButtonCellModel: ServiceMessageLike {
-    enum Command {
-        case addPhoto
-        case addMorePhoto
-        case needFunding
-    }
-
     var id: String { return "\(type(of: self))|\(date.timeIntervalSince1970)" }
     let messageID: String
     let date: Date
@@ -131,5 +125,11 @@ struct ServiceMessageWithButtonCellModel: ServiceMessageLike {
     let text: String
     let buttonText: String
     let size: CGSize
-    let command: Command
+    let command: ServiceMessageCommand
+}
+
+enum ServiceMessageCommand {
+    case addPhoto
+    case addMorePhoto
+    case needFunding
 }

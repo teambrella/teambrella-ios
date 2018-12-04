@@ -40,9 +40,9 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
     var searchController: UISearchController!
     fileprivate var previousScrollOffset: CGFloat = 0
     fileprivate var searchbarIsShown = true
-   
+    
     var isFirstLoading = true
-
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -59,8 +59,8 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         
         dataSource.onError = { [weak self] error in
             HUD.hide()
+            log(error)
             guard let error = error as? TeambrellaError else {
-                log(error)
                 return
             }
             
@@ -102,7 +102,7 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         searchController.dimsBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "Team.MembersVC.searchHere".localized
         searchBar.placeholder = "Team.MembersVC.searchHere".localized
-            
+        
         searchController.searchBar.delegate = self
         //searchController.searchBar.sizeToFit()
         
@@ -170,8 +170,8 @@ extension MembersVC: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
-                                                                    withReuseIdentifier: InfoHeader.cellID,
-                                                                    for: indexPath)
+                                                               withReuseIdentifier: InfoHeader.cellID,
+                                                               for: indexPath)
     }
     
 }

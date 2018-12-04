@@ -30,6 +30,7 @@ class ChatServiceTextCell: UICollectionViewCell {
     var borderColor: UIColor = .cornflowerBlueThree
 
     var id: String = ""
+    var onTap: (() -> Void)?
 
     lazy var textLabel: UILabel = {
         let view = UILabel()
@@ -58,6 +59,14 @@ class ChatServiceTextCell: UICollectionViewCell {
 
     func setup() {
         backgroundColor = .clear
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapCell))
+        self.contentView.isUserInteractionEnabled = true
+        self.contentView.addGestureRecognizer(tap)
+    }
+
+    @objc
+    private func tapCell() {
+        onTap?()
     }
 
     override func draw(_ rect: CGRect) {
@@ -95,6 +104,7 @@ class ChatServiceTextCell: UICollectionViewCell {
                                 width: cloudSize.width - Constant.textInsetX * 2,
                                 height: cloudSize.height - Constant.textInsetY * 2)
         textLabel.text = model.text
+
     }
 
 }

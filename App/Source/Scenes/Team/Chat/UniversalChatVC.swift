@@ -527,8 +527,10 @@ private extension UniversalChatVC {
     }
     
     private func setupTapGestureRecognizer() {
-        collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                   action: #selector(userDidTapOnCollectionView)))
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(userDidTapOnCollectionView))
+        tap.cancelsTouchesInView = false
+        collectionView.addGestureRecognizer(tap)
     }
     
     /**
@@ -836,14 +838,18 @@ extension UniversalChatVC: UICollectionViewDelegate {
             view.hide(!showIsTyping)
         }
     }
-    
+
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //         let model = dataSource[indexPath]
 //        switch model {
 //        case let model as ServiceMessageCellModel:
-//            if model.isClickable {
-//                internalPhotoPicker.chatMetadata = dataSource.newPhotoPost()
-//                internalPhotoPicker.showOptions()
+//            if let command = model.command {
+//                switch command {
+//                case .addMorePhoto:
+//                    showAddPhoto()
+//                default:
+//                    break
+//                }
 //            }
 //        default:
 //            break

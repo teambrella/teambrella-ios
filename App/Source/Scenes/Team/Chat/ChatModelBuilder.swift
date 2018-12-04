@@ -73,20 +73,25 @@ class ChatModelBuilder {
                                            date: model.created,
                                            text: model.text,
                                            size: size,
-                                           isClickable: false)
+                                           command: nil)
             }
         case .firstPostMissing:
             return ServiceMessageCellModel(messageID: model.id,
                                            date: model.created,
                                            text: model.text,
                                            size: size,
-                                           isClickable: false)
+                                           command: nil)
         }
     }
 
     func addMorePhotoModel(lastDate: Date) -> ChatCellModel {
         let text = "Team.Chat.AddMorePhoto.text".localized
         let size = TextSizeCalculator().size(for: text, font: font, maxWidth: width)
+        return ServiceMessageCellModel(messageID: "addMorePhoto",
+                                       date: lastDate.addingTimeInterval(1),
+                                       text: text,
+                                       size: size,
+                                       command: .addMorePhoto)
         return ServiceMessageWithButtonCellModel(messageID: "addMorePhoto",
                                                  date: lastDate.addingTimeInterval(1),
                                                  text: text,

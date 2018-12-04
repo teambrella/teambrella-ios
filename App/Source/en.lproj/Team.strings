@@ -237,5 +237,4 @@
 
 "Team.Selector.Pin.header" = "Pin the topic";
 "Team.Chat.AddPhoto.buttonTitle" = "Add Photo";
-"Team.Chat.AddMorePhoto.text" = "Add another Photo";
-
+"Team.Chat.AddMorePhoto.text" = "\n   Add another Photo   \n";
