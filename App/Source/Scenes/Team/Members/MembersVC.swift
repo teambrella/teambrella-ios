@@ -59,7 +59,10 @@ final class MembersVC: UIViewController, IndicatorInfoProvider {
         
         dataSource.onError = { [weak self] error in
             HUD.hide()
-            guard let error = error as? TeambrellaError else { return }
+            guard let error = error as? TeambrellaError else {
+                log(error)
+                return
+            }
             
             let controller = UIAlertController(title: "Error", message: error.description, preferredStyle: .alert)
             let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
