@@ -40,7 +40,9 @@ struct CoverageLocalizer {
         }
     }
 
-    func yearsString(year: Year) -> String {
+    func yearsString(year: Year?) -> String {
+        guard let year = year else { return "" }
+        
         // for pets we use "pet name, 2 y.o." format
         switch type {
         case .petCat, .petDog:

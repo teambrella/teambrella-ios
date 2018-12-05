@@ -35,7 +35,7 @@ class TeammateListEntity: Decodable {
     let totallyPaid: Double
     let hasUnread: Bool
     let userID: String
-    let year: Year
+    let year: Year?
     let avatar: Avatar
     let minutesRemaining: Int
 
@@ -52,7 +52,7 @@ class TeammateListEntity: Decodable {
         totallyPaid = 0
         hasUnread = false
         userID = ""
-        year = Year.empty
+        year = nil
         avatar = .none
         minutesRemaining = 0
     }
