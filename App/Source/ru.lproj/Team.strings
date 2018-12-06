@@ -147,7 +147,7 @@
 "Team.Claims.State.Header.beingPaid"                  = "В ОПЛАТЕ";
 "Team.Claims.State.Header.voted"                      = "НА ГОЛОСОВАНИИ";
 "Team.Claims.VotedCell.voted"                         = "Голос: ";
-"Team.ClaimsCell.declined"                            = "ОТКЛОНЕН";
+"Team.ClaimsCell.declined"                            = "ОТКЛОНЁН";
 
 "Team.Chat.TextCell.voted_format"                     = "Голос: %@%%";
 "Team.Chat.TextCell.Application.voted_format"         = "Голос: %@";

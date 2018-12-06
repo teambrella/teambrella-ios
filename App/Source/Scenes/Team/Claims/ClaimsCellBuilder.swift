@@ -82,7 +82,7 @@ struct ClaimsCellBuilder {
             switch claim.state {
             case .declined:
                 cell.statusLabel.text = "Team.ClaimsCell.declined".localized.uppercased()
-                cell.statusLabel.textColor = .red
+                cell.statusLabel.textColor = .blueyGray
                 cell.scaleBar.isLineHidden = true
             case .inPayment:
                 cell.statusLabel.text = "Team.ClaimsCell.reimbursed".localized.uppercased()
