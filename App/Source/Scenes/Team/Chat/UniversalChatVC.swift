@@ -139,8 +139,9 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
             
+//            self.isScrollToBottomNeeded = true
+//            self.refresh(backward: false, isFirstLoad: false)
             self.isScrollToBottomNeeded = true
-            self.refresh(backward: false, isFirstLoad: false)
             self.dataSource.loadNext()
         }
         dataSource.onClaimVoteUpdate = { [weak self] in
@@ -540,17 +541,19 @@ private extension UniversalChatVC {
      */
     private func refresh(backward: Bool, isFirstLoad: Bool) {
         collectionView.reloadData()
-        if isFirstLoad, let lastReadIndexPath = dataSource.lastReadIndexPath {
+        DispatchQueue.main.async {
+        if isFirstLoad, let lastReadIndexPath = self.dataSource.lastReadIndexPath {
             guard lastReadIndexPath.row < self.dataSource.count else { return }
-            
+
             self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
         } else if self.isScrollToBottomNeeded {
             self.scrollToBottom(animated: true)
             self.isScrollToBottomNeeded = false
         } else if backward, let indexPath = self.dataSource.currentTopCellPath {
             guard indexPath.row < self.dataSource.count else { return }
-            
+
             self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
+        }
         }
     }
     
@@ -607,13 +610,23 @@ private extension UniversalChatVC {
             if self.dataSource.removeNewMessagesSeparator() {
                 self.collectionView.reloadData()
             }
-            self.input.showRightButtonSend()
+            if !self.input.isEmpty {
+                self.input.showRightButtonSend()
+            }
         }
         input.onEndEditing = { [weak self] text in
             if text != nil && text != "" {
                 self?.input.showRightButtonSend()
             } else {
                 self?.input.showRightButtonPhoto()
+            }
+        }
+
+        input.onTextChanged = { [weak self] text in
+            if text.isEmpty {
+                self?.input.showRightButtonPhoto()
+            } else {
+                self?.input.showRightButtonSend()
             }
         }
         input.showRightButtonPhoto()

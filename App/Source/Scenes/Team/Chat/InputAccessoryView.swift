@@ -62,10 +62,13 @@ class InputAccessoryView: UIView {
     var maxHeight: CGFloat = 70
     
     var onTextChange: (() -> Void)?
+    var onTextChanged: ((String) -> Void)?
     var onBeginEdit: (() -> Void)?
     var onTapSend: (() -> Void)?
     var onTapPhoto: (() -> Void)?
     var onEndEditing: ((String?) -> Void)?
+
+    var isEmpty: Bool { return textView.text == nil || textView.text == "" }
 
     private var onTapRightButton: (() -> Void)?
 
@@ -180,6 +183,7 @@ extension InputAccessoryView: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         invalidateIntrinsicContentSize()
+        onTextChanged?(textView.text ?? "")
     }
  
     func textViewDidEndEditing(_ textView: UITextView) {
