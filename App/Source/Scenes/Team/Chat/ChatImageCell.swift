@@ -89,7 +89,9 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: size, height: size)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        button.setImage(#imageLiteral(resourceName: "crossIcon"), for: .normal)
+        let image = #imageLiteral(resourceName: "crossIcon").withRenderingMode(.alwaysTemplate)
+        button.tintColor = .white
+        button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(tapDelete), for: .touchUpInside)
         button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
