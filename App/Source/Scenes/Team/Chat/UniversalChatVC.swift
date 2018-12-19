@@ -54,7 +54,7 @@ final class UniversalChatVC: UIViewController, Routable {
         } else {
             return dataSource.topicID ?? ""
         }
-     }
+    }
     
     let dataSource = UniversalChatDatasource()
     
@@ -121,7 +121,7 @@ final class UniversalChatVC: UIViewController, Routable {
         setupTapGestureRecognizer()
         setupScrollHandler()
         dataSource.onUpdate = { [weak self] backward, hasNew, isFirstLoad in
-            guard let `self` = self else { return }
+            guard let self = self else { return }
             
             self.collectionView.refreshControl?.endRefreshing()
             self.setupActualObjectViewIfNeeded()
@@ -131,7 +131,7 @@ final class UniversalChatVC: UIViewController, Routable {
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
             self.input.isUserInteractionEnabled = self.dataSource.isInputAllowed
             self.input.allowInput(self.dataSource.isInputAllowed)
-            if self.dataSource.isPrejoining {
+            if self.dataSource.isPrejoining || self.dataSource.isPrivateChat {
                 self.input.hideLeftButton()
             }
             self.pinButton.isHidden = !self.dataSource.isInputAllowed
@@ -139,8 +139,8 @@ final class UniversalChatVC: UIViewController, Routable {
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
             
-//            self.isScrollToBottomNeeded = true
-//            self.refresh(backward: false, isFirstLoad: false)
+            //            self.isScrollToBottomNeeded = true
+            //            self.refresh(backward: false, isFirstLoad: false)
             self.isScrollToBottomNeeded = true
             self.dataSource.loadNext()
         }
@@ -250,8 +250,8 @@ final class UniversalChatVC: UIViewController, Routable {
             if let error = error {
                 print("Error deleting cell \(cell.id): \(error)")
             } else {
-            print("Successfully deleted cell id: \(cell.id)")
-            self?.collectionView.reloadData()
+                print("Successfully deleted cell id: \(cell.id)")
+                self?.collectionView.reloadData()
             }
         }
     }
@@ -330,9 +330,9 @@ final class UniversalChatVC: UIViewController, Routable {
     @objc
     func tapPinButton(_ sender: UIButton) {
         router.showPinSelector(in: self,
-                             delegate: self,
-                             datasource: pinDataSource,
-                             currentState: pinState)
+                               delegate: self,
+                               datasource: pinDataSource,
+                               currentState: pinState)
     }
 
     var unsentImages: [String: UIImage] = [:]
@@ -542,18 +542,18 @@ private extension UniversalChatVC {
     private func refresh(backward: Bool, isFirstLoad: Bool) {
         collectionView.reloadData()
         DispatchQueue.main.async {
-        if isFirstLoad, let lastReadIndexPath = self.dataSource.lastReadIndexPath {
-            guard lastReadIndexPath.row < self.dataSource.count else { return }
+            if isFirstLoad, let lastReadIndexPath = self.dataSource.lastReadIndexPath {
+                guard lastReadIndexPath.row < self.dataSource.count else { return }
 
-            self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
-        } else if self.isScrollToBottomNeeded {
-            self.scrollToBottom(animated: true)
-            self.isScrollToBottomNeeded = false
-        } else if backward, let indexPath = self.dataSource.currentTopCellPath {
-            guard indexPath.row < self.dataSource.count else { return }
+                self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
+            } else if self.isScrollToBottomNeeded {
+                self.scrollToBottom(animated: true)
+                self.isScrollToBottomNeeded = false
+            } else if backward, let indexPath = self.dataSource.currentTopCellPath {
+                guard indexPath.row < self.dataSource.count else { return }
 
-            self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
-        }
+                self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
+            }
         }
     }
     
@@ -587,7 +587,8 @@ private extension UniversalChatVC {
             }
         }
     }
-    
+
+    // swiftlint:disable:next cyclomatic_complexity
     private func setupInput() {
         input.isUserInteractionEnabled = false
         ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.231372549, green: 0.2588235294, blue: 0.4901960784, alpha: 1), opacity: 0.05, radius: 8, offset: CGSize(width: 0, height: -9))
@@ -615,21 +616,29 @@ private extension UniversalChatVC {
             }
         }
         input.onEndEditing = { [weak self] text in
-            if text != nil && text != "" {
-                self?.input.showRightButtonSend()
+            guard let self = self else { return }
+
+            if (text != nil && text != "") || self.dataSource.isPrivateChat {
+                self.input.showRightButtonSend()
             } else {
-                self?.input.showRightButtonPhoto()
+                self.input.showRightButtonPhoto()
             }
         }
 
         input.onTextChanged = { [weak self] text in
-            if text.isEmpty {
-                self?.input.showRightButtonPhoto()
+            guard let self = self else { return }
+
+            if text.isEmpty && !self.dataSource.isPrivateChat {
+                self.input.showRightButtonPhoto()
             } else {
-                self?.input.showRightButtonSend()
+                self.input.showRightButtonSend()
             }
         }
-        input.showRightButtonPhoto()
+        if dataSource.isPrivateChat {
+            input.showRightButtonSend()
+        } else {
+            input.showRightButtonPhoto()
+        }
         
         if let socket = socket,
             let teamID = session?.currentTeam?.teamID {
@@ -705,7 +714,9 @@ private extension UniversalChatVC {
         dataSource.send(text: text, imageFragments: imageFragments)
         forgetMessage()
         input.adjustHeight()
-        input.showRightButtonPhoto()
+        if !dataSource.isPrivateChat {
+            input.showRightButtonPhoto()
+        }
         
         if dataSource.notificationsType == .unknown && dataSource.chatType != .privateChat {
             let type: MuteType = .unmuted
@@ -852,22 +863,22 @@ extension UniversalChatVC: UICollectionViewDelegate {
         }
     }
 
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//         let model = dataSource[indexPath]
-//        switch model {
-//        case let model as ServiceMessageCellModel:
-//            if let command = model.command {
-//                switch command {
-//                case .addMorePhoto:
-//                    showAddPhoto()
-//                default:
-//                    break
-//                }
-//            }
-//        default:
-//            break
-//        }
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //         let model = dataSource[indexPath]
+    //        switch model {
+    //        case let model as ServiceMessageCellModel:
+    //            if let command = model.command {
+    //                switch command {
+    //                case .addMorePhoto:
+    //                    showAddPhoto()
+    //                default:
+    //                    break
+    //                }
+    //            }
+    //        default:
+    //            break
+    //        }
+    //    }
 
 }
 
