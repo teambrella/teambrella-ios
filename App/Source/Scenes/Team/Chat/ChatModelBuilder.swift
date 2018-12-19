@@ -148,7 +148,7 @@ class ChatModelBuilder {
                                            userAvatar: avatar,
                                            date: date,
                                            isTemporary: isTemporary,
-                                           isDeletable: isPrejoining)
+                                           isDeletable: isPrejoining && isMy)
             } else {
                 model = ChatTextCellModel(entity: item,
                                           fragments: fragments,

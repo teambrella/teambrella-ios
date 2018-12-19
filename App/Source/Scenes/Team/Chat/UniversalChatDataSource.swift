@@ -289,7 +289,7 @@ final class UniversalChatDatasource {
         let model = ChatUnsentImageCellModel(id: metadata.postID,
                                              date: Date(),
                                              isTemporary: true,
-                                             isDeletable: isPrejoining,
+                                             isDeletable: isPrejoining && isInputAllowed,
             isSent: false)
         unsentIDs.insert(metadata.postID)
         addCellModel(model: model)
@@ -510,7 +510,7 @@ extension UniversalChatDatasource {
     }
 
     private func addAddPhotoIfNeeded() {
-        guard isPrejoining, let model = models.last else { return }
+        guard isPrejoining && isInputAllowed, let model = models.last else { return }
         guard model as? ChatImageCellModel != nil || model as? ChatUnsentImageCellModel != nil else { return }
 
         if isAddMorePhotoModelAdded {
