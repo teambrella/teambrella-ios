@@ -43,6 +43,7 @@ class GalleryView: ImageSlideshow {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
         addGestureRecognizer(gestureRecognizer)
         isUserInteractionEnabled = true
+        backgroundColor = .paleGray
     }
     
     func present(imageString: String) {

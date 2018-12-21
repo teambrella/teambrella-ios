@@ -34,7 +34,10 @@ class UniversalChatContext {
     var type: UniversalChatType?
 
     init() {
-        
+        userID = service.session?.currentUserID
+        teamID = service.session?.currentTeam?.teamID
+        topicID = service.session?.currentTeam?.myTopicID
+        type = .application
     }
 
     init(_ claim: ClaimEntityLarge) {
@@ -60,7 +63,7 @@ class UniversalChatContext {
         topicID = applicationDetails.topicID
         type = .application
     }
-
+    
     init(_ feed: FeedEntity) {
         title = feed.chatTitle ?? feed.modelOrName
         requestType = TeambrellaPostRequestType.with(itemType: feed.itemType)

@@ -51,9 +51,13 @@ class HomeDefaultConfigurator: HomeConfigurator {
         controller.leftBrickTitleLabel.text = "Home.leftBrick.title".localized
         controller.rightBrickTitleLabel.text = "Home.rightBrick.title".localized
 
-        controller.itemCard.avatarView.present(imageString: model.smallPhoto.string)
+        if !model.smallPhoto.string.isEmpty {
+            controller.itemCard.avatarView.present(imageString: model.smallPhoto.string)
+        }
+
         controller.itemCard.avatarView.onTap = { [weak controller] sender in
-            sender.fullscreen(in: controller, imageStrings: nil)
+            let context = UniversalChatContext()
+            service.router.presentChat(context: context)
         }
         controller.itemCard.titleLabel.text = model.objectName.entire
         controller.itemCard.statusLabel.text = "Home.itemCard.status".localized
@@ -72,7 +76,7 @@ class HomeDefaultConfigurator: HomeConfigurator {
         }
         controller.submitClaimButton.setTitleColor(#colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1), for: .disabled)
         controller.submitClaimButton.borderColor = controller.submitClaimButton.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
-        controller.submitClaimButton.shadowColor = controller.submitClaimButton.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 0.2) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 0.2)
+        controller.submitClaimButton.shadowColor = controller.submitClaimButton.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 0.2) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         controller.submitClaimButton.alpha = controller.submitClaimButton.isEnabled ? 1 : 0.5
     }
 
