@@ -182,7 +182,6 @@ final class UniversalChatVC: UIViewController, Routable {
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
             layout.footerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
-
         }
         dataSource.cloudWidth = cloudWidth
         collectionView.contentInset.bottom = keyboardHeight + input.frame.height

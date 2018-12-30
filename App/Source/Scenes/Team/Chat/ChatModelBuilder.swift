@@ -136,6 +136,7 @@ class ChatModelBuilder {
             }
             
             let date = item.created
+            let updated = item.lastUpdated
             let rateString = rateText(rate: item.teammate?.vote, showRate: showRate, isClaim: isClaim)
             
             let model: ChatCellUserDataLike
@@ -147,6 +148,7 @@ class ChatModelBuilder {
                                            isMy: isMy,
                                            userAvatar: avatar,
                                            date: date,
+                                           updated: updated,
                                            isTemporary: isTemporary,
                                            isDeletable: isPrejoining && isMy)
             } else {
@@ -158,6 +160,7 @@ class ChatModelBuilder {
                                           userAvatar: avatar,
                                           rateText: rateString,
                                           date: date,
+                                          updated: updated,
                                           isTemporary: isTemporary)
             }
             result.append(model)

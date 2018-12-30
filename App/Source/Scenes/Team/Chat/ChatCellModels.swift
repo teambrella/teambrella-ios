@@ -24,6 +24,7 @@ import Foundation
 protocol ChatCellModel {
     var id: String { get }
     var date: Date { get }
+    var updated: Int64 { get }
     var isTemporary: Bool { get }
 }
 
@@ -33,6 +34,7 @@ protocol ChatCellUserDataLike: ChatCellModel {
     var isMy: Bool { get }
     var userAvatar: Avatar? { get }
     var date: Date { get }
+    var updated: Int64 { get }
     var isTemporary: Bool { get }
     var id: String { get }
     var isDeletable: Bool { get }
@@ -48,6 +50,7 @@ struct ChatTextCellModel: ChatCellUserDataLike {
     let userAvatar: Avatar?
     var rateText: String?
     let date: Date
+    let updated: Int64
     let isTemporary: Bool
     let isDeletable: Bool = false
 
@@ -65,6 +68,7 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     let isMy: Bool
     let userAvatar: Avatar?
     let date: Date
+    let updated: Int64
     let isTemporary: Bool
     let isDeletable: Bool
 
@@ -76,6 +80,7 @@ struct ChatImageCellModel: ChatCellUserDataLike {
 struct ChatUnsentImageCellModel: ChatCellModel {
     let id: String
     let date: Date
+    let updated: Int64 = 0
     let isTemporary: Bool
     let isDeletable: Bool 
     var isSent: Bool
@@ -85,12 +90,14 @@ struct ChatUnsentImageCellModel: ChatCellModel {
 struct ChatSeparatorCellModel: ChatCellModel {
     var id: String { return String(describing: date.timeIntervalSince1970) }
     let date: Date
+    let updated: Int64 = 0
     let isTemporary: Bool = true
 }
 
 struct ChatNewMessagesSeparatorModel: ChatCellModel {
     var id: String { return "newMessages" }
     let date: Date
+    let updated: Int64 = 0
     let text: String = "Team.Chat.Separator.newMessages".localized
     let isTemporary: Bool = true
 }
@@ -98,6 +105,7 @@ struct ChatNewMessagesSeparatorModel: ChatCellModel {
 struct ChatClaimPaidCellModel: ChatCellModel {
     var id: String { return String(describing: date.timeIntervalSince1970) }
     let date: Date
+    let updated: Int64 = 0
     let isTemporary: Bool = false
     
 }
@@ -111,6 +119,7 @@ struct ServiceMessageCellModel: ServiceMessageLike {
     var id: String { return "\(type(of: self))|\(messageID)|\(date.timeIntervalSince1970)" }
     let messageID: String
     let date: Date
+    let updated: Int64 = 0
     let isTemporary: Bool = false
     let text: String
     let size: CGSize
@@ -121,6 +130,7 @@ struct ServiceMessageWithButtonCellModel: ServiceMessageLike {
     var id: String { return "\(type(of: self))|\(date.timeIntervalSince1970)" }
     let messageID: String
     let date: Date
+    let updated: Int64 = 0
     let isTemporary: Bool = false
     let text: String
     let buttonText: String

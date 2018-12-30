@@ -14,7 +14,7 @@
 "Team.ClaimsCell.view"                                = "Посмотреть";
 "Team.ClaimsCell.reimbursed"                          = "Выплачено";
 
-"Team.ClaimCell.claimID_format"                       = "Заявка %d";
+"Team.ClaimCell.claimID_format"                       = "Обсуждение заявки";
 "Team.ClaimCell.timePassed_format"                    = "%d мин. назад";
 
 "Team.ClaimCell.voting"                               = "Голосование";

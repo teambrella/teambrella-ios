@@ -16,7 +16,7 @@
  * GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see<http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see<http://www.gnu.org/licfenses/>.
  */
 
 import Foundation
@@ -303,6 +303,8 @@ final class UniversalChatDatasource {
             var model = models[index.row] as? ChatUnsentImageCellModel {
             model.isSent = true
             models[index.row] = model
+            self.hasNext = true
+            onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
         }
     }
 
@@ -466,11 +468,17 @@ extension UniversalChatDatasource {
         let ids = models.map { $0.id }
         for id in ids where self.unsentIDs.contains(id) {
             self.unsentIDs.remove(id)
-            if let index = indexPath(postID: id) {
-                self.models.remove(at: index.row)
+        }
+        models.forEach {
+            if let index = indexPath(postID: $0.id) {
+                if self.models[index.row].updated < $0.updated {
+                    self.models[index.row] = $0
+                }
+            }
+            else {
+                self.addCellModel(model: $0)
             }
         }
-        models.forEach { self.addCellModel(model: $0) }
     }
     
     private func addCellModel(model: ChatCellModel) {
@@ -491,6 +499,11 @@ extension UniversalChatDatasource {
         while lastInsertionIndex < models.count
             && models[lastInsertionIndex].date <= model.date {
                 lastInsertionIndex += 1
+        }
+        if lastInsertionIndex < models.count {
+            if let model = models[lastInsertionIndex] as? ServiceMessageCellModel, model.command == .addMorePhoto {
+                lastInsertionIndex += 1
+            }
         }
         
         // insert new item in the array
@@ -552,9 +565,9 @@ extension UniversalChatDatasource {
     }
     
     private func addModels(models: [ChatEntity], isPrevious: Bool, chatModel: ChatModel?) {
-        previousCount = postsCount
+        previousCount = postsCount // not used???
         let currentPostsCount = models.count
-        postsCount += currentPostsCount
+        postsCount += currentPostsCount // not used???
         if isPrevious {
             isLoadPreviousNeeded = false
         } else {
