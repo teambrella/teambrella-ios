@@ -109,6 +109,8 @@ protocol DAO {
     func requestPin(topicID: String) -> Future<PinEntity>
     func sendPin(topicID: String, pinType: PinType) -> Future<PinEntity>
 
+    func setPostLike(postID: String, myLike: Int) -> Future<Bool>
+
 //    func performRequest(request: TeambrellaRequest)
     
     func getCars(string: String?) -> Future<[String]>

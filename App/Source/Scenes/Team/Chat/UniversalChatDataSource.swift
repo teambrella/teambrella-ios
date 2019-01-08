@@ -253,6 +253,27 @@ final class UniversalChatDatasource {
         }
     }
     
+    func setMyLike(myLike: Int, chatItem: ChatCellUserDataLike, completion: @escaping (Bool) -> Void) {
+        if let index = indexPath(postID: chatItem.id),
+            var model = models[index.row] as? ChatCellUserDataLike {
+            let likesDiff = myLike - model.myLike
+            model.myLike = myLike
+            model.liked = model.liked + likesDiff
+            models[index.row] = model
+            
+            service.dao.setPostLike(postID: chatItem.id, myLike: myLike).observe { [weak self] result in
+                switch result {
+                case let .error(error):
+                    log("\(error)", type: [.error, .serverReply])
+                default:
+                    break
+                }
+            }
+            
+            completion(true)
+        }
+    }
+    
     func addContext(context: UniversalChatContext) {
         strategy = context
         hasPrevious = strategy.canLoadBackward

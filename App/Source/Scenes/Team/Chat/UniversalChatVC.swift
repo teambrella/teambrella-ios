@@ -92,6 +92,8 @@ final class UniversalChatVC: UIViewController, Routable {
         }
     }
     
+    var postActionsDataSource: PostActionsDataSource? = nil
+    
     private var showIsTyping: Bool = false {
         didSet {
             collectionView.reloadData()
@@ -332,6 +334,14 @@ final class UniversalChatVC: UIViewController, Routable {
                                delegate: self,
                                datasource: pinDataSource,
                                currentState: pinState)
+    }
+    
+    func showCommandList(model: ChatCellUserDataLike) {
+        postActionsDataSource = PostActionsDataSource(model: model)
+        router.showPostActionsSelector(in: self,
+                               delegate: self,
+                               dataSource: postActionsDataSource!,
+                               currentState: PostActionType(rawValue: model.myLike) ?? .unknown)
     }
 
     var unsentImages: [String: UIImage] = [:]
@@ -1004,6 +1014,19 @@ extension UniversalChatVC: SelectorDelegate {
             pinDataSource.change(topicID: topicID, type: type) { [weak self, weak controller] type in
                 self?.pinState = type
                 controller?.reload()
+            }
+        } else if let type = type as? PostActionType {
+            let oldLike = PostActionType(rawValue: postActionsDataSource?.model.myLike ?? 0)
+            var newLike : PostActionType = type
+            
+            if oldLike == type {
+                newLike = .unknown
+                controller.selectedIndex = -1
+            }
+
+            dataSource.setMyLike(myLike: newLike.rawValue, chatItem: (postActionsDataSource?.model)!) { [weak self, weak controller] success in
+                self?.collectionView.reloadData()
+                // controller?.reload()
             }
         }
     }

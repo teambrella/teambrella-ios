@@ -26,7 +26,7 @@ private struct Constant {
     static let normalImageViewSize: CGFloat = 38
     static let claimObjectViewCornerRadius: CGFloat = 3
     static let smallImageViewOffset: CGFloat = 12
-    static let normalImageViewOffset: CGFloat = 16
+    static let normalImageViewOffset: CGFloat = 12
 }
 
 class ChatObjectView: UIView, XIBInitable {

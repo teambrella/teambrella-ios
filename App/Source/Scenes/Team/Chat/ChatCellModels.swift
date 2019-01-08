@@ -34,6 +34,9 @@ protocol ChatCellUserDataLike: ChatCellModel {
     var isMy: Bool { get }
     var userAvatar: Avatar? { get }
     var date: Date { get }
+    var liked: Int { get set }
+    var myLike: Int { get set }
+    var grayed: Double { get }
     var updated: Int64 { get }
     var isTemporary: Bool { get }
     var id: String { get }
@@ -50,6 +53,9 @@ struct ChatTextCellModel: ChatCellUserDataLike {
     let userAvatar: Avatar?
     var rateText: String?
     let date: Date
+    var liked: Int
+    var myLike: Int
+    var grayed: Double
     let updated: Int64
     let isTemporary: Bool
     let isDeletable: Bool = false
@@ -68,6 +74,9 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     let isMy: Bool
     let userAvatar: Avatar?
     let date: Date
+    var liked: Int
+    var myLike: Int
+    var grayed: Double
     let updated: Int64
     let isTemporary: Bool
     let isDeletable: Bool

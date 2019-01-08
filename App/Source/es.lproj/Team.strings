@@ -166,6 +166,10 @@
 "Team.Chat.Unmute"                                    = "Ahora recibes notificaciones de este discusión..";
 "Team.Chat.Mute"                                      = "Ahora no recibes notificaciones de este discusión.";
 
+"Team.Chat.Actions.title"                             = "MESSAGE";
+"Team.Chat.Actions.upvote"                            = "Second that!";
+"Team.Chat.Actions.downvote"                          = "Dislike!";
+
 "Team.Claims.objectView.reportButton.title"           = "Enviar reclamación";
 
 "Team.Chat.ObjectView.VoteLabel"                      = "Votar";

@@ -167,16 +167,21 @@
 "Team.ChooseTeam.switchUser"                          = "Сменить пользователя";
 
 //---waiting---
-"Team.Claims.Empty.title"                             = "В группе ещё нет ни одной заявки на выплату";
+"Team.Claims.Empty.title"                             = "В команде ещё нет ни одной заявки на выплату";
 "Team.Claims.Empty.details"                           = "Мы сообщим, когда первая заявка будет создана";
 "Team.Chat.NotificationSettings.title"                = "НАСТРОЙКИ НОТИФИКАЦИЙ";
 "Team.Chat.NotificationSettings.subscribed"           = "Подписан";
 "Team.Chat.NotificationSettings.subscribed.details"   = "Ты будешь получать нотификации о каждом сообщении";
 "Team.Chat.NotificationSettings.unsubscribed"         = "Без нотификаций";
-"Team.Chat.NotificationSettings.unsubscribed.details" = "Нотификации для этой беседы выключены";
+"Team.Chat.NotificationSettings.unsubscribed.details" = "Нотификации для этой темы выключены";
 
-"Team.Chat.Unmute" = "Теперь ты получаешь нотификации по этой беседе";
-"Team.Chat.Mute" = "Ты больше не получаешь нотификаций по этой беседе";
+"Team.Chat.Unmute" = "Теперь ты получаешь нотификации по этой теме";
+"Team.Chat.Mute" = "Ты больше не получаешь нотификаций по этой теме";
+
+"Team.Chat.Actions.title"                             = "СООБЩЕНИЕ";
+"Team.Chat.Actions.upvote"                            = "Нравится!";
+"Team.Chat.Actions.downvote"                          = "Не нравится!";
+
 
 "Team.Claims.objectView.reportButton.title" = "Подать заявку";
 

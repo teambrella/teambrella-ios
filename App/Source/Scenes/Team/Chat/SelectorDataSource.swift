@@ -93,7 +93,7 @@ class PinDataSource: SelectorDataSource {
     var teamPinType: PinType = .unknown
     var models: [SelectorCellModel] = []
     
-   func getModels(topicID: String, completion: @escaping (PinType) -> Void) {
+    func getModels(topicID: String, completion: @escaping (PinType) -> Void) {
         service.dao.requestPin(topicID: topicID).observe { [weak self] result in
             switch result {
             case let .value(pin):
@@ -130,5 +130,28 @@ class PinDataSource: SelectorDataSource {
             }
         }
     }
+    
+}
+
+struct PostActionsDataSource: SelectorDataSource {
+    let header = "Team.Chat.Actions.title".localized
+    let model: ChatCellUserDataLike
+    let isHidingOnSelection: Bool = true
+    
+    init(model: ChatCellUserDataLike) {
+        self.model = model
+    }
+    
+    let models: [SelectorCellModel] = [
+        SelectorCellModel(icon: #imageLiteral(resourceName: "Upvote"),
+                          topText: "Team.Chat.Actions.upvote".localized,
+                          bottomText: "",
+                          type: PostActionType.like),
+        
+        SelectorCellModel(icon: #imageLiteral(resourceName: "Downvote"),
+                          topText: "Team.Chat.Actions.downvote".localized,
+                          bottomText: "",
+                          type: PostActionType.dislike)
+    ]
     
 }

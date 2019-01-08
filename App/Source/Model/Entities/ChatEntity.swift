@@ -37,7 +37,9 @@ struct ChatEntity: Decodable {
     let userID: String
     let lastUpdated: Int64
     let id: String
-    let points: Int
+    let likes: Int
+    let myLike: Int
+    let grayed: Double
     let text: String
     let teammate: TeammatePart?
     let systemType: SystemType?
@@ -58,7 +60,9 @@ struct ChatEntity: Decodable {
         case userID = "UserId"
         case lastUpdated = "LastUpdated"
         case id = "Id"
-        case points = "Points"
+        case likes = "Likes"
+        case myLike = "MyLike"
+        case grayed = "Grayed"
         case text = "Text"
         case imagesReceived = "Images"
         case smallImagesReceived = "SmallImages"

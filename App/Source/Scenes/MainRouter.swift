@@ -352,6 +352,16 @@ final class MainRouter {
                    delegate: delegate,
                    dataSource: datasource, currentState: type)
     }
+    
+    func showPostActionsSelector(in viewController: UIViewController,
+                         delegate: SelectorDelegate,
+                         dataSource: PostActionsDataSource,
+                         currentState type: PostActionType) {
+        showFilter(in: viewController,
+                   delegate: delegate,
+                   dataSource: dataSource, currentState: type)
+    }
+    
 
     private func showFilter(in viewController: UIViewController,
                             delegate: SelectorDelegate,
@@ -507,7 +517,8 @@ final class MainRouter {
         return vc
     }
     
-    /* private */ init() {
+    /* private */
+    init() {
         PKHUD.sharedHUD.gracePeriod = 0.5
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(cryptoMalfunction),

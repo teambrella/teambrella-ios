@@ -16,39 +16,30 @@
 
 import UIKit
 
-protocol ChatUserDataCell {
+class ChatImageCell: ChatUserDataCell {
 
-}
-
-class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
-    struct Constant {
-        static let cloudCornerRadius: CGFloat = 6
-        static let imageInset: CGFloat = 2.0
-        static let avatarWidth: CGFloat = 15 * UIScreen.main.nativeScale
-        static let avatarContainerInset: CGFloat = 12
-        static let avatarCloudInset: CGFloat = 3.5
-        static let timeInset: CGFloat = 8
-        static let auxillaryLabelHeight: CGFloat = 20
+    override func setup() {
+        super.setup()
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        self.addGestureRecognizer(longPressRecognizer)
     }
-
-    var cloudHeight: CGFloat = 90
-    var cloudWidth: CGFloat = 250
-    var id: String = ""
-
-    lazy var avatarView: RoundImageView = {
-        let imageView = RoundImageView()
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(self.avatarTap)
-        self.contentView.addSubview(imageView)
-        return imageView
-    }()
-
-    lazy var avatarTap: UITapGestureRecognizer = {
-        let gesture = UITapGestureRecognizer()
-        return gesture
-    }()
-
+    
+    @objc
+    private func handleLongPress(sender: UILongPressGestureRecognizer? = nil) {
+        onInitiateCommandList?(self)
+    }
+    
     lazy var bottomLabel: Label = {
+        let label = Label()
+        label.font = UIFont.teambrella(size: 10)
+        label.textColor = .white
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        label.textInsets = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+        self.contentView.addSubview(label)
+        return label
+    }()
+    
+    lazy var likedLabel: Label = {
         let label = Label()
         label.font = UIFont.teambrella(size: 10)
         label.textColor = .white
@@ -99,32 +90,29 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         return button
     }()
 
-    var width: CGFloat {
-        return bounds.width
-    }
 
-    var cloudStartPoint: CGPoint {
+    override var cloudStartPoint: CGPoint {
         if isMy {
-            return CGPoint(x: width - cloudInsetX, y: cloudHeight)
+            return CGPoint(x: width - cloudInsetX + Constant.tailWidth, y: cloudHeight)
         } else {
-            return CGPoint(x: cloudInsetX, y: cloudHeight)
+            return CGPoint(x: cloudInsetX + Constant.tailWidth, y: cloudHeight)
         }
     }
 
-    var cloudInsetX: CGFloat {
+    override var cloudInsetX: CGFloat {
         return isMy
             ? Constant.avatarContainerInset + Constant.avatarCloudInset
             : Constant.avatarContainerInset + Constant.avatarWidth + Constant.avatarCloudInset
     }
 
-    var cloudBodyMinX: CGFloat {
+    override var cloudBodyMinX: CGFloat {
         if isMy {
             return cloudStartPoint.x - cloudWidth
         } else {
             return cloudStartPoint.x
         }
     }
-    var cloudBodyMaxX: CGFloat {
+    override var cloudBodyMaxX: CGFloat {
         if isMy {
             return cloudStartPoint.x
         } else {
@@ -132,11 +120,6 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         }
     }
 
-    var isMy: Bool = false {
-        didSet {
-            avatarView.isUserInteractionEnabled = !isMy
-        }
-    }
 
     var onTapImage: ((ChatImageCell, GalleryView) -> Void)?
     var onTapDelete: ((ChatImageCell) -> Void)?
@@ -156,10 +139,6 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
 
     }
 
-    func setup() {
-        backgroundColor = .clear
-    }
-
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let context = UIGraphicsGetCurrentContext() else { return }
@@ -174,6 +153,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
     }
 
     func prepareRealCell(model: ChatCellUserDataLike, size: CGSize) {
+        let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
         if model.id != id, let fragment = model.fragments.first {
 
             id = model.id
@@ -189,7 +169,6 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
             hidingView.isHidden = true
             setNeedsDisplay()
 
-            let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
             setupFragment(fragment: fragment)
             var certified = false
             if case let .image(imageString, _, _) = fragment {
@@ -199,6 +178,14 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)
             setupDeleteButton(isDeletable: model.isDeletable)
         }
+        self.alpha = 1
+        if (model.grayed >= 0.7) {
+            self.alpha = 0.15
+        }
+        else if (model.grayed >= 0.3) {
+            self.alpha = 0.3
+        }
+        setupLikedLabel(liked: model.liked, baseFrame: baseFrame)
     }
 
     func prepareUnsentCell(model: ChatUnsentImageCellModel, size: CGSize, image: UIImage?) {
@@ -241,9 +228,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         setupDeleteButton(isDeletable: model.isDeletable)
         }
 
-    // MARK: Private
-
-    private func prepareMyCloud(in context: CGContext) {
+    override func prepareMyCloud(in context: CGContext) {
         var pen: CGPoint = cloudStartPoint
         pen.y -= Constant.cloudCornerRadius
         context.move(to: pen)
@@ -285,7 +270,7 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         context.setStrokeColor(#colorLiteral(red: 0.8039215686, green: 0.8666666667, blue: 0.9529411765, alpha: 1).cgColor)
     }
 
-    private func prepareTheirCloud(in context: CGContext) {
+    override func prepareTheirCloud(in context: CGContext) {
         var pen: CGPoint = cloudStartPoint
         pen.y -= Constant.cloudCornerRadius
         context.move(to: pen)
@@ -326,20 +311,6 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         context.setStrokeColor(UIColor.lightBlueGray.cgColor)
     }
 
-    private func setupAvatar(avatar: Avatar?, cloudHeight: CGFloat) {
-        guard  isMy == false, let avatar = avatar else {
-            avatarView.isHidden = true
-            return
-        }
-
-        avatarView.isHidden = false
-        avatarView.show(avatar)
-        let x = isMy ? width - Constant.avatarContainerInset - Constant.avatarWidth : Constant.avatarContainerInset
-        avatarView.frame = CGRect(x: x,
-                                  y: cloudHeight - Constant.avatarWidth,
-                                  width: Constant.avatarWidth,
-                                  height: Constant.avatarWidth)
-    }
 
     private func setupBottomLabel(date: Date, baseFrame: CGRect, isCertifiedImage: Bool) {
         bottomLabel.frame = baseFrame
@@ -352,6 +323,17 @@ class ChatImageCell: UICollectionViewCell, ChatUserDataCell {
         bottomLabel.cornerRadius = bottomLabel.frame.height / 2
         bottomLabel.center = CGPoint(x: cloudBodyMaxX - bottomLabel.frame.width / 2 - Constant.timeInset,
                                      y: cloudHeight - bottomLabel.frame.height / 2 - Constant.timeInset)
+    }
+    
+    override func setupLikedLabel(liked: Int, baseFrame: CGRect) {
+        likedLabel.frame = baseFrame
+        let prefix = liked > 0 ? "+" : ""
+        likedLabel.text = prefix + String(liked)
+        likedLabel.sizeToFit()
+        likedLabel.cornerRadius = likedLabel.frame.height / 2
+        likedLabel.center = CGPoint(x: cloudBodyMinX + likedLabel.frame.width / 2 + Constant.timeInset,
+                                    y: cloudHeight - likedLabel.frame.height / 2 - Constant.timeInset)
+        likedLabel.isHidden = liked == 0
     }
 
     private func setupFragment(fragment: ChatFragment) {

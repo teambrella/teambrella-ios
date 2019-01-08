@@ -69,6 +69,17 @@ enum PinType: Int, SelectorItemsType, Decodable {
     }
 }
 
+enum PostActionType: Int, SelectorItemsType, Decodable {
+    case dislike = -1
+    case unknown = 0
+    case like = 1
+    
+    init(from decoder: Decoder) throws {
+        let value = try decoder.singleValueContainer().decode(Int.self)
+        self = PostActionType(rawValue: value) ?? .unknown
+    }
+}
+
 struct SettingsEntity: Codable {
     let type: TeamNotificationsType
     let teamID: Int?
