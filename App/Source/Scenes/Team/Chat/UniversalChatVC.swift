@@ -298,18 +298,20 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     func keyboardWillChangeFrame(notification: Notification) {
-        if let finalFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let initialFrame = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?
-                .cgRectValue {
-            var offset =  collectionView.contentOffset
-            guard finalFrame.minY < collectionView.contentSize.height else { return }
-            
-            keyboardTopY = finalFrame.minY
-            let diff = initialFrame.minY - finalFrame.minY
-            offset.y += diff
-            collectionView.contentOffset = offset
-            collectionView.contentInset.bottom = keyboardHeight
-        }
+        // TODO: commenting this out as a quick fix for correct handing of SelectorVC
+        
+//        if let finalFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+//            let initialFrame = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?
+//                .cgRectValue {
+//            var offset =  collectionView.contentOffset
+//            guard finalFrame.minY < collectionView.contentSize.height else { return }
+//
+//            keyboardTopY = finalFrame.minY
+//            let diff = initialFrame.minY - finalFrame.minY
+//            offset.y += diff
+//            collectionView.contentOffset = offset
+//            collectionView.contentInset.bottom = keyboardHeight
+//        }
     }
     
     @objc
@@ -1056,19 +1058,17 @@ extension UniversalChatVC: ClaimVotingDelegate {
 
 // MARK: ChatObjectViewDelegate
 extension  UniversalChatVC: ChatObjectViewDelegate {
-    func chatObject(view: ChatObjectView, didTap button: UIButton) {
-        log("tap \(button)", type: .userInteraction)
-        switch button {
-        case view.rightButton:
-            if let model = dataSource.chatModel, model.isClaimChat {
-                self.slidingView.showVotingView()
-            } else if let userID = dataSource.chatModel?.basic?.userID {
-                router.presentMemberProfile(teammateID: userID, scrollToVote: true)
-            }
-        case view.chevronButton:
-            self.slidingView.hideVotingView()
-        default:
-            break
+    func chatObjectVoteHide(view: ChatObjectView) {
+        log("tap hide", type: .userInteraction)
+        self.slidingView.hideVotingView()
+    }
+    
+    func chatObjectVoteShow(view: ChatObjectView) {
+        log("tap show", type: .userInteraction)
+        if let model = dataSource.chatModel, model.isClaimChat {
+            self.slidingView.showVotingView()
+        } else if let userID = dataSource.chatModel?.basic?.userID {
+            router.presentMemberProfile(teammateID: userID, scrollToVote: true)
         }
     }
     

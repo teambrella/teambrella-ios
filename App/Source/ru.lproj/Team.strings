@@ -56,7 +56,7 @@
 
 "Team.TeammateCell.timeLabel.justNow"                 = "ТОЛЬКО ЧТО";
 "Team.TeammateCell.contact"                           = "КОНТАКТЫ";
-"Team.TeammateCell.buttonTitle_format_i"              = "Смотреть заявки на выплату (%d)";
+"Team.TeammateCell.buttonTitle_format_i"              = "Заявки на выплату (%d)";
 
 "Team.Decisions.generous"                             = "щедрый";
 "Team.Decisions.mild"                                 = "мягкий";
@@ -153,7 +153,7 @@
 "Team.Chat.TextCell.Application.voted_format"         = "Голос: %@";
 "Team.Chat.TextCell.notVoted"                         = "Не голосовал";
 
-"Team.Chat.TypeLabel.claim"                           = "ЗАЯВКА НА ВЫПЛАТУ";
+"Team.Chat.TypeLabel.claim"                           = "ЗАЯВКА";
 "Team.Chat.TypeLabel.application"                     = "ВСТУПЛЕНИЕ";
 "Team.Chat.TypeLabel.other"                           = "ОБСУЖДЕНИЕ";
 "Team.Chat.Separator.newMessages"                     = "НОВЫЕ СООБЩЕНИЯ";

@@ -92,7 +92,7 @@ class RoundImagesStack: UIView {
         } else if let view = view as? Label {
             view.cornerRadius = 10
             view.leftInset = 2
-            view.rightInset = 2
+            view.rightInset = 3
             view.backgroundColor = .paleGray
             view.textColor = #colorLiteral(red: 0.4, green: 0.4549019608, blue: 0.4901960784, alpha: 1)
             view.layer.borderWidth = limbWidth

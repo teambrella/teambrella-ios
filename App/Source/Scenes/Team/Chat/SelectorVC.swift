@@ -89,8 +89,8 @@ class SelectorVC: UIViewController, Routable {
         topConstraint.isActive = false
         bottomAnchor = muteView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         bottomAnchor?.isActive = true
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
-            self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
+            self.backView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             self.view.layoutIfNeeded()
         }) { finished in
             
@@ -100,7 +100,7 @@ class SelectorVC: UIViewController, Routable {
     func disappear(completion: @escaping () -> Void) {
         topConstraint.isActive = true
         bottomAnchor?.isActive = false
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn], animations: {
             self.backView.backgroundColor = .clear
             self.view.layoutIfNeeded()
         }) { finished in

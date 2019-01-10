@@ -324,6 +324,11 @@ struct TeammateCellBuilder {
         let hasClaims = teammate.object.claimCount > 0
         cell.button.isEnabled = hasClaims ? true : false
         
+        cell.button.setTitleColor(#colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1), for: .disabled)
+        cell.button.borderColor = cell.button.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 1) : #colorLiteral(red: 0.5843137255, green: 0.6470588235, blue: 0.6941176471, alpha: 1)
+        cell.button.shadowColor = cell.button.isEnabled ? #colorLiteral(red: 0.568627451, green: 0.8784313725, blue: 1, alpha: 0.2) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        cell.button.alpha = cell.button.isEnabled ? 1 : 0.5
+        
         cell.button.removeTarget(nil, action: nil, for: .allEvents)
         cell.button.addTarget(controller, action: #selector(TeammateProfileVC.showClaims), for: .touchUpInside)
     }

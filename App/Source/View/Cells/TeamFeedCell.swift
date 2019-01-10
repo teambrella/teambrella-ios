@@ -42,6 +42,7 @@ class TeamFeedCell: UICollectionViewCell, XIBInitableCell {
         }
     }
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

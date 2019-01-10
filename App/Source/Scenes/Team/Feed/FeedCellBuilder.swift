@@ -42,7 +42,8 @@ struct FeedCellBuilder {
             }
             cell.avatarView.contentMode = .scaleAspectFill
             cell.textLabel.text = model.text.sane
-            let count = model.topPosterAvatars.count
+            
+            let count = model.posterCount
             let label: String? = count > 3 ? "+\(count - 3)" : nil
             cell.facesStack.setAvatars(model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
 

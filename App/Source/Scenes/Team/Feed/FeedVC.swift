@@ -167,6 +167,17 @@ extension FeedVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+//        if indexPath.row >= 0 && indexPath.row < dataSource.count {
+//            let item = dataSource[indexPath]
+//            let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 395, height:  CGFloat.greatestFiniteMagnitude))
+//            label.numberOfLines = 2
+//            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+//            label.font = UIFont.systemFont(ofSize: 17)
+//            label.text = item.text.sane
+//            label.sizeToFit()
+//            return CGSize(width: collectionView.bounds.width, height: Constant.cellHeight + label.frame.height)
+//        }
         return CGSize(width: collectionView.bounds.width, height: Constant.cellHeight)
     }
     

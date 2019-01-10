@@ -17,8 +17,9 @@
 import UIKit
 
 protocol ChatObjectViewDelegate: class {
-    func chatObject(view: ChatObjectView, didTap button: UIButton)
     func chatObjectWasTapped(view: ChatObjectView)
+    func chatObjectVoteShow(view: ChatObjectView)
+    func chatObjectVoteHide(view: ChatObjectView)
 }
 
 private struct Constant {
@@ -38,7 +39,7 @@ class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var separatorView: UIView!
     
     @IBOutlet var chevronButton: UIButton!
-    @IBOutlet var voteContainer: UIView!
+    @IBOutlet var voteContainerTapArea: UIView!
     
     @IBOutlet var voteTitleLabel: InfoLabel!
     @IBOutlet var voteValueLabel: TitleLabel!
@@ -50,10 +51,10 @@ class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var imageViewWidth: NSLayoutConstraint!
     @IBOutlet var imageViewHeight: NSLayoutConstraint!
     @IBOutlet var imageViewLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet var voteStackViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet var voteContainerTrailingConstraint: NSLayoutConstraint!
     @IBOutlet var voteButtonContainer: UIView!
-    @IBOutlet var voteStackViewLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet var voteStackView: UIStackView!
+    @IBOutlet var voteContainerLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var voteContainer: UIStackView!
     
     var contentView: UIView!
     
@@ -89,14 +90,15 @@ class ChatObjectView: UIView, XIBInitable {
     }
     
     func initialSetup() {
-        voteStackView.spacing = isSmallIPhone ? CGFloat(8) : CGFloat(13)
-        voteStackViewLeadingConstraint.constant = isSmallIPhone ? CGFloat(8) : CGFloat(13)
+        voteContainer.spacing = isSmallIPhone ? CGFloat(8) : CGFloat(13)
+        voteContainerLeadingConstraint.constant = isSmallIPhone ? CGFloat(8) : CGFloat(13)
         clearLabels()
         chevronButton.isHidden = false
         chevronImageView.isHidden = false
         voteContainer.isHidden = false
         chevronImageView.alpha = 0
         voteContainer.alpha = 1
+        voteContainerTapArea.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapContainerTapArea)))
     }
     
     func setup(with chatModel: ChatModel?) {
@@ -131,7 +133,7 @@ class ChatObjectView: UIView, XIBInitable {
         imageViewHeight.constant = isSmallIPhone ? Constant.smallImageViewSize : Constant.normalImageViewSize
         imageViewLeadingConstraint.constant = isSmallIPhone ? Constant.smallImageViewOffset :
             Constant.normalImageViewOffset
-        voteStackViewTrailingConstraint.constant = isSmallIPhone ? Constant.smallImageViewOffset :
+        voteContainerTrailingConstraint.constant = isSmallIPhone ? Constant.smallImageViewOffset :
             Constant.normalImageViewOffset
     }
     
@@ -243,13 +245,26 @@ class ChatObjectView: UIView, XIBInitable {
         imageView.layer.cornerRadius = isSmallIPhone ? Constant.smallImageViewSize / 2
             : Constant.normalImageViewSize / 2
     }
+
+    private func processOpenCloseTap() {
+        if chevronImageView.alpha > 0.5 {
+            delegate?.chatObjectVoteHide(view: self)
+        }
+        else {
+            delegate?.chatObjectVoteShow(view: self)
+        }
+    }
+    
+    @objc func tapContainerTapArea(_ sender: UITapGestureRecognizer) {
+        processOpenCloseTap()
+    }
     
     @IBAction func tapChevron(_ sender: UIButton) {
-        delegate?.chatObject(view: self, didTap: sender)
+        processOpenCloseTap()
     }
     
     @IBAction func tapRightButton(_ sender: UIButton) {
-        delegate?.chatObject(view: self, didTap: sender)
+        processOpenCloseTap()
     }
     
     @IBAction func tapView(_ sender: UITapGestureRecognizer) {
