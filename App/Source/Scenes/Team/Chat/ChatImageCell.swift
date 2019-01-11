@@ -90,7 +90,6 @@ class ChatImageCell: ChatUserDataCell {
         return button
     }()
 
-
     override var cloudStartPoint: CGPoint {
         if isMy {
             return CGPoint(x: width - cloudInsetX + Constant.tailWidth, y: cloudHeight)
@@ -119,7 +118,6 @@ class ChatImageCell: ChatUserDataCell {
             return cloudStartPoint.x + cloudWidth
         }
     }
-
 
     var onTapImage: ((ChatImageCell, GalleryView) -> Void)?
     var onTapDelete: ((ChatImageCell) -> Void)?
@@ -310,7 +308,6 @@ class ChatImageCell: ChatUserDataCell {
         context.setFillColor(UIColor.white.cgColor)
         context.setStrokeColor(UIColor.lightBlueGray.cgColor)
     }
-
 
     private func setupBottomLabel(date: Date, baseFrame: CGRect, isCertifiedImage: Bool) {
         bottomLabel.frame = baseFrame

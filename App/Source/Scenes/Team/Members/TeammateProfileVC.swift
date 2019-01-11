@@ -759,7 +759,7 @@ extension TeammateProfileVC: ImagePickerControllerDelegate {
     
     func imagePicker(controller: ImagePickerController, didSelectImage image: UIImage) {
         HUD.show(.progress)
-        controller.send(image: image, isAvatar: true)
+        _ = controller.send(image: image, isAvatar: true)
         
     }
     

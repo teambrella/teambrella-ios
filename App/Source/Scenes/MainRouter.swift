@@ -362,7 +362,6 @@ final class MainRouter {
                    dataSource: dataSource, currentState: type)
     }
     
-
     private func showFilter(in viewController: UIViewController,
                             delegate: SelectorDelegate,
                             dataSource: SelectorDataSource,

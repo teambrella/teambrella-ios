@@ -52,7 +52,6 @@ class ChatTextCell: ChatUserDataCell {
         return label
     }()
 
-    
     lazy var textView: UITextView = {
         let textView = UITextView(frame: .zero)
         textView.textColor = .charcoalGray

@@ -258,10 +258,10 @@ final class UniversalChatDatasource {
             var model = models[index.row] as? ChatCellUserDataLike {
             let likesDiff = myLike - model.myLike
             model.myLike = myLike
-            model.liked = model.liked + likesDiff
+            model.liked += likesDiff
             models[index.row] = model
             
-            service.dao.setPostLike(postID: chatItem.id, myLike: myLike).observe { [weak self] result in
+            service.dao.setPostLike(postID: chatItem.id, myLike: myLike).observe { result in
                 switch result {
                 case let .error(error):
                     log("\(error)", type: [.error, .serverReply])

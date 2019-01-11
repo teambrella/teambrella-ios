@@ -23,7 +23,6 @@ import UIKit
 
 class ChatVariousContentCell: ChatUserDataCell {
 
-    
     lazy var leftLabel: Label = {
         let label = Label()
         label.font = Constant.leftLabelFont
@@ -57,14 +56,12 @@ class ChatVariousContentCell: ChatUserDataCell {
     }()
     
     var views: [UIView] = []
-    
-    
+
     override var cloudInsetX: CGFloat {
         return isMy
             ? Constant.avatarContainerInset + Constant.avatarCloudInset
             : Constant.avatarContainerInset + Constant.avatarWidth + Constant.avatarCloudInset
     }
-    
     
     var onTapImage: ((ChatVariousContentCell, GalleryView) -> Void)?
     
