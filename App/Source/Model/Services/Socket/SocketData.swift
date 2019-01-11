@@ -141,7 +141,7 @@ enum SocketData {
                                name: name)
         case .dbDump:
             return .dbDump(timestamp: dict["Timestamp"] as? Int64 ?? 0)
-        case .newPost, .privateMessage:
+        case .newPost, .privateMessage, .notifyPosted:
             let postID = dict["PostId"] as? String ?? ""
             let urlString = dict["Avatar"] as? String ?? ""
             let text = dict["Content"] as? String ?? ""

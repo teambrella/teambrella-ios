@@ -30,6 +30,8 @@ enum SocketCommand: Int {
     case privateMessage = 5
     
     case theyTyping     = 13
+    
+    case notifyPosted   = 21
 
     case dbDump         = 101
     /*

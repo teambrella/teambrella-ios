@@ -152,8 +152,4 @@ extension TeamVC: SelectorDelegate {
             }
         }
     }
-    
-    func didCloseSelectorController(controller: SelectorVC) {
-        
-    }
 }

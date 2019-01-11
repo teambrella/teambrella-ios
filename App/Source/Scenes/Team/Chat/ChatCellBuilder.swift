@@ -57,8 +57,10 @@ struct ChatCellBuilder {
             cell.avatarTap.removeTarget(controller, action: #selector(UniversalChatVC.tapAvatar))
             cell.avatarTap.addTarget(controller, action: #selector(UniversalChatVC.tapAvatar))
             cell.onInitiateCommandList = { [weak controller] cell in
-                guard let controller = controller else { return }
-                controller.showCommandList(model: model)
+                if controller?.dataSource.isInputAllowed ?? false {
+                    guard let controller = controller else { return }
+                    controller.showCommandList(model: model)
+                }
             }
         }
         

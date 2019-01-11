@@ -18,7 +18,13 @@ import UIKit
 
 protocol SelectorDelegate: class {
     func selector(controller: SelectorVC, didSelect index: Int)
+    func aboutToOpenSelectorController(controller: SelectorVC)
     func didCloseSelectorController(controller: SelectorVC)
+}
+
+extension SelectorDelegate {
+    func aboutToOpenSelectorController(controller: SelectorVC) {}
+    func didCloseSelectorController(controller: SelectorVC) {}
 }
 
 class SelectorVC: UIViewController, Routable {
@@ -46,8 +52,9 @@ class SelectorVC: UIViewController, Routable {
     @objc
     private func close() {
         disappear {
-            self.delegate?.didCloseSelectorController(controller: self)
-            self.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: false) {
+                self.delegate?.didCloseSelectorController(controller: self)
+            }
         }
     }
     
@@ -58,6 +65,7 @@ class SelectorVC: UIViewController, Routable {
     }
     
     private func setup() {
+        self.delegate?.aboutToOpenSelectorController(controller: self)
         collectionView.register(MuteCell.nib, forCellWithReuseIdentifier: MuteCell.cellID)
         
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(close))

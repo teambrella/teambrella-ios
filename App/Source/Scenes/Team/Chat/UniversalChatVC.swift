@@ -68,6 +68,8 @@ final class UniversalChatVC: UIViewController, Routable {
     private var endsEditingWhenTappingOnChatBackground = true
     private var isScrollToBottomNeeded: Bool = false
     
+    private var selectorControllerDisplayed: Bool = false
+    
     var muteButton = UIButton()
     var pinButton = UIButton()
     
@@ -298,20 +300,21 @@ final class UniversalChatVC: UIViewController, Routable {
     
     @objc
     func keyboardWillChangeFrame(notification: Notification) {
-        // TODO: commenting this out as a quick fix for correct handing of SelectorVC
-        
-//        if let finalFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-//            let initialFrame = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?
-//                .cgRectValue {
-//            var offset =  collectionView.contentOffset
-//            guard finalFrame.minY < collectionView.contentSize.height else { return }
-//
-//            keyboardTopY = finalFrame.minY
-//            let diff = initialFrame.minY - finalFrame.minY
-//            offset.y += diff
-//            collectionView.contentOffset = offset
-//            collectionView.contentInset.bottom = keyboardHeight
-//        }
+        if selectorControllerDisplayed {
+            return
+        }
+        if let finalFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let initialFrame = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?
+                .cgRectValue {
+            var offset =  collectionView.contentOffset
+            guard finalFrame.minY < collectionView.contentSize.height else { return }
+
+            keyboardTopY = finalFrame.minY
+            let diff = initialFrame.minY - finalFrame.minY
+            offset.y += diff
+            collectionView.contentOffset = offset
+            collectionView.contentInset.bottom = keyboardHeight
+        }
     }
     
     @objc
@@ -674,7 +677,8 @@ private extension UniversalChatVC {
             case .theyTyping, .meTyping:
                 self?.processIsTyping(action: action)
             case .privateMessage,
-                 .newPost:
+                 .newPost,
+                 .notifyPosted:
                 log("received message, loading new data", type: .socket)
                 self?.loadNewMessages()
             default:
@@ -686,7 +690,16 @@ private extension UniversalChatVC {
     private func loadNewMessages() {
         showIsTyping = false
         dataSource.hasNext = true
-        isScrollToBottomNeeded = true
+        var bottomVisiblePoint = CGPoint()
+        bottomVisiblePoint.x = 10
+        var bottomAdjustment : CGFloat = 44
+        if #available(iOS 11.0, *) {
+            bottomAdjustment = collectionView.adjustedContentInset.bottom
+        }
+        bottomVisiblePoint.y = collectionView.contentOffset.y + collectionView.frame.height - bottomAdjustment - 1
+        if collectionView.indexPathForItem(at:bottomVisiblePoint) == nil {
+            isScrollToBottomNeeded = true
+        }
         dataSource.loadNext()
     }
     
@@ -1033,8 +1046,12 @@ extension UniversalChatVC: SelectorDelegate {
         }
     }
     
+    func aboutToOpenSelectorController(controller: SelectorVC) {
+        selectorControllerDisplayed = true
+    }
+
     func didCloseSelectorController(controller: SelectorVC) {
-        
+        selectorControllerDisplayed = false
     }
 }
 
