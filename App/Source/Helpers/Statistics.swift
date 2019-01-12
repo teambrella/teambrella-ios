@@ -17,6 +17,7 @@
 import Crashlytics
 import Firebase
 import Foundation
+import AppsFlyerLib
 
 class Statistics {
     enum Event: String {
@@ -36,6 +37,7 @@ class Statistics {
     static func register(userID: String) {
         Crashlytics.sharedInstance().setUserIdentifier(userID)
         Analytics.setUserID(userID)
+        AppsFlyerTracker.shared().customerUserID = userID
     }
 
     static func log(error: Error) {

@@ -26,14 +26,22 @@ import Firebase
 import PushKit
 import UIKit
 //import UXCam
+import AppsFlyerLib
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        AppsFlyerTracker.shared().appsFlyerDevKey = "W2BghVFhbV3nbQrb68Z2C3"
+        AppsFlyerTracker.shared().appleAppID = Application().appID
+        AppsFlyerTracker.shared().delegate = self
+        #if DEBUG
+        AppsFlyerTracker.shared().isDebug = true
+        #endif
+
 //     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         service.push.register(application: application)
@@ -73,6 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        AppsFlyerTracker.shared().trackAppLaunch()
+        
         service.socket?.start()
         
         if service.session != nil {

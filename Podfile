@@ -45,6 +45,7 @@ def swift_frameworks_pods
 
   pod 'SinchRTC'
   #  pod 'UXCam'
+  pod 'AppsFlyerFramework'
 
   pod 'BigNumber', :git => 'https://github.com/mkrd/Swift-Big-Integer.git'
   pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'

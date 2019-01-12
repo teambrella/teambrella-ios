@@ -24,7 +24,7 @@ import Foundation
 class UserIndexDataSource: StandardDataSource {
     var items: [UserIndexCellModel] = []
     let teamID: Int
-    let limit: Int = 10
+    let limit: Int = 100
     let search: String = ""
     var meModel: UserIndexCellModel?
     var meIdx: Int = 0

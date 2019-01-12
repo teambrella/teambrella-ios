@@ -61,7 +61,8 @@ extension URLBuilder {
         var urlString = siteURL + string
         if let width = width {
             let rect = rect ?? CGRect(x: 0, y: 0, width: width, height: width)
-            urlString += "?width=\(width)&crop=\(rect.origin.x),\(rect.origin.y),\(rect.size.width),\(rect.size.height)"
+            //urlString += "?width=\(width)&crop=\(rect.origin.x),\(rect.origin.y),\(rect.size.width),\(rect.size.height)"
+            urlString += "?width=\(width)"
         }
         return urlString
     }

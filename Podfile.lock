@@ -1,4 +1,5 @@
 PODS:
+  - AppsFlyerFramework (4.8.10)
   - BigNumber (2.0)
   - CoreBitcoin (0.6.8.1):
     - ISO8601DateFormatter
@@ -97,6 +98,7 @@ PODS:
   - XLPagerTabStrip (8.1.0)
 
 DEPENDENCIES:
+  - AppsFlyerFramework
   - BigNumber (from `https://github.com/mkrd/Swift-Big-Integer.git`)
   - CoreBitcoin (from `https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec`)
   - Crashlytics
@@ -123,6 +125,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AppsFlyerFramework
     - Crashlytics
     - Fabric
     - Firebase
@@ -183,6 +186,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/xmartlabs/XLPagerTabStrip.git
 
 SPEC CHECKSUMS:
+  AppsFlyerFramework: 481eafa4f92e3274fa8d04f10108cdad83fd532b
   BigNumber: bcc393c06b3e7e2752e5121be58c032c45c6f36b
   CoreBitcoin: 4ac6f6a61e543f08399c2fe57496d4fdcbaf74f9
   Crashlytics: 1448070c1d2731ab71ea7c3faf84ac0f69657287
@@ -217,6 +221,6 @@ SPEC CHECKSUMS:
   ThoraxMath: 5a3328f333477deec5fb004bac3de6b06f06e9fc
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
 
-PODFILE CHECKSUM: 26b869034d009b43032c910e2ab90a936cb5ccc6
+PODFILE CHECKSUM: dd178952def77dd0153cd712d90fe56e110fb5b5
 
 COCOAPODS: 1.6.0.beta.2

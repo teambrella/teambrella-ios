@@ -15,6 +15,7 @@
  */
 
 import UIKit
+import AppsFlyerLib
 
 class ApplicationVC: UICollectionViewController, Routable {
     static let storyboardName = "Login"
@@ -125,7 +126,9 @@ class ApplicationVC: UICollectionViewController, Routable {
         let loginWorker = LoginWorker()
         loginWorker.register(userData: userData) { error in
             guard error == nil else { return }
-
+            
+            AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [AFEventParamEventStart: 1]);
+            
             SimpleStorage().store(bool: false, forKey: .isRegistering)
             self.performSegue(type: .unwindToInitial, sender: self)
         }
