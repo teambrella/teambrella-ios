@@ -22,7 +22,7 @@
 		<key>SurillaWatch (Complication).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>52</integer>
+			<integer>53</integer>
 		</dict>
 		<key>SurillaWatch (Notification).xcscheme</key>
 		<dict>
@@ -32,7 +32,7 @@
 		<key>SurillaWatch (Notification).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>51</integer>
+			<integer>52</integer>
 		</dict>
 		<key>SurillaWatch.xcscheme</key>
 		<dict>
@@ -42,7 +42,7 @@
 		<key>SurillaWatch.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>50</integer>
+			<integer>51</integer>
 		</dict>
 		<key>Teambrella copy.xcscheme</key>
 		<dict>

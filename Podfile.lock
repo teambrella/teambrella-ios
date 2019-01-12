@@ -1,5 +1,5 @@
 PODS:
-  - AppsFlyerFramework (4.8.10)
+  - AppsFlyerFramework (4.8.9)
   - BigNumber (2.0)
   - CoreBitcoin (0.6.8.1):
     - ISO8601DateFormatter
@@ -95,7 +95,7 @@ PODS:
   - SwiftMessages/App (5.0.1)
   - SwiftSoup (1.7.4)
   - ThoraxMath (1.1.0)
-  - XLPagerTabStrip (8.1.0)
+  - XLPagerTabStrip (8.1.1)
 
 DEPENDENCIES:
   - AppsFlyerFramework
@@ -182,11 +182,11 @@ CHECKOUT OPTIONS:
     :commit: eb1fc92b1f375da9835ba5a9e5cab83317066426
     :git: https://github.com/yaro812/ThoraxMath.git
   XLPagerTabStrip:
-    :commit: 8defea05bc73cf1c27c7c2c5ca5dbf91a6880f5f
+    :commit: a21a554c1ab0e970c9ecc09df69e627fc581ab0f
     :git: https://github.com/xmartlabs/XLPagerTabStrip.git
 
 SPEC CHECKSUMS:
-  AppsFlyerFramework: 481eafa4f92e3274fa8d04f10108cdad83fd532b
+  AppsFlyerFramework: 0fc823ec9b77f913e4108caa82c969be033058b1
   BigNumber: bcc393c06b3e7e2752e5121be58c032c45c6f36b
   CoreBitcoin: 4ac6f6a61e543f08399c2fe57496d4fdcbaf74f9
   Crashlytics: 1448070c1d2731ab71ea7c3faf84ac0f69657287
@@ -219,8 +219,8 @@ SPEC CHECKSUMS:
   SwiftMessages: 32ce3cfc8388b41aae56ff4853cc752a20101147
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
   ThoraxMath: 5a3328f333477deec5fb004bac3de6b06f06e9fc
-  XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
+  XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: dd178952def77dd0153cd712d90fe56e110fb5b5
+PODFILE CHECKSUM: 1e2d9e4ec764221531ac5850fd913dcf2567578d
 
 COCOAPODS: 1.6.0.beta.2

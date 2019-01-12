@@ -78,8 +78,11 @@ target 'Teambrella' do
 
     target 'TeambrellaTests' do
         inherit! :search_paths
-
     end
+
+#    target 'TeambrellaUITests' do
+#        inherit! :search_paths
+#    end
 end
 
 target 'SurillaNotification' do
