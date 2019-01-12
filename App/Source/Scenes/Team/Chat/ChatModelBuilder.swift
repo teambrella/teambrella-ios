@@ -92,12 +92,12 @@ class ChatModelBuilder {
                                        text: text,
                                        size: size,
                                        command: .addMorePhoto)
-        return ServiceMessageWithButtonCellModel(messageID: "addMorePhoto",
-                                                 date: lastDate.addingTimeInterval(1),
-                                                 text: text,
-                                                 buttonText: "Team.Chat.AddPhoto.buttonTitle".localized,
-                                                 size: size,
-                                                 command: .addMorePhoto)
+//        return ServiceMessageWithButtonCellModel(messageID: "addMorePhoto",
+//                                                 date: lastDate.addingTimeInterval(1),
+//                                                 text: text,
+//                                                 buttonText: "Team.Chat.AddPhoto.buttonTitle".localized,
+//                                                 size: size,
+//                                                 command: .addMorePhoto)
     }
 
     /// set of used service messages types that can only appear once in a chat

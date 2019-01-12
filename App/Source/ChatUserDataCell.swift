@@ -16,7 +16,6 @@
 
 import UIKit
 
-
 class ChatUserDataCell: UICollectionViewCell {
     struct Constant {
         static let tailWidth: CGFloat = 8
@@ -135,7 +134,6 @@ class ChatUserDataCell: UICollectionViewCell {
         context.setLineWidth(1)
         context.drawPath(using: .fillStroke)
     }
-
 
     func prepareMyCloud(in context: CGContext) {
         var pen: CGPoint = cloudStartPoint

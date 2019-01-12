@@ -28,6 +28,7 @@ struct ChatCellBuilder {
                          size: controller.cloudSize(for: indexPath))
             cell.onTapImage = { [weak controller] cell, galleryView in
                 guard let controller = controller else { return }
+
                 galleryView.fullscreen(in: controller, imageStrings: controller.dataSource.allImages)
             }
         } else if let cell = cell as? ChatTextCell {
@@ -45,6 +46,7 @@ struct ChatCellBuilder {
             }
             cell.onTapImage = { [weak controller] cell, galleryView in
                 guard let controller = controller else { return }
+
                 galleryView.fullscreen(in: controller, imageStrings: controller.dataSource.allImages)
             }
             cell.onTapDelete = { [weak controller] cell in
@@ -59,11 +61,11 @@ struct ChatCellBuilder {
             cell.onInitiateCommandList = { [weak controller] cell in
                 if controller?.dataSource.isInputAllowed ?? false {
                     guard let controller = controller else { return }
+                    
                     controller.showCommandList(model: model)
                 }
             }
         }
-        
         
     }
 

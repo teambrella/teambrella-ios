@@ -98,7 +98,8 @@ class ChatObjectView: UIView, XIBInitable {
         voteContainer.isHidden = false
         chevronImageView.alpha = 0
         voteContainer.alpha = 1
-        voteContainerTapArea.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapContainerTapArea)))
+        voteContainerTapArea.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                         action: #selector(tapContainerTapArea)))
     }
     
     func setup(with chatModel: ChatModel?) {

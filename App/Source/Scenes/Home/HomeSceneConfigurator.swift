@@ -55,7 +55,7 @@ class HomeDefaultConfigurator: HomeConfigurator {
             controller.itemCard.avatarView.present(imageString: model.smallPhoto.string)
         }
 
-        controller.itemCard.avatarView.onTap = { [weak controller] sender in
+        controller.itemCard.avatarView.onTap = { sender in
             let context = UniversalChatContext()
             service.router.presentChat(context: context)
         }

@@ -340,7 +340,8 @@ final class UniversalChatVC: UIViewController, Routable {
                                datasource: pinDataSource,
                                currentState: pinState)
     }
-    
+
+    // swiftlint:disable:bext force_unwrapping
     func showCommandList(model: ChatCellUserDataLike) {
         postActionsDataSource = PostActionsDataSource(model: model)
         router.showPostActionsSelector(in: self,
@@ -692,12 +693,12 @@ private extension UniversalChatVC {
         dataSource.hasNext = true
         var bottomVisiblePoint = CGPoint()
         bottomVisiblePoint.x = 10
-        var bottomAdjustment : CGFloat = 44
+        var bottomAdjustment: CGFloat = 44
         if #available(iOS 11.0, *) {
             bottomAdjustment = collectionView.adjustedContentInset.bottom
         }
         bottomVisiblePoint.y = collectionView.contentOffset.y + collectionView.frame.height - bottomAdjustment - 1
-        if collectionView.indexPathForItem(at:bottomVisiblePoint) == nil {
+        if collectionView.indexPathForItem(at: bottomVisiblePoint) == nil {
             isScrollToBottomNeeded = true
         }
         dataSource.loadNext()
@@ -1032,14 +1033,16 @@ extension UniversalChatVC: SelectorDelegate {
             }
         } else if let type = type as? PostActionType {
             let oldLike = PostActionType(rawValue: postActionsDataSource?.model.myLike ?? 0)
-            var newLike : PostActionType = type
+            var newLike: PostActionType = type
             
             if oldLike == type {
                 newLike = .unknown
                 controller.selectedIndex = -1
             }
 
-            dataSource.setMyLike(myLike: newLike.rawValue, chatItem: (postActionsDataSource?.model)!) { [weak self, weak controller] success in
+            // swiftlint:disable:bext force_unwrapping
+            dataSource.setMyLike(myLike: newLike.rawValue,
+                                 chatItem: (postActionsDataSource?.model)!) { [weak self] success in
                 self?.collectionView.reloadData()
                 // controller?.reload()
             }
