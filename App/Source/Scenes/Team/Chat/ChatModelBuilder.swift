@@ -147,7 +147,7 @@ class ChatModelBuilder {
                                            userAvatar: avatar,
                                            date: item.created,
                                            liked: item.likes,
-                                           myLike: item.likes,
+                                           myLike: item.myLike,
                                            grayed: item.grayed,
                                            updated: item.lastUpdated,
                                            isTemporary: isTemporary,
@@ -162,7 +162,7 @@ class ChatModelBuilder {
                                           rateText: rateString,
                                           date: item.created,
                                           liked: item.likes,
-                                          myLike: item.likes,
+                                          myLike: item.myLike,
                                           grayed: item.grayed,
                                           updated: item.lastUpdated,
                                           isTemporary: isTemporary)
