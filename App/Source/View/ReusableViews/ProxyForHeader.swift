@@ -34,6 +34,7 @@ class ProxyForHeader: UICollectionReusableView, XIBInitableCell {
             label.font = UIFont.teambrellaBold(size: 12)
             label.textColor = .blueyGray
         }
+        containerView.translatesAutoresizingMaskIntoConstraints = false
     }
     
 }

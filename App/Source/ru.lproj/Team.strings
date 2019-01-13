@@ -193,7 +193,7 @@
 "Team.Chat.ObjectView.TitleLabel.team" = "КОМАНДА";
 
 "Team.Vote.doNotAccept" = "Не принимать";
-"Team.Vote.SwipeToVote" = "Смахни влево или вправо, чтобы голосовать";
+"Team.Vote.SwipeToVote" = "Двигай влево или вправо, чтобы голосовать";
 
 "Team.Claim.Transactions.from" = "ОТ";
 "Team.VotingRiskCell.teamAvg" = "СРЕДН.\nВ ГРУППЕ";
