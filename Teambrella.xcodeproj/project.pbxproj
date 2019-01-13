@@ -1320,7 +1320,6 @@
 		44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.release.xcconfig"; sourceTree = "<group>"; };
 		4A86321D7F36B3D7DE1C3979 /* Pods-NotificationTeambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationTeambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationTeambrella/Pods-NotificationTeambrella.release.xcconfig"; sourceTree = "<group>"; };
 		4A99F1FDFE091B62B23E01A6 /* libPods-TeambrellaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A31D4B51EC413D689755DD8 /* Pods-TeambrellaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		687E6255A456D7A98D2880C7 /* libPods-TeambrellaNotification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaNotification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D02945820DD3EF900936664 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Connectivity.swift; path = Scenes/Connectivity.swift; sourceTree = "<group>"; };
@@ -1933,8 +1932,8 @@
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
 		CBDFEA3415104DFFD0D751C7 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerService.swift; path = Model/Services/Networking/ServerService.swift; sourceTree = "<group>"; };
 		CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaritalStatus.swift; path = Model/Enums/MaritalStatus.swift; sourceTree = "<group>"; };
+		CD3116413D282142D60EA1ED /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFB2C72BED9D6756BBD9381F /* Pods-notification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notification.release.xcconfig"; path = "Pods/Target Support Files/Pods-notification/Pods-notification.release.xcconfig"; sourceTree = "<group>"; };
-		EFA9DEFD913DBBA749086C64 /* Pods-TeambrellaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaUITests/Pods-TeambrellaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Surilla.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Teambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8C3B97E2D3D3E031BC1B2FC /* Pods-Surilla.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.release.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.release.xcconfig"; sourceTree = "<group>"; };
@@ -2031,8 +2030,6 @@
 			children = (
 				63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */,
 				0955ADF5D5781C76472099AB /* Pods-TeambrellaTests.release.xcconfig */,
-				5A31D4B51EC413D689755DD8 /* Pods-TeambrellaUITests.debug.xcconfig */,
-				EFA9DEFD913DBBA749086C64 /* Pods-TeambrellaUITests.release.xcconfig */,
 				1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */,
 				44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */,
 				205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */,
@@ -3343,6 +3340,7 @@
 				AA2A801FF41C5B535060F542 /* libPods-SurillaNotification.a */,
 				687E6255A456D7A98D2880C7 /* libPods-TeambrellaNotification.a */,
 				4A99F1FDFE091B62B23E01A6 /* libPods-TeambrellaTests.a */,
+				CD3116413D282142D60EA1ED /* libPods-TeambrellaUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -5488,6 +5486,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -5526,6 +5525,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};
@@ -5539,6 +5539,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+				);
 				INFOPLIST_FILE = UITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -5560,6 +5564,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+				);
 				INFOPLIST_FILE = UITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -6014,7 +6022,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				VALID_ARCHS = " $(ARCHS_STANDARD)";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Debug;
@@ -6037,7 +6045,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				VALID_ARCHS = " $(ARCHS_STANDARD)";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Release;
