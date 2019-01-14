@@ -68,11 +68,16 @@ struct ClaimsCellBuilder {
                 cell.votedLabel.text = "Team.Claims.VotedCell.voted".localized
                     + String.truncatedNumber(vote.percentage)
                     + "%"
+                cell.votedLabel.leftInset = CGFloat(5)
+                cell.votedLabel.rightInset = CGFloat(5)
+                cell.votedLabel.topInset = CGFloat(4)
+                cell.votedLabel.bottomInset = CGFloat(4)
+                cell.votedLabel.cornerRadius = CGFloat(2)
             } else {
                 cell.votedLabel.text = ""
             }
             if let name = claim.proxyName {
-                cell.voterLabel.isHidden = false
+                cell.voterLabel.isHidden = true // false
                 cell.voterLabel.text = "By " + name.short
             } else {
                 cell.voterLabel.isHidden = true

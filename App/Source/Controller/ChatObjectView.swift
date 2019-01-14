@@ -47,6 +47,7 @@ class ChatObjectView: UIView, XIBInitable {
     @IBOutlet var proxyAvatarView: RoundImageView!
     @IBOutlet var rightButton: UIButton!
     @IBOutlet var rightLabel: BlockHeaderLabel!
+    @IBOutlet var bottomSeparator: UIView!
     
     @IBOutlet var imageViewWidth: NSLayoutConstraint!
     @IBOutlet var imageViewHeight: NSLayoutConstraint!
@@ -121,12 +122,14 @@ class ChatObjectView: UIView, XIBInitable {
         rightButton.isHidden = true
         chevronImageView.alpha = 1
         voteContainer.alpha = 0
+        bottomSeparator.isHidden = true
     }
     
     func showVoteContainer() {
         voteContainer.alpha = 1
         rightButton.isHidden = false
         chevronImageView.alpha = 0
+        bottomSeparator.isHidden = false
     }
     
     func resizeImageView() {
@@ -181,7 +184,7 @@ class ChatObjectView: UIView, XIBInitable {
                 percentLabel.text = "%"
             }
         } else if let reimbursement = basic.reimbursement {
-            voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.team".localized
+            voteTitleLabel.text = "Team.Chat.ObjectView.TitleLabel.teamVote".localized
             voteValueLabel.text = String.truncatedNumber(reimbursement * 100)
             rightButton.isHidden = true
             rightLabel.isHidden = true
@@ -248,11 +251,16 @@ class ChatObjectView: UIView, XIBInitable {
     }
 
     private func processOpenCloseTap() {
-        if chevronImageView.alpha > 0.5 {
-            delegate?.chatObjectVoteHide(view: self)
+        if !voteButtonContainer.isHidden {
+            if chevronImageView.alpha > 0.5 {
+                delegate?.chatObjectVoteHide(view: self)
+            }
+            else {
+                delegate?.chatObjectVoteShow(view: self)
+            }
         }
         else {
-            delegate?.chatObjectVoteShow(view: self)
+            delegate?.chatObjectWasTapped(view: self)
         }
     }
     

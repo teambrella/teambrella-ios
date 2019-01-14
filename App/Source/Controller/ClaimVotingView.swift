@@ -16,6 +16,14 @@
 
 import UIKit
 
+class ClaimSlider: UISlider {
+    @IBInspectable var trackHeight: CGFloat = 4
+    
+    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(origin: CGPoint(x: bounds.origin.x, y: bounds.origin.y + bounds.height/2 - trackHeight/2), size: CGSize(width: bounds.width, height: trackHeight))
+    }
+}
+
 protocol ClaimVotingDelegate: class {
     func claimVoting(view: ClaimVotingView, finishedSliding slider: UISlider)
     func claimVotingDidResetVote(view: ClaimVotingView)

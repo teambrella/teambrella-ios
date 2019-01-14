@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -68,7 +65,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DS-qp-KPw" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="94" y="38" width="42" height="21"/>
+                                                            <rect key="frame" x="94" y="37.5" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -159,7 +156,7 @@
                                                     <rect key="frame" x="16" y="16" width="319" height="40"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XNe-Ds-VYF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <rect key="frame" x="0.0" y="4" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="XNe-Ds-VYF" secondAttribute="height" multiplier="1:1" id="4vQ-Fz-GSK"/>
                                                                 <constraint firstAttribute="width" constant="40" id="gB7-fZ-Y59"/>
@@ -171,26 +168,26 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaw-VE-0nE" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="56" y="0.0" width="42" height="21"/>
+                                                            <rect key="frame" x="56" y="4" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJq-qd-b7g" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="78" y="22" width="42" height="21"/>
+                                                            <rect key="frame" x="78" y="25.5" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kAt-qk-Sp0" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="56" y="24" width="16" height="16"/>
+                                                            <rect key="frame" x="56" y="28" width="16" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="16" id="gLH-Lk-LsM"/>
                                                                 <constraint firstAttribute="width" secondItem="kAt-qk-Sp0" secondAttribute="height" multiplier="1:1" id="kEO-pI-P7l"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-c5-vO8" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="247" y="-1" width="72" height="21"/>
+                                                            <rect key="frame" x="247" y="3" width="72" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="72" id="xgA-1C-8g2"/>
                                                             </constraints>
@@ -199,7 +196,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxG-ol-cRO" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="247" y="20" width="72" height="21"/>
+                                                            <rect key="frame" x="247" y="24" width="72" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -228,20 +225,26 @@
                                                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="kee-4E-5EA">
-                                                    <rect key="frame" x="351" y="50" width="8" height="13"/>
+                                                    <rect key="frame" x="351" y="49.5" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="iZg-tY-anl"/>
                                                         <constraint firstAttribute="width" constant="8" id="pl7-Fn-Vf8"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fm-zF-TfT" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="69" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fm-zF-TfT" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
+                                                    <rect key="frame" x="72" y="73" width="60" height="24"/>
+                                                    <color key="backgroundColor" red="0.33333333333333331" green="0.76078431372549016" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-O7-pHf" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="64" y="69" width="42" height="20.5"/>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-O7-pHf" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
+                                                    <rect key="frame" x="140" y="73" width="42" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -259,17 +262,21 @@
                                         <constraints>
                                             <constraint firstItem="kee-4E-5EA" firstAttribute="leading" secondItem="vO9-KQ-q0o" secondAttribute="trailing" constant="16" id="4Kg-Ht-iiJ"/>
                                             <constraint firstItem="vO9-KQ-q0o" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leading" constant="16" id="6SD-4f-OE4"/>
-                                            <constraint firstItem="7Ey-O7-pHf" firstAttribute="leading" secondItem="1fm-zF-TfT" secondAttribute="trailing" constant="6" id="6m5-fw-k4c"/>
-                                            <constraint firstItem="1fm-zF-TfT" firstAttribute="leading" secondItem="XNe-Ds-VYF" secondAttribute="leading" id="6qb-IR-J4R"/>
+                                            <constraint firstItem="1fm-zF-TfT" firstAttribute="leading" secondItem="XNe-Ds-VYF" secondAttribute="leading" constant="56" id="6qb-IR-J4R"/>
                                             <constraint firstItem="rHA-3k-TcH" firstAttribute="leading" secondItem="Tra-Eo-bdx" secondAttribute="leading" constant="16" id="DhC-Mz-yaQ"/>
                                             <constraint firstAttribute="bottom" secondItem="rHA-3k-TcH" secondAttribute="bottom" id="YQA-xF-xGO"/>
                                             <constraint firstItem="1fm-zF-TfT" firstAttribute="top" secondItem="XNe-Ds-VYF" secondAttribute="bottom" constant="13" id="Zuv-NW-CZ6"/>
                                             <constraint firstAttribute="trailing" secondItem="kee-4E-5EA" secondAttribute="trailing" constant="16" id="ex2-5j-Obn"/>
-                                            <constraint firstItem="7Ey-O7-pHf" firstAttribute="bottom" secondItem="1fm-zF-TfT" secondAttribute="bottom" id="fVB-MQ-I2J"/>
                                             <constraint firstItem="vO9-KQ-q0o" firstAttribute="top" secondItem="Tra-Eo-bdx" secondAttribute="top" constant="16" id="pty-09-0y2"/>
                                             <constraint firstItem="kee-4E-5EA" firstAttribute="centerY" secondItem="Tra-Eo-bdx" secondAttribute="centerY" id="rUX-LM-VqC"/>
                                             <constraint firstAttribute="trailing" secondItem="rHA-3k-TcH" secondAttribute="trailing" id="rpL-cr-8PH"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1fm-zF-TfT" secondAttribute="bottom" constant="10" id="ssL-wh-2Od"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1fm-zF-TfT" secondAttribute="bottom" constant="13" id="ssL-wh-2Od">
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </constraint>
                                             <constraint firstItem="7Ey-O7-pHf" firstAttribute="centerY" secondItem="1fm-zF-TfT" secondAttribute="centerY" id="xCc-vg-eHP"/>
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
@@ -315,7 +322,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-bQ-aHd" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="78" y="22.5" width="42" height="20.5"/>
+                                                            <rect key="frame" x="78" y="22" width="42" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -435,20 +442,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="ZiR-eo-EuH">
-                                                    <rect key="frame" x="351" y="50" width="8" height="13"/>
+                                                    <rect key="frame" x="351" y="49.5" width="8" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="3lJ-gC-fox"/>
                                                         <constraint firstAttribute="width" constant="8" id="fxM-52-Pxp"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIo-tg-7Xi" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="46" width="42" height="21"/>
+                                                    <rect key="frame" x="16" y="45.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjd-EM-1DM" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="293" y="46" width="42" height="21"/>
+                                                    <rect key="frame" x="293" y="45.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

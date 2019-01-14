@@ -42,7 +42,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lav-mK-Hkd" customClass="SlashView" customModule="Surilla" customModuleProvider="target">
-                    <rect key="frame" x="16" y="36" width="343" height="125"/>
+                    <rect key="frame" x="12" y="36" width="347" height="125"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="slashViewColor">
@@ -51,43 +51,43 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="g5n-Tp-UuE">
-                    <rect key="frame" x="16" y="36" width="343" height="125"/>
+                    <rect key="frame" x="12" y="36" width="347" height="125"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="His-0B-pZh" userLabel="Team">
-                            <rect key="frame" x="0.0" y="0.0" width="161.5" height="125"/>
+                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="125"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEAM VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxr-FN-OZQ" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="12" y="13" width="58" height="12"/>
+                                    <rect key="frame" x="8" y="13" width="58" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17,6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6N-3B-wHt">
-                                    <rect key="frame" x="12" y="25.5" width="72.5" height="44"/>
+                                    <rect key="frame" x="8" y="25.5" width="72.5" height="44"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="790" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgs-AC-yCG">
-                                    <rect key="frame" x="12" y="69.5" width="31" height="22"/>
+                                    <rect key="frame" x="8" y="69.5" width="31" height="22"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="18"/>
                                     <color key="textColor" red="0.4823529412" green="0.55294117649999996" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZm-82-CH3" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="45" y="68.5" width="9.5" height="12"/>
+                                    <rect key="frame" x="41" y="68.5" width="9.5" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fk-h5-0dt">
-                                    <rect key="frame" x="84.5" y="25.5" width="33" height="44"/>
+                                    <rect key="frame" x="80.5" y="25.5" width="33" height="44"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="36"/>
                                     <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzn-fw-GSP" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="12" y="97" width="72" height="20"/>
+                                    <rect key="frame" x="8" y="97" width="72" height="20"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="72" id="izk-Af-b6w"/>
@@ -101,7 +101,7 @@
                                 <constraint firstItem="i6N-3B-wHt" firstAttribute="leading" secondItem="uxr-FN-OZQ" secondAttribute="leading" id="KRw-hj-WKg"/>
                                 <constraint firstItem="hzn-fw-GSP" firstAttribute="leading" secondItem="Tgs-AC-yCG" secondAttribute="leading" id="ONp-RW-98K"/>
                                 <constraint firstItem="uxr-FN-OZQ" firstAttribute="top" secondItem="His-0B-pZh" secondAttribute="topMargin" constant="8" id="WBC-2t-TC4"/>
-                                <constraint firstItem="uxr-FN-OZQ" firstAttribute="leading" secondItem="His-0B-pZh" secondAttribute="leadingMargin" constant="4" id="YgL-zv-1L3"/>
+                                <constraint firstItem="uxr-FN-OZQ" firstAttribute="leading" secondItem="His-0B-pZh" secondAttribute="leadingMargin" id="YgL-zv-1L3"/>
                                 <constraint firstItem="i6N-3B-wHt" firstAttribute="top" secondItem="uxr-FN-OZQ" secondAttribute="bottom" constant="0.5" id="Zb4-UK-hJS"/>
                                 <constraint firstItem="Tgs-AC-yCG" firstAttribute="top" secondItem="i6N-3B-wHt" secondAttribute="bottom" id="apS-72-qar"/>
                                 <constraint firstItem="9Fk-h5-0dt" firstAttribute="leading" secondItem="i6N-3B-wHt" secondAttribute="trailing" id="gXK-aQ-apK"/>
@@ -113,7 +113,7 @@
                             <edgeInsets key="layoutMargins" top="5" left="8" bottom="8" right="8"/>
                         </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiU-uu-aEw" userLabel="You">
-                            <rect key="frame" x="181.5" y="0.0" width="161.5" height="125"/>
+                            <rect key="frame" x="183.5" y="0.0" width="163.5" height="125"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR VOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h52-xe-L3b" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
                                     <rect key="frame" x="12" y="13" width="58" height="12"/>
@@ -146,7 +146,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9o8-l9-9Vr" customClass="RoundImageView" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="12" y="97.5" width="20" height="20"/>
+                                    <rect key="frame" x="12" y="97" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="9o8-l9-9Vr" secondAttribute="height" multiplier="1:1" id="nFI-m3-lst"/>
                                         <constraint firstAttribute="width" constant="20" id="s6T-mP-vet"/>
@@ -202,19 +202,19 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5h-eA-Ctg">
-                    <rect key="frame" x="16" y="36" width="161.5" height="125"/>
+                    <rect key="frame" x="12" y="36" width="163.5" height="125"/>
                     <connections>
                         <action selector="tapTeam:" destination="-1" eventType="touchUpInside" id="yJ5-z6-TFZ"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ZZ-XL-Z1n">
-                    <rect key="frame" x="16" y="161" width="343" height="506"/>
+                    <rect key="frame" x="12" y="161" width="347" height="506"/>
                     <subviews>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="feC-r0-f4c">
-                            <rect key="frame" x="-2" y="0.0" width="347" height="507"/>
-                            <color key="minimumTrackTintColor" red="0.25882352939999997" green="0.30588235289999999" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="feC-r0-f4c" customClass="ClaimSlider" customModule="Surilla" customModuleProvider="target">
+                            <rect key="frame" x="1" y="0.0" width="347" height="507"/>
+                            <color key="minimumTrackTintColor" red="0.30980392156862746" green="0.36078431372549019" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="maximumTrackTintColor" red="0.93725490199999995" green="0.96078431369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="thumbTintColor" red="0.25882352939999997" green="0.30588235289999999" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="thumbTintColor" red="0.33333333333333331" green="0.38039215686274508" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="slide:event:" destination="-1" eventType="valueChanged" id="0qI-h4-V0i"/>
                             </connections>
@@ -224,8 +224,8 @@
                     <constraints>
                         <constraint firstItem="feC-r0-f4c" firstAttribute="top" secondItem="7ZZ-XL-Z1n" secondAttribute="top" id="UHP-1s-bsG"/>
                         <constraint firstAttribute="bottom" secondItem="feC-r0-f4c" secondAttribute="bottom" id="inK-mQ-yfc"/>
-                        <constraint firstItem="feC-r0-f4c" firstAttribute="leading" secondItem="7ZZ-XL-Z1n" secondAttribute="leading" id="rPo-YS-WUr"/>
-                        <constraint firstAttribute="trailing" secondItem="feC-r0-f4c" secondAttribute="trailing" id="rdJ-V6-WXd"/>
+                        <constraint firstItem="feC-r0-f4c" firstAttribute="leading" secondItem="7ZZ-XL-Z1n" secondAttribute="leading" constant="3" id="rPo-YS-WUr"/>
+                        <constraint firstAttribute="trailing" secondItem="feC-r0-f4c" secondAttribute="trailing" constant="1" id="rdJ-V6-WXd"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Weo-82-wqN" userLabel="Bottom Horizontal Separator">
@@ -246,7 +246,7 @@
                 <constraint firstItem="Weo-82-wqN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Edb-uo-U79"/>
                 <constraint firstItem="7ZZ-XL-Z1n" firstAttribute="trailing" secondItem="g5n-Tp-UuE" secondAttribute="trailing" id="Eqz-XH-9Ud"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Weo-82-wqN" secondAttribute="trailing" id="Qd7-52-NHI"/>
-                <constraint firstItem="g5n-Tp-UuE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="X3G-dY-KBj"/>
+                <constraint firstItem="g5n-Tp-UuE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="X3G-dY-KBj"/>
                 <constraint firstItem="7ZZ-XL-Z1n" firstAttribute="leading" secondItem="g5n-Tp-UuE" secondAttribute="leading" id="YQ4-h9-LVe"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Weo-82-wqN" secondAttribute="bottom" id="ZGM-DF-jVT"/>
                 <constraint firstItem="lav-mK-Hkd" firstAttribute="centerX" secondItem="g5n-Tp-UuE" secondAttribute="centerX" id="gzc-9a-TXd"/>

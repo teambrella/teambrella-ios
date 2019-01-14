@@ -44,8 +44,8 @@ extension UIViewController {
     func defaultGradientOnTop() {
         let gradientView = GradientView(frame: view.frame)
         gradientView.translatesAutoresizingMaskIntoConstraints = false
-        gradientView.bottomColor = .warmBlue
-        gradientView.topColor = .frenchBlue
+        gradientView.bottomColor = .headerBlue
+        gradientView.topColor = .headerBlue
         view.addSubview(gradientView)
         var constraints: [NSLayoutConstraint] = []
         let views = ["gradientView": gradientView]

@@ -25,7 +25,7 @@
 "Proxy.MyProxiesVC.discussions"         = "ОБСУЖДЕНИЯ";
 "Proxy.MyProxiesVC.votingFreq"          = "ЧАСТ. ГОЛОСОВ.";
 "Proxy.MyProxiesVC.proxyRank"           = "РАНГ";
-"Proxy.UserIndexVC.allTeamsRating"      = "ОБЩИЙ РЕЙТИНГ";
+"Proxy.UserIndexVC.allTeamsRating"      = "УЧАСТНИКИ";
 "Proxy.UserIndexVC.proxyRank"           = "РЕЙТИНГ";
 
 "Proxy.Empty.title"                     = "У тебя ещё нет прокси";

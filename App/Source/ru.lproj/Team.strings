@@ -146,8 +146,8 @@
 "Team.Claims.State.Header.fullyPaid"                  = "ПОЛНОСТЬЮ ВЫПЛАЧЕНО";
 "Team.Claims.State.Header.beingPaid"                  = "В ОПЛАТЕ";
 "Team.Claims.State.Header.voted"                      = "НА ГОЛОСОВАНИИ";
-"Team.Claims.VotedCell.voted"                         = "Голос: ";
-"Team.ClaimsCell.declined"                            = "ОТКЛОНЁН";
+"Team.Claims.VotedCell.voted"                         = "ГОЛОС: ";
+"Team.ClaimsCell.declined"                            = "ОТКАЗАНО";
 
 "Team.Chat.TextCell.voted_format"                     = "Голос: %@%%";
 "Team.Chat.TextCell.Application.voted_format"         = "Голос: %@";
@@ -161,7 +161,7 @@
 
 "Team.Home.Card.claimed"                              = "ЗАЯВЛЕНО";
 "Team.Home.Card.coverage"                             = "ЗАЩИТА";
-"Team.Home.Card.teamVote"                             = "ГОЛОС ГРУППЫ";
+"Team.Home.Card.teamVote"                             = "ГОЛОС КОМАНДЫ";
 "Team.Home.Card.voting"                               = "ГОЛОСОВАНИЕ";
 
 "Team.ChooseTeam.switchUser"                          = "Сменить пользователя";
@@ -196,7 +196,7 @@
 "Team.Vote.SwipeToVote" = "Двигай влево или вправо, чтобы голосовать";
 
 "Team.Claim.Transactions.from" = "ОТ";
-"Team.VotingRiskCell.teamAvg" = "СРЕДН.\nВ ГРУППЕ";
+"Team.VotingRiskCell.teamAvg" = "СРЕДН.\nКОМАНДЫ";
 
 "Team.Claim.Transactions.Empty.title" = "Транзакций ещё нет";
 "Team.Claim.Transactions.Empty.details" = "...";
@@ -224,7 +224,7 @@
 "Team.VotingRiskVC.avg"                          = "СРЕДН.";
 "Team.Chat.PayToJoin.text" = "Положи от 3000 руб в свой кошелёк и получи бонус +3000 руб в подарок.";
 "Team.Chat.PayToJoin.buttonTitle" = "Пополнить кошелёк";
-"Team.Chat.ObjectView.TitleLabel.teamVote" = "ГОЛОС ГРУППЫ";
+"Team.Chat.ObjectView.TitleLabel.teamVote" = "ГОЛОС КОМАНДЫ";
 "Team.ClaimCell.voting.ended" = "Закончилось ";
 
 "Team.Notfications.never" = "Выключены";

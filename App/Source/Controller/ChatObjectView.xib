@@ -21,6 +21,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatObjectView" customModule="Surilla" customModuleProvider="target">
             <connections>
                 <outlet property="amountLabel" destination="F9g-le-cSH" id="Ghp-3G-l4i"/>
+                <outlet property="bottomSeparator" destination="LXf-1N-9Gr" id="Nm9-cF-xYj"/>
                 <outlet property="chevronButton" destination="8rK-LI-YhF" id="pPL-3X-oML"/>
                 <outlet property="chevronImageView" destination="6Tu-uP-zZd" id="2C8-Bb-cza"/>
                 <outlet property="currencyLabel" destination="7YP-gL-Rik" id="Saa-Zl-qM3"/>

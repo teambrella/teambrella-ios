@@ -44,6 +44,7 @@ struct ViewDecorator {
         view.layer.shadowOpacity = opacity
         view.layer.shadowRadius = CGFloat(radius)
         view.layer.masksToBounds = false
+        view.clipsToBounds = false
         
     }
     

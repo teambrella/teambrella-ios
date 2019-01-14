@@ -28,7 +28,7 @@ class ClaimsVotedCell: UICollectionViewCell, ClaimsCell {
     @IBOutlet var ownerNameLabel: Label!
     @IBOutlet var claimedTitleLabel: Label!
     @IBOutlet var claimedAmountLabel: Label!
-    @IBOutlet var votedLabel: Label!
+    @IBOutlet var votedLabel: BadgeLabel!
     @IBOutlet var voterLabel: Label!
     @IBOutlet var cellSeparator: UIView!
     

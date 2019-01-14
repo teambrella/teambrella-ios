@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,13 +33,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-HQ-fhc" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="69" y="16" width="313" height="28.5"/>
+                                <rect key="frame" x="69" y="16" width="313" height="22.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fug-nW-qVc" customClass="ThinStatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="398" y="20.5" width="42" height="20.5"/>
+                                <rect key="frame" x="398" y="17" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -102,11 +100,11 @@
                             <constraint firstItem="Jxe-aJ-RJr" firstAttribute="leading" secondItem="wH6-UR-PyD" secondAttribute="leadingMargin" id="Pdy-LR-AHQ"/>
                             <constraint firstItem="M7e-HQ-fhc" firstAttribute="top" secondItem="Jxe-aJ-RJr" secondAttribute="top" id="Pnd-Sz-se3"/>
                             <constraint firstAttribute="trailing" secondItem="Fug-nW-qVc" secondAttribute="trailing" constant="16" id="RnN-Ls-i72"/>
-                            <constraint firstAttribute="height" constant="111" id="Sb5-Lt-aIG"/>
+                            <constraint firstAttribute="height" constant="115" id="Sb5-Lt-aIG"/>
                             <constraint firstItem="89J-hJ-MxL" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="leading" id="ZN1-ee-dFI"/>
                             <constraint firstItem="ffg-lA-RS1" firstAttribute="leading" secondItem="eeg-zL-8ga" secondAttribute="trailing" constant="16" id="eFu-aF-lpd"/>
                             <constraint firstItem="eeg-zL-8ga" firstAttribute="leading" secondItem="M7e-HQ-fhc" secondAttribute="leading" id="fou-9t-3O1"/>
-                            <constraint firstItem="eeg-zL-8ga" firstAttribute="top" secondItem="M7e-HQ-fhc" secondAttribute="bottom" id="wp7-ft-JJv"/>
+                            <constraint firstItem="eeg-zL-8ga" firstAttribute="top" secondItem="M7e-HQ-fhc" secondAttribute="bottom" constant="4" id="wp7-ft-JJv"/>
                             <constraint firstItem="89J-hJ-MxL" firstAttribute="top" secondItem="eeg-zL-8ga" secondAttribute="bottom" constant="10" id="zFD-40-V7C"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eeg-zL-8ga" secondAttribute="bottom" constant="17" id="zZ3-VJ-NEY"/>
                         </constraints>
