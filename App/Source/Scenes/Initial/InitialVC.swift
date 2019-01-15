@@ -161,6 +161,7 @@ final class InitialVC: UIViewController {
         if !isDemo {
             Statistics.register(userID: teamsEntity.userID)
             SimpleStorage().store(bool: true, forKey: .didLogWithKey)
+            Session.requestPush()
         }
         
         service.teambrella.startUpdating(completion: { result in
@@ -170,7 +171,6 @@ final class InitialVC: UIViewController {
         
         HUD.hide()
         presentMasterTab()
-        requestPush()
     }
     
     private func failure(error: Error) {
@@ -183,8 +183,10 @@ final class InitialVC: UIViewController {
                 if retryGettingTeams() {
                     return
                 } else {
-                    service.keyStorage.clearLastUserType()
-                    SimpleStorage().store(bool: true, forKey: .isRegistering)
+                    if !service.keyStorage.hasRealPrivateKey {
+                        service.keyStorage.clearLastUserType()
+                        SimpleStorage().store(bool: true, forKey: .isRegistering)
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         self.loginBlueVC?.tapNextButton()
                     }
@@ -196,7 +198,9 @@ final class InitialVC: UIViewController {
             break
         }
         service.router.logout()
-        SimpleStorage().store(bool: false, forKey: .didLogWithKey)
+        if !service.keyStorage.hasRealPrivateKey {
+            SimpleStorage().store(bool: false, forKey: .didLogWithKey)
+        }
         performSegue(type: .login)
     }
     

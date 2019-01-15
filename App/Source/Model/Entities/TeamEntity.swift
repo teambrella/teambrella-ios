@@ -57,7 +57,8 @@ struct TeamEntity: Decodable {
                 "EUR": "€",
                 "PEN": "S/.",
                 "ARS": "$",
-                "RUB": "₽"][currency] ?? currency
+                "RUB": "₽",
+                "РУБ": "₽"][currency] ?? currency
     }
     
 }

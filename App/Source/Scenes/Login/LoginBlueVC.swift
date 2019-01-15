@@ -276,12 +276,6 @@ Are you sure you want to completely remove your private key from this device?
         navigationController?.popToViewController(self, animated: false)
         performSegue(type: .welcome)
     }
-    
-    private func newPrivateKeySet(privateKey: String) {
-        service.keyStorage.saveNewPrivateKey(string: privateKey)
-        service.keyStorage.setToRealUser()
-        self.performSegue(withIdentifier: "unwindToInitial", sender: self)
-    }
 }
 
 // MARK: CodeCaptureDelegate
@@ -290,7 +284,8 @@ extension LoginBlueVC: CodeCaptureDelegate {
         switch type {
         case .bitcoinWiF:
             controller.close(cancelled: false)
-            self.newPrivateKeySet(privateKey: didCapture)
+            Session.newPrivateKeySet(privateKey: didCapture)
+            self.performSegue(withIdentifier: "unwindToInitial", sender: self)
         case .surillaLink,
              .teambrellaLink:
             log("Is teambrella! \(didCapture)", type: .info)

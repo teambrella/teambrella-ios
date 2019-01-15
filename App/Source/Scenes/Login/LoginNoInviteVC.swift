@@ -132,13 +132,6 @@ final class LoginNoInviteVC: UIViewController {
         lowerLabel.text = "Login.LoginNoInviteVC.pendingApplication.details".localized
         supportButton.isHidden = false
     }
-
-    private func newPrivateKeySet(privateKey: String) {
-        service.keyStorage.saveNewPrivateKey(string: privateKey)
-        service.keyStorage.setToRealUser()
-        self.performSegue(withIdentifier: "unwindToInitial", sender: self)
-    }
-    
 }
 
 // MARK: MFMailComposeViewControllerDelegate
@@ -168,7 +161,8 @@ extension LoginNoInviteVC: CodeCaptureDelegate {
     func codeCapture(controller: CodeCaptureVC, didCapture: String, type: QRCodeType) {
         if type == .bitcoinWiF {
             controller.close(cancelled: false)
-            self.newPrivateKeySet(privateKey: didCapture)
+            Session.newPrivateKeySet(privateKey: didCapture)
+            self.performSegue(withIdentifier: "unwindToInitial", sender: self)
         } else {
             log("Wrong type: \(type)", type: .info)
         }

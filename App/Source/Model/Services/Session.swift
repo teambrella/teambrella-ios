@@ -90,6 +90,18 @@ class Session {
         }
         return false
     }
+    
+    static func newPrivateKeySet(privateKey: String) {
+        service.keyStorage.saveNewPrivateKey(string: privateKey)
+        service.keyStorage.setToRealUser()
+        SimpleStorage().store(bool: true, forKey: .didLogWithKey)
+        requestPush()
+    }
+
+    static func requestPush() {
+        let application = UIApplication.shared
+        service.push.askPermissionsForRemoteNotifications(application: application)
+    }
 }
 
 extension Session {
