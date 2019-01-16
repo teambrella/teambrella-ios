@@ -151,7 +151,11 @@ class UniversalChatContext {
         if let newPostID = body["NewPostId"] as? String {
             body["NewMessageId"] = newPostID
         }
+        if let images = body["Images"] as? [String] {
+            body["TempFileNames"] = images
+        }
         body["NewPostId"] = nil
+        body["Images"] = nil
         return body
     }
 
