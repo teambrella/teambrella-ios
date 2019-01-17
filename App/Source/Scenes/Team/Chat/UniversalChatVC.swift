@@ -137,7 +137,7 @@ final class UniversalChatVC: UIViewController, Routable {
             if (!self.dataSource.isInputAllowed && self.dataSource.isPrejoining) {
                 self.input.showContinueJoining()
             }
-            if self.dataSource.isPrejoining || self.dataSource.isPrivateChat {
+            if self.dataSource.isPrejoining {
                 self.input.hideLeftButton()
             }
             self.pinButton.isHidden = !self.dataSource.isInputAllowed
@@ -347,9 +347,9 @@ final class UniversalChatVC: UIViewController, Routable {
     func showCommandList(model: ChatCellUserDataLike) {
         postActionsDataSource = PostActionsDataSource(model: model)
         router.showPostActionsSelector(in: self,
-                               delegate: self,
-                               dataSource: postActionsDataSource!,
-                               currentState: PostActionType(rawValue: model.myLike) ?? .unknown)
+                                       delegate: self,
+                                       dataSource: postActionsDataSource!,
+                                       currentState: PostActionType(rawValue: model.myLike) ?? .unknown)
     }
 
     var unsentImages: [String: UIImage] = [:]
@@ -610,7 +610,7 @@ private extension UniversalChatVC {
     // swiftlint:disable:next cyclomatic_complexity
     private func setupInput() {
         ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.231372549, green: 0.2588235294, blue: 0.4901960784, alpha: 1), opacity: 0.05, radius: 8, offset: CGSize(width: 0, height: -9))
-        if dataSource.isPrivateChat || dataSource.isPrejoining {
+        if dataSource.isPrejoining {
             input.hideLeftButton()
         }
         input.leftButton.addTarget(self, action: #selector(tapLeftButton), for: .touchUpInside)
@@ -754,7 +754,7 @@ private extension UniversalChatVC {
         if !dataSource.isPrivateChat {
             input.showRightButtonPhoto()
         }
-        
+
         if dataSource.notificationsType == .unknown && dataSource.chatType != .privateChat {
             let type: MuteType = .unmuted
             dataSource.mute(type: type, completion: { [weak self] muted in
@@ -1055,8 +1055,8 @@ extension UniversalChatVC: SelectorDelegate {
             // swiftlint:disable:bext force_unwrapping
             dataSource.setMyLike(myLike: newLike.rawValue,
                                  chatItem: (postActionsDataSource?.model)!) { [weak self] success in
-                self?.collectionView.reloadData()
-                // controller?.reload()
+                                    self?.collectionView.reloadData()
+                                    // controller?.reload()
             }
         }
     }
