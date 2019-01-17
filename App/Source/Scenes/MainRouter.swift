@@ -134,11 +134,12 @@ final class MainRouter {
     }
     
     func presentChat(context: UniversalChatContext, animated: Bool = true) {
-        let last = navigator?.viewControllers.last
-        guard last as? UniversalChatVC == nil else {
-            log("already opened chat", type: [.error, .info])
-            return
-        }
+        //  Commented out: The code below contradicts with "Continue joining the team" use case
+//        let last = navigator?.viewControllers.last
+//        guard last as? UniversalChatVC == nil else {
+//            log("already opened chat", type: [.error, .info])
+//            return
+//        }
         guard let vc = UniversalChatVC.instantiate() as? UniversalChatVC else { fatalError("Error instantiating") }
         
         vc.setContext(context: context)

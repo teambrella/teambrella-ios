@@ -58,7 +58,21 @@ class InputAccessoryView: UIView {
         self.addSubview(label)
         return label
     }()
-    
+
+    lazy var continueJoiningLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.teambrella(size: 15)
+        label.textColor = .bluishGray
+        label.text = "Team.Chat.Input.continueJoining".localized
+        var recognizer = UITapGestureRecognizer(target: self, action: #selector(tapContinueJoining))
+        recognizer.numberOfTapsRequired = 1
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(recognizer)
+        self.addSubview(label)
+        label.alpha = 0
+        return label
+    }()
+
     var maxHeight: CGFloat = 70
     
     var onTextChange: (() -> Void)?
@@ -67,6 +81,7 @@ class InputAccessoryView: UIView {
     var onTapSend: (() -> Void)?
     var onTapPhoto: (() -> Void)?
     var onEndEditing: ((String?) -> Void)?
+    var onTapContinueJoining: (() -> Void)?
 
     var isEmpty: Bool { return textView.text == nil || textView.text == "" }
 
@@ -133,6 +148,12 @@ class InputAccessoryView: UIView {
         placeholderLabel.widthAnchor.constraint(lessThanOrEqualTo: textView.widthAnchor).isActive = true
         placeholderLabel.heightAnchor.constraint(lessThanOrEqualTo: textView.heightAnchor).isActive = true
         
+        continueJoiningLabel.translatesAutoresizingMaskIntoConstraints = false
+        continueJoiningLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        continueJoiningLabel.centerYAnchor.constraint(equalTo: textView.centerYAnchor).isActive = true
+        continueJoiningLabel.widthAnchor.constraint(lessThanOrEqualTo: self.widthAnchor).isActive = true
+        continueJoiningLabel.heightAnchor.constraint(lessThanOrEqualTo: textView.heightAnchor).isActive = true
+
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightAnchor.constraint(lessThanOrEqualToConstant: maxHeight + 10).isActive = true
     }
@@ -147,6 +168,24 @@ class InputAccessoryView: UIView {
         textView.isUserInteractionEnabled = allow
     }
 
+    func showContinueJoining() {
+        UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut], animations: {
+            self.leftButton.alpha = 0
+            self.rightButton.alpha = 0
+            self.textView.alpha = 0
+            self.placeholderLabel.alpha = 0
+            self.continueJoiningLabel.alpha = 1
+        }) { finished in
+            
+        }
+//        leftButton.isHidden = true
+//        rightButton.isHidden = true
+//        textView.isHidden = true
+//        placeholderLabel.isHidden = true
+//        continueJoiningLabel.isHidden = false
+    }
+
+    
     func showLeftButton() {
         leftButton.isHidden = false
         textLeftConstraint.constant = 0
@@ -172,6 +211,10 @@ class InputAccessoryView: UIView {
         onTapRightButton?()
     }
     
+    @objc
+    private func tapContinueJoining() {
+        onTapContinueJoining?()
+    }
 }
 
 // MARK: UITextViewDelegate

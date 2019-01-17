@@ -133,8 +133,10 @@ final class UniversalChatVC: UIViewController, Routable {
             self.setMuteButtonImage(type: self.dataSource.notificationsType)
             self.updateSlidingView()
             self.refresh(backward: backward, isFirstLoad: isFirstLoad)
-            self.input.isUserInteractionEnabled = self.dataSource.isInputAllowed
             self.input.allowInput(self.dataSource.isInputAllowed)
+            if (!self.dataSource.isInputAllowed && self.dataSource.isPrejoining) {
+                self.input.showContinueJoining()
+            }
             if self.dataSource.isPrejoining || self.dataSource.isPrivateChat {
                 self.input.hideLeftButton()
             }
@@ -558,14 +560,16 @@ private extension UniversalChatVC {
         collectionView.reloadData()
         DispatchQueue.main.async {
             if isFirstLoad, let lastReadIndexPath = self.dataSource.lastReadIndexPath {
-                guard lastReadIndexPath.row < self.dataSource.count else { return }
+                guard lastReadIndexPath.row < self.dataSource.count
+                    && lastReadIndexPath.row < self.collectionView.numberOfItems(inSection: lastReadIndexPath.section) else { return }
 
                 self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
             } else if self.isScrollToBottomNeeded {
                 self.scrollToBottom(animated: true)
                 self.isScrollToBottomNeeded = false
             } else if backward, let indexPath = self.dataSource.currentTopCellPath {
-                guard indexPath.row < self.dataSource.count else { return }
+                guard indexPath.row < self.dataSource.count
+                    && indexPath.row < self.collectionView.numberOfItems(inSection: indexPath.section) else { return }
 
                 self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
             }
@@ -605,7 +609,6 @@ private extension UniversalChatVC {
 
     // swiftlint:disable:next cyclomatic_complexity
     private func setupInput() {
-        input.isUserInteractionEnabled = false
         ViewDecorator.shadow(for: input, color: #colorLiteral(red: 0.231372549, green: 0.2588235294, blue: 0.4901960784, alpha: 1), opacity: 0.05, radius: 8, offset: CGSize(width: 0, height: -9))
         if dataSource.isPrivateChat || dataSource.isPrejoining {
             input.hideLeftButton()
@@ -648,6 +651,15 @@ private extension UniversalChatVC {
             } else {
                 self.input.showRightButtonSend()
             }
+        }
+        input.onTapContinueJoining = { [weak self] in
+            let userID = service.session?.currentUserID
+            let topicID = service.session?.currentTeam?.myTopicID
+
+            let details = MyApplicationDetails(topicID: topicID ?? "", userID: userID ?? "")
+            let context = UniversalChatContext(details)
+            context.type = UniversalChatType.with(itemType: .teammate)
+            service.router.presentChat(context: context)
         }
         if dataSource.isPrivateChat {
             input.showRightButtonSend()
