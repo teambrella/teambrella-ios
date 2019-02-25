@@ -27,6 +27,10 @@ struct TeammateStats: Decodable {
     let decisionFrequency: Double
     let discussionFrequency: Double
     let votingFrequency: Double
+    let claimsVoteAsTeamOrBetter: Double
+    let claimsVoteAsTeam: Double
+    let risksVoteAsTeamOrBetter: Double
+    let risksVoteAsTeam: Double
 
     enum CodingKeys: String, CodingKey {
         case weight = "Weight"
@@ -34,5 +38,9 @@ struct TeammateStats: Decodable {
         case decisionFrequency = "DecisionFreq"
         case discussionFrequency = "DiscussionFreq"
         case votingFrequency = "VotingFreq"
+        case claimsVoteAsTeamOrBetter = "ClaimsVoteAsTeamOrBetter"
+        case claimsVoteAsTeam = "ClaimsVoteAsTeam"
+        case risksVoteAsTeamOrBetter = "RisksVoteAsTeamOrBetter"
+        case risksVoteAsTeam = "RisksVoteAsTeam"
     }
 }

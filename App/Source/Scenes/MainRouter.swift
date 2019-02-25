@@ -152,7 +152,9 @@ final class MainRouter {
         push(vc: vc, animated: animated)
     }
     
-    func presentClaim(claimID: Int, scrollToVoting: Bool = false, animated: Bool = true) {
+    func presentClaim(claimID: Int,
+                      scrollToVoting: Bool = false,
+                      animated: Bool = true) {
         guard let vc = getControllerClaim(claimID: claimID) else { fatalError("Error instantiating") }
         
         vc.claimID = claimID
@@ -167,6 +169,25 @@ final class MainRouter {
         vc.teamID = teamID
         vc.teammateID = teammateID
         vc.claimID = claimID
+        push(vc: vc, animated: true)
+    }
+    
+    func presentVotingStats(teamID: Int,
+                            teammateID: Int,
+                            teammateName: String,
+                            voteAsTeamOrBetter: Double,
+                            voteAsTeam: Double,
+                            isClaimsStats: Bool,
+                            isMe: Bool) {
+        guard let vc = VotingStatsVC.instantiate() as? VotingStatsVC else { return }
+        
+        vc.router = self
+        vc.teamID = teamID
+        vc.teammateID = teammateID
+        vc.voteAsTeamOrBetter = voteAsTeamOrBetter
+        vc.voteAsTeam = voteAsTeam
+        vc.isClaimsStats = isClaimsStats
+        vc.isMe = isMe
         push(vc: vc, animated: true)
     }
     

@@ -147,4 +147,60 @@ struct ChatCellBuilder {
         }
     }
     
+    static func populateVotingStats(cell: UICollectionViewCell,
+                                controller: UniversalChatVC,
+                                model: ChatCellModel) {
+        guard let chatModel = controller.dataSource.chatModel else {return}
+        let basic = chatModel.basic
+        let team = chatModel.team
+        var isMe = false
+        guard basic != nil, team != nil else { return }
+        
+        if let cell = cell as? VotingStatsCell, let model = model as? VotingStatsCellModel {
+            
+            if let me = service.session?.currentUserID, me == basic!.userID {
+                cell.headerLabel.text = "Team.TeammateCell.howIVote".localized.uppercased()
+                isMe = true
+            } else {
+                cell.headerLabel.text = "Team.TeammateCell.howXVotes".localized(basic!.name?.first ?? "").uppercased()
+            }
+            
+            cell.forRisksTitleLabel.text = "Team.TeammateCell.forRisks".localized.uppercased()
+            if (basic!.risksVoteAsTeamOrBetter ?? -1) < 0 {
+                cell.forRisksValueLabel.text = "-"
+            } else {
+                cell.forRisksValueLabel.text = String(format: "%.0f%%", (basic!.risksVoteAsTeamOrBetter!*100).rounded())
+            }
+            
+            cell.forPayoutsTitleLabel.text = "Team.TeammateCell.forPayouts".localized.uppercased()
+            if (basic!.claimsVoteAsTeamOrBetter ?? -1) < 0 {
+                cell.forPayoutsValueLabel.text = "-"
+            } else {
+                cell.forPayoutsValueLabel.text = String(format: "%.0f%%", (basic!.claimsVoteAsTeamOrBetter!*100).rounded())
+            }
+            
+            cell.forRisksInfoLabel.text = "Team.TeammateCell.asTeamOrLower".localized.uppercased()
+            cell.forPayoutsInfoLabel.text = "Team.TeammateCell.asTeamOrMore".localized.uppercased()
+            
+            cell.onTapClaims = { [weak controller] in
+                controller?.router.presentVotingStats(teamID: team!.teamID,
+                                                      teammateID: basic!.teammateID ?? -1,
+                                                      teammateName: basic!.name?.entire ?? "",
+                                                      voteAsTeamOrBetter: basic!.claimsVoteAsTeamOrBetter ?? -1,
+                                                      voteAsTeam: basic!.claimsVoteAsTeam ?? -1,
+                                                      isClaimsStats: true,
+                                                      isMe: isMe)
+            }
+            cell.onTapRisks = { [weak controller] in
+                controller?.router.presentVotingStats(teamID: team!.teamID,
+                                                      teammateID: basic!.teammateID ?? -1,
+                                                      teammateName: basic!.name?.entire ?? "",
+                                                      voteAsTeamOrBetter: basic!.risksVoteAsTeamOrBetter ?? -1,
+                                                      voteAsTeam: basic!.risksVoteAsTeam ?? -1,
+                                                      isClaimsStats: false,
+                                                      isMe: isMe)
+            }
+        }
+    }
+
 }

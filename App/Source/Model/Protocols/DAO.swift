@@ -56,11 +56,13 @@ protocol DAO {
     func requestWithdrawTransactions(teamID: Int) -> Future<WithdrawChunk>
     func withdraw(teamID: Int, amount: Double, address: EthereumAddress) -> Future<WithdrawChunk>
     func requestTeammateOthersVoted(teamID: Int, teammateID: Int) -> Future<VotersList>
+    func requestRisksVotesList(teamID: Int, offset: Int, limit: Int, teammateID: Int) -> Future<RiskVotesList>
 
     // MARK: Claims
 
     func requestClaimOthersVoted(teamID: Int, claimID: Int) -> Future<VotersList>
     func requestClaimsList(teamID: Int, offset: Int, limit: Int, filterTeammateID: Int?) -> Future<[ClaimEntity]>
+    func requestClaimsVotesList(teamID: Int, offset: Int, limit: Int, votesOfTeammateID: Int) -> Future<[ClaimEntity]>
     func requestClaim(claimID: Int) -> Future<ClaimEntityLarge>
     func requestClaimTransactions(teamID: Int,
                                   claimID: Int,

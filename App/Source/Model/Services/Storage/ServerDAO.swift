@@ -225,7 +225,7 @@ class ServerDAO: DAO {
     }
     
     func requestClaimsList(teamID: Int, offset: Int, limit: Int, filterTeammateID: Int?) -> Future<[ClaimEntity]> {
-        var payload: [String: Any] = ["TeamId": service.session?.currentTeam?.teamID ?? 0,
+        var payload: [String: Any] = ["TeamId": teamID,
                                       "Offset": offset,
                                       "Limit": limit,
                                       "AvatarSize": Constant.avatarSize]
@@ -234,7 +234,7 @@ class ServerDAO: DAO {
         }
         return startRequest(body: payload, type: .claimsList)
     }
-    
+
     func requestClaim(claimID: Int) -> Future<ClaimEntityLarge> {
         return startRequest(body: ["id": claimID,
                                    "AvatarSize": Constant.avatarSize,
@@ -303,6 +303,25 @@ class ServerDAO: DAO {
                             type: .claimVotesList)
     }
     
+    func requestClaimsVotesList(teamID: Int, offset: Int, limit: Int, votesOfTeammateID: Int) -> Future<[ClaimEntity]> {
+        let payload: [String: Any] = ["TeamId": teamID,
+                                      "Offset": offset,
+                                      "Limit": limit,
+                                      "VotesOfTeammateID": votesOfTeammateID,
+                                      "AvatarSize": Constant.avatarSize]
+        return startRequest(body: payload, type: .claimsList)
+    }
+    
+    func requestRisksVotesList(teamID: Int, offset: Int, limit: Int, teammateID: Int) -> Future<RiskVotesList> {
+        let payload: [String: Any] = ["TeamId": teamID,
+                                      "Offset": offset,
+                                      "Limit": limit,
+                                      "teammateID": teammateID,
+                                      "AvatarSize": Constant.avatarSize]
+        return startRequest(body: payload, type: .riskVotesList)
+    }
+
+
     func requestChat(type: TeambrellaPostRequestType, body: [String: Any]) -> Future<ChatModel> {
         return startRequest(body: body, type: type)
     }

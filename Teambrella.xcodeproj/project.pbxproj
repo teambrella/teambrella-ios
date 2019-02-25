@@ -1149,6 +1149,24 @@
 		6EB6C5A3A1AD4F95F386210D /* libPods-Teambrella.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */; };
 		843D3B4821DFDA1F0057E16E /* ChatUserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D3B4721DFDA1F0057E16E /* ChatUserDataCell.swift */; };
 		843D3B4921DFDA1F0057E16E /* ChatUserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D3B4721DFDA1F0057E16E /* ChatUserDataCell.swift */; };
+		846D9BEA221C6B9700207F69 /* VotingStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */; };
+		846D9BEC221C6BAD00207F69 /* VotingStatsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846D9BEB221C6BAD00207F69 /* VotingStatsCell.xib */; };
+		846D9BED221C6CB500207F69 /* VotingStatsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846D9BEB221C6BAD00207F69 /* VotingStatsCell.xib */; };
+		846D9BEE221C6D9300207F69 /* VotingStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */; };
+		8495E71A221F0A0800BF4234 /* RiskVotesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E719221F0A0800BF4234 /* RiskVotesList.swift */; };
+		8495E71B221F0A0800BF4234 /* RiskVotesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E719221F0A0800BF4234 /* RiskVotesList.swift */; };
+		8495E71D221F0A6C00BF4234 /* RiskVotesListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E71C221F0A6C00BF4234 /* RiskVotesListEntry.swift */; };
+		8495E71E221F0A6C00BF4234 /* RiskVotesListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495E71C221F0A6C00BF4234 /* RiskVotesListEntry.swift */; };
+		84E91E60221E2861007839E4 /* VotingStatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E91E5F221E2861007839E4 /* VotingStatsVC.swift */; };
+		84E91E61221E2861007839E4 /* VotingStatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E91E5F221E2861007839E4 /* VotingStatsVC.swift */; };
+		84E91E63221E287C007839E4 /* VotingStatsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E91E62221E287C007839E4 /* VotingStatsDataSource.swift */; };
+		84E91E64221E287C007839E4 /* VotingStatsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E91E62221E287C007839E4 /* VotingStatsDataSource.swift */; };
+		84E91E6C221E2910007839E4 /* RisksStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E91E6B221E2910007839E4 /* RisksStatsCell.swift */; };
+		84E91E6D221E2910007839E4 /* RisksStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E91E6B221E2910007839E4 /* RisksStatsCell.swift */; };
+		84E91E6F221E2920007839E4 /* ClaimsStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E91E6E221E2920007839E4 /* ClaimsStatsCell.swift */; };
+		84E91E70221E2920007839E4 /* ClaimsStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E91E6E221E2920007839E4 /* ClaimsStatsCell.swift */; };
+		84F52DA722237D41004673A6 /* VotingStatsTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F52DA622237D41004673A6 /* VotingStatsTopCell.swift */; };
+		84F52DA822237D41004673A6 /* VotingStatsTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F52DA622237D41004673A6 /* VotingStatsTopCell.swift */; };
 		94112D7E20066DB20031898E /* ProxyForEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94112D7C20066DB20031898E /* ProxyForEntity.swift */; };
 		94112D81200678E90031898E /* ProxyRatingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94112D7F200678E90031898E /* ProxyRatingEntity.swift */; };
 		94282B0A1FD9B1C40006B5F6 /* LabeledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94282B081FD9B1C40006B5F6 /* LabeledIcon.swift */; };
@@ -1853,6 +1871,15 @@
 		6DF8B92420DBC46400D9D831 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Statistics.swift; path = Helpers/Statistics.swift; sourceTree = "<group>"; };
 		6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPayloadProtocol.swift; sourceTree = "<group>"; };
 		843D3B4721DFDA1F0057E16E /* ChatUserDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserDataCell.swift; sourceTree = "<group>"; };
+		846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingStatsCell.swift; sourceTree = "<group>"; };
+		846D9BEB221C6BAD00207F69 /* VotingStatsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VotingStatsCell.xib; path = View/Cells/VotingStatsCell.xib; sourceTree = "<group>"; };
+		8495E719221F0A0800BF4234 /* RiskVotesList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RiskVotesList.swift; path = Model/Entities/RiskVotesList.swift; sourceTree = "<group>"; };
+		8495E71C221F0A6C00BF4234 /* RiskVotesListEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RiskVotesListEntry.swift; sourceTree = "<group>"; };
+		84E91E5F221E2861007839E4 /* VotingStatsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingStatsVC.swift; sourceTree = "<group>"; };
+		84E91E62221E287C007839E4 /* VotingStatsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingStatsDataSource.swift; sourceTree = "<group>"; };
+		84E91E6B221E2910007839E4 /* RisksStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RisksStatsCell.swift; sourceTree = "<group>"; };
+		84E91E6E221E2920007839E4 /* ClaimsStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimsStatsCell.swift; sourceTree = "<group>"; };
+		84F52DA622237D41004673A6 /* VotingStatsTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingStatsTopCell.swift; sourceTree = "<group>"; };
 		9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCellBuilder.swift; path = Scenes/Home/HomeCellBuilder.swift; sourceTree = "<group>"; };
 		9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNoInviteVC.swift; path = Scenes/Login/LoginNoInviteVC.swift; sourceTree = "<group>"; };
 		9407A5831F13C33E00E0DD74 /* LoginBlueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBlueVC.swift; path = Scenes/Login/LoginBlueVC.swift; sourceTree = "<group>"; };
@@ -2354,9 +2381,10 @@
 		6D2A7C611FCC66490094ABB7 /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				84E91E5E221E2810007839E4 /* VotingStats */,
+				6D1CAC0D1FF51AA000FA58B6 /* OthersVoted */,
 				6D12BF65216B9106005AF3FB /* SuggestionsVC.swift */,
 				6DCFB4F9212C5823000817F6 /* CallVC.swift */,
-				6D1CAC0D1FF51AA000FA58B6 /* OthersVoted */,
 				6D2A7C5E1FCC663E0094ABB7 /* Info.storyboard */,
 				6D2A7C621FCC66960094ABB7 /* SODVC.swift */,
 				6DAD94211FCEF5010011557C /* CodeCaptureVC.swift */,
@@ -3096,7 +3124,9 @@
 				6D5F089820A9BEAC0061A6E8 /* ChatClaimPaidCell.swift */,
 				6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */,
 				6D10A33E2136A90200DB59A1 /* ServiceChatCell.swift */,
+				846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */,
 				6D10A33F2136A90200DB59A1 /* ServiceChatCell.xib */,
+				846D9BEB221C6BAD00207F69 /* VotingStatsCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -3248,9 +3278,11 @@
 				6DDB5D981FF698B60066A07F /* TeammateVotingResult.swift */,
 				6D20CF951FDEE1890049BE9C /* TeamPart.swift */,
 				6D097EAE1E9D3BD200E77DAB /* TopicEntity.swift */,
-				6DA3FBA11FF2B39A00CA8FA1 /* Voter.swift */,
-				6D7A019220B5BC44006A30FA /* WalletTransactionsModel.swift */,
 				6DA3FBA41FF2BA0800CA8FA1 /* VotersList.swift */,
+				6DA3FBA11FF2B39A00CA8FA1 /* Voter.swift */,
+				8495E719221F0A0800BF4234 /* RiskVotesList.swift */,
+				8495E71C221F0A6C00BF4234 /* RiskVotesListEntry.swift */,
+				6D7A019220B5BC44006A30FA /* WalletTransactionsModel.swift */,
 				94B4C37D1F1E18AC00AED4CE /* WalletEntity.swift */,
 				6D3556751FD2EF3200AEBF07 /* WithdrawChunk.swift */,
 				6D35566A1FD2EE4400AEBF07 /* WithdrawTx.swift */,
@@ -3317,6 +3349,18 @@
 				6DD051BE1F66F14100532626 /* SocketData.swift */,
 			);
 			name = Socket;
+			sourceTree = "<group>";
+		};
+		84E91E5E221E2810007839E4 /* VotingStats */ = {
+			isa = PBXGroup;
+			children = (
+				84E91E6B221E2910007839E4 /* RisksStatsCell.swift */,
+				84E91E6E221E2920007839E4 /* ClaimsStatsCell.swift */,
+				84F52DA622237D41004673A6 /* VotingStatsTopCell.swift */,
+				84E91E62221E287C007839E4 /* VotingStatsDataSource.swift */,
+				84E91E5F221E2861007839E4 /* VotingStatsVC.swift */,
+			);
+			path = VotingStats;
 			sourceTree = "<group>";
 		};
 		94C2D3971F191F7700D203C2 /* ChooseTeam */ = {
@@ -3751,6 +3795,7 @@
 				6D05252020A5D838000B3247 /* Me.strings in Resources */,
 				6D05252120A5D838000B3247 /* Team.strings in Resources */,
 				6D05252220A5D838000B3247 /* SwipeToVote.xib in Resources */,
+				846D9BED221C6CB500207F69 /* VotingStatsCell.xib in Resources */,
 				17AD14A020FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */,
 				6D05252320A5D838000B3247 /* JoinTeamGreetingCell.xib in Resources */,
 				6D05252420A5D838000B3247 /* ClaimOptionsCell.xib in Resources */,
@@ -3856,6 +3901,7 @@
 				6D4E5DBF1F7AB6870020DEE2 /* Me.strings in Resources */,
 				6D4E5DC11F7AB6870020DEE2 /* Team.strings in Resources */,
 				9489C1261FF54D7100ECA3A4 /* SwipeToVote.xib in Resources */,
+				846D9BEC221C6BAD00207F69 /* VotingStatsCell.xib in Resources */,
 				17AD149F20FE0BDA007C7613 /* CompactUserInfoHeader.xib in Resources */,
 				6D4E5DC21F7AB6870020DEE2 /* JoinTeamGreetingCell.xib in Resources */,
 				6D4E5DC31F7AB6870020DEE2 /* ClaimOptionsCell.xib in Resources */,
@@ -4352,6 +4398,7 @@
 				6D05239E20A5D838000B3247 /* SaneText.swift in Sources */,
 				6D05239F20A5D838000B3247 /* DAO.swift in Sources */,
 				6D0523A020A5D838000B3247 /* LoginDetailsRouter.swift in Sources */,
+				84F52DA822237D41004673A6 /* VotingStatsTopCell.swift in Sources */,
 				6DB894F6215551F600780D5F /* ApplicationTermsAndConditionsCell.swift in Sources */,
 				6D0523A120A5D838000B3247 /* UIViewController.swift in Sources */,
 				6D0523A220A5D838000B3247 /* TeammateVotingResult.swift in Sources */,
@@ -4370,6 +4417,7 @@
 				6D0523AD20A5D838000B3247 /* FeedEntity.swift in Sources */,
 				6D0523AE20A5D838000B3247 /* SwitchUserCell.swift in Sources */,
 				6D63890220C32DAB00FD3351 /* WatchDAOCache.swift in Sources */,
+				8495E71B221F0A0800BF4234 /* RiskVotesList.swift in Sources */,
 				6DB743EF21550D2000F57D00 /* ApplicationCellSizer.swift in Sources */,
 				6D0523AF20A5D838000B3247 /* CoreDataStorage.swift in Sources */,
 				6D0523B020A5D838000B3247 /* GradientView.swift in Sources */,
@@ -4498,6 +4546,7 @@
 				6D05241D20A5D838000B3247 /* UIImage.swift in Sources */,
 				6D05241E20A5D838000B3247 /* ServerDAO.swift in Sources */,
 				6D5535992136ED92000DB0F2 /* Auth0Authenticator.swift in Sources */,
+				84E91E64221E287C007839E4 /* VotingStatsDataSource.swift in Sources */,
 				6D2F2D3E21A720B80038A9DD /* ChatServiceTextCell.swift in Sources */,
 				6D05241F20A5D838000B3247 /* Voter.swift in Sources */,
 				6D05242020A5D838000B3247 /* ServerService.swift in Sources */,
@@ -4562,6 +4611,7 @@
 				6D05245C20A5D838000B3247 /* HomeModel.swift in Sources */,
 				6D3BA54C216FA64C008DD30D /* ChatCellBuilder.swift in Sources */,
 				6D05245D20A5D838000B3247 /* ChooseYourTeamVC.swift in Sources */,
+				84E91E70221E2920007839E4 /* ClaimsStatsCell.swift in Sources */,
 				6D05245E20A5D838000B3247 /* HomeSupportCell.swift in Sources */,
 				6D6388F220C3257900FD3351 /* WatchService.swift in Sources */,
 				6D05245F20A5D838000B3247 /* MeCell.swift in Sources */,
@@ -4570,6 +4620,7 @@
 				6D05246220A5D838000B3247 /* OthersVotedVC.swift in Sources */,
 				6D05246320A5D838000B3247 /* HomePresentationController.swift in Sources */,
 				6D05246420A5D838000B3247 /* Routable.swift in Sources */,
+				84E91E61221E2861007839E4 /* VotingStatsVC.swift in Sources */,
 				6DB743DA214FC55B00F57D00 /* ApplicationInputCellType.swift in Sources */,
 				6D05246520A5D838000B3247 /* NewDiscussionCell.swift in Sources */,
 				6D05246620A5D838000B3247 /* SelectorCellModel.swift in Sources */,
@@ -4583,6 +4634,7 @@
 				6D05246E20A5D838000B3247 /* VotingScrollerCellModel.swift in Sources */,
 				6DB743E62150103400F57D00 /* ApplicationFlowVC.swift in Sources */,
 				6D05246F20A5D838000B3247 /* PhotoPreviewVC.swift in Sources */,
+				846D9BEE221C6D9300207F69 /* VotingStatsCell.swift in Sources */,
 				6DB894FC2159015700780D5F /* ApplicationCellDecorable.swift in Sources */,
 				6D05247020A5D838000B3247 /* SODVC.swift in Sources */,
 				6D10A3422136A90A00DB59A1 /* ServiceChatCell.swift in Sources */,
@@ -4649,6 +4701,7 @@
 				843D3B4921DFDA1F0057E16E /* ChatUserDataCell.swift in Sources */,
 				6D0524A420A5D838000B3247 /* SimpleStorage.swift in Sources */,
 				6D0524A520A5D838000B3247 /* PushService.swift in Sources */,
+				84E91E6D221E2910007839E4 /* RisksStatsCell.swift in Sources */,
 				6D0524A620A5D838000B3247 /* DiscussionCompactCell.swift in Sources */,
 				6D0524A720A5D838000B3247 /* TxOutputServerImpl.swift in Sources */,
 				6D0524A820A5D838000B3247 /* JoinTeamCellBuilder.swift in Sources */,
@@ -4696,6 +4749,7 @@
 				6D0524D020A5D838000B3247 /* OthersVotedCellModel.swift in Sources */,
 				6D0524D120A5D838000B3247 /* SortCell.swift in Sources */,
 				6D0524D220A5D838000B3247 /* WalletFundingCell.swift in Sources */,
+				8495E71E221F0A6C00BF4234 /* RiskVotesListEntry.swift in Sources */,
 				6D0524D320A5D838000B3247 /* SelectorDataSource.swift in Sources */,
 				6D0524D420A5D838000B3247 /* MeModel.swift in Sources */,
 				6D7A019920B5BC44006A30FA /* WalletTransactionsDataSource.swift in Sources */,
@@ -4811,6 +4865,7 @@
 				6D716BC02021E747001E2614 /* SaneText.swift in Sources */,
 				6D4E5C681F7AB6870020DEE2 /* DAO.swift in Sources */,
 				6D4E5C691F7AB6870020DEE2 /* LoginDetailsRouter.swift in Sources */,
+				84F52DA722237D41004673A6 /* VotingStatsTopCell.swift in Sources */,
 				6DB894F5215551F600780D5F /* ApplicationTermsAndConditionsCell.swift in Sources */,
 				6D4E5C6A1F7AB6870020DEE2 /* UIViewController.swift in Sources */,
 				6DDB5D9A1FF698B60066A07F /* TeammateVotingResult.swift in Sources */,
@@ -4829,6 +4884,7 @@
 				6D4E5C771F7AB6870020DEE2 /* SwitchUserCell.swift in Sources */,
 				6D63890120C32DAB00FD3351 /* WatchDAOCache.swift in Sources */,
 				6D4E5C781F7AB6870020DEE2 /* CoreDataStorage.swift in Sources */,
+				8495E71A221F0A0800BF4234 /* RiskVotesList.swift in Sources */,
 				6DB743EE21550D2000F57D00 /* ApplicationCellSizer.swift in Sources */,
 				6DCFB4FC212C5D79000817F6 /* PeriodicEvent.swift in Sources */,
 				6D4E5C791F7AB6870020DEE2 /* GradientView.swift in Sources */,
@@ -4901,6 +4957,7 @@
 				6D7A01B320B5BCBF006A30FA /* WalletCosignersDataSource.swift in Sources */,
 				6D7A019A20B5BC44006A30FA /* WalletTransactionsVC.swift in Sources */,
 				6D55359B2136EFD1000DB0F2 /* VKAuthenticating.swift in Sources */,
+				846D9BEA221C6B9700207F69 /* VotingStatsCell.swift in Sources */,
 				6D4E5CB11F7AB6870020DEE2 /* ScaleBar.swift in Sources */,
 				6DB743CA214FB84000F57D00 /* ApplicationHeaderView.swift in Sources */,
 				6D4E5CB21F7AB6870020DEE2 /* ChatModelBuilder.swift in Sources */,
@@ -4956,6 +5013,7 @@
 				6D4E5CD81F7AB6870020DEE2 /* UIImage.swift in Sources */,
 				6D4E5CD91F7AB6870020DEE2 /* ServerDAO.swift in Sources */,
 				6DA3FBA31FF2B39A00CA8FA1 /* Voter.swift in Sources */,
+				84E91E63221E287C007839E4 /* VotingStatsDataSource.swift in Sources */,
 				6D5535982136ED92000DB0F2 /* Auth0Authenticator.swift in Sources */,
 				6D2F2D3D21A720B80038A9DD /* ChatServiceTextCell.swift in Sources */,
 				6D4E5CDA1F7AB6870020DEE2 /* ServerService.swift in Sources */,
@@ -5020,6 +5078,7 @@
 				6D4E5D081F7AB6870020DEE2 /* HomeModel.swift in Sources */,
 				6D4E5D091F7AB6870020DEE2 /* ChooseYourTeamVC.swift in Sources */,
 				6D3BA54B216FA64C008DD30D /* ChatCellBuilder.swift in Sources */,
+				84E91E6F221E2920007839E4 /* ClaimsStatsCell.swift in Sources */,
 				6D4E5D0A1F7AB6870020DEE2 /* HomeSupportCell.swift in Sources */,
 				6D6388F120C3257900FD3351 /* WatchService.swift in Sources */,
 				6D4E5D0D1F7AB6870020DEE2 /* MeCell.swift in Sources */,
@@ -5028,6 +5087,7 @@
 				6D1CAC0C1FF51A1200FA58B6 /* OthersVotedVC.swift in Sources */,
 				6DBF492C1F80F21E00B236E2 /* HomePresentationController.swift in Sources */,
 				6D4E5D111F7AB6870020DEE2 /* Routable.swift in Sources */,
+				84E91E60221E2861007839E4 /* VotingStatsVC.swift in Sources */,
 				17751AB22033568B00274F6A /* NewDiscussionCell.swift in Sources */,
 				6DB743D9214FC55B00F57D00 /* ApplicationInputCellType.swift in Sources */,
 				94F502571FA8D3760059D49B /* SelectorCellModel.swift in Sources */,
@@ -5108,6 +5168,7 @@
 				843D3B4821DFDA1F0057E16E /* ChatUserDataCell.swift in Sources */,
 				6DB5E80B1FEA874E009A2A62 /* SimpleStorage.swift in Sources */,
 				6D4E5D431F7AB6870020DEE2 /* PushService.swift in Sources */,
+				84E91E6C221E2910007839E4 /* RisksStatsCell.swift in Sources */,
 				6D4E5D441F7AB6870020DEE2 /* DiscussionCompactCell.swift in Sources */,
 				6D1EC3E7202B0EB700F0541C /* TxOutputServerImpl.swift in Sources */,
 				6D4E5D481F7AB6870020DEE2 /* JoinTeamCellBuilder.swift in Sources */,
@@ -5155,6 +5216,7 @@
 				6D1CAC161FF5354F00FA58B6 /* OthersVotedCellModel.swift in Sources */,
 				6D4E5D6D1F7AB6870020DEE2 /* SortCell.swift in Sources */,
 				6D4E5D6E1F7AB6870020DEE2 /* WalletFundingCell.swift in Sources */,
+				8495E71D221F0A6C00BF4234 /* RiskVotesListEntry.swift in Sources */,
 				94F5025B1FA8E5CA0059D49B /* SelectorDataSource.swift in Sources */,
 				6DE3E31C2048560C0042CD72 /* MeModel.swift in Sources */,
 				6D7A019820B5BC44006A30FA /* WalletTransactionsDataSource.swift in Sources */,

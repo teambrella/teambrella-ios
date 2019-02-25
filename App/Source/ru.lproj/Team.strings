@@ -46,7 +46,7 @@
 "Team.TeammateCell.limit"                             = "ЛИМИТ";
 "Team.TeammateCell.risk"                              = "РИСК";
 
-"Team.TeammateCell.votingStats"                       = "СТАТИСТИКА";
+"Team.TeammateCell.votingStats"                       = "СТАТИСТИКА ГОЛОСОВАНИЯ";
 "Team.TeammateCell.weight"                            = "ВЕС";
 "Team.TeammateCell.proxyRank"                         = "ПРОКСИ РЕЙТИНГ";
 "Team.TeammateCell.decisions"                         = "Решения";
@@ -54,9 +54,30 @@
 "Team.TeammateCell.votingFrequency"                   = "Частота голосований";
 "Team.TeammateCell.applicationDiscussion"             = "Заявка в команду";
 
+"Team.TeammateCell.howIVote"                          = "Как я голосую";
+"Team.TeammateCell.howXVotes"                         = "Как %@ голосует";
+"Team.TeammateCell.forRisks"                          = "За риски";
+"Team.TeammateCell.forPayouts"                        = "За выплаты";
+"Team.TeammateCell.asTeamOrLower"                     = "случаев - как команда или ниже";
+"Team.TeammateCell.asTeamOrMore"                      = "случаев - как команда или больше";
+"Team.TeammateCell.XVotes"                            = "%@ голосует";
+"Team.TeammateCell.IVote"                             = "Я голосую";
+"Team.TeammateCell.byProxy"                           = "Голос прокси";
+
 "Team.TeammateCell.timeLabel.justNow"                 = "ТОЛЬКО ЧТО";
 "Team.TeammateCell.contact"                           = "КОНТАКТЫ";
 "Team.TeammateCell.buttonTitle_format_i"              = "Заявки на выплату (%d)";
+
+"Team.VotingStats.ofTimes"                            = "случаев";
+"Team.VotingStats.moreThanTeam"                       = "Больше команды";
+"Team.VotingStats.lessThanTeam"                       = "Меньше команды";
+"Team.VotingStats.higherThanTeam"                     = "Выше команды";
+"Team.VotingStats.lowerThanTeam"                      = "Ниже команды";
+"Team.VotingStats.sameAsTeam"                         = "Как команда";
+"Team.VotingStats.IVotePayouts"                       = "Я голосую за выплаты";
+"Team.VotingStats.IVoteRisks"                         = "Я голосую за риски";
+"Team.VotingStats.XVotesPayouts"                      = "Голосует за выплаты";
+"Team.VotingStats.XVotesRisks"                        = "Голосует за риски";
 
 "Team.Decisions.generous"                             = "щедрый";
 "Team.Decisions.mild"                                 = "мягкий";
@@ -226,7 +247,7 @@
 "Team.Chat.PayToJoin.text" = "Положи от 3000 руб в свой кошелёк и получи бонус +3000 руб в подарок.";
 "Team.Chat.PayToJoin.buttonTitle" = "Пополнить кошелёк";
 "Team.Chat.ObjectView.TitleLabel.teamVote" = "ГОЛОС КОМАНДЫ";
-"Team.ClaimCell.voting.ended" = "Закончилось ";
+"Team.ClaimCell.voting.ended" = "Зак. ";
 
 "Team.Notfications.never" = "Выключены";
 "Team.Notifications.often" = "Каждый день";

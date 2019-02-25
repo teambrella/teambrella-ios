@@ -100,6 +100,14 @@ class ChatModelBuilder {
 //                                                 command: .addMorePhoto)
     }
 
+    func addVotingStatsModel(beforeModel: ChatCellModel) -> ChatCellModel {
+        return VotingStatsCellModel(
+            date: beforeModel.date,
+            risksVotesAsTeamOrBetter: 0,
+            claimsVotesAsTeamOrBetter: 0
+        )
+    }
+    
     /// set of used service messages types that can only appear once in a chat
     //private var serviceTypesUsed: Set<SystemType> = []
 

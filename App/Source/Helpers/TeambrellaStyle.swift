@@ -69,7 +69,11 @@ struct TeambrellaStyle {
         let amount = AmountLabel.appearance()
         amount.font = UIFont.teambrellaBold(size: 23)
         amount.textColor = .dark
-        
+
+        let amountLarger = AmountLargerLabel.appearance()
+        amountLarger.font = UIFont.teambrellaBold(size: 28)
+        amountLarger.textColor = .dark
+
         let walletAmount = WalletAmountLabel.appearance()
         walletAmount.font = UIFont.teambrellaBold(size: 88)
         walletAmount.textColor = .dark

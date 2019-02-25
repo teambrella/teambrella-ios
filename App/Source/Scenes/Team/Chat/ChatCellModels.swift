@@ -116,7 +116,16 @@ struct ChatClaimPaidCellModel: ChatCellModel {
     let date: Date
     let updated: Int64 = 0
     let isTemporary: Bool = false
+}
+
+struct VotingStatsCellModel: ChatCellModel {
+    var id: String { return String(describing: date.timeIntervalSince1970) }
+    let date: Date
+    let updated: Int64 = 0
+    let isTemporary: Bool = false
     
+    let risksVotesAsTeamOrBetter: Double
+    let claimsVotesAsTeamOrBetter: Double
 }
 
 protocol ServiceMessageLike: ChatCellModel {

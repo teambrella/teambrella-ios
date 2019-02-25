@@ -54,6 +54,27 @@
 "Team.TeammateCell.votingFrequency"                   = "Voting Frequency";
 "Team.TeammateCell.applicationDiscussion"             = "Application Discussion";
 
+"Team.TeammateCell.howIVote"                          = "How I Vote";
+"Team.TeammateCell.howXVotes"                         = "How %@ Vote";
+"Team.TeammateCell.forRisks"                          = "For Risks";
+"Team.TeammateCell.forPayouts"                        = "For Payouts";
+"Team.TeammateCell.asTeamOrLower"                     = "Of the times - as team or lower";
+"Team.TeammateCell.asTeamOrMore"                      = "Of the times - as team or more";
+"Team.TeammateCell.XVotes"                            = "%@ votes";
+"Team.TeammateCell.IVote"                             = "I vote";
+"Team.TeammateCell.byProxy"                           = "by proxy";
+
+"Team.VotingStats.ofTimes"                            = "of the times";
+"Team.VotingStats.moreThanTeam"                       = "More than team";
+"Team.VotingStats.lessThanTeam"                       = "Less than team";
+"Team.VotingStats.higherThanTeam"                     = "Higher than team";
+"Team.VotingStats.lowerThanTeam"                      = "Lower than team";
+"Team.VotingStats.sameAsTeam"                         = "Same as team";
+"Team.VotingStats.IVotePayouts"                       = "I vote for payouts";
+"Team.VotingStats.IVoteRisks"                         = "I vote for risks";
+"Team.VotingStats.XVotesPayouts"                      = "Votes for payouts";
+"Team.VotingStats.XVotesRisks"                        = "Votes for risks";
+
 "Team.TeammateCell.timeLabel.justNow"                 = "JUST NOW";
 "Team.TeammateCell.contact"                           = "CONTACT";
 "Team.TeammateCell.buttonTitle_format_i"              = "See Claims (%d)";

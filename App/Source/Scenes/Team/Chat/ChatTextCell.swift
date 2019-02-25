@@ -96,7 +96,7 @@ class ChatTextCell: ChatUserDataCell {
             id = model.id
             isMy = model.isMy
             self.cloudWidth = size.width
-            self.cloudHeight = size.height
+            self.cloudHeight = size.height-2
             setNeedsDisplay()
 
             setupAvatar(avatar: model.userAvatar, cloudHeight: cloudHeight)

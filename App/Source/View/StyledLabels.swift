@@ -33,6 +33,10 @@ class AmountLabel: Label {
     
 }
 
+class AmountLargerLabel: Label {
+    
+}
+
 class WalletAmountLabel: Label {
     
 }

@@ -373,7 +373,7 @@ final class UniversalChatVC: UIViewController, Routable {
             
             let verticalInset = verticalInsetForCloud(with: model)
             return CGSize(width: width,
-                          height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset)
+                          height: model.totalFragmentsHeight + CGFloat(model.fragments.count) * 2 + verticalInset+2)
         } else if let model = dataSource[indexPath] as? ChatImageCellModel {
             return cloudSizeForImage(width: model.maxFragmentsWidth, height: model.totalFragmentsHeight)
         } else if let model = dataSource[indexPath] as? ChatUnsentImageCellModel {
@@ -394,7 +394,7 @@ final class UniversalChatVC: UIViewController, Routable {
 
     func cloudSizeForImage(width: CGFloat, height: CGFloat) -> CGSize {
         return CGSize(width: width + ChatImageCell.Constant.imageInset * 2,
-                      height: height + ChatImageCell.Constant.imageInset * 2)
+                      height: height + ChatImageCell.Constant.imageInset * 2 + 2)
     }
 
     func showAddPhoto() {
@@ -527,8 +527,8 @@ private extension UniversalChatVC {
         collectionView.register(ChatClaimPaidCell.nib,
                                 forCellWithReuseIdentifier: ChatClaimPaidCell.cellID)
         collectionView.register(ServiceChatCell.nib, forCellWithReuseIdentifier: ServiceChatCell.cellID)
-
         collectionView.register(ChatServiceTextCell.self, forCellWithReuseIdentifier: Constant.serviceCellID)
+        collectionView.register(VotingStatsCell.nib, forCellWithReuseIdentifier: VotingStatsCell.cellID)
     }
     
     private func listenForKeyboard() {
@@ -839,6 +839,8 @@ extension UniversalChatVC: UICollectionViewDataSource {
             identifier = Constant.serviceCellID
         case _ as ServiceMessageWithButtonCellModel:
             identifier = ChatClaimPaidCell.cellID
+        case _ as VotingStatsCellModel:
+            identifier = VotingStatsCell.cellID
         default:
             fatalError("Unknown cell")
         }
@@ -872,6 +874,8 @@ extension UniversalChatVC: UICollectionViewDelegate {
             ChatCellBuilder.populateUserData(cell: cell, controller: self, indexPath: indexPath, model: model)
         case let model as ChatUnsentImageCellModel:
             ChatCellBuilder.populateUnsent(cell: cell, controller: self, indexPath: indexPath, model: model)
+        case let model as VotingStatsCellModel:
+            ChatCellBuilder.populateVotingStats(cell: cell, controller: self, model: model)
         default:
             ChatCellBuilder.populateService(cell: cell, controller: self, model: model)
         }
@@ -937,13 +941,15 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: size.height)
         case let model as ChatUnsentImageCellModel:
             let size = cloudSizeForUnsentImage(id: model.id)
-            return  CGSize(width: collectionView.bounds.width, height: size.height)
+            return  CGSize(width: collectionView.bounds.width, height: size.height+2)
         case _ as ChatSeparatorCellModel:
             return CGSize(width: collectionView.bounds.width, height: 30)
         case _ as ChatNewMessagesSeparatorModel:
             return CGSize(width: collectionView.bounds.width, height: 30)
         case _ as ChatClaimPaidCellModel:
             return CGSize(width: collectionView.bounds.width, height: 135)
+        case _ as VotingStatsCellModel:
+            return CGSize(width: collectionView.bounds.width, height: 180)
         default:
             return CGSize(width: collectionView.bounds.width - 32, height: 100)
         }

@@ -79,7 +79,8 @@ enum TeambrellaPostRequestType: String {
     case teammateVote = "teammate/setVote"
     case teammateChat = "teammate/getChat"
     case teammateVotesList = "teammate/getAllVotesList"
-    
+    case riskVotesList = "teammate/getTeammateRisksVotesList"
+
     case wallet = "wallet/getOne"
     case walletTransactions = "wallet/getMyTxList"
     case withdrawTransactions = "wallet/getWithdraw"

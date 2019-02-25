@@ -157,12 +157,12 @@ class ChatImageCell: ChatUserDataCell {
             id = model.id
             isMy = model.isMy
             self.cloudWidth = size.width
-            self.cloudHeight = size.height
+            self.cloudHeight = size.height-2
 
             imageView.frame = CGRect(x: Constant.imageInset,
-                                     y: Constant.imageInset,
+                                     y: Constant.imageInset+1,
                                      width: self.cloudWidth - Constant.imageInset * 2,
-                                     height: self.cloudHeight - Constant.imageInset * 2)
+                                     height: self.cloudHeight - Constant.imageInset * 2-1)
             imageView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
             hidingView.isHidden = true
             setNeedsDisplay()
@@ -190,21 +190,21 @@ class ChatImageCell: ChatUserDataCell {
         id = model.id
         isMy = true
         self.cloudWidth = size.width
-        self.cloudHeight = size.height
+        self.cloudHeight = size.height-2
 
         imageView.frame = CGRect(x: Constant.imageInset,
-                                 y: Constant.imageInset,
+                                 y: Constant.imageInset+1,
                                  width: self.cloudWidth - Constant.imageInset * 2,
-                                 height: self.cloudHeight - Constant.imageInset * 2)
+                                 height: self.cloudHeight - Constant.imageInset * 2-1)
          imageView.roundCorners(.allCorners, radius: Constant.cloudCornerRadius - Constant.imageInset / 2)
 
         setNeedsDisplay()
 
         let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
         imageView.frame = CGRect(x: cloudBodyMinX + Constant.imageInset,
-                                 y: Constant.imageInset,
+                                 y: Constant.imageInset+1,
                                  width: cloudWidth - Constant.imageInset * 2,
-                                 height: cloudHeight - Constant.imageInset * 2)
+                                 height: cloudHeight - Constant.imageInset * 2-1)
 
         imageView.image = image
 
@@ -234,9 +234,9 @@ class ChatImageCell: ChatUserDataCell {
         pen.y = Constant.cloudCornerRadius
         context.addLine(to: pen)
 
-        var controlP = CGPoint(x: pen.x, y: 0)
+        var controlP = CGPoint(x: pen.x, y: 1)
         pen.x -= Constant.cloudCornerRadius
-        pen.y = 0
+        pen.y = 1
         context.addQuadCurve(to: pen, control: controlP)
 
         pen.x = cloudBodyMinX + Constant.cloudCornerRadius
@@ -244,7 +244,7 @@ class ChatImageCell: ChatUserDataCell {
 
         pen.x = cloudBodyMinX
         pen.y = Constant.cloudCornerRadius
-        controlP = CGPoint(x: cloudBodyMinX, y: 0)
+        controlP = CGPoint(x: cloudBodyMinX, y: 1)
         context.addQuadCurve(to: pen, control: controlP)
 
         pen.y = cloudHeight - Constant.cloudCornerRadius
@@ -275,9 +275,9 @@ class ChatImageCell: ChatUserDataCell {
         pen.y = Constant.cloudCornerRadius
         context.addLine(to: pen)
 
-        var controlP = CGPoint(x: pen.x, y: 0)
+        var controlP = CGPoint(x: pen.x, y: 1)
         pen.x += Constant.cloudCornerRadius
-        pen.y = 0
+        pen.y = 1
         context.addQuadCurve(to: pen, control: controlP)
 
         pen.x = cloudBodyMaxX - Constant.cloudCornerRadius
@@ -285,7 +285,7 @@ class ChatImageCell: ChatUserDataCell {
 
         pen.x = cloudBodyMaxX
         pen.y = Constant.cloudCornerRadius
-        controlP = CGPoint(x: cloudBodyMaxX, y: 0)
+        controlP = CGPoint(x: cloudBodyMaxX, y: 1)
         context.addQuadCurve(to: pen, control: controlP)
 
         pen.y = cloudHeight - Constant.cloudCornerRadius
@@ -337,9 +337,9 @@ class ChatImageCell: ChatUserDataCell {
         switch fragment {
         case let .image(urlString: urlString, urlStringSmall: urlStringSmall, aspect: _):
             imageView.frame = CGRect(x: cloudBodyMinX + Constant.imageInset,
-                                     y: Constant.imageInset,
+                                     y: Constant.imageInset+1,
                                      width: cloudWidth - Constant.imageInset * 2,
-                                     height: cloudHeight - Constant.imageInset * 2)
+                                     height: cloudHeight - Constant.imageInset * 2-1)
             imageView.setStartingImage(small: urlStringSmall, large: urlString)
         default:
             break

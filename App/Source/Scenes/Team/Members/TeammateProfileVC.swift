@@ -508,9 +508,9 @@ extension TeammateProfileVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: wdt, height: 296)
         case .stats:
             guard  dataSource.isItemLoaded,
-                dataSource.isMe == true else { return CGSize(width: wdt, height: 368) }
+                dataSource.isMe == true else { return CGSize(width: wdt, height: 256) }
             
-            return CGSize(width: wdt, height: 311)
+            return CGSize(width: wdt, height: 200)
         case .contact:
             let base: CGFloat = 38
             let cellHeight: CGFloat = Constant.socialCellHeight

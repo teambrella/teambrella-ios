@@ -94,7 +94,7 @@ class ChatVariousContentCell: ChatUserDataCell {
             id = model.id
             isMy = model.isMy
             self.cloudWidth = size.width
-            self.cloudHeight = size.height
+            self.cloudHeight = size.height-2
             setNeedsDisplay()
             
             let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)

@@ -95,7 +95,8 @@ struct TeammateCellBuilder {
     // swiftlint:disable:next function_body_length
     private static func setVote(votingCell: VotingOrVotedRiskCell,
                                 voting: TeammateLarge.VotingInfo,
-                                controller: TeammateProfileVC) {
+                                controller:
+        TeammateProfileVC) {
         var votingCell = votingCell
         let maxAvatarsStackCount = 4
         let otherVotersCount = voting.votersCount - maxAvatarsStackCount + 1
@@ -138,7 +139,7 @@ struct TeammateCellBuilder {
         } else {
             votingCell.timeLabel.text = "Team.ClaimCell.voting.ended".localized.uppercased() +
                 DateProcessor().stringAgo(passedMinutes: -voting.remainingMinutes).uppercased()
-            votingCell.titleLabel.text = "Team.ClaimCell.voting".localized.uppercased()
+            votingCell.titleLabel.text = "Team.VotingRiskVC.headerLabel".localized.uppercased()
             if let cell = votingCell as? VotedRiskCell {
                 cell.pieChartLeadingConstraint.isActive = false
             }
@@ -275,22 +276,10 @@ struct TeammateCellBuilder {
             left.isPercentVisible = false
             left.isBadgeVisible = false
         }
-        if let middle = cell.numberBar.middle { // math abs!!!
-            middle.titleLabel.text = "Team.Teammates.net".localized
-            let test = teammate.basic.totallyPaidAmount > 0.0 ?
-                Int(teammate.basic.totallyPaidAmount + 0.5) :
-                Int(teammate.basic.totallyPaidAmount - 0.5)
-            middle.amountLabel.text = String(test)
-            middle.currencyLabel.font = UIFont.teambrellaBold(size: 10)
-            middle.currencyLabel.text = session?.currentTeam?.currency ?? ""
-            middle.isCurrencyVisible = true
-            middle.isPercentVisible = false
-            middle.isBadgeVisible = false
-        }
         if let right = cell.numberBar.right {
             
             right.titleLabel.text = "Team.TeammateCell.risk".localized
-            right.amountLabel.text = String(format: "%.1f", teammate.basic.risk)
+            right.amountLabel.text = String(format: "%.2f", teammate.basic.risk)
             let avg = String.truncatedNumber(abs(teammate.basic.risk - teammate.basic.averageRisk) * 100)
             
             if teammate.basic.risk - teammate.basic.averageRisk == 0 {
@@ -299,7 +288,9 @@ struct TeammateCellBuilder {
                 right.badgeLabel.rightInset = CGFloat(4)
             } else {
                 let sign = (teammate.basic.risk - teammate.basic.averageRisk) * 100 > 0 ? "+" : "-"
-                right.badgeLabel.text = "Team.VotingRiskVC.avg".localized + " \(sign)\(avg)%"
+                right.badgeLabel.text = "Team.VotingRiskVC.avg".localized + "\n\(sign)\(avg)%"
+                right.badgeLabel.numberOfLines = 2
+                right.badgeLabel.textAlignment = NSTextAlignment.center
             }
             right.isBadgeVisible = true
             right.currencyLabel.text = nil
@@ -307,6 +298,8 @@ struct TeammateCellBuilder {
             right.isPercentVisible = false
             right.badgeLabel.rightInset = isSmallIPhone ? CGFloat(2) : CGFloat(4)
             right.badgeLabel.leftInset = isSmallIPhone ? CGFloat(2) : CGFloat(4)
+            right.badgeLabel.topInset = CGFloat(1)
+            right.badgeLabel.bottomInset = CGFloat(1)
         }
         
         if let imageString = teammate.object.largePhotos.first {
@@ -337,19 +330,52 @@ struct TeammateCellBuilder {
                                       with teammate: TeammateLarge,
                                       controller: TeammateProfileVC) {
         let stats = teammate.stats
-        cell.headerLabel.text = "Team.TeammateCell.votingStats".localized
-        
-        cell.weightTitleLabel.text = "Team.TeammateCell.weight".localized
-        if stats.weight < 1.0 {
-            cell.weightValueLabel.text = String(format: "%.2f", stats.weight)
-        } else if stats.weight < 10.0 {
-            cell.weightValueLabel.text = String(format: "%.1f", stats.weight)
+        var isMe = false
+        if let me = service.session?.currentUserID, me == teammate.basic.id {
+            cell.headerLabel.text = "Team.TeammateCell.howIVote".localized.uppercased()
+            isMe = true
         } else {
-            cell.weightValueLabel.text = String(Int(stats.weight))
+            cell.headerLabel.text = "Team.TeammateCell.howXVotes".localized(teammate.basic.name.first).uppercased()
         }
         
-        cell.proxyRankTitleLabel.text = "Team.TeammateCell.proxyRank".localized
-        cell.proxyRankValueLabel.text = String(format: "%.1f", stats.proxyRank)
+        cell.forRisksTitleLabel.text = "Team.TeammateCell.forRisks".localized.uppercased()
+        if stats.risksVoteAsTeamOrBetter < 0 {
+            cell.forRisksValueLabel.text = "-"
+        } else {
+            cell.forRisksValueLabel.text = String(format: "%.0f%%", (stats.risksVoteAsTeamOrBetter*100).rounded())
+        }
+        
+        cell.forPayoutsTitleLabel.text = "Team.TeammateCell.forPayouts".localized.uppercased()
+        if stats.claimsVoteAsTeamOrBetter < 0 {
+            cell.forPayoutsValueLabel.text = "-"
+        } else {
+            cell.forPayoutsValueLabel.text = String(format: "%.0f%%", (stats.claimsVoteAsTeamOrBetter*100).rounded())
+        }
+
+        cell.forRisksInfoLabel.text = "Team.TeammateCell.asTeamOrLower".localized.uppercased()
+        cell.forPayoutsInfoLabel.text = "Team.TeammateCell.asTeamOrMore".localized.uppercased()
+//        cell.forRisksInfoLabel.sizeToFit()
+//        cell.forPayoutsInfoLabel.sizeToFit()
+        
+        cell.onTapClaims = { [weak controller] in
+            service.router.presentVotingStats(teamID: teammate.teamPart?.teamID ?? -1,
+                                                  teammateID: teammate.teammateID,
+                                                  teammateName: teammate.basic.name.entire,
+                                                  voteAsTeamOrBetter: stats.claimsVoteAsTeamOrBetter,
+                                                  voteAsTeam: stats.claimsVoteAsTeam,
+                                                  isClaimsStats: true,
+                                                  isMe: isMe)
+        }
+        cell.onTapRisks = { [weak controller] in
+            service.router.presentVotingStats(teamID: teammate.teamPart?.teamID ?? -1,
+                                                  teammateID: teammate.teammateID,
+                                                  teammateName: teammate.basic.name.entire,
+                                                  voteAsTeamOrBetter: stats.risksVoteAsTeamOrBetter,
+                                                  voteAsTeam: stats.risksVoteAsTeam,
+                                                  isClaimsStats: false,
+                                                  isMe: isMe)
+        }
+
         /*
          if let left = cell.numberBar.left {
          left.amountLabel.textAlignment = .center
@@ -365,16 +391,6 @@ struct TeammateCellBuilder {
          right.currencyLabel.text = nil
          }
          */
-        cell.decisionsLabel.text = "Team.TeammateCell.decisions".localized
-        cell.decisionsBar.autoSet(value: stats.decisionFrequency)
-        cell.decisionsBar.rightText = ValueToTextConverter.decisionsText(from: stats.decisionFrequency).uppercased()
-        cell.discussionsLabel.text = "Team.TeammateCell.discussions".localized
-        cell.discussionsBar.autoSet(value: stats.discussionFrequency)
-        cell.discussionsBar.rightText = ValueToTextConverter
-            .discussionsText(from: stats.discussionFrequency).uppercased()
-        cell.frequencyLabel.text = "Team.TeammateCell.votingFrequency".localized
-        cell.frequencyBar.autoSet(value: stats.votingFrequency)
-        cell.frequencyBar.rightText = ValueToTextConverter.frequencyText(from: stats.votingFrequency).uppercased()
         
         let buttonTitle = teammate.basic.isMyProxy
             ? "Team.TeammateCell.removeFromMyProxyVoters".localized

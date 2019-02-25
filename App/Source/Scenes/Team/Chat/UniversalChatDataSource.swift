@@ -505,6 +505,7 @@ extension UniversalChatDatasource {
     private func addCellModel(model: ChatCellModel) {
         guard !models.isEmpty else {
             models.append(model)
+            addVotingStatsIfNeeded()
             return
         }
         
@@ -541,6 +542,7 @@ extension UniversalChatDatasource {
         }
         addSeparatorIfNeeded()
         addAddPhotoIfNeeded()
+        addVotingStatsIfNeeded()
     }
 
     private func addAddPhotoIfNeeded() {
@@ -583,6 +585,36 @@ extension UniversalChatDatasource {
             models.insert(separator, at: lastInsertionIndex)
             lastInsertionIndex += 1
         }
+    }
+    
+    private func addVotingStatsIfNeeded() {
+        guard chatType == .claim else {return}
+
+        // check if model has exactly one text block and no stat block
+        var chatModel: ChatTextCellModel? = nil
+        var insertPos = -1
+        for (idx, model) in models.enumerated() {
+            guard !(model is VotingStatsCellModel) else { return }
+            if model is ChatTextCellModel {
+                guard chatModel == nil else { return }
+                chatModel = model as? ChatTextCellModel
+                insertPos = idx
+            }
+        }
+        guard chatModel != nil else { return }
+        
+        let votingStatsModel = cellModelBuilder.addVotingStatsModel(beforeModel: chatModel!)
+
+        // insert before first text cell, or right after multi-fragment one
+        if chatModel!.fragments.count > 1 {
+            insertPos = insertPos + 1
+        }
+        if insertPos < models.count {
+            models.insert(votingStatsModel, at: insertPos)
+        } else {
+            models.append(votingStatsModel)
+        }
+        lastInsertionIndex += 1
     }
     
     private func addModels(models: [ChatEntity], isPrevious: Bool, chatModel: ChatModel?) {

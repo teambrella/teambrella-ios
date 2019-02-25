@@ -23,7 +23,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
     let basic: BasicPart?
     let team: TeamPart?
     var voting: VotingPart?
-
+    
     let id: Int?
 //    let lastRead: UInt64?
     //let title: String?
@@ -112,6 +112,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
 
     struct BasicPart: Decodable {
         let userID: String
+        let teammateID: Int?
         let avatar: Avatar
         let title: String?
 
@@ -134,11 +135,17 @@ struct ChatModel: Decodable, CustomStringConvertible {
         let reimbursement: Double?
         let paymentFinishedDate: Date?
         let datePayToJoin: Date?
+        
+        let claimsVoteAsTeamOrBetter: Double?
+        let claimsVoteAsTeam: Double?
+        let risksVoteAsTeamOrBetter: Double?
+        let risksVoteAsTeam: Double?
 
         let claimID: Int?
 
         enum CodingKeys: String, CodingKey {
             case userID = "UserId"
+            case teammateID = "TeammateId"
             case avatar = "Avatar"
             case title = "Title"
 
@@ -162,6 +169,11 @@ struct ChatModel: Decodable, CustomStringConvertible {
             case paymentFinishedDate = "DatePaymentFinished"
             case datePayToJoin = "DatePayToJoin"
             case claimID = "ClaimId"
+            
+            case claimsVoteAsTeamOrBetter = "ClaimsVoteAsTeamOrBetter"
+            case claimsVoteAsTeam = "ClaimsVoteAsTeam"
+            case risksVoteAsTeamOrBetter = "RisksVoteAsTeamOrBetter"
+            case risksVoteAsTeam = "RisksVoteAsTeam"
         }
 
     }

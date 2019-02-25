@@ -148,9 +148,9 @@ class ChatUserDataCell: UICollectionViewCell {
         pen.y = Constant.cloudCornerRadius
         context.addLine(to: pen)
         
-        var controlP = CGPoint(x: pen.x, y: 0)
+        var controlP = CGPoint(x: pen.x, y: 1)
         pen.x -= Constant.cloudCornerRadius
-        pen.y = 0
+        pen.y = 1
         context.addQuadCurve(to: pen, control: controlP)
         
         pen.x = cloudBodyMinX + Constant.cloudCornerRadius
@@ -158,7 +158,7 @@ class ChatUserDataCell: UICollectionViewCell {
         
         pen.x = cloudBodyMinX
         pen.y = Constant.cloudCornerRadius
-        controlP = CGPoint(x: cloudBodyMinX, y: 0)
+        controlP = CGPoint(x: cloudBodyMinX, y: 1)
         context.addQuadCurve(to: pen, control: controlP)
         
         pen.y = cloudHeight - Constant.cloudCornerRadius
@@ -194,9 +194,9 @@ class ChatUserDataCell: UICollectionViewCell {
         pen.y = Constant.cloudCornerRadius
         context.addLine(to: pen)
         
-        var controlP = CGPoint(x: pen.x, y: 0)
+        var controlP = CGPoint(x: pen.x, y: 1)
         pen.x += Constant.cloudCornerRadius
-        pen.y = 0
+        pen.y = 1
         context.addQuadCurve(to: pen, control: controlP)
         
         pen.x = cloudBodyMaxX - Constant.cloudCornerRadius
@@ -204,7 +204,7 @@ class ChatUserDataCell: UICollectionViewCell {
         
         pen.x = cloudBodyMaxX
         pen.y = Constant.cloudCornerRadius
-        controlP = CGPoint(x: cloudBodyMaxX, y: 0)
+        controlP = CGPoint(x: cloudBodyMaxX, y: 1)
         context.addQuadCurve(to: pen, control: controlP)
         
         pen.y = cloudHeight - Constant.cloudCornerRadius

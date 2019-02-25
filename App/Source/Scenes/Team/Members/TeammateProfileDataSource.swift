@@ -153,22 +153,28 @@ class TeammateProfileDataSource: SingleItemDataSource {
         
         //if isMe { source.append(.me) } else { source.append(.summary) }
         source.append(.dialog)
+        var needAddVoted = false
         if let voting = teammate.voting {
             isNewTeammate = true
             if voting.canVote || isMe {
                 source.append(.voting)
             } else if canAddVoted {
-                source.append(.voted)
+                needAddVoted = true
             }
             //source.append(.dialogCompact)
         } else if isVoted && canAddVoted {
-            source.append(.voted)
+            needAddVoted = true
         }
+
         source.append(.object)
         source.append(.stats)
-        if !socialItems.isEmpty && !isMe {
-            source.append(.contact)
+        
+        if needAddVoted {
+            source.append(.voted)
         }
+//        if !socialItems.isEmpty && !isMe {
+//            source.append(.contact)
+//        }
     }
     
     var socialItems: [SocialItem] {
