@@ -99,7 +99,8 @@ struct ClaimsCellBuilder {
                 cell.scaleBar.isLineHidden = false
             }
 
-            cell.amountLabel.text = currencySymbol + claim.claimAmount.formatted
+            let claimAmount = Fiat(claim.claimAmount.value * claim.reimbursement.value)
+            cell.amountLabel.text = currencySymbol + claimAmount.formatted
             cell.amountLabel.font = isSmallIPhone ? UIFont.teambrellaBold(size: 16) : UIFont.teambrellaBold(size: 20)
             if let ratio = claim.paidRatio {
                 cell.scaleBar.value = CGFloat(ratio)

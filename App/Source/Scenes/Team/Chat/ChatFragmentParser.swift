@@ -39,7 +39,9 @@ struct ChatFragmentParser {
     var defaultAspect: CGFloat = 2.0
     
     func parse(item: ChatEntity) -> [ChatFragment] {
-        let scanner = Scanner(string: item.text)
+        var text = item.text.replacingOccurrences(of: "<p>", with: "")
+        text = text.replacingOccurrences(of: "</p>", with: "")
+        let scanner = Scanner(string: text)
         let ratios = item.imageRatios
         var result: [ChatFragment] = []
         var imagesCount = 0
