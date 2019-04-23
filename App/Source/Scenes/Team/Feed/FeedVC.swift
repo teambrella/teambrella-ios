@@ -36,6 +36,7 @@ class FeedVC: UIViewController, IndicatorInfoProvider {
     var isFirstLoading = true
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         setupCollectionView()
         HUD.show(.progress, onView: view)

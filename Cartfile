@@ -1,5 +1,5 @@
 #  Libraries
-github "yaro812/SwiftKeccak.git"
+github "teambrella/SwiftKeccak.git" "develop"
 
 # Views
 # github "xmartlabs/XLPagerTabStrip" ~> 7.0

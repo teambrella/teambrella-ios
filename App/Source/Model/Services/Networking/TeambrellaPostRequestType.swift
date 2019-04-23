@@ -82,7 +82,7 @@ enum TeambrellaPostRequestType: String {
     case riskVotesList = "teammate/getTeammateRisksVotesList"
 
     case wallet = "wallet/getOne"
-    case walletTransactions = "wallet/getMyTxList"
+    case walletTransactions = "wallet/getMyTxList2"
     case withdrawTransactions = "wallet/getWithdraw"
     case withdraw = "wallet/newWithdraw"
 }

@@ -16,30 +16,33 @@
 
 import Foundation
 
-protocol FlatDataSource: DataSource {
+protocol SingleItemDataSource: Loadable {
     associatedtype Item
     
-     var items: [Item] { get }
+    var item: Item? { get }
+    var isItemLoaded: Bool { get }
 }
 
-protocol SectionedDataSource: DataSource, Loadable {
+protocol FlatDataSource: Countable {
+    associatedtype Item
+    
+    var items: [Item] { get }
+    subscript(indexPath: IndexPath) -> Item { get }
+}
+
+protocol SectionedDataSource: Countable, Loadable {
     associatedtype Item
     
     var items: [[Item]] { get }
     var sections: Int { get }
     
     func items(in section: Int) -> Int
+    subscript(indexPath: IndexPath) -> Item { get }
 }
 
 protocol Countable {
     var count: Int { get }
     var isEmpty: Bool { get }
-}
-
-protocol DataSource: Countable {
-    associatedtype Item
-    
-    subscript(indexPath: IndexPath) -> Item { get }
 }
 
 protocol Updateable {
@@ -55,13 +58,6 @@ protocol Loadable: Updateable {
 
 protocol StandardDataSource: FlatDataSource, Loadable {
     
-}
-
-protocol SingleItemDataSource: Loadable {
-    associatedtype Item
-    
-    var item: Item? { get }
-    var isItemLoaded: Bool { get }
 }
 
 extension Countable {

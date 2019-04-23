@@ -27,6 +27,11 @@ struct WalletTransactionsModel: Decodable {
         case lastUpdated = "LastUpdated"
         case serverTxState = "ServerTxState"
         case dateCreated = "DateCreated"
+        case amountFiatMonth = "AmountFiatMonth"
+        case amountFiatYear = "AmountFiatYear"
+        case modelOrName = "ModelOrName"
+        case smallPhoto = "SmallPhoto"
+        case year = "Year"
         case id = "Id"
         case to = "To"
     }
@@ -37,6 +42,7 @@ struct WalletTransactionsModel: Decodable {
             case userID = "UserId"
             case name = "UserName"
             case amount = "Amount"
+            case amountFiat = "AmountFiat"
             case avatar = "Avatar"
         }
 
@@ -44,14 +50,19 @@ struct WalletTransactionsModel: Decodable {
         let userID: String
         let name: Name
         let amount: Ether
+        let amountFiat: Fiat
         let avatar: Avatar
     }
 
     let claimID: Int?
-    let lastUpdated: Int
+    let lastUpdated: Int64
     let serverTxState: TransactionState
     let dateCreated: Date?
+    let amountFiatMonth: Fiat
+    let amountFiatYear: Fiat
     let id: String
-    let to: [TransactionTo]
-    
+    let to: [TransactionTo]?
+    let modelOrName: String?
+    let year: Int?
+    let smallPhoto: String?
 }

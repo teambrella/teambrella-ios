@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lGP-Uv-A7d">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -525,7 +525,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zer-NP-3zW">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="132" width="320" height="436"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="50"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="zvK-24-Foc">
@@ -549,21 +549,133 @@
                                     <outlet property="delegate" destination="YU6-WL-eTk" id="h49-72-qRB"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmv-FP-EpS" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="320" height="112"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOU-uD-oBA" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Spent in 2019 year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jz7-Ni-VYt" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="20" width="229.5" height="19"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spent in April" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAz-43-HSV" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="66.5" width="238" height="18.5"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="120$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBH-CG-DcU" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="269.5" y="20" width="34.5" height="19"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awA-2q-dBV" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="250" y="56" width="22" height="39"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="1000" text="40$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gj-2K-qnJ" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="278" y="59" width="26" height="33"/>
+                                        <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5y-rF-HDq" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="241.5" y="10" width="22" height="39"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="cBH-CG-DcU" firstAttribute="leading" secondItem="v5y-rF-HDq" secondAttribute="trailing" constant="6" id="1Gw-8E-LJn"/>
+                                    <constraint firstAttribute="trailing" secondItem="cBH-CG-DcU" secondAttribute="trailing" constant="16" id="1mE-bi-9bx"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Gj-2K-qnJ" secondAttribute="bottom" constant="20" id="366-Jp-glb"/>
+                                    <constraint firstItem="cBH-CG-DcU" firstAttribute="leading" secondItem="Jz7-Ni-VYt" secondAttribute="trailing" constant="24" id="3uJ-kh-bLO"/>
+                                    <constraint firstItem="4Gj-2K-qnJ" firstAttribute="centerY" secondItem="yAz-43-HSV" secondAttribute="centerY" id="CdM-Pd-Z3l"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Gj-2K-qnJ" secondAttribute="trailing" constant="16" id="D4u-fr-QWu"/>
+                                    <constraint firstAttribute="trailing" secondItem="YOU-uD-oBA" secondAttribute="trailing" id="EUp-cf-e56"/>
+                                    <constraint firstItem="v5y-rF-HDq" firstAttribute="centerY" secondItem="cBH-CG-DcU" secondAttribute="centerY" id="G1H-pb-vFa"/>
+                                    <constraint firstItem="4Gj-2K-qnJ" firstAttribute="top" secondItem="cBH-CG-DcU" secondAttribute="bottom" constant="20" id="LBN-5R-JhU"/>
+                                    <constraint firstItem="awA-2q-dBV" firstAttribute="centerY" secondItem="4Gj-2K-qnJ" secondAttribute="centerY" id="LvR-rm-ce1"/>
+                                    <constraint firstItem="4Gj-2K-qnJ" firstAttribute="leading" secondItem="yAz-43-HSV" secondAttribute="trailing" constant="24" id="PTm-YK-Vi6"/>
+                                    <constraint firstItem="Jz7-Ni-VYt" firstAttribute="leading" secondItem="vmv-FP-EpS" secondAttribute="leading" constant="16" id="QH2-oU-pDk"/>
+                                    <constraint firstItem="yAz-43-HSV" firstAttribute="leading" secondItem="vmv-FP-EpS" secondAttribute="leading" constant="16" id="YNx-xs-eA7"/>
+                                    <constraint firstItem="cBH-CG-DcU" firstAttribute="top" secondItem="vmv-FP-EpS" secondAttribute="top" constant="20" id="aLk-eh-hsL"/>
+                                    <constraint firstAttribute="height" constant="112" id="bkd-US-1hn"/>
+                                    <constraint firstItem="YOU-uD-oBA" firstAttribute="leading" secondItem="vmv-FP-EpS" secondAttribute="leading" id="cV4-OK-LHV"/>
+                                    <constraint firstAttribute="bottom" secondItem="YOU-uD-oBA" secondAttribute="bottom" id="cgc-Gx-oLZ"/>
+                                    <constraint firstItem="YOU-uD-oBA" firstAttribute="top" secondItem="vmv-FP-EpS" secondAttribute="top" id="dMJ-je-5HI"/>
+                                    <constraint firstItem="cBH-CG-DcU" firstAttribute="centerY" secondItem="Jz7-Ni-VYt" secondAttribute="centerY" id="iHM-sK-Kf7"/>
+                                    <constraint firstItem="4Gj-2K-qnJ" firstAttribute="leading" secondItem="awA-2q-dBV" secondAttribute="trailing" constant="6" id="kCE-5y-6QZ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                        <real key="value" value="360"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="centerX">
+                                        <integer key="value" value="-180"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="centerY">
+                                        <integer key="value" value="-128"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="coefficient">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startWidth">
+                                        <integer key="value" value="110"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.85882352941176465" green="0.91764705882352937" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="zer-NP-3zW" firstAttribute="top" secondItem="vmv-FP-EpS" secondAttribute="bottom" id="3mq-bg-feM"/>
                             <constraint firstItem="zer-NP-3zW" firstAttribute="leading" secondItem="rbC-gw-YXz" secondAttribute="leading" id="AC9-5D-azn"/>
                             <constraint firstAttribute="bottom" secondItem="zer-NP-3zW" secondAttribute="bottom" id="CFP-ib-zH0"/>
+                            <constraint firstItem="vmv-FP-EpS" firstAttribute="leading" secondItem="rbC-gw-YXz" secondAttribute="leading" id="ST6-GV-54f"/>
+                            <constraint firstItem="vmv-FP-EpS" firstAttribute="top" secondItem="zea-SJ-GGM" secondAttribute="bottom" id="WyI-gg-D0t"/>
+                            <constraint firstAttribute="trailing" secondItem="vmv-FP-EpS" secondAttribute="trailing" id="YiQ-tk-bfd"/>
                             <constraint firstAttribute="trailing" secondItem="zer-NP-3zW" secondAttribute="trailing" id="gqB-F8-RFO"/>
-                            <constraint firstItem="zer-NP-3zW" firstAttribute="top" secondItem="zea-SJ-GGM" secondAttribute="bottom" id="hNw-oz-yIx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="zer-NP-3zW" id="HSS-u0-HfZ"/>
+                        <outlet property="headerView" destination="vmv-FP-EpS" id="nfK-C0-uRb"/>
+                        <outlet property="perMonthTitle" destination="yAz-43-HSV" id="wwz-tl-XjC"/>
+                        <outlet property="perMonthValue" destination="4Gj-2K-qnJ" id="PzL-iv-FqZ"/>
+                        <outlet property="perYearTitle" destination="Jz7-Ni-VYt" id="Yq4-m8-av5"/>
+                        <outlet property="perYearValue" destination="cBH-CG-DcU" id="s7O-RA-tsg"/>
+                        <outlet property="signPerMonthValue" destination="awA-2q-dBV" id="pFA-ol-WTc"/>
+                        <outlet property="signPerYearValue" destination="v5y-rF-HDq" id="aLx-zE-Yu8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgk-A9-HWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6124" y="4971"/>
+            <point key="canvasLocation" x="6123.75" y="4970.070422535211"/>
         </scene>
         <!--Wallet CosignersVC-->
         <scene sceneID="nfj-jN-LD0">

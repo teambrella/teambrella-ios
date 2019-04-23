@@ -25,21 +25,46 @@ class WalletTransactionCell: UICollectionViewCell, XIBInitableCell {
 
     @IBOutlet var container: UIView!
 
-    @IBOutlet var avatarView: RoundImageView!
+    @IBOutlet var avatarView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var detailsLabel: UILabel!
 
+    @IBOutlet var signAmount: UILabel!
     @IBOutlet var amountLabel: UILabel!
     @IBOutlet var kindLabel: UILabel!
 
     @IBOutlet weak var separator: UIView!
 
     func setup(with model: WalletTransactionsCellModel) {
-        avatarView.show(model.avatar)
-        nameLabel.text = model.name.entire
+        let currency = service.session?.currentTeam?.currencySymbol ?? ""
+
+        if model.claimID != nil {
+            avatarView.showImage(string: model.smallPhoto, needHeaders: true)
+            avatarView.layer.cornerRadius = 4
+            //nameLabel.text = model.
+        } else {
+            avatarView.show(model.avatar)
+            avatarView.layer.cornerRadius = avatarView.frame.height / 2
+        }
+        nameLabel.text = model.name
+        avatarView.layer.masksToBounds = true
+        avatarView.contentMode = .scaleAspectFill
         detailsLabel.text = model.detailsText
         amountLabel.text = model.amountText
         kindLabel.text = model.kindText
+        
+        let amount = -model.amountFiat.value
+        if (model.amountText == "") {
+            let signMonth: String = amount >= 0.01 ? "+" : amount <= -0.01 ? "-" : ""
+            let signMonthColor: UIColor = amount > 0.0 ? .tealish : .lipstick
+            signAmount.text = signMonth
+            signAmount.textColor = signMonthColor
+            amountLabel.text = String(format:"%.2f %@", abs(amount), currency)
+        }
+
+        if (abs(model.amountCrypto.value) >= 0.00001) {
+            kindLabel.text = String(format: "%.2f mETH", MEth(model.amountCrypto).value)
+        }
     }
 
 }

@@ -20,13 +20,19 @@ struct TransactionsCellModelBuilder {
     func cellModels(from models: [WalletTransactionsModel]) -> [WalletTransactionsCellModel] {
         var result: [WalletTransactionsCellModel] = []
         for model in models {
-            for subject in model.to {
+            for subject in model.to ?? [] {
                 let detailsText = self.detailsText(claimID: model.claimID, transactionKind: subject.kind)
                 let cellModel = WalletTransactionsCellModel(avatar: subject.avatar,
-                                                            name: subject.name,
+                                                            smallPhoto: model.smallPhoto,
+                                                            name: (model.claimID == nil) ? subject.name.entire : "\(model.modelOrName ?? ""), \(model.year ?? 0)",
                                                             detailsText: detailsText,
-                                                            amountText: self.amountText(amount: subject.amount),
+                                                            amountFiat: subject.amountFiat,
+                                                            amountCrypto: subject.amount,
+                                                            amountFiatMonth: model.amountFiatMonth,
+                                                            amountFiatYear: model.amountFiatYear,
+                                                            amountText: "",
                                                             kindText: self.typeText(state: model.serverTxState),
+                                                            month: (model.dateCreated?.month ?? 0) + (model.dateCreated?.year ?? 0) * 12,
                                                             claimID: model.claimID,
                                                             userID: nil)
                 result.append(cellModel)
@@ -41,10 +47,16 @@ struct TransactionsCellModelBuilder {
             for subject in model.to {
                 let detailsText = ""
                 let cellModel = WalletTransactionsCellModel(avatar: model.avatar,
-                                                            name: model.name,
+                                                            smallPhoto: nil,
+                                                            name: model.name.entire,
                                                             detailsText: detailsText,
+                                                            amountFiat: subject.amountFiat,
+                                                            amountCrypto: subject.amount,
+                                                            amountFiatMonth: Fiat(0),
+                                                            amountFiatYear: Fiat(0),
                                                             amountText: self.amountText(amount: subject.amount),
                                                             kindText: self.typeText(state: model.status),
+                                                            month: 0,
                                                             claimID: nil,
                                                             userID: model.userID)
                 result.append(cellModel)

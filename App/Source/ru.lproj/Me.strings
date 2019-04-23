@@ -96,9 +96,14 @@
 "Me.WalletVC.lowerBrick.title"                     = "РЕКОМЕНДОВАНО";
 "Me.Wallet.Transactions.to"                        = "КУДА";
 "Me.Wallet.Transactions.withdrawal"                = "ВЫВОД";
-"Me.Wallet.Transactions.claimNumber"               = "ЗАЯВКА %d";
+"Me.Wallet.Transactions.claimNumber"               = "ВЫПЛАТА ПО ЗАЯВКЕ";
 "Me.Wallet.Transactions.kind.pending"              = "В ОЖИДАНИИ";
 "Me.Wallet.Transactions.kind.cancelled"            = "ОТМЕНА";
+
+"Me.Wallet.Transactions.expensesForPeriod"         = "Потрачено за %@";
+"Me.Wallet.Transactions.expensesForYear"           = "Потрачено за %d год";
+"Me.Wallet.Transactions.incomeForPeriod"           = "Компенсации за %@";
+"Me.Wallet.Transactions.incomeForYear"             = "Компенсации за %d год";
 
 "Me.Wallet.Transactions.Empty.title"               = "Пока нет транзакций";
 "Me.Wallet.Transactions.Empty.details"             = "...";

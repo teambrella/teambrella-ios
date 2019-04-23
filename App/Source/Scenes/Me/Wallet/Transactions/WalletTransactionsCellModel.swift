@@ -18,10 +18,16 @@ import Foundation
 
 struct WalletTransactionsCellModel {
     let avatar: Avatar
-    let name: Name
+    let smallPhoto: String?
+    let name: String
     let detailsText: String
+    let amountFiat: Fiat
+    let amountCrypto: Ether
+    let amountFiatMonth: Fiat
+    let amountFiatYear: Fiat
     let amountText: String
     let kindText: String
+    let month: Int
 
     let claimID: Int?
     let userID: String?

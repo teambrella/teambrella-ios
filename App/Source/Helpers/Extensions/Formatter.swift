@@ -39,7 +39,13 @@ extension Formatter {
         formatter.timeZone = TimeZone.current
         return formatter
     }()
-    
+
+    static let monthName: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("MMMM")
+        return formatter
+    }()
+
     static let teambrella: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

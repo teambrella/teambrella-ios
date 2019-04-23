@@ -22,8 +22,8 @@
 import Foundation
 
 class WalletTransactionsDataSource {
-    var items: [WalletTransactionsCellModel] = []
-    var count: Int { return items.count }
+    var items: [[WalletTransactionsCellModel]] = []
+    var sections: Int { return items.count }
     let teamID: Int
     let limit: Int = 100
     var search: String = ""
@@ -40,8 +40,15 @@ class WalletTransactionsDataSource {
     }
     
     subscript(indexPath: IndexPath) -> WalletTransactionsCellModel {
-        let model = items[indexPath.row]
-        return model
+        let section = items[indexPath.section]
+        return section[indexPath.row]
+    }
+    
+    func itemsIn(section: Int) -> Int {
+        guard section < items.count else {
+            return 0
+        }
+        return items[section].count
     }
     
     func loadData() {
@@ -49,7 +56,8 @@ class WalletTransactionsDataSource {
         
         isLoading = true
         
-        service.dao.requestWalletTransactions(teamID: teamID, offset: count, limit: limit, search: search)
+        let totalCount = items.reduce(0) {$0 + $1.count}
+        service.dao.requestWalletTransactions(teamID: teamID, offset: totalCount, limit: limit, search: search)
             .observe { [weak self] result in
                 guard let `self` = self else { return }
                 
@@ -57,7 +65,13 @@ class WalletTransactionsDataSource {
                 case let .value(transactions):
                     self.hasMore = transactions.count == self.limit
                     let cellModels = TransactionsCellModelBuilder().cellModels(from: transactions)
-                    self.items += cellModels
+                    for model in cellModels {
+                        if self.items.count == 0 || self.items.count > 0 && self.items.last?.first?.month != model.month {
+                            self.items.append([])
+                        }
+                        self.items[self.items.count-1].append(model)
+                    }
+                    
                     self.onUpdate?()
                 case let .error(error):
                     self.onError?(error)

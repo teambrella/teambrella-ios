@@ -589,9 +589,9 @@
                             <constraint firstAttribute="trailing" secondItem="HB3-6s-gf8" secondAttribute="trailing" id="0Tj-Yc-Kf0"/>
                             <constraint firstItem="T3o-0U-iv8" firstAttribute="leading" secondItem="O2k-AB-n05" secondAttribute="leading" id="Kuc-gc-U92"/>
                             <constraint firstItem="HB3-6s-gf8" firstAttribute="top" secondItem="T3o-0U-iv8" secondAttribute="bottom" id="PJr-ji-BAd"/>
+                            <constraint firstItem="T3o-0U-iv8" firstAttribute="top" secondItem="EeS-ah-Y6t" secondAttribute="bottom" id="VJl-F8-UIs"/>
+                            <constraint firstItem="i00-M2-7MW" firstAttribute="top" secondItem="HB3-6s-gf8" secondAttribute="bottom" id="bNa-W7-mZL"/>
                             <constraint firstItem="HB3-6s-gf8" firstAttribute="leading" secondItem="O2k-AB-n05" secondAttribute="leading" id="iM5-l8-vmV"/>
-                            <constraint firstItem="T3o-0U-iv8" firstAttribute="top" secondItem="EeS-ah-Y6t" secondAttribute="bottom" id="mhE-7b-Ibs"/>
-                            <constraint firstItem="i00-M2-7MW" firstAttribute="top" secondItem="HB3-6s-gf8" secondAttribute="bottom" id="nNk-rX-xMm"/>
                             <constraint firstAttribute="trailing" secondItem="T3o-0U-iv8" secondAttribute="trailing" id="qnE-bj-wAE"/>
                         </constraints>
                     </view>

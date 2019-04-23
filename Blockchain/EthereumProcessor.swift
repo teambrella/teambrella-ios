@@ -98,7 +98,7 @@ struct EthereumProcessor {
         
         let last32bytes = bytes[(bytes.count - 32)...]
         do {
-            log("ethereum address: \(String(describing: account.getAddress().getHex()))", type: .cryptoDetails)
+            log("ethereum address: \(String(describing: account.getAddress()?.getHex() ?? "0x0"))", type: .cryptoDetails)
             log("last 32 bytes: \(Data(last32bytes).hexString)", type: .cryptoDetails)
             log("secret string: \(secretString)", type: .cryptoDetails)
             let signed = try ethKeyStore?.signHashPassphrase(account, passphrase: secretString, hash: Data(last32bytes))
@@ -210,7 +210,7 @@ struct EthereumProcessor {
     }
     
     func chainID(isTestNet: Bool) -> GethBigInt {
-        return GethBigInt(isTestNet ? 3: 1)
+        return GethBigInt(isTestNet ? 3: 1)!
     }
     
     /// returns hash made by Keccak algorithm
