@@ -34,15 +34,17 @@ struct Key: CustomDebugStringConvertible {
     }
     
     var publicKey: String {
-        return key.publicKey.hex()
+        return BTCHexFromData(key.publicKey as Data)
     }
 
+    /*
     var mnemonic: [String] {
         let entropy = key.privateKey as Data
         let mnemonic = BTCMnemonic(entropy: entropy, password: nil, wordListType: .english)
         let words = mnemonic?.words as? [String]
         return words ?? []
     }
+    */
     
     var address: String {
         return isTestnet ? key.privateKeyAddressTestnet.string : key.privateKeyAddress.string 

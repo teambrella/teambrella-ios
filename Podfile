@@ -1,11 +1,12 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '10.0'
-use_frameworks!(false)
+use_frameworks!
 use_modular_headers!
 inhibit_all_warnings!
 
 def bitcoin_pods
-    pod 'CoreBitcoin', :podspec => 'https://raw.github.com/oleganza/CoreBitcoin/master/CoreBitcoin.podspec', :modular_headers => false
+    # pod 'CoreBitcoin', :podspec => 'https://raw.github.com/teambrella/CoreBitcoin/master/CoreBitcoin.podspec', :modular_headers => false
+  pod 'CoreEthereum', :podspec => 'https://raw.github.com/wjmelements/CoreEthereum/master/CoreEthereum.podspec', :modular_headers => false
 end
 
 def ethereum_pods

@@ -96,6 +96,7 @@
 "Me.WalletVC.lowerBrick.title"                     = "РЕКОМЕНДОВАНО";
 "Me.Wallet.Transactions.to"                        = "КУДА";
 "Me.Wallet.Transactions.withdrawal"                = "ВЫВОД";
+"Me.Wallet.Transactions.topup"                     = "ПОПОЛНЕНИЕ";
 "Me.Wallet.Transactions.claimNumber"               = "ВЫПЛАТА ПО ЗАЯВКЕ";
 "Me.Wallet.Transactions.kind.pending"              = "В ОЖИДАНИИ";
 "Me.Wallet.Transactions.kind.cancelled"            = "ОТМЕНА";

@@ -69,6 +69,8 @@ struct TransactionsCellModelBuilder {
         switch transactionKind {
         case .withdraw:
             return "Me.Wallet.Transactions.withdrawal".localized
+        case .topup:
+            return "Me.Wallet.Transactions.topup".localized
         default:
             guard let claimID = claimID else { return "" }
 

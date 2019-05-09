@@ -138,8 +138,8 @@ extension ClaimTransactionsVC: UICollectionViewDelegate {
         if dataSource.count > 0 {
             guard let view = view as? InfoHeader else { return }
             
-            view.leadingLabel.text = "Team.Claim.Transactions.from".localized
-            view.trailingLabel.text = "General.mETH".localized
+            view.leadingLabel.text = "Team.Teammates.teammates".localized
+            view.trailingLabel.text = ""
         }
     }
     

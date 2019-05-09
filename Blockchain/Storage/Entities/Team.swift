@@ -45,9 +45,11 @@ extension Team {
         return teammates.filter { $0.publicKey == pubKey }.first
     }
     
+    /*
     var network: BTCNetwork {
         return isTestnet ? BTCNetwork.testnet() : BTCNetwork.mainnet()
     }
+    */
     
     var displayName: String {
         return isTestnet ? "[testnet]" : "" + name

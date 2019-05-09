@@ -40,6 +40,7 @@ public enum TransactionKind: Int, EnumStringConvertible, Decodable {
     case withdraw               = 1
     case moveToNextWallet       = 2
     case saveFromPreviousWallet = 3
+    case topup                  = 4
     case votingPayout           = 100
 
     var localizationKey: String { return "General.TransactionKind.\(self)" }

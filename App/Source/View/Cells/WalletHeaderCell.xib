@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -20,17 +20,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletHeaderCell" id="gTV-IL-0wX" customClass="WalletHeaderCell" customModule="Surilla" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kw2-yj-Xiw" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vur-zE-tBc" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
                                         <color key="value" red="0.85882352941176465" green="0.91764705882352937" blue="1" alpha="0.01" colorSpace="calibratedRGB"/>
@@ -41,25 +41,25 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4Ff-9F-8fr" customClass="WalletAmountLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="30" y="16" width="50.5" height="103"/>
+                                <rect key="frame" x="30" y="16" width="50.5" height="91.5"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
                                 <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mBTC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6O-dA-TcK">
-                                <rect key="frame" x="87.5" y="82" width="43.5" height="19"/>
+                                <rect key="frame" x="87.5" y="70.5" width="43.5" height="19"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                 <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nka-jt-bBu">
-                                <rect key="frame" x="87.5" y="68" width="9" height="12"/>
+                                <rect key="frame" x="87.5" y="56.5" width="9" height="12"/>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="10"/>
                                 <color key="textColor" red="0.4823529412" green="0.55294117649999996" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tge-af-isS" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="16" y="135" width="343" height="40"/>
+                                <rect key="frame" x="16" y="123.5" width="343" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LSv-qZ-Swc"/>
@@ -69,21 +69,46 @@
                                     <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoJ-du-uLo" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="16" y="215" width="343" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Dbm-Qu-vca"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
+                                <state key="normal" title="Fund">
+                                    <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fund for 20$ to get bonus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZI-UI-tWk">
+                                <rect key="frame" x="117" y="179.5" width="141.5" height="19.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19.5" id="lzR-PV-rgh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="12"/>
+                                <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="HZI-UI-tWk" firstAttribute="centerX" secondItem="Tge-af-isS" secondAttribute="centerX" id="2dg-IT-gH6"/>
                             <constraint firstItem="Tge-af-isS" firstAttribute="top" secondItem="4Ff-9F-8fr" secondAttribute="bottom" constant="16" id="3pr-FN-mef"/>
                             <constraint firstItem="Nka-jt-bBu" firstAttribute="leading" secondItem="W6O-dA-TcK" secondAttribute="leading" id="4GT-yy-yTR"/>
-                            <constraint firstAttribute="bottom" secondItem="Tge-af-isS" secondAttribute="bottom" constant="16" id="4c2-eJ-5le"/>
+                            <constraint firstItem="KoJ-du-uLo" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="16" id="9ym-E1-oXq"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W6O-dA-TcK" secondAttribute="trailing" constant="16" id="AQW-Nh-2Sr"/>
+                            <constraint firstAttribute="trailing" secondItem="KoJ-du-uLo" secondAttribute="trailing" constant="16" id="E6R-gg-TKF"/>
                             <constraint firstItem="W6O-dA-TcK" firstAttribute="top" secondItem="Nka-jt-bBu" secondAttribute="bottom" constant="2" id="Est-8T-FdY"/>
                             <constraint firstAttribute="bottom" secondItem="Vur-zE-tBc" secondAttribute="bottom" id="GJR-XP-XBs"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Nka-jt-bBu" secondAttribute="trailing" constant="16" id="L3B-qz-k2C"/>
+                            <constraint firstItem="KoJ-du-uLo" firstAttribute="top" secondItem="HZI-UI-tWk" secondAttribute="bottom" constant="16" id="a5k-q8-ouZ"/>
                             <constraint firstItem="W6O-dA-TcK" firstAttribute="leading" secondItem="4Ff-9F-8fr" secondAttribute="trailing" constant="7" id="alt-c3-IiC"/>
                             <constraint firstItem="4Ff-9F-8fr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Kw2-yj-Xiw" secondAttribute="top" constant="16" id="bi5-mE-LHX"/>
                             <constraint firstItem="4Ff-9F-8fr" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="30" id="gOf-kR-0eT"/>
                             <constraint firstItem="Tge-af-isS" firstAttribute="leading" secondItem="Kw2-yj-Xiw" secondAttribute="leading" constant="16" id="lAn-n6-30d"/>
                             <constraint firstItem="Vur-zE-tBc" firstAttribute="top" secondItem="Kw2-yj-Xiw" secondAttribute="top" id="m2g-N0-5oG"/>
+                            <constraint firstAttribute="bottom" secondItem="KoJ-du-uLo" secondAttribute="bottom" constant="16" id="ojX-li-V2t"/>
+                            <constraint firstItem="Tge-af-isS" firstAttribute="bottom" secondItem="HZI-UI-tWk" secondAttribute="top" constant="-16" id="slg-nt-6sf"/>
                             <constraint firstAttribute="trailing" secondItem="Vur-zE-tBc" secondAttribute="trailing" id="uGY-Xd-Lsr"/>
                             <constraint firstItem="W6O-dA-TcK" firstAttribute="baseline" secondItem="4Ff-9F-8fr" secondAttribute="baseline" id="yFh-aq-lhk"/>
                             <constraint firstAttribute="trailing" secondItem="Tge-af-isS" secondAttribute="trailing" constant="16" id="yNb-1S-yqz"/>
@@ -131,10 +156,12 @@
             <connections>
                 <outlet property="amount" destination="4Ff-9F-8fr" id="Cqw-5n-nnd"/>
                 <outlet property="auxillaryAmount" destination="Nka-jt-bBu" id="JLX-iU-Ibu"/>
-                <outlet property="button" destination="Tge-af-isS" id="okx-Tp-qGU"/>
                 <outlet property="currencyLabel" destination="W6O-dA-TcK" id="Xbp-sI-LSg"/>
+                <outlet property="fundWalletButton" destination="KoJ-du-uLo" id="wEb-1m-Ch0"/>
+                <outlet property="fundWalletLabel" destination="HZI-UI-tWk" id="rOM-96-SdO"/>
+                <outlet property="withdrawButton" destination="Tge-af-isS" id="okx-Tp-qGU"/>
             </connections>
-            <point key="canvasLocation" x="-125.5" y="-119.5"/>
+            <point key="canvasLocation" x="-125.59999999999999" y="-120.08995502248877"/>
         </collectionViewCell>
     </objects>
 </document>

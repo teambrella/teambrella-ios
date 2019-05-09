@@ -15,6 +15,7 @@
  */
 
 import UserNotifications
+import UIKit
 
 class NotificationService: UNNotificationServiceExtension {
     var contentHandler: ((UNNotificationContent) -> Void)?

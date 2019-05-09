@@ -54,16 +54,14 @@ class WalletTransactionCell: UICollectionViewCell, XIBInitableCell {
         kindLabel.text = model.kindText
         
         let amount = -model.amountFiat.value
-        if (model.amountText == "") {
-            let signMonth: String = amount >= 0.01 ? "+" : amount <= -0.01 ? "-" : ""
-            let signMonthColor: UIColor = amount > 0.0 ? .tealish : .lipstick
-            signAmount.text = signMonth
-            signAmount.textColor = signMonthColor
-            amountLabel.text = String(format:"%.2f %@", abs(amount), currency)
-        }
+        let signMonth: String = amount >= 0.01 ? "+" : amount <= -0.01 ? "-" : ""
+        let signMonthColor: UIColor = amount > 0.0 ? .tealish : .lipstick
+        signAmount.text = signMonth
+        signAmount.textColor = signMonthColor
+        amountLabel.text = String(format:"%.2f %@", abs(amount), currency)
 
         if (abs(model.amountCrypto.value) >= 0.00001) {
-            kindLabel.text = String(format: "%.2f mETH", MEth(model.amountCrypto).value)
+            kindLabel.text = String(format: "%.2f mETH", abs(MEth(model.amountCrypto).value))
         }
     }
 

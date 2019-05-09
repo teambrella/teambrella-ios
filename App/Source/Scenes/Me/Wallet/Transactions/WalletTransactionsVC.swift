@@ -90,6 +90,11 @@ class WalletTransactionsVC: UIViewController, Routable {
         setupHeaderView()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        title = "Main.back".localized
+    }
+    
     func setupHeaderView() {
         headerView.clipsToBounds = false
         ViewDecorator.shadow(for: headerView, opacity: 0.1, radius: 8)

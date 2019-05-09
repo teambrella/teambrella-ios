@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175A2712A37C10464206BAA5 /* Pods_TeambrellaNotification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FC8E5CF236D80297F0650DF /* Pods_TeambrellaNotification.framework */; };
 		175EF845201B71A300268D08 /* WalletInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175EF842201B71A300268D08 /* WalletInfoCell.swift */; };
 		175EF847201B71A300268D08 /* WalletInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175EF843201B71A300268D08 /* WalletInfoCell.xib */; };
 		17751AB22033568B00274F6A /* NewDiscussionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17751AAF2033568B00274F6A /* NewDiscussionCell.swift */; };
@@ -22,6 +23,8 @@
 		17AD14AC211C8B4E007C7613 /* VotedRiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17AD14A8211C8B4E007C7613 /* VotedRiskCell.xib */; };
 		17BE300820D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */; };
 		17BE300920D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */; };
+		1BE8BBE73AF16BA6CA9E454B /* Pods_Surilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903A55F9900D4913318EF8FF /* Pods_Surilla.framework */; };
+		2321D8AA4F41DD87FB8219EE /* Pods_Teambrella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EBF560BB6AF3622BEA2EC79 /* Pods_Teambrella.framework */; };
 		6D02945920DD3EFA00936664 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02945820DD3EF900936664 /* Connectivity.swift */; };
 		6D02945A20DD3EFA00936664 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D02945820DD3EF900936664 /* Connectivity.swift */; };
 		6D05235020A5D838000B3247 /* InfoMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC9474208E435E0017E87B /* InfoMaker.swift */; };
@@ -1146,7 +1149,7 @@
 		6DF8B92520DBC46400D9D831 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8B92420DBC46400D9D831 /* Statistics.swift */; };
 		6DF8B92620DBC46400D9D831 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8B92420DBC46400D9D831 /* Statistics.swift */; };
 		6DFECADA207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */; };
-		6EB6C5A3A1AD4F95F386210D /* libPods-Teambrella.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */; };
+		7D7751A25193ADF13A1FB8E2 /* Pods_SurillaNotification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD0663BA2BBCEABEA723F8E /* Pods_SurillaNotification.framework */; };
 		843D3B4821DFDA1F0057E16E /* ChatUserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D3B4721DFDA1F0057E16E /* ChatUserDataCell.swift */; };
 		843D3B4921DFDA1F0057E16E /* ChatUserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D3B4721DFDA1F0057E16E /* ChatUserDataCell.swift */; };
 		846D9BEA221C6B9700207F69 /* VotingStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */; };
@@ -1183,10 +1186,7 @@
 		94F502571FA8D3760059D49B /* SelectorCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475D9311FA390BC00F881C9 /* SelectorCellModel.swift */; };
 		94F502581FA8D4690059D49B /* MuteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475D9331FA3956400F881C9 /* MuteCell.swift */; };
 		94F5025B1FA8E5CA0059D49B /* SelectorDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F502591FA8E4A90059D49B /* SelectorDataSource.swift */; };
-		96D36B38F2C29414646DFB00 /* libPods-SurillaNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA2A801FF41C5B535060F542 /* libPods-SurillaNotification.a */; };
-		AF75CB2D5126A58209C629B8 /* libPods-TeambrellaNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 687E6255A456D7A98D2880C7 /* libPods-TeambrellaNotification.a */; };
-		E974F633467D39F41F4FDFBC /* libPods-TeambrellaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A99F1FDFE091B62B23E01A6 /* libPods-TeambrellaTests.a */; };
-		FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */; };
+		AF29E55AF3052159435D41E0 /* Pods_TeambrellaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0C930C1A7F8623B4AA6377 /* Pods_TeambrellaTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1318,9 +1318,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01DB4DE4E15DABDAA0633C69 /* Pods-TeambrellaNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaNotification.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaNotification/Pods-TeambrellaNotification.release.xcconfig"; sourceTree = "<group>"; };
-		0955ADF5D5781C76472099AB /* Pods-TeambrellaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.release.xcconfig"; sourceTree = "<group>"; };
-		0DD563BFF9640E2EA3A0F20D /* Pods-notification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-notification/Pods-notification.debug.xcconfig"; sourceTree = "<group>"; };
+		07BC90126A48105CE3EEC31D /* Pods-Teambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.release.xcconfig"; path = "Target Support Files/Pods-Teambrella/Pods-Teambrella.release.xcconfig"; sourceTree = "<group>"; };
 		175EF842201B71A300268D08 /* WalletInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletInfoCell.swift; path = View/Cells/WalletInfoCell.swift; sourceTree = "<group>"; };
 		175EF843201B71A300268D08 /* WalletInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WalletInfoCell.xib; path = View/Cells/WalletInfoCell.xib; sourceTree = "<group>"; };
 		17751AAF2033568B00274F6A /* NewDiscussionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewDiscussionCell.swift; path = View/Cells/Report/NewDiscussionCell.swift; sourceTree = "<group>"; };
@@ -1331,15 +1329,16 @@
 		17AD14A7211C8B4E007C7613 /* VotedRiskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VotedRiskCell.swift; path = View/Cells/VotedRiskCell.swift; sourceTree = "<group>"; };
 		17AD14A8211C8B4E007C7613 /* VotedRiskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VotedRiskCell.xib; path = View/Cells/VotedRiskCell.xib; sourceTree = "<group>"; };
 		17BE300720D3C7EB005EA59C /* WalletQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletQRCodeVC.swift; path = Scenes/Me/Wallet/WalletQRCodeVC.swift; sourceTree = "<group>"; };
-		1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
-		205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.debug.xcconfig"; sourceTree = "<group>"; };
-		2DEB9C6FAC360900C14C531B /* Pods-SurillaNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurillaNotification.release.xcconfig"; path = "Pods/Target Support Files/Pods-SurillaNotification/Pods-SurillaNotification.release.xcconfig"; sourceTree = "<group>"; };
-		40342A343EEBF297AD7B968E /* Pods-SurillaNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurillaNotification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SurillaNotification/Pods-SurillaNotification.debug.xcconfig"; sourceTree = "<group>"; };
-		44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella/Pods-Teambrella.release.xcconfig"; sourceTree = "<group>"; };
-		4A86321D7F36B3D7DE1C3979 /* Pods-NotificationTeambrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationTeambrella.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationTeambrella/Pods-NotificationTeambrella.release.xcconfig"; sourceTree = "<group>"; };
-		4A99F1FDFE091B62B23E01A6 /* libPods-TeambrellaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		687E6255A456D7A98D2880C7 /* libPods-TeambrellaNotification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaNotification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B0C930C1A7F8623B4AA6377 /* Pods_TeambrellaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeambrellaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2718BBD7A78BB2B8E3BE5048 /* Pods-Surilla.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.release.xcconfig"; path = "Target Support Files/Pods-Surilla/Pods-Surilla.release.xcconfig"; sourceTree = "<group>"; };
+		2DC86DDEE32146B9D0E72B4B /* Pods-TeambrellaNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaNotification.debug.xcconfig"; path = "Target Support Files/Pods-TeambrellaNotification/Pods-TeambrellaNotification.debug.xcconfig"; sourceTree = "<group>"; };
+		3AD0663BA2BBCEABEA723F8E /* Pods_SurillaNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SurillaNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B14532602EE33585B8AE2AA /* Pods-TeambrellaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.debug.xcconfig"; path = "Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		47C8F3FC651478600FAFF540 /* Pods-Surilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.debug.xcconfig"; path = "Target Support Files/Pods-Surilla/Pods-Surilla.debug.xcconfig"; sourceTree = "<group>"; };
+		509B79F7FD4E799BF46128B4 /* Pods-TeambrellaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaTests.release.xcconfig"; path = "Target Support Files/Pods-TeambrellaTests/Pods-TeambrellaTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B35DD5607EC7979CAD48FE9 /* Pods-SurillaNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurillaNotification.release.xcconfig"; path = "Target Support Files/Pods-SurillaNotification/Pods-SurillaNotification.release.xcconfig"; sourceTree = "<group>"; };
+		5BDB1E9449A8754086B65CD4 /* Pods-TeambrellaNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaNotification.release.xcconfig"; path = "Target Support Files/Pods-TeambrellaNotification/Pods-TeambrellaNotification.release.xcconfig"; sourceTree = "<group>"; };
+		5FC8E5CF236D80297F0650DF /* Pods_TeambrellaNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeambrellaNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D02945820DD3EF900936664 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Connectivity.swift; path = Scenes/Connectivity.swift; sourceTree = "<group>"; };
 		6D02AC901F06A6B800B01AAF /* VotingScrollerCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerCellModel.swift; path = Scenes/Team/Members/VotingScrollerCellModel.swift; sourceTree = "<group>"; };
 		6D02AC911F06A6B800B01AAF /* VotingScrollerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VotingScrollerDataSource.swift; path = Scenes/Team/Members/VotingScrollerDataSource.swift; sourceTree = "<group>"; };
@@ -1870,6 +1869,8 @@
 		6DF78AAA203F213200320D25 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Info.strings; sourceTree = "<group>"; };
 		6DF8B92420DBC46400D9D831 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Statistics.swift; path = Helpers/Statistics.swift; sourceTree = "<group>"; };
 		6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPayloadProtocol.swift; sourceTree = "<group>"; };
+		6EBF560BB6AF3622BEA2EC79 /* Pods_Teambrella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teambrella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		816CD18BD8E6FB896C627485 /* Pods-SurillaNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SurillaNotification.debug.xcconfig"; path = "Target Support Files/Pods-SurillaNotification/Pods-SurillaNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		843D3B4721DFDA1F0057E16E /* ChatUserDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserDataCell.swift; sourceTree = "<group>"; };
 		846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingStatsCell.swift; sourceTree = "<group>"; };
 		846D9BEB221C6BAD00207F69 /* VotingStatsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VotingStatsCell.xib; path = View/Cells/VotingStatsCell.xib; sourceTree = "<group>"; };
@@ -1880,6 +1881,7 @@
 		84E91E6B221E2910007839E4 /* RisksStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RisksStatsCell.swift; sourceTree = "<group>"; };
 		84E91E6E221E2920007839E4 /* ClaimsStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimsStatsCell.swift; sourceTree = "<group>"; };
 		84F52DA622237D41004673A6 /* VotingStatsTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingStatsTopCell.swift; sourceTree = "<group>"; };
+		903A55F9900D4913318EF8FF /* Pods_Surilla.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Surilla.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9407A57D1F111A5300E0DD74 /* HomeCellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCellBuilder.swift; path = Scenes/Home/HomeCellBuilder.swift; sourceTree = "<group>"; };
 		9407A5811F13C30800E0DD74 /* LoginNoInviteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginNoInviteVC.swift; path = Scenes/Login/LoginNoInviteVC.swift; sourceTree = "<group>"; };
 		9407A5831F13C33E00E0DD74 /* LoginBlueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginBlueVC.swift; path = Scenes/Login/LoginBlueVC.swift; sourceTree = "<group>"; };
@@ -1952,19 +1954,10 @@
 		94F0CF631FD1BD50007BE39E /* WithdrawDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WithdrawDetailsCell.swift; path = View/Cells/WithdrawDetailsCell.swift; sourceTree = "<group>"; };
 		94F0CF641FD1BD50007BE39E /* WithdrawDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WithdrawDetailsCell.xib; path = View/Cells/WithdrawDetailsCell.xib; sourceTree = "<group>"; };
 		94F502591FA8E4A90059D49B /* SelectorDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectorDataSource.swift; path = Scenes/Team/Chat/SelectorDataSource.swift; sourceTree = "<group>"; };
-		96FABEEB77E20E892668A71C /* Pods-Teambrella2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella2/Pods-Teambrella2.debug.xcconfig"; sourceTree = "<group>"; };
-		A3262F01941F36B157BA1E0F /* Pods-Teambrella2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Teambrella2/Pods-Teambrella2.release.xcconfig"; sourceTree = "<group>"; };
-		AA2A801FF41C5B535060F542 /* libPods-SurillaNotification.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SurillaNotification.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B81C6F32011BB5C52909B4B6 /* Pods-TeambrellaNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambrellaNotification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambrellaNotification/Pods-TeambrellaNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		CBDFE16BB5E7B5B758559237 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = Helpers/Extensions/String.swift; sourceTree = "<group>"; };
 		CBDFEA3415104DFFD0D751C7 /* ServerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerService.swift; path = Model/Services/Networking/ServerService.swift; sourceTree = "<group>"; };
 		CBDFEA66BB8C99B198619010 /* MaritalStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaritalStatus.swift; path = Model/Enums/MaritalStatus.swift; sourceTree = "<group>"; };
-		CD3116413D282142D60EA1ED /* libPods-TeambrellaUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TeambrellaUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CFB2C72BED9D6756BBD9381F /* Pods-notification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notification.release.xcconfig"; path = "Pods/Target Support Files/Pods-notification/Pods-notification.release.xcconfig"; sourceTree = "<group>"; };
-		F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Surilla.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Teambrella.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8C3B97E2D3D3E031BC1B2FC /* Pods-Surilla.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.release.xcconfig"; path = "Pods/Target Support Files/Pods-Surilla/Pods-Surilla.release.xcconfig"; sourceTree = "<group>"; };
-		FB0CD5887370E04965902F23 /* Pods-NotificationTeambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationTeambrella.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationTeambrella/Pods-NotificationTeambrella.debug.xcconfig"; sourceTree = "<group>"; };
+		FD0A4409BBEF1EDDE7162747 /* Pods-Teambrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teambrella.debug.xcconfig"; path = "Target Support Files/Pods-Teambrella/Pods-Teambrella.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1975,7 +1968,7 @@
 				6D17A511218221B200A77DA2 /* SwiftKeccak.framework in Frameworks */,
 				6D8A627F20C07761003CD95B /* PushKit.framework in Frameworks */,
 				6D0524D920A5D838000B3247 /* SpriteKit.framework in Frameworks */,
-				6EB6C5A3A1AD4F95F386210D /* libPods-Teambrella.a in Frameworks */,
+				2321D8AA4F41DD87FB8219EE /* Pods_Teambrella.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1993,7 +1986,7 @@
 				6D17A510218221B200A77DA2 /* SwiftKeccak.framework in Frameworks */,
 				6D8A624E20C02B82003CD95B /* PushKit.framework in Frameworks */,
 				6D4E5D721F7AB6870020DEE2 /* SpriteKit.framework in Frameworks */,
-				FE56C9E53BBD973CA6392178 /* libPods-Surilla.a in Frameworks */,
+				1BE8BBE73AF16BA6CA9E454B /* Pods_Surilla.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2001,7 +1994,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96D36B38F2C29414646DFB00 /* libPods-SurillaNotification.a in Frameworks */,
+				7D7751A25193ADF13A1FB8E2 /* Pods_SurillaNotification.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2016,7 +2009,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E974F633467D39F41F4FDFBC /* libPods-TeambrellaTests.a in Frameworks */,
+				AF29E55AF3052159435D41E0 /* Pods_TeambrellaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2031,7 +2024,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF75CB2D5126A58209C629B8 /* libPods-TeambrellaNotification.a in Frameworks */,
+				175A2712A37C10464206BAA5 /* Pods_TeambrellaNotification.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2052,29 +2045,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5BD17B853E94E5AE1E9DCBE6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */,
-				0955ADF5D5781C76472099AB /* Pods-TeambrellaTests.release.xcconfig */,
-				1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */,
-				44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */,
-				205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */,
-				F8C3B97E2D3D3E031BC1B2FC /* Pods-Surilla.release.xcconfig */,
-				0DD563BFF9640E2EA3A0F20D /* Pods-notification.debug.xcconfig */,
-				CFB2C72BED9D6756BBD9381F /* Pods-notification.release.xcconfig */,
-				FB0CD5887370E04965902F23 /* Pods-NotificationTeambrella.debug.xcconfig */,
-				4A86321D7F36B3D7DE1C3979 /* Pods-NotificationTeambrella.release.xcconfig */,
-				96FABEEB77E20E892668A71C /* Pods-Teambrella2.debug.xcconfig */,
-				A3262F01941F36B157BA1E0F /* Pods-Teambrella2.release.xcconfig */,
-				40342A343EEBF297AD7B968E /* Pods-SurillaNotification.debug.xcconfig */,
-				2DEB9C6FAC360900C14C531B /* Pods-SurillaNotification.release.xcconfig */,
-				B81C6F32011BB5C52909B4B6 /* Pods-TeambrellaNotification.debug.xcconfig */,
-				01DB4DE4E15DABDAA0633C69 /* Pods-TeambrellaNotification.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		6D02AC981F06A6BF00B01AAF /* VotingCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2807,10 +2777,10 @@
 				6D42CC9C20E133B300C2B146 /* UITests */,
 				6D1616A820D2800B00C8FBBE /* Watch */,
 				6DA475A11E8ABEE600B56D9B /* Products */,
-				5BD17B853E94E5AE1E9DCBE6 /* Pods */,
 				A3DA38407FE7184F4611CDC0 /* Frameworks */,
 				6D8F97171E8D1673008DC62E /* Teambrella-Bridging-Header.h */,
 				6DBD695D2093864000D1524F /* GoogleService-Info.plist */,
+				90943E07676C65C06C08C4ED /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3363,6 +3333,23 @@
 			path = VotingStats;
 			sourceTree = "<group>";
 		};
+		90943E07676C65C06C08C4ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47C8F3FC651478600FAFF540 /* Pods-Surilla.debug.xcconfig */,
+				2718BBD7A78BB2B8E3BE5048 /* Pods-Surilla.release.xcconfig */,
+				816CD18BD8E6FB896C627485 /* Pods-SurillaNotification.debug.xcconfig */,
+				5B35DD5607EC7979CAD48FE9 /* Pods-SurillaNotification.release.xcconfig */,
+				FD0A4409BBEF1EDDE7162747 /* Pods-Teambrella.debug.xcconfig */,
+				07BC90126A48105CE3EEC31D /* Pods-Teambrella.release.xcconfig */,
+				2DC86DDEE32146B9D0E72B4B /* Pods-TeambrellaNotification.debug.xcconfig */,
+				5BDB1E9449A8754086B65CD4 /* Pods-TeambrellaNotification.release.xcconfig */,
+				3B14532602EE33585B8AE2AA /* Pods-TeambrellaTests.debug.xcconfig */,
+				509B79F7FD4E799BF46128B4 /* Pods-TeambrellaTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		94C2D3971F191F7700D203C2 /* ChooseTeam */ = {
 			isa = PBXGroup;
 			children = (
@@ -3379,12 +3366,11 @@
 				6D17A50F218221B200A77DA2 /* SwiftKeccak.framework */,
 				6D8A624D20C02B82003CD95B /* PushKit.framework */,
 				6DCB19541F0FE5A200AC9969 /* SpriteKit.framework */,
-				F7B19441614AAC2A2CE06DE7 /* libPods-Teambrella.a */,
-				F26A041BAF2013E19BBB8152 /* libPods-Surilla.a */,
-				AA2A801FF41C5B535060F542 /* libPods-SurillaNotification.a */,
-				687E6255A456D7A98D2880C7 /* libPods-TeambrellaNotification.a */,
-				4A99F1FDFE091B62B23E01A6 /* libPods-TeambrellaTests.a */,
-				CD3116413D282142D60EA1ED /* libPods-TeambrellaUITests.a */,
+				903A55F9900D4913318EF8FF /* Pods_Surilla.framework */,
+				3AD0663BA2BBCEABEA723F8E /* Pods_SurillaNotification.framework */,
+				6EBF560BB6AF3622BEA2EC79 /* Pods_Teambrella.framework */,
+				5FC8E5CF236D80297F0650DF /* Pods_TeambrellaNotification.framework */,
+				1B0C930C1A7F8623B4AA6377 /* Pods_TeambrellaTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3415,7 +3401,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D05253B20A5D838000B3247 /* Build configuration list for PBXNativeTarget "Teambrella" */;
 			buildPhases = (
-				6D05234E20A5D838000B3247 /* [CP] Check Pods Manifest.lock */,
+				7A04CF71B90E0FD7C37E3D7C /* [CP] Check Pods Manifest.lock */,
 				6D05234F20A5D838000B3247 /* Sources */,
 				6D0524D620A5D838000B3247 /* Frameworks */,
 				6D0524DC20A5D838000B3247 /* Google Firebase */,
@@ -3423,10 +3409,10 @@
 				6D05253520A5D838000B3247 /* Carthage */,
 				6D05253620A5D838000B3247 /* SwiftLint */,
 				6D05253720A5D838000B3247 /* CPD */,
-				6D05253A20A5D838000B3247 /* [CP] Copy Pods Resources */,
 				6D05254420A5DE3B000B3247 /* Embed App Extensions */,
 				6DCA41E020D29E1A00B741BA /* Embed Watch Content */,
 				6DF8B92320DBB77B00D9D831 /* Crashlytics */,
+				E87F556EA1D86D2C6A68983F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3461,7 +3447,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D4E5DD61F7AB6870020DEE2 /* Build configuration list for PBXNativeTarget "Surilla" */;
 			buildPhases = (
-				C57EED01CCD06144A330A0FF /* [CP] Check Pods Manifest.lock */,
+				2B60499AAEF0DCC254DDE625 /* [CP] Check Pods Manifest.lock */,
 				6D4E5C261F7AB6870020DEE2 /* Sources */,
 				6D4E5D701F7AB6870020DEE2 /* Frameworks */,
 				6DBD695C2093853400D1524F /* Google Firebase */,
@@ -3469,10 +3455,10 @@
 				6D4E5DD11F7AB6870020DEE2 /* Carthage */,
 				6D4E5DD41F7AB6870020DEE2 /* SwiftLint */,
 				6D4E5DD51F7AB6870020DEE2 /* CPD */,
-				6F2D2231E75AD99947AB1E17 /* [CP] Copy Pods Resources */,
 				6D8A62A920C1A1A1003CD95B /* Embed Watch Content */,
 				6D1B288220C7072F003B2D32 /* Embed App Extensions */,
 				6DF8B92120DBB75300D9D831 /* Crashlytics */,
+				F8AAE6DC314181A50C7FE8BC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3489,7 +3475,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D59FD001FBC8407006C0A2B /* Build configuration list for PBXNativeTarget "SurillaNotification" */;
 			buildPhases = (
-				8F73F72AC1E236FABBC621AB /* [CP] Check Pods Manifest.lock */,
+				BCEEEDFDEC9CD8738BFBB41B /* [CP] Check Pods Manifest.lock */,
 				6D59FCF21FBC8407006C0A2B /* Sources */,
 				6D59FCF31FBC8407006C0A2B /* Frameworks */,
 				6D59FCF41FBC8407006C0A2B /* Resources */,
@@ -3542,7 +3528,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DA475CB1E8ABEE600B56D9B /* Build configuration list for PBXNativeTarget "TeambrellaTests" */;
 			buildPhases = (
-				5367BD3EC56B804CAF87F366 /* [CP] Check Pods Manifest.lock */,
+				1A22B5B002F172A5C4A38F5F /* [CP] Check Pods Manifest.lock */,
 				6DA475B01E8ABEE600B56D9B /* Sources */,
 				6DA475B11E8ABEE600B56D9B /* Frameworks */,
 				6DA475B21E8ABEE600B56D9B /* Resources */,
@@ -3596,7 +3582,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DEFE3FA2006544100615022 /* Build configuration list for PBXNativeTarget "TeambrellaNotification" */;
 			buildPhases = (
-				32B29CA36163F30545BA829D /* [CP] Check Pods Manifest.lock */,
+				B6875BB5E44769194E22E40B /* [CP] Check Pods Manifest.lock */,
 				6DEFE3EE2006544100615022 /* Sources */,
 				6DEFE3EF2006544100615022 /* Frameworks */,
 				6DEFE3F02006544100615022 /* Resources */,
@@ -3998,34 +3984,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		32B29CA36163F30545BA829D /* [CP] Check Pods Manifest.lock */ = {
+		1A22B5B002F172A5C4A38F5F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TeambrellaNotification-checkManifestLockResult.txt",
+			outputFileListPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5367BD3EC56B804CAF87F366 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-TeambrellaTests-checkManifestLockResult.txt",
 			);
@@ -4034,18 +4006,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6D05234E20A5D838000B3247 /* [CP] Check Pods Manifest.lock */ = {
+		2B60499AAEF0DCC254DDE625 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Teambrella-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Surilla-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -4109,32 +4085,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Running CPD\npmd cpd --files ${EXECUTABLE_NAME} --minimum-tokens 100 --language swift --encoding UTF-8 --format net.sourceforge.pmd.cpd.XMLRenderer > cpd-output.xml --failOnViolation false\n# Running script\nphp ./cpd_script.php -cpd-xml cpd-output.xml";
 		};
-		6D05253A20A5D838000B3247 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh",
-				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
-				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png",
-				"${PODS_CONFIGURATION_BUILD_DIR}/PKHUD/PKHUDResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/XLPagerTabStrip/XLPagerTabStrip.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PKHUDResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLPagerTabStrip.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Teambrella/Pods-Teambrella-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6D05254620A5F336000B3247 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4176,8 +4126,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 		6D4E5DD51F7AB6870020DEE2 /* CPD */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4235,42 +4184,64 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
-		6F2D2231E75AD99947AB1E17 /* [CP] Copy Pods Resources */ = {
+		7A04CF71B90E0FD7C37E3D7C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh",
-				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@2x.png",
-				"${PODS_ROOT}/ImageSlideshow/ImageSlideshow/Assets/ic_cross_white@3x.png",
-				"${PODS_CONFIGURATION_BUILD_DIR}/PKHUD/PKHUDResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/XLPagerTabStrip/XLPagerTabStrip.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@2x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ic_cross_white@3x.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PKHUDResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/XLPagerTabStrip.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Surilla/Pods-Surilla-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8F73F72AC1E236FABBC621AB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Teambrella-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6875BB5E44769194E22E40B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TeambrellaNotification-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCEEEDFDEC9CD8738BFBB41B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SurillaNotification-checkManifestLockResult.txt",
 			);
@@ -4279,22 +4250,116 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C57EED01CCD06144A330A0FF /* [CP] Check Pods Manifest.lock */ = {
+		E87F556EA1D86D2C6A68983F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-Teambrella/Pods-Teambrella-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BigNumber/BigNumber.framework",
+				"${BUILT_PRODUCTS_DIR}/CoreEthereum/CoreEthereum.framework",
+				"${BUILT_PRODUCTS_DIR}/ExtensionsPack/ExtensionsPack.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatter/ISO8601DateFormatter.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCode/QRCode.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftEmail/SwiftEmail.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+				"${BUILT_PRODUCTS_DIR}/ThoraxMath/ThoraxMath.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Surilla-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigNumber.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreEthereum.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExtensionsPack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEmail.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ThoraxMath.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Teambrella/Pods-Teambrella-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8AAE6DC314181A50C7FE8BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Surilla/Pods-Surilla-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BigNumber/BigNumber.framework",
+				"${BUILT_PRODUCTS_DIR}/CoreEthereum/CoreEthereum.framework",
+				"${BUILT_PRODUCTS_DIR}/ExtensionsPack/ExtensionsPack.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatter/ISO8601DateFormatter.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/QRCode/QRCode.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftEmail/SwiftEmail.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+				"${BUILT_PRODUCTS_DIR}/ThoraxMath/ThoraxMath.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigNumber.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreEthereum.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExtensionsPack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftEmail.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ThoraxMath.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Surilla/Pods-Surilla-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -5513,7 +5578,7 @@
 /* Begin XCBuildConfiguration section */
 		6D05253C20A5D838000B3247 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1937719066600CCFFA32840A /* Pods-Teambrella.debug.xcconfig */;
+			baseConfigurationReference = FD0A4409BBEF1EDDE7162747 /* Pods-Teambrella.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -5537,6 +5602,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/App/Teambrella/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -Xfrontend -warn-long-function-bodies=500 -Xfrontend -warn-long-expression-type-checking=500 -DMAIN_APP -Onone";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5555,7 +5621,7 @@
 		};
 		6D05253D20A5D838000B3247 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44C520431479B61FE9F06E42 /* Pods-Teambrella.release.xcconfig */;
+			baseConfigurationReference = 07BC90126A48105CE3EEC31D /* Pods-Teambrella.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -5644,7 +5710,7 @@
 		};
 		6D4E5DD71F7AB6870020DEE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 205EFE64CD1A91900D435E51 /* Pods-Surilla.debug.xcconfig */;
+			baseConfigurationReference = 47C8F3FC651478600FAFF540 /* Pods-Surilla.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconSurilla;
@@ -5677,6 +5743,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited) -ObjC -l\"c++\" -l\"sqlite3\" -l\"z\" -framework \"AVFoundation\" -framework \"Accelerate\" -framework \"AdSupport\" -framework \"AppsFlyerLib\" -framework \"AssetsLibrary\" -framework \"AudioToolbox\" -framework \"BigNumber\" -framework \"CFNetwork\" -framework \"CoreEthereum\" -framework \"CoreImage\" -framework \"CoreMedia\" -framework \"CoreTelephony\" -framework \"CoreVideo\" -framework \"Crashlytics\" -framework \"ExtensionsPack\" -framework \"FIRAnalyticsConnector\" -framework \"Fabric\" -framework \"FirebaseAnalytics\" -framework \"FirebaseCore\" -framework \"FirebaseCoreDiagnostics\" -framework \"FirebaseDynamicLinks\" -framework \"FirebaseInstanceID\" -framework \"FirebaseMessaging\" -framework \"Foundation\" -framework \"GLKit\" -framework \"Geth\" -framework \"GoogleAppMeasurement\" -framework \"GoogleUtilities\" -framework \"ISO8601DateFormatter\" -framework \"ImageSlideshow\" -framework \"KeychainAccess\" -framework \"Kingfisher\" -framework \"MessageUI\" -framework \"OpenGLES\" -framework \"PKHUD\" -framework \"Protobuf\" -framework \"QRCode\" -framework \"QuartzCore\" -framework \"Reachability\" -framework \"Security\" -framework \"Sinch\" -framework \"Starscream\" -framework \"StoreKit\" -framework \"SwiftDate\" -framework \"SwiftEmail\" -framework \"SwiftMessages\" -framework \"SwiftSoup\" -framework \"SystemConfiguration\" -framework \"ThoraxMath\" -framework \"UIKit\" -framework \"VideoToolbox\" -framework \"XLPagerTabStrip\" -framework \"iAd\" -framework \"nanopb\" -weak_framework \"UserNotifications\" -weak_framework \"WebKit\"";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA -DMAIN_APP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5695,7 +5762,7 @@
 		};
 		6D4E5DD81F7AB6870020DEE2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8C3B97E2D3D3E031BC1B2FC /* Pods-Surilla.release.xcconfig */;
+			baseConfigurationReference = 2718BBD7A78BB2B8E3BE5048 /* Pods-Surilla.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconSurilla;
@@ -5726,6 +5793,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited) -ObjC -l\"c++\" -l\"sqlite3\" -l\"z\" -framework \"AVFoundation\" -framework \"Accelerate\" -framework \"AdSupport\" -framework \"AppsFlyerLib\" -framework \"AssetsLibrary\" -framework \"AudioToolbox\" -framework \"BigNumber\" -framework \"CFNetwork\" -framework \"CoreEthereum\" -framework \"CoreImage\" -framework \"CoreMedia\" -framework \"CoreTelephony\" -framework \"CoreVideo\" -framework \"Crashlytics\" -framework \"ExtensionsPack\" -framework \"FIRAnalyticsConnector\" -framework \"Fabric\" -framework \"FirebaseAnalytics\" -framework \"FirebaseCore\" -framework \"FirebaseCoreDiagnostics\" -framework \"FirebaseDynamicLinks\" -framework \"FirebaseInstanceID\" -framework \"FirebaseMessaging\" -framework \"Foundation\" -framework \"GLKit\" -framework \"Geth\" -framework \"GoogleAppMeasurement\" -framework \"GoogleUtilities\" -framework \"ISO8601DateFormatter\" -framework \"ImageSlideshow\" -framework \"KeychainAccess\" -framework \"Kingfisher\" -framework \"MessageUI\" -framework \"OpenGLES\" -framework \"PKHUD\" -framework \"Protobuf\" -framework \"QRCode\" -framework \"QuartzCore\" -framework \"Reachability\" -framework \"Security\" -framework \"Sinch\" -framework \"Starscream\" -framework \"StoreKit\" -framework \"SwiftDate\" -framework \"SwiftEmail\" -framework \"SwiftMessages\" -framework \"SwiftSoup\" -framework \"SystemConfiguration\" -framework \"ThoraxMath\" -framework \"UIKit\" -framework \"VideoToolbox\" -framework \"XLPagerTabStrip\" -framework \"iAd\" -framework \"nanopb\" -weak_framework \"UserNotifications\" -weak_framework \"WebKit\"";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA -DMAIN_APP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5742,7 +5810,7 @@
 		};
 		6D59FCFE1FBC8407006C0A2B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40342A343EEBF297AD7B968E /* Pods-SurillaNotification.debug.xcconfig */;
+			baseConfigurationReference = 816CD18BD8E6FB896C627485 /* Pods-SurillaNotification.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -5771,7 +5839,7 @@
 		};
 		6D59FCFF1FBC8407006C0A2B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DEB9C6FAC360900C14C531B /* Pods-SurillaNotification.release.xcconfig */;
+			baseConfigurationReference = 5B35DD5607EC7979CAD48FE9 /* Pods-SurillaNotification.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -5956,7 +6024,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -5965,7 +6033,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "$(ARCHS_STANDARD)";
+				VALID_ARCHS = arm64;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -6019,7 +6087,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -6027,14 +6095,14 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "$(ARCHS_STANDARD)";
+				VALID_ARCHS = arm64;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		6DA475CC1E8ABEE600B56D9B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63613F4D9AC88C9CBF2AB08E /* Pods-TeambrellaTests.debug.xcconfig */;
+			baseConfigurationReference = 3B14532602EE33585B8AE2AA /* Pods-TeambrellaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -6051,7 +6119,7 @@
 		};
 		6DA475CD1E8ABEE600B56D9B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0955ADF5D5781C76472099AB /* Pods-TeambrellaTests.release.xcconfig */;
+			baseConfigurationReference = 509B79F7FD4E799BF46128B4 /* Pods-TeambrellaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -6164,7 +6232,7 @@
 		};
 		6DEFE3FB2006544100615022 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B81C6F32011BB5C52909B4B6 /* Pods-TeambrellaNotification.debug.xcconfig */;
+			baseConfigurationReference = 2DC86DDEE32146B9D0E72B4B /* Pods-TeambrellaNotification.debug.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -6181,18 +6249,20 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Teambrella/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = "$(inherited) -framework \"Accelerate\" -framework \"CFNetwork\" -framework \"ExtensionsPack\" -framework \"KeychainAccess\" -framework \"Kingfisher\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.TeambrellaNotification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
 		6DEFE3FC2006544100615022 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01DB4DE4E15DABDAA0633C69 /* Pods-TeambrellaNotification.release.xcconfig */;
+			baseConfigurationReference = 5BDB1E9449A8754086B65CD4 /* Pods-TeambrellaNotification.release.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -6215,6 +6285,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};

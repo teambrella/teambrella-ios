@@ -26,7 +26,7 @@ import XLPagerTabStrip
 
 final class WalletVC: UIViewController {
     struct Constant {
-        static let headerCellHeight: CGFloat = 180
+        static let headerCellHeight: CGFloat = 260
         static let fundingCellHeight: CGFloat = 227
         static let buttonsCellHeight: CGFloat = 163
         static let horizontalCellPadding: CGFloat = 16
@@ -201,13 +201,11 @@ extension WalletVC: UICollectionViewDelegate {
                         forItemAt indexPath: IndexPath) {
         WalletCellBuilder.populate(cell: cell, with: dataSource[indexPath], delegate: self)
         if let cell = cell as? WalletHeaderCell {
-            cell.button.removeTarget(self, action: nil, for: .allEvents)
-            cell.button.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
+            cell.withdrawButton.removeTarget(self, action: nil, for: .allEvents)
+            cell.withdrawButton.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
         } else if let cell = cell as? WalletFundingCell {
             cell.fundWalletButton.addTarget(self, action: #selector(tapFund), for: .touchUpInside)
-            cell.barcodeButton.addTarget(self, action: #selector(tapBarcode), for: .touchUpInside)
             cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)
-            cell.barcodeButton.setImage(qrCode, for: .normal)
         }
     }
 }

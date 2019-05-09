@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -29,19 +27,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="227"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED FUNDING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-FN-MiT" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="20" y="16" width="255.5" height="23"/>
+                                <rect key="frame" x="20" y="16" width="256" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCv-7T-Tb4" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="20" y="103" width="14.5" height="20"/>
+                                <rect key="frame" x="20" y="103" width="15" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDf-9h-j00">
-                                <rect key="frame" x="303" y="16" width="20" height="23"/>
+                                <rect key="frame" x="307" y="16" width="16" height="26"/>
                                 <state key="normal" image="info"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv4-qy-cUk" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
@@ -59,19 +57,9 @@
                                 <rect key="frame" x="20" y="63" width="199" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="F7H-Bn-nbY"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="lAk-Wf-x8O"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vn-JM-9Dk" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="227" y="55" width="96" height="96"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="2Vn-JM-9Dk" secondAttribute="height" multiplier="1:1" id="7pO-eA-JrZ"/>
-                                    <constraint firstAttribute="width" constant="96" id="ch3-Au-8KE"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" image="qrCode"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -79,8 +67,8 @@
                             <constraint firstItem="s1r-kO-PWW" firstAttribute="leading" secondItem="sCv-7T-Tb4" secondAttribute="leading" id="4He-zS-TNp"/>
                             <constraint firstItem="Lv4-qy-cUk" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="20" id="4mf-7x-Fhk"/>
                             <constraint firstAttribute="trailing" secondItem="vDf-9h-j00" secondAttribute="trailing" constant="20" id="740-6A-7iv"/>
+                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="top" secondItem="sCv-7T-Tb4" secondAttribute="bottom" constant="44" id="7Jz-bd-ZEB"/>
                             <constraint firstItem="sCv-7T-Tb4" firstAttribute="top" secondItem="s1r-kO-PWW" secondAttribute="bottom" id="Awf-Vg-Klo"/>
-                            <constraint firstItem="2Vn-JM-9Dk" firstAttribute="top" secondItem="dUM-FN-MiT" secondAttribute="bottom" constant="16" id="BF1-o1-wle"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="centerY" secondItem="vDf-9h-j00" secondAttribute="centerY" id="Hbx-gd-c32"/>
                             <constraint firstAttribute="bottom" secondItem="Lv4-qy-cUk" secondAttribute="bottom" constant="20" id="J2A-GT-QCQ"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="Mn1-SD-vAT"/>
@@ -88,10 +76,8 @@
                             <constraint firstItem="vDf-9h-j00" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dUM-FN-MiT" secondAttribute="trailing" constant="8" id="dH2-RC-Fki"/>
                             <constraint firstItem="sCv-7T-Tb4" firstAttribute="leading" secondItem="Lv4-qy-cUk" secondAttribute="leading" id="dJX-C6-GJ2"/>
                             <constraint firstItem="vDf-9h-j00" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="eAp-mV-0ru"/>
-                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="top" secondItem="2Vn-JM-9Dk" secondAttribute="bottom" constant="16" id="jCi-rv-hih"/>
-                            <constraint firstItem="2Vn-JM-9Dk" firstAttribute="leading" secondItem="s1r-kO-PWW" secondAttribute="trailing" constant="8" id="qjf-dt-GUu"/>
-                            <constraint firstItem="sCv-7T-Tb4" firstAttribute="top" secondItem="2Vn-JM-9Dk" secondAttribute="centerY" id="uJd-k3-zqx"/>
-                            <constraint firstItem="2Vn-JM-9Dk" firstAttribute="trailing" secondItem="Lv4-qy-cUk" secondAttribute="trailing" id="uwC-Et-LLc"/>
+                            <constraint firstAttribute="trailing" secondItem="s1r-kO-PWW" secondAttribute="trailing" constant="124" id="fDF-U1-Meb"/>
+                            <constraint firstItem="s1r-kO-PWW" firstAttribute="top" secondItem="dUM-FN-MiT" secondAttribute="bottom" constant="21" id="gCf-I6-tRO"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -104,7 +90,6 @@
             </constraints>
             <size key="customSize" width="343" height="228"/>
             <connections>
-                <outlet property="barcodeButton" destination="2Vn-JM-9Dk" id="cyE-XR-S6A"/>
                 <outlet property="fundWalletButton" destination="Lv4-qy-cUk" id="Mrw-tE-rX3"/>
                 <outlet property="headerLabel" destination="dUM-FN-MiT" id="wzP-1b-Axi"/>
                 <outlet property="infoButton" destination="vDf-9h-j00" id="CDB-5p-PNQ"/>
@@ -116,6 +101,5 @@
     </objects>
     <resources>
         <image name="info" width="20" height="20"/>
-        <image name="qrCode" width="330" height="330"/>
     </resources>
 </document>

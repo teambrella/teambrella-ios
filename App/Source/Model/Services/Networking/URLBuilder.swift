@@ -62,7 +62,7 @@ extension URLBuilder {
         if let width = width {
             let rect = rect ?? CGRect(x: 0, y: 0, width: width, height: width)
             //urlString += "?width=\(width)&crop=\(rect.origin.x),\(rect.origin.y),\(rect.size.width),\(rect.size.height)"
-            urlString += "?width=\(width)"
+            urlString += "?width=\(width)&height=\(width)&mode=crop&center=0.5,0.5"
         }
         return urlString
     }

@@ -26,7 +26,6 @@ class WalletFundingCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var infoButton: UIButton!
     @IBOutlet var lowerNumberView: NumberView!
     @IBOutlet var lowerCurrencyLabel: Label!
-    @IBOutlet var barcodeButton: BorderedButton!
     @IBOutlet var fundWalletButton: BorderedButton!
 
     override func awakeFromNib() {

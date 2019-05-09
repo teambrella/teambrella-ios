@@ -62,7 +62,7 @@ struct WalletCellBuilder {
         balance = MEth(model.amount)
         cell.amount.text = String.formattedNumber(floor(balance.value))
         
-        cell.button.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
+        cell.withdrawButton.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
         cell.currencyLabel.text = service.session?.cryptoCoin.code
         currencyRate = model.currencyRate
         if let team = service.session?.currentTeam {
