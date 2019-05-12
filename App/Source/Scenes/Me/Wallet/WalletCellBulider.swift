@@ -63,12 +63,20 @@ struct WalletCellBuilder {
         cell.amount.text = String.formattedNumber(floor(balance.value))
         
         cell.withdrawButton.setTitle("Me.WalletVC.withdrawButton".localized, for: .normal)
+        cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
+        
         cell.currencyLabel.text = service.session?.cryptoCoin.code
         currencyRate = model.currencyRate
         if let team = service.session?.currentTeam {
             cell.auxillaryAmount.text = String.formattedNumber(floor(model.amount.value * currencyRate))
                 + " " + team.currency
         }
+        
+        let isWalletCommentHidden = model.fundWalletComment == ""
+        cell.fundWalletLabel.isHidden = isWalletCommentHidden
+        cell.walletFundLabelHidden.isActive = isWalletCommentHidden
+        cell.walletFundLabelVisible.isActive = !isWalletCommentHidden
+        cell.fundWalletLabel.text = model.fundWalletComment
     }
     
     private static func populateFunding(cell: WalletFundingCell, model: WalletFundingCellModel) {

@@ -3055,6 +3055,8 @@
 		6DB812271EE7150700B202CE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				84ABA20122874CD1003038C8 /* Chat */,
+				84ABA20022874B5C003038C8 /* Profile */,
 				6D56F0A21F61AE2E00C758C9 /* Claim */,
 				6D56F0A11F61AE0C00C758C9 /* Home */,
 				6D56F09F1F61ADDA00C758C9 /* JoinTeam */,
@@ -3063,10 +3065,6 @@
 				6D56F0A01F61ADF300C758C9 /* Wallet */,
 				6D1A9B261F55D306004192AC /* PrivateChatUserCell.swift */,
 				6D1A9B271F55D306004192AC /* PrivateChatUserCell.xib */,
-				94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */,
-				94C89AFC1F0278FB00C6D8F7 /* MeCell.xib */,
-				6DB812281EE715DA00B202CE /* DiscussionCell.swift */,
-				6DB812291EE715DA00B202CE /* DiscussionCell.xib */,
 				6DDE95661EE806F80019DA47 /* ImageGalleryCell.swift */,
 				6DDE95671EE806F80019DA47 /* ImageGalleryCell.xib */,
 				6D69D9FD1EFC32CB00DED5CE /* UserIndexCell.swift */,
@@ -3081,22 +3079,14 @@
 				94C2D3991F191FA600D203C2 /* TeamCell.xib */,
 				6DCF62551F4B319F00E8F500 /* PhotoPreviewCell.swift */,
 				6DCF62561F4B319F00E8F500 /* PhotoPreviewCell.xib */,
-				17AD14A7211C8B4E007C7613 /* VotedRiskCell.swift */,
-				17AD14A8211C8B4E007C7613 /* VotedRiskCell.xib */,
-				6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */,
-				6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */,
 				6D1425E41F73DD9A00DCBF91 /* VotingChartCell.swift */,
 				6D1425E51F73DD9A00DCBF91 /* VotingChartCell.xib */,
 				6DEFCFB61F7A66D7008C306C /* SwitchUserCell.swift */,
 				6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */,
 				9475D9331FA3956400F881C9 /* MuteCell.swift */,
 				9475D9341FA3956400F881C9 /* MuteCell.xib */,
-				6D5F089820A9BEAC0061A6E8 /* ChatClaimPaidCell.swift */,
-				6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */,
 				6D10A33E2136A90200DB59A1 /* ServiceChatCell.swift */,
-				846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */,
 				6D10A33F2136A90200DB59A1 /* ServiceChatCell.xib */,
-				846D9BEB221C6BAD00207F69 /* VotingStatsCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -3319,6 +3309,32 @@
 				6DD051BE1F66F14100532626 /* SocketData.swift */,
 			);
 			name = Socket;
+			sourceTree = "<group>";
+		};
+		84ABA20022874B5C003038C8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				17AD14A7211C8B4E007C7613 /* VotedRiskCell.swift */,
+				17AD14A8211C8B4E007C7613 /* VotedRiskCell.xib */,
+				6D1425E01F73C2C300DCBF91 /* VotingRiskCell.swift */,
+				6D1425E11F73C2C300DCBF91 /* VotingRiskCell.xib */,
+				94C89AFB1F0278FB00C6D8F7 /* MeCell.swift */,
+				94C89AFC1F0278FB00C6D8F7 /* MeCell.xib */,
+				6DB812281EE715DA00B202CE /* DiscussionCell.swift */,
+				6DB812291EE715DA00B202CE /* DiscussionCell.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		84ABA20122874CD1003038C8 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */,
+				846D9BEB221C6BAD00207F69 /* VotingStatsCell.xib */,
+				6D5F089820A9BEAC0061A6E8 /* ChatClaimPaidCell.swift */,
+				6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 		84E91E5E221E2810007839E4 /* VotingStats */ = {
@@ -4126,7 +4142,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\n";
+			shellScript = "
+";
 		};
 		6D4E5DD51F7AB6870020DEE2 /* CPD */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5615,7 +5632,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Debug;
 		};
@@ -5654,7 +5671,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Release;
 		};
@@ -5743,7 +5760,125 @@
 				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				"OTHER_LDFLAGS[arch=*]" = "$(inherited) -ObjC -l\"c++\" -l\"sqlite3\" -l\"z\" -framework \"AVFoundation\" -framework \"Accelerate\" -framework \"AdSupport\" -framework \"AppsFlyerLib\" -framework \"AssetsLibrary\" -framework \"AudioToolbox\" -framework \"BigNumber\" -framework \"CFNetwork\" -framework \"CoreEthereum\" -framework \"CoreImage\" -framework \"CoreMedia\" -framework \"CoreTelephony\" -framework \"CoreVideo\" -framework \"Crashlytics\" -framework \"ExtensionsPack\" -framework \"FIRAnalyticsConnector\" -framework \"Fabric\" -framework \"FirebaseAnalytics\" -framework \"FirebaseCore\" -framework \"FirebaseCoreDiagnostics\" -framework \"FirebaseDynamicLinks\" -framework \"FirebaseInstanceID\" -framework \"FirebaseMessaging\" -framework \"Foundation\" -framework \"GLKit\" -framework \"Geth\" -framework \"GoogleAppMeasurement\" -framework \"GoogleUtilities\" -framework \"ISO8601DateFormatter\" -framework \"ImageSlideshow\" -framework \"KeychainAccess\" -framework \"Kingfisher\" -framework \"MessageUI\" -framework \"OpenGLES\" -framework \"PKHUD\" -framework \"Protobuf\" -framework \"QRCode\" -framework \"QuartzCore\" -framework \"Reachability\" -framework \"Security\" -framework \"Sinch\" -framework \"Starscream\" -framework \"StoreKit\" -framework \"SwiftDate\" -framework \"SwiftEmail\" -framework \"SwiftMessages\" -framework \"SwiftSoup\" -framework \"SystemConfiguration\" -framework \"ThoraxMath\" -framework \"UIKit\" -framework \"VideoToolbox\" -framework \"XLPagerTabStrip\" -framework \"iAd\" -framework \"nanopb\" -weak_framework \"UserNotifications\" -weak_framework \"WebKit\"";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AdSupport\"",
+					"-framework",
+					"\"AppsFlyerLib\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"BigNumber\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreEthereum\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"ExtensionsPack\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDynamicLinks\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseMessaging\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"Geth\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"ISO8601DateFormatter\"",
+					"-framework",
+					"\"ImageSlideshow\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"Kingfisher\"",
+					"-framework",
+					"\"MessageUI\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"PKHUD\"",
+					"-framework",
+					"\"Protobuf\"",
+					"-framework",
+					"\"QRCode\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Sinch\"",
+					"-framework",
+					"\"Starscream\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SwiftDate\"",
+					"-framework",
+					"\"SwiftEmail\"",
+					"-framework",
+					"\"SwiftMessages\"",
+					"-framework",
+					"\"SwiftSoup\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"ThoraxMath\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"VideoToolbox\"",
+					"-framework",
+					"\"XLPagerTabStrip\"",
+					"-framework",
+					"\"iAd\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
+					"-weak_framework",
+					"\"WebKit\"",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA -DMAIN_APP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5756,7 +5891,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Debug;
 		};
@@ -5793,7 +5928,125 @@
 				INFOPLIST_FILE = "$(SRCROOT)/App/Surilla/Surilla Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				"OTHER_LDFLAGS[arch=*]" = "$(inherited) -ObjC -l\"c++\" -l\"sqlite3\" -l\"z\" -framework \"AVFoundation\" -framework \"Accelerate\" -framework \"AdSupport\" -framework \"AppsFlyerLib\" -framework \"AssetsLibrary\" -framework \"AudioToolbox\" -framework \"BigNumber\" -framework \"CFNetwork\" -framework \"CoreEthereum\" -framework \"CoreImage\" -framework \"CoreMedia\" -framework \"CoreTelephony\" -framework \"CoreVideo\" -framework \"Crashlytics\" -framework \"ExtensionsPack\" -framework \"FIRAnalyticsConnector\" -framework \"Fabric\" -framework \"FirebaseAnalytics\" -framework \"FirebaseCore\" -framework \"FirebaseCoreDiagnostics\" -framework \"FirebaseDynamicLinks\" -framework \"FirebaseInstanceID\" -framework \"FirebaseMessaging\" -framework \"Foundation\" -framework \"GLKit\" -framework \"Geth\" -framework \"GoogleAppMeasurement\" -framework \"GoogleUtilities\" -framework \"ISO8601DateFormatter\" -framework \"ImageSlideshow\" -framework \"KeychainAccess\" -framework \"Kingfisher\" -framework \"MessageUI\" -framework \"OpenGLES\" -framework \"PKHUD\" -framework \"Protobuf\" -framework \"QRCode\" -framework \"QuartzCore\" -framework \"Reachability\" -framework \"Security\" -framework \"Sinch\" -framework \"Starscream\" -framework \"StoreKit\" -framework \"SwiftDate\" -framework \"SwiftEmail\" -framework \"SwiftMessages\" -framework \"SwiftSoup\" -framework \"SystemConfiguration\" -framework \"ThoraxMath\" -framework \"UIKit\" -framework \"VideoToolbox\" -framework \"XLPagerTabStrip\" -framework \"iAd\" -framework \"nanopb\" -weak_framework \"UserNotifications\" -weak_framework \"WebKit\"";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AdSupport\"",
+					"-framework",
+					"\"AppsFlyerLib\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"BigNumber\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreEthereum\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"ExtensionsPack\"",
+					"-framework",
+					"\"FIRAnalyticsConnector\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDynamicLinks\"",
+					"-framework",
+					"\"FirebaseInstanceID\"",
+					"-framework",
+					"\"FirebaseMessaging\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"Geth\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"ISO8601DateFormatter\"",
+					"-framework",
+					"\"ImageSlideshow\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"Kingfisher\"",
+					"-framework",
+					"\"MessageUI\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"PKHUD\"",
+					"-framework",
+					"\"Protobuf\"",
+					"-framework",
+					"\"QRCode\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"Sinch\"",
+					"-framework",
+					"\"Starscream\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SwiftDate\"",
+					"-framework",
+					"\"SwiftEmail\"",
+					"-framework",
+					"\"SwiftMessages\"",
+					"-framework",
+					"\"SwiftSoup\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"ThoraxMath\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"VideoToolbox\"",
+					"-framework",
+					"\"XLPagerTabStrip\"",
+					"-framework",
+					"\"iAd\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
+					"-weak_framework",
+					"\"WebKit\"",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D SURILLA -DMAIN_APP";
 				PRODUCT_BUNDLE_IDENTIFIER = com.surilla.ios.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5804,7 +6057,7 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Release;
 		};
@@ -6033,7 +6286,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -6095,7 +6348,7 @@
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -6249,14 +6502,26 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Notifications/Teambrella/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				"OTHER_LDFLAGS[arch=*]" = "$(inherited) -framework \"Accelerate\" -framework \"CFNetwork\" -framework \"ExtensionsPack\" -framework \"KeychainAccess\" -framework \"Kingfisher\"";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"$(inherited)",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"ExtensionsPack\"",
+					"-framework",
+					"\"KeychainAccess\"",
+					"-framework",
+					"\"Kingfisher\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.teambrella.ios.app.TeambrellaNotification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Debug;
 		};
@@ -6285,7 +6550,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Notifications/Notification-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Release;
 		};

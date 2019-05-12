@@ -30,6 +30,8 @@ final class TeammateProfileVC: UIViewController, Routable {
         static let socialCellHeight: CGFloat = 68
         static let votingHeaderTopOffset: CGFloat = 5
         static let votingHeaderShowTime: TimeInterval = 2
+        static let cellPaddingTop: CGFloat = 16
+        static let objectCellPaddingTop: CGFloat = 20
     }
     
     static var storyboardName: String = "Team"
@@ -489,7 +491,6 @@ extension TeammateProfileVC: UICollectionViewDelegate {
             service.router.presentChat(context: UniversalChatContext(teammate))
         }
     }
-    
 }
 
 // MARK: UICollectionViewDelegateFlowLayout

@@ -100,16 +100,16 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmV-yc-E7V">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="517"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="523"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rtL-Dg-TqT">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="194"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytR-oK-Uh1" customClass="RadarView" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="174"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="176"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-sm-Jvx" customClass="GradientView" customModule="Surilla" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="194"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="196"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="topColor">
@@ -121,7 +121,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DDL-Sr-nJy">
-                                                                <rect key="frame" x="154" y="8" width="150" height="118"/>
+                                                                <rect key="frame" x="154" y="8" width="150" height="120"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="dAc-22-R7x"/>
                                                                 </constraints>
@@ -164,19 +164,19 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="749" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-A5-JrL">
-                                                        <rect key="frame" x="24" y="14" width="77.5" height="104"/>
+                                                        <rect key="frame" x="24" y="14" width="77.5" height="106"/>
                                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="88"/>
                                                         <color key="textColor" red="0.17254901959999999" green="0.22352941179999999" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="262" verticalHuggingPriority="251" horizontalCompressionResistancePriority="758" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztJ-BE-YAX">
-                                                        <rect key="frame" x="104.5" y="77" width="14.5" height="19"/>
+                                                        <rect key="frame" x="104.5" y="79" width="14.5" height="19"/>
                                                         <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="16"/>
                                                         <color key="textColor" red="0.20784313730000001" green="0.6705882353" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAH-4g-Hs4" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="16" y="134" width="288" height="40"/>
+                                                        <rect key="frame" x="16" y="136" width="288" height="40"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="V9i-9H-hTl"/>
@@ -217,7 +217,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ByT-Mp-bxm">
-                                                <rect key="frame" x="16" y="210" width="288" height="291"/>
+                                                <rect key="frame" x="16" y="216" width="288" height="291"/>
                                                 <subviews>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6J2-id-xhd">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="291"/>
@@ -253,11 +253,11 @@
                                                                 </constraints>
                                                             </view>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIB-Df-BKn" customClass="UmbrellaView" customModule="Surilla" customModuleProvider="target">
-                                                                <rect key="frame" x="-20" y="64.5" width="328" height="32.5"/>
+                                                                <rect key="frame" x="-20" y="65" width="328" height="32"/>
                                                                 <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBa-YD-YON">
-                                                                <rect key="frame" x="20" y="35" width="248" height="29.5"/>
+                                                                <rect key="frame" x="20" y="35" width="248" height="30"/>
                                                                 <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="14"/>
                                                                 <color key="textColor" red="0.94901960784313721" green="0.95686274509803915" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -378,7 +378,7 @@
                                             <constraint firstAttribute="trailing" secondItem="ByT-Mp-bxm" secondAttribute="trailing" constant="16" id="MTB-vh-gXn"/>
                                             <constraint firstAttribute="bottom" secondItem="ByT-Mp-bxm" secondAttribute="bottom" constant="16" id="MWc-f8-2tP"/>
                                             <constraint firstItem="rtL-Dg-TqT" firstAttribute="top" secondItem="VmV-yc-E7V" secondAttribute="top" id="m6k-es-MYh"/>
-                                            <constraint firstItem="ByT-Mp-bxm" firstAttribute="top" secondItem="rtL-Dg-TqT" secondAttribute="bottom" constant="16" id="mof-QV-AU4"/>
+                                            <constraint firstItem="ByT-Mp-bxm" firstAttribute="top" secondItem="rtL-Dg-TqT" secondAttribute="bottom" constant="20" id="mof-QV-AU4"/>
                                             <constraint firstItem="rtL-Dg-TqT" firstAttribute="height" secondItem="VmV-yc-E7V" secondAttribute="height" multiplier="3:8" id="ubi-tv-cgk"/>
                                         </constraints>
                                     </view>
@@ -483,7 +483,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EB9-y9-rte">
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="psT-aF-cSc">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="16" id="psT-aF-cSc">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -961,7 +961,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="50"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="h2e-xP-YiZ">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="16" id="h2e-xP-YiZ">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -979,7 +979,7 @@
                             <constraint firstItem="pYm-sV-wJe" firstAttribute="leading" secondItem="zEN-Kv-1aw" secondAttribute="leading" id="Guw-FK-cag"/>
                             <constraint firstItem="pYm-sV-wJe" firstAttribute="top" secondItem="Uua-Ft-Hgv" secondAttribute="bottom" id="LYq-4p-TnH"/>
                             <constraint firstAttribute="trailing" secondItem="pYm-sV-wJe" secondAttribute="trailing" id="WD9-gP-e8q"/>
-                            <constraint firstAttribute="bottom" secondItem="pYm-sV-wJe" secondAttribute="bottom" id="lXQ-6x-hXQ"/>
+                            <constraint firstItem="e5E-K2-fgV" firstAttribute="top" secondItem="pYm-sV-wJe" secondAttribute="bottom" id="lXQ-6x-hXQ"/>
                         </constraints>
                     </view>
                     <connections>

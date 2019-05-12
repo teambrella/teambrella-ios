@@ -26,7 +26,8 @@ import XLPagerTabStrip
 
 final class WalletVC: UIViewController {
     struct Constant {
-        static let headerCellHeight: CGFloat = 260
+        static let headerCellHeight: CGFloat = 280
+        static let headerCellHeightHiddenLabel: CGFloat = 250
         static let fundingCellHeight: CGFloat = 227
         static let buttonsCellHeight: CGFloat = 163
         static let horizontalCellPadding: CGFloat = 16
@@ -217,7 +218,11 @@ extension WalletVC: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
         case 0:
-            return CGSize(width: collectionView.bounds.width, height: Constant.headerCellHeight)
+            var height = Constant.headerCellHeight
+            if let model = dataSource[indexPath] as? WalletHeaderCellModel, model.fundWalletComment == "" {
+                height = Constant.headerCellHeightHiddenLabel
+            }
+            return CGSize(width: collectionView.bounds.width, height: height)
         case 1:
             return CGSize(width: collectionView.bounds.width - Constant.horizontalCellPadding * 2,
                           height: Constant.fundingCellHeight)

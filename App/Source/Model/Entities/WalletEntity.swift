@@ -33,6 +33,9 @@ struct WalletEntity: Decodable {
         case cosigners = "Cosigners"
         case coveragePart = "CoveragePart"
         case teamPart = "TeamPart"
+        case amountFiatMonth = "AmountFiatMonth"
+        case amountFiatYear = "AmountFiatYear"
+        case fundWalletComment = "FundWalletComment"
     }
     
     var currencyRate: Double
@@ -45,5 +48,7 @@ struct WalletEntity: Decodable {
     var cosigners: [CosignerEntity]
     var coveragePart: CoverageEntity
     var teamPart: TeamPart?
-
+    var amountFiatMonth: Fiat
+    var amountFiatYear: Fiat
+    var fundWalletComment: String
 }

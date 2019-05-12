@@ -63,7 +63,10 @@ class WalletDataSource: StandardDataSource {
     func createCellModels(with wallet: WalletEntity?) {
         guard let wallet = wallet else {
             items.append(WalletHeaderCellModel(amount: .empty,
-                                               currencyRate: 0))
+                                               currencyRate: 0,
+                                               amountFiatMonth: Fiat(0),
+                                               amountFiatYear: Fiat(0),
+                                               fundWalletComment: ""))
             items.append(WalletFundingCellModel(maxCoverageFunding: .empty,
                                                 uninterruptedCoverageFunding: .empty))
             items.append(WalletButtonsCellModel(avatars: [], avatarsPreview: []))
@@ -71,7 +74,11 @@ class WalletDataSource: StandardDataSource {
         }
 
         items.append(WalletHeaderCellModel(amount: wallet.cryptoBalance,
-                                           currencyRate: wallet.currencyRate))
+                                           currencyRate: wallet.currencyRate,
+                                           amountFiatMonth: wallet.amountFiatMonth,
+                                           amountFiatYear: wallet.amountFiatYear,
+                                           fundWalletComment: wallet.fundWalletComment))
+        
         items.append(WalletFundingCellModel(maxCoverageFunding: wallet.coveragePart.nextCoverage,
                                             uninterruptedCoverageFunding: wallet.recommendedCrypto))
         let avatars = wallet.cosigners.map { $0.avatar }

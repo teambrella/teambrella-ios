@@ -28,7 +28,9 @@ protocol WalletCellModel {
 struct WalletHeaderCellModel: WalletCellModel {
     let amount: Ether
     let currencyRate: Double
-
+    let amountFiatMonth: Fiat
+    let amountFiatYear: Fiat
+    let fundWalletComment: String
 }
 
 struct WalletFundingCellModel: WalletCellModel {

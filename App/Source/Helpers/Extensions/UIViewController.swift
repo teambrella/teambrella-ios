@@ -55,7 +55,11 @@ extension UIViewController {
             metrics: nil,
             views: views)
         constraints += hConstraints
-        let verticalVisualFormat = isIphoneX ? "V:|-(0)-[gradientView(88)]" : "V:|-(0)-[gradientView(64)]"
+        var navBarHeight:CGFloat = isIphoneX ? 88 : 64
+        if #available(iOS 11.0, *) {
+            //navBarHeight = view.safeAreaInsets.top
+        }
+        let verticalVisualFormat = "V:|-(0)-[gradientView(\(navBarHeight))]"
         let vConstraints = NSLayoutConstraint.constraints(
             withVisualFormat: verticalVisualFormat,
             options: [],

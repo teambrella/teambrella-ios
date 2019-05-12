@@ -28,6 +28,9 @@ class WalletHeaderCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var withdrawButton: BorderedButton!
     @IBOutlet var fundWalletButton: BorderedButton!
     @IBOutlet var fundWalletLabel: UILabel!
+    @IBOutlet var walletFundLabelVisible: NSLayoutConstraint!
+    @IBOutlet var walletFundLabelHidden: NSLayoutConstraint!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
