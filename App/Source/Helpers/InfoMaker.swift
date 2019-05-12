@@ -116,6 +116,11 @@ class InfoMaker {
             if UIApplication.shared.backgroundRefreshStatus == .available { options.insert(.silentPushEnabled) }
             if UIDevice.current.isInLowPowerMode { options.insert(.isInLowPowerMode) }
 
+            let procName = ProcessInfo.processInfo.processName
+            if (procName == "IBDesignablesAgentCocoaTouch" || procName == "IBDesignablesAgent-iOS") {
+                return
+            }
+            
             let current = UNUserNotificationCenter.current()
             current.getNotificationSettings { settings in
                 switch settings.authorizationStatus {
