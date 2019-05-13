@@ -16,14 +16,14 @@
 "Me.WalletVC.txsCell.title"                        = "ВЫПЛАТЫ";
 "Me.WalletVC.txsCell.payoutsForPeriod"             = "За %@";
 "Me.WalletVC.txsCell.payoutsForYear"               = "За %d год";
-"Me.WalletVC.fundButton"                           = "Пополнить Кошелёк";
+"Me.WalletVC.fundButton"                           = "Пополнить";
 "Me.WalletVC.allTxsButton"                         = "Все Транзакции";
 
 "Me.WalletVC.actionsCell.cosigners"                = "Соподписчики";
 "Me.WalletVC.actionsCell.transactions"             = "Транзакции";
 "Me.WalletVC.actionsCell.backupWallet"             = "Бэкап Кошелька";
 
-"Me.WalletDetailsVC.title"                         = "QR-код";
+"Me.WalletDetailsVC.title"                         = "Пополнить";
 "Me.WalletDetailsVC.fundButton"                    = "Как мне пополнить кошелёк? >";
 "Me.WalletDetailsVC.headerLabel"                   = "Адрес кошелька Ethereum";
 //"Me.WalletDetailsVC.timeLabel"                     = "Valid for 24 hours";

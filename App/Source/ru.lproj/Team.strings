@@ -25,7 +25,7 @@
 "Team.ClaimCell.voteSubmitted"                        = "Голос отправлен";
 "Team.ClaimCell.resetVote"                            = "Сбросить";
 "Team.ClaimCell.claimDetails"                         = "ДЕТАЛИ ЗАЯВКИ";
-"Team.ClaimCell.claimAmount"                          = "Сумма выплаты";
+"Team.ClaimCell.claimAmount"                          = "На сумму";
 "Team.ClaimCell.estimatedExpences"                    = "Предполагаемые расходы";
 "Team.ClaimCell.deductible"                           = "Подлежит вычету";
 "Team.ClaimCell.coverage"                             = "Защита";
@@ -184,7 +184,7 @@
 "Team.Home.Card.claimed"                              = "ЗАЯВЛЕНО";
 "Team.Home.Card.coverage"                             = "ЗАЩИТА";
 "Team.Home.Card.teamVote"                             = "ГОЛОС КОМАНДЫ";
-"Team.Home.Card.voting"                               = "ГОЛОСОВАНИЕ";
+"Team.Home.Card.voting"                               = "АКТИВНО";
 
 "Team.ChooseTeam.switchUser"                          = "Сменить пользователя";
 

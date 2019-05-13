@@ -26,8 +26,8 @@ import XLPagerTabStrip
 
 final class WalletVC: UIViewController {
     struct Constant {
-        static let headerCellHeight: CGFloat = 300
-        static let headerCellHeightHiddenLabel: CGFloat = 250
+        static let headerCellHeight: CGFloat = 250
+        static let headerCellHeightHiddenLabel: CGFloat = 210
         static let txsCellHeight: CGFloat = 200
         static let buttonsCellHeight: CGFloat = 109
         static let horizontalCellPadding: CGFloat = 16

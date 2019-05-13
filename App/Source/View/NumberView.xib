@@ -42,10 +42,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="center" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="aSd-9y-46e">
-                                    <rect key="frame" x="119.5" y="12" width="140" height="127"/>
+                                    <rect key="frame" x="115.5" y="12" width="148" height="127"/>
                                     <subviews>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="28" translatesAutoresizingMaskIntoConstraints="NO" id="kJr-Qd-Nac" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
-                                            <rect key="frame" x="-21.5" y="44.5" width="21.5" height="38.5"/>
+                                            <rect key="frame" x="-27.5" y="44.5" width="27.5" height="38.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -84,8 +84,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="VOTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="9hk-vw-O9D" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
-                                            <rect key="frame" x="103" y="58" width="37" height="11"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="VOTING" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="9hk-vw-O9D" customClass="BadgeLabel" customModule="Surilla" customModuleProvider="target">
+                                            <rect key="frame" x="103" y="56" width="45" height="15"/>
                                             <color key="backgroundColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +110,9 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9hk-vw-O9D" firstAttribute="centerY" secondItem="3E2-y1-WiR" secondAttribute="centerY" id="qf1-AA-I8d"/>
+                                    </constraints>
                                 </stackView>
                             </subviews>
                         </stackView>

@@ -431,7 +431,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DOV-3b-s1w">
                                 <rect key="frame" x="0.0" y="20" width="375" height="1980"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.98039215690000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="16" id="HZ6-22-Sdp">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="HZ6-22-Sdp">
                                     <size key="itemSize" width="373" height="210"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="50" height="111"/>
@@ -604,7 +604,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" reuseIdentifier="object" id="THQ-y3-3Ql" customClass="TeammateObjectCell" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="13" y="230" width="349" height="296"/>
+                                        <rect key="frame" x="13" y="226" width="349" height="296"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="296"/>
@@ -729,7 +729,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stats" id="1e9-iD-FHA" userLabel="stats" customClass="TeammateStatsCell" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="13" y="546" width="349" height="352"/>
+                                        <rect key="frame" x="13" y="538" width="349" height="352"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="352"/>
@@ -885,7 +885,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contact" id="X9L-3S-Mv2" userLabel="contact" customClass="TeammateContactCell" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="13" y="918" width="349" height="210"/>
+                                        <rect key="frame" x="13" y="906" width="349" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="210"/>
@@ -977,7 +977,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="votingToDelete" id="Hdx-y2-f8w" customClass="TeammateVoteCell" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="13" y="1148" width="349" height="350"/>
+                                        <rect key="frame" x="13" y="1132" width="349" height="350"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="350"/>
@@ -1003,7 +1003,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dialogCompact" id="AkA-1v-1B0" userLabel="dialogCompact" customClass="DiscussionCompactCell" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="27.5" y="1518" width="320" height="140"/>
+                                        <rect key="frame" x="27.5" y="1498" width="320" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
@@ -1100,7 +1100,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="footer" id="lkC-Md-4Dw" customClass="TeammateFooter" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="1658" width="375" height="111"/>
+                                    <rect key="frame" x="0.0" y="1638" width="375" height="111"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj1-EA-kdL" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">

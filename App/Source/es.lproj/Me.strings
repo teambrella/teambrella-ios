@@ -23,12 +23,12 @@
 "Me.WalletVC.txsCell.title"                    = "PAYOUTS";
 "Me.WalletVC.txsCell.payoutsForPeriod"         = "In %@";
 "Me.WalletVC.txsCell.payoutsForYear"           = "In %d";
-"Me.WalletVC.fundButton"                       = "Financiar Monedero";
+"Me.WalletVC.fundButton"                       = "Financiar";
 "Me.WalletVC.allTxsButton"                     = "Transacciones";
 "Me.WalletVC.actionsCell.cosigners"            = "Cofirmantes";
 "Me.WalletVC.actionsCell.transactions"         = "Transacciones";
 "Me.WalletVC.actionsCell.backupWallet"         = "Hacer una copia respaldo del monedero";
-"Me.WalletDetailsVC.title"                     = "QR-code";
+"Me.WalletDetailsVC.title"                     = "Fund Wallet";
 "Me.WalletDetailsVC.fundButton"                = "Como financiar mi monedero?";
 "Me.WalletDetailsVC.headerLabel"               = "Dirección de Ethereum";
 "Me.WalletDetailsVC.timeLabel"                 = "Válido por 24 horas";

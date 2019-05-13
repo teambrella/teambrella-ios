@@ -176,7 +176,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AX5-98-I75">
-                                <rect key="frame" x="559" y="16.5" width="16" height="22"/>
+                                <rect key="frame" x="555" y="16.5" width="20" height="22"/>
                                 <state key="normal" image="info"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" text="VOTING: RISK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-o5-Yhy" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">

@@ -280,14 +280,15 @@ struct TeammateCellBuilder {
             
             right.titleLabel.text = "Team.TeammateCell.risk".localized
             right.amountLabel.text = String(format: "%.2f", teammate.basic.risk)
-            let avg = String.truncatedNumber(abs(teammate.basic.risk - teammate.basic.averageRisk) * 100)
-            
-            if teammate.basic.risk - teammate.basic.averageRisk == 0 {
+            let delta = teammate.basic.risk - teammate.basic.averageRisk
+            let avg = String.truncatedNumber(abs(delta / teammate.basic.averageRisk) * 100)
+
+            if delta == 0 {
                 right.badgeLabel.text = "Team.VotingRiskVC.avg".localized
                 right.badgeLabel.leftInset = CGFloat(4)
                 right.badgeLabel.rightInset = CGFloat(4)
             } else {
-                let sign = (teammate.basic.risk - teammate.basic.averageRisk) * 100 > 0 ? "+" : "-"
+                let sign = delta > 0 ? "+" : "-"
                 right.badgeLabel.text = "Team.VotingRiskVC.avg".localized + "\n\(sign)\(avg)%"
                 right.badgeLabel.numberOfLines = 2
                 right.badgeLabel.textAlignment = NSTextAlignment.center

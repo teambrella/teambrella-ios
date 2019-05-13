@@ -87,12 +87,13 @@ class NumberView: UIView, XIBInitable {
     }
 
     func showSignIfNeeded() {
-        let amount = (Double(amountLabel.text ?? "") ?? 0)
+        let amount = (Decimal(string: amountLabel.text ?? "") ?? 0)
         signLabel.isHidden = amount == 0
         let signSymbol: String = amount >= 0.01 ? "+" : amount <= -0.01 ? "-" : ""
         let signMonthColor: UIColor = amount > 0.0 ? .tealish : .lipstick
         signLabel.text = signSymbol
         signLabel.textColor = signMonthColor
+        amountLabel.text = "\(abs(amount))"
     }
 
     func tmpSetup() {
