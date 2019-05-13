@@ -29,7 +29,7 @@ struct WalletCellBuilder {
     static func registerCells(in collectionView: UICollectionView) {
         collectionView.register(WalletHeaderCell.nib, forCellWithReuseIdentifier: WalletHeaderCell.cellID)
         collectionView.register(WalletButtonsCell.nib, forCellWithReuseIdentifier: WalletButtonsCell.cellID)
-        collectionView.register(WalletFundingCell.nib, forCellWithReuseIdentifier: WalletFundingCell.cellID)
+        collectionView.register(WalletTxsCell.nib, forCellWithReuseIdentifier: WalletTxsCell.cellID)
     }
     
     static func dequeueCell(in collectionView: UICollectionView,
@@ -39,8 +39,8 @@ struct WalletCellBuilder {
             return collectionView.dequeueReusableCell(withReuseIdentifier: WalletHeaderCell.cellID, for: indexPath)
         } else if model is WalletButtonsCellModel {
             return collectionView.dequeueReusableCell(withReuseIdentifier: WalletButtonsCell.cellID, for: indexPath)
-        } else if model is WalletFundingCellModel {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: WalletFundingCell.cellID, for: indexPath)
+        } else if model is WalletTxsCellModel {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: WalletTxsCell.cellID, for: indexPath)
         } else {
             fatalError("Unknown model type for Wallet Cell")
         }
@@ -50,7 +50,7 @@ struct WalletCellBuilder {
         if let cell = cell as? WalletHeaderCell, let model = model as? WalletHeaderCellModel {
             populateHeader(cell: cell, model: model)
         }
-        if let cell = cell as? WalletFundingCell, let model = model as? WalletFundingCellModel {
+        if let cell = cell as? WalletTxsCell, let model = model as? WalletTxsCellModel {
             populateFunding(cell: cell, model: model)
         }
         if let cell = cell as? WalletButtonsCell, let model = model as? WalletButtonsCellModel {
@@ -79,19 +79,29 @@ struct WalletCellBuilder {
         cell.fundWalletLabel.text = model.fundWalletComment
     }
     
-    private static func populateFunding(cell: WalletFundingCell, model: WalletFundingCellModel) {
-        cell.headerLabel.text = "Me.WalletVC.fundingCell.title".localized
-        cell.lowerNumberView.verticalStackView.alignment = .leading
-        cell.lowerNumberView.titleLabel.text = "Me.WalletVC.lowerBrick.title".localized
-        let amount = max(0, floor(MEth(model.uninterruptedCoverageFunding).value))
-        cell.lowerNumberView.amountLabel.text = String.formattedNumber(amount)
-        cell.lowerNumberView.isPercentVisible = false
-        cell.lowerNumberView.isBadgeVisible = false
-        cell.fundWalletButton.setTitle("Me.WalletVC.fundButton".localized, for: .normal)
+    private static func populateFunding(cell: WalletTxsCell, model: WalletTxsCellModel) {
+        cell.headerLabel.text = "Me.WalletVC.txsCell.title".localized
+        cell.spendingsView.left?.isBadgeVisible = false
+        cell.spendingsView.left?.isPercentVisible = false
+        cell.spendingsView.left?.isCurrencyVisible = true
+        cell.spendingsView.right?.isBadgeVisible = false
+        cell.spendingsView.right?.isPercentVisible = false
+        cell.spendingsView.right?.isCurrencyVisible = true
+
         if let team = service.session?.currentTeam {
-            let amount = max(0, floor(model.uninterruptedCoverageFunding.value * currencyRate))
-            cell.lowerCurrencyLabel.text = String.formattedNumber(amount) + " " + team.currency
+            cell.spendingsView.left?.currencyLabel.text = team.currency
+            cell.spendingsView.right?.currencyLabel.text = team.currency
         }
+        
+        cell.spendingsView.right?.titleLabel.text = String(format: "Me.WalletVC.txsCell.payoutsForPeriod".localized,
+                                                          Formatter.monthName.string(from: Date()).capitalized).uppercased()
+        cell.spendingsView.left?.titleLabel.text = String(format: "Me.WalletVC.txsCell.payoutsForYear".localized, Date().year).uppercased()
+        cell.spendingsView.right?.amountLabel.text =  String(format: "%.0f", model.amountFiatMonth.value)
+        cell.spendingsView.left?.amountLabel.text = String(format: "%.0f", model.amountFiatYear.value)
+        cell.spendingsView.left?.showSignIfNeeded()
+        cell.spendingsView.right?.showSignIfNeeded()
+
+        cell.allTxsButton.setTitle("Me.WalletVC.allTxsButton".localized, for: .normal)
     }
     
     private static func populateButtons(cell: WalletButtonsCell, model: WalletButtonsCellModel, delegate: WalletVC) {
@@ -100,15 +110,12 @@ struct WalletCellBuilder {
         let otherVotersCount = model.avatars.count - maxAvatarsStackCount + 1
         let label: String?  =  otherVotersCount > 0 ? "+\(otherVotersCount)" : nil
         cell.imagesStack.set(images: avatars, label: label, max: maxAvatarsStackCount)
-        cell.topViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
-        cell.middleViewLabel.text = "Me.WalletVC.actionsCell.transactions".localized
-        cell.bottomViewLabel.text = "Me.WalletVC.actionsCell.backupWallet".localized
-        cell.tapTopViewRecognizer.removeTarget(delegate, action: nil)
-        cell.tapTopViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapCosigners))
-        cell.tapMiddleViewRecognizer.removeTarget(delegate, action: nil)
-        cell.tapMiddleViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapTransactions))
-        cell.tapBottomViewRecognizer.removeTarget(delegate, action: nil)
-        cell.tapBottomViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapBackupWallet))
+        cell.cosignersViewLabel.text = "Me.WalletVC.actionsCell.cosigners".localized
+        cell.backupViewLabel.text = "Me.WalletVC.actionsCell.backupWallet".localized
+        cell.tapCosignersViewRecognizer.removeTarget(delegate, action: nil)
+        cell.tapCosignersViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapCosigners))
+        cell.tapBackupViewRecognizer.removeTarget(delegate, action: nil)
+        cell.tapBackupViewRecognizer.addTarget(delegate, action: #selector(WalletVC.tapBackupWallet))
     }
     
 }

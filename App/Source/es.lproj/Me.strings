@@ -20,8 +20,11 @@
 "Me.WalletVC.leftBrick.title"                  = "RESERVADO";
 "Me.WalletVC.rightBrick.title"                 = "DISPONIBLE";
 "Me.WalletVC.withdrawButton"                   = "RETIRAR";
-"Me.WalletVC.fundingCell.title"                = "FINANCIAMENTO RECOMENDADO";
+"Me.WalletVC.txsCell.title"                    = "PAYOUTS";
+"Me.WalletVC.txsCell.payoutsForPeriod"         = "In %@";
+"Me.WalletVC.txsCell.payoutsForYear"           = "In %d";
 "Me.WalletVC.fundButton"                       = "Financiar Monedero";
+"Me.WalletVC.allTxsButton"                     = "Transacciones";
 "Me.WalletVC.actionsCell.cosigners"            = "Cofirmantes";
 "Me.WalletVC.actionsCell.transactions"         = "Transacciones";
 "Me.WalletVC.actionsCell.backupWallet"         = "Hacer una copia respaldo del monedero";

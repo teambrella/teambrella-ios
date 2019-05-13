@@ -13,8 +13,11 @@
 "Me.WalletVC.leftBrick.title"                      = "RESERVED";
 "Me.WalletVC.rightBrick.title"                     = "AVAILABLE";
 "Me.WalletVC.withdrawButton"                       = "Withdraw";
-"Me.WalletVC.fundingCell.title"                    = "RECOMMENDED FUNDING";
+"Me.WalletVC.txsCell.title"                        = "PAYOUTS";
+"Me.WalletVC.txsCell.payoutsForPeriod"             = "In %@";
+"Me.WalletVC.txsCell.payoutsForYear"               = "In %d";
 "Me.WalletVC.fundButton"                           = "Fund Wallet";
+"Me.WalletVC.allTxsButton"                         = "All Transactions";
 
 "Me.WalletVC.actionsCell.cosigners"                = "Cosigners";
 "Me.WalletVC.actionsCell.transactions"             = "Transactions";

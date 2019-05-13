@@ -13,12 +13,15 @@
 "Me.WalletVC.leftBrick.title"                      = "РЕЗЕРВ";
 "Me.WalletVC.rightBrick.title"                     = "ДОСТУПНО";
 "Me.WalletVC.withdrawButton"                       = "Вывести";
-"Me.WalletVC.fundingCell.title"                    = "РЕКОМЕНДОВАНО ВНЕСТИ";
-"Me.WalletVC.fundButton"                           = "Пополнить кошелёк";
+"Me.WalletVC.txsCell.title"                        = "ВЫПЛАТЫ";
+"Me.WalletVC.txsCell.payoutsForPeriod"             = "За %@";
+"Me.WalletVC.txsCell.payoutsForYear"               = "За %d год";
+"Me.WalletVC.fundButton"                           = "Пополнить Кошелёк";
+"Me.WalletVC.allTxsButton"                         = "Все Транзакции";
 
 "Me.WalletVC.actionsCell.cosigners"                = "Соподписчики";
 "Me.WalletVC.actionsCell.transactions"             = "Транзакции";
-"Me.WalletVC.actionsCell.backupWallet"             = "Бэкап кошелька";
+"Me.WalletVC.actionsCell.backupWallet"             = "Бэкап Кошелька";
 
 "Me.WalletDetailsVC.title"                         = "QR-код";
 "Me.WalletDetailsVC.fundButton"                    = "Как мне пополнить кошелёк? >";
@@ -29,7 +32,7 @@
 
 
 "Me.CoverageVC.fundButton.title.toIncrease"        = "Пополнить кошелёк, чтобы увеличить";
-"Me.CoverageVC.fundButton.title"                   = "Пополнить кошелёк";
+"Me.CoverageVC.fundButton.title"                   = "Пополнить Кошелёк";
 "Me.CoverageVC.title"                              = "КАК ЭТО РАБОТАЕТ";
 "Me.CoverageVC.subtitle"                           = "Используй бегунок, чтобы увидеть, как расходы влияют на максимальное возмещение.";
 "Me.CoverageVC.maxExpenses"                        = "Максимальное возмещение";
@@ -66,7 +69,7 @@
 "Me.Report.ImageSource.gallery"                    = "Галереи";
 "Me.Report.ImageSource.camera"                     = "Камеры";
 
-"Me.WalletVC.fundingCell.additionalTitle"          = "РЕКОМЕНДУЕМ ПОПОЛНИТЬ ДО";
+"Me.WalletVC.txsCell.additionalTitle"              = "РЕКОМЕНДУЕМ ПОПОЛНИТЬ ДО";
 "Me.WalletVC.WalletCosignersVC.title"              = "Соподписчики";
 
 "Me.Report.submitButtonTitle-submit"               = "Отправить";
@@ -101,10 +104,10 @@
 "Me.Wallet.Transactions.kind.pending"              = "В ОЖИДАНИИ";
 "Me.Wallet.Transactions.kind.cancelled"            = "ОТМЕНА";
 
-"Me.Wallet.Transactions.expensesForPeriod"         = "Потрачено за %@";
-"Me.Wallet.Transactions.expensesForYear"           = "Потрачено за %d год";
-"Me.Wallet.Transactions.incomeForPeriod"           = "Компенсации за %@";
-"Me.Wallet.Transactions.incomeForYear"             = "Компенсации за %d год";
+"Me.Wallet.Transactions.expensesForPeriod"         = "Выплаты за %@";
+"Me.Wallet.Transactions.expensesForYear"           = "Выплаты за %d год";
+"Me.Wallet.Transactions.incomeForPeriod"           = "Выплаты за %@";
+"Me.Wallet.Transactions.incomeForYear"             = "Выплаты за %d год";
 
 "Me.Wallet.Transactions.Empty.title"               = "Пока нет транзакций";
 "Me.Wallet.Transactions.Empty.details"             = "...";

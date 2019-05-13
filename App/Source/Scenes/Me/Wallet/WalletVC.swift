@@ -26,10 +26,10 @@ import XLPagerTabStrip
 
 final class WalletVC: UIViewController {
     struct Constant {
-        static let headerCellHeight: CGFloat = 280
+        static let headerCellHeight: CGFloat = 300
         static let headerCellHeightHiddenLabel: CGFloat = 250
-        static let fundingCellHeight: CGFloat = 227
-        static let buttonsCellHeight: CGFloat = 163
+        static let txsCellHeight: CGFloat = 200
+        static let buttonsCellHeight: CGFloat = 109
         static let horizontalCellPadding: CGFloat = 16
     }
     
@@ -114,7 +114,7 @@ final class WalletVC: UIViewController {
     }
     
     @objc
-    func tapTransactions(sender: UITapGestureRecognizer) {
+    func tapTransactions(sender: UIButton) {
         guard let session = service.session?.currentTeam?.teamID else { return }
         
         service.router.presentWalletTransactionsList(teamID: session,
@@ -204,8 +204,9 @@ extension WalletVC: UICollectionViewDelegate {
         if let cell = cell as? WalletHeaderCell {
             cell.withdrawButton.removeTarget(self, action: nil, for: .allEvents)
             cell.withdrawButton.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
-        } else if let cell = cell as? WalletFundingCell {
             cell.fundWalletButton.addTarget(self, action: #selector(tapFund), for: .touchUpInside)
+        } else if let cell = cell as? WalletTxsCell {
+            cell.allTxsButton.addTarget(self, action: #selector(tapTransactions), for: .touchUpInside)
             cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)
         }
     }
@@ -225,7 +226,7 @@ extension WalletVC: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: height)
         case 1:
             return CGSize(width: collectionView.bounds.width - Constant.horizontalCellPadding * 2,
-                          height: Constant.fundingCellHeight)
+                          height: Constant.txsCellHeight)
         case 2:
             return CGSize(width: collectionView.bounds.width, height: Constant.buttonsCellHeight)
         default:

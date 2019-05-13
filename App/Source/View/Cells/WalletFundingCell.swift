@@ -21,7 +21,7 @@
 
 import UIKit
 
-class WalletFundingCell: UICollectionViewCell, XIBInitableCell {
+class WalletTxsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var headerLabel: Label!
     @IBOutlet var infoButton: UIButton!
     @IBOutlet var lowerNumberView: NumberView!

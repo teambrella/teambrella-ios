@@ -1,5 +1,5 @@
 //
-//  WalletButtonsCell.swift
+//  WalletTxsCell.swift
 //  Teambrella
 //
 //  Created by Yaroslav Pasternak on 23.06.17.
@@ -21,24 +21,16 @@
 
 import UIKit
 
-class WalletButtonsCell: UICollectionViewCell, XIBInitableCell {
-    @IBOutlet var cosignersView: UIView!
-    @IBOutlet var cosignersViewLabel: Label!
-    @IBOutlet var imagesStack: RoundImagesStack!
+class WalletTxsCell: UICollectionViewCell, XIBInitableCell {
+    @IBOutlet var headerLabel: Label!
+    @IBOutlet var infoButton: UIButton!
+    @IBOutlet var spendingsView: NumberBar!
+    @IBOutlet var allTxsButton: BorderedButton!
 
-    @IBOutlet var backupView: UIView!
-    @IBOutlet var backupViewLabel: Label!
-    
-    var tapCosignersViewRecognizer = UITapGestureRecognizer()
-    var tapBackupViewRecognizer = UITapGestureRecognizer()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         ViewDecorator.shadow(for: self, opacity: 0.1, radius: 5)
-        cosignersView.addGestureRecognizer(tapCosignersViewRecognizer)
-        cosignersView.isUserInteractionEnabled = true
-        backupView.addGestureRecognizer(tapBackupViewRecognizer)
-        backupView.isUserInteractionEnabled = true
+        ViewDecorator.roundedEdges(for: self)
     }
 
 }

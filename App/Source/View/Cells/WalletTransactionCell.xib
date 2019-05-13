@@ -36,7 +36,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="BFn-ry-3N7">
-                                <rect key="frame" x="72" y="31" width="42" height="42"/>
+                                <rect key="frame" x="72" y="29.5" width="42" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-wx-uW6" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -45,7 +45,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOz-bT-sRy" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="21.5" width="42" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="21.5" width="42" height="23.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -58,13 +58,13 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AnO-gh-vxk">
-                                <rect key="frame" x="308.5" y="22.5" width="63.5" height="59"/>
+                                <rect key="frame" x="302.5" y="21" width="69.5" height="62"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ewW-UC-qhT">
-                                        <rect key="frame" x="0.0" y="0.0" width="63.5" height="38.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="69.5" height="38.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="28" translatesAutoresizingMaskIntoConstraints="NO" id="KL8-AM-fOU" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="21.5" height="38.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="27.5" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6J-bT-rWU" customClass="TitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                <rect key="frame" x="21.5" y="0.0" width="42" height="38.5"/>
+                                                <rect key="frame" x="27.5" y="0.0" width="42" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDo-x7-ImP" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="38.5" width="63.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="38.5" width="69.5" height="23.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

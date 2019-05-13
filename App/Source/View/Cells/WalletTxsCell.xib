@@ -16,68 +16,68 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletFundingCell" id="gTV-IL-0wX" customClass="WalletFundingCell" customModule="Surilla" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="343" height="227"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletTxsCell" id="gTV-IL-0wX" customClass="WalletTxsCell" customModule="Surilla" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="343" height="227"/>
+                <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ft1-fn-QZU">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="227"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOMMENDED FUNDING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-FN-MiT" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="20" y="16" width="256" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPENDING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dUM-FN-MiT" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="16" width="102.5" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCv-7T-Tb4" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="20" y="103" width="15" height="20"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDf-9h-j00">
-                                <rect key="frame" x="307" y="16" width="16" height="26"/>
+                                <rect key="frame" x="303" y="16" width="20" height="25.5"/>
                                 <state key="normal" image="info"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv4-qy-cUk" customClass="BorderedButton" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="20" y="167" width="303" height="40"/>
+                                <rect key="frame" x="20" y="140" width="303" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="p9S-QN-qIM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="15"/>
-                                <state key="normal" title="Fund wallet">
+                                <state key="normal" title="All Transactions">
                                     <color key="titleColor" red="0.30588235289999999" green="0.76862745099999996" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1r-kO-PWW" customClass="NumberView" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="20" y="63" width="199" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1r-kO-PWW" customClass="NumberBar" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="20" y="62.5" width="303" height="53.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="lAk-Wf-x8O"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="count">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.90980392156862744" green="0.92941176470588238" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Lv4-qy-cUk" secondAttribute="trailing" constant="20" id="42Y-cf-eXP"/>
-                            <constraint firstItem="s1r-kO-PWW" firstAttribute="leading" secondItem="sCv-7T-Tb4" secondAttribute="leading" id="4He-zS-TNp"/>
                             <constraint firstItem="Lv4-qy-cUk" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="20" id="4mf-7x-Fhk"/>
                             <constraint firstAttribute="trailing" secondItem="vDf-9h-j00" secondAttribute="trailing" constant="20" id="740-6A-7iv"/>
-                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="top" secondItem="sCv-7T-Tb4" secondAttribute="bottom" constant="44" id="7Jz-bd-ZEB"/>
-                            <constraint firstItem="sCv-7T-Tb4" firstAttribute="top" secondItem="s1r-kO-PWW" secondAttribute="bottom" id="Awf-Vg-Klo"/>
+                            <constraint firstItem="Lv4-qy-cUk" firstAttribute="top" secondItem="s1r-kO-PWW" secondAttribute="bottom" constant="24" id="7Jz-bd-ZEB"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="centerY" secondItem="vDf-9h-j00" secondAttribute="centerY" id="Hbx-gd-c32"/>
                             <constraint firstAttribute="bottom" secondItem="Lv4-qy-cUk" secondAttribute="bottom" constant="20" id="J2A-GT-QCQ"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="Mn1-SD-vAT"/>
                             <constraint firstItem="dUM-FN-MiT" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="20" id="ZjA-Gi-fCi"/>
                             <constraint firstItem="vDf-9h-j00" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dUM-FN-MiT" secondAttribute="trailing" constant="8" id="dH2-RC-Fki"/>
-                            <constraint firstItem="sCv-7T-Tb4" firstAttribute="leading" secondItem="Lv4-qy-cUk" secondAttribute="leading" id="dJX-C6-GJ2"/>
                             <constraint firstItem="vDf-9h-j00" firstAttribute="top" secondItem="ft1-fn-QZU" secondAttribute="top" constant="16" id="eAp-mV-0ru"/>
-                            <constraint firstAttribute="trailing" secondItem="s1r-kO-PWW" secondAttribute="trailing" constant="124" id="fDF-U1-Meb"/>
+                            <constraint firstAttribute="trailing" secondItem="s1r-kO-PWW" secondAttribute="trailing" constant="20" id="fDF-U1-Meb"/>
                             <constraint firstItem="s1r-kO-PWW" firstAttribute="top" secondItem="dUM-FN-MiT" secondAttribute="bottom" constant="21" id="gCf-I6-tRO"/>
+                            <constraint firstItem="s1r-kO-PWW" firstAttribute="leading" secondItem="ft1-fn-QZU" secondAttribute="leading" constant="20" id="hn3-TW-Q87"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -90,11 +90,10 @@
             </constraints>
             <size key="customSize" width="343" height="228"/>
             <connections>
-                <outlet property="fundWalletButton" destination="Lv4-qy-cUk" id="Mrw-tE-rX3"/>
+                <outlet property="allTxsButton" destination="Lv4-qy-cUk" id="Mrw-tE-rX3"/>
                 <outlet property="headerLabel" destination="dUM-FN-MiT" id="wzP-1b-Axi"/>
                 <outlet property="infoButton" destination="vDf-9h-j00" id="CDB-5p-PNQ"/>
-                <outlet property="lowerCurrencyLabel" destination="sCv-7T-Tb4" id="aVV-Ze-Gpw"/>
-                <outlet property="lowerNumberView" destination="s1r-kO-PWW" id="qSi-Yy-loH"/>
+                <outlet property="spendingsView" destination="s1r-kO-PWW" id="qSi-Yy-loH"/>
             </connections>
             <point key="canvasLocation" x="35.5" y="25"/>
         </collectionViewCell>

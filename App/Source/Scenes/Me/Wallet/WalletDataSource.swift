@@ -64,23 +64,23 @@ class WalletDataSource: StandardDataSource {
         guard let wallet = wallet else {
             items.append(WalletHeaderCellModel(amount: .empty,
                                                currencyRate: 0,
-                                               amountFiatMonth: Fiat(0),
-                                               amountFiatYear: Fiat(0),
                                                fundWalletComment: ""))
-            items.append(WalletFundingCellModel(maxCoverageFunding: .empty,
-                                                uninterruptedCoverageFunding: .empty))
+            items.append(WalletTxsCellModel(maxCoverageFunding: .empty,
+                                                uninterruptedCoverageFunding: .empty,
+                                                amountFiatMonth: Fiat(0),
+                                                amountFiatYear: Fiat(0)))
             items.append(WalletButtonsCellModel(avatars: [], avatarsPreview: []))
             return
         }
 
         items.append(WalletHeaderCellModel(amount: wallet.cryptoBalance,
                                            currencyRate: wallet.currencyRate,
-                                           amountFiatMonth: wallet.amountFiatMonth,
-                                           amountFiatYear: wallet.amountFiatYear,
-                                           fundWalletComment: wallet.fundWalletComment))
+                                           fundWalletComment: wallet.fundWalletComment /* test: "Пополни на 49 рублей для получения бонуса"*/))
         
-        items.append(WalletFundingCellModel(maxCoverageFunding: wallet.coveragePart.nextCoverage,
-                                            uninterruptedCoverageFunding: wallet.recommendedCrypto))
+        items.append(WalletTxsCellModel(maxCoverageFunding: wallet.coveragePart.nextCoverage,
+                                            uninterruptedCoverageFunding: wallet.recommendedCrypto,
+                                            amountFiatMonth: wallet.amountFiatMonth,
+                                            amountFiatYear: wallet.amountFiatYear))
         let avatars = wallet.cosigners.map { $0.avatar }
         var avatarsPreview: [Avatar] = []
         if avatars.count >= 3 {

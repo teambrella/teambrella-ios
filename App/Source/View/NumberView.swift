@@ -34,6 +34,7 @@ class NumberView: UIView, XIBInitable {
     @IBOutlet var currencyLabel: UILabel!
     @IBOutlet var percentLabel: CurrencyLabel!
     @IBOutlet var badgeLabel: Label!
+    @IBOutlet var signLabel: Label!
     
     @IBOutlet var centerXConstraint: NSLayoutConstraint!
     @IBOutlet var leadingXConstraint: NSLayoutConstraint!
@@ -84,7 +85,16 @@ class NumberView: UIView, XIBInitable {
             currencyContainer.isHidden = !isCurrencyVisible
         }
     }
-    
+
+    func showSignIfNeeded() {
+        let amount = (Double(amountLabel.text ?? "") ?? 0)
+        signLabel.isHidden = amount == 0
+        let signSymbol: String = amount >= 0.01 ? "+" : amount <= -0.01 ? "-" : ""
+        let signMonthColor: UIColor = amount > 0.0 ? .tealish : .lipstick
+        signLabel.text = signSymbol
+        signLabel.textColor = signMonthColor
+    }
+
     func tmpSetup() {
         currencyLabel.text = service.session?.cryptoCoin.code
         activateAlignmentType()

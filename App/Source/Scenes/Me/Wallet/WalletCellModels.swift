@@ -28,15 +28,14 @@ protocol WalletCellModel {
 struct WalletHeaderCellModel: WalletCellModel {
     let amount: Ether
     let currencyRate: Double
-    let amountFiatMonth: Fiat
-    let amountFiatYear: Fiat
     let fundWalletComment: String
 }
 
-struct WalletFundingCellModel: WalletCellModel {
+struct WalletTxsCellModel: WalletCellModel {
     let maxCoverageFunding: Ether
     let uninterruptedCoverageFunding: Ether
-    
+    let amountFiatMonth: Fiat
+    let amountFiatYear: Fiat
 }
 
 struct WalletButtonsCellModel: WalletCellModel {
