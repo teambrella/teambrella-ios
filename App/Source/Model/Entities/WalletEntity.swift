@@ -30,6 +30,7 @@ struct WalletEntity: Decodable {
         case recommendedCrypto = "RecommendedCrypto"
         case fundAddress = "FundAddress"
         case defaultWithdrawAddress = "DefaultWithdrawAddress"
+        case contractAddress = "ContractAddress"
         case cosigners = "Cosigners"
         case coveragePart = "CoveragePart"
         case teamPart = "TeamPart"
@@ -45,6 +46,7 @@ struct WalletEntity: Decodable {
     var recommendedCrypto: Ether
     var fundAddress: String
     var defaultWithdrawAddress: String?
+    var contractAddress: String?
     var cosigners: [CosignerEntity]
     var coveragePart: CoverageEntity
     var teamPart: TeamPart?

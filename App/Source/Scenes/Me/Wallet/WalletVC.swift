@@ -23,6 +23,7 @@ import PKHUD
 import QRCode
 import UIKit
 import XLPagerTabStrip
+import SafariServices
 
 final class WalletVC: UIViewController {
     struct Constant {
@@ -89,6 +90,17 @@ final class WalletVC: UIViewController {
             codeManager.size = CGSize(width: 79, height: 75)
             qrCode = codeManager.code(from: walletID)
     }
+    
+    @objc
+    func etherScanTapped(sender: UIButton)
+    {
+        guard !(wallet?.contractAddress ?? "").isEmpty else {
+            return
+        }
+        log("tap Fund", type: .userInteraction)
+        let url = URL(string: "https://etherscan.io/address/" + wallet!.contractAddress!)!
+        present(SFSafariViewController(url: url), animated: true, completion: nil)
+   }
     
     @objc
     func tapFund(sender: UIButton) {
@@ -205,6 +217,10 @@ extension WalletVC: UICollectionViewDelegate {
             cell.withdrawButton.removeTarget(self, action: nil, for: .allEvents)
             cell.withdrawButton.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
             cell.fundWalletButton.addTarget(self, action: #selector(tapFund), for: .touchUpInside)
+            cell.etherScanButton.addTarget(self, action: #selector(etherScanTapped), for: .touchUpInside)
+            if (wallet?.contractAddress ?? "").isEmpty {
+                cell.etherScanButton.isHidden = true
+            }
         } else if let cell = cell as? WalletTxsCell {
             cell.allTxsButton.addTarget(self, action: #selector(tapTransactions), for: .touchUpInside)
             cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)

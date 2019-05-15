@@ -30,6 +30,7 @@ class WalletHeaderCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var fundWalletLabel: UILabel!
     @IBOutlet var walletFundLabelVisible: NSLayoutConstraint!
     @IBOutlet var walletFundLabelHidden: NSLayoutConstraint!
+    @IBOutlet var etherScanButton: UIButton!
     
 
     override func awakeFromNib() {
