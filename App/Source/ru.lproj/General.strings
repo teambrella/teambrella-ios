@@ -65,6 +65,7 @@
 "General.posessiveFormat.her" = "ЕЁ";
 "General.unitedFormat" = "%1$@ %2$@";
 "General.unitedFormat.my" = "%1$@ %2$@";
+"General.amountFormat" = "%1$d %2$@";
 
 "General.ok" = "OK";
 "General.longAgo" = "давно";

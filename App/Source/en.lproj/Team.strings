@@ -37,6 +37,8 @@
 "Team.Teammates.teammates"                            = "TEAMMATES";
 "Team.Teammates.votingEndsIn"                         = "VOTING ENDS IN";
 "Team.Teammates.net"                                  = "NET";
+"Team.Teammates.coversMe"                             = "COVERS ME";
+"Team.Teammates.toCoverMe"                            = "TO COVER ME";
 "Team.MembersVC.indicatorTitle"                       = "Teammates";
 "Team.MembersVC.searchHere"                           = "Search";
 

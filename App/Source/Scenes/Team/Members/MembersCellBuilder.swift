@@ -32,21 +32,23 @@ struct MembersCellBuilder {
             cell.titleLabel.text = teammate.name.entire
             cell.avatarView.show(teammate.avatar)
             cell.titleLabel.text = teammate.name.entire
-            let detailsText: String = "\(teammate.model), \(yearText)".uppercased()
-            cell.detailsLabel.text = detailsText
-            let dateText: String = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining)
-            cell.dateLabel.text = dateText.uppercased()
+            cell.detailsLabel.text = "\(teammate.model), \(yearText)".uppercased()
+            cell.dateLabel.text = DateProcessor().stringFromNow(minutes: -teammate.minutesRemaining).uppercased()
             cell.chartView.setupWith(remainingMinutes: teammate.minutesRemaining)
         } else if let cell = cell as? TeammateCell {
             cell.avatarView.show(teammate.avatar)
-            let currency: String = session?.currentTeam?.currencySymbol ?? ""
-            let coeff = teammate.totallyPaid > 0.0 ? 0.5 : -0.5
-            let amountText: String = currency + "\(abs(Int(teammate.totallyPaid + coeff)))"
-            cell.amountLabel.text = amountText
-            let sign: String = teammate.totallyPaid >= 0.5 ? "+" : teammate.totallyPaid <= -0.5 ? "-" : ""
-            cell.signLabel.text = sign
-            let signColor: UIColor = teammate.totallyPaid > 0.0 ? .tealish : .lipstick
-            cell.signLabel.textColor = signColor
+            if (teammate.coversMe > 0.0001)
+            {
+                let currency: String = session?.currentTeam?.currencySymbol ?? ""
+                cell.amountLabel.text = String(format: "General.amountFormat".localized, Int(teammate.coversMe), currency)
+                cell.signLabel.text = "+"
+                cell.signLabel.textColor = .tealish
+            }
+            else
+            {
+                cell.amountLabel.text = "-"
+                cell.signLabel.text = ""
+            }
             cell.titleLabel.text = teammate.name.entire
             let detailsText: String = "\(teammate.model), \(yearText)".uppercased()
             cell.detailsLabel.text = detailsText

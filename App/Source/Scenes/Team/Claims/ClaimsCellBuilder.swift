@@ -53,14 +53,15 @@ struct ClaimsCellBuilder {
                 cell.button.setTitle("Team.ClaimsCell.viewToVote".localized, for: .normal)
             }
             
-            cell.claimedAmountLabel.text = currencySymbol + claim.claimAmount.formatted
+            cell.claimedAmountLabel.text = String(format: "General.amountFormat".localized, Int(claim.claimAmount.value+0.5), currencySymbol)
             cell.claimedAmountLabel.font = isSmallIPhone ?
                 UIFont.teambrellaBold(size: 16) : UIFont.teambrellaBold(size: 20)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
-        } else if let cell = cell as? ClaimsVotedCell {
+        }
+        else if let cell = cell as? ClaimsVotedCell {
             //cell.avatarView.showAvatar(string: claim.smallPhoto)
             cell.avatarView.show(claim.smallPhoto)
-            cell.claimedAmountLabel.text = currencySymbol + claim.claimAmount.formatted
+            cell.claimedAmountLabel.text = String(format: "General.amountFormat".localized, Int(claim.claimAmount.value+0.5), currencySymbol)
             cell.claimedAmountLabel.font = isSmallIPhone ?
                 UIFont.teambrellaBold(size: 16) : UIFont.teambrellaBold(size: 20)
             cell.claimedTitleLabel.text = "Team.ClaimsCell.claimed".localized.uppercased()
@@ -82,7 +83,8 @@ struct ClaimsCellBuilder {
             } else {
                 cell.voterLabel.isHidden = true
             }
-        } else if let cell = cell as? ClaimsPaidCell {
+        }
+        else if let cell = cell as? ClaimsPaidCell {
             cell.avatarView.show(claim.smallPhoto)
             switch claim.state {
             case .declined:
@@ -99,8 +101,8 @@ struct ClaimsCellBuilder {
                 cell.scaleBar.isLineHidden = false
             }
 
-            let claimAmount = Fiat(claim.claimAmount.value * claim.reimbursement.value)
-            cell.amountLabel.text = currencySymbol + claimAmount.formatted
+            let claimAmount = Fiat(claim.claimAmount.value * claim.reimbursement.value + 0.5)
+            cell.amountLabel.text = String(format: "General.amountFormat".localized, Int(claimAmount.value), currencySymbol)
             cell.amountLabel.font = isSmallIPhone ? UIFont.teambrellaBold(size: 16) : UIFont.teambrellaBold(size: 20)
             if let ratio = claim.paidRatio {
                 cell.scaleBar.value = CGFloat(ratio)

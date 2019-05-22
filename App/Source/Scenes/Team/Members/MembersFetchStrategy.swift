@@ -106,7 +106,7 @@ class MembersListStrategy: MembersFetchStrategy {
         case .new:
             return "Team.Teammates.votingEndsIn".localized
         case .teammate:
-            return "Team.Teammates.net".localized
+            return (service.session?.currentTeam?.objectCoverage?.percentage ?? 0 < 0.0001) ? "Team.Teammates.toCoverMe".localized : "Team.Teammates.coversMe".localized
         }
     }
     

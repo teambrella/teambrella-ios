@@ -37,6 +37,8 @@
 "Team.Teammates.teammates"                            = "УЧАСТНИКИ";
 "Team.Teammates.votingEndsIn"                         = "ГОЛОСОВАНИЕ: ОСТАЛОСЬ";
 "Team.Teammates.net"                                  = "НЕТТО";
+"Team.Teammates.coversMe"                             = "ЗАЩИЩАЕТ ТЕБЯ";
+"Team.Teammates.toCoverMe"                            = "БУДЕТ ЗАЩИЩАТЬ ТЕБЯ";
 "Team.MembersVC.indicatorTitle"                       = "Участники";
 "Team.MembersVC.searchHere"                           = "Поиск";
 

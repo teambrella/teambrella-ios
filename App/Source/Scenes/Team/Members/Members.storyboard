@@ -199,16 +199,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yV-jX-qWH">
-                                                    <rect key="frame" x="72" y="18.5" width="216" height="35"/>
+                                                    <rect key="frame" x="72" y="18.5" width="129.5" height="35"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donna Armstrong" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIU-d2-vBN" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="216" height="17.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="129.5" height="17.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TESLA MODEL S" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v4-6f-4kR" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="19.5" width="216" height="15.5"/>
+                                                            <rect key="frame" x="0.0" y="19.5" width="129.5" height="15.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" red="0.58431372550000005" green="0.64705882349999999" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -263,7 +263,7 @@
                                             <constraint firstItem="6yV-jX-qWH" firstAttribute="leading" secondItem="AC1-iQ-fvm" secondAttribute="trailing" constant="16" id="BWl-TD-PNX"/>
                                             <constraint firstItem="qbc-3j-1Xu" firstAttribute="centerY" secondItem="wMB-N1-lwa" secondAttribute="centerY" id="ENQ-Ah-MAg"/>
                                             <constraint firstAttribute="trailing" secondItem="v4A-ji-fL2" secondAttribute="trailing" constant="16" id="FP8-jU-eHM"/>
-                                            <constraint firstItem="6yV-jX-qWH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qbc-3j-1Xu" secondAttribute="leading" constant="8" id="T5W-Sq-0Ge"/>
+                                            <constraint firstItem="6yV-jX-qWH" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qbc-3j-1Xu" secondAttribute="leading" constant="-16" id="T5W-Sq-0Ge"/>
                                             <constraint firstItem="v4A-ji-fL2" firstAttribute="leading" secondItem="wMB-N1-lwa" secondAttribute="trailing" constant="16" id="akg-qj-Jk6"/>
                                             <constraint firstItem="AC1-iQ-fvm" firstAttribute="leading" secondItem="4aQ-0e-dvT" secondAttribute="leading" constant="16" id="ayu-aE-EzB"/>
                                             <constraint firstItem="6yV-jX-qWH" firstAttribute="bottom" secondItem="AC1-iQ-fvm" secondAttribute="bottom" id="l68-sb-DXO"/>

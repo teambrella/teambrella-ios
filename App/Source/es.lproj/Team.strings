@@ -32,6 +32,8 @@
 "Team.Teammates.teammates"                            = "COMPAÑEROS";
 "Team.Teammates.votingEndsIn"                         = "VOTACION TERMINA EN";
 "Team.Teammates.net"                                  = "NET";
+"Team.Teammates.coversMe"                             = "COVERS ME";
+"Team.Teammates.toCoverMe"                            = "TO COVER ME";
 "Team.MembersVC.indicatorTitle"                       = "Compañeros";
 "Team.MembersVC.searchHere"                           = "Buscar aquí...";
 "Team.TeammateCell.youAreProxy_format_s"              = "Eres proxy para %@";

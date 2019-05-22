@@ -33,6 +33,7 @@ class TeammateListEntity: Decodable {
     let risk: Double?
     let riskVoted: Double?
     let totallyPaid: Double
+    let coversMe: Double
     let hasUnread: Bool
     let userID: String
     let year: Year?
@@ -50,6 +51,7 @@ class TeammateListEntity: Decodable {
         risk = nil
         riskVoted = nil
         totallyPaid = 0
+        coversMe = 0
         hasUnread = false
         userID = ""
         year = nil
@@ -68,6 +70,7 @@ class TeammateListEntity: Decodable {
         case risk = "Risk"
         case riskVoted = "RiskVoted"
         case totallyPaid = "TotallyPaid"
+        case coversMe = "CoversMe"
         case hasUnread = "Unread"
         case userID = "UserId"
         case year = "Year"

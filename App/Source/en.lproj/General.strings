@@ -65,6 +65,7 @@
 "General.posessiveFormat.her" = "%@'S";
 "General.unitedFormat" = "%1$@ %2$@";
 "General.unitedFormat.my" = "%1$@ %2$@";
+"General.amountFormat" = "%2$@%1$d";
 
 "General.ok" = "OK";
 "General.longAgo" = "long ago";
