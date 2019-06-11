@@ -53,12 +53,15 @@ final class PushService: NSObject {
 
     override init() {
         super.init()
-        UNUserNotificationCenter.current().delegate = self
-
-        // Firebase
-        Messaging.messaging().delegate = self
     }
 
+    func configure() {
+        // Add firebase support
+        FirebaseApp.configure()
+        UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
+    }
+    
     func addListener(_ listener: AnyHashable, handler: @escaping (RemoteCommandType, [AnyHashable: Any]) -> Bool) {
         listeners[listener] = handler
     }

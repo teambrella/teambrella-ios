@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate 
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         // Pull in case of emergency :)
         // service.cryptoMalfunction()
+        service.push.configure()
         configureLibs()
         return true
     }
@@ -117,9 +118,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate 
     }
     
     private func configureLibs() {
-        // Add firebase support
-        FirebaseApp.configure()
-        
         // Add XCam
         //UXCam.start(withKey: Resources.UXCam.accountKey)
         
