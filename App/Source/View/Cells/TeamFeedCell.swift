@@ -34,6 +34,7 @@ class TeamFeedCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var typeLabel: InfoLabel!
     @IBOutlet var timeLabel: InfoLabel!
     @IBOutlet var unreadLabel: SubheaderLabel!
+    @IBOutlet var pinnedView: UIImageView!
     @IBOutlet var cellSeparator: UIView!
     
     var avatarMode: AvatarMode = .circular {

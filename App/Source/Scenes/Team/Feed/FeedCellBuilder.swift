@@ -54,6 +54,8 @@ struct FeedCellBuilder {
             cell.unreadLabel.text = String(model.unreadCount)
             cell.unreadLabel.isHidden = model.unreadCount == 0
             
+            cell.pinnedView.isHidden = !cell.unreadLabel.isHidden || model.teamPinVote <= 0
+            
             switch model.itemType {
             case .claim:
                 cell.iconView.isHidden = false
