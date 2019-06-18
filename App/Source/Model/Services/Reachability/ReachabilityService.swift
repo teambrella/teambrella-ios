@@ -67,5 +67,6 @@ final class ReachabilityService {
     func hideUnreachable() {
         notification = nil
         SwiftMessages.hideAll()
+        service.error.retry()
     }
 }

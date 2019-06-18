@@ -7,5 +7,6 @@
 */
 
 "Error.somethingWentWrong" = "Ой, невозможно связаться с Тимбреллой. Сохраняй спокойствие и попробуй позже.";
+"Error.tryAgain" = "Повторить";
 "Error.oops" = "Ой, что-то пошло не так";
 "Error.DetailsButton.title" = "Подробнее";

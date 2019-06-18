@@ -32,7 +32,7 @@ class EthWallet {
         static let maxGasWalletBalance: Decimal = 0.01
 
         static let gasLimitBase: Int            = 100_000
-        static let gasLimitForMoveTx: Int       = 200_000
+        static let gasLimitForMoveTx: Int       = 300_000
         static let gasLimitForDepositTx: Int    = 50_000
 
         static let gasStash: Int                = 30_000

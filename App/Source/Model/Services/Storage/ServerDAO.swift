@@ -52,9 +52,11 @@ class ServerDAO: DAO {
             let suffix = locale
             return startRequest(body: [:],
                                 type: .demoTeams,
-                                suffix: suffix)
+                                suffix: suffix,
+                                isErrorAutoManaged: false
+            )
         } else {
-            return startRequest(body: [:], type: .teams)
+            return startRequest(body: [:], type: .teams, isErrorAutoManaged: false)
         }
     }
     
@@ -609,7 +611,8 @@ class ServerDAO: DAO {
                                                 type: TeambrellaPostRequestType,
                                                 suffix: String? = nil,
                                                 parameters: [String: String]? = nil,
-                                                isKeyNeeded: Bool = true) -> Promise<Value> {
+                                                isKeyNeeded: Bool = true,
+                                                isErrorAutoManaged: Bool = true) -> Promise<Value> {
         let promise = Promise<Value>()
         if isKeyNeeded {
             freshKey { key in
@@ -619,7 +622,7 @@ class ServerDAO: DAO {
                                                    body: body,
                                                    parameters: parameters,
                                                    suffix: suffix)
-                request.start(server: self.server)
+                request.start(server: self.server, isErrorAutoManaged: isErrorAutoManaged)
             }
         } else {
             let body = RequestBody(key: nil, payload: body)
@@ -628,7 +631,7 @@ class ServerDAO: DAO {
                                           body: body,
                                           parameters: parameters,
                                           suffix: suffix)
-            request.start(server: server)
+            request.start(server: server, isErrorAutoManaged: isErrorAutoManaged)
         }
 
         return promise

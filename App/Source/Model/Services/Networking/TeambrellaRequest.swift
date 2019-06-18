@@ -91,7 +91,7 @@ struct TeambrellaRequest<Value: Decodable> {
         }, failure: { error in
             log("\(error)", type: [.error, .serverReply])
             if isErrorAutoManaged {
-                service.error.present(error: error)
+                service.error.present(error: error, retry: nil)
             }
             self.failure(error)
         })

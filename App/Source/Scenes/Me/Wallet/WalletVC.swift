@@ -57,7 +57,7 @@ final class WalletVC: UIViewController {
             if let error = error as? TeambrellaError, error.kind == .walletNotCreated {
                 self?.dataSource.emptyWallet()
             } else {
-                service.error.present(error: error)
+                service.error.present(error: error, retry: nil)
             }
         }
         addRefreshControl()

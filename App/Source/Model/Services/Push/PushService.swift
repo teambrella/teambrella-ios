@@ -138,7 +138,7 @@ final class PushService: NSObject {
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         log("Failed to register for remote notifications: \(error)", type: [.error, .push])
-        service.error.present(error: error)
+        service.error.present(error: error, retry: nil)
     }
     
     func getNotificationSettings() {

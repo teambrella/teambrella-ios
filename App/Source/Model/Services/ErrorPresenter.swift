@@ -24,8 +24,9 @@ import SwiftMessages
 
 final class ErrorPresenter {
     var ids: [String] = []
+    var currentRetry:(() -> Void)? = nil
     
-    func present(error: Error?) {
+    func present(error: Error?, retry: (() -> Void)?) {
         guard let error = error else { return }
 
         Statistics.log(error: error)
@@ -52,7 +53,7 @@ final class ErrorPresenter {
                  NSURLErrorCannotConnectToHost,
                  NSURLErrorNetworkConnectionLost,
                  NSURLErrorNotConnectedToInternet:
-                presentServerUnreacheable()
+                presentServerUnreacheable(retry: retry)
             default:
                 presentGeneral(error: error)
             }
@@ -72,6 +73,13 @@ final class ErrorPresenter {
             ids.remove(at: idx)
         }
     }
+    
+    func retry() {
+        if (currentRetry != nil) {
+            currentRetry?()
+            currentRetry = nil
+        }
+    }
 
     private func presentGeneral(error: Error) {
         showMessage(title: "Error.oops".localized, details: "\(error)")
@@ -81,18 +89,46 @@ final class ErrorPresenter {
         showMessage(title: "Error.oops".localized, details: error.description)
     }
 
-    private func presentServerUnreacheable() {
-        let view = MessageView.viewFromNib(layout: .statusLine)
-        view.configureTheme(.warning)
-        view.configureDropShadow()
-
-        view.configureContent(title: "", body: "Main.Notification.noServer".localized)
-
+    private func presentServerUnreacheable(retry: (() -> Void)?) {
         var config = SwiftMessages.defaultConfig
         service.router.navigator.map { config.presentationContext = .view($0.view) }
-        config.duration = .seconds(seconds: 5)
-        SwiftMessages.hideAll()
-        SwiftMessages.show(config: config, view: view)
+
+        if (retry == nil)
+        {
+            let view = MessageView.viewFromNib(layout: .statusLine)
+            view.configureTheme(.warning)
+            view.configureDropShadow()
+            
+            view.configureContent(title: "", body: "Main.Notification.noServer".localized)
+            config.duration = .seconds(seconds: 5)
+            SwiftMessages.show(config: config, view: view)
+        }
+        else
+        {
+            currentRetry = retry
+            let view = MessageView.viewFromNib(layout: .messageView)
+            view.configureTheme(backgroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5), foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+            view.configureDropShadow()
+            let id = view.id
+
+            view.configureContent(title: "Main.Notification.noServer".localized,
+                                     body: nil,
+                                     iconImage: nil,
+                                     iconText: nil,
+                                     buttonImage: nil,
+                                     buttonTitle: "Error.tryAgain".localized)
+                { [weak self] button in
+                    self?.currentRetry = nil
+                    self?.hide(id: id)
+                    SwiftMessages.hideAll()
+                    retry?()
+                }
+
+            config.presentationStyle = .bottom
+            config.duration = .forever
+            config.interactiveHide = false
+            SwiftMessages.show(config: config, view: view)
+        }
         NotificationCenter.default.post(name: .serverUnreachable, object: nil)
     }
 

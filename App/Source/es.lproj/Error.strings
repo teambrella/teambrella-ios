@@ -7,5 +7,6 @@
 */
 
 "Error.somethingWentWrong" = "Oops, no se puede conectar con Teambrella. Inténtalo más tarde";
+"Error.tryAgain" = "Try Again";
 "Error.oops" = "Oops something went wrong";
 "Error.DetailsButton.title" = "Details";

@@ -194,14 +194,19 @@ final class InitialVC: UIViewController {
             default:
                 break
             }
+            service.router.logout()
+            if !service.keyStorage.hasRealPrivateKey {
+                SimpleStorage().store(bool: false, forKey: .didLogWithKey)
+            }
+            performSegue(type: .login)
+        case let error as NSError:
+            service.error.present(error: error) {
+                self.signInAttemptsRemaining = Constant.getTeamsAttempts
+                self.getTeams()
+            }
         default:
             break
         }
-        service.router.logout()
-        if !service.keyStorage.hasRealPrivateKey {
-            SimpleStorage().store(bool: false, forKey: .didLogWithKey)
-        }
-        performSegue(type: .login)
     }
     
     var signInAttemptsRemaining = Constant.getTeamsAttempts
