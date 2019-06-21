@@ -18,6 +18,7 @@ import Foundation
 
 class Dumper {
     var api: BlockchainServer
+    var contentProvider: TeambrellaContentProvider
 
     var applicationSupportURL: URL {
         let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
@@ -30,8 +31,9 @@ class Dumper {
         return applicationSupportURL.appendingPathComponent("TransactionsModel").appendingPathExtension("sqlite")
     }
 
-    init(api: BlockchainServer) {
+    init(api: BlockchainServer, contentProvider: TeambrellaContentProvider) {
         self.api = api
+        self.contentProvider = contentProvider
     }
 
     func printContents() {
@@ -53,19 +55,29 @@ class Dumper {
         printContents()
         log("Trying to send dump", type: .crypto)
         do {
-            let file = try Data(contentsOf: url)
-            print("Bytes: \(file.count)")
-            api.postData(to: "me/debugDB",
-                         data: file,
-                         privateKey: privateKey,
-                         success: { json in
-                            let serialized = (try? JSONSerialization.jsonObject(with: json, options: [])) ?? []
-                            print("Dump sent successfully: \(serialized)")
-                            completion(true)
-            }, failure: { error in
-                log("Dump not sent with error: \(String(describing: error))", type: [.error, .crypto])
-                completion(false)
-            })
+            do {
+                let tempFile = try contentProvider.backupPersistentStore()
+                defer {
+                    // Delete temporary directory when done
+                    try! tempFile.deleteDirectory()
+                }
+                let file = try Data(contentsOf: tempFile.fileURL)
+                print("Bytes: \(file.count)")
+                api.postData(to: "me/debugDB",
+                             data: file,
+                             privateKey: privateKey,
+                             success: { json in
+                                let serialized = (try? JSONSerialization.jsonObject(with: json, options: [])) ?? []
+                                print("Dump sent successfully: \(serialized)")
+                                completion(true)
+                }, failure: { error in
+                    log("Dump not sent with error: \(String(describing: error))", type: [.error, .crypto])
+                    completion(false)
+                })
+
+            } catch {
+                print("Error backing up Core Data store: \(error)")
+            }
         } catch {
             log("Error reading database file: \(error)", type: [.error, .cryptoDetails])
             completion(false)

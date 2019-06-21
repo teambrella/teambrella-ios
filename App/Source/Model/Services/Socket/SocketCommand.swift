@@ -34,6 +34,9 @@ enum SocketCommand: Int {
     case notifyPosted   = 21
 
     case dbDump         = 101
+
+    case clearDB        = 104
+
     /*
 
     case deletePost     = 2

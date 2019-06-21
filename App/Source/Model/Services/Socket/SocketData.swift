@@ -70,6 +70,7 @@ enum SocketData {
         url: String,
         text: String)
     case dbDump(timestamp: Int64)
+    case clearDB(timestamp: Int64)
     
     var stringValue: String {
         var strings: [String] = [String(command.rawValue)]
@@ -98,6 +99,8 @@ enum SocketData {
             return .meTyping
         case .dbDump(timestamp: _):
             return .dbDump
+        case .clearDB(timestamp: _):
+            return .clearDB
         case .newPost:
             return .newPost
             /*
@@ -141,6 +144,8 @@ enum SocketData {
                                name: name)
         case .dbDump:
             return .dbDump(timestamp: dict["Timestamp"] as? Int64 ?? 0)
+        case .clearDB:
+            return .clearDB(timestamp: dict["Timestamp"] as? Int64 ?? 0)
         case .newPost, .privateMessage, .notifyPosted:
             let postID = dict["PostId"] as? String ?? ""
             let urlString = dict["Avatar"] as? String ?? ""

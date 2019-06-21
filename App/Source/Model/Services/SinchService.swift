@@ -232,7 +232,13 @@ extension SinchService: SINManagedPushDelegate {
             }
         case .getDatabaseDump:
             service.teambrella.sendDBDump { success in
-
+                
+            }
+        case .clearDB:
+            do {
+                try service.teambrella.clear()
+            } catch {
+                log("Error clearing the DB: \(error)", type: .error)
             }
         }
     }

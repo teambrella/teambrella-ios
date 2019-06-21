@@ -81,6 +81,12 @@ final class TeambrellaService: NSObject {
                 self?.sendDBDump(completion: { success in
                     
                 })
+            case .clearDB:
+                do {
+                    try self?.clear()
+                } catch {
+                    log("Error clearing the DB: \(error)", type: .error)
+                }
             default:
                 break
             }
@@ -89,7 +95,7 @@ final class TeambrellaService: NSObject {
 //    #endif
 
     func sendDBDump(completion: @escaping (Bool) -> Void) {
-        let dumper = Dumper(api: self.server)
+        let dumper = Dumper(api: self.server, contentProvider: self.contentProvider)
         dumper.sendDatabaseDump(privateKey: self.key.privateKey, completion: completion)
     }
 

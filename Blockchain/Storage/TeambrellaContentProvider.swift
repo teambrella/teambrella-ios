@@ -380,4 +380,8 @@ class TeambrellaContentProvider {
         return result?.first
     }
     
+    func backupPersistentStore() throws -> TemporaryFile {
+        return try storage.backupPersistentStore()
+    }
+
 }

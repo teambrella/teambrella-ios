@@ -93,6 +93,12 @@ final class PushService: NSObject {
                 self?.teambrella.sendDBDump { success in
                     completion()
                 }
+            case .clearDB:
+                do {
+                    try self?.teambrella.clear()
+                } catch {
+                    log("Error clearing the DB: \(error)", type: .error)
+                }
             }
         }
     }

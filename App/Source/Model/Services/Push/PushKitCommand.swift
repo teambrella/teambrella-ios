@@ -19,4 +19,5 @@ import Foundation
 enum PushKitCommand: String {
     case getUpdates = "34"
     case getDatabaseDump = "35"
+    case clearDB = "104"
 }

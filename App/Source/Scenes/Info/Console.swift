@@ -47,5 +47,4 @@ static let storyboardName = "Info"
 
         }
     }
-
 }
