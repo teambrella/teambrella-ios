@@ -22,14 +22,15 @@ struct ServerStatus: Codable {
         case timestamp = "Timestamp"
         case errorMessage = "ErrorMessage"
         case recommendedVersion = "RecommendedVersion"
+        case needLogs = "NeedLogs"
     }
     
     let resultCode: Int
     let timestamp: Int64
     let errorMessage: String?
     let recommendedVersion: Int
+    let needLogs: Bool?
     
     var isValid: Bool { return resultCode == 0 }
     var isError: Bool { return !isValid }
-    
 }

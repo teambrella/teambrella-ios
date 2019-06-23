@@ -20,7 +20,6 @@
  */
 
 import ExtensionsPack
-import Foundation
 
 private var decoder: JSONDecoder = {
     let decoder = JSONDecoder()
@@ -122,6 +121,7 @@ struct TeambrellaRequest<Value: Decodable> {
             } else {
                 success(box)
             }
+            Log.shared.configureLogstash(with: box.status)
         } catch {
             failure(error)
         }

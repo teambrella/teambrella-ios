@@ -20,11 +20,13 @@
 //
 
 import Foundation
+import JustLog
 
-func log(_ string: String, type: Log.LogType) {
+func log(_ info: String, type: Log.LogType) {
     #if DEBUG
-    Log.shared.logPrint(string, type: type)
+    Log.shared.logPrint(info, type: type)
     #endif
+    Logger.shared.info(info, userInfo: ["type": "\(type)"])
 }
 
 func log(_ error: Error) {
@@ -32,28 +34,62 @@ func log(_ error: Error) {
         if let error = error as? TeambrellaError {
             Log.shared.logPrint(error.description, type: [.error])
         } else {
-        Log.shared.logPrint((error as NSError).description, type: [.error])
+            Log.shared.logPrint((error as NSError).description, type: [.error])
         }
     #endif
+
+    if let error = error as? TeambrellaError {
+        Logger.shared.error(error.description)
+    } else {
+        Logger.shared.error((error as NSError).description)
+    }
 }
 
 final class Log {
+    static let shared = Log()
+
     /// Change log level to filter logs along the entire application
     var logLevel: LogLevel = .all
-
     lazy var types: LogType = { self.typesFor(level: self.logLevel) }()
-    
     var isEmojied: Bool = true
     
-   static let shared = Log()
-    
     init() { }
+    
+    func initLogstash(userID: String) {
+        let logger = Logger.shared
+        logger.logFilename = "justlog.log"
+        logger.logstashHost = "listener.logz.io"
+        logger.logzioToken = "ElgkebWWLmhIKltEDtpvZjhrKaHYlIUV"
+        logger.enableFileLogging = false
+        logger.enableConsoleLogging = false
+        logger.logstashPort = 5052
+        logger.logstashTimeout = 5
+        logger.logLogstashSocketActivity = true
+        logger.defaultUserInfo = ["app": "Teambrella",
+                                  "environment": "production",
+                                  "tenant": "UK",
+                                  "sessionID": userID]
+        logger.setup()
+    }
+    
+    func configureLogstash(with status: ServerStatus) {
+        let needLogs = status.needLogs ?? true
+        if (!needLogs && Logger.shared.enableLogstashLogging) {
+            Logger.shared.cancelSending()
+            Logger.shared.enableLogstashLogging = false
+        }
+        if (needLogs && !Logger.shared.enableLogstashLogging) {
+            Logger.shared.enableLogstashLogging = true
+            Logger.shared.setup()
+        }
+    }
+    
     
     func logPrint(_ string: String, type: LogType) {
         guard types.contains(type) else { return }
         
         if isEmojied {
-        print(emojiString(string, type: type))
+            print(emojiString(string, type: type))
         } else {
             print(string)
         }

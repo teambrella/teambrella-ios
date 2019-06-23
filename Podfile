@@ -51,6 +51,7 @@ def swift_frameworks_pods
   pod 'ExtensionsPack', :git => 'https://github.com/yaro812/ExtensionsPack.git'
   pod 'ThoraxMath', :git => 'https://github.com/yaro812/ThoraxMath.git'
   pod 'SwiftEmail', :git => 'https://github.com/yaro812/SwiftEmail.git'
+  
 end
 
 def notification_swift_pods
@@ -84,6 +85,8 @@ target 'Teambrella' do
 #        inherit! :search_paths
 #    end
 end
+
+pod 'JustLog'
 
 target 'SurillaNotification' do
   notification_swift_pods

@@ -146,11 +146,9 @@ struct HomeCellBuilder {
         cell.leftNumberView.isCurrencyVisible = true
         cell.leftNumberView.isPercentVisible = false
         let vote = model.teamVote ?? 0
-        cell.rightNumberView.amountLabel.text = vote * 100 != 0
-            ? String(format: "%.0f", vote * 100)
-            : "..."
+        cell.rightNumberView.amountLabel.text = String(format: "%.0f", vote * 100)
         cell.rightNumberView.isBadgeVisible = model.isVoting ?? false
-        cell.rightNumberView.isPercentVisible = model.teamVote != 0
+        cell.rightNumberView.isPercentVisible = true
     }
     
     static private func setupTeammateCell(cell: HomeCollectionCell, model: HomeCardModel) {

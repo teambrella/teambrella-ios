@@ -27,6 +27,7 @@ import PushKit
 import UIKit
 //import UXCam
 import AppsFlyerLib
+import JustLog
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate {
@@ -41,13 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate 
         #if DEBUG
         AppsFlyerTracker.shared().isDebug = true
         #endif
-
+        
 //     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         service.push.register(application: application)
         service.push.startPushKit()
         if let userID = SimpleStorage().string(forKey: .userID) {
             service.sinch.startWith(userID: userID)
+            Log.shared.initLogstash(userID: userID)
+            
         }
         TeambrellaStyle.apply()
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
@@ -148,11 +151,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate 
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         service.socket?.stop()
-        print("enter background")
+        log("enter background", type: .info)
+        Logger.shared.forceSend()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        print("will terminate")
+        log("will terminate", type: .info)
+        Logger.shared.forceSend()
     }
     
     // MARK: Push

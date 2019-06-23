@@ -435,6 +435,7 @@ class EthWallet {
         checkMyNonce(success: { myNonce in
             let gasLimit = Constant.gasLimitForMoveTx
             self.refreshGasPrice { gasPrice in
+                log("gas price: \(gasPrice)", type: .cryptoDetails)
                 guard let multisigAddress = myMultisig.address, let moveFrom = tx.inputs.first else {
                     return
                 }
