@@ -205,6 +205,7 @@
 "Team.Chat.Actions.title"                             = "MESSAGE";
 "Team.Chat.Actions.upvote"                            = "Second that!";
 "Team.Chat.Actions.downvote"                          = "Dislike!";
+"Team.Chat.Actions.summary"                           = "This is my summary";
 
 "Team.Claims.objectView.reportButton.title" = "Submit Claim";
 

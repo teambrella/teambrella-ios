@@ -63,6 +63,7 @@ enum TeambrellaPostRequestType: String {
     case newPhotoPost = "post/newPhotoPost"
     case uploadPhoto = "post/newUpload"
     case deletePost = "post/delPost"
+    case setMarked = "post/setMarked"
 
     case privateChat = "privatemessage/getChat"
     case privateList = "privatemessage/getList"

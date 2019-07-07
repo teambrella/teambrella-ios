@@ -205,6 +205,7 @@
 "Team.Chat.Actions.title"                             = "СООБЩЕНИЕ";
 "Team.Chat.Actions.upvote"                            = "Нравится!";
 "Team.Chat.Actions.downvote"                          = "Не нравится!";
+"Team.Chat.Actions.summary"                           = "Это мое резюме";
 
 
 "Team.Claims.objectView.reportButton.title" = "Подать заявку";

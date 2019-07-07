@@ -349,7 +349,7 @@ final class UniversalChatVC: UIViewController, Routable {
         router.showPostActionsSelector(in: self,
                                        delegate: self,
                                        dataSource: postActionsDataSource!,
-                                       currentState: PostActionType(rawValue: model.myLike) ?? .unknown)
+                                       currentState: PostActionType(from: model))
     }
 
     var unsentImages: [String: UIImage] = [:]
@@ -1050,19 +1050,29 @@ extension UniversalChatVC: SelectorDelegate {
                 controller?.reload()
             }
         } else if let type = type as? PostActionType {
-            let oldLike = PostActionType(rawValue: postActionsDataSource?.model.myLike ?? 0)
-            var newLike: PostActionType = type
+            let oldAction = PostActionType(from: postActionsDataSource?.model)
+            var newAction: PostActionType = type
             
-            if oldLike == type {
-                newLike = .unknown
+            if oldAction == type {
+                newAction = .unknown
                 controller.selectedIndex = -1
             }
 
-            // swiftlint:disable:bext force_unwrapping
-            dataSource.setMyLike(myLike: newLike.rawValue,
-                                 chatItem: (postActionsDataSource?.model)!) { [weak self] success in
-                                    self?.collectionView.reloadData()
-                                    // controller?.reload()
+            if (postActionsDataSource?.model.isMy ?? false) {
+                // swiftlint:disable:bext force_unwrapping
+                dataSource.setPostMarked(isMarked: newAction == .marked,
+                                         chatItem: (postActionsDataSource?.model)!) { [weak self] success in
+                                        self?.collectionView.reloadData()
+                                        // controller?.reload()
+                }
+            }
+            else {
+                // swiftlint:disable:bext force_unwrapping
+                dataSource.setMyLike(myLike: newAction.rawValue,
+                                     chatItem: (postActionsDataSource?.model)!) { [weak self] success in
+                                        self?.collectionView.reloadData()
+                                        // controller?.reload()
+                }
             }
         }
     }

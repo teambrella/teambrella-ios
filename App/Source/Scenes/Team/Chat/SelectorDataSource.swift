@@ -136,22 +136,31 @@ class PinDataSource: SelectorDataSource {
 struct PostActionsDataSource: SelectorDataSource {
     let header = "Team.Chat.Actions.title".localized
     let model: ChatCellUserDataLike
+    let models: [SelectorCellModel]
     let isHidingOnSelection: Bool = true
     
     init(model: ChatCellUserDataLike) {
         self.model = model
+
+        if (model.isMy) {
+            models = [
+                SelectorCellModel(icon: #imageLiteral(resourceName: "Upvote"),
+                                  topText: "Team.Chat.Actions.summary".localized,
+                                  bottomText: "",
+                                  type: PostActionType.marked)
+                            ]
+        } else {
+            models = [
+                SelectorCellModel(icon: #imageLiteral(resourceName: "Upvote"),
+                                  topText: "Team.Chat.Actions.upvote".localized,
+                                  bottomText: "",
+                                  type: PostActionType.like),
+                
+                SelectorCellModel(icon: #imageLiteral(resourceName: "Downvote"),
+                                  topText: "Team.Chat.Actions.downvote".localized,
+                                  bottomText: "",
+                                  type: PostActionType.dislike)
+            ]
+        }
     }
-    
-    let models: [SelectorCellModel] = [
-        SelectorCellModel(icon: #imageLiteral(resourceName: "Upvote"),
-                          topText: "Team.Chat.Actions.upvote".localized,
-                          bottomText: "",
-                          type: PostActionType.like),
-        
-        SelectorCellModel(icon: #imageLiteral(resourceName: "Downvote"),
-                          topText: "Team.Chat.Actions.downvote".localized,
-                          bottomText: "",
-                          type: PostActionType.dislike)
-    ]
-    
 }

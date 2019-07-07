@@ -156,6 +156,7 @@ class ChatModelBuilder {
                                            date: item.created,
                                            liked: item.likes,
                                            myLike: item.myLike,
+                                           isMarked: item.isMarked,
                                            grayed: item.grayed,
                                            updated: item.lastUpdated,
                                            isTemporary: isTemporary,
@@ -171,6 +172,7 @@ class ChatModelBuilder {
                                           date: item.created,
                                           liked: item.likes,
                                           myLike: item.myLike,
+                                          isMarked: item.isMarked,
                                           grayed: item.grayed,
                                           updated: item.lastUpdated,
                                           isTemporary: isTemporary)

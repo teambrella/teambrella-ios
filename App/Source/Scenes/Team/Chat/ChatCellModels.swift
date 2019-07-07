@@ -36,6 +36,7 @@ protocol ChatCellUserDataLike: ChatCellModel {
     var date: Date { get }
     var liked: Int { get set }
     var myLike: Int { get set }
+    var isMarked: Bool { get set }
     var grayed: Double { get }
     var updated: Int64 { get }
     var isTemporary: Bool { get }
@@ -55,6 +56,7 @@ struct ChatTextCellModel: ChatCellUserDataLike {
     let date: Date
     var liked: Int
     var myLike: Int
+    var isMarked: Bool
     var grayed: Double
     let updated: Int64
     let isTemporary: Bool
@@ -76,6 +78,7 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     let date: Date
     var liked: Int
     var myLike: Int
+    var isMarked: Bool
     var grayed: Double
     let updated: Int64
     let isTemporary: Bool

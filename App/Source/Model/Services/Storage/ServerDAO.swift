@@ -495,6 +495,10 @@ class ServerDAO: DAO {
         return startRequest(body: ["PostId": postID, "MyLike": myLike], type: .setMyLike)
     }
 
+    func setPostMarked(postID: String, isMarked: Bool) -> Future<Bool> {
+        return startRequest(body: ["PostId": postID, "Marked": isMarked], type: .setMarked)
+    }
+
     func registerKey(facebookToken: String, signature: String, wallet: String) -> Future<Bool> {
         let payload: [String: String] = ["facebookToken": facebookToken,
                                          "sigOfPublicKey": signature,

@@ -112,6 +112,7 @@ protocol DAO {
     func sendPin(topicID: String, pinType: PinType) -> Future<PinEntity>
 
     func setPostLike(postID: String, myLike: Int) -> Future<Bool>
+    func setPostMarked(postID: String, isMarked: Bool) -> Future<Bool>
 
 //    func performRequest(request: TeambrellaRequest)
     

@@ -17,7 +17,6 @@
         <!--ClaimsVC-->
         <scene sceneID="5W8-BX-sq5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PlQ-e5-3Pg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ClaimsVC" automaticallyAdjustsScrollViewInsets="NO" id="cCe-np-5xm" customClass="ClaimsVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EeS-ah-Y6t"/>
@@ -304,7 +303,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvp-wZ-ehF">
                                                     <rect key="frame" x="16" y="29" width="247" height="40"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="80E-3m-yXF">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" translatesAutoresizingMaskIntoConstraints="NO" id="80E-3m-yXF">
                                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="80E-3m-yXF" secondAttribute="height" multiplier="1:1" id="QTx-oV-JDF"/>
@@ -377,17 +376,29 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="5VG-8E-yP1" customClass="ScaleBar" customModule="Surilla" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="2Ms-4Y-Z0Y">
                                                             <rect key="frame" x="0.0" y="66" width="72" height="8"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="5VG-8E-yP1" customClass="ScaleBar" customModule="Surilla" customModuleProvider="target">
+                                                                    <rect key="frame" x="4" y="0.0" width="68" height="8"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="8" id="0Mi-q0-DLr"/>
+                                                                        <constraint firstAttribute="width" constant="68" id="twM-q5-XCW"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="valueColor">
+                                                                            <color key="value" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="8" id="0Mi-q0-DLr"/>
+                                                                <constraint firstItem="5VG-8E-yP1" firstAttribute="top" secondItem="2Ms-4Y-Z0Y" secondAttribute="top" id="L5i-9E-wmD"/>
+                                                                <constraint firstAttribute="trailing" secondItem="5VG-8E-yP1" secondAttribute="trailing" id="ROm-Z0-RdA"/>
+                                                                <constraint firstAttribute="height" constant="8" id="UaZ-et-6MA"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="valueColor">
-                                                                    <color key="value" red="0.47058823529411764" green="0.50980392156862742" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
@@ -417,13 +428,13 @@
                                             <constraint firstItem="eiH-hO-EVe" firstAttribute="top" secondItem="ybB-qd-hfW" secondAttribute="top" constant="10" id="LqI-LS-XXZ"/>
                                             <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" secondItem="uvp-wZ-ehF" secondAttribute="trailing" id="Nq8-Am-rAu"/>
                                             <constraint firstAttribute="trailing" secondItem="Lxf-Re-lOz" secondAttribute="trailing" id="QOO-Zd-6fC"/>
-                                            <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qe7-3f-eEx" secondAttribute="trailing" constant="8" id="QRP-6Y-Xhh"/>
+                                            <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qe7-3f-eEx" secondAttribute="trailing" constant="16" id="QRP-6Y-Xhh"/>
                                             <constraint firstAttribute="bottom" secondItem="Lxf-Re-lOz" secondAttribute="bottom" id="WIc-vT-iRf"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uvp-wZ-ehF" secondAttribute="bottom" constant="16" id="flX-4B-YxC"/>
                                             <constraint firstItem="80E-3m-yXF" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leading" constant="16" id="mmJ-W3-dK1"/>
                                             <constraint firstItem="IcY-f3-Qvk" firstAttribute="leading" secondItem="eiH-hO-EVe" secondAttribute="trailing" constant="16" id="mxF-Jd-l5R"/>
                                             <constraint firstItem="uvp-wZ-ehF" firstAttribute="leading" secondItem="ybB-qd-hfW" secondAttribute="leading" constant="16" id="oEp-Ub-5dy"/>
-                                            <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dd6-bQ-aHd" secondAttribute="trailing" constant="8" id="r5A-h3-7S0"/>
+                                            <constraint firstItem="eiH-hO-EVe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dd6-bQ-aHd" secondAttribute="trailing" constant="16" id="r5A-h3-7S0"/>
                                             <constraint firstAttribute="trailing" secondItem="IcY-f3-Qvk" secondAttribute="trailing" constant="16" id="rlW-B6-Q1S"/>
                                             <constraint firstItem="IcY-f3-Qvk" firstAttribute="centerY" secondItem="ybB-qd-hfW" secondAttribute="centerY" id="zdT-Rf-wXy"/>
                                         </constraints>
@@ -611,6 +622,7 @@
                         <outlet property="reportButton" destination="vga-kX-rYF" id="K9c-ya-6BN"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PlQ-e5-3Pg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4869.6000000000004" y="2330.2848575712146"/>
         </scene>

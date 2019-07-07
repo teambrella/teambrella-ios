@@ -273,7 +273,26 @@ final class UniversalChatDatasource {
             completion(true)
         }
     }
-    
+
+    func setPostMarked(isMarked: Bool, chatItem: ChatCellUserDataLike, completion: @escaping (Bool) -> Void) {
+        if let index = indexPath(postID: chatItem.id),
+            var model = models[index.row] as? ChatCellUserDataLike {
+            model.isMarked = isMarked
+            models[index.row] = model
+            
+            service.dao.setPostMarked(postID: chatItem.id, isMarked: isMarked).observe { result in
+                switch result {
+                case let .error(error):
+                    log("\(error)", type: [.error, .serverReply])
+                default:
+                    break
+                }
+            }
+            
+            completion(true)
+        }
+    }
+
     func addContext(context: UniversalChatContext) {
         strategy = context
         hasPrevious = strategy.canLoadBackward
