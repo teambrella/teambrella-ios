@@ -3085,8 +3085,6 @@
 				6DEFCFB71F7A66D7008C306C /* SwitchUserCell.xib */,
 				9475D9331FA3956400F881C9 /* MuteCell.swift */,
 				9475D9341FA3956400F881C9 /* MuteCell.xib */,
-				6D10A33E2136A90200DB59A1 /* ServiceChatCell.swift */,
-				6D10A33F2136A90200DB59A1 /* ServiceChatCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -3333,6 +3331,8 @@
 				846D9BEB221C6BAD00207F69 /* VotingStatsCell.xib */,
 				6D5F089820A9BEAC0061A6E8 /* ChatClaimPaidCell.swift */,
 				6D5F089920A9BEAC0061A6E8 /* ChatClaimPaidCell.xib */,
+				6D10A33E2136A90200DB59A1 /* ServiceChatCell.swift */,
+				6D10A33F2136A90200DB59A1 /* ServiceChatCell.xib */,
 			);
 			name = Chat;
 			sourceTree = "<group>";

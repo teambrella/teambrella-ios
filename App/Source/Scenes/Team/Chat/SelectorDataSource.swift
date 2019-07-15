@@ -144,7 +144,7 @@ struct PostActionsDataSource: SelectorDataSource {
 
         if (model.isMy) {
             models = [
-                SelectorCellModel(icon: #imageLiteral(resourceName: "Upvote"),
+                SelectorCellModel(icon: #imageLiteral(resourceName: "iconMark2"),
                                   topText: "Team.Chat.Actions.summary".localized,
                                   bottomText: "",
                                   type: PostActionType.marked)

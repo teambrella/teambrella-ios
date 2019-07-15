@@ -35,6 +35,10 @@ struct ChatModel: Decodable, CustomStringConvertible {
     var isApplicationChat: Bool {
         return basic?.risk != nil
     }
+    
+    var isMarksOnlyMode: Bool {
+        return discussion.isMarksOnly ?? true
+    }
 
     var description: String { return "\(type(of: self)) \(discussion.topicID); messages: \(discussion.chat.count)" }
 
@@ -56,15 +60,19 @@ struct ChatModel: Decodable, CustomStringConvertible {
 
     struct DiscussionPart: Decodable {
         let isMuted: Bool?
+        let isMarksOnly: Bool?
         let lastRead: UInt64
         let topicID: String
         let chat: [ChatEntity]
+        let markedPosts: [ChatEntity]
 
         enum CodingKeys: String, CodingKey {
             case isMuted = "IsMuted"
+            case isMarksOnly = "IsMarksOnly"
             case lastRead = "LastRead"
             case topicID = "TopicId"
             case chat = "Chat"
+            case markedPosts = "MarkedPosts"
         }
 
     }

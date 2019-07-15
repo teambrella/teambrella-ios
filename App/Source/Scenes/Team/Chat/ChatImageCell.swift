@@ -186,7 +186,10 @@ class ChatImageCell: ChatUserDataCell {
         setupLikedLabel(liked: model.liked, baseFrame: baseFrame)
     }
 
-    func prepareUnsentCell(model: ChatUnsentImageCellModel, size: CGSize, image: UIImage?) {
+    func prepareUnsentCell(model: ChatUnsentImageCellModel,
+                           marksOnlyMode: Bool,
+                           size: CGSize,
+                           image: UIImage?) {
         id = model.id
         isMy = true
         self.cloudWidth = size.width

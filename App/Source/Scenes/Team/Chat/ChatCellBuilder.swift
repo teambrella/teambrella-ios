@@ -31,7 +31,7 @@ struct ChatCellBuilder {
 
                 galleryView.fullscreen(in: controller, imageStrings: controller.dataSource.allImages)
             }
-        } else if let cell = cell as? ChatTextCell {
+        } else if let cell = cell as? ChatTextCell, let model = model as? ChatTextCellModel {
             cell.prepare(with: model,
                          myVote: controller.dataSource.myVote,
                          type: controller.dataSource.chatType,
@@ -39,10 +39,12 @@ struct ChatCellBuilder {
         } else if let cell = cell as? ChatImageCell {
             if let model = model as? ChatUnsentImageCellModel {
                 cell.prepareUnsentCell(model: model,
+                                       marksOnlyMode: controller.dataSource.isMarksOnlyMode,
                                        size: controller.cloudSize(for: indexPath),
                                        image: controller.unsentImages[model.id])
             } else {
-                cell.prepareRealCell(model: model, size: controller.cloudSize(for: indexPath))
+                cell.prepareRealCell(model: model,
+                                     size: controller.cloudSize(for: indexPath))
             }
             cell.onTapImage = { [weak controller] cell, galleryView in
                 guard let controller = controller else { return }
@@ -75,6 +77,7 @@ struct ChatCellBuilder {
                                model: ChatCellModel) {
         if let model = model as? ChatUnsentImageCellModel, let cell = cell as? ChatImageCell {
             cell.prepareUnsentCell(model: model,
+                                   marksOnlyMode: controller.dataSource.isMarksOnlyMode,
                                    size: controller.cloudSize(for: indexPath),
                                    image: controller.unsentImages[model.id])
             cell.onTapDelete = { [weak controller] cell in

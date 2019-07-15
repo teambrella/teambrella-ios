@@ -88,11 +88,21 @@ class ChatTextCell: ChatUserDataCell {
         return label
     }()
 
+    lazy var markIcon: UIImageView = {
+        let view = UIImageView(image: #imageLiteral(resourceName: "iconMark"))
+        self.contentView.addSubview(view)
+        return view
+    }()
+    
+
     var onTapImage: ((ChatTextCell, GalleryView) -> Void)?
 
-    func prepare(with model: ChatCellModel, myVote: Double?, type: UniversalChatType, size: CGSize) {
+    func prepare(with model: ChatTextCellModel,
+                 myVote: Double?,
+                 type: UniversalChatType,
+                 size: CGSize) {
         let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
-        if let model = model as? ChatTextCellModel, model.id != id {
+        if model.id != id {
             id = model.id
             isMy = model.isMy
             self.cloudWidth = size.width
@@ -104,23 +114,26 @@ class ChatTextCell: ChatUserDataCell {
             if isMy, let vote = myVote {
                 let builder = ChatModelBuilder()
                 let text = builder.rateText(rate: vote, showRate: true, isClaim: type == .claim)
-                setupRightLabel(rateText: text, baseFrame: baseFrame)
+                setupRightLabel(rateText: text, isMarked: model.isMarked, baseFrame: baseFrame)
             } else {
-                setupRightLabel(rateText: model.rateText, baseFrame: baseFrame)
+                setupRightLabel(rateText: model.rateText, isMarked: model.isMarked, baseFrame: baseFrame)
             }
             setupBottomLabel(date: model.date, baseFrame: baseFrame)
+            markIcon.isHidden = !model.isMarked
+            if model.isMarked {
+                setupMarkIcon(isMy: model.isMy, baseFrame: baseFrame)
+            }
             setupFragments(fragments: model.fragments, sizes: model.fragmentSizes)
         }
-        if let model = model as? ChatTextCellModel {
-            self.alpha = 1
-            if (model.grayed >= 0.7) {
-                self.alpha = 0.15
-            }
-            else if (model.grayed >= 0.3) {
-                self.alpha = 0.3
-            }
-            setupLikedLabel(liked: model.liked, baseFrame: baseFrame)
+
+        self.alpha = 1
+        if (model.grayed >= 0.7) {
+            self.alpha = 0.15
         }
+        else if (model.grayed >= 0.3) {
+            self.alpha = 0.3
+        }
+        setupLikedLabel(liked: model.liked, baseFrame: baseFrame)
     }
 
     private func setupLeftLabel(name: Name, baseFrame: CGRect) {
@@ -130,21 +143,22 @@ class ChatTextCell: ChatUserDataCell {
             leftLabel.center = CGPoint(x: cloudBodyMinX + Constant.textInset,
                                        y: Constant.textInset - Constant.labelToTextVerticalInset)
         } else {
-        leftLabel.frame = baseFrame
-        leftLabel.text = name.entire
-        leftLabel.sizeToFit()
-        leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + Constant.textInset,
-                                   y: leftLabel.frame.height / 2 + Constant.textInset)
+            leftLabel.frame = baseFrame
+            leftLabel.text = name.entire
+            leftLabel.sizeToFit()
+            leftLabel.center = CGPoint(x: cloudBodyMinX + leftLabel.frame.width / 2 + Constant.textInset,
+                                       y: leftLabel.frame.height / 2 + Constant.textInset)
         }
     }
 
-    private func setupRightLabel(rateText: String?, baseFrame: CGRect) {
+    private func setupRightLabel(rateText: String?, isMarked: Bool, baseFrame: CGRect) {
         rightLabel.frame = baseFrame
         if let rate = rateText {
             rightLabel.isHidden = false
             rightLabel.text = rate
             rightLabel.sizeToFit()
-            rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - Constant.timeInset,
+            let markOffset = isMarked ? Constant.markWidth + Constant.markXOffset : 0
+            rightLabel.center = CGPoint(x: cloudBodyMaxX - rightLabel.frame.width / 2 - Constant.timeInset - markOffset,
                                         y: leftLabel.frame.maxY - rightLabel.frame.height / 2 - 0.5)
             if leftLabel.frame.maxX > rightLabel.frame.minX - 8 {
                 leftLabel.frame.size.width -= leftLabel.frame.maxX - (rightLabel.frame.minX - Constant.timeInset)
@@ -165,6 +179,13 @@ class ChatTextCell: ChatUserDataCell {
                                      y: cloudHeight - bottomLabel.frame.height / 2 - Constant.timeInset)
     }
     
+    private func setupMarkIcon(isMy: Bool, baseFrame: CGRect) {
+        markIcon.frame = CGRect(x: 0, y: 0, width: Constant.markWidth, height: Constant.markHeight)
+        markIcon.center = CGPoint(x: cloudBodyMaxX - markIcon.frame.width / 2 - Constant.timeInset,
+                                  y: baseFrame.maxY - markIcon.frame.height / 2 + Constant.markYOffset)
+    }
+    
+
     override func setupLikedLabel(liked: Int, baseFrame: CGRect) {
         likedLabel.frame = baseFrame
         let prefix = liked > 0 ? "+" : ""

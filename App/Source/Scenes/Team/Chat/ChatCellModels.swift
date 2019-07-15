@@ -96,7 +96,6 @@ struct ChatUnsentImageCellModel: ChatCellModel {
     let isTemporary: Bool
     let isDeletable: Bool 
     var isSent: Bool
-
 }
 
 struct ChatSeparatorCellModel: ChatCellModel {
@@ -126,7 +125,7 @@ struct VotingStatsCellModel: ChatCellModel {
     let date: Date
     let updated: Int64 = 0
     let isTemporary: Bool = false
-    
+
     let risksVotesAsTeamOrBetter: Double
     let claimsVotesAsTeamOrBetter: Double
 }

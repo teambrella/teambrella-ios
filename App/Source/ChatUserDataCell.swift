@@ -30,6 +30,12 @@ class ChatUserDataCell: UICollectionViewCell {
         static let imageInset: CGFloat = 2.0
         static let labelToTextVerticalInset: CGFloat = 4
         static let timeInset: CGFloat = 8
+
+        static let markYOffset: CGFloat = -2
+        static let markXOffset: CGFloat = 8
+        static let markWidth: CGFloat = 12
+        static let markHeight: CGFloat = 20
+
         static let auxillaryLabelHeight: CGFloat = 20
         static let leftLabelFont = UIFont.teambrella(size: 12)
         static let rightLabelFont = UIFont.teambrella(size: 10)

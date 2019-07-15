@@ -89,7 +89,10 @@ class ChatVariousContentCell: ChatUserDataCell {
     }
     
     @discardableResult
-    func prepare(with model: ChatCellModel, myVote: Double?, type: UniversalChatType, size: CGSize) -> [UIView] {
+    func prepare(with model: ChatCellModel,
+                 myVote: Double?,
+                 type: UniversalChatType,
+                 size: CGSize) -> [UIView] {
         if let model = model as? ChatTextCellModel, model.id != id {
             id = model.id
             isMy = model.isMy
@@ -149,7 +152,7 @@ class ChatVariousContentCell: ChatUserDataCell {
         bottomLabel.center = CGPoint(x: cloudBodyMaxX - bottomLabel.frame.width / 2 - Constant.timeInset,
                                      y: cloudHeight - bottomLabel.frame.height / 2 - Constant.timeInset)
     }
-    
+
     override func setupLikedLabel(liked: Int, baseFrame: CGRect) {
         likedLabel.frame = baseFrame
         let prefix = liked > 0 ? "+" : ""

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -553,8 +553,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnh-h5-oPu" customClass="Label" customModule="Surilla" customModuleProvider="target">
-                                                    <rect key="frame" x="285" y="25.666666666666671" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnh-h5-oPu" customClass="Label" customModule="Surilla" customModuleProvider="target">
+                                                    <rect key="frame" x="285" y="25.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -580,7 +580,7 @@
                                             <constraint firstItem="5HR-lf-4RT" firstAttribute="leading" secondItem="h3b-Rv-H83" secondAttribute="trailing" constant="21" id="gRw-Az-Wgw"/>
                                             <constraint firstItem="h3b-Rv-H83" firstAttribute="centerY" secondItem="VyE-E8-7U0" secondAttribute="centerY" id="ifY-gc-yC0"/>
                                             <constraint firstItem="e7T-em-y4y" firstAttribute="leading" secondItem="h3b-Rv-H83" secondAttribute="trailing" constant="20" id="jff-ij-KCx"/>
-                                            <constraint firstItem="bnh-h5-oPu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e7T-em-y4y" secondAttribute="trailing" constant="8" id="kKN-MR-Z1B"/>
+                                            <constraint firstItem="bnh-h5-oPu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e7T-em-y4y" secondAttribute="trailing" constant="16" id="kKN-MR-Z1B"/>
                                             <constraint firstAttribute="bottom" secondItem="lAr-Rs-wH9" secondAttribute="bottom" id="obD-Nu-CS1"/>
                                             <constraint firstItem="bnh-h5-oPu" firstAttribute="centerY" secondItem="VyE-E8-7U0" secondAttribute="centerY" id="uec-XQ-WyH"/>
                                             <constraint firstAttribute="trailing" secondItem="lAr-Rs-wH9" secondAttribute="trailing" id="wUl-2F-chH"/>
@@ -720,7 +720,6 @@
         <!--Voting StatsVC-->
         <scene sceneID="am3-nM-pqm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BGi-T9-Xz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="VotingStatsVC" id="kdE-Aa-dZY" customClass="VotingStatsVC" customModule="Surilla" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Icz-CC-vh3"/>
@@ -1017,7 +1016,7 @@
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJV-p8-mNK">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="140"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dLL-o0-omT">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLL-o0-omT">
                                                             <rect key="frame" x="0.0" y="0.0" width="113.5" height="106"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PP-u4-stq" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
@@ -1045,14 +1044,14 @@
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-l7-oBv">
-                                                            <rect key="frame" x="113.5" y="1" width="1" height="70"/>
+                                                            <rect key="frame" x="113.5" y="18" width="1" height="70"/>
                                                             <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="70" id="7fe-MB-0Xr"/>
                                                                 <constraint firstAttribute="width" constant="1" id="t8f-uy-IGy"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51H-0J-R6I">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="51H-0J-R6I">
                                                             <rect key="frame" x="114.5" y="0.0" width="114" height="106"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evv-mg-fjV" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
@@ -1080,14 +1079,14 @@
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFp-sT-1MG">
-                                                            <rect key="frame" x="228.5" y="1" width="1" height="70"/>
+                                                            <rect key="frame" x="228.5" y="18" width="1" height="70"/>
                                                             <color key="backgroundColor" red="0.90980392160000001" green="0.92941176469999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="70" id="27B-gG-xvD"/>
                                                                 <constraint firstAttribute="width" constant="1" id="k6A-5z-Nki"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHX-uK-4Fe">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHX-uK-4Fe">
                                                             <rect key="frame" x="229.5" y="0.0" width="113.5" height="106"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ss8-Id-vMd" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
@@ -1173,6 +1172,7 @@
                         <outlet property="collectionView" destination="CWY-ud-cjc" id="ZTt-5w-cL0"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BGi-T9-Xz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1815.2" y="97.536945812807886"/>
         </scene>

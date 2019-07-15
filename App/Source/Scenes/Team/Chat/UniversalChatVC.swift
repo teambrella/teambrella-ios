@@ -21,6 +21,7 @@
 
 import UIKit
 
+
 // swiftlint:disable file_length
 final class UniversalChatVC: UIViewController, Routable {
     struct Constant {
@@ -32,9 +33,26 @@ final class UniversalChatVC: UIViewController, Routable {
         static let serviceCellID = "com.chat.service.cell"
     }
     
+    final class AutoLayoutCollectionView: UICollectionView {
+        private var shouldInvalidateLayout = false
+    
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            if shouldInvalidateLayout {
+                collectionViewLayout.invalidateLayout()
+                shouldInvalidateLayout = false
+            }
+        }
+    
+        override func reloadData() {
+            shouldInvalidateLayout = true
+            super.reloadData()
+        }
+    }
+
     static var storyboardName = "Chat"
     
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var collectionView: AutoLayoutCollectionView!
     
     @IBOutlet var slidingView: SlidingView!
     @IBOutlet var slidingViewHeight: NSLayoutConstraint!
@@ -72,6 +90,7 @@ final class UniversalChatVC: UIViewController, Routable {
     
     var muteButton = UIButton()
     var pinButton = UIButton()
+    var viewMarksButton = UIButton()
     
     var keyboardTopY: CGFloat?
     var keyboardHeight: CGFloat {
@@ -93,7 +112,7 @@ final class UniversalChatVC: UIViewController, Routable {
             pinButton.setImage(image, for: .normal)
         }
     }
-    
+
     var postActionsDataSource: PostActionsDataSource? = nil
     
     private var showIsTyping: Bool = false {
@@ -119,6 +138,7 @@ final class UniversalChatVC: UIViewController, Routable {
         addTopButtons()
         setMuteButtonImage(type: dataSource.notificationsType)
         setPinButtonImage()
+        setViewMarksButtonImage()
         setupCollectionView()
         collectionView.refreshControl?.beginRefreshing()
         setupInput()
@@ -140,7 +160,8 @@ final class UniversalChatVC: UIViewController, Routable {
             if self.dataSource.isPrejoining {
                 self.input.hideLeftButton()
             }
-            self.pinButton.isHidden = !self.dataSource.isInputAllowed
+            self.pinButton.isHidden = !self.dataSource.isPinnable
+            self.setViewMarksButtonImage()
         }
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
@@ -343,6 +364,33 @@ final class UniversalChatVC: UIViewController, Routable {
                                currentState: pinState)
     }
 
+    @objc
+    func tapViewMarksButton(_ sender: UIButton) {
+        var visibleItems = self.collectionView.indexPathsForVisibleItems.sorted()
+        dataSource.indexVisible = visibleItems.count > 1 ? visibleItems[1] : visibleItems[0]
+
+        dataSource.userSetMarksOnlyMode = !dataSource.isMarksOnlyMode
+        
+        setViewMarksButtonImage()
+        UIView.animate(withDuration: 0.1, animations: {
+            self.collectionView.alpha = 0
+        }, completion: { _ in
+            self.collectionView.reloadData()
+            self.collectionView.layoutSubviews()
+            self.collectionView.performBatchUpdates(nil, completion: { _ in
+                if let index = self.dataSource.indexVisible  {
+                    self.collectionView.scrollToItem(at: index, at: .top, animated: false) // need to animate - wrong position otherwise
+                }
+                else {
+                    self.scrollToEnd()
+                }
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.collectionView.alpha = 1
+                })
+            })
+        })
+    }
+
     // swiftlint:disable:bext force_unwrapping
     func showCommandList(model: ChatCellUserDataLike) {
         postActionsDataSource = PostActionsDataSource(model: model)
@@ -481,13 +529,24 @@ private extension UniversalChatVC {
             return
         }
 
+        var buttons = [UIBarButtonItem]()
         muteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         muteButton.addTarget(self, action: #selector(tapMuteButton), for: .touchUpInside)
+        buttons.append(UIBarButtonItem(customView: muteButton))
         
-        pinButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        pinButton.addTarget(self, action: #selector(tapPinButton), for: .touchUpInside)
-        navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: muteButton),
-                                               UIBarButtonItem(customView: pinButton)], animated: false)
+        if dataSource.canBeInMarksOnlyMode {
+            viewMarksButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            viewMarksButton.addTarget(self, action: #selector(tapViewMarksButton), for: .touchUpInside)
+            viewMarksButton.isHidden = true
+            buttons.append(UIBarButtonItem(customView: viewMarksButton))
+        }
+        if dataSource.isPinnable {
+            pinButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            pinButton.addTarget(self, action: #selector(tapPinButton), for: .touchUpInside)
+            buttons.append(UIBarButtonItem(customView: pinButton))
+        }
+        
+        navigationItem.setRightBarButtonItems(buttons, animated: false)
     }
     
     private func setMuteButtonImage(type: MuteType) {
@@ -509,7 +568,13 @@ private extension UniversalChatVC {
         let image: UIImage = #imageLiteral(resourceName: "PinIconGrey")
         pinButton.setImage(image, for: .normal)
     }
-    
+
+    private func setViewMarksButtonImage() {
+        let image: UIImage = dataSource.isMarksOnlyMode ? #imageLiteral(resourceName: "iconExpand") : #imageLiteral(resourceName: "iconCollapse")
+        viewMarksButton.setImage(image, for: .normal)
+        viewMarksButton.isHidden = !self.dataSource.hasEnoughMarks
+    }
+
     private func registerCells() {
         collectionView.register(ChatVariousContentCell.self,
                                 forCellWithReuseIdentifier: Constant.textWithImagesCellID)
@@ -551,6 +616,14 @@ private extension UniversalChatVC {
         collectionView.addGestureRecognizer(tap)
     }
     
+    private func scrollToEnd() {
+        if let lastReadIndexPath = self.dataSource.lastReadIndexPath {
+            guard lastReadIndexPath.row < self.dataSource.count
+                && lastReadIndexPath.row < self.collectionView.numberOfItems(inSection: lastReadIndexPath.section) else { return }
+            
+            self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: false)
+        }
+    }
     /**
      * Refresh controller after new data comes from the server
      *
@@ -558,12 +631,9 @@ private extension UniversalChatVC {
      */
     private func refresh(backward: Bool, isFirstLoad: Bool) {
         collectionView.reloadData()
-        DispatchQueue.main.async {
-            if isFirstLoad, let lastReadIndexPath = self.dataSource.lastReadIndexPath {
-                guard lastReadIndexPath.row < self.dataSource.count
-                    && lastReadIndexPath.row < self.collectionView.numberOfItems(inSection: lastReadIndexPath.section) else { return }
-
-                self.collectionView.scrollToItem(at: lastReadIndexPath, at: .top, animated: true)
+        self.collectionView.performBatchUpdates(nil, completion: { _ in
+            if isFirstLoad {
+                self.scrollToEnd()
             } else if self.isScrollToBottomNeeded {
                 self.scrollToBottom(animated: true)
                 self.isScrollToBottomNeeded = false
@@ -573,7 +643,7 @@ private extension UniversalChatVC {
 
                 self.collectionView.scrollToItem(at: indexPath, at: .top, animated: false)
             }
-        }
+        })
     }
     
     private func verticalInsetForCloud(with model: ChatTextCellModel) -> CGFloat {

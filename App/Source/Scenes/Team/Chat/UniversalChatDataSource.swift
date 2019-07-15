@@ -40,10 +40,21 @@ enum UniversalChatType {
 
 final class UniversalChatDatasource {
     enum Constant {
-        static let limit = 500
-        static let firstLoadPreviousMessagesCount = 500
+        static let limit = 1000
+        static let firstLoadPreviousMessagesCount = 1000
     }
-    
+
+    final private class UniversalChatData {
+        var models: [ChatCellModel]        = []
+        var indexVisible: IndexPath?       = nil
+        var lastInsertionIndex: Int        = 0
+        var hasNewMessagesSeparator: Bool  = false
+        var isClaimPaidModelAdded          = false
+        var isPayToJoinModelAdded          = false
+        var isAddMorePhotoModelAdded       = false
+        var topCellDate: Date?
+    }
+
     var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool, _ isFirstLoad: Bool) -> Void)?
     var onError: ((Error) -> Void)?
     var onSendMessage: ((IndexPath) -> Void)?
@@ -51,20 +62,9 @@ final class UniversalChatDatasource {
     var onClaimVoteUpdate: (() -> Void)?
     
     var cloudWidth: CGFloat                         = 0
-    var previousCount: Int                          = 0
     var teamAccessLevel: TeamAccessLevel            = TeamAccessLevel.full
     
     var notificationsType: MuteType            = .unknown
-    var hasNext                                     = true
-    var hasPrevious                                 = true
-    var isFirstLoad                                 = true
-    var isLoadNextNeeded: Bool                      = false {
-        didSet {
-            if isLoadNextNeeded && !isLoading && hasNext {
-                loadNext()
-            }
-        }
-    }
     
     var name: String?
     
@@ -74,33 +74,61 @@ final class UniversalChatDatasource {
             cellModelBuilder.showRate = chatType == .application || chatType == .claim
         }
     }
+
+    private var dataAll: UniversalChatData = UniversalChatData()
+    private var dataMarks: UniversalChatData = UniversalChatData()
     
-    private var models: [ChatCellModel]             = []
+    private var data: UniversalChatData {
+        get { return isMarksOnlyMode ? dataMarks : dataAll }
+        set { if (isMarksOnlyMode) { dataMarks = newValue } else { dataAll = newValue }
+        }
+    }
+    private var models: [ChatCellModel]        { get {return data.models}                   set {data.models = newValue} }
+    private var lastInsertionIndex: Int        { get {return data.lastInsertionIndex}       set {data.lastInsertionIndex = newValue} }
+    private var hasNewMessagesSeparator: Bool  { get {return data.hasNewMessagesSeparator}  set {data.hasNewMessagesSeparator = newValue} }
+    private var isClaimPaidModelAdded: Bool    { get {return data.isClaimPaidModelAdded}    set {data.isClaimPaidModelAdded = newValue} }
+    private var isPayToJoinModelAdded: Bool    { get {return data.isPayToJoinModelAdded}    set {data.isPayToJoinModelAdded = newValue} }
+    private var isAddMorePhotoModelAdded: Bool { get {return data.isAddMorePhotoModelAdded} set {data.isAddMorePhotoModelAdded = newValue} }
+    private var topCellDate: Date?             { get {return data.topCellDate}              set {data.topCellDate = newValue} }
+    var indexVisible: IndexPath?               { get {return data.indexVisible}             set {data.indexVisible = newValue} }
+
+    var userSetMarksOnlyMode: Bool?
+    var tempMarksOnlyMode: Bool?
+    var isMarksOnlyMode: Bool {
+        return tempMarksOnlyMode
+            ?? (userSetMarksOnlyMode
+                ?? !isPinnable && !isPrivateChat && (chatModel?.isMarksOnlyMode ?? true) && hasEnoughMarks)
+    }
+    
+    private var currentLimit: Int              = 0
+    private var forwardOffset: Int             = 0
+    private var backwardOffset: Int            = 0
+    
+    var isFirstLoad                    = true
+    var hasNext                        = true
+    var hasPrevious                    = true
+    var isLoadNextNeeded: Bool         = false {
+        didSet {
+            if isLoadNextNeeded && !isLoading && hasNext {
+                loadNext()
+            }
+        }
+    }
+
+    
     private var unsentIDs: Set<String>              = []
-    
-    private var lastInsertionIndex                  = 0
     
     private var strategy: UniversalChatContext      = UniversalChatContext()
     var cellModelBuilder                            = ChatModelBuilder()
     
     private var lastRead: UInt64 { return chatModel?.discussion.lastRead ?? 0 }
-    private var currentLimit: Int                   = 0
-    private var forwardOffset: Int                  = 0
-    private var backwardOffset: Int                 = 0
-    private var postsCount: Int                     = 0
     private var avatarSize                          = 64
     private var commentAvatarSize                   = 32
     private var labelHorizontalInset: CGFloat       = 8
     private var font: UIFont                        = UIFont.teambrella(size: 14)
     
     private(set) var isLoading                      = false
-    private var isChunkAdded                        = false
-    private var hasNewMessagesSeparator: Bool       = false
-    private var isClaimPaidModelAdded               = false
-    private var isPayToJoinModelAdded               = false
-    private var isAddMorePhotoModelAdded            = false
     
-    private var topCellDate: Date?
     
     var myVote: Double? {
         return chatModel?.voting?.myVote
@@ -202,6 +230,20 @@ final class UniversalChatDatasource {
     
     var isPrivateChat: Bool { return strategy.isPrivate }
     
+    var isPinnable: Bool {
+        return !(chatModel?.isClaimChat ?? true)
+            && !(chatModel?.isApplicationChat ?? true)
+            && isInputAllowed
+    }
+    
+    var canBeInMarksOnlyMode : Bool {
+        return !isPinnable && !isPrivateChat
+    }
+
+    var hasEnoughMarks : Bool {
+        return (chatModel?.discussion.markedPosts.count ?? 0) > 0
+    }
+
     var isPrejoining: Bool {
         guard let accessLevel = chatModel?.team?.accessLevel else { return false }
 
@@ -276,7 +318,8 @@ final class UniversalChatDatasource {
 
     func setPostMarked(isMarked: Bool, chatItem: ChatCellUserDataLike, completion: @escaping (Bool) -> Void) {
         if let index = indexPath(postID: chatItem.id),
-            var model = models[index.row] as? ChatCellUserDataLike {
+            var model = models[index.row] as? ChatCellUserDataLike
+        {
             model.isMarked = isMarked
             models[index.row] = model
             
@@ -285,11 +328,23 @@ final class UniversalChatDatasource {
                 case let .error(error):
                     log("\(error)", type: [.error, .serverReply])
                 default:
+                    // Unmark other posts
+                    for oldItem in self.models {
+                        if var oldItem = oldItem as? ChatCellUserDataLike {
+                            if (oldItem.isMy && oldItem.isMarked && oldItem.id != model.id) {
+                                if let indexOld = self.indexPath(postID: oldItem.id),
+                                    var modelOld = self.models[indexOld.row] as? ChatCellUserDataLike
+                                {
+                                    modelOld.isMarked = false
+                                    self.models[indexOld.row] = modelOld
+                                }
+                            }
+                        }
+                    }
+                    completion(true)
                     break
                 }
             }
-            
-            completion(true)
         }
     }
 
@@ -309,14 +364,6 @@ final class UniversalChatDatasource {
         load(previous: true)
     }
     
-    func clear() {
-        models.removeAll()
-        forwardOffset = 0
-        backwardOffset = 0
-        postsCount = 0
-        hasNext = true
-    }
-
     func newPhotoMeta() -> ChatMetadata? {
         guard !isLoading, let topicID = topicID else { return nil }
 
@@ -360,7 +407,7 @@ final class UniversalChatDatasource {
      Returns index of post model with the given id
 
      Because most of the time we need index of one of the latest posts, search is done from end to beginning
- */
+    */
     func indexPath(postID: String) -> IndexPath? {
         for (idx, model) in models.reversed().enumerated() where model.id == postID {
             return IndexPath(row: models.count - 1 - idx, section: 0)
@@ -468,7 +515,11 @@ extension UniversalChatDatasource {
         isLoading = true
         if previous {
             isLoadPreviousNeeded = false
+            tempMarksOnlyMode = false
             topCellDate = models.first?.date
+            tempMarksOnlyMode = true
+            topCellDate = models.first?.date
+            tempMarksOnlyMode = nil
         } else {
             isLoadNextNeeded = false
         }
@@ -637,14 +688,13 @@ extension UniversalChatDatasource {
     }
     
     private func addModels(models: [ChatEntity], isPrevious: Bool, chatModel: ChatModel?) {
-        previousCount = postsCount // not used???
-        let currentPostsCount = models.count
-        postsCount += currentPostsCount // not used???
         if isPrevious {
             isLoadPreviousNeeded = false
         } else {
             isLoadNextNeeded = false
-            forwardOffset += currentPostsCount
+            if (!isMarksOnlyMode) { // Add only once
+                forwardOffset += models.count
+            }
             if lastRead == 0,
                 let last = models.last,
                 let chatModel = chatModel,
@@ -685,7 +735,6 @@ extension UniversalChatDatasource {
     private func processMyNew(message: ChatEntity) {
         let models = createCellModels(from: [message], isTemporary: true)
         addCellModels(models: models)
-        postsCount += 1
         forwardOffset = 0
         
         onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
@@ -702,6 +751,9 @@ extension UniversalChatDatasource {
     
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
         chatModel = model
+        tempMarksOnlyMode = false
+        defer { tempMarksOnlyMode = nil }
+        
         addModels(models: model.discussion.chat, isPrevious: isPrevious, chatModel: model)
         if model.discussion.chat.count < currentLimit {
             if isPrevious {
@@ -719,6 +771,10 @@ extension UniversalChatDatasource {
         
         addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
         //addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
+        
+        tempMarksOnlyMode = true
+        addModels(models: model.discussion.markedPosts, isPrevious: isPrevious, chatModel: model)
+        addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
     }
 
     private func addClaimPaidIfNeeded(date: Date?) {
