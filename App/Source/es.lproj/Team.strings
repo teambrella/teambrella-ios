@@ -181,6 +181,7 @@
 "Team.ChooseTeam.switchUser"                          = "Cambiar usuario";
 "Team.Chat.Input.yourMessageHere"                     = "Tu mensaje aquí";
 "Team.Chat.Input.continueJoining"                     = "Continue joining the team";
+"Team.Chat.Input.goToDiscussion"                      = "Go to discussion";
 
 "Team.Claims.Empty.title"                             = "Hasta el momento no hay reclamaciones en tu equipo";
 "Team.Claims.Empty.details"                           = "Te notificaremos cuando tu reclamaciòn esta enviada.";

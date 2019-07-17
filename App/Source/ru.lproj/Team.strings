@@ -182,6 +182,7 @@
 "Team.Chat.Separator.newMessages"                     = "НОВЫЕ СООБЩЕНИЯ";
 "Team.Chat.Input.yourMessageHere"                     = "Твоё сообщение";
 "Team.Chat.Input.continueJoining"                     = "Продолжить вступление в команду";
+"Team.Chat.Input.goToDiscussion"                      = "Перейти в обсуждение";
 
 "Team.Home.Card.claimed"                              = "ЗАЯВЛЕНО";
 "Team.Home.Card.coverage"                             = "ЗАЩИТА";

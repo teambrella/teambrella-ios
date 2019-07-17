@@ -72,7 +72,76 @@ class InputAccessoryView: UIView {
         label.alpha = 0
         return label
     }()
+    
+    private var unreadCount : Int = 0
 
+    lazy var goToDiscussionLabel: UIView = {
+        let viewTop = UIView()
+        return viewTop
+    }()
+
+    private func setupGoToDiscussionLabel() {
+        let viewTop = goToDiscussionLabel
+        for subview in viewTop.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        let view = UILabel()
+        
+        let label = UILabel()
+        label.font = UIFont.teambrella(size: 15)
+        label.textColor = .bluishGray
+        label.textAlignment = .left
+        label.text = "Team.Chat.Input.goToDiscussion".localized
+        label.sizeToFit()
+        view.addSubview(label)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        if unreadCount > 0 {
+            let badge = Label(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+            badge.font = UIFont.teambrellaBold(size: 11)
+            badge.textAlignment = .center
+            badge.textInsets = UIEdgeInsets(top: 3, left: 4, bottom: 3, right: 4)
+            badge.textColor = .white
+            badge.layer.cornerRadius = 19.0 / 2
+            badge.layer.masksToBounds = true
+            badge.layer.borderColor = UIColor.clear.cgColor
+            badge.layer.borderWidth = 1.5
+            badge.backgroundColor = UIColor.tealish
+            badge.frame = CGRect(x: 0, y: 0, width: 50, height: 24)
+            badge.text = "\(unreadCount)"
+            badge.sizeToFit()
+            badge.frame.size.width = max(badge.frame.width, badge.frame.height)
+            badge.center = CGPoint(x: label.frame.maxX + 16 + badge.frame.width / 2, y: label.center.y)
+            
+            view.frame = CGRect(x: 0, y: 0, width: badge.frame.maxX, height: label.frame.height)
+            view.widthAnchor.constraint(equalToConstant: badge.frame.maxX).isActive = true
+            view.heightAnchor.constraint(equalToConstant: badge.frame.maxY).isActive = true
+            view.addSubview(badge)
+        } else {
+            view.widthAnchor.constraint(equalToConstant: label.frame.maxX).isActive = true
+            view.heightAnchor.constraint(equalToConstant: label.frame.maxY).isActive = true
+        }
+        
+        viewTop.addSubview(view)
+        self.addSubview(viewTop)
+        
+        view.centerXAnchor.constraint(equalTo: viewTop.centerXAnchor).isActive = true
+        view.centerYAnchor.constraint(equalTo: viewTop.centerYAnchor).isActive = true
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapGoToDiscussion))
+        recognizer.numberOfTapsRequired = 1
+        viewTop.isUserInteractionEnabled = true
+        viewTop.addGestureRecognizer(recognizer)
+        viewTop.alpha = 0
+        
+        viewTop.translatesAutoresizingMaskIntoConstraints = false
+        viewTop.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        viewTop.centerYAnchor.constraint(equalTo: textView.centerYAnchor).isActive = true
+        viewTop.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        viewTop.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+    }
+    
     var maxHeight: CGFloat = 70
     
     var onTextChange: (() -> Void)?
@@ -82,6 +151,7 @@ class InputAccessoryView: UIView {
     var onTapPhoto: (() -> Void)?
     var onEndEditing: ((String?) -> Void)?
     var onTapContinueJoining: (() -> Void)?
+    var onTapGoToDiscussion: (() -> Void)?
 
     var isEmpty: Bool { return textView.text == nil || textView.text == "" }
 
@@ -185,6 +255,39 @@ class InputAccessoryView: UIView {
 //        continueJoiningLabel.isHidden = false
     }
 
+    func showGoToDiscussion(unreadCount: Int) {
+        guard (self.continueJoiningLabel.alpha == 0) else {return}
+        self.unreadCount = unreadCount
+        self.setupGoToDiscussionLabel()
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            self.leftButton.alpha = 0
+            self.rightButton.alpha = 0
+            self.textView.alpha = 0
+            self.placeholderLabel.alpha = 0
+            self.goToDiscussionLabel.alpha = 1
+        }) { finished in
+            
+        }
+    }
+
+    func hideGoToDiscussion() {
+        guard (self.goToDiscussionLabel.alpha > 0) else {return}
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            self.leftButton.alpha = 1
+            self.rightButton.alpha = 1
+            self.textView.alpha = 1
+            self.placeholderLabel.alpha = 1
+            self.goToDiscussionLabel.alpha = 0
+        }) { finished in
+            
+        }
+        //        leftButton.isHidden = true
+        //        rightButton.isHidden = true
+        //        textView.isHidden = true
+        //        placeholderLabel.isHidden = true
+        //        continueJoiningLabel.isHidden = false
+    }
+
     
     func showLeftButton() {
         leftButton.isHidden = false
@@ -214,6 +317,11 @@ class InputAccessoryView: UIView {
     @objc
     private func tapContinueJoining() {
         onTapContinueJoining?()
+    }
+
+    @objc
+    private func tapGoToDiscussion() {
+        onTapGoToDiscussion?()
     }
 }
 

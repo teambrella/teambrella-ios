@@ -182,6 +182,7 @@
 "Team.Chat.Separator.newMessages"                     = "NEW MESSAGES";
 "Team.Chat.Input.yourMessageHere"                     = "Your message here";
 "Team.Chat.Input.continueJoining"                     = "Continue joining the team";
+"Team.Chat.Input.goToDiscussion"                      = "Go to discussion";
 
 "Team.Home.Card.claimed"                              = "CLAIMED";
 "Team.Home.Card.coverage"                             = "COVERAGE";

@@ -62,14 +62,16 @@ struct ChatModel: Decodable, CustomStringConvertible {
         let isMuted: Bool?
         let isMarksOnly: Bool?
         let lastRead: UInt64
+        let unreadCount: Int?
         let topicID: String
         let chat: [ChatEntity]
-        let markedPosts: [ChatEntity]
+        let markedPosts: [ChatEntity]?
 
         enum CodingKeys: String, CodingKey {
             case isMuted = "IsMuted"
             case isMarksOnly = "IsMarksOnly"
             case lastRead = "LastRead"
+            case unreadCount = "UnreadCount"
             case topicID = "TopicId"
             case chat = "Chat"
             case markedPosts = "MarkedPosts"

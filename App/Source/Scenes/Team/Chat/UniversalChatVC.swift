@@ -90,7 +90,7 @@ final class UniversalChatVC: UIViewController, Routable {
     
     var muteButton = UIButton()
     var pinButton = UIButton()
-    var viewMarksButton = UIButton()
+    var viewMarksButton = LabeledButton()
     
     var keyboardTopY: CGFloat?
     var keyboardHeight: CGFloat {
@@ -138,7 +138,7 @@ final class UniversalChatVC: UIViewController, Routable {
         addTopButtons()
         setMuteButtonImage(type: dataSource.notificationsType)
         setPinButtonImage()
-        setViewMarksButtonImage()
+        setViewMarksButtons()
         setupCollectionView()
         collectionView.refreshControl?.beginRefreshing()
         setupInput()
@@ -161,7 +161,7 @@ final class UniversalChatVC: UIViewController, Routable {
                 self.input.hideLeftButton()
             }
             self.pinButton.isHidden = !self.dataSource.isPinnable
-            self.setViewMarksButtonImage()
+            self.setViewMarksButtons()
         }
         dataSource.onSendMessage = { [weak self] indexPath in
             guard let `self` = self else { return }
@@ -366,25 +366,28 @@ final class UniversalChatVC: UIViewController, Routable {
 
     @objc
     func tapViewMarksButton(_ sender: UIButton) {
-        var visibleItems = self.collectionView.indexPathsForVisibleItems.sorted()
-        dataSource.indexVisible = visibleItems.count > 1 ? visibleItems[1] : visibleItems[0]
+        switchViewMarkMode()
+    }
+    
+    func switchViewMarkMode() {
+        dataSource.offsetY = self.collectionView.contentOffset.y
 
         dataSource.userSetMarksOnlyMode = !dataSource.isMarksOnlyMode
-        
-        setViewMarksButtonImage()
+
+        setViewMarksButtons()
         UIView.animate(withDuration: 0.1, animations: {
             self.collectionView.alpha = 0
         }, completion: { _ in
             self.collectionView.reloadData()
             self.collectionView.layoutSubviews()
             self.collectionView.performBatchUpdates(nil, completion: { _ in
-                if let index = self.dataSource.indexVisible  {
-                    self.collectionView.scrollToItem(at: index, at: .top, animated: false) // need to animate - wrong position otherwise
+                if let offsetY = self.dataSource.offsetY  {
+                    self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
                 }
                 else {
                     self.scrollToEnd()
                 }
-                UIView.animate(withDuration: 0.3, animations: {
+                UIView.animate(withDuration: 0.1, animations: {
                     self.collectionView.alpha = 1
                 })
             })
@@ -569,10 +572,20 @@ private extension UniversalChatVC {
         pinButton.setImage(image, for: .normal)
     }
 
-    private func setViewMarksButtonImage() {
+    private func setViewMarksButtons() {
         let image: UIImage = dataSource.isMarksOnlyMode ? #imageLiteral(resourceName: "iconExpand") : #imageLiteral(resourceName: "iconCollapse")
         viewMarksButton.setImage(image, for: .normal)
         viewMarksButton.isHidden = !self.dataSource.hasEnoughMarks
+        
+        let showGoToDiscussionBtn = self.dataSource.isMarksOnlyMode && self.dataSource.hasEnoughMarks
+        viewMarksButton.cornerDot = self.dataSource.unreadCount > 0
+
+        if (showGoToDiscussionBtn) {
+            self.input.showGoToDiscussion(unreadCount: self.dataSource.unreadCount)
+        }
+        else {
+            self.input.hideGoToDiscussion()
+        }
     }
 
     private func registerCells() {
@@ -730,6 +743,9 @@ private extension UniversalChatVC {
             let context = UniversalChatContext(details)
             context.type = UniversalChatType.with(itemType: .teammate)
             service.router.presentChat(context: context)
+        }
+        input.onTapGoToDiscussion = { [weak self] in
+            self?.switchViewMarkMode()
         }
         if dataSource.isPrivateChat {
             input.showRightButtonSend()

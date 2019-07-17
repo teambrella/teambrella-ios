@@ -46,7 +46,7 @@ final class UniversalChatDatasource {
 
     final private class UniversalChatData {
         var models: [ChatCellModel]        = []
-        var indexVisible: IndexPath?       = nil
+        var offsetY: CGFloat?              = nil
         var lastInsertionIndex: Int        = 0
         var hasNewMessagesSeparator: Bool  = false
         var isClaimPaidModelAdded          = false
@@ -90,9 +90,13 @@ final class UniversalChatDatasource {
     private var isPayToJoinModelAdded: Bool    { get {return data.isPayToJoinModelAdded}    set {data.isPayToJoinModelAdded = newValue} }
     private var isAddMorePhotoModelAdded: Bool { get {return data.isAddMorePhotoModelAdded} set {data.isAddMorePhotoModelAdded = newValue} }
     private var topCellDate: Date?             { get {return data.topCellDate}              set {data.topCellDate = newValue} }
-    var indexVisible: IndexPath?               { get {return data.indexVisible}             set {data.indexVisible = newValue} }
+    var offsetY: CGFloat?                      { get {return data.offsetY}                  set {data.offsetY = newValue} }
 
-    var userSetMarksOnlyMode: Bool?
+    var userSetMarksOnlyMode: Bool? {
+        didSet {
+            readAll = true
+        }
+    }
     var tempMarksOnlyMode: Bool?
     var isMarksOnlyMode: Bool {
         return tempMarksOnlyMode
@@ -141,6 +145,8 @@ final class UniversalChatDatasource {
     var topicID: String? { return strategy.topicID ?? chatModel?.discussion.topicID }
     
     var count: Int { return models.count }
+    var unreadCount: Int { return readAll ? 0 : (chatModel?.discussion.unreadCount ?? 0) }
+    private var readAll: Bool = false
     
     var dao: DAO { return service.dao }
     
@@ -241,7 +247,7 @@ final class UniversalChatDatasource {
     }
 
     var hasEnoughMarks : Bool {
-        return (chatModel?.discussion.markedPosts.count ?? 0) > 0
+        return (chatModel?.discussion.markedPosts?.count ?? 0) > 0
     }
 
     var isPrejoining: Bool {
@@ -773,7 +779,7 @@ extension UniversalChatDatasource {
         //addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
         
         tempMarksOnlyMode = true
-        addModels(models: model.discussion.markedPosts, isPrevious: isPrevious, chatModel: model)
+        addModels(models: model.discussion.markedPosts ?? [ChatEntity](), isPrevious: isPrevious, chatModel: model)
         addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
     }
 
