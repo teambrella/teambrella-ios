@@ -113,6 +113,7 @@ protocol DAO {
 
     func setPostLike(postID: String, myLike: Int) -> Future<Bool>
     func setPostMarked(postID: String, isMarked: Bool) -> Future<Bool>
+    func setViewMode(topicID: String, useMarksMode: Bool) -> Future<Bool> 
 
 //    func performRequest(request: TeambrellaRequest)
     

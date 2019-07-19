@@ -95,13 +95,22 @@ final class UniversalChatDatasource {
     var userSetMarksOnlyMode: Bool? {
         didSet {
             readAll = true
+            guard let topicID = chatModel?.discussion.topicID else { return }
+            service.dao.setViewMode(topicID: topicID, useMarksMode: userSetMarksOnlyMode ?? true).observe { result in
+                switch result {
+                case let .error(error):
+                    log("\(error)", type: [.error, .serverReply])
+                default:
+                    break
+                }
+            }
         }
     }
     var tempMarksOnlyMode: Bool?
     var isMarksOnlyMode: Bool {
         return tempMarksOnlyMode
             ?? (userSetMarksOnlyMode
-                ?? !isPinnable && !isPrivateChat && (chatModel?.isMarksOnlyMode ?? true) && hasEnoughMarks)
+                ?? (!isPinnable && !isPrivateChat && (chatModel?.isMarksOnlyMode ?? true) && hasEnoughMarks))
     }
     
     private var currentLimit: Int              = 0

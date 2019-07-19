@@ -69,7 +69,7 @@ struct ChatModel: Decodable, CustomStringConvertible {
 
         enum CodingKeys: String, CodingKey {
             case isMuted = "IsMuted"
-            case isMarksOnly = "IsMarksOnly"
+            case isMarksOnly = "MarksMode"
             case lastRead = "LastRead"
             case unreadCount = "UnreadCount"
             case topicID = "TopicId"
