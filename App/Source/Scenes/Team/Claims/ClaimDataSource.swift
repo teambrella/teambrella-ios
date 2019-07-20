@@ -52,6 +52,9 @@ class ClaimDataSource {
             cellIDs.append(ClaimVoteCell.cellID)
         }
         cellIDs.append(ClaimDetailsCell.cellID)
+        if claim.voted != nil && claim.basic.votingRes.value > 0 {
+            cellIDs.append(ClaimPayoutCell.cellID)
+        }
         cellIDs.append(ClaimOptionsCell.cellID)
     }
     

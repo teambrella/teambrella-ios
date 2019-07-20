@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ClaimPayoutCell" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="183"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="183"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQi-Yl-ex1" userLabel="Background">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="183"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="PAYOUT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhE-3B-gEJ" customClass="BlockHeaderLabel" customModule="Surilla" customModuleProvider="target">
+                        <rect key="frame" x="20" y="20" width="65" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="afa-X2-lB1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="594-Fk-t4w">
+                        <rect key="frame" x="20" y="48" width="303" height="130"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02d-DE-xq7">
+                                <rect key="frame" x="0.0" y="0.0" width="303" height="43.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyG-8A-vwf" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="11.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JY2-V6-eEr" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="294.5" y="11.5" width="8.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JY2-V6-eEr" secondAttribute="trailing" id="1gl-RL-mUy"/>
+                                    <constraint firstItem="pyG-8A-vwf" firstAttribute="centerY" secondItem="02d-DE-xq7" secondAttribute="centerY" id="ARl-Ub-sWT"/>
+                                    <constraint firstItem="JY2-V6-eEr" firstAttribute="centerY" secondItem="pyG-8A-vwf" secondAttribute="centerY" id="l8m-bQ-eiA"/>
+                                    <constraint firstItem="pyG-8A-vwf" firstAttribute="leading" secondItem="02d-DE-xq7" secondAttribute="leading" id="pkR-kA-JAQ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vs3-d9-ZMU">
+                                <rect key="frame" x="0.0" y="43.5" width="303" height="43"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYa-Iq-hDy" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="11.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSp-Mx-qVy" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="294.5" y="11.5" width="8.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="zSp-Mx-qVy" firstAttribute="centerY" secondItem="RYa-Iq-hDy" secondAttribute="centerY" id="2Vi-48-laW"/>
+                                    <constraint firstItem="RYa-Iq-hDy" firstAttribute="centerY" secondItem="vs3-d9-ZMU" secondAttribute="centerY" id="Ree-zx-aO8"/>
+                                    <constraint firstItem="RYa-Iq-hDy" firstAttribute="leading" secondItem="vs3-d9-ZMU" secondAttribute="leading" id="z0G-Cq-sdq"/>
+                                    <constraint firstAttribute="trailing" secondItem="zSp-Mx-qVy" secondAttribute="trailing" id="zuk-Pd-2AX"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdj-YP-EEH">
+                                <rect key="frame" x="0.0" y="86.5" width="303" height="43.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TH7-uN-10z" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="11.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot9-Ob-4n4" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="294.5" y="11.5" width="8.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ot9-Ob-4n4" secondAttribute="trailing" id="2IZ-Va-aLf"/>
+                                    <constraint firstItem="TH7-uN-10z" firstAttribute="leading" secondItem="Vdj-YP-EEH" secondAttribute="leading" id="im3-80-aMG"/>
+                                    <constraint firstItem="TH7-uN-10z" firstAttribute="centerY" secondItem="Vdj-YP-EEH" secondAttribute="centerY" id="vDR-iO-8wg"/>
+                                    <constraint firstItem="ot9-Ob-4n4" firstAttribute="centerY" secondItem="TH7-uN-10z" secondAttribute="centerY" id="vuY-4y-B1W"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="594-Fk-t4w" secondAttribute="trailing" constant="20" id="5Z7-3R-UXA"/>
+                <constraint firstItem="WhE-3B-gEJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="8Dt-Fg-LvL"/>
+                <constraint firstAttribute="bottom" secondItem="594-Fk-t4w" secondAttribute="bottom" constant="5" id="9Uy-5b-eHO"/>
+                <constraint firstAttribute="bottom" secondItem="AQi-Yl-ex1" secondAttribute="bottom" id="AZz-2w-MYj"/>
+                <constraint firstItem="AQi-Yl-ex1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JkN-Xl-pdB"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WhE-3B-gEJ" secondAttribute="trailing" constant="20" id="ROU-E7-hzt"/>
+                <constraint firstItem="AQi-Yl-ex1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YAL-x5-Iho"/>
+                <constraint firstItem="WhE-3B-gEJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="igh-mc-ZgH"/>
+                <constraint firstItem="594-Fk-t4w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="nXp-LG-cuw"/>
+                <constraint firstItem="594-Fk-t4w" firstAttribute="top" secondItem="WhE-3B-gEJ" secondAttribute="bottom" constant="8" id="sa5-ZF-Jxs"/>
+                <constraint firstAttribute="trailing" secondItem="AQi-Yl-ex1" secondAttribute="trailing" id="vz9-iM-iOU"/>
+            </constraints>
+            <edgeInsets key="layoutMargins" top="19" left="20" bottom="16" right="22"/>
+            <connections>
+                <outlet property="paidLabel" destination="TH7-uN-10z" id="oUS-gN-yOA"/>
+                <outlet property="paidValueLabel" destination="ot9-Ob-4n4" id="ecc-mH-CF7"/>
+                <outlet property="rateLabel" destination="pyG-8A-vwf" id="9mx-sm-twf"/>
+                <outlet property="rateValueLabel" destination="JY2-V6-eEr" id="ouw-pU-Idg"/>
+                <outlet property="titleLabel" destination="WhE-3B-gEJ" id="lze-CX-o8x"/>
+                <outlet property="toPayLabel" destination="RYa-Iq-hDy" id="VXb-Zz-DVA"/>
+                <outlet property="toPayValueLabel" destination="zSp-Mx-qVy" id="6Rh-aX-Cly"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

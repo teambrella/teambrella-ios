@@ -27,6 +27,12 @@
 "Team.ClaimCell.deductible"                           = "Deducible";
 "Team.ClaimCell.coverage"                             = "Cobertura";
 "Team.ClaimCell.incidentDate"                         = "Fecha del incidente";
+
+"Team.ClaimCell.claimPayout"                          = "PAYOUT";
+"Team.ClaimCell.cryptoRate"                           = "Fixed rate";
+"Team.ClaimCell.toPay"                                = "For payment";
+"Team.ClaimCell.paid"                                 = "Paid";
+
 "Team.FeedVC.indicatorTitle"                          = "Noticias";
 "Team.Teammates.newTeammates"                         = "NUEVOS COMPAÑEROS";
 "Team.Teammates.teammates"                            = "COMPAÑEROS";

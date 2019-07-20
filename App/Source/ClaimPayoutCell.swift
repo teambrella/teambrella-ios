@@ -21,31 +21,22 @@
 
 import UIKit
 
-class ClaimDetailsCell: UICollectionViewCell, XIBInitableCell {
+class ClaimPayoutCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var infoButton: UIButton!
-    
-    @IBOutlet var claimAmountLabel: Label!
-    @IBOutlet var claimAmountValueLabel: Label!
-    
-    @IBOutlet var estimatedExpencesLabel: Label!
-    @IBOutlet var estimatedExpensesValueLabel: Label!
-    
-    @IBOutlet var deductiblePanel: UIView!
-    @IBOutlet var deductibleLabel: Label!
-    @IBOutlet var deductibleValueLabel: Label!
-    
-    @IBOutlet var coverageLabel: Label!
-    @IBOutlet var coverageValueLabel: Label!
-    
-    @IBOutlet var incidentDateLabel: Label!
-    @IBOutlet var incidentDateValueLabel: Label!
 
+    @IBOutlet var rateLabel: Label!
+    @IBOutlet var rateValueLabel: Label!
+
+    @IBOutlet var toPayLabel: Label!
+    @IBOutlet var toPayValueLabel: Label!
+    
+    @IBOutlet var paidLabel: Label!
+    @IBOutlet var paidValueLabel: Label!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         ViewDecorator.roundedEdges(for: self)
         ViewDecorator.shadow(for: self)
     }
-
 }

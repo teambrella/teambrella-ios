@@ -31,6 +31,11 @@
 "Team.ClaimCell.coverage"                             = "Coverage";
 "Team.ClaimCell.incidentDate"                         = "Incident date";
 
+"Team.ClaimCell.claimPayout"                          = "PAYOUT";
+"Team.ClaimCell.cryptoRate"                           = "Fixed rate";
+"Team.ClaimCell.toPay"                                = "For payment";
+"Team.ClaimCell.paid"                                 = "Paid";
+
 "Team.FeedVC.indicatorTitle"                          = "Feed";
 
 "Team.Teammates.newTeammates"                         = "NEW TEAMMATES";

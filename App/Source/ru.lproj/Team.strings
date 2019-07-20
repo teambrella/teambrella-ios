@@ -31,6 +31,11 @@
 "Team.ClaimCell.coverage"                             = "Защита";
 "Team.ClaimCell.incidentDate"                         = "Дата происшествия";
 
+"Team.ClaimCell.claimPayout"                          = "ВЫПЛАТА";
+"Team.ClaimCell.cryptoRate"                           = "Зафиксированный курс";
+"Team.ClaimCell.toPay"                                = "К выплате";
+"Team.ClaimCell.paid"                                 = "Выплачено";
+
 "Team.FeedVC.indicatorTitle"                          = "Лента";
 
 "Team.Teammates.newTeammates"                         = "НОВЫЕ УЧАСТНИКИ";

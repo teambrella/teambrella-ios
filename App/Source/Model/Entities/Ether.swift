@@ -60,7 +60,14 @@ struct Ether: CryptoCurrency, Decodable, CustomStringConvertible, CustomDebugStr
         let value = try decoder.singleValueContainer().decode(Double.self)
         self.value = value
     }
-
+    
+    func toString(digits:Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.minimumIntegerDigits = 1
+        formatter.minimumFractionDigits = digits
+        formatter.maximumFractionDigits = digits
+        return (formatter.string(from: NSNumber(value: value)) ?? "\(value)") + " " + code
+    }
 }
 
 extension CryptoCurrency {

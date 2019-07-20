@@ -36,6 +36,8 @@ struct ClaimCellBuilder {
             }
         } else if let cell = cell as? ClaimDetailsCell {
             populateClaimDetails(cell: cell, with: claim)
+        } else if let cell = cell as? ClaimPayoutCell {
+            populateClaimPayout(cell: cell, with: claim)
         } else if let cell = cell as? ClaimOptionsCell {
             populateClaimOptions(cell: cell, with: claim, delegate: delegate)
         }
@@ -243,8 +245,30 @@ struct ClaimCellBuilder {
         cell.deductibleValueLabel.text = currency + deductible
         cell.estimatedExpensesValueLabel.text = currency + estimatedExpenses
         
+        if (claim.basic.deductible < 0.001) {
+            cell.deductiblePanel.isHidden = true
+        }
     }
-    
+
+    static func populateClaimPayout(cell: ClaimPayoutCell, with claim: ClaimEntityLarge) {
+        let session = service.session
+        
+        cell.titleLabel.text = "Team.ClaimCell.claimPayout".localized
+
+        cell.rateLabel.text = "Team.ClaimCell.cryptoRate".localized
+        cell.toPayLabel.text = "Team.ClaimCell.toPay".localized
+        cell.paidLabel.text = "Team.ClaimCell.paid".localized
+
+        let currency = session?.currentTeam?.currencySymbol ?? ""
+
+        let rate = claim.basic.claimAmount.value * claim.basic.reimbursement / claim.basic.votingRes.value
+        let rateFormatted = (rate > 1000) ? String(format: "%.0f", rate) : String(format: "%.2f", rate)
+        cell.rateValueLabel.text = rateFormatted + " " + currency + "/" + claim.basic.votingRes.code
+        cell.toPayValueLabel.text = claim.basic.votingRes.toString(digits: 4)
+        let paidPart = min(100, claim.basic.paymentRes.value * 100 / claim.basic.votingRes.value + 0.5)
+        cell.paidValueLabel.text = String(format: "%.0f%%", paidPart)
+    }
+
     static func populateClaimOptions(cell: ClaimOptionsCell, with claim: ClaimEntityLarge, delegate: ClaimVC) {
         cell.allVotesLabel.text = "Team.TeammateCell.allVotes".localized
         cell.tapAllVotesRecognizer.removeTarget(delegate, action: nil)

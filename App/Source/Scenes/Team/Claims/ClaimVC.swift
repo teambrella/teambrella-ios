@@ -178,6 +178,7 @@ final class ClaimVC: UIViewController, Routable {
         collectionView.register(ImageGalleryCell.nib, forCellWithReuseIdentifier: ImageGalleryCell.cellID)
         collectionView.register(ClaimVoteCell.nib, forCellWithReuseIdentifier: ClaimVoteCell.cellID)
         collectionView.register(ClaimDetailsCell.nib, forCellWithReuseIdentifier: ClaimDetailsCell.cellID)
+        collectionView.register(ClaimPayoutCell.nib, forCellWithReuseIdentifier: ClaimPayoutCell.cellID)
         collectionView.register(ClaimOptionsCell.nib, forCellWithReuseIdentifier: ClaimOptionsCell.cellID)
     }
     
@@ -327,7 +328,8 @@ extension ClaimVC: UICollectionViewDelegateFlowLayout {
             return canVote == true && dataSource.claim?.voting != nil
                 ? CGSize(width: collectionView.bounds.width - offset * 2, height: 250)
                 : CGSize(width: collectionView.bounds.width - offset * 2, height: 200)
-        case ClaimDetailsCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 283)
+        case ClaimDetailsCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: ((dataSource.claim?.basic.deductible ?? 0) < 0.001) ? 233 : 283)
+        case ClaimPayoutCell.cellID: return CGSize(width: collectionView.bounds.width - offset * 2, height: 183)
         case ClaimOptionsCell.cellID: return CGSize(width: collectionView.bounds.width, height: 112)
         default: break
         }

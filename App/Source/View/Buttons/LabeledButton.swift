@@ -43,11 +43,11 @@ class LabeledButton: UIButton {
     
     lazy var cornerLabel: Label = {
         let label = Label(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
-        label.font = UIFont.teambrellaBold(size: 10)
+        label.font = UIFont.teambrellaBold(size: 11)
         label.textAlignment = .center
-        label.textInsets = UIEdgeInsets(top: 2, left: 3, bottom: 2, right: 3)
+        label.textInsets = UIEdgeInsets(top: 3, left: 4, bottom: 3, right: 4)
         label.textColor = .white
-        label.layer.cornerRadius = 16.0 / 2
+        label.layer.cornerRadius = 19 / 2
         label.layer.masksToBounds = true
         label.layer.borderColor = UIColor.headerBlue.cgColor
         label.layer.borderWidth = 1.5
@@ -77,7 +77,7 @@ class LabeledButton: UIButton {
         super.layoutSubviews()
 
         if cornerText != nil {
-            cornerLabel.center = CGPoint(x: bounds.maxX - cornerLabel.frame.width / 2, y: cornerLabel.frame.height / 2)
+            cornerLabel.center = CGPoint(x: bounds.maxX - cornerLabel.frame.width / 2, y: cornerLabel.frame.height / 2 - 4.0)
         }
     }
     
