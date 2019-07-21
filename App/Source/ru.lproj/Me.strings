@@ -79,7 +79,7 @@
 "Me.Wallet.Withdraw"                               = "Вывести";
 "Me.Wallet.Withdraw.Details.title"                 = "ДЕТАЛИ ВЫВОДА";
 "Me.Wallet.Withdraw.Details.to.title"              = "КУДА";
-"Me.Wallet.Withdraw.Details.to.placeholder"        = "На адрес этериум";
+"Me.Wallet.Withdraw.Details.to.placeholder"        = "Ethereum Адрес";
 "Me.Wallet.Withdraw.Details.amount.title"          = "СУММА";
 "Me.Wallet.Withdraw.Details.amount.placeholder"    = "Значение";
 "Me.Wallet.Withdraw.Details.submitButton.title"    = "Подтвердить";

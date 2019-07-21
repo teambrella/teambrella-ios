@@ -22,18 +22,21 @@ struct WithdrawChunk: Decodable {
         case cryptoBalance = "CryptoBalance"
         case cryptoReserved = "CryptoReserved"
         case defaultWithdrawAddress = "DefaultWithdrawAddress"
+        case warning = "Warning"
     }
     
     let txs: [WithdrawTx]
     let cryptoBalance: Ether
     let cryptoReserved: Ether
     let defaultWithdrawAddress: EthereumAddress?
+    let warning: String
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         txs = try container.decode([WithdrawTx].self, forKey: .txs)
         cryptoBalance = try container.decode(Ether.self, forKey: .cryptoBalance)
         cryptoReserved = try container.decode(Ether.self, forKey: .cryptoReserved)
+        warning = try container.decode(String.self, forKey: .warning)
         let address = try? container.decode(EthereumAddress.self, forKey: .defaultWithdrawAddress)
         defaultWithdrawAddress = address
     }

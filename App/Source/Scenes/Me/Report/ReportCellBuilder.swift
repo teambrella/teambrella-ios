@@ -151,6 +151,10 @@ struct ReportCellBuilder {
             cell.reimburseTextField.addTarget(reportVC,
                                               action: #selector(ReportVC.textFieldDidChange),
                                               for: .editingChanged)
+            
+            cell.submitClaimButton.addTarget(reportVC, action: #selector(ReportVC.tapSubmit(_:)), for: .touchUpInside)
+            cell.submitClaimButton.setTitle("Me.Report.submitButtonTitle-submit".localized, for: .normal)
+
         }
         
     }

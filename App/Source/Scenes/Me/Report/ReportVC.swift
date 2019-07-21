@@ -108,6 +108,7 @@ final class ReportVC: UIViewController, Routable {
             self.coverage = self.dataSource.coverage.value
             self.limit = self.dataSource.limit
             self.claimCell?.updateExpenses(limit: self.limit, coverage: self.coverage, expenses: self.expenses)
+            self.claimCell?.warningLabel.text = self.dataSource.warning
         }
         ReportCellBuilder.registerCells(in: collectionView)
         dataSource.getCoverageForDate(date: datePicker.date)
@@ -117,9 +118,13 @@ final class ReportVC: UIViewController, Routable {
         super.viewWillAppear(animated)
         showNavigationBarButtons()
         //listenForKeyboard()
-        enableSendButton()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        enableSendButton()
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         //showNavigationBarButtons()
@@ -355,8 +360,9 @@ final class ReportVC: UIViewController, Routable {
         case .newChat:
             enable = true
         }
-        rightButton?.isEnabled = enable
-        rightButton?.alpha = enable ? 1 : 0.5
+        
+        claimCell?.submitClaimButton.isEnabled = enable
+        claimCell?.submitClaimButton.alpha = enable ? 1 : 0.5
         return enable
     }
     
@@ -391,15 +397,8 @@ final class ReportVC: UIViewController, Routable {
             rightButton = createButton
             navigationItem.setRightBarButton(UIBarButtonItem(customView: createButton), animated: false)
         case .claim:
-            let submitButton = UIButton()
-            submitButton.addTarget(self, action: #selector(tapSubmit(_:)), for: .touchUpInside)
-            submitButton.setTitle("Me.Report.submitButtonTitle-submit".localized, for: .normal)
-            submitButton.sizeToFit()
-            guard let submitTitle = submitButton.titleLabel else { return }
-            
-            submitTitle.font = UIFont.teambrellaBold(size: 17)
-            rightButton = submitButton
-            navigationItem.setRightBarButton(UIBarButtonItem(customView: submitButton), animated: false)
+            break
+            // no button
         }
     }
     

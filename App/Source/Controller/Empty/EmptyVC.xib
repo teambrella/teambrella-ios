@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -37,7 +36,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Mrc-sm-ptr">
-                    <rect key="frame" x="37.5" y="275.5" width="300" height="117"/>
+                    <rect key="frame" x="37.5" y="276" width="300" height="115"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unhappy_cat" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-sn-tLt">
                             <rect key="frame" x="0.0" y="0.0" width="300" height="51"/>
@@ -46,16 +45,16 @@
                             </constraints>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vMz-Qo-xVP">
-                            <rect key="frame" x="0.0" y="67" width="300" height="50"/>
+                            <rect key="frame" x="0.0" y="67" width="300" height="48"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ft-Ua-idu" customClass="ItemNameLabel" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="20"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Bold" family="Akkurat Pro" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2r-Fo-70l" customClass="ItemValueLabel" customModule="Surilla" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="29" width="300" height="21"/>
+                                    <rect key="frame" x="0.0" y="28" width="300" height="20"/>
                                     <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -80,6 +79,6 @@
     </objects>
     <resources>
         <image name="backgroundPattern" width="374" height="629"/>
-        <image name="unhappy_cat" width="300" height="220"/>
+        <image name="unhappy_cat" width="300" height="220.5"/>
     </resources>
 </document>

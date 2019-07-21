@@ -36,7 +36,10 @@ class NewClaimCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var addPhotosButton: BorderedButton!
     @IBOutlet var reimburseLabel: InfoLabel!
     @IBOutlet var reimburseTextField: TextField!
-    
+    @IBOutlet var submitClaimButton: BorderedButton!
+    @IBOutlet var warningImageView: UIImageView!
+    @IBOutlet var warningLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         objectImageView.layer.cornerRadius = 4

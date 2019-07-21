@@ -25,6 +25,7 @@ final class WithdrawDataSource {
     //var walletInfo: WalletInfoCellModel
     var cryptoBalance: Ether = Ether.empty
     var cryptoReserved: Ether = Ether.empty
+    var warning: String = ""
     var currencyRate: Double { return WalletCellBuilder.currencyRate }
     
     var maxEthAvailable: Ether { return cryptoBalance - cryptoReserved }
@@ -52,6 +53,7 @@ final class WithdrawDataSource {
 
                 cryptoBalance = chunk.cryptoBalance
                 cryptoReserved = chunk.cryptoReserved
+                warning = chunk.warning
                 detailsModel = createDetailsModel()
                 infoModel = createInfoModel()
 
@@ -69,7 +71,6 @@ final class WithdrawDataSource {
         }
     }
 
-    private let modelBuilder = WithdrawModelBuilder()
     private var transactions: [[WithdrawTx]] = []
 
     init(teamID: Int) {
@@ -157,14 +158,16 @@ final class WithdrawDataSource {
     // MARK: Private
 
     private func createDetailsModel() -> WithdrawDetailsCellModel {
-        return self.modelBuilder.detailsModel(maxAmount: MEth(maxEthAvailable).value)
+        let maxAmount = MEth(maxEthAvailable).value
+        return WithdrawDetailsCellModel(amountPlaceholder: "Max \(String(Int(maxAmount))) mETH")
     }
 
     private func createInfoModel() -> WalletInfoCellModel {
-        return self.modelBuilder.infoModel(amount: cryptoBalance,
-                                           reserved: cryptoReserved,
-                                           available: maxEthAvailable,
-                                           currencyRate: currencyRate)
+        return WalletInfoCellModel(amount: cryptoBalance,
+                                   reserved: cryptoReserved,
+                                   available: maxEthAvailable,
+                                   currencyRate: currencyRate,
+                                   warning: warning)
     }
     
     private func addQueued(transaction: WithdrawTx) {
@@ -192,6 +195,15 @@ final class WithdrawDataSource {
         }
         let filtered = transactions.filter { $0.isEmpty == false }
         let transaction = filtered[indexPath.section - 1][indexPath.row]
-        return modelBuilder.modelFrom(transaction: transaction)
+
+        var dateText = ""
+        if let date = transaction.withdrawalDate {
+            dateText = Formatter.teambrellaShort.string(from: date)
+        }
+        return WithdrawTransactionCellModel(topText: dateText,
+                                            isNew: transaction.isNew,
+                                            bottomText: transaction.toAddress,
+                                            amountText: String(format: "%.2f", MEth(transaction.amount).value),
+                                            isValid: !transaction.serverTxState.isError)
     }
 }

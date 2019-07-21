@@ -30,7 +30,7 @@ protocol ReportCellModel {
 
 struct NewClaimCellModel: ReportCellModel {
     var cellReusableIdentifier: String { return NewClaimCell.cellID }
-    var preferredHeight: Float { return 750 }
+    var preferredHeight: Float { return 978 }
     let title = "Me.Report.ItemCell.title".localized
     var isValid: Bool { return isExpensesValid && isDescriptionValid && isReimburseValid }
     

@@ -75,7 +75,7 @@
 "Me.Wallet.Withdraw.Details.title" = "DETALLES DE RETIRADA";
 "Me.Wallet.Withdraw.Details.to.title" = "TRANSFERIR A";
 "Me.Wallet.Withdraw.Details.to.placeholder" = "Dirección de Ethereum";
-"Me.Wallet.Withdraw.Details.amount.title" = "CANTIDAD mETH";
+"Me.Wallet.Withdraw.Details.amount.title" = "CANTIDAD";
 "Me.Wallet.Withdraw.Details.amount.placeholder" = "Valor";
 "Me.Wallet.Withdraw.Details.submitButton.title" = "Enviar";
 "Me.Wallet.Withdraw.header.queued" = "RETIRADA APLAZADA";

@@ -16,29 +16,6 @@
 
 import Foundation
 
-class WithdrawModelBuilder {
-    func infoModel(amount: Ether, reserved: Ether, available: Ether, currencyRate: Double) -> WalletInfoCellModel {
-        return WalletInfoCellModel(amount: amount, reserved: reserved, available: available, currencyRate: currencyRate)
-    }
-
-    func detailsModel(maxAmount: Double) -> WithdrawDetailsCellModel {
-        return WithdrawDetailsCellModel(amountPlaceholder: "Max \(String(Int(maxAmount))) mETH")
-    }
-    
-    func modelFrom(transaction: WithdrawTx) -> WithdrawTransactionCellModel {
-        var dateText = ""
-        if let date = transaction.withdrawalDate {
-            dateText = Formatter.teambrellaShort.string(from: date)
-        }
-        return WithdrawTransactionCellModel(topText: dateText,
-                                            isNew: transaction.isNew,
-                                            bottomText: transaction.toAddress,
-                                            amountText: String(format: "%.2f", MEth(transaction.amount).value),
-                                            isValid: !transaction.serverTxState.isError)
-    }
-    
-}
-
 protocol WithdrawCellModel {
     
 }
@@ -70,6 +47,7 @@ struct WalletInfoCellModel: WithdrawCellModel {
     let reserved: Ether
     let available: Ether
     let currencyRate: Double
+    let warning: String
     
 }
 
@@ -82,6 +60,7 @@ struct WithdrawCellBuilder {
             cell.cryptoAddressTextView.text = model.toValue
             cell.qrButton.setImage(#imageLiteral(resourceName: "qrCode"), for: .normal)
             cell.amountLabel.text = model.amountText
+            cell.amountLabel.font = UIFont.teambrellaBold(size: 11)
             cell.cryptoAmountTextField.placeholder = model.amountPlaceholder
             cell.cryptoAmountTextField.text = model.amountValue
             cell.submitButton.setTitle(model.buttonTitle, for: .normal)

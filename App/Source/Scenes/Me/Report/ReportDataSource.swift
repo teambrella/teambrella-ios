@@ -36,6 +36,7 @@ class ReportDataSource {
     var count: Int { return items.count }
     var coverage: Coverage = Coverage.no
     var limit: Double = 0
+    var warning: String = ""
     
     var onUpdateCoverage: (() -> Void)?
     
@@ -48,7 +49,7 @@ class ReportDataSource {
                                        expenses: nil, deductible: balance, coverage: coverage,
                                        descriptionText: "",
                                        photos: [],
-                                       reimburseText: service.session?.currentUserEthereumAddress ?? "")]
+                                       reimburseText: /*service.session?.currentUserEthereumAddress ?? */ "")]
             self.coverage = coverage
         case .newChat:
             items = [NewDiscussionCellModel(postTitleText: "", descriptionText: "")]
@@ -152,6 +153,7 @@ class ReportDataSource {
             case let .value(coverageForDate):
                 self.coverage = coverageForDate.coverage
                 self.limit = coverageForDate.limit
+                self.warning = coverageForDate.warning
                 for (idx, item) in self.items.enumerated() {
                     if var item = item as? NewClaimCellModel {
                         item.coverage = coverageForDate.coverage

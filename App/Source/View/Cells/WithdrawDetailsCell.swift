@@ -28,22 +28,24 @@ class WithdrawDetailsCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var separator: UIView!
     @IBOutlet var submitButton: BorderedButton!
     @IBOutlet var placeholder: UILabel!
-    
+    @IBOutlet var warningImageView: UIImageView!
+    @IBOutlet var warningLabel: UILabel!
+
     var onValuesChanged: ((WithdrawDetailsCell) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let label = LabeledIcon(frame: CGRect(x: 0, y: 0, width: 60, height: 39))
+        let label = LabeledIcon(frame: CGRect(x: 0, y: 0, width: 50, height: 39))
         cryptoAmountTextField.leftViewMode = .always
         cryptoAmountTextField.leftView = label
         cryptoAmountTextField.layer.masksToBounds = true
-        cryptoAmountTextField.layer.borderWidth = 0.5
+        cryptoAmountTextField.layer.borderWidth = 1
         cryptoAmountTextField.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
-        cryptoAmountTextField.layer.cornerRadius = 5
+        cryptoAmountTextField.layer.cornerRadius = 3
         
-        cryptoAddressTextView.layer.borderWidth = 0.5
+        cryptoAddressTextView.layer.borderWidth = 1
         cryptoAddressTextView.layer.borderColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
-        cryptoAddressTextView.layer.cornerRadius = 5
+        cryptoAddressTextView.layer.cornerRadius = 3
         cryptoAddressTextView.returnKeyType = .next
         placeholder.text = "Me.Wallet.Withdraw.Details.to.placeholder".localized
         cryptoAmountTextField.placeholder = "Me.Wallet.Withdraw.Details.amount.placeholder".localized

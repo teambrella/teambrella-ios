@@ -19,10 +19,12 @@ import Foundation
 struct CoverageForDate: Decodable {
     let coverage: Coverage
     let limit: Double
+    let warning: String
 
     enum CodingKeys: String, CodingKey {
         case coverage = "Coverage"
         case limit = "LimitAmount"
+        case warning = "Warning"
     }
 
 }

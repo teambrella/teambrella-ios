@@ -21,8 +21,8 @@ import UIKit
 
 class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     struct Constant {
-        static let headerCellHeight: CGFloat = 110
-        static let withdrawCellHeight: CGFloat = 310
+        static let headerCellHeight: CGFloat = 120
+        static let withdrawCellHeight: CGFloat = 431
         static let txCellHeight: CGFloat = 72
         static let horizontalCellPadding: CGFloat = 16
         static let defaultHeaderHeight = 0
@@ -98,11 +98,8 @@ class WithdrawVC: UIViewController, CodeCaptureDelegate, Routable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard isFirstLoading == true else {
-            isFirstLoading = false
-            return
-        }
-        
+        guard isFirstLoading else { return }
+        isFirstLoading = false
         dataSource.loadData()
         //dataSource.updateSilently()
     }
@@ -316,6 +313,7 @@ extension WithdrawVC: UICollectionViewDelegate {
             cell.qrButton.addTarget(self, action: #selector(tapQR), for: .touchUpInside)
             cell.infoButton.removeTarget(self, action: nil, for: .allEvents)
             cell.infoButton.addTarget(self, action: #selector(tapInfo), for: .touchUpInside)
+            cell.warningLabel.text = self.dataSource.warning
             cell.submitButton.removeTarget(self, action: nil, for: .allEvents)
             cell.submitButton.addTarget(self, action: #selector(tapWithdraw), for: .touchUpInside)
             cell.onValuesChanged = { [weak self] cell in

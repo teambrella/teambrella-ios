@@ -49,7 +49,7 @@
 "Me.Report.TitleCell.title"                        = "TITLE";
 "Me.Report.HeaderTitleCell.title"                  = "DISCUSSION";
 
-"Me.Report.ExpensesCell.deductibleTitle"           = "DEDUCTIBLE";
+"Me.Report.ExpensesCell.deductibleTitle"           = "LIMIT";
 "Me.Report.ExpensesCell.coverageTitle"             = "COVERAGE";
 "Me.Report.ExpensesCell.amountTitle"               = "AMOUNT";
 
@@ -77,8 +77,8 @@
 "Me.Wallet.Withdraw"                               = "Withdraw";
 "Me.Wallet.Withdraw.Details.title"                 = "WITHDRAW DETAILS";
 "Me.Wallet.Withdraw.Details.to.title"              = "TO";
-"Me.Wallet.Withdraw.Details.to.placeholder"        = "To ethereum address";
-"Me.Wallet.Withdraw.Details.amount.title"          = "AMOUNT mETH";
+"Me.Wallet.Withdraw.Details.to.placeholder"        = "Ethereum Address";
+"Me.Wallet.Withdraw.Details.amount.title"          = "AMOUNT";
 "Me.Wallet.Withdraw.Details.amount.placeholder"    = "Value";
 "Me.Wallet.Withdraw.Details.submitButton.title"    = "Submit";
 "Me.Wallet.Withdraw.header.queued"                 = "WITHDRAWAL QUEUED";

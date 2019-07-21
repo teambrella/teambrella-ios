@@ -246,13 +246,11 @@ final class UniversalChatDatasource {
     var isPrivateChat: Bool { return strategy.isPrivate }
     
     var isPinnable: Bool {
-        return !(chatModel?.isClaimChat ?? true)
-            && !(chatModel?.isApplicationChat ?? true)
-            && isInputAllowed
+        return chatType == .discussion && isInputAllowed
     }
     
     var canBeInMarksOnlyMode : Bool {
-        return !isPinnable && !isPrivateChat
+        return chatType == .claim || chatType == .application
     }
 
     var hasEnoughMarks : Bool {

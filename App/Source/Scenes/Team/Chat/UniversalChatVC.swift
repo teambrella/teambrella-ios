@@ -543,7 +543,7 @@ private extension UniversalChatVC {
             viewMarksButton.isHidden = true
             buttons.append(UIBarButtonItem(customView: viewMarksButton))
         }
-        if dataSource.isPinnable {
+        else {
             pinButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
             pinButton.addTarget(self, action: #selector(tapPinButton), for: .touchUpInside)
             buttons.append(UIBarButtonItem(customView: pinButton))
