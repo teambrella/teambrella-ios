@@ -36,6 +36,8 @@ protocol ChatCellUserDataLike: ChatCellModel {
     var date: Date { get }
     var liked: Int { get set }
     var myLike: Int { get set }
+    var suggestAddingToProxy: Bool { get }
+    var suggestRemovingFromProxy: Bool { get }
     var isMarked: Bool { get set }
     var grayed: Double { get }
     var updated: Int64 { get }
@@ -56,6 +58,8 @@ struct ChatTextCellModel: ChatCellUserDataLike {
     let date: Date
     var liked: Int
     var myLike: Int
+    let suggestAddingToProxy: Bool
+    let suggestRemovingFromProxy: Bool
     var isMarked: Bool
     var grayed: Double
     let updated: Int64
@@ -78,6 +82,8 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     let date: Date
     var liked: Int
     var myLike: Int
+    let suggestAddingToProxy: Bool
+    let suggestRemovingFromProxy: Bool
     var isMarked: Bool
     var grayed: Double
     let updated: Int64

@@ -1144,22 +1144,35 @@ extension UniversalChatVC: SelectorDelegate {
                 controller.selectedIndex = -1
             }
 
-            if (postActionsDataSource?.model.isMy ?? false) {
-                // swiftlint:disable:bext force_unwrapping
-                dataSource.setPostMarked(isMarked: newAction == .marked,
+            switch newAction {
+                case .like, .dislike:
+                    // swiftlint:disable:bext force_unwrapping
+                    dataSource.setMyLike(myLike: newAction.rawValue,
                                          chatItem: (postActionsDataSource?.model)!) { [weak self] success in
-                                        self?.collectionView.reloadData()
-                                        // controller?.reload()
-                }
+                                            self?.collectionView.reloadData()
+                                            // controller?.reload()
+                    }
+                case .marked:
+                    if (postActionsDataSource?.model.isMy ?? false) {
+                        // swiftlint:disable:bext force_unwrapping
+                        dataSource.setPostMarked(isMarked: newAction == .marked,
+                                                 chatItem: (postActionsDataSource?.model)!)
+                        { [weak self] success in
+                            self?.collectionView.reloadData()
+                            // controller?.reload()
+                        }
+                    }
+                case .addToProxies, .removeFromProxies:
+                    if let teammateID = postActionsDataSource?.model.entity.userID {
+                        dataSource.addToProxies(teammateID: teammateID, add: newAction == .addToProxies, existingProxy: postActionsDataSource?.model.entity.teammate?.isMyProxy ?? false)
+                        { [weak self] success in
+                            self?.collectionView.reloadData()
+                        }
+                    }
+                default:
+                    break
             }
-            else {
-                // swiftlint:disable:bext force_unwrapping
-                dataSource.setMyLike(myLike: newAction.rawValue,
-                                     chatItem: (postActionsDataSource?.model)!) { [weak self] success in
-                                        self?.collectionView.reloadData()
-                                        // controller?.reload()
-                }
-            }
+            
         }
     }
     

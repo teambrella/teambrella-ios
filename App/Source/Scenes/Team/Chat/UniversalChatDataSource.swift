@@ -361,6 +361,34 @@ final class UniversalChatDatasource {
         }
     }
 
+    func addToProxies(teammateID: String, add: Bool, existingProxy: Bool, completion: @escaping (Bool) -> Void) {
+        if (existingProxy && add) {
+            guard let teamID = chatModel?.team?.teamID else {return}
+            service.dao.updateProxyPosition(teamID: teamID, userID: teammateID, newPosition: 0)
+                .observe { [weak self] result in
+                    guard let `self` = self else { return }
+                    
+                    switch result {
+                    case .value:
+                        log("Position saved to server", type: .info)
+                    case let .error(error):
+                        self.onError?(error)
+                    }
+            }
+        }
+        else {
+            service.dao.myProxy(userID: teammateID, add: add).observe { [weak self] result in
+                switch result {
+                case .value:
+                    completion(true)
+                case let .error(error):
+                    log("\(#file) \(error)", type: .error)
+                    completion(false)
+                }
+            }
+        }
+    }
+    
     func addContext(context: UniversalChatContext) {
         strategy = context
         hasPrevious = strategy.canLoadBackward

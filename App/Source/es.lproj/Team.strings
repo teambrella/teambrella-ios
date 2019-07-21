@@ -203,6 +203,14 @@
 "Team.Chat.Actions.upvote"                            = "Second that!";
 "Team.Chat.Actions.downvote"                          = "Dislike!";
 "Team.Chat.Actions.summary"                           = "This is my summary";
+"Team.Chat.Actions.addToProxy"                        = "Add %@ to my proxies";
+"Team.Chat.Actions.addToProxyComment"                 = "%@ will vote for you when you can't vote";
+"Team.Chat.Actions.makeMainProxy"                     = "Make %@ my top proxy";
+"Team.Chat.Actions.makeMainProxyComment"              = "%@ will always be selected to vote you";
+"Team.Chat.Actions.removeFromProxies"                 = "Remove %@ from my proxies";
+"Team.Chat.Actions.removeFromProxiesComment"          = "%@ will no longer for you";
+"Team.Chat.Actions.user"                              = "user";
+"Team.Chat.Actions.userCaps"                          = "User";
 
 "Team.Claims.objectView.reportButton.title"           = "Enviar reclamación";
 

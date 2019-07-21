@@ -41,6 +41,8 @@ struct ChatEntity: Decodable {
     let myLike: Int
     let isMarked: Bool
     let grayed: Double
+    let suggestAddingToProxy: Bool?
+    let suggestRemovingFromProxy: Bool?
     let text: String
     let teammate: TeammatePart?
     let systemType: SystemType?
@@ -65,6 +67,8 @@ struct ChatEntity: Decodable {
         case myLike = "MyLike"
         case isMarked = "IsMarked"
         case grayed = "Grayed"
+        case suggestAddingToProxy = "SuggestAddingToProxy"
+        case suggestRemovingFromProxy = "SuggestRemovingFromProxy"
         case text = "Text"
         case imagesReceived = "Images"
         case smallImagesReceived = "SmallImages"

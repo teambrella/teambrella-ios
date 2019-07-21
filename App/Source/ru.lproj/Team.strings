@@ -212,6 +212,14 @@
 "Team.Chat.Actions.upvote"                            = "Нравится!";
 "Team.Chat.Actions.downvote"                          = "Не нравится!";
 "Team.Chat.Actions.summary"                           = "Это мое резюме";
+"Team.Chat.Actions.addToProxy"                        = "Сделать моим прокси";
+"Team.Chat.Actions.addToProxyComment"                 = "%@ будет замещать тебя при голосовании";
+"Team.Chat.Actions.makeMainProxy"                     = "Поднять в списке прокси";
+"Team.Chat.Actions.makeMainProxyComment"              = "Если %@ голосует, то остальные прокси будут игнорироваться";
+"Team.Chat.Actions.removeFromProxies"                 = "Убрать из моих прокси";
+"Team.Chat.Actions.removeFromProxiesComment"          = "%@ больше не будет замещать тебя при голосовании";
+"Team.Chat.Actions.user"                              = "пользователь";
+"Team.Chat.Actions.userCaps"                          = "Пользователь";
 
 
 "Team.Claims.objectView.reportButton.title" = "Подать заявку";

@@ -136,7 +136,7 @@ class PinDataSource: SelectorDataSource {
 struct PostActionsDataSource: SelectorDataSource {
     let header = "Team.Chat.Actions.title".localized
     let model: ChatCellUserDataLike
-    let models: [SelectorCellModel]
+    var models: [SelectorCellModel]
     let isHidingOnSelection: Bool = true
     
     init(model: ChatCellUserDataLike) {
@@ -150,17 +150,40 @@ struct PostActionsDataSource: SelectorDataSource {
                                   type: PostActionType.marked)
                             ]
         } else {
-            models = [
-                SelectorCellModel(icon: #imageLiteral(resourceName: "Upvote"),
-                                  topText: "Team.Chat.Actions.upvote".localized,
-                                  bottomText: "",
-                                  type: PostActionType.like),
-                
-                SelectorCellModel(icon: #imageLiteral(resourceName: "Downvote"),
-                                  topText: "Team.Chat.Actions.downvote".localized,
-                                  bottomText: "",
-                                  type: PostActionType.dislike)
-            ]
+            let name = model.entity.teammate?.name.first
+            models = []
+            models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "Upvote"),
+                                            topText: "Team.Chat.Actions.upvote".localized,
+                                            bottomText: "",
+                                            type: PostActionType.like))
+            models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "Downvote"),
+                                            topText: "Team.Chat.Actions.downvote".localized,
+                                            bottomText: "",
+                                            type: PostActionType.dislike))
+
+            if (model.suggestAddingToProxy || model.myLike > 0) {
+                if (model.entity.teammate?.isMyProxy ?? false) {
+                    models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "iconProxy"),
+                                                    topText: "Team.Chat.Actions.makeMainProxy".localized(name ?? "Team.Chat.Actions.user".localized),
+                                                    bottomText: "Team.Chat.Actions.makeMainProxyComment".localized(name ?? "Team.Chat.Actions.userCaps".localized),
+                                                    type: PostActionType.addToProxies))
+                }
+                else {
+                    models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "iconProxy"),
+                                                    topText: "Team.Chat.Actions.addToProxy".localized(name ?? "Team.Chat.Actions.user".localized),
+                                                    bottomText: "Team.Chat.Actions.addToProxyComment".localized(name ?? "Team.Chat.Actions.userCaps".localized),
+                                                    type: PostActionType.addToProxies))
+                }
+            }
+            if (model.suggestRemovingFromProxy || model.myLike < 0) {
+                if (model.entity.teammate?.isMyProxy ?? false)
+                {
+                    models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "crossIcon"),
+                                                    topText: "Team.Chat.Actions.removeFromProxies".localized(name ?? "Team.Chat.Actions.user".localized),
+                                                    bottomText: "Team.Chat.Actions.removeFromProxiesComment".localized(name ?? "Team.Chat.Actions.userCaps".localized),
+                                                    type: PostActionType.removeFromProxies))
+                }
+            }
         }
     }
 }

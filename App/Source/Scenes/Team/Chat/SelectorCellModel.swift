@@ -74,7 +74,9 @@ enum PostActionType: Int, SelectorItemsType, Decodable {
     case unknown = 0
     case like = 1
     case marked = 10
-    
+    case addToProxies = 11
+    case removeFromProxies = 12
+
     init (from model: ChatCellUserDataLike?) {
         if (model?.isMy ?? false) {
             self = (model?.isMarked ?? false) ? .marked : .unknown
