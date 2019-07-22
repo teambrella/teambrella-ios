@@ -159,6 +159,7 @@ class ChatModelBuilder {
                                            suggestAddingToProxy: item.suggestAddingToProxy ?? false,
                                            suggestRemovingFromProxy: item.suggestRemovingFromProxy ?? false,
                                            isMarked: item.isMarked,
+                                           isMyProxy: item.teammate?.isMyProxy ?? false,
                                            grayed: item.grayed,
                                            updated: item.lastUpdated,
                                            isTemporary: isTemporary,
@@ -177,6 +178,7 @@ class ChatModelBuilder {
                                           suggestAddingToProxy: item.suggestAddingToProxy ?? false,
                                           suggestRemovingFromProxy: item.suggestRemovingFromProxy ?? false,
                                           isMarked: item.isMarked,
+                                          isMyProxy: item.teammate?.isMyProxy ?? false,
                                           grayed: item.grayed,
                                           updated: item.lastUpdated,
                                           isTemporary: isTemporary)

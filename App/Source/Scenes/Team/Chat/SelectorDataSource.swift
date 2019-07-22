@@ -162,23 +162,23 @@ struct PostActionsDataSource: SelectorDataSource {
                                             type: PostActionType.dislike))
 
             if (model.suggestAddingToProxy || model.myLike > 0) {
-                if (model.entity.teammate?.isMyProxy ?? false) {
-                    models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "iconProxy"),
+                if model.isMyProxy {
+                    models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "iconBlueProxy"),
                                                     topText: "Team.Chat.Actions.makeMainProxy".localized(name ?? "Team.Chat.Actions.user".localized),
                                                     bottomText: "Team.Chat.Actions.makeMainProxyComment".localized(name ?? "Team.Chat.Actions.userCaps".localized),
                                                     type: PostActionType.addToProxies))
                 }
                 else {
-                    models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "iconProxy"),
+                    models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "iconBlueProxy"),
                                                     topText: "Team.Chat.Actions.addToProxy".localized(name ?? "Team.Chat.Actions.user".localized),
                                                     bottomText: "Team.Chat.Actions.addToProxyComment".localized(name ?? "Team.Chat.Actions.userCaps".localized),
                                                     type: PostActionType.addToProxies))
                 }
             }
             if (model.suggestRemovingFromProxy || model.myLike < 0) {
-                if (model.entity.teammate?.isMyProxy ?? false)
+                if model.isMyProxy
                 {
-                    models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "crossIcon"),
+                    models.append(SelectorCellModel(icon: #imageLiteral(resourceName: "iconStop"),
                                                     topText: "Team.Chat.Actions.removeFromProxies".localized(name ?? "Team.Chat.Actions.user".localized),
                                                     bottomText: "Team.Chat.Actions.removeFromProxiesComment".localized(name ?? "Team.Chat.Actions.userCaps".localized),
                                                     type: PostActionType.removeFromProxies))

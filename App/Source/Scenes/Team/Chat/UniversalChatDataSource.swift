@@ -378,6 +378,12 @@ final class UniversalChatDatasource {
             }
         }
         else {
+            for (idx, model) in models.enumerated()  {
+                if var model = model as? ChatCellUserDataLike, model.entity.userID == teammateID {
+                    model.isMyProxy = add
+                    models[idx] = model
+                }
+            }
             service.dao.myProxy(userID: teammateID, add: add).observe { [weak self] result in
                 switch result {
                 case .value:

@@ -1135,44 +1135,43 @@ extension UniversalChatVC: SelectorDelegate {
                 self?.pinState = type
                 controller?.reload()
             }
-        } else if let type = type as? PostActionType {
+        }
+        else if let type = type as? PostActionType {
             let oldAction = PostActionType(from: postActionsDataSource?.model)
             var newAction: PostActionType = type
             
-            if oldAction == type {
+            if oldAction == type && (oldAction == .like || oldAction == .dislike || oldAction == .marked) {
                 newAction = .unknown
                 controller.selectedIndex = -1
             }
 
-            switch newAction {
-                case .like, .dislike:
+            if oldAction == .marked || newAction == .marked {
+                if (postActionsDataSource?.model.isMy ?? false) {
                     // swiftlint:disable:bext force_unwrapping
-                    dataSource.setMyLike(myLike: newAction.rawValue,
-                                         chatItem: (postActionsDataSource?.model)!) { [weak self] success in
-                                            self?.collectionView.reloadData()
-                                            // controller?.reload()
+                    dataSource.setPostMarked(isMarked: newAction == .marked,
+                                             chatItem: (postActionsDataSource?.model)!)
+                    { [weak self] success in
+                        self?.collectionView.reloadData()
+                        self?.collectionView.layoutSubviews()
+                        // controller?.reload()
                     }
-                case .marked:
-                    if (postActionsDataSource?.model.isMy ?? false) {
-                        // swiftlint:disable:bext force_unwrapping
-                        dataSource.setPostMarked(isMarked: newAction == .marked,
-                                                 chatItem: (postActionsDataSource?.model)!)
-                        { [weak self] success in
-                            self?.collectionView.reloadData()
-                            // controller?.reload()
-                        }
-                    }
-                case .addToProxies, .removeFromProxies:
-                    if let teammateID = postActionsDataSource?.model.entity.userID {
-                        dataSource.addToProxies(teammateID: teammateID, add: newAction == .addToProxies, existingProxy: postActionsDataSource?.model.entity.teammate?.isMyProxy ?? false)
-                        { [weak self] success in
-                            self?.collectionView.reloadData()
-                        }
-                    }
-                default:
-                    break
+                }
             }
-            
+            else if newAction == .addToProxies || newAction == .removeFromProxies {
+                if let teammateID = postActionsDataSource?.model.entity.userID {
+                    dataSource.addToProxies(teammateID: teammateID, add: newAction == .addToProxies, existingProxy: postActionsDataSource?.model.isMyProxy ?? false)
+                    { [weak self] success in
+                        self?.collectionView.reloadData()
+                    }
+                }
+            }
+            else if oldAction == .like || oldAction == .dislike || newAction == .like || newAction == .dislike {
+                dataSource.setMyLike(myLike: newAction.rawValue,
+                                     chatItem: (postActionsDataSource?.model)!) { [weak self] success in
+                                        self?.collectionView.reloadData()
+                                        // controller?.reload()
+                }
+            }
         }
     }
     

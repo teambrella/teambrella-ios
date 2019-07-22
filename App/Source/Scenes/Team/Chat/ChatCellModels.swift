@@ -39,6 +39,7 @@ protocol ChatCellUserDataLike: ChatCellModel {
     var suggestAddingToProxy: Bool { get }
     var suggestRemovingFromProxy: Bool { get }
     var isMarked: Bool { get set }
+    var isMyProxy: Bool { get set }
     var grayed: Double { get }
     var updated: Int64 { get }
     var isTemporary: Bool { get }
@@ -61,6 +62,7 @@ struct ChatTextCellModel: ChatCellUserDataLike {
     let suggestAddingToProxy: Bool
     let suggestRemovingFromProxy: Bool
     var isMarked: Bool
+    var isMyProxy: Bool
     var grayed: Double
     let updated: Int64
     let isTemporary: Bool
@@ -85,6 +87,7 @@ struct ChatImageCellModel: ChatCellUserDataLike {
     let suggestAddingToProxy: Bool
     let suggestRemovingFromProxy: Bool
     var isMarked: Bool
+    var isMyProxy: Bool
     var grayed: Double
     let updated: Int64
     let isTemporary: Bool

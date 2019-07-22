@@ -79,7 +79,7 @@ struct ChatEntity: Decodable {
     }
 
     struct TeammatePart: Decodable {
-        let isMyProxy: Bool
+        var isMyProxy: Bool
         let name: Name
         let avatar: Avatar
         let vote: Double?
