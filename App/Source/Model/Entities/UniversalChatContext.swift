@@ -30,6 +30,7 @@ class UniversalChatContext {
 
     var isPrivate: Bool { return requestType == .privateChat }
     var isRateNeeded: Bool { return type == .application || type == .claim }
+    var startInFullChatMode: Bool = false
 
     var type: UniversalChatType?
 

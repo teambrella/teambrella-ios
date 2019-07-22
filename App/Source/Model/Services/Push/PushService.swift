@@ -295,7 +295,9 @@ final class PushService: NSObject {
     private func showTopic(details: RemoteTopicDetails?) {
         guard let details = details else { return }
         
-        service.router.presentChat(context: UniversalChatContext(details), animated: false)
+        let context = UniversalChatContext(details)
+        context.startInFullChatMode = true
+        service.router.presentChat(context: context, animated: false)
     }
     
 }

@@ -92,6 +92,7 @@ final class UniversalChatDatasource {
     private var topCellDate: Date?             { get {return data.topCellDate}              set {data.topCellDate = newValue} }
     var offsetY: CGFloat?                      { get {return data.offsetY}                  set {data.offsetY = newValue} }
 
+    var fullChatModeFromPush: Bool = false
     var userSetMarksOnlyMode: Bool? {
         didSet {
             readAll = true
@@ -110,7 +111,7 @@ final class UniversalChatDatasource {
     var isMarksOnlyMode: Bool {
         return tempMarksOnlyMode
             ?? (userSetMarksOnlyMode
-                ?? (!isPinnable && !isPrivateChat && (chatModel?.isMarksOnlyMode ?? true) && hasEnoughMarks))
+                ?? (!isPinnable && !isPrivateChat && (chatModel?.isMarksOnlyMode ?? true) && hasEnoughMarks && !fullChatModeFromPush))
     }
     
     private var currentLimit: Int              = 0
@@ -394,6 +395,7 @@ final class UniversalChatDatasource {
         hasPrevious = strategy.canLoadBackward
         cellModelBuilder.showRate = context.isRateNeeded
         cellModelBuilder.showTheirAvatar = !context.isPrivate
+        fullChatModeFromPush = context.startInFullChatMode
     }
     
     func loadNext() {
