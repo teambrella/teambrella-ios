@@ -45,6 +45,11 @@ final class UniversalChatDatasource {
     }
 
     final private class UniversalChatData {
+        unowned let parent: UniversalChatDatasource
+        init(parent: UniversalChatDatasource) {
+            self.parent = parent
+        }
+        
         var models: [ChatCellModel]        = []
         var offsetY: CGFloat?              = nil
         var lastInsertionIndex: Int        = 0
@@ -53,7 +58,208 @@ final class UniversalChatDatasource {
         var isPayToJoinModelAdded          = false
         var isAddMorePhotoModelAdded       = false
         var topCellDate: Date?
+        
+        func addModels(models: [ChatEntity], isPrevious: Bool, chatModel: ChatModel?) {
+            if isPrevious {
+                parent.isLoadPreviousNeeded = false
+            } else {
+                parent.isLoadNextNeeded = false
+                if (!parent.isMarksOnlyMode) { // Add only once
+                    parent.forwardOffset += models.count
+                }
+                if parent.lastRead == 0,
+                    let last = models.last,
+                    let chatModel = chatModel,
+                    last.lastUpdated > chatModel.discussion.lastRead
+                {
+                    insertNewMessagesSeparator(lastRead: chatModel.discussion.lastRead)
+                }
+            }
+            
+            let models = parent.createCellModels(from: models, isTemporary: false)
+            addCellModels(models: models)
+        }
+
+        
+        func addCellModels(models: [ChatCellModel]) {
+            let ids = models.map { $0.id }
+            for id in ids where parent.unsentIDs.contains(id) {
+                parent.unsentIDs.remove(id)
+            }
+            models.forEach {
+                if let index = indexPath(postID: $0.id) {
+                    if self.models[index.row].updated < $0.updated {
+                        self.models[index.row] = $0
+                    }
+                }
+                else {
+                    self.addCellModel(model: $0)
+                }
+            }
+        }
+
+        
+        /**
+         Returns index of post model with the given id
+         
+         Because most of the time we need index of one of the latest posts, search is done from end to beginning
+         */
+        func indexPath(postID: String) -> IndexPath? {
+            for (idx, model) in models.reversed().enumerated() where model.id == postID {
+                return IndexPath(row: models.count - 1 - idx, section: 0)
+            }
+            return nil
+        }
+
+        
+        func addCellModel(model: ChatCellModel) {
+            guard !models.isEmpty else {
+                models.append(model)
+                addVotingStatsIfNeeded()
+                return
+            }
+            
+            // find the place in array where to insert new item
+            if lastInsertionIndex >= models.count {
+                lastInsertionIndex = models.count - 1
+            }
+            
+            while lastInsertionIndex > 0
+                && models[lastInsertionIndex].date > model.date {
+                    lastInsertionIndex -= 1
+            }
+            while lastInsertionIndex < models.count
+                && models[lastInsertionIndex].date <= model.date {
+                    lastInsertionIndex += 1
+            }
+            if lastInsertionIndex < models.count {
+                if let model = models[lastInsertionIndex] as? ServiceMessageCellModel, model.command == .addMorePhoto {
+                    lastInsertionIndex += 1
+                }
+            }
+            
+            // insert new item in the array
+            let previous = lastInsertionIndex > 0 ? models[lastInsertionIndex - 1] : nil
+            let next = lastInsertionIndex < models.count ? models[lastInsertionIndex] : nil
+            if let previous = previous, previous.id == model.id {
+                models[lastInsertionIndex - 1] = model
+            } else if let next = next, next.id == model.id {
+                models[lastInsertionIndex] = model
+            } else if lastInsertionIndex < models.count {
+                models.insert(model, at: lastInsertionIndex)
+            } else {
+                models.append(model)
+            }
+            addSeparatorIfNeeded()
+            addAddPhotoIfNeeded()
+            addVotingStatsIfNeeded()
+        }
+
+
+        func addClaimPaidIfNeeded(date: Date?) {
+            guard !isClaimPaidModelAdded, let date = date else { return }
+            
+            let model = ChatClaimPaidCellModel(date: date)
+            addCellModels(models: [model])
+            isClaimPaidModelAdded = true
+        }
+
+        
+        func addAddPhotoIfNeeded() {
+            guard parent.isPrejoining && parent.isInputAllowed, let model = models.last else { return }
+            guard model as? ChatImageCellModel != nil || model as? ChatUnsentImageCellModel != nil else { return }
+            
+            if isAddMorePhotoModelAdded {
+                for (idx, model) in models.reversed().enumerated() {
+                    if let model = model as? ServiceMessageCellModel, model.command == .addMorePhoto {
+                        models.remove(at: models.count - 1 - idx)
+                        break
+                    }
+                }
+            }
+            
+            let addPhotoModel = parent.cellModelBuilder.addMorePhotoModel(lastDate: model.date)
+            models.append(addPhotoModel)
+            isAddMorePhotoModelAdded = true
+        }
+
+        
+        func addSeparatorIfNeeded() {
+            guard lastInsertionIndex > 0 && lastInsertionIndex < models.count else { return }
+            
+            let previous = models[lastInsertionIndex - 1]
+            let current = models[lastInsertionIndex]
+            if let separator = parent.cellModelBuilder.separatorModelIfNeeded(firstModel: previous, secondModel: current) {
+                models.insert(separator, at: lastInsertionIndex)
+                lastInsertionIndex += 1
+            }
+        }
+
+
+        func addVotingStatsIfNeeded() {
+            guard parent.chatType == .claim else {return}
+            
+            // check if model has exactly one text block and no stat block
+            var chatModel: ChatTextCellModel? = nil
+            var insertPos = -1
+            for (idx, model) in models.enumerated() {
+                guard !(model is VotingStatsCellModel) else { return }
+                if model is ChatTextCellModel {
+                    guard chatModel == nil else { return }
+                    chatModel = model as? ChatTextCellModel
+                    insertPos = idx
+                }
+            }
+            guard chatModel != nil else { return }
+            
+            let votingStatsModel = parent.cellModelBuilder.addVotingStatsModel(beforeModel: chatModel!)
+            
+            // insert before first text cell, or right after multi-fragment one
+            if chatModel!.fragments.count > 1 {
+                insertPos = insertPos + 1
+            }
+            if insertPos < models.count {
+                models.insert(votingStatsModel, at: insertPos)
+            } else {
+                models.append(votingStatsModel)
+            }
+            lastInsertionIndex += 1
+        }
+
+        
+        func insertNewMessagesSeparator(lastRead: UInt64) {
+            guard parent.isFirstLoad else { return }
+            guard lastRead != 0 else { return }
+            
+            _ = removeNewMessagesSeparator()
+            let lastReadDate = Date(ticks: lastRead)
+            let separatorDate = lastReadDate.addingTimeInterval(0.1)
+            let model = ChatNewMessagesSeparatorModel(date: separatorDate)
+            addCellModels(models: [model])
+            hasNewMessagesSeparator = true
+        }
+
+        
+        func removeNewMessagesSeparator() -> Bool {
+            guard hasNewMessagesSeparator else { return false }
+            
+            for (idx, model) in self.models.enumerated().reversed() where model is ChatNewMessagesSeparatorModel {
+                self.models.remove(at: idx)
+                hasNewMessagesSeparator = false
+                return true
+            }
+            
+            assert(false, "Situation is impossible")
+            return false
+        }
+
     }
+    
+    var offsetY: CGFloat? {
+        get { return data.offsetY }
+        set { data.offsetY = newValue }
+    }
+    
 
     var onUpdate: ((_ backward: Bool, _ hasNewItems: Bool, _ isFirstLoad: Bool) -> Void)?
     var onError: ((Error) -> Void)?
@@ -75,22 +281,14 @@ final class UniversalChatDatasource {
         }
     }
 
-    private var dataAll: UniversalChatData = UniversalChatData()
-    private var dataMarks: UniversalChatData = UniversalChatData()
+    private lazy var dataAll: UniversalChatData = UniversalChatData(parent: self)
+    private lazy var dataMarks: UniversalChatData = UniversalChatData(parent: self)
     
     private var data: UniversalChatData {
         get { return isMarksOnlyMode ? dataMarks : dataAll }
         set { if (isMarksOnlyMode) { dataMarks = newValue } else { dataAll = newValue }
         }
     }
-    private var models: [ChatCellModel]        { get {return data.models}                   set {data.models = newValue} }
-    private var lastInsertionIndex: Int        { get {return data.lastInsertionIndex}       set {data.lastInsertionIndex = newValue} }
-    private var hasNewMessagesSeparator: Bool  { get {return data.hasNewMessagesSeparator}  set {data.hasNewMessagesSeparator = newValue} }
-    private var isClaimPaidModelAdded: Bool    { get {return data.isClaimPaidModelAdded}    set {data.isClaimPaidModelAdded = newValue} }
-    private var isPayToJoinModelAdded: Bool    { get {return data.isPayToJoinModelAdded}    set {data.isPayToJoinModelAdded = newValue} }
-    private var isAddMorePhotoModelAdded: Bool { get {return data.isAddMorePhotoModelAdded} set {data.isAddMorePhotoModelAdded = newValue} }
-    private var topCellDate: Date?             { get {return data.topCellDate}              set {data.topCellDate = newValue} }
-    var offsetY: CGFloat?                      { get {return data.offsetY}                  set {data.offsetY = newValue} }
 
     var fullChatModeFromPush: Bool = false
     var userSetMarksOnlyMode: Bool? {
@@ -107,11 +305,9 @@ final class UniversalChatDatasource {
             }
         }
     }
-    var tempMarksOnlyMode: Bool?
     var isMarksOnlyMode: Bool {
-        return tempMarksOnlyMode
-            ?? (userSetMarksOnlyMode
-                ?? (!isPinnable && !isPrivateChat && (chatModel?.isMarksOnlyMode ?? true) && hasEnoughMarks && !fullChatModeFromPush))
+        return userSetMarksOnlyMode
+                ?? (!isPinnable && !isPrivateChat && (chatModel?.isMarksOnlyMode ?? true) && hasEnoughMarks && !fullChatModeFromPush)
     }
     
     private var currentLimit: Int              = 0
@@ -154,7 +350,7 @@ final class UniversalChatDatasource {
     
     var topicID: String? { return strategy.topicID ?? chatModel?.discussion.topicID }
     
-    var count: Int { return models.count }
+    var count: Int { return data.models.count }
     var unreadCount: Int { return readAll ? 0 : (chatModel?.discussion.unreadCount ?? 0) }
     private var readAll: Bool = false
     
@@ -203,9 +399,9 @@ final class UniversalChatDatasource {
     var lastIndexPath: IndexPath? { return count >= 1 ? IndexPath(row: count - 1, section: 0) : nil }
     
     var currentTopCellPath: IndexPath? {
-        guard let topCellDate = topCellDate else { return nil }
+        guard let topCellDate = data.topCellDate else { return nil }
         
-        for (idx, model) in models.enumerated() where model.date == topCellDate {
+        for (idx, model) in data.models.enumerated() where model.date == topCellDate {
             return IndexPath(row: idx, section: 0)
         }
         return nil
@@ -215,14 +411,14 @@ final class UniversalChatDatasource {
         guard lastRead != 0 else { return lastIndexPath }
         
         let lastReadDate = Date(ticks: lastRead)
-        for (idx, model) in models.enumerated() where model.date >= lastReadDate {
+        for (idx, model) in data.models.enumerated() where model.date >= lastReadDate {
             return IndexPath(row: idx, section: 0)
         }
         return lastIndexPath
     }
     
     var allImages: [String] {
-        let textCellModels = models.compactMap { $0 as? ChatCellUserDataLike }
+        let textCellModels = data.models.compactMap { $0 as? ChatCellUserDataLike }
         let fragments = textCellModels.flatMap { $0.fragments }
         var images: [String] = []
         for fragment in fragments {
@@ -294,6 +490,13 @@ final class UniversalChatDatasource {
         return isAllowed
     }
     
+    func removeNewMessagesSeparator() -> Bool {
+        let removedInAll = dataAll.removeNewMessagesSeparator()
+        let removedInMarks = dataMarks.removeNewMessagesSeparator()
+        return removedInAll || removedInMarks
+    }
+
+    
     func mute(type: MuteType, completion: @escaping (Bool) -> Void) {
         guard let topicID = chatModel?.discussion.topicID else { return }
         
@@ -310,12 +513,21 @@ final class UniversalChatDatasource {
     }
     
     func setMyLike(myLike: Int, chatItem: ChatCellUserDataLike, completion: @escaping (Bool) -> Void) {
-        if let index = indexPath(postID: chatItem.id),
-            var model = models[index.row] as? ChatCellUserDataLike {
+        if let index = dataAll.indexPath(postID: chatItem.id),
+            var model = dataAll.models[index.row] as? ChatCellUserDataLike
+        {
             let likesDiff = myLike - model.myLike
             model.myLike = myLike
             model.liked += likesDiff
-            models[index.row] = model
+            dataAll.models[index.row] = model
+            
+            if let indexMark = dataMarks.indexPath(postID: chatItem.id),
+                var modelMark = dataMarks.models[indexMark.row] as? ChatCellUserDataLike
+            {
+                modelMark.myLike = model.myLike
+                modelMark.liked = model.liked
+                dataMarks.models[indexMark.row] = model
+            }
             
             service.dao.setPostLike(postID: chatItem.id, myLike: myLike).observe { result in
                 switch result {
@@ -331,11 +543,27 @@ final class UniversalChatDatasource {
     }
 
     func setPostMarked(isMarked: Bool, chatItem: ChatCellUserDataLike, completion: @escaping (Bool) -> Void) {
-        if let index = indexPath(postID: chatItem.id),
-            var model = models[index.row] as? ChatCellUserDataLike
+        
+        func clearOldMarks(data: UniversalChatData, model: ChatCellUserDataLike) {
+            for oldItem in data.models {
+                if var oldItem = oldItem as? ChatCellUserDataLike {
+                    if (oldItem.isMy && oldItem.isMarked && oldItem.id != model.id) {
+                        if let indexOld = data.indexPath(postID: oldItem.id),
+                            var modelOld = data.models[indexOld.row] as? ChatCellUserDataLike
+                        {
+                            modelOld.isMarked = false
+                            data.models[indexOld.row] = modelOld
+                        }
+                    }
+                }
+            }
+        }
+        
+        if let index = dataAll.indexPath(postID: chatItem.id),
+            var model = dataAll.models[index.row] as? ChatCellUserDataLike
         {
             model.isMarked = isMarked
-            models[index.row] = model
+            dataAll.models[index.row] = model
             
             service.dao.setPostMarked(postID: chatItem.id, isMarked: isMarked).observe { result in
                 switch result {
@@ -343,18 +571,16 @@ final class UniversalChatDatasource {
                     log("\(error)", type: [.error, .serverReply])
                 default:
                     // Unmark other posts
-                    for oldItem in self.models {
-                        if var oldItem = oldItem as? ChatCellUserDataLike {
-                            if (oldItem.isMy && oldItem.isMarked && oldItem.id != model.id) {
-                                if let indexOld = self.indexPath(postID: oldItem.id),
-                                    var modelOld = self.models[indexOld.row] as? ChatCellUserDataLike
-                                {
-                                    modelOld.isMarked = false
-                                    self.models[indexOld.row] = modelOld
-                                }
-                            }
-                        }
+                    clearOldMarks(data: self.dataAll, model: model)
+                    clearOldMarks(data: self.dataMarks, model: model)
+                    
+                    if let indexMark = self.dataMarks.indexPath(postID: chatItem.id),
+                        var modelMark = self.dataMarks.models[indexMark.row] as? ChatCellUserDataLike
+                    {
+                        modelMark.isMarked = isMarked
+                        self.dataMarks.models[indexMark.row] = modelMark
                     }
+
                     completion(true)
                     break
                 }
@@ -363,6 +589,17 @@ final class UniversalChatDatasource {
     }
 
     func addToProxies(teammateID: String, add: Bool, existingProxy: Bool, completion: @escaping (Bool) -> Void) {
+        
+        func updateData(data: UniversalChatData) {
+            for (idx, model) in data.models.enumerated()  {
+                if var model = model as? ChatCellUserDataLike, model.entity.userID == teammateID {
+                    model.isMyProxy = add
+                    data.models[idx] = model
+                }
+            }
+        }
+        
+        
         if (existingProxy && add) {
             guard let teamID = chatModel?.team?.teamID else {return}
             service.dao.updateProxyPosition(teamID: teamID, userID: teammateID, newPosition: 0)
@@ -378,12 +615,8 @@ final class UniversalChatDatasource {
             }
         }
         else {
-            for (idx, model) in models.enumerated()  {
-                if var model = model as? ChatCellUserDataLike, model.entity.userID == teammateID {
-                    model.isMyProxy = add
-                    models[idx] = model
-                }
-            }
+            updateData(data: dataAll)
+            updateData(data: dataMarks)
             service.dao.myProxy(userID: teammateID, add: add).observe { [weak self] result in
                 switch result {
                 case .value:
@@ -396,6 +629,7 @@ final class UniversalChatDatasource {
         }
     }
     
+    
     func addContext(context: UniversalChatContext) {
         strategy = context
         hasPrevious = strategy.canLoadBackward
@@ -403,6 +637,7 @@ final class UniversalChatDatasource {
         cellModelBuilder.showTheirAvatar = !context.isPrivate
         fullChatModeFromPush = context.startInFullChatMode
     }
+    
     
     func loadNext() {
         load(previous: false)
@@ -420,6 +655,7 @@ final class UniversalChatDatasource {
         print("new photo meta: \(postID)")
         return ChatMetadata(topicID: topicID, postID: postID)
     }
+    
 
     func addNewUnsentPhoto(metadata: ChatMetadata) {
         let model = ChatUnsentImageCellModel(id: metadata.postID,
@@ -428,41 +664,31 @@ final class UniversalChatDatasource {
                                              isDeletable: isPrejoining && isInputAllowed,
             isSent: false)
         unsentIDs.insert(metadata.postID)
-        addCellModel(model: model)
+        dataAll.addCellModel(model: model)
     }
+    
 
     func unsentPhotoWasSent(chatItem: ChatEntity) {
         unsentIDs.remove(chatItem.id)
 //        removeModel(id: chatItem.id)
 //        addModels(models: [chatItem], isPrevious: false, chatModel: nil)
-        if let index = indexPath(postID: chatItem.id),
-            var model = models[index.row] as? ChatUnsentImageCellModel {
+        if let index = dataAll.indexPath(postID: chatItem.id),
+            var model = dataAll.models[index.row] as? ChatUnsentImageCellModel {
             model.isSent = true
-            models[index.row] = model
+            dataAll.models[index.row] = model
             self.hasNext = true
-            onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
+            onSendMessage?(IndexPath(row: dataAll.lastInsertionIndex, section: 0))
         }
     }
 
     @discardableResult
     func removeModel(id: String) -> ChatCellModel? {
-        if let index = indexPath(postID: id) {
-            return models.remove(at: index.row)
+        if let index = dataAll.indexPath(postID: id) {
+            return dataAll.models.remove(at: index.row)
         }
         return nil
     }
 
-    /**
-     Returns index of post model with the given id
-
-     Because most of the time we need index of one of the latest posts, search is done from end to beginning
-    */
-    func indexPath(postID: String) -> IndexPath? {
-        for (idx, model) in models.reversed().enumerated() where model.id == postID {
-            return IndexPath(row: models.count - 1 - idx, section: 0)
-        }
-        return nil
-    }
     
     func send(text: String, imageFragments: [ChatFragment]) {
         isLoading = true
@@ -534,8 +760,12 @@ final class UniversalChatDatasource {
 
             switch result {
             case .value:
-                for (idx, model) in self.models.enumerated() where model.id == id {
-                    self.models.remove(at: idx)
+                for (idx, model) in self.dataAll.models.enumerated() where model.id == id {
+                    self.dataAll.models.remove(at: idx)
+                    break
+                }
+                for (idx, model) in self.dataMarks.models.enumerated() where model.id == id {
+                    self.dataMarks.models.remove(at: idx)
                     break
                 }
                 completion(nil)
@@ -546,11 +776,11 @@ final class UniversalChatDatasource {
     }
     
     subscript(indexPath: IndexPath) -> ChatCellModel {
-        guard indexPath.row < models.count else {
-            fatalError("Wrong index: \(indexPath), while have only \(models.count) models")
+        guard indexPath.row < data.models.count else {
+            fatalError("Wrong index: \(indexPath), while having only \(data.models.count) models")
         }
         
-        return models[indexPath.row]
+        return data.models[indexPath.row]
     }
     
 }
@@ -564,11 +794,8 @@ extension UniversalChatDatasource {
         isLoading = true
         if previous {
             isLoadPreviousNeeded = false
-            tempMarksOnlyMode = false
-            topCellDate = models.first?.date
-            tempMarksOnlyMode = true
-            topCellDate = models.first?.date
-            tempMarksOnlyMode = nil
+            dataAll.topCellDate = dataAll.models.first?.date
+            dataMarks.topCellDate = dataMarks.models.first?.date
         } else {
             isLoadNextNeeded = false
         }
@@ -604,189 +831,15 @@ extension UniversalChatDatasource {
         }
     }
     
-    private func addCellModels(models: [ChatCellModel]) {
-        let ids = models.map { $0.id }
-        for id in ids where self.unsentIDs.contains(id) {
-            self.unsentIDs.remove(id)
-        }
-        models.forEach {
-            if let index = indexPath(postID: $0.id) {
-                if self.models[index.row].updated < $0.updated {
-                    self.models[index.row] = $0
-                }
-            }
-            else {
-                self.addCellModel(model: $0)
-            }
-        }
-    }
     
-    private func addCellModel(model: ChatCellModel) {
-        guard !models.isEmpty else {
-            models.append(model)
-            addVotingStatsIfNeeded()
-            return
-        }
-        
-        // find the place in array where to insert new item
-        if lastInsertionIndex >= models.count {
-            lastInsertionIndex = models.count - 1
-        }
-        
-        while lastInsertionIndex > 0
-            && models[lastInsertionIndex].date > model.date {
-                lastInsertionIndex -= 1
-        }
-        while lastInsertionIndex < models.count
-            && models[lastInsertionIndex].date <= model.date {
-                lastInsertionIndex += 1
-        }
-        if lastInsertionIndex < models.count {
-            if let model = models[lastInsertionIndex] as? ServiceMessageCellModel, model.command == .addMorePhoto {
-                lastInsertionIndex += 1
-            }
-        }
-        
-        // insert new item in the array
-        let previous = lastInsertionIndex > 0 ? models[lastInsertionIndex - 1] : nil
-        let next = lastInsertionIndex < models.count ? models[lastInsertionIndex] : nil
-        if let previous = previous, previous.id == model.id {
-            models[lastInsertionIndex - 1] = model
-        } else if let next = next, next.id == model.id {
-            models[lastInsertionIndex] = model
-        } else if lastInsertionIndex < models.count {
-            models.insert(model, at: lastInsertionIndex)
-        } else {
-            models.append(model)
-        }
-        addSeparatorIfNeeded()
-        addAddPhotoIfNeeded()
-        addVotingStatsIfNeeded()
-    }
-
-    private func addAddPhotoIfNeeded() {
-        guard isPrejoining && isInputAllowed, let model = models.last else { return }
-        guard model as? ChatImageCellModel != nil || model as? ChatUnsentImageCellModel != nil else { return }
-
-        if isAddMorePhotoModelAdded {
-            for (idx, model) in models.reversed().enumerated() {
-                if let model = model as? ServiceMessageCellModel, model.command == .addMorePhoto {
-                    models.remove(at: models.count - 1 - idx)
-                    break
-                }
-            }
-        }
-
-        let addPhotoModel = cellModelBuilder.addMorePhotoModel(lastDate: model.date)
-        models.append(addPhotoModel)
-        isAddMorePhotoModelAdded = true
-    }
     
-    private func removeTemporaryIfNeeded() {
-        guard lastInsertionIndex > 0 else { return }
-        
-        let previous = models[lastInsertionIndex - 1]
-        guard previous.isTemporary else { return }
-        
-        let current = models[lastInsertionIndex]
-        if current.id == previous.id {
-            models.remove(at: lastInsertionIndex - 1)
-            lastInsertionIndex -= 1
-        }
-    }
-    
-    private func addSeparatorIfNeeded() {
-        guard lastInsertionIndex > 0 && lastInsertionIndex < models.count else { return }
-        
-        let previous = models[lastInsertionIndex - 1]
-        let current = models[lastInsertionIndex]
-        if let separator = cellModelBuilder.separatorModelIfNeeded(firstModel: previous, secondModel: current) {
-            models.insert(separator, at: lastInsertionIndex)
-            lastInsertionIndex += 1
-        }
-    }
-    
-    private func addVotingStatsIfNeeded() {
-        guard chatType == .claim else {return}
-
-        // check if model has exactly one text block and no stat block
-        var chatModel: ChatTextCellModel? = nil
-        var insertPos = -1
-        for (idx, model) in models.enumerated() {
-            guard !(model is VotingStatsCellModel) else { return }
-            if model is ChatTextCellModel {
-                guard chatModel == nil else { return }
-                chatModel = model as? ChatTextCellModel
-                insertPos = idx
-            }
-        }
-        guard chatModel != nil else { return }
-        
-        let votingStatsModel = cellModelBuilder.addVotingStatsModel(beforeModel: chatModel!)
-
-        // insert before first text cell, or right after multi-fragment one
-        if chatModel!.fragments.count > 1 {
-            insertPos = insertPos + 1
-        }
-        if insertPos < models.count {
-            models.insert(votingStatsModel, at: insertPos)
-        } else {
-            models.append(votingStatsModel)
-        }
-        lastInsertionIndex += 1
-    }
-    
-    private func addModels(models: [ChatEntity], isPrevious: Bool, chatModel: ChatModel?) {
-        if isPrevious {
-            isLoadPreviousNeeded = false
-        } else {
-            isLoadNextNeeded = false
-            if (!isMarksOnlyMode) { // Add only once
-                forwardOffset += models.count
-            }
-            if lastRead == 0,
-                let last = models.last,
-                let chatModel = chatModel,
-                last.lastUpdated > chatModel.discussion.lastRead {
-                insertNewMessagesSeparator(lastRead: chatModel.discussion.lastRead)
-            }
-        }
-        
-        let models = createCellModels(from: models, isTemporary: false)
-        addCellModels(models: models)
-    }
-    
-    private func insertNewMessagesSeparator(lastRead: UInt64) {
-        guard isFirstLoad else { return }
-        guard lastRead != 0 else { return }
-        
-        _ = removeNewMessagesSeparator()
-        let lastReadDate = Date(ticks: lastRead)
-        let separatorDate = lastReadDate.addingTimeInterval(0.1)
-        let model = ChatNewMessagesSeparatorModel(date: separatorDate)
-        addCellModels(models: [model])
-        hasNewMessagesSeparator = true
-    }
-    
-    func removeNewMessagesSeparator() -> Bool {
-        guard hasNewMessagesSeparator else { return false }
-        
-        for (idx, model) in self.models.enumerated().reversed() where model is ChatNewMessagesSeparatorModel {
-            self.models.remove(at: idx)
-            hasNewMessagesSeparator = false
-            return true
-        }
-        
-        assert(false, "Situation is impossible")
-        return false
-    }
     
     private func processMyNew(message: ChatEntity) {
         let models = createCellModels(from: [message], isTemporary: true)
-        addCellModels(models: models)
+        data.addCellModels(models: models)
         forwardOffset = 0
         
-        onSendMessage?(IndexPath(row: lastInsertionIndex, section: 0))
+        onSendMessage?(IndexPath(row: data.lastInsertionIndex, section: 0))
         isFirstLoad = false
     }
     
@@ -800,10 +853,8 @@ extension UniversalChatDatasource {
     
     private func processCommonChat(model: ChatModel, isPrevious: Bool) {
         chatModel = model
-        tempMarksOnlyMode = false
-        defer { tempMarksOnlyMode = nil }
         
-        addModels(models: model.discussion.chat, isPrevious: isPrevious, chatModel: model)
+        dataAll.addModels(models: model.discussion.chat, isPrevious: isPrevious, chatModel: model)
         if model.discussion.chat.count < currentLimit {
             if isPrevious {
                 hasPrevious = false
@@ -818,20 +869,11 @@ extension UniversalChatDatasource {
         
         teamAccessLevel = model.team?.accessLevel ?? .noAccess
         
-        addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
+        dataAll.addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
         //addPayToJoinIfNeeded(date: model.basic?.datePayToJoin)
         
-        tempMarksOnlyMode = true
-        addModels(models: model.discussion.markedPosts ?? [ChatEntity](), isPrevious: isPrevious, chatModel: model)
-        addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
-    }
-
-    private func addClaimPaidIfNeeded(date: Date?) {
-        guard !isClaimPaidModelAdded, let date = date else { return }
-        
-        let model = ChatClaimPaidCellModel(date: date)
-        addCellModels(models: [model])
-        isClaimPaidModelAdded = true
+        dataMarks.addModels(models: model.discussion.markedPosts ?? [ChatEntity](), isPrevious: isPrevious, chatModel: model)
+        dataMarks.addClaimPaidIfNeeded(date: model.basic?.paymentFinishedDate)
     }
     
     //    private func addPayToJoinIfNeeded(date: Date?) {
