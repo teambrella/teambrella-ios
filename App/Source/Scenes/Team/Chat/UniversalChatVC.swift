@@ -370,16 +370,18 @@ final class UniversalChatVC: UIViewController, Routable {
     }
     
     func switchViewMarkMode() {
+        self.collectionView.isScrollEnabled = false
+
         dataSource.offsetY = self.collectionView.contentOffset.y
 
-        dataSource.userSetMarksOnlyMode = !dataSource.isMarksOnlyMode
-
-        setViewMarksButtons()
         UIView.animate(withDuration: 0.1, animations: {
             self.collectionView.alpha = 0
         }, completion: { _ in
+            self.dataSource.userSetMarksOnlyMode = !self.dataSource.isMarksOnlyMode
+            self.setViewMarksButtons()
             self.collectionView.reloadData()
             self.collectionView.layoutSubviews()
+            self.collectionView.isScrollEnabled = true
             self.collectionView.performBatchUpdates(nil, completion: { _ in
                 if let offsetY = self.dataSource.offsetY  {
                     self.collectionView.contentOffset = CGPoint(x: 0, y: offsetY)
