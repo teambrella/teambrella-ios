@@ -98,6 +98,8 @@ struct ReportCellBuilder {
             cell.statsNumberBar.left?.titleLabel.text = model.deductibleTitle
             cell.statsNumberBar.left?.amountLabel.text = model.deductibleString
             cell.statsNumberBar.left?.currencyLabel.text = currencyName
+            cell.statsNumberBar.left?.alignmentType = .leading
+
             cell.statsNumberBar.middle?.titleLabel.text = model.coverageTitle
             cell.statsNumberBar.middle?.amountLabel.text = model.coverageString
             cell.statsNumberBar.middle?.isCurrencyVisible = false
@@ -112,6 +114,7 @@ struct ReportCellBuilder {
             cell.statsNumberBar.right?.titleLabel.text = model.amountTitle
             cell.statsNumberBar.right?.amountLabel.text = model.amountString
             cell.statsNumberBar.right?.currencyLabel.text = currencyName
+            cell.statsNumberBar.right?.alignmentType = .trailing
             cell.statsNumberBar.left?.isPercentVisible = false
             cell.statsNumberBar.left?.isCurrencyVisible = true
             cell.statsNumberBar.right?.isPercentVisible = false

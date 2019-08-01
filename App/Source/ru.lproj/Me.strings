@@ -39,7 +39,7 @@
 "Me.CoverageVC.yourExpenses"                       = "В случае, когда твои расходы составляют";
 "Me.CoverageVC.teamPay"                            = "Максимальная выплата будет";
 
-"Me.Report.ItemCell.title"                         = "СООБЩИТЬ";
+"Me.Report.ItemCell.title"                         = "ЗАЯВКА";
 "Me.Report.DateCell.title"                         = "ДАТА СОБЫТИЯ";
 "Me.Report.ExpensesCell.title"                     = "РАСХОДЫ";
 "Me.Report.DescriptionCell.title"                  = "ОПИШИ СВОЙ СЛУЧАЙ";
@@ -57,7 +57,7 @@
 
 "Me.Report.PhotosCell.buttonTitle"                 = "Добавить фото";
 
-"Me.Report.ReportClaim.title"                      = "Заявка на выплату";
+"Me.Report.ReportClaim.title"                      = "Подать заявку";
 "Me.Report.NewDiscussion.title"                    = "Обсуждение";
 
 "Me.WalletVC.WalletTransactionsVC.title"           = "Транзакции";
@@ -72,7 +72,7 @@
 "Me.WalletVC.txsCell.additionalTitle"              = "РЕКОМЕНДУЕМ ПОПОЛНИТЬ ДО";
 "Me.WalletVC.WalletCosignersVC.title"              = "Соподписчики";
 
-"Me.Report.submitButtonTitle-submit"               = "Отправить";
+"Me.Report.submitButtonTitle-submit"               = "Подать заявку";
 "Me.Report.submitButtonTitle-create"               = "Создать";
 "Me.Report.cancelButtonTitle"                      = "Отменить";
 
