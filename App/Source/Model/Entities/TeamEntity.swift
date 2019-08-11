@@ -60,7 +60,16 @@ struct TeamEntity: Decodable {
                 "RUB": "₽",
                 "РУБ": "₽"][currency] ?? currency
     }
-    
+
+    var currencyPrefix: String {
+        return ["USD": "$",
+                "EUR": "€",
+                "PEN": "S/.",
+                "ARS": "$",
+                "RUB": "",
+                "РУБ": ""][currency] ?? currency
+    }
+
 }
 
 extension TeamEntity: Equatable {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,13 +25,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="57" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOS-d0-bGS" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="372" y="52" width="20" height="21"/>
+                            <rect key="frame" x="370" y="52" width="20" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndt-E7-5r0" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                            <rect key="frame" x="392" y="52" width="14" height="21"/>
+                            <rect key="frame" x="392" y="56" width="14" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -40,9 +40,9 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="MuT-Us-68H" firstAttribute="centerY" secondItem="w7T-Z0-7X3" secondAttribute="centerY" id="VMa-2I-owB"/>
-                        <constraint firstItem="Ndt-E7-5r0" firstAttribute="top" secondItem="gOS-d0-bGS" secondAttribute="top" id="YVQ-nM-UAr"/>
+                        <constraint firstItem="Ndt-E7-5r0" firstAttribute="top" secondItem="gOS-d0-bGS" secondAttribute="top" constant="4" id="YVQ-nM-UAr"/>
                         <constraint firstItem="gOS-d0-bGS" firstAttribute="centerY" secondItem="MuT-Us-68H" secondAttribute="centerY" id="hgU-Mq-JQg"/>
-                        <constraint firstItem="Ndt-E7-5r0" firstAttribute="leading" secondItem="gOS-d0-bGS" secondAttribute="trailing" id="mma-XN-5f4"/>
+                        <constraint firstItem="Ndt-E7-5r0" firstAttribute="leading" secondItem="gOS-d0-bGS" secondAttribute="trailing" constant="2" id="mma-XN-5f4"/>
                         <constraint firstItem="MuT-Us-68H" firstAttribute="leading" secondItem="w7T-Z0-7X3" secondAttribute="leading" constant="32" id="p97-xY-OgU"/>
                         <constraint firstAttribute="trailing" secondItem="Ndt-E7-5r0" secondAttribute="trailing" constant="20" id="zuS-aZ-saI"/>
                     </constraints>

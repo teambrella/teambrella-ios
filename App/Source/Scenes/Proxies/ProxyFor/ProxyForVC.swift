@@ -133,7 +133,7 @@ extension ProxyForVC: UICollectionViewDelegate {
             ViewDecorator.roundedEdges(for: cell.containerView)
             guard let team = service.session?.currentTeam else { return }
             
-            cell.amountLabel.text = team.currencySymbol + String(Int(dataSource.commission))
+            cell.amountLabel.text = team.currencyPrefix + String(Int(dataSource.commission))
             cell.currencyLabel.text = team.currency
         }
         

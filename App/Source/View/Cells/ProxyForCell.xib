@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,31 +29,31 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Augusta Strokes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCo-Ih-cfX" customClass="MessageTitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="72" y="43.5" width="126" height="21"/>
+                                <rect key="frame" x="72" y="43.5" width="125.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST VOTED: 2 WEEKS AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAe-qW-pYF" customClass="ThinStatusSubtitleLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="72" y="65" width="221" height="21"/>
+                                <rect key="frame" x="72" y="66.5" width="221" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="hLV-dk-hgZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="hLV-dk-hgZ">
                                 <rect key="frame" x="377" y="58" width="8" height="13"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQM-6F-r5u" userLabel="Currency Container">
-                                <rect key="frame" x="347" y="54" width="14" height="21"/>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="NQM-6F-r5u" userLabel="Currency Container">
+                                <rect key="frame" x="334.5" y="52" width="26.5" height="25"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYq-Sn-4Bf" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="14" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYq-Sn-4Bf" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="10.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kx6-Sw-Z40" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="14" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kx6-Sw-Z40" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
+                                        <rect key="frame" x="12.5" y="4" width="14" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -65,9 +63,8 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="kx6-Sw-Z40" secondAttribute="bottom" id="21X-PQ-DJD"/>
                                     <constraint firstItem="cYq-Sn-4Bf" firstAttribute="leading" secondItem="NQM-6F-r5u" secondAttribute="leading" id="7Ej-kb-ItX"/>
-                                    <constraint firstAttribute="trailing" secondItem="cYq-Sn-4Bf" secondAttribute="trailing" id="F67-AV-Bdq"/>
-                                    <constraint firstItem="kx6-Sw-Z40" firstAttribute="top" secondItem="cYq-Sn-4Bf" secondAttribute="bottom" id="cAX-fI-n6l"/>
-                                    <constraint firstItem="kx6-Sw-Z40" firstAttribute="leading" secondItem="NQM-6F-r5u" secondAttribute="leading" id="fAE-ka-rOI"/>
+                                    <constraint firstItem="kx6-Sw-Z40" firstAttribute="leading" secondItem="cYq-Sn-4Bf" secondAttribute="trailing" constant="2" id="ETW-hA-kRI"/>
+                                    <constraint firstItem="kx6-Sw-Z40" firstAttribute="top" secondItem="cYq-Sn-4Bf" secondAttribute="top" constant="4" id="cAX-fI-n6l"/>
                                     <constraint firstAttribute="trailing" secondItem="kx6-Sw-Z40" secondAttribute="trailing" id="i8U-1S-moF"/>
                                     <constraint firstItem="cYq-Sn-4Bf" firstAttribute="top" secondItem="NQM-6F-r5u" secondAttribute="top" id="lCM-2J-PeU"/>
                                 </constraints>
@@ -85,6 +82,7 @@
                             <constraint firstItem="hLV-dk-hgZ" firstAttribute="centerY" secondItem="Fgx-oM-TjB" secondAttribute="centerY" id="0Gl-0q-ovb"/>
                             <constraint firstItem="erv-lR-R7I" firstAttribute="leading" secondItem="Fgx-oM-TjB" secondAttribute="leading" constant="16" id="594-4s-5V7"/>
                             <constraint firstItem="ZQm-wb-1bd" firstAttribute="leading" secondItem="Fgx-oM-TjB" secondAttribute="leading" constant="16" id="ARb-kh-0pm"/>
+                            <constraint firstItem="NQM-6F-r5u" firstAttribute="centerY" secondItem="ZQm-wb-1bd" secondAttribute="centerY" id="NYI-PW-EE8"/>
                             <constraint firstAttribute="trailing" secondItem="erv-lR-R7I" secondAttribute="trailing" id="PZB-SW-QQU"/>
                             <constraint firstItem="eCo-Ih-cfX" firstAttribute="leading" secondItem="ZQm-wb-1bd" secondAttribute="trailing" constant="16" id="QFx-j5-aOk"/>
                             <constraint firstAttribute="trailing" secondItem="hLV-dk-hgZ" secondAttribute="trailing" constant="16" id="Sg3-Xc-weX"/>
@@ -92,7 +90,7 @@
                             <constraint firstItem="eCo-Ih-cfX" firstAttribute="bottom" secondItem="ZQm-wb-1bd" secondAttribute="centerY" id="Zp4-5b-YUw"/>
                             <constraint firstItem="NQM-6F-r5u" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qAe-qW-pYF" secondAttribute="trailing" constant="16" id="dG5-0y-Rba"/>
                             <constraint firstItem="ZQm-wb-1bd" firstAttribute="centerY" secondItem="Fgx-oM-TjB" secondAttribute="centerY" id="fhq-E4-ZnE"/>
-                            <constraint firstItem="qAe-qW-pYF" firstAttribute="top" secondItem="ZQm-wb-1bd" secondAttribute="centerY" id="jUD-WY-f4U"/>
+                            <constraint firstItem="qAe-qW-pYF" firstAttribute="top" secondItem="ZQm-wb-1bd" secondAttribute="centerY" constant="2" id="jUD-WY-f4U"/>
                             <constraint firstItem="cYq-Sn-4Bf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eCo-Ih-cfX" secondAttribute="trailing" constant="16" id="oOP-4m-5Qg"/>
                             <constraint firstItem="qAe-qW-pYF" firstAttribute="leading" secondItem="eCo-Ih-cfX" secondAttribute="leading" id="rGx-aM-AZo"/>
                             <constraint firstItem="hLV-dk-hgZ" firstAttribute="leading" secondItem="NQM-6F-r5u" secondAttribute="trailing" constant="16" id="rj3-6m-ju5"/>
