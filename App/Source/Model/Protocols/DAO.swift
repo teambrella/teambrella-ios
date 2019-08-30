@@ -88,7 +88,7 @@ protocol DAO {
 
     func deleteCard(topicID: String) -> Future<HomeModel>
     func setLanguage() -> Future<String>
-    func sendPhoto(data: Data) -> Future<[String]>
+    func sendPhoto(data: Data, isCertified: Bool) -> Future<[String]>
     func sendAvatar(data: Data) -> Future<String>
 
     func createNewClaim(model: NewClaimModel) -> Future<ClaimEntityLarge>

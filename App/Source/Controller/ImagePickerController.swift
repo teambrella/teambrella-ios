@@ -42,6 +42,7 @@ class ImagePickerController: NSObject {
     var maxSide: CGFloat = 1800
 
     var chatMetadata: ChatMetadata?
+    var cameraShown = false
 
     var imageToSend: UIImage?
     weak var imagePicker: UIImagePickerController?
@@ -53,6 +54,7 @@ class ImagePickerController: NSObject {
     }
     
     func showOptions() {
+        cameraShown = false
         if chatMetadata != nil {
             showCamera()
             return
@@ -81,6 +83,7 @@ class ImagePickerController: NSObject {
     }
     
     func showCamera() {
+        cameraShown = true
         showSource(source: .camera)
     }
     
@@ -109,7 +112,7 @@ class ImagePickerController: NSObject {
     }
 
     private func sendPhoto(image: UIImage, imageData: Data) {
-        service.dao.sendPhoto(data: imageData).observe { [weak self] result in
+        service.dao.sendPhoto(data: imageData, isCertified: cameraShown).observe { [weak self] result in
             guard let self = self else { return }
 
             switch result {

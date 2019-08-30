@@ -362,13 +362,19 @@ class ServerDAO: DAO {
         return promise
     }
     
-    func sendPhoto(data: Data) -> Future<[String]> {
+    func sendPhoto(data: Data, isCertified: Bool = false) -> Future<[String]> {
         let promise = Promise<[String]>()
         freshKey { key in
             var body = RequestBody(key: key, payload: nil)
             body.contentType = "image/jpeg"
             body.data = data
-            let request = TeambrellaRequest<[String]>(type: .uploadPhoto, body: body, success: { box in
+            var parameters:[String: String] = [:]
+            if isCertified {
+                parameters["cam"] = "X"
+            }
+            let request = TeambrellaRequest<[String]>(type: .uploadPhoto,
+                                                      parameters: parameters,
+                                                      body: body, success: { box in
                 guard let value = box.value else {
                     fatalError()
                 }

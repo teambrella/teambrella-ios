@@ -176,13 +176,33 @@ class ChatVariousContentCell: ChatUserDataCell {
                 views.append(textView)
                 result.append(textView)
             case let .image(urlString: urlString, urlStringSmall: urlStringSmall, aspect: _):
+                let certified = urlString.contains("@cam")
                 let imageView = createGalleryView(for: urlString, small: urlStringSmall, height: sizes[idx].height)
                 contentView.addSubview(imageView)
+                if (certified) {
+                    addPhotoLabel(to:imageView)
+                }
                 views.append(imageView)
                 result.append(imageView)
             }
         }
         return result
+    }
+    
+    
+    private func addPhotoLabel(to imageView: UIImageView) {
+        let photoLabel = Label()
+        photoLabel.font = UIFont.teambrella(size: 10)
+        photoLabel.textColor = .white
+        photoLabel.text = "📷"
+        photoLabel.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        photoLabel.frame = imageView.frame
+        photoLabel.textInsets = UIEdgeInsets(top: 3, left: 5, bottom: 3, right: 5)
+        photoLabel.sizeToFit()
+        photoLabel.cornerRadius = photoLabel.frame.height / 2
+        photoLabel.center = CGPoint(x: imageView.frame.width - photoLabel.frame.width / 2 - Constant.timeInset,
+                                    y: imageView.frame.height - photoLabel.frame.height / 2 - Constant.timeInset)
+        imageView.addSubview(photoLabel)
     }
     
     private func createTextView(for text: String, size: CGSize) -> UITextView {
