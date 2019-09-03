@@ -25,7 +25,7 @@ import Kingfisher
 struct FeedCellBuilder {
     static func populate(cell: UICollectionViewCell, with model: FeedEntity) {
         if let cell = cell as? TeamFeedCell {
-            if model.itemType == .claim {
+            if model.itemType == .claim || model.itemType == .fundWallet {
                 cell.avatarView.showImage(string: model.smallPhotoOrAvatar, needHeaders: true)
                 cell.avatarView.layer.masksToBounds = true
                 cell.avatarView.layer.cornerRadius = 4
@@ -38,24 +38,33 @@ struct FeedCellBuilder {
                 }
                 cell.avatarView.layer.masksToBounds = true
                 cell.avatarView.layer.cornerRadius = cell.avatarView.frame.height / 2
-                cell.titleLabel.text = model.chatTitle ?? model.itemUserName.entire
+                cell.titleLabel.text = model.chatTitle ?? model.itemUserName?.entire
             }
             cell.avatarView.contentMode = .scaleAspectFill
             cell.textLabel.text = model.text.sane
+            cell.textLabel.numberOfLines = 2
+            cell.textLabel.setLineSpacing(lineSpacing: 1.8)
             
-            let count = model.posterCount
+            let count = model.posterCount ?? 0
             let label: String? = count > 3 ? "+\(count - 3)" : nil
-            cell.facesStack.setAvatars(model.topPosterAvatars, label: label, max: count > 3 ? 4 : 3)
+            cell.facesStack.isHidden = model.topPosterAvatars == nil
+            if (model.topPosterAvatars != nil) {
+                cell.facesStack.setAvatars(model.topPosterAvatars!, label: label, max: count > 3 ? 4 : 3)
+            }
 
             if let date = model.itemDate {
                 cell.timeLabel.text = DateProcessor().yearFilter(from: date)
             }
             cell.unreadLabel.font = UIFont.teambrellaBold(size: 13)
-            cell.unreadLabel.text = String(model.unreadCount)
+            cell.unreadLabel.text = String(model.unreadCount ?? 0)
             cell.unreadLabel.isHidden = model.unreadCount == 0
             
-            cell.pinnedView.isHidden = !cell.unreadLabel.isHidden || model.teamPinVote <= 0
-            
+            cell.pinnedView.isHidden = !cell.unreadLabel.isHidden || (model.teamPinVote ?? 0) <= 0
+            cell.timeLabel.isHidden = false
+            cell.pane.backgroundColor = .white
+            cell.avatarsConstraint.isActive = true
+            cell.bottomConstraint.isActive = false
+
             switch model.itemType {
             case .claim:
                 cell.iconView.isHidden = false
@@ -64,6 +73,15 @@ struct FeedCellBuilder {
             case .teammate:
                 cell.iconView.isHidden = true //= #imageLiteral(resourceName: "application")
                 cell.typeLabel.text = ""//"Team.Chat.TypeLabel.application".localized
+            case .fundWallet:
+                cell.typeLabel.text = ""//"Team.Chat.TypeLabel.application".localized
+                cell.timeLabel.isHidden = true
+                cell.iconView.isHidden = true //= #imageLiteral(resourceName: "application")
+                cell.pane.backgroundColor = .veryLightBlueTwo
+                cell.textLabel.numberOfLines = 4
+                cell.titleLabel.text = model.chatTitle
+                cell.avatarsConstraint.isActive = false
+                cell.bottomConstraint.isActive = true
             default:
                 cell.iconView.isHidden = false
                 cell.iconView.image = #imageLiteral(resourceName: "discussion")

@@ -25,24 +25,24 @@ struct FeedEntity: Decodable {
     let text: SaneText
     let amount: Double?
     let teamVote: Double?
-    let topicID: String
+    let topicID: String?
     let isVoting: Bool?
     let payProgress: Double?
     let itemType: ItemType
     let itemID: Int
     let itemUserAvatar: Avatar?
-    let itemUserName: Name
-    let itemUserID: String
+    let itemUserName: Name?
+    let itemUserID: String?
     let itemDate: Date?
     let smallPhotoOrAvatar: String
     let modelOrName: String?
     let chatTitle: String?
-    let unreadCount: Int
-    let posterCount: Int
-    let topPosterAvatars: [Avatar]
+    let unreadCount: Int?
+    let posterCount: Int?
+    let topPosterAvatars: [Avatar]?
     let year: Year?
-    let myPinType: PinType
-    let teamPinVote: Double
+    let myPinType: PinType?
+    let teamPinVote: Double?
 
     enum CodingKeys: String, CodingKey {
         case text = "Text"

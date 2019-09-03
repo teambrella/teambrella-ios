@@ -130,7 +130,7 @@ struct TeambrellaStyle {
         let messageText = MessageTextLabel.appearance()
         messageText.font = UIFont.teambrella(size: 12)
         messageText.textColor = .bluishGray
-        
+
         let chatText = ChatTextLabel.appearance()
         chatText.font = UIFont.teambrella(size: 14)
         chatText.textColor = .charcoalGray

@@ -12,17 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TeamFeedCell" id="gTV-IL-0wX" customClass="TeamFeedCell" customModule="Surilla" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="545" height="119"/>
+            <rect key="frame" x="0.0" y="0.0" width="545" height="152"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="545" height="119"/>
+                <rect key="frame" x="0.0" y="0.0" width="545" height="152"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BkT-eI-XLe">
-                        <rect key="frame" x="0.0" y="0.0" width="545" height="119"/>
+                        <rect key="frame" x="0.0" y="0.0" width="545" height="152"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uev-dk-iCT" userLabel="Separator">
-                                <rect key="frame" x="16" y="118" width="529" height="1"/>
+                                <rect key="frame" x="16" y="151" width="529" height="1"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.92941176470588238" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="cU0-IE-Kfr"/>
@@ -41,14 +41,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEA-pj-5Rg" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="72" y="40.5" width="361" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Message is a message is a message is a message" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEA-pj-5Rg" customClass="MessageTextLabel" customModule="Surilla" customModuleProvider="target">
+                                <rect key="frame" x="72" y="40.5" width="361" height="41"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLAIM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8U-ZJ-9yS" customClass="InfoHelpLabel" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="105" y="83" width="51" height="20.5"/>
+                                <rect key="frame" x="105" y="116" width="51" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,21 +60,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="claim" translatesAutoresizingMaskIntoConstraints="NO" id="7wD-Sn-ye9">
-                                <rect key="frame" x="89" y="88" width="10" height="10"/>
+                                <rect key="frame" x="89" y="121" width="10" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7wD-Sn-ye9" secondAttribute="height" multiplier="1:1" id="4xE-HR-bgu"/>
                                     <constraint firstAttribute="width" constant="10" id="uG6-Lh-kxL"/>
                                 </constraints>
                             </imageView>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbY-Lf-BOo" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                                <rect key="frame" x="72" y="83" width="1" height="20"/>
+                                <rect key="frame" x="72" y="116" width="1" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="5jQ-k5-rNX"/>
                                     <constraint firstAttribute="width" priority="250" constant="1" id="idf-Y5-3vE"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hC3-mz-Mxa">
-                                <rect key="frame" x="449" y="48.5" width="80" height="22"/>
+                                <rect key="frame" x="449" y="65" width="80" height="22"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="1000" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6d-fE-Fmr" customClass="Label" customModule="Surilla" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -147,11 +147,13 @@
                             <constraint firstItem="lEA-pj-5Rg" firstAttribute="leading" secondItem="yqT-sY-ffe" secondAttribute="leading" id="mXQ-QL-Fqo"/>
                             <constraint firstItem="lEA-pj-5Rg" firstAttribute="top" secondItem="yqT-sY-ffe" secondAttribute="bottom" constant="4" id="oJN-ny-W39"/>
                             <constraint firstItem="m8U-ZJ-9yS" firstAttribute="centerY" secondItem="JbY-Lf-BOo" secondAttribute="centerY" id="ryT-3c-r4w"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="lEA-pj-5Rg" secondAttribute="bottom" constant="16" id="trT-lT-VN4"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="hNr-St-Ajm"/>
+                                <exclude reference="trT-lT-VN4"/>
                             </mask>
                         </variation>
                     </view>
@@ -165,12 +167,15 @@
                 <constraint firstItem="BkT-eI-XLe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ihT-DE-5Qp"/>
                 <constraint firstItem="hC3-mz-Mxa" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="rhQ-zn-bj6"/>
             </constraints>
-            <size key="customSize" width="545" height="180"/>
+            <size key="customSize" width="545" height="213"/>
             <connections>
                 <outlet property="avatarView" destination="M6n-hd-Q8f" id="LqM-0Q-GCK"/>
+                <outlet property="avatarsConstraint" destination="V9c-bj-AqW" id="tLG-kc-Nss"/>
+                <outlet property="bottomConstraint" destination="trT-lT-VN4" id="Xg8-20-ClF"/>
                 <outlet property="cellSeparator" destination="uev-dk-iCT" id="xup-A6-yLV"/>
                 <outlet property="facesStack" destination="JbY-Lf-BOo" id="cCi-8h-bWV"/>
                 <outlet property="iconView" destination="7wD-Sn-ye9" id="dWe-5f-qxc"/>
+                <outlet property="pane" destination="BkT-eI-XLe" id="Od5-3Y-not"/>
                 <outlet property="pinnedView" destination="XXX-fK-VAC" id="5r9-wv-PIu"/>
                 <outlet property="textLabel" destination="lEA-pj-5Rg" id="3XS-Cu-SEt"/>
                 <outlet property="timeLabel" destination="Ejr-yO-pjp" id="OMG-JK-l3L"/>
@@ -178,7 +183,7 @@
                 <outlet property="typeLabel" destination="m8U-ZJ-9yS" id="yB6-p2-NXD"/>
                 <outlet property="unreadLabel" destination="B6d-fE-Fmr" id="pFg-Xc-bau"/>
             </connections>
-            <point key="canvasLocation" x="-37.5" y="-73.5"/>
+            <point key="canvasLocation" x="-37.600000000000001" y="-59.370314842578715"/>
         </collectionViewCell>
     </objects>
     <resources>

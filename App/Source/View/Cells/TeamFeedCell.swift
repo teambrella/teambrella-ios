@@ -36,7 +36,10 @@ class TeamFeedCell: UICollectionViewCell, XIBInitableCell {
     @IBOutlet var unreadLabel: SubheaderLabel!
     @IBOutlet var pinnedView: UIImageView!
     @IBOutlet var cellSeparator: UIView!
-    
+    @IBOutlet var pane: UIView!
+    @IBOutlet var avatarsConstraint: NSLayoutConstraint!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+
     var avatarMode: AvatarMode = .circular {
         didSet {
             avatarView.layer.cornerRadius = avatarMode == .circular ? 20 : 2

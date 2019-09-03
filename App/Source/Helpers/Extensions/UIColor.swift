@@ -24,6 +24,7 @@ import UIKit
 extension UIColor {
     // MARK: Blue
     class var veryLightBlue: UIColor { return           #colorLiteral(red: 0.9137254902, green: 0.9490196078, blue: 1, alpha: 1) }
+    class var veryLightBlueTwo: UIColor { return        #colorLiteral(red: 0.9333333333, green: 0.9607843137, blue: 1, alpha: 1) }
     class var veryLightBlueThree: UIColor { return      #colorLiteral(red: 0.8588235294, green: 0.9176470588, blue: 1, alpha: 1) }
     class var lightBlueGrayTwo: UIColor { return        #colorLiteral(red: 0.8039215686, green: 0.862745098, blue: 0.9529411765, alpha: 1) }
     class var paleLilac: UIColor { return               #colorLiteral(red: 0.8784313725, green: 0.8862745098, blue: 1, alpha: 1) }

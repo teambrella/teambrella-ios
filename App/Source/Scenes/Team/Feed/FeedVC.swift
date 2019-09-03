@@ -158,7 +158,12 @@ extension FeedVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let feedEntity = dataSource[indexPath]
-        service.router.presentChat(context: UniversalChatContext(feedEntity))
+        if (feedEntity.itemType == .fundWallet) {
+            service.router.switchToWallet()
+        }
+        else {
+            service.router.presentChat(context: UniversalChatContext(feedEntity))
+        }
     }
     
 }
