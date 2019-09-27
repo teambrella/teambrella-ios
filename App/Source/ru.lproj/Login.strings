@@ -15,17 +15,17 @@
 "Login.LoginNoInviteVC.requestInvitationButton"    = "Запросить приглашение";
 "Login.LoginNoInviteVC.mailToSupport"              = "Связаться с поддержкой";
 
-"Login.LoginNoInviteVC.lowerLabel"                 = "Привет, пока мы принимаем только по приглашениям. Открой ссылку, присланную в приглашении, или попробуй демо.";
+"Login.LoginNoInviteVC.lowerLabel"                 = "Привет, пока мы принимаем только по приглашениям. Откройте ссылку, присланную в приглашении, или попробуйте демо.";
 "Login.LoginNoInviteVC.tryDemoButton"              = "Попробовать демо";
 
 "Login.LoginNoInviteVC.almostReady.title"          = "Привет!";
 "Login.LoginNoInviteVC.almostReady.details"        = "Мы работаем не покладая рук, чтобы запустить команду. Скоро она будет готова!";
 
 "Login.LoginNoInviteVC.accessDenied.title"         = "Сожалеем";
-"Login.LoginNoInviteVC.accessDenied.details"       = "В данный момент ты не можешь войти в Тимбреллу. Пожалуйста, свяжись с нашей службой поддержки.";
+"Login.LoginNoInviteVC.accessDenied.details"       = "В данный момент Вы не можете войти в Тимбреллу. Пожалуйста, свяжись с нашей службой поддержки.";
 
-"Login.LoginNoInviteVC.pendingApplication.title"   = "Твоя заявка не завершена";
-"Login.LoginNoInviteVC.pendingApplication.details" = "Пожалуйста, заполни все необходимые поля. Мы ждем тебя! Если у тебя есть вопросы, свяжись с нашей службой поддержки.";
+"Login.LoginNoInviteVC.pendingApplication.title"   = "Ваша заявка не завершена";
+"Login.LoginNoInviteVC.pendingApplication.details" = "Пожалуйста, заполните все необходимые поля. Мы ждем Вас! Если у Вас есть вопросы, свяжитесь с нашей службой поддержки.";
 "Login.QRCodeButton"                               = "Войти с QR кодом";
 
 "Login.LoginBlueVC.continueWithVKButton"           = "Продолжить с VK";
@@ -36,7 +36,7 @@
 "Login.Application.Item.Title"                     = "АВТОМОБИЛЬ";
 "Login.Application.Email.Title"                    = "E-MAIL";
 "Login.Application.RegisteerButton.Title"          = "Зарегистрироваться";
-"Login.Application.TermsConditions.format"         = "Регистрируясь в Teambrella, ты принимаешь %@";
+"Login.Application.TermsConditions.format"         = "Регистрируясь в Teambrella, Вы принимаете %@";
 "Login.Application.TermsConditions.Link"           = "Условия Использования";
 
 "Login.Application.Item.Placeholder"               = "Ford Focus 2014";

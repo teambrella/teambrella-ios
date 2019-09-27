@@ -27,14 +27,30 @@ struct CoverageEntity: Decodable {
         case nextCoverage = "NextCoverage"
         case daysToNextCoverage = "DaysToNextCoverage"
         case claimLimit = "ClaimLimit"
+        case nextLimit = "NextLimit"
         case deductibleAmount = "DeductibleAmount"
+        case desiredLimit = "DesiredLimit"
+        case maxPayment = "MaxPayment"
+        case teammatesAtEffLimit = "TeammatesAtEffLimit"
+        case teammatesAtLimit = "TeammatesAtLimit"
+        case teamClaimLimit = "TeamClaimLimit"
+        case wasCoverageSuppressed = "WasCoverageSuppressed"
+        case text = "Text"
     }
 
     var coverage: Ether
     var nextCoverage: Ether
     var daysToNextCoverage: Int
-    var claimLimit: Double
     var deductibleAmount: Ether
+    let desiredLimit: Double
+    let claimLimit: Double
+    let nextLimit: Double
+    let maxPayment: Double
+    let teammatesAtEffLimit: Int
+    let teammatesAtLimit: Int
+    let teamClaimLimit: Int?
+    let wasCoverageSuppressed: Bool
+    let text: String?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -43,7 +59,15 @@ struct CoverageEntity: Decodable {
         nextCoverage = try container.decode(Ether.self, forKey: .nextCoverage)
         daysToNextCoverage = try container.decode(Int.self, forKey: .daysToNextCoverage)
         claimLimit = try container.decode(Double.self, forKey: .claimLimit)
+        nextLimit = try container.decode(Double.self, forKey: .nextLimit)
         deductibleAmount = try container.decode(Ether.self, forKey: .deductibleAmount)
+        desiredLimit = try container.decode(Double.self, forKey: .desiredLimit)
+        maxPayment = try container.decode(Double.self, forKey: .maxPayment)
+        teammatesAtEffLimit = try container.decode(Int.self, forKey: .teammatesAtEffLimit)
+        teammatesAtLimit = try container.decode(Int.self, forKey: .teammatesAtLimit)
+        teamClaimLimit = try container.decodeIfPresent(Int.self, forKey: .teamClaimLimit)
+        wasCoverageSuppressed = try container.decode(Bool.self, forKey: .wasCoverageSuppressed)
+        text = try container.decodeIfPresent(String.self, forKey: .text)
     }
 
 }

@@ -37,10 +37,26 @@
 "Me.CoverageVC.fundButton.title.toIncrease"    = "Financiar tu Monedero para aumentar";
 "Me.CoverageVC.fundButton.title"               = "Financiar Monedero";
 "Me.CoverageVC.title"                          = "¿CÓMO FUNCIONA?";
-"Me.CoverageVC.subtitle"                       = "Utilice el control deslizante para ver cómo los gastos afectan su reembolso máximo";
+"Me.CoverageVC.subtitle"                       = "1. Submit a claim.\n2. The team discusses and votes\n3. Teammates pay their shares of reimbursement";
 "Me.CoverageVC.maxExpenses"                    = "Cantidad máxima de los gastos cubiertos";
 "Me.CoverageVC.yourExpenses"                   = "Si tus gastos son";
 "Me.CoverageVC.teamPay"                        = "El equipo te pagaría hasta";
+
+"Me.CoverageVC.desirableLimit"                     = "Desirable coverage";
+"Me.CoverageVC.possiblePayment"                    = "Your maximum payment";
+"Me.CoverageVC.teammatesWouldPay"                  = "Teammates with at least the same coverage";
+"Me.CoverageVC.currentCoverage"                    = "Current coverage";
+"Me.CoverageVC.fundWallet"                         = "Fund wallet";
+"Me.CoverageVC.checkSettings"                      = "Check settings";
+"Me.CoverageVC.explanationNeedMoreTeammates"       = "Not enough teammates (%d) with coverage equal or greater than desirable.";
+"Me.CoverageVC.explanationSettings"                = "Please make sure that Teambrella application is allowed to work in background.\n\nCoverage will restore in 24 hours.";
+"Me.CoverageVC.explanationFund"                    = "Not enough funds for desired coverage.";
+"Me.CoverageVC.explanationIncrease"                = "Coverage increses to %d %@ in 24 hours";
+"Me.CoverageVC.suspended"                          = "suspended";
+"Me.CoverageVC.reductionWarning"                   = "WARNING: You're going to reduce the coverage. It takes 24 hours to increase coverage after that.";
+"Me.CoverageVC.coverageReductionButton"            = "Confirm reduction";
+
+
 "Me.Report.ItemCell.title"                     = "INFORME";
 "Me.Report.DateCell.title"                     = "FECHA DEL INCIDENTE";
 "Me.Report.ExpensesCell.title"                 = "GASTOS";
@@ -48,6 +64,8 @@
 "Me.Report.DescriptionCell.title-discussion"   = "PUBLICACIÓN";
 "Me.Report.PhotosCell.title"                   = "FOTOS";
 "Me.Report.WalletCell.title"                   = "REEMBOLSO A";
+
+
 
 "Me.Report.reimburse.placeholder"              = "Dirección de Ethereum";
 "Me.Report.ExpensesCell.deductibleTitle"       = "DEDUCIBLE";

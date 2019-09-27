@@ -28,21 +28,41 @@ class CoverageVC: UIViewController, Routable {
     @IBOutlet var upperView: UIView!
     @IBOutlet var radarView: RadarView!
     @IBOutlet var gradientView: GradientView!
-    @IBOutlet var coverage: UILabel!
-    @IBOutlet var fundWalletButton: BorderedButton!
+    @IBOutlet var coverageTop: UILabel!
+    @IBOutlet var coverageCurrency: UILabel!
     @IBOutlet var weatherImage: UIImageView!
     
-    @IBOutlet var subcontainer: UIView!
+    @IBOutlet var sliderBlock: UIView!
+    @IBOutlet var warningBlock: UIStackView!
+    @IBOutlet var coverageActionButton: BorderedButton!
+    @IBOutlet var warningBackround: UIView!
+    @IBOutlet var warningText: UILabel!
+    @IBOutlet var warningBlockBottom: UIView!
+
+    @IBOutlet var dataBlock: UIView!
     @IBOutlet var umbrellaView: UmbrellaView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleLabel: UILabel!
-    @IBOutlet var upperLabel: UILabel!
-    @IBOutlet var centerLabel: UILabel!
-    @IBOutlet var lowerLabel: UILabel!
+    @IBOutlet var desiredCoverageLabel: UILabel!
     @IBOutlet var slider: UISlider!
-    @IBOutlet var upperAmount: AmountWithCurrency!
-    @IBOutlet var centerAmount: AmountWithCurrency!
-    @IBOutlet var lowerAmount: AmountWithCurrency!
+    @IBOutlet var desiredAmount: AmountWithCurrency!
+
+    @IBOutlet var currentCoverageLabel: UILabel!
+    @IBOutlet var currentCoverageAmount: AmountWithCurrency!
+    @IBOutlet var maxPaymentLabel: UILabel!
+    @IBOutlet var maxPaymentAmount: AmountWithCurrency!
+    @IBOutlet var teammatesLabel: UILabel!
+    @IBOutlet var teammatesAmount: AmountLabel!
+
+    var lastMovedSlider: Date?
+    var showCheckSettings = false
+    var showLimitIncrease = false
+    var showInvite = false
+    var showFund = false
+    var showDecreaseWarning = false
+    var currency: String = ""
+
+    @IBOutlet var silderBottomContstraint: NSLayoutConstraint!
     
     lazy var secretRecognizer: UILongPressGestureRecognizer = {
         let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(secretTap))
@@ -50,29 +70,30 @@ class CoverageVC: UIViewController, Routable {
         return recognizer
     }()
     
-    var coverageAmount: Int = 0 {
+    var effectiveLimit: Int = 0 {
         didSet {
-            coverage.text = String(coverageAmount)
-            fundWalletButton.isEnabled = true
-            setFundButtonTitle(coverageAmount: coverageAmount)
-            setImage(for: coverageAmount)
+            coverageTop.text = String(effectiveLimit)
+            coverageActionButton.isEnabled = true
+            setImage(for: effectiveLimit)
         }
     }
-    var limitAmount: Double = 0 {
+    var limitAmount: Int = 0 {
         didSet {
-            upperAmount.amountLabel.text = String.truncatedNumber(limitAmount)
+            //upperAmount.amountLabel.text = String.truncatedNumber(limitAmount)
         }
     }
     
-    @IBAction func tapFundWalletButton(_ sender: Any) {
-        service.router.switchToWallet()
-    }
-    
-    func setFundButtonTitle(coverageAmount: Int) {
-        let title = (coverageAmount == 100)
-            ? "Me.CoverageVC.fundButton.title".localized
-            : "Me.CoverageVC.fundButton.title.toIncrease".localized
-        fundWalletButton.setTitle(title, for: .normal)
+    @IBAction func tapCoverageActionButton(_ sender: Any) {
+        if (showDecreaseWarning) {
+            let desiredLimit = getDesiredLimit(from: slider)
+            saveDesiredCoverage(coverage: Int(desiredLimit))
+        }
+        else if (showFund) {
+            service.router.switchToWallet()
+        }
+        else if (showInvite) {
+            ShareController().shareInvitation(in: self)
+        }
     }
     
     static var storyboardName = "Me"
@@ -84,27 +105,40 @@ class CoverageVC: UIViewController, Routable {
 
         let session = service.session
         
-        let currency = session?.currentTeam?.currency ?? ""
-        upperAmount.currencyLabel.text = currency
-        centerAmount.currencyLabel.text = currency
-        lowerAmount.currencyLabel.text = currency
+        currency = session?.currentTeam?.currency ?? ""
+        coverageCurrency.text = currency
+        desiredAmount.currencyLabel.text = currency
+        currentCoverageAmount.currencyLabel.text = currency
+        maxPaymentAmount.currencyLabel.text = currency
 
-        setFundButtonTitle(coverageAmount: coverageAmount)
         titleLabel.text = "Me.CoverageVC.title".localized
         subtitleLabel.text = "Me.CoverageVC.subtitle".localized
-        upperLabel.text = "Me.CoverageVC.maxExpenses".localized
-        centerLabel.text = "Me.CoverageVC.yourExpenses".localized
-        centerAmount.backView.backgroundColor = #colorLiteral(red: 0.7411764706, green: 0.7647058824, blue: 1, alpha: 0.2)
-        lowerLabel.text = "Me.CoverageVC.teamPay".localized
-        
+        //upperLabel.text = "Me.CoverageVC.maxExpenses".localized
+        desiredCoverageLabel.text = "Me.CoverageVC.desirableLimit".localized
+        desiredAmount.backView.backgroundColor = #colorLiteral(red: 0.7411764706, green: 0.7647058824, blue: 1, alpha: 0.2)
+        teammatesAmount.textAlignment = NSTextAlignment.right
+        //lowerLabel.text = "Me.CoverageVC.teamPay".localized
+
+        currentCoverageLabel.text = "Me.CoverageVC.currentCoverage".localized
+        maxPaymentLabel.text = "Me.CoverageVC.possiblePayment".localized
+        teammatesLabel.text = "Me.CoverageVC.teammatesWouldPay".localized
+
         slider.addTarget(self, action: #selector(changeValues), for: .valueChanged)
         slider.isExclusiveTouch = true
     
         titleLabel.isUserInteractionEnabled = true
         titleLabel.addGestureRecognizer(secretRecognizer)
         ViewDecorator.shadow(for: upperView, opacity: 0.1, radius: 5)
-        subcontainer.layer.cornerRadius = 4
-        ViewDecorator.shadow(for: subcontainer, opacity: 0.1, radius: 5)
+        
+        sliderBlock.layer.cornerRadius = 4
+        ViewDecorator.shadow(for: sliderBlock, opacity: 0.1, radius: 5)
+
+        dataBlock.layer.cornerRadius = 4
+        ViewDecorator.shadow(for: dataBlock, opacity: 0.1, radius: 5)
+
+        warningBackround.layer.cornerRadius = 4
+
+        warningBlock.visibility = .gone
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,36 +162,169 @@ class CoverageVC: UIViewController, Routable {
     
     func setImage(for percentage: Int) {
         switch percentage {
-        case 98...100: weatherImage.image = #imageLiteral(resourceName: "confetti-umbrella")
-        case 90...97: weatherImage.image  = #imageLiteral(resourceName: "rain-1")
+        case 90...100: weatherImage.image = #imageLiteral(resourceName: "confetti-umbrella")
+        case 80...89: weatherImage.image  = #imageLiteral(resourceName: "rain-1")
         default: weatherImage.image       = #imageLiteral(resourceName: "rain")
         }
     }
     
+    func setControls(from wallet: WalletEntity) {
+        currentCoverageAmount.alpha = 1
+        maxPaymentAmount.alpha = 1
+        teammatesAmount.alpha = 1
+        coverageTop.alpha = 1
+        coverageCurrency.alpha = 1
+
+        let covPart = wallet.coveragePart
+        effectiveLimit = Int(covPart.claimLimit)
+
+        limitAmount = covPart.teamClaimLimit ?? 1000
+        currentCoverageAmount.amountLabel.text = String.truncatedNumber(covPart.claimLimit)
+        maxPaymentAmount.amountLabel.text = String.truncatedNumber(covPart.maxPayment)
+        teammatesAmount.text = String(covPart.teammatesAtEffLimit)
+        if let slider = slider {
+            HUD.hide()
+            slider.value = Float(covPart.desiredLimit) / Float(limitAmount)
+            self.setValues(slider: slider)
+        }
+        
+        showCheckSettings = false
+        showLimitIncrease = false
+        showInvite = false
+        showFund = false
+        
+        if (covPart.coverage.value <= 0 && covPart.wasCoverageSuppressed) {
+            showCheckSettings = true
+        }
+        else if (covPart.nextLimit > Double(effectiveLimit) * 1.2) {
+            showLimitIncrease = true
+        }
+        else if (covPart.teammatesAtEffLimit > covPart.teammatesAtLimit) {
+            showInvite = true
+        }
+        else if (covPart.nextLimit * 1.01 < covPart.desiredLimit) {
+            showFund = true
+        }
+        else if (covPart.nextLimit > Double(effectiveLimit) * 1.01) {
+            showLimitIncrease = true
+        }
+
+        warningBlock.visibility = .gone
+        warningBlockBottom.visibility = .gone
+        coverageActionButton.visibility = .gone
+        coverageActionButton.setTitle("", for: .normal)
+
+        if (showFund || showCheckSettings || showInvite || showLimitIncrease) {
+            warningBlock.visibility = .visible
+        }
+
+        if (showFund || showInvite) {
+            warningBlockBottom.visibility = .visible
+            coverageActionButton.visibility = .visible
+        }
+
+        if (showLimitIncrease) {
+            warningText.text = "Me.CoverageVC.explanationIncrease".localized(Int(covPart.nextLimit), currency)
+            warningBackround.backgroundColor = UIColor.ligherGold
+        }
+        else if (showFund) {
+            warningText.text = "Me.CoverageVC.explanationFund".localized
+            coverageActionButton.setTitle("Me.CoverageVC.fundWallet".localized, for: .normal)
+            warningBackround.backgroundColor = UIColor.ligherGold
+        }
+        else if (showCheckSettings) {
+            warningText.text = "Me.CoverageVC.explanationSettings".localized
+            //coverageActionButton.setTitle("Me.CoverageVC.checkSettings".localized, for: .normal)
+            warningBackround.backgroundColor = UIColor.ligherGold
+        }
+        else if (showInvite) {
+            warningText.text = "Me.CoverageVC.explanationNeedMoreTeammates".localized(covPart.teammatesAtLimit)
+            coverageActionButton.setTitle("Team.MembersVC.inviteAFriend".localized, for: .normal)
+            warningBackround.backgroundColor = UIColor.ligherGold
+        }
+        if (!(covPart.text ?? "").isEmpty && (showFund || showInvite || showCheckSettings)) {
+            warningText.text = covPart.text
+        }
+
+    }
+    
+    
+    func showDecreaseCoverageWarning() {
+        warningBlock.visibility = .visible
+        warningBlockBottom.visibility = .visible
+        coverageActionButton.visibility = .visible
+        warningText.text = "Me.CoverageVC.reductionWarning".localized
+        coverageActionButton.setTitle("Me.CoverageVC.coverageReductionButton".localized, for: .normal)
+        warningBackround.backgroundColor = UIColor.lightGold
+        showDecreaseWarning = true
+    }
+    
+    
     func loadData() {
         guard let teamID = service.session?.currentTeam?.teamID else { return }
-        
         HUD.show(.progress, onView: view)
-        service.dao.requestCoverage(for: Date(), teamID: teamID).observe { [weak self] result in
+        service.dao.requestWallet(teamID: teamID).observe { [weak self] result in
             switch result {
-            case let .value(coverageForDate):
-                self?.coverageAmount = coverageForDate.coverage.integerPercentage
-                self?.limitAmount = coverageForDate.limit
-                if let slider = self?.slider {
-                    HUD.hide()
-                    self?.changeValues(slider: slider)
-                }
+            case let .value(wallet):
+                self?.setControls(from: wallet)
+            case .error:
+                break
+            }
+        }
+    }
+
+    func saveDesiredCoverage(coverage: Int) {
+        guard let teamID = service.session?.currentTeam?.teamID else { return }
+        HUD.show(.progress, onView: view)
+
+        showDecreaseWarning = false
+        warningBlock.visibility = .gone
+        coverageActionButton.setTitle("", for: .normal)
+        currentCoverageAmount.alpha = 0.3
+        maxPaymentAmount.alpha = 0.3
+        teammatesAmount.alpha = 0.3
+        coverageTop.alpha = 0.3
+        coverageCurrency.alpha = 0.3
+
+        service.dao.setLimit(teamID: teamID, claimLimit: coverage).observe { [weak self] result in
+            switch result {
+            case let .value(wallet):
+                self?.setControls(from: wallet)
             case .error:
                 break
             }
         }
     }
     
+    func getDesiredLimit(from slider: UISlider) -> Double {
+        let sliderScale = Double(limitAmount) / 100
+        return (Double(slider.value) * Double(limitAmount) / sliderScale).rounded() * sliderScale
+    }
+    
+    func setValues(slider: UISlider) {
+        desiredAmount.amountLabel.text = String.truncatedNumber(getDesiredLimit(from: slider))
+    }
+
     @objc
     func changeValues(slider: UISlider) {
-        let expenses = Double(slider.value) * limitAmount
-        centerAmount.amountLabel.text = String.truncatedNumber(expenses)
-        lowerAmount.amountLabel.text = String.truncatedNumber(expenses * Double(coverageAmount) / 100)
+        setValues(slider: slider)
+        lastMovedSlider = Date()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
+            if let lastUpdate = self?.lastMovedSlider {
+                let difference = Date().timeIntervalSince(lastUpdate)
+                if difference > 0.99 {
+                    self?.lastMovedSlider = nil
+                    let desiredLimit = self?.getDesiredLimit(from: slider) ?? 0
+                    if (Int(desiredLimit) < (self?.effectiveLimit ?? 0)) {
+                        self?.showDecreaseCoverageWarning()
+                    } else {
+                        self?.saveDesiredCoverage(coverage: Int(desiredLimit))
+                    }
+                }
+            }
+            
+        })
+
     }
     
 }

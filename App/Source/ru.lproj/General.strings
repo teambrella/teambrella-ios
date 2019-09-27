@@ -20,7 +20,7 @@
 "General.today"                                    = "сегодня";
 "General.yesterday"                                = "вчера";
 
-"General.you"                                      = "Ты";
+"General.you"                                      = "Вы";
 
 "General.TransactionKind.payout"                   = "выплата";
 "General.TransactionKind.withdraw"                 = "вывод";
@@ -52,7 +52,7 @@
 "General.CoverageObject.bicycle"                   = "ВЕЛОСИПЕД";
 
 "General.CoverageType.other"                       = "Объект";
-"General.CoverageType.carCollisionDeductible"      = "Ущерб"; //"Франшиза";
+"General.CoverageType.carCollisionDeductible"      = "Ущерба"; //"Франшиза";
 "General.CoverageType.petDog"                      = "Здоровье питомца";
 "General.CoverageType.petCat"                      = "Здоровье питомца";
 "General.CoverageType.bicycle"                     = "Кража";

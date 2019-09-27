@@ -18,7 +18,7 @@
 "Team.ClaimCell.timePassed_format"                    = "%d мин. назад";
 
 "Team.ClaimCell.voting"                               = "Голосование";
-"Team.ClaimCell.yourVote"                             = "твой голос";
+"Team.ClaimCell.yourVote"                             = "Ваш голос";
 "Team.ClaimCell.proxyVote"                            = "голос прокси";
 "Team.ClaimCell.byProxy"                              = "прокси";
 "Team.ClaimCell.teamVote"                             = "голос команды";
@@ -42,14 +42,14 @@
 "Team.Teammates.teammates"                            = "УЧАСТНИКИ";
 "Team.Teammates.votingEndsIn"                         = "ГОЛОСОВАНИЕ: ОСТАЛОСЬ";
 "Team.Teammates.net"                                  = "НЕТТО";
-"Team.Teammates.coversMe"                             = "ЗАЩИЩАЕТ ТЕБЯ";
-"Team.Teammates.toCoverMe"                            = "БУДЕТ ЗАЩИЩАТЬ ТЕБЯ";
+"Team.Teammates.coversMe"                             = "ЗАЩИЩАЕТ ВАС";
+"Team.Teammates.toCoverMe"                            = "БУДЕТ ЗАЩИЩАТЬ ВАС";
 "Team.MembersVC.indicatorTitle"                       = "Участники";
 "Team.MembersVC.searchHere"                           = "Поиск";
 
-"Team.TeammateCell.youAreProxy_format_s"              = "Ты прокси для %@";
-"Team.TeammateCell.covered"                           = "ЗАЩИТА";
-"Team.TeammateCell.collisionDeductible"               = "Ущерб"; //"Франшиза";
+"Team.TeammateCell.youAreProxy_format_s"              = "Вы прокси для %@";
+"Team.TeammateCell.covered"                           = "ЗАЩИТА ОТ";
+"Team.TeammateCell.collisionDeductible"               = "Ущерба"; //"Франшиза";
 "Team.TeammateCell.limit"                             = "ЛИМИТ";
 "Team.TeammateCell.risk"                              = "РИСК";
 
@@ -129,12 +129,12 @@
 "Team.JoinTeamVC.InfoCell.rulesButton"                = "Читать правила команды";
 
 "Team.JoinTeamVC.PersonalCell.headerLabel"            = "ПЕРСОНАЛЬНАЯ ИНФОРМАЦИЯ";
-"Team.JoinTeamVC.PersonalCell.name"                   = "ТВОЁ ИМЯ";
+"Team.JoinTeamVC.PersonalCell.name"                   = "ВАШЕ ИМЯ";
 "Team.JoinTeamVC.PersonalCell.birthday"               = "ДАТА РОЖДЕНИЯ";
 "Team.JoinTeamVC.PersonalCell.status"                 = "СТАТУС";
 "Team.JoinTeamVC.PersonalCell.location"               = "МЕСТО ЖИТЕЛЬСТВА";
 
-"Team.JoinTeamVC.ItemCell.headerLabel"                = "ТВОЯ МАШИНА";
+"Team.JoinTeamVC.ItemCell.headerLabel"                = "ВАША МАШИНА";
 "Team.JoinTeamVC.ItemCell.makeModel"                  = "МАРКА И МОДЕЛЬ";
 "Team.JoinTeamVC.ItemCell.year"                       = "ГОД";
 "Team.JoinTeamVC.ItemCell.currency"                   = "ВАЛЮТА";
@@ -151,7 +151,7 @@
 
 "Team.VotingRiskVC.headerLabel"                       = "ГОЛОСОВАНИЕ: РИСК";
 "Team.VotingRiskVC.numberBar.left"                    = "ГОЛОС КОМАНДЫ";
-"Team.VotingRiskVC.numberBar.right"                   = "ТВОЙ ГОЛОС";
+"Team.VotingRiskVC.numberBar.right"                   = "ВАШ ГОЛОС";
 "Team.VotingRiskVC.numberBar.right.proxy"             = "ГОЛОС ПРОКСИ";
 "Team.VotingRiskVC.avgLabel"                          = "СРЕДН.\n%d\%";
 "Team.VotingRiskVC.resetVoteButton"                   = "Сбросить";
@@ -185,7 +185,7 @@
 "Team.Chat.TypeLabel.application"                     = "ВСТУПЛЕНИЕ";
 "Team.Chat.TypeLabel.other"                           = "ОБСУЖДЕНИЕ";
 "Team.Chat.Separator.newMessages"                     = "НОВЫЕ СООБЩЕНИЯ";
-"Team.Chat.Input.yourMessageHere"                     = "Твоё сообщение";
+"Team.Chat.Input.yourMessageHere"                     = "Ваше сообщение";
 "Team.Chat.Input.continueJoining"                     = "Продолжить вступление в команду";
 "Team.Chat.Input.goToDiscussion"                      = "Перейти в обсуждение";
 
@@ -200,8 +200,8 @@
 "Team.Claims.Empty.title"                             = "В команде ещё нет ни одной заявки на выплату";
 "Team.Claims.Empty.details"                           = "Мы сообщим, когда первая заявка будет создана";
 "Team.Chat.NotificationSettings.title"                = "НАСТРОЙКИ НОТИФИКАЦИЙ";
-"Team.Chat.NotificationSettings.subscribed"           = "Подписан";
-"Team.Chat.NotificationSettings.subscribed.details"   = "Ты будешь получать нотификации о каждом сообщении";
+"Team.Chat.NotificationSettings.subscribed"           = "Подписаны";
+"Team.Chat.NotificationSettings.subscribed.details"   = "Вы будете получать нотификации о каждом сообщении";
 "Team.Chat.NotificationSettings.unsubscribed"         = "Без нотификаций";
 "Team.Chat.NotificationSettings.unsubscribed.details" = "Нотификации для этой темы выключены";
 
@@ -213,11 +213,11 @@
 "Team.Chat.Actions.downvote"                          = "Не нравится!";
 "Team.Chat.Actions.summary"                           = "Это мое резюме";
 "Team.Chat.Actions.addToProxy"                        = "Сделать моим прокси";
-"Team.Chat.Actions.addToProxyComment"                 = "%@ будет замещать тебя при голосовании";
+"Team.Chat.Actions.addToProxyComment"                 = "%@ будет замещать Вас при голосовании";
 "Team.Chat.Actions.makeMainProxy"                     = "Поднять в списке прокси";
 "Team.Chat.Actions.makeMainProxyComment"              = "Если %@ голосует, то остальные прокси будут игнорироваться";
 "Team.Chat.Actions.removeFromProxies"                 = "Убрать из моих прокси";
-"Team.Chat.Actions.removeFromProxiesComment"          = "%@ больше не будет замещать тебя при голосовании";
+"Team.Chat.Actions.removeFromProxiesComment"          = "%@ больше не будет замещать Вас при голосовании";
 "Team.Chat.Actions.user"                              = "пользователь";
 "Team.Chat.Actions.userCaps"                          = "Пользователь";
 
@@ -227,12 +227,12 @@
 "Team.Chat.ObjectView.VoteLabel" = "Голосовать";
 "Team.Chat.ObjectView.RevoteLabel" = "Изменить"; // переголосовать не влезает на маленькие айфоны
 "Team.Chat.ObjectView.ClaimAmountLabel" = "ЗАЯВКА - ";
-"Team.Chat.ObjectView.TitleLabel" = "ТВОЙ ГОЛОС";
+"Team.Chat.ObjectView.TitleLabel" = "ВАШ ГОЛОС";
 "Team.Chat.ObjectView.TitleLabel.risk" = "РИСК";
 "Team.Chat.ObjectView.TitleLabel.team" = "КОМАНДА";
 
 "Team.Vote.doNotAccept" = "Не принимать";
-"Team.Vote.SwipeToVote" = "Двигай влево или вправо, чтобы голосовать";
+"Team.Vote.SwipeToVote" = "Двигайте влево или вправо, чтобы голосовать";
 
 "Team.Claim.Transactions.from" = "ОТ";
 "Team.VotingRiskCell.teamAvg" = "СРЕДН.\nКОМАНДЫ";
@@ -254,14 +254,14 @@
 
 "Team.TearsOld.lessThanAYear"   = "< года";
 
-"Team.Chat.ClaimPaidCell.text" = "Твоя команда оплатила заявку. Неплохо, да? Поделись с друзьями!";
+"Team.Chat.ClaimPaidCell.text" = "Ваша команда оплатила заявку. Неплохо, да? Поделитесь с друзьями!";
 "Team.Chat.ClaimPaid.ShareText.pets" = "Мы помогли участнику оплатить лечение питомца.  Неплохо, да?";
 "Team.Chat.ClaimPaid.ShareText.car" = "Мы помогли участнику оплатить ремонт машины. Неплохо, да?";
 "Team.Chat.ClaimPaid.ShareText.bike" = "Мы возместили участнику стоимость украденного велосипеда. Неплохо, да?";
 "Team.Chat.ClaimPaidCell.buttonTitle" = "Поделиться с друзьями";
 
 "Team.VotingRiskVC.avg"                          = "СРЕДН.";
-"Team.Chat.PayToJoin.text" = "Положи от 3000 руб в свой кошелёк и получи бонус +3000 руб в подарок.";
+"Team.Chat.PayToJoin.text" = "Положите от 3000 руб в свой кошелёк и получите бонус +3000 руб в подарок.";
 "Team.Chat.PayToJoin.buttonTitle" = "Пополнить кошелёк";
 "Team.Chat.ObjectView.TitleLabel.teamVote" = "ГОЛОС КОМАНДЫ";
 "Team.ClaimCell.voting.ended" = "Зак. ";
@@ -271,10 +271,10 @@
 "Team.Notifications.occasionally" = "Раз в три дня";
 "Team.Notifications.rarely" = "Раз в месяц";
 
-"Team.Notifications.Details.never" = "Уведомления о новостях команды выключены.";
-"Team.Notifications.Details.often" = "Ты будешь оперативно получать все новости о команде.";
-"Team.Notifications.Details.occasionally" = "Ни одно голосование не пройдет мимо тебя.";
-"Team.Notifications.Details.rarely" = "Ты будешь получать сводку о том, что произошло в команде за месяц.";
+"Team.Notifications.Details.never" = "Уведомления о новостях команды отключены.";
+"Team.Notifications.Details.often" = "Вы будете оперативно получать все новости о команде.";
+"Team.Notifications.Details.occasionally" = "Ни одно голосование не пройдет мимо Вас.";
+"Team.Notifications.Details.rarely" = "Вы будете получать сводку о том, что произошло в команде за месяц.";
 
 "Team.Selector.Pin.header" = "Прикрепить тему";
 "Team.Chat.AddPhoto.buttonTitle" = "Добавить фото";

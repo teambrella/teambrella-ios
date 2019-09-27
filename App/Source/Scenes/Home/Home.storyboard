@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FCe-0y-OxV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FCe-0y-OxV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -289,7 +289,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="102"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Osa-1R-OFY" userLabel="Left Brick">
-                                                <rect key="frame" x="33" y="25.5" width="121" height="51"/>
+                                                <rect key="frame" x="16" y="25.5" width="159" height="51"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconCoverage" translatesAutoresizingMaskIntoConstraints="NO" id="wIX-fM-EU9">
                                                         <rect key="frame" x="0.0" y="9.5" width="32" height="32"/>
@@ -299,20 +299,20 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COVERAGE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ym3-xx-jcx" customClass="InfoLabel" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="48" y="0.0" width="73" height="12"/>
+                                                        <rect key="frame" x="48" y="0.0" width="111" height="12"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                         <color key="textColor" red="0.58431372549019611" green="0.6470588235294118" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="95" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7a-cU-E9r" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="48" y="12" width="42" height="39"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t7a-cU-E9r" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="48" y="12" width="42.5" height="39"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WR-os-NZl" customClass="CurrencyNormalLabel" customModule="Surilla" customModuleProvider="target">
-                                                        <rect key="frame" x="92" y="12" width="29" height="39"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="1000" text="USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WR-os-NZl" customClass="CurrencyLabel" customModule="Surilla" customModuleProvider="target">
+                                                        <rect key="frame" x="92.5" y="20.5" width="66.5" height="11"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                                         <color key="textColor" red="0.20784313725490194" green="0.6705882352941176" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -329,12 +329,12 @@
                                                     <constraint firstAttribute="bottom" secondItem="t7a-cU-E9r" secondAttribute="bottom" id="mrP-8t-Xm5"/>
                                                     <constraint firstAttribute="trailing" secondItem="0WR-os-NZl" secondAttribute="trailing" id="no3-0V-ce2"/>
                                                     <constraint firstAttribute="trailing" secondItem="ym3-xx-jcx" secondAttribute="trailing" id="phU-5b-CVI"/>
-                                                    <constraint firstItem="0WR-os-NZl" firstAttribute="centerY" secondItem="t7a-cU-E9r" secondAttribute="centerY" id="swC-N5-pwJ"/>
+                                                    <constraint firstItem="0WR-os-NZl" firstAttribute="bottom" secondItem="t7a-cU-E9r" secondAttribute="centerY" id="swC-N5-pwJ"/>
                                                     <constraint firstItem="ym3-xx-jcx" firstAttribute="leading" secondItem="t7a-cU-E9r" secondAttribute="leading" id="wIq-oJ-w96"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXS-UI-uax">
-                                                <rect key="frame" x="33" y="25.5" width="121" height="51"/>
+                                                <rect key="frame" x="16" y="25.5" width="159" height="51"/>
                                                 <connections>
                                                     <action selector="tapLeftBrick:" destination="dtc-T4-z44" eventType="touchUpInside" id="mvM-1h-jKk"/>
                                                 </connections>
@@ -343,11 +343,12 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="NXS-UI-uax" firstAttribute="height" secondItem="Osa-1R-OFY" secondAttribute="height" id="0RS-9c-omS"/>
+                                            <constraint firstItem="Osa-1R-OFY" firstAttribute="leading" secondItem="M94-CA-2iA" secondAttribute="leading" constant="16" id="CmM-rb-v8H"/>
                                             <constraint firstItem="NXS-UI-uax" firstAttribute="width" secondItem="Osa-1R-OFY" secondAttribute="width" id="Dzs-yG-JgB"/>
                                             <constraint firstItem="NXS-UI-uax" firstAttribute="centerY" secondItem="Osa-1R-OFY" secondAttribute="centerY" id="PWc-fO-szx"/>
+                                            <constraint firstAttribute="trailing" secondItem="Osa-1R-OFY" secondAttribute="trailing" constant="12" id="THA-wz-R1f"/>
                                             <constraint firstItem="Osa-1R-OFY" firstAttribute="centerY" secondItem="M94-CA-2iA" secondAttribute="centerY" id="c2I-Bd-ezC"/>
                                             <constraint firstItem="NXS-UI-uax" firstAttribute="centerX" secondItem="Osa-1R-OFY" secondAttribute="centerX" id="hxi-ub-rYM"/>
-                                            <constraint firstItem="Osa-1R-OFY" firstAttribute="centerX" secondItem="M94-CA-2iA" secondAttribute="centerX" id="tUA-hk-4Wf"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2p-vW-Me1" userLabel="Right Container">

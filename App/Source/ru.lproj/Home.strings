@@ -7,13 +7,13 @@
 */
 
 "Home.salutation"                                       = "Привет, %@!";
-"Home.subtitle"                                         = "Вот новости для тебя:";
+"Home.subtitle"                                         = "Вот новости для Вас:";
 "Home.submitButton.anotherClaim"                        = "Подать ещё заявку на выплату";
 "Home.submitButton.claim"                               = "Подать заявку на выплату";
 "Home.leftBrick.title"                                  = "ЗАЩИТА";
 "Home.rightBrick.title"                                 = "КОШЕЛЁК";
-"Home.itemCard.status"                                  = "ЗАЩИЩЕНО";
-"Home.itemCard.coverageType"                            = "Ущерб"; //"Франшиза";
+"Home.itemCard.status"                                  = "ЗАЩИЩИТА ОТ";
+"Home.itemCard.coverageType"                            = "Ущерба"; //"Франшиза";
 
 "Home.SupportCell.headerLabel"                          = "Техподдержка";
 "Home.SupportCell.onlineLabel"                          = "ОНЛАЙН";
@@ -35,6 +35,6 @@
 "Home.PrivateMessages.title"                            = "Входящие";
 
 //---waiting--
-"Home.Empty.Title.noPrivateMessages"                    = "У тебя нет сообщений";
-"Home.Empty.SubTitle.noPrivateMessages"                 = "Напиши твоё первое приватное сообщение кому-нибудь из участников.";
+"Home.Empty.Title.noPrivateMessages"                    = "У Вас нет сообщений";
+"Home.Empty.SubTitle.noPrivateMessages"                 = "Напишите Ваше первое приватное сообщение кому-нибудь из участников.";
 

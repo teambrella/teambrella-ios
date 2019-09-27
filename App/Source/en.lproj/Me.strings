@@ -3,7 +3,7 @@
   Teambrella
 
   Created by Yaroslav Pasternak on 22.06.17.
-  Copyright © 2017 Yaroslav Pasternak. All rights reserved.
+  Copyright © 2017 Teambrella, Inc
 */
 
 "Me.CoverageVC.indicatorTitle"                     = "Coverage";
@@ -34,10 +34,24 @@
 "Me.CoverageVC.fundButton.title.toIncrease"        = "Fund Wallet to increase";
 "Me.CoverageVC.fundButton.title"                   = "Fund Wallet";
 "Me.CoverageVC.title"                              = "HOW IT WORKS";
-"Me.CoverageVC.subtitle"                           = "Use the slider to understand how Expenses impact your maximum reimbursement.";
+"Me.CoverageVC.subtitle"                           = "1. Submit a claim.\n2. The team discusses and votes\n3. Teammates pay their shares of reimbursement";
 "Me.CoverageVC.maxExpenses"                        = "Max Expenses covered";
 "Me.CoverageVC.yourExpenses"                       = "In case your Expenses are";
 "Me.CoverageVC.teamPay"                            = "The team would pay you up to";
+
+"Me.CoverageVC.desirableLimit"                     = "Desirable coverage";
+"Me.CoverageVC.possiblePayment"                    = "Your maximum payment";
+"Me.CoverageVC.teammatesWouldPay"                  = "Teammates with at least the same coverage";
+"Me.CoverageVC.currentCoverage"                    = "Current coverage";
+"Me.CoverageVC.fundWallet"                         = "Fund wallet";
+"Me.CoverageVC.checkSettings"                      = "Check settings";
+"Me.CoverageVC.explanationNeedMoreTeammates"       = "Not enough teammates (%d) with coverage equal or greater than desirable.";
+"Me.CoverageVC.explanationSettings"                = "Please make sure that Teambrella application is allowed to work in background.\n\nCoverage will restore in 24 hours.";
+"Me.CoverageVC.explanationFund"                    = "Not enough funds for desired coverage.";
+"Me.CoverageVC.explanationIncrease"                = "Coverage increses to %d %@ in 24 hours";
+"Me.CoverageVC.suspended"                          = "suspended";
+"Me.CoverageVC.reductionWarning"                   = "WARNING: You're going to reduce the coverage. It takes 24 hours to increase coverage after that.";
+"Me.CoverageVC.coverageReductionButton"            = "Confirm reduction";
 
 "Me.Report.ItemCell.title"                         = "REPORT";
 "Me.Report.DateCell.title"                         = "INCIDENT DATE";

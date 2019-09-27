@@ -1150,6 +1150,8 @@
 		6DFECADA207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */; };
 		841CF865231E175500C4A3DB /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CF864231E175500C4A3DB /* UILabel.swift */; };
 		841CF866231E175900C4A3DB /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CF864231E175500C4A3DB /* UILabel.swift */; };
+		841CF868233D983900C4A3DB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CF867233D983900C4A3DB /* UIView.swift */; };
+		841CF869233D983900C4A3DB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841CF867233D983900C4A3DB /* UIView.swift */; };
 		843D3B4821DFDA1F0057E16E /* ChatUserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D3B4721DFDA1F0057E16E /* ChatUserDataCell.swift */; };
 		843D3B4921DFDA1F0057E16E /* ChatUserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D3B4721DFDA1F0057E16E /* ChatUserDataCell.swift */; };
 		846D9BEA221C6B9700207F69 /* VotingStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */; };
@@ -1875,6 +1877,7 @@
 		6DFECAD9207E75DF00B5FEC8 /* NotificationPayloadProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPayloadProtocol.swift; sourceTree = "<group>"; };
 		7E838EA966A1AABBF06C12C6 /* Pods-Surilla.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surilla.release.xcconfig"; path = "Target Support Files/Pods-Surilla/Pods-Surilla.release.xcconfig"; sourceTree = "<group>"; };
 		841CF864231E175500C4A3DB /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		841CF867233D983900C4A3DB /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		843D3B4721DFDA1F0057E16E /* ChatUserDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserDataCell.swift; sourceTree = "<group>"; };
 		846D9BE9221C6B9700207F69 /* VotingStatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingStatsCell.swift; sourceTree = "<group>"; };
 		846D9BEB221C6BAD00207F69 /* VotingStatsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VotingStatsCell.xib; path = View/Cells/VotingStatsCell.xib; sourceTree = "<group>"; };
@@ -2325,6 +2328,7 @@
 				6D9CC6181ED484CF007F936E /* UIViewController.swift */,
 				6D10CD492166709700DB44C9 /* Encodable.swift */,
 				841CF864231E175500C4A3DB /* UILabel.swift */,
+				841CF867233D983900C4A3DB /* UIView.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -4448,6 +4452,7 @@
 				6D05237020A5D838000B3247 /* ProxyForCellBuilder.swift in Sources */,
 				17BE300920D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */,
 				6D05237120A5D838000B3247 /* JoinTeamItemCell.swift in Sources */,
+				841CF869233D983900C4A3DB /* UIView.swift in Sources */,
 				6D05237220A5D838000B3247 /* RulesVC.swift in Sources */,
 				6D05237320A5D838000B3247 /* LabeledIcon.swift in Sources */,
 				6D05237420A5D838000B3247 /* TeammateCandidateCell.swift in Sources */,
@@ -4917,6 +4922,7 @@
 				6D43291720D949490015C369 /* QRCodeManager.swift in Sources */,
 				6D4E5C441F7AB6870020DEE2 /* ProxyForCellBuilder.swift in Sources */,
 				17BE300820D3C7EB005EA59C /* WalletQRCodeVC.swift in Sources */,
+				841CF868233D983900C4A3DB /* UIView.swift in Sources */,
 				6D4E5C451F7AB6870020DEE2 /* JoinTeamItemCell.swift in Sources */,
 				6D4E5C461F7AB6870020DEE2 /* RulesVC.swift in Sources */,
 				94282B0A1FD9B1C40006B5F6 /* LabeledIcon.swift in Sources */,
@@ -5634,6 +5640,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/Source/Teambrella.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
@@ -5677,6 +5684,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/Source/Teambrella.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5736,7 +5744,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Teambrella, Inc. (Y6A22RLVJG)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6A22RLVJG;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

@@ -35,6 +35,7 @@ struct HomeModel: Decodable {
         case smallPhoto       = "SmallPhoto"
         case haveVotingClaims = "HaveVotingClaims"
         case teamPart         = "TeamPart"
+        case claimLimit       = "ClaimLimit"
     }
     
     var cards: [HomeCardModel]
@@ -49,6 +50,7 @@ struct HomeModel: Decodable {
     let objectName: Name
     let smallPhoto: Photo
     let haveVotingClaims: Bool
+    let claimLimit: Int
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -66,6 +68,7 @@ struct HomeModel: Decodable {
         objectName = try container.decode(Name.self, forKey: .objectName)
         smallPhoto = try container.decode(Photo.self, forKey: .smallPhoto)
         haveVotingClaims = try container.decode(Bool.self, forKey: .haveVotingClaims)
+        claimLimit = try container.decode(Int.self, forKey: .claimLimit)
     }
 
 }

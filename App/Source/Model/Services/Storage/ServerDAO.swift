@@ -152,6 +152,18 @@ class ServerDAO: DAO {
         return promise
     }
     
+    
+    func setLimit(teamID: Int, claimLimit: Int) -> Future<WalletEntity> {
+        let promise = Promise<WalletEntity>()
+        freshKey { key in
+            let body = RequestBody(key: key, payload: ["TeamId": teamID, "ClaimLimit": claimLimit])
+            let request = self.standardRequest(promise: promise, type: .setLimit, body: body)
+            request.start(server: self.server, isErrorAutoManaged: false)
+        }
+        return promise
+    }
+
+    
     func requestWalletTransactions(teamID: Int,
                                    offset: Int,
                                    limit: Int,

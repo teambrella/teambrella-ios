@@ -33,16 +33,31 @@
 
 "Me.CoverageVC.fundButton.title.toIncrease"        = "Пополнить кошелёк, чтобы увеличить";
 "Me.CoverageVC.fundButton.title"                   = "Пополнить Кошелёк";
-"Me.CoverageVC.title"                              = "КАК ЭТО РАБОТАЕТ";
-"Me.CoverageVC.subtitle"                           = "Используй бегунок, чтобы увидеть, как расходы влияют на максимальное возмещение.";
+"Me.CoverageVC.title"                              = "КАК РАБОТАЕТ ЗАЩИТА";
+"Me.CoverageVC.subtitle"                           = "1. Вы подаете заявку.\n2. Команда голосует за размер выплаты.\n3. Участники платят Вам напрямую.";
 "Me.CoverageVC.maxExpenses"                        = "Максимальное возмещение";
-"Me.CoverageVC.yourExpenses"                       = "В случае, когда твои расходы составляют";
+"Me.CoverageVC.yourExpenses"                       = "В случае, когда ваши расходы составляют";
 "Me.CoverageVC.teamPay"                            = "Максимальная выплата будет";
+"Me.CoverageVC.desirableLimit"                     = "Желаемая защита";
+"Me.CoverageVC.possiblePayment"                    = "Ваш максимальный платеж";
+"Me.CoverageVC.teammatesWouldPay"                  = "Участников с такой же или большей защитой";
+"Me.CoverageVC.currentCoverage"                    = "Текущая защита";
+"Me.CoverageVC.fundWallet"                         = "Пополнить кошелек";
+"Me.CoverageVC.checkSettings"                      = "Проверить настройки";
+"Me.CoverageVC.explanationNeedMoreTeammates"       = "Недостаточно участников (%d) с такой же или большей защитой.";
+"Me.CoverageVC.explanationSettings"                = "Пожалуйста, убедитесь, что приложению Teambrella разрешено получение уведомлений.\n\nЗащита включится в течении 24 часов.";
+"Me.CoverageVC.explanationFund"                    = "Недостаточно средств в кошельке для желаемой защиты.";
+"Me.CoverageVC.explanationIncrease"                = "Защита вырастет до %d %@ в течении 24 часов.";
+"Me.CoverageVC.suspended"                          = "отключена";
+"Me.CoverageVC.reductionWarning"                   = "ВНИМАНИЕ: Защита будет уменьшена. Увеличении защиты в будущем займет 24 часа.";
+"Me.CoverageVC.coverageReductionButton"            = "Подтвердить уменьшение";
+
+
 
 "Me.Report.ItemCell.title"                         = "ЗАЯВКА";
 "Me.Report.DateCell.title"                         = "ДАТА СОБЫТИЯ";
 "Me.Report.ExpensesCell.title"                     = "РАСХОДЫ";
-"Me.Report.DescriptionCell.title"                  = "ОПИШИ СВОЙ СЛУЧАЙ";
+"Me.Report.DescriptionCell.title"                  = "ОПИШИТЕ СВОЙ СЛУЧАЙ";
 "Me.Report.DescriptionCell.title-discussion"       = "СООБЩЕНИЕ";
 "Me.Report.PhotosCell.title"                       = "ФОТО";
 "Me.Report.WalletCell.title"                       = "ВОЗМЕЩАТЬ НА КОШЕЛЁК";
@@ -88,8 +103,8 @@
 "Me.Wallet.Withdraw.header.history"                = "ИСТОРИЯ ВЫВОДОВ";
 "Me.Wallet.Withdraw.WithdrawInfo.title"            = "ИНФОРМАЦИЯ О ВЫВОДАХ";
 "Me.Wallet.Withdraw.WithdrawInfo.balance"          = "Баланс";
-"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest"    = "Ты можешь запросить до %@ mETH на вывод";
-"Me.Wallet.Withdraw.WithdrawInfo.youHave"          = "У тебя зарезервировано %@ mETH, если часть зарезервированных средств станет доступна, они будут автоматически поставлены на вывод.";
+"Me.Wallet.Withdraw.WithdrawInfo.youMayRequest"    = "Вы можете запросить до %@ mETH на вывод";
+"Me.Wallet.Withdraw.WithdrawInfo.youHave"          = "У Вас зарезервировано %@ mETH, если часть зарезервированных средств станет доступна, они будут автоматически поставлены на вывод.";
 
 "Me.Wallet.Withdraw.noCameraAccess.title"          = "Для сканирования QR-кода требуется доступ к камере";
 "Me.Wallet.Withdraw.noCameraAccess.details"        = "Please grant access to device camera for Teambrella app to be able to scan QR codes";
@@ -124,6 +139,6 @@
 "Me.Wallet.QRCodeVC.printButton.title" = "Напечатать";
 
 "Me.WalletVC.QRCodeAlert.attention" = "Внимание!";
-"Me.WalletVC.QRCodeAlert.attentionDetails" = "Твой приватный ключ будет показан в форме QR кода. Уверен, что хочешь продолжить?";
+"Me.WalletVC.QRCodeAlert.attentionDetails" = "Ваш приватный ключ будет показан в форме QR кода. Уверены, что хотите продолжить?";
 "Me.WalletVC.QRCodeAlert.yes" = "Да, я уверен";
 

@@ -38,6 +38,7 @@ protocol DAO {
     // MARK: Wallet
 
     func requestWallet(teamID: Int) -> Future<WalletEntity>
+    func setLimit(teamID: Int, claimLimit: Int) -> Future<WalletEntity>
     func requestWalletTransactions(teamID: Int,
                                    offset: Int,
                                    limit: Int,

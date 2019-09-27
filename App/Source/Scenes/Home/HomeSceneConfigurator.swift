@@ -41,7 +41,16 @@ class HomeDefaultConfigurator: HomeConfigurator {
     func configure(controller: HomeVC) {
         guard let model = model else { return }
 
-        controller.leftBrickAmountLabel.text = String(format: "%.0f", model.coverage.percentage)
+        if (model.claimLimit > 0) {
+            controller.leftBrickAmountLabel.text = String(format: "%d", model.claimLimit)
+            controller.leftBrickCurrencyLabel.text = service.session?.currentTeam?.currency ?? ""
+            controller.leftBrickAmountLabel.textColor = UIColor.darkText
+        } else {
+            controller.leftBrickAmountLabel.text = "Me.CoverageVC.suspended".localized
+            controller.leftBrickCurrencyLabel.text = ""
+            controller.leftBrickAmountLabel.textColor = UIColor.lipstick
+        }
+
         controller.rightBrickAmountLabel.text = String(Int(MEth(model.balance).value))
         controller.rightBrickCurrencyLabel.text = service.session?.cryptoCoin.code
 

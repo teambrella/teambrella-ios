@@ -115,7 +115,10 @@ final class MainRouter {
     
     func switchToCoverage() {
         if let vc = switchTab(to: .me) as? ButtonBarPagerTabStripViewController {
-            vc.moveToViewController(at: 1, animated: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                vc.moveToViewController(at: 1, animated: false)
+                vc.reloadPagerTabStripView()
+            }
         }
     }
     
