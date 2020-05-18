@@ -50,11 +50,12 @@ extension UIImageView {
                     completion: ((UIImage?, NSError?) -> Void)? = nil) {
         kf.setImage(with: url,
                     placeholder: nil,
-                    options: options,
-                    progressBlock: nil,
-                    completionHandler: { image, error, _, _ in
-                        completion?(image, error)
-        })
+                    options: options)
+//                    ,
+//                    progressBlock: nil,
+//                    completionHandler: { image, error, _, _ in
+//                        completion?(image, error)
+//        })
     }
     
     func showImage(url: URL, needHeaders: Bool, completion: ((UIImage?, NSError?) -> Void)? = nil) {
@@ -70,20 +71,24 @@ extension UIImageView {
             
             self?.kf.setImage(with: url,
                               placeholder: nil,
-                              options: [.requestModifier(modifier)],
-                              progressBlock: nil,
-                              completionHandler: { image, error, _, _ in
-                                completion?(image, error)
-            })
+                              options: [.requestModifier(modifier)]
+//                ,
+//                              progressBlock: nil,
+//                              completionHandler: { image, error, _, _ in
+//                                completion?(image, error)
+//            }
+            )
         }
         } else {
             self.kf.setImage(with: url,
                               placeholder: nil,
-                              options: [],
-                              progressBlock: nil,
-                              completionHandler: { image, error, _, _ in
-                                completion?(image, error)
-            })
+                              options: []
+//                ,
+//                              progressBlock: nil,
+//                              completionHandler: { image, error, _, _ in
+//                                completion?(image, error)
+//            }
+            )
         }
     }
     

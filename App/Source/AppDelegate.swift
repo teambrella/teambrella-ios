@@ -28,27 +28,29 @@ import UIKit
 //import UXCam
 import AppsFlyerLib
 import JustLog
+import BackgroundTasks
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {//, AppsFlyerTrackerDelegate {
     var window: UIWindow?
+    var serialQueue: DispatchQueue?
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        AppsFlyerTracker.shared().appsFlyerDevKey = "W2BghVFhbV3nbQrb68Z2C3"
-        AppsFlyerTracker.shared().appleAppID = Application().appID
-        AppsFlyerTracker.shared().delegate = self
-        #if DEBUG
-        AppsFlyerTracker.shared().isDebug = true
-        #endif
+//        AppsFlyerTracker.shared().appsFlyerDevKey = "W2BghVFhbV3nbQrb68Z2C3"
+//        AppsFlyerTracker.shared().appleAppID = Application().appID
+//        AppsFlyerTracker.shared().delegate = self
+//        #if DEBUG
+//        AppsFlyerTracker.shared().isDebug = true
+//        #endif
         
 //     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         // Register for Push here to be able to receive silent notifications even if user will restrict push service
         service.push.register(application: application)
         service.push.startPushKit()
         if let userID = SimpleStorage().string(forKey: .userID) {
-            service.sinch.startWith(userID: userID)
+            //service.sinch.startWith(userID: userID)
             Log.shared.initLogstash(userID: userID)
             
         }
@@ -58,6 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate 
         // service.cryptoMalfunction()
         service.push.configure()
         configureLibs()
+        
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.teambrella.update", using: nil) { task in
+//            self.scheduleLocalNotification()
+            self.handleUpdateTask(task: task as! BGAppRefreshTask)
+        }
+        
+        serialQueue = DispatchQueue(label: "com.teambrella.serial-queue")
+
         return true
     }
     
@@ -90,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate 
         service.socket?.start()
         
         if service.session != nil {
-            service.teambrella.startUpdating(completion: { result in
+            service.teambrella.startUpdating(useQueue: nil, completion: { result in
                 let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
                 log("Teambrella service get updates results: \(description)", type: .info)
             })
@@ -153,6 +163,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate 
         service.socket?.stop()
         log("enter background", type: .info)
         Logger.shared.forceSend()
+        scheduleUpdateTask()
+    }
+    
+    func scheduleUpdateTask() {
+        let request = BGAppRefreshTaskRequest(identifier: "com.teambrella.update")
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 30 * 60)
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    func handleUpdateTask(task: BGAppRefreshTask) {
+        scheduleUpdateTask()
+        
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        queue.underlyingQueue = serialQueue
+        
+        task.expirationHandler = {
+            queue.cancelAllOperations()
+            task.setTaskCompleted(success: false)
+        }
+        
+        queue.addOperation {
+            service.teambrella.startUpdating(useQueue: queue, completion: {_ in
+                task.setTaskCompleted(success: true)
+            })
+        }
+        queue.addOperation {
+            let queue2 = queue.underlyingQueue
+            log("!!!!!!!! that's all folks, but we can't be here \(queue.operationCount) !!!!!", type: .info)
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -179,7 +223,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppsFlyerTrackerDelegate 
     
     func application(_ application: UIApplication,
                      performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        service.teambrella.startUpdating(completion: completionHandler)
+        service.teambrella.startUpdating(useQueue: nil, completion: completionHandler)
     }
     
     func application(_ application: UIApplication,

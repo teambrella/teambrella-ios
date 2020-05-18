@@ -353,7 +353,7 @@ final class TeammateProfileVC: UIViewController, Routable {
         guard let basic = dataSource.item?.basic,
             let myName = service.session?.currentUserName else { return }
 
-        service.sinch.call(userID: teammateID, name: myName.entire)
+        //service.sinch.call(userID: teammateID, name: myName.entire)
         service.router.showCall(in: self, to: basic.name.entire, avatar: basic.avatar, id: teammateID)
     }
 

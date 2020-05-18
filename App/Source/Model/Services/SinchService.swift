@@ -16,6 +16,7 @@
 
 import CallKit
 import Foundation
+import UserNotifications
 
 protocol SinchServiceDelegate: class {
     func sinch(service: SinchService, didStartCall: Any)
@@ -57,7 +58,7 @@ final class SinchService: NSObject {
     }
     
     func askPushCredentialsIfNeeded() {
-        push?.registerUserNotificationSettings()
+        //push?.registerUserNotificationSettings()
     }
     
     func startWith(userID: String) {
@@ -203,13 +204,13 @@ extension SinchService: SINCallClientDelegate {
     //call.answer()
 }
 
-func client(_ client: SINCallClient!,
-            localNotificationForIncomingCall call: SINCall!) -> SINLocalNotification! {
-    let notification = SINLocalNotification()
-    notification.alertAction = "Answer"
-    notification.alertBody = "Incoming call"
-    return notification
-}
+//func client(_ client: SINCallClient!,
+//            localNotificationForIncomingCall call: SINCall!) -> SINLocalNotification! {
+//    let notification = SINLocalNotification()
+//    notification.alertAction = "Answer"
+//    notification.alertBody = "Incoming call"
+//    return notification
+//}
 
 extension SinchService: SINManagedPushDelegate {
     func managedPush(_ managedPush: SINManagedPush!,
@@ -226,7 +227,7 @@ extension SinchService: SINManagedPushDelegate {
         log("got cmd string: \(cmd), command: \(command)", type: .push)
         switch command {
         case .getUpdates:
-            service.teambrella.startUpdating { result in
+            service.teambrella.startUpdating(useQueue: nil) { result in
                 log("SinchService has finished it's job", type: .push)
 
             }

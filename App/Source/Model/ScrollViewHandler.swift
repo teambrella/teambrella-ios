@@ -33,13 +33,12 @@ class ScrollViewHandler {
         let currentOffset = scrollView.contentOffset.y
         let velocity = currentOffset - previousScrollOffset
         previousScrollOffset = currentOffset
-        
-        if velocity > highBackwardSpeed {
-            onFastBackwardScroll?(velocity)
-        }
-        if velocity < highForwardSpeed {
-            onFastForwardScroll?(velocity)
-        }
+//        if velocity > highBackwardSpeed {
+//            onFastBackwardScroll?(velocity)
+//        }
+//        if velocity < highForwardSpeed {
+//            onFastForwardScroll?(velocity)
+//        }
         if isScrolling {
             if velocity > 0 {
                 onScrollingUp?()

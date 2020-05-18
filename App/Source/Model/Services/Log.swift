@@ -59,7 +59,7 @@ final class Log {
         let logger = Logger.shared
         logger.logFilename = "justlog.log"
         logger.logstashHost = "listener.logz.io"
-        logger.logzioToken = "ElgkebWWLmhIKltEDtpvZjhrKaHYlIUV"
+        logger.logzioToken = "rbJnUykfwUNPvJDCGZLxNMlWDoawPiYg"
         logger.enableFileLogging = false
         logger.enableConsoleLogging = false
         logger.logstashPort = 5052

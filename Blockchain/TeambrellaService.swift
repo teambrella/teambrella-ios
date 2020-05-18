@@ -61,10 +61,10 @@ final class TeambrellaService: NSObject {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func startUpdating(completion: @escaping (UIBackgroundFetchResult) -> Void) {
+    func startUpdating(useQueue: OperationQueue?, completion: @escaping (UIBackgroundFetchResult) -> Void) {
         guard !service.keyStorage.isDemoUser else { return }
         
-        sync(completion: completion)
+        sync(useQueue: useQueue, completion: completion)
     }
 
     func clear() throws {
@@ -112,32 +112,37 @@ final class TeambrellaService: NSObject {
                 self.contentProvider.save()
             }
 
-            if self.hasChanges && self.currentAttempt < Constant.maxAttempts {
-                self.currentAttempt += 1
-                log("Teambrella has more things to update. Requesting update attempt: \(self.currentAttempt)\n\n",
-                    type: .crypto)
-                self.update(completion: completion)
-            } else {
+//            if self.hasChanges && self.currentAttempt < Constant.maxAttempts {
+//                self.currentAttempt += 1
+//                log("Teambrella has more things to update. Requesting update attempt: \(self.currentAttempt)\n\n",
+//                    type: .crypto)
+//                self.update(completion: completion)
+//            }
+//            else {
                 self.currentAttempt = 0
                 self.hasChanges = false
                 completion(success)
-            }
+//            }
         }
         
     }
-    
-    private func updateData(completion: @escaping (Bool) -> Void) {
+
+    private func initTimestamp(completion: @escaping (Bool) -> Void) {
         server.initTimestamp { (timestamp, error) in
             if let error = error {
                 log("Update data couldn't proceed because of failed timestamp \(error)", type: .error)
                 completion(false)
-                return
             }
+            else {
+                completion(true)
+            }
+        }
+    }
 
-            self.autoApproveTransactions()
-            self.serverUpdateToLocalDb { success in
-                completion(success)
-            }
+    private func updateData(completion: @escaping (Bool) -> Void) {
+        self.autoApproveTransactions()
+        self.serverUpdateToLocalDb { success in
+            completion(success)
         }
     }
 
@@ -185,11 +190,15 @@ final class TeambrellaService: NSObject {
         contentProvider.save()
     }
     
-    private func sync(completion: @escaping (UIBackgroundFetchResult) -> Void) {
+    private func sync(useQueue: OperationQueue?, completion: @escaping (UIBackgroundFetchResult) -> Void) {
         log("Teambrella service start sync", type: .cryptoDetails)
         log("Public Key: \(key.publicKey)", type: .cryptoDetails)
         isStorageCleared = false
-        registerBackgroundTaskIfNeeded(completion: completion)
+        if (useQueue == nil) {
+            registerBackgroundTaskIfNeeded(completion: completion)
+        }
+        let queue = useQueue ?? self.queue
+        
         queue.addOperation {
             //self.queue.isSuspended = true
             self.createWallets(gasLimit: Constant.gasLimit, completion: { success in
@@ -229,17 +238,29 @@ final class TeambrellaService: NSObject {
         queue.addOperation {
             self.publishApprovedAndCosignedTxs()
         }
-        
+
         queue.addOperation {
-            self.queue.isSuspended = true
+            queue.isSuspended = true
+            self.initTimestamp { _ in
+                queue.isSuspended = false
+            }
+        }
+
+        queue.addOperation {
+            queue.isSuspended = true
             self.update() { _ in
-                self.queue.isSuspended = false
+                queue.isSuspended = false
             }
         }
         
         queue.addOperation {
             log("Teambrella service executed all sync operations", type: .crypto)
-            self.endBackgroundTaskIfNeeded(result: .newData, completion: completion)
+            if (useQueue == nil) {
+                self.endBackgroundTaskIfNeeded(result: .newData, completion: completion)
+            }
+            else {
+                completion(.noData)
+            }
         }
         
     }

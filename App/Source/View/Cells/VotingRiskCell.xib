@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -70,7 +67,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H5F-fa-toM" customClass="AmountLabel" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="33.5" width="63.5" height="30.5"/>
+                                        <rect key="frame" x="8" y="33" width="63.5" height="31"/>
                                         <fontDescription key="fontDescription" name="AkkuratPro-Regular" family="Akkurat Pro" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -125,10 +122,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFN-q5-gOq" customClass="RoundImagesStack" customModule="Surilla" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="77" width="70" height="20"/>
+                                        <rect key="frame" x="8" y="77" width="73" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Afd-Xn-foC"/>
-                                            <constraint firstAttribute="width" constant="70" id="Gso-5I-9Bq"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K9q-SA-b4t">
@@ -166,6 +162,7 @@
                                     <constraint firstItem="K9q-SA-b4t" firstAttribute="centerY" secondItem="qFN-q5-gOq" secondAttribute="centerY" id="1o4-73-3KZ"/>
                                     <constraint firstAttribute="trailing" secondItem="VE3-Bp-PEJ" secondAttribute="trailing" id="3CG-Ve-dMD"/>
                                     <constraint firstItem="557-Va-QA6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="D29-8w-VUD" secondAttribute="trailing" constant="1" id="3ZF-Sj-rtR"/>
+                                    <constraint firstAttribute="trailing" secondItem="qFN-q5-gOq" secondAttribute="trailing" constant="474" id="3rm-3k-ZfG"/>
                                     <constraint firstAttribute="centerX" secondItem="6qt-e2-WfN" secondAttribute="trailing" id="4Ey-bb-rDO"/>
                                     <constraint firstItem="UyJ-PS-yxB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uwK-ph-5aq" secondAttribute="trailing" constant="1" id="4Yb-rP-N3E"/>
                                     <constraint firstItem="UyJ-PS-yxB" firstAttribute="centerY" secondItem="uwK-ph-5aq" secondAttribute="centerY" id="87U-Rn-FT7"/>
@@ -205,6 +202,7 @@
                                     <constraint firstAttribute="bottom" secondItem="ufs-Z7-MdQ" secondAttribute="bottom" constant="8" id="oS3-MN-anU"/>
                                     <constraint firstItem="esR-N0-PHe" firstAttribute="centerY" secondItem="UyJ-PS-yxB" secondAttribute="centerY" id="oxj-qs-5hX"/>
                                     <constraint firstItem="VE3-Bp-PEJ" firstAttribute="leading" secondItem="25q-2v-Cur" secondAttribute="centerX" constant="8" id="pQP-xS-1Ye"/>
+                                    <constraint firstItem="qFN-q5-gOq" firstAttribute="top" secondItem="H5F-fa-toM" secondAttribute="bottom" constant="13" id="tw2-Rr-q4v"/>
                                     <constraint firstItem="blN-yG-O3g" firstAttribute="bottom" secondItem="K9q-SA-b4t" secondAttribute="top" id="tzR-3d-zXz"/>
                                     <constraint firstAttribute="centerX" secondItem="6qt-e2-WfN" secondAttribute="trailing" id="vFE-E7-smV"/>
                                     <constraint firstAttribute="bottom" secondItem="K9q-SA-b4t" secondAttribute="bottom" constant="8" id="xcr-pL-roC"/>

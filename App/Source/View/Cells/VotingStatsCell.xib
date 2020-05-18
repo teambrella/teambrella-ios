@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -141,10 +138,17 @@
                 <constraint firstAttribute="bottom" secondItem="oKC-We-Xw2" secondAttribute="bottom" id="2ij-Tw-cxp"/>
                 <constraint firstItem="oKC-We-Xw2" firstAttribute="top" secondItem="681-Xv-Y0g" secondAttribute="top" id="LNM-W6-fXn"/>
                 <constraint firstAttribute="trailing" secondItem="oKC-We-Xw2" secondAttribute="trailing" id="QmS-mG-LNf"/>
+                <constraint firstItem="oKC-We-Xw2" firstAttribute="centerX" secondItem="681-Xv-Y0g" secondAttribute="centerX" id="T8D-K6-znV"/>
                 <constraint firstItem="oKC-We-Xw2" firstAttribute="leading" secondItem="681-Xv-Y0g" secondAttribute="leading" id="ZdP-ax-Tjp"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q1m-XK-aM8"/>
             <size key="customSize" width="349" height="352"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="QmS-mG-LNf"/>
+                    <exclude reference="ZdP-ax-Tjp"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="claimsStatsView" destination="EDd-qF-PQ8" id="qyd-0T-tkb"/>
                 <outlet property="containerView" destination="oKC-We-Xw2" id="vs5-Fg-7fp"/>

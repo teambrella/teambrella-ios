@@ -164,7 +164,7 @@ final class InitialVC: UIViewController {
             Session.requestPush()
         }
         
-        service.teambrella.startUpdating(completion: { result in
+        service.teambrella.startUpdating(useQueue: nil, completion: { result in
             let description = result.rawValue == 0 ? "new data" : result.rawValue == 1 ? "no data" : "failed"
             log("Teambrella service get updates results: \(description)", type: .info)
         })

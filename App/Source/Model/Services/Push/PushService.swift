@@ -85,7 +85,7 @@ final class PushService: NSObject {
             log("got cmd string: \(cmd), command: \(command)", type: .push)
             switch command {
             case .getUpdates:
-                self?.teambrella.startUpdating { result in
+                self?.teambrella.startUpdating(useQueue: nil) { result in
                     log("PushKit has finished it's job", type: .push)
                     completion()
                 }
@@ -164,7 +164,7 @@ final class PushService: NSObject {
         if let aps = userInfo["aps"] as? [AnyHashable: Any], let content = aps["content-available"] as? Bool {
             if content == true {
                 log("Content is available: \(userInfo)", type: .push)
-                service.teambrella.startUpdating(completion: { result in
+                service.teambrella.startUpdating(useQueue: nil, completion: { result in
                     log("Remote notification get updetes result is: \(result)", type: .push)
                 })
             }

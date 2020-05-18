@@ -111,6 +111,8 @@ class RoundImageView: UIImageView {
         addSubview(imageView)
         // image = #imageLiteral(resourceName: "imagePlaceholder")
         imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        clipsToBounds = true
         contentMode = .scaleAspectFill
     }
     
@@ -124,6 +126,7 @@ class RoundImageView: UIImageView {
         limbView?.frame.size = CGSize(width: side, height: side)
         limbView?.center = imageView.center
         limbView?.layer.cornerRadius = side / 2
+        layer.cornerRadius = side / 2
         if let label = label {
             label.frame.size = imageView.bounds.size
             label.center = imageView.center

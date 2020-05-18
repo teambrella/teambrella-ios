@@ -36,7 +36,7 @@ class SocketService {
     
     var socket: WebSocket!
     var actions: [AnyHashable: SocketListenerAction] = [:]
-    var isConnected: Bool { return socket.isConnected }
+    var isConnected: Bool = false //{ return socket.isConnected }
     var unsentMessage: String?
     var dao: DAO
     
@@ -120,36 +120,44 @@ class SocketService {
 }
 
 extension SocketService: WebSocketDelegate {
-    func websocketDidConnect(socket: WebSocketClient) {
-        log("connected", type: .socket)
-        if let message = unsentMessage {
-            send(string: message)
-            unsentMessage = nil
-        } else {
-            auth()
+    func didReceive(event: WebSocketEvent, client: WebSocket) {
+        switch event {
+        case .connected(let headers):
+            isConnected = true
+            log("connected", type: .socket)
+            if let message = unsentMessage {
+                send(string: message)
+                unsentMessage = nil
+            } else {
+                auth()
+            }
+        case .disconnected(let reason, let code):
+            isConnected = false
+            log("disconnected with reason: \(reason) and code: \(code)", type: [.socket])
+        case .text(let string):
+            log("received: \(string)", type: .socket)
+            guard let data = string.data(using: .utf8) else {
+                log("Failed to create data from websocket string", type: [.error, .socket])
+                return
+            }
+            
+            parse(data: data)
+        case .binary(let data):
+            log("received data: \(data)", type: .socket)
+            parse(data: data)
+        case .ping(_):
+            break
+        case .pong(_):
+            break
+        case .viabilityChanged(_):
+            break
+        case .reconnectSuggested(_):
+            break
+        case .cancelled:
+            isConnected = false
+        case .error(let error):
+            isConnected = false
+//            handleError(error)
         }
-    }
-    
-    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        log("received data: \(data)", type: .socket)
-        parse(data: data)
-    }
-    
-    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        log("disconnected", type: .socket)
-        if let error = error {
-            log("disconnected with error: \(error)", type: [.error, .socket])
-        }
-        // start()
-    }
-    
-    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        log("received: \(text)", type: .socket)
-        guard let data = text.data(using: .utf8) else {
-            log("Failed to create data from websocket string", type: [.error, .socket])
-            return
-        }
-        
-        parse(data: data)
     }
 }

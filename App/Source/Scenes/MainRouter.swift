@@ -465,7 +465,7 @@ final class MainRouter {
         if !isDemo {
             let userID = teamsModel.userID
             SimpleStorage().store(string: userID, forKey: .userID)
-            service.sinch.startWith(userID: userID)
+            //service.sinch.startWith(userID: userID)
         }
         
         service.joinTeamID = nil
@@ -480,7 +480,7 @@ final class MainRouter {
         service.session = nil
         service.keyStorage.clearLastUserType()
         SimpleStorage().cleanValue(forKey: .userID)
-        service.sinch.terminate()
+        //service.sinch.terminate()
         navigator.clear()
         do {
             try

@@ -207,7 +207,7 @@ final class UniversalChatVC: UIViewController, Routable {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.estimatedItemSize = CGSize(width: collectionView.bounds.width, height: 30)
+            layout.estimatedItemSize = .zero// CGSize(width: collectionView.bounds.width, height: 30)
             layout.footerReferenceSize = CGSize(width: collectionView.bounds.width, height: 30)
         }
         dataSource.cloudWidth = cloudWidth
@@ -1019,6 +1019,8 @@ extension UniversalChatVC: UICollectionViewDelegateFlowLayout {
         switch dataSource[indexPath] {
         case _ as ChatTextCellModel:
             let size = cloudSize(for: indexPath)
+//            log("cloud height=\(size.height) item=\(indexPath.row) bounds=\(collectionView.bounds.height)", type: .socket)
+//
             return CGSize(width: collectionView.bounds.width, height: size.height)
         case let model as ServiceMessageWithButtonCellModel:
             return sizeForServiceMessageWithButton(model: model)
@@ -1259,6 +1261,7 @@ extension UniversalChatVC: SlidingViewDelegate {
         var inset = collectionView.contentInset
         inset.top = height
         collectionView.contentInset = inset
+
         UIView.animate(withDuration: 0.3) {
             self.slidingView.layoutIfNeeded()
         }

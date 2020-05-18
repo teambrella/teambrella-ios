@@ -29,7 +29,7 @@ class CallVC: UIViewController, Routable {
     var avatar: Avatar!
     var id: String!
 
-    var sinch: SinchService { return service.sinch }
+    //var sinch: SinchService { return service.sinch }
 
     var periodicEvent: PeriodicEvent?
     var isConnected: Bool = false
@@ -40,7 +40,7 @@ class CallVC: UIViewController, Routable {
         nameLabel.text = name
         avatarView.show(avatar)
 
-        sinch.delegate = self
+        //sinch.delegate = self
 
         headerLabel.text = "Info.CallVC.calling".localized
         cancelButton.setTitle("Info.CallVC.CancelButton.Title".localized, for: .normal)
@@ -66,7 +66,7 @@ class CallVC: UIViewController, Routable {
     }
 
     @IBAction func tapCancel(_ sender: BorderedButton) {
-        sinch.stopCalling()
+        //sinch.stopCalling()
         close()
     }
 

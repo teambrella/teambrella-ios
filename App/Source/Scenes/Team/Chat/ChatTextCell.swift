@@ -102,7 +102,7 @@ class ChatTextCell: ChatUserDataCell {
                  type: UniversalChatType,
                  size: CGSize) {
         let baseFrame = CGRect(x: 0, y: 0, width: cloudWidth, height: Constant.auxillaryLabelHeight)
-        if model.id != id {
+        if model.id != id || markIcon.isHidden == model.isMarked {
             id = model.id
             isMy = model.isMy
             self.cloudWidth = size.width

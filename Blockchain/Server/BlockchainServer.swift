@@ -56,6 +56,7 @@ public class BlockchainServer {
         return URLSession(configuration: config)
     }()
     
+    
     init() {
     }
     
@@ -218,7 +219,6 @@ public class BlockchainServer {
 
         request.httpMethod = "POST"
         let queue = OperationQueue.current?.underlyingQueue ?? DispatchQueue.main
-
         let task = session.uploadTask(with: request, from: data) { data, response, error in
             queue.async {
                 guard let data = data, error == nil else {

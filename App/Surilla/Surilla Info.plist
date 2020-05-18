@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.5.18</string>
+	<string>0.5.23</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -54,7 +54,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>189</string>
+	<string>194</string>
 	<key>FacebookAppID</key>
 	<string>416598765047865</string>
 	<key>FacebookDisplayName</key>
@@ -88,8 +88,8 @@
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>voip</string>
 		<string>fetch</string>
+		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

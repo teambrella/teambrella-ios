@@ -25,7 +25,7 @@ import SwiftMessages
 
 final class ReachabilityService {
     //swiftlint:disable:next force_unwrapping
-    let reachability = Reachability()!
+    let reachability = try! Reachability()
     var notification: MessageView?
     
     init() {

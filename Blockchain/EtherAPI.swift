@@ -104,7 +104,8 @@ class EtherAPI {
         sendPostRequest(urlString: "api",
                         parameters:[
                             "module": "proxy",
-                            "action": "eth_sendRawTransaction"
+                            "action": "eth_sendRawTransaction",
+                            "apikey": "2N31I63ENH2M8U2JIUX4QTS8WBDFEI6TBM"
             ],
                         body: ["hex": hex],
                         success: { string in
@@ -121,7 +122,8 @@ class EtherAPI {
                        parameters: [
                         "module": "proxy",
                         "action": "eth_getTransactionCount",
-                        "address": address],
+                        "address": address,
+                        "apikey": "2N31I63ENH2M8U2JIUX4QTS8WBDFEI6TBM"],
                        success: { string in
                         log("nonce for address: \(address) is: \(string)", type: .cryptoDetails)
                         success(string)
@@ -134,7 +136,8 @@ class EtherAPI {
         let parameters: [String: String] = [
             "module": "proxy",
             "action": "eth_getTransactionReceipt",
-            "txHash": hash
+            "txHash": hash,
+            "apikey": "2N31I63ENH2M8U2JIUX4QTS8WBDFEI6TBM"
         ]
         guard let url = urlWith(address: server + "api", parameters: parameters) else {
             failure(EtherAPIError.malformedURL)
@@ -177,6 +180,7 @@ class EtherAPI {
                        parameters: [
                         "module": "proxy",
                         "action": "eth_call",
+                        "apikey": "2N31I63ENH2M8U2JIUX4QTS8WBDFEI6TBM",
                         "to": to,
                         "data": callDataString],
                        success: { string in
@@ -193,6 +197,7 @@ class EtherAPI {
                        parameters: [
                         "module": "account",
                         "action": "balance",
+                        "apikey": "2N31I63ENH2M8U2JIUX4QTS8WBDFEI6TBM",
                         "address": address],
                        success: { string in
                         guard var balance = Decimal(string: string) else {
